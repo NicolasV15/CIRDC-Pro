@@ -123,8 +123,15 @@ class IEEEFetcher(ABC):
                         if not os.path.exists(json_dir):
                             os.system("mkdir -p {}".format(json_dir))
                         
+                        # 只保存records数组、totalRecords和totalPages字段
+                        filtered_data = {
+                            "records": dic_obj.get("records", []),
+                            "totalRecords": dic_obj.get("totalRecords", 0),
+                            "totalPages": dic_obj.get("totalPages", 0)
+                        }
+                        
                         with open(os.path.join(json_dir, "{}.json".format(page)), 'w', encoding='utf-8') as f:
-                            json.dump(dic_obj, f, ensure_ascii=False, indent=4)
+                            json.dump(filtered_data, f, ensure_ascii=False, indent=4)
                         
                         logger.info(f"年份 {year} 页数 {page} 成功抓取。")
                         return total_records
