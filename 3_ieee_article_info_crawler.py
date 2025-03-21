@@ -5,6 +5,7 @@ import requests
 import logging
 from abc import ABC, abstractmethod
 import traceback
+from datetime import datetime  # 导入datetime
 
 
 class IEEEDownloader(ABC):
@@ -233,7 +234,7 @@ class ConferenceDownloader(IEEEDownloader):
             refresh_from_year=refresh_from_year
         )
     
-    def process_conference_page(self, pub_number, page, get_page_number=False, retry=10):
+    def process_conference_page(self, pub_number, page, year=None, parent_pub_number=None, get_page_number=False, retry=10):
         """处理会议页面"""
         self.logger.info(f"处理出版号 {pub_number} 页面 {page} 获取页数 {get_page_number}")
         
@@ -263,30 +264,34 @@ class ConferenceDownloader(IEEEDownloader):
         
         if 'records' not in response_data:
             self.logger.error(f"出版号 {pub_number} 页面 {page} 中没有records字段")
-            return
+            return 0
             
         if len(response_data['records']) == 0:
             self.logger.warning(f"出版号 {pub_number} 页面 {page} 中记录为空")
-            return
+            return 0
             
-        # 提取年份信息
-        try:
-            year = response_data['records'][0].get('publicationYear', 'unknown')
-        except Exception as e:
-            self.logger.error(f"获取出版号 {pub_number} 页面 {page} 年份信息失败: {e}")
-            year = 'unknown'
+        # 如果提供了年份和父出版号，使用它们；否则从记录中提取年份信息
+        save_year = year
+        save_pub_number = parent_pub_number or pub_number
+        
+        if not save_year:
+            try:
+                save_year = response_data['records'][0].get('publicationYear', 'unknown')
+            except Exception as e:
+                self.logger.error(f"获取出版号 {pub_number} 页面 {page} 年份信息失败: {e}")
+                save_year = 'unknown'
         
         # 处理记录并保存
         try:
             processed_records = self._process_records(response_data['records'])
-            self._save_processed_json(processed_records, pub_number, year)
+            self._save_processed_json(processed_records, save_pub_number, save_year)
             
-            self.logger.info(f"出版号 {pub_number} 年份 {year} 页面 {page} 处理成功")
+            self.logger.info(f"出版号 {pub_number} 年份 {save_year} 页面 {page} 处理成功，保存到目录 {save_pub_number}")
             
             # 返回记录数
             return len(processed_records)
         except Exception as e:
-            self.logger.error(f"处理记录失败，出版号 {pub_number} 年份 {year} 页面 {page}: {e}")
+            self.logger.error(f"处理记录失败，出版号 {pub_number} 年份 {save_year} 页面 {page}: {e}")
             return 0
             
     def check_conference_record_count(self, pub_number):
@@ -323,23 +328,46 @@ class ConferenceDownloader(IEEEDownloader):
                 all_conferences = json.load(fr)
                 total_conferences = len(all_conferences)
                 
-                for i, (pub_number, entry) in enumerate(all_conferences.items(), 1):
-                    self.logger.info(f"处理会议 {pub_number} ({i}/{total_conferences})")
+                for i, (parent_pub_number, conference_data) in enumerate(all_conferences.items(), 1):
+                    self.logger.info(f"处理会议系列 {parent_pub_number} - {conference_data.get('parentTitle', '')} ({i}/{total_conferences})")
                     
-                    # 获取会议年份
-                    conference_year = entry.get('year')
+                    # 处理titleHistory中的每个会议年份
+                    title_history = conference_data.get('titleHistory', [])
                     
-                    # 检查是否需要处理该会议
-                    if not self._should_process_year(pub_number, int(conference_year)):
-                        self.logger.info(f"会议 {pub_number} ({conference_year}年) 已处理且不需更新，跳过")
-                        continue
-                    
-                    # 需要处理会议数据
-                    num_of_page = self.process_conference_page(pub_number, page=1, get_page_number=True)
-                    
-                    if num_of_page:
-                        for page in range(1, num_of_page+1):
-                            self.process_conference_page(pub_number, page=page, get_page_number=False)
+                    for title_item in title_history:
+                        pub_number = title_item.get('publicationNumber')
+                        year = title_item.get('year')
+                        display_title = title_item.get('displayTitle', '')
+                        
+                        if not pub_number or not year:
+                            self.logger.warning(f"跳过不完整的会议记录: {title_item}")
+                            continue
+                            
+                        self.logger.info(f"处理会议 {pub_number} - {display_title} ({year}年)")
+                        
+                        # 检查是否需要处理该会议年份
+                        if not self._should_process_year(parent_pub_number, int(year)):
+                            self.logger.info(f"会议 {pub_number} ({year}年) 已处理且不需更新，跳过")
+                            continue
+                        
+                        # 需要处理会议数据
+                        num_of_page = self.process_conference_page(
+                            pub_number, 
+                            page=1,
+                            year=year,
+                            parent_pub_number=parent_pub_number,
+                            get_page_number=True
+                        )
+                        
+                        if num_of_page:
+                            for page in range(1, num_of_page+1):
+                                self.process_conference_page(
+                                    pub_number, 
+                                    page=page,
+                                    year=year,
+                                    parent_pub_number=parent_pub_number,
+                                    get_page_number=False
+                                )
             
             self.logger.info("会议论文信息下载和处理完成")
         except Exception as e:
@@ -469,7 +497,7 @@ class JournalDownloader(IEEEDownloader):
                     end_year = entry['end_year']
                     
                     if end_year == 'Present':
-                        end_year = 2025
+                        end_year = datetime.now().year  # 使用当前年份代替硬编码值
                     else:
                         end_year = int(end_year)
                     
@@ -573,7 +601,7 @@ def main(conference_file="./publicationInfo/all_conferences.json",
 if __name__ == "__main__":
     # 可以在这里修改参数
     main(
-        conference_file="./publicationInfo/all_conferences.json", 
-        journal_file="./publicationInfo/all_journals.json",
-        refresh_from_year=1980  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
-    ) 
+        conference_file="./publicationInfo/test_conferences.json", 
+        journal_file="./publicationInfo/empty.json",
+        #refresh_from_year=1980  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
+    )
