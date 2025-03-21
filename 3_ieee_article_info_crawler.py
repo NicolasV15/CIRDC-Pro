@@ -10,10 +10,9 @@ import traceback
 class IEEEDownloader(ABC):
     """IEEE论文下载器基类"""
     
-    def __init__(self, log_file="download.log", source_data_path=None, processed_data_path=None, refresh_from_year=None):
+    def __init__(self, log_file="download.log", processed_data_path=None, refresh_from_year=None):
         """初始化下载器，设置日志"""
         self.logger = self._setup_logger(log_file)
-        self.source_data_path = source_data_path
         self.processed_data_path = processed_data_path
         self.refresh_from_year = refresh_from_year
         
@@ -130,18 +129,6 @@ class IEEEDownloader(ABC):
         
         return processed_records
     
-    def _save_source_json(self, data, path, filename):
-        """保存原始JSON数据到文件（如果需要）"""
-        if not self.source_data_path:
-            return
-            
-        if not os.path.exists(path):
-            os.makedirs(path)
-        
-        filepath = os.path.join(path, filename)
-        with open(filepath, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-    
     def _save_processed_json(self, processed_records, pub_number, year):
         """保存处理后的JSON数据"""
         if not self.processed_data_path:
@@ -237,12 +224,11 @@ class IEEEDownloader(ABC):
 class ConferenceDownloader(IEEEDownloader):
     """会议论文下载器"""
     
-    def __init__(self, source_data_path=None, processed_data_path=None, refresh_from_year=None):
+    def __init__(self, processed_data_path=None, refresh_from_year=None):
         """初始化会议下载器"""
         self.api_url = 'https://ieeexplore.ieee.org/rest/search'
         super().__init__(
             log_file="download_conference.log", 
-            source_data_path=source_data_path,
             processed_data_path=processed_data_path,
             refresh_from_year=refresh_from_year
         )
@@ -289,14 +275,6 @@ class ConferenceDownloader(IEEEDownloader):
         except Exception as e:
             self.logger.error(f"获取出版号 {pub_number} 页面 {page} 年份信息失败: {e}")
             year = 'unknown'
-            
-        # 保存原始数据（如果需要）
-        if self.source_data_path:
-            try:
-                source_path = os.path.join(self.source_data_path, str(pub_number), str(year))
-                self._save_source_json(response_data, source_path, f'{page}.json')
-            except Exception as e:
-                self.logger.error(f"保存原始数据失败，出版号 {pub_number} 年份 {year} 页面 {page}: {e}")
         
         # 处理记录并保存
         try:
@@ -372,12 +350,11 @@ class ConferenceDownloader(IEEEDownloader):
 class JournalDownloader(IEEEDownloader):
     """期刊论文下载器"""
     
-    def __init__(self, source_data_path=None, processed_data_path=None, refresh_from_year=None):
+    def __init__(self, processed_data_path=None, refresh_from_year=None):
         """初始化期刊下载器"""
         self.api_url = 'https://ieeexplore.ieee.org/rest/search'
         super().__init__(
             log_file="download_journal.log", 
-            source_data_path=source_data_path,
             processed_data_path=processed_data_path,
             refresh_from_year=refresh_from_year
         )
@@ -436,14 +413,6 @@ class JournalDownloader(IEEEDownloader):
             
         if get_page_number:
             return response_data.get('totalPages', 0)
-        
-        # 保存原始数据（如果需要）
-        if self.source_data_path:
-            try:
-                source_path = os.path.join(self.source_data_path, str(pub_number), str(year))
-                self._save_source_json(response_data, source_path, f'{page}.json')
-            except Exception as e:
-                self.logger.error(f"保存原始数据失败，出版号 {pub_number} 年份 {year} 页面 {page}: {e}")
         
         if 'records' not in response_data:
             self.logger.error(f"出版号 {pub_number} 年份 {year} 页面 {page} 中没有records字段")
@@ -516,7 +485,6 @@ class JournalDownloader(IEEEDownloader):
 
 def main(conference_file="./publicationInfo/all_conferences.json", 
          journal_file="./publicationInfo/all_journal.json",
-         save_source=True,
          refresh_from_year=None):
     """
     主函数，接受文件路径参数
@@ -524,7 +492,6 @@ def main(conference_file="./publicationInfo/all_conferences.json",
     参数:
         conference_file: 会议文件路径
         journal_file: 期刊文件路径
-        save_source: 是否保存原始JSON
         refresh_from_year: 从哪一年开始刷新数据，为None则全部刷新
     """
     
@@ -558,15 +525,11 @@ def main(conference_file="./publicationInfo/all_conferences.json",
     main_logger.addHandler(error_file_handler)
     
     # 设置路径
-    base_dir = "./publicationInfo"
-    
-    # 根据是否保存源数据设置路径
-    source_conference_path = os.path.join(base_dir, "download_source_json_conference") if save_source else None
-    source_journal_path = os.path.join(base_dir, "download_source_json") if save_source else None
+    base_dir = "./articleInfo"
     
     # 设置处理后数据的路径
-    processed_conference_path = os.path.join(base_dir, "processed_json_conference")
-    processed_journal_path = os.path.join(base_dir, "processed_json")
+    processed_conference_path = os.path.join(base_dir, "json_conference")
+    processed_journal_path = os.path.join(base_dir, "json_journal")
     
     main_logger.info("开始IEEE数据下载和处理任务")
     if refresh_from_year:
@@ -579,7 +542,6 @@ def main(conference_file="./publicationInfo/all_conferences.json",
         main_logger.info("开始处理会议数据")
         
         conference_downloader = ConferenceDownloader(
-            source_data_path=source_conference_path,
             processed_data_path=processed_conference_path,
             refresh_from_year=refresh_from_year
         )
@@ -595,7 +557,6 @@ def main(conference_file="./publicationInfo/all_conferences.json",
         main_logger.info("开始处理期刊数据")
         
         journal_downloader = JournalDownloader(
-            source_data_path=source_journal_path,
             processed_data_path=processed_journal_path,
             refresh_from_year=refresh_from_year
         )
@@ -614,6 +575,5 @@ if __name__ == "__main__":
     main(
         conference_file="./publicationInfo/all_conferences.json", 
         journal_file="./publicationInfo/all_journals.json",
-        save_source=False,  # 设置为False可以不保存原始JSON，只保存处理后的数据
         refresh_from_year=1980  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
     ) 
