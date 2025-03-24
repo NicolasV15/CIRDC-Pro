@@ -224,7 +224,7 @@ class ConferenceFetcher(IEEEFetcher):
         return "https://ieeexplore.ieee.org/browse/conferences/title"
     
     def get_json_dir(self, year):
-        return f'./publicationInfo/json_conference_year/{year}'
+        return f'./publicationInfo/Conferences/{year}'
 
 
 class JournalFetcher(IEEEFetcher):
@@ -237,7 +237,7 @@ class JournalFetcher(IEEEFetcher):
         return "https://ieeexplore.ieee.org/browse/periodicals/title"
     
     def get_json_dir(self, year):
-        return f'./publicationInfo/json_journal_year/{year}'
+        return f'./publicationInfo/Journals/{year}'
 
 
 if __name__ == "__main__":

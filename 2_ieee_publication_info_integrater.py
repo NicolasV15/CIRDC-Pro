@@ -17,7 +17,7 @@ if JOURNAL_FLAG:
     all_journals = {}
     for year in range (1884, 2026):
         print (year)
-        for root, dirs, names in os.walk(os.path.join('./publicationInfo/json_journal_year', '{}'.format(year))):
+        for root, dirs, names in os.walk(os.path.join('./publicationInfo/Journals', '{}'.format(year))):
             for name in names:
                 json_path = os.path.join(root, name)
                 with open(json_path, 'r', encoding='utf-8') as file:
@@ -62,7 +62,7 @@ if CONFERENCE_FLAG == 1:
     all_conferences = {}
     #### Process Conference ####
     for year in range (1884, 2026):
-        for root, dirs, names in os.walk(os.path.join('./publicationInfo/json_conference_year', '{}'.format(year))):
+        for root, dirs, names in os.walk(os.path.join('./publicationInfo/Conferences', '{}'.format(year))):
             for name in names:
                 json_path = os.path.join(root, name)
                 with open(json_path, 'r', encoding='utf-8') as file:
