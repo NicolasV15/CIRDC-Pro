@@ -556,8 +556,8 @@ def main(conference_file="./publicationInfo/all_conferences.json",
     base_dir = "./articleInfo"
     
     # 设置处理后数据的路径
-    processed_conference_path = os.path.join(base_dir, "json_conference")
-    processed_journal_path = os.path.join(base_dir, "json_journal")
+    processed_conference_path = os.path.join(base_dir, "Conferences")
+    processed_journal_path = os.path.join(base_dir, "Journals")
     
     main_logger.info("开始IEEE数据下载和处理任务")
     if refresh_from_year:
