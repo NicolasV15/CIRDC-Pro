@@ -601,7 +601,7 @@ def main(conference_file="./publicationInfo/all_conferences.json",
 if __name__ == "__main__":
     # 可以在这里修改参数
     main(
-        conference_file="./publicationInfo/test_conferences.json", 
-        journal_file="./publicationInfo/empty.json",
+        conference_file="./publicationInfo/all_conferences.json", 
+        journal_file="./publicationInfo/all_journals.json",
         #refresh_from_year=1980  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
     )
