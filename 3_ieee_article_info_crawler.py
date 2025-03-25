@@ -13,6 +13,15 @@ class IEEEDownloader(ABC):
     
     def __init__(self, log_file="download.log", processed_data_path=None, refresh_from_year=None):
         """初始化下载器，设置日志"""
+        # 创建日志目录
+        log_dir = os.path.join("log", "3_articleinfo")
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+            
+        # 添加时间戳到日志文件名
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        log_file = os.path.join(log_dir, f"{timestamp}_{log_file}")
+        
         self.logger = self._setup_logger(log_file)
         self.processed_data_path = processed_data_path
         self.refresh_from_year = refresh_from_year
@@ -146,6 +155,8 @@ class IEEEDownloader(ABC):
             
         # 保存至目标JSON文件
         dst_json = os.path.join(dst_dir, f"{year}.json")
+        # 创建临时文件用于原子写入
+        tmp_json = dst_json + ".tmp"
         
         # 如果文件已存在，读取并合并数据
         if os.path.exists(dst_json):
@@ -161,16 +172,40 @@ class IEEEDownloader(ABC):
                 processed_records = existing_data
             except json.JSONDecodeError as e:
                 self.logger.error(f"JSON解析错误，文件 {dst_json} 可能已损坏: {e}")
+                # 创建备份文件
+                try:
+                    import shutil
+                    backup_file = dst_json + ".bak"
+                    shutil.copy2(dst_json, backup_file)
+                    self.logger.info(f"已创建损坏文件的备份: {backup_file}")
+                except Exception as be:
+                    self.logger.error(f"创建备份文件失败: {be}")
             except Exception as e:
                 self.logger.error(f"合并既有数据时出错: {e}")
         
-        # 写入目标JSON文件
+        # 使用临时文件进行原子写入
         try:
-            with open(dst_json, 'w', encoding='utf-8') as f:
+            # 先写入临时文件
+            with open(tmp_json, 'w', encoding='utf-8') as f:
                 json.dump(processed_records, f, ensure_ascii=False, indent=4)
+            
+            # 原子性地替换文件
+            if os.name == 'nt':  # Windows系统
+                if os.path.exists(dst_json):
+                    os.remove(dst_json)  # Windows可能需要先删除目标文件
+                os.rename(tmp_json, dst_json)
+            else:  # POSIX系统（Linux, macOS等）
+                os.replace(tmp_json, dst_json)  # 使用os.replace进行原子替换
+                
             self.logger.info(f"已保存处理后的数据到 {dst_json}，共 {len(processed_records)} 条记录")
         except Exception as e:
             self.logger.error(f"写入文件 {dst_json} 失败: {e}")
+            # 清理临时文件
+            if os.path.exists(tmp_json):
+                try:
+                    os.remove(tmp_json)
+                except Exception as te:
+                    self.logger.error(f"删除临时文件 {tmp_json} 失败: {te}")
             
     def _get_existing_records_count(self, pub_number, year):
         """获取已存在的JSON文件中的记录数量"""
@@ -523,6 +558,16 @@ def main(conference_file="./publicationInfo/all_conferences.json",
         refresh_from_year: 从哪一年开始刷新数据，为None则全部刷新
     """
     
+    # 创建日志目录
+    log_dir = os.path.join("log", "3_articleinfo")
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+    
+    # 添加时间戳到日志文件名
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    main_log_file = os.path.join(log_dir, f"{timestamp}_ieee_main.log")
+    main_error_log_file = os.path.join(log_dir, f"{timestamp}_ieee_main_error.log")
+    
     # 设置主日志记录器
     main_logger = logging.getLogger('ieee_main')
     main_logger.setLevel(logging.DEBUG)
@@ -535,10 +580,10 @@ def main(conference_file="./publicationInfo/all_conferences.json",
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.INFO)
     
-    file_handler = logging.FileHandler('ieee_main.log')
+    file_handler = logging.FileHandler(main_log_file)
     file_handler.setLevel(logging.DEBUG)
     
-    error_file_handler = logging.FileHandler('ieee_main_error.log')
+    error_file_handler = logging.FileHandler(main_error_log_file)
     error_file_handler.setLevel(logging.ERROR)
     
     # 设置格式
@@ -602,6 +647,6 @@ if __name__ == "__main__":
     # 可以在这里修改参数
     main(
         conference_file="./publicationInfo/all_conferences.json", 
-        journal_file="./publicationInfo/all_journals.json",
+        journal_file="./publicationInfo/empty.json",
         #refresh_from_year=1980  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
     )

@@ -5,6 +5,7 @@ import urllib3
 import os
 import logging
 import argparse
+import shutil
 from datetime import datetime
 from abc import ABC, abstractmethod
 
@@ -13,7 +14,11 @@ if not os.path.exists('./log'):
     os.makedirs('./log')
 
 # 配置日志
-log_filename = os.path.join('./log', f'publication_crawl_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
+log_dir = os.path.join('./log', '1_publicationInfo')
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+log_filename = os.path.join(log_dir, f'publication_crawl_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -121,7 +126,7 @@ class IEEEFetcher(ABC):
                     if not get_total_page:
                         json_dir = self.get_json_dir(year)
                         if not os.path.exists(json_dir):
-                            os.system("mkdir -p {}".format(json_dir))
+                            os.makedirs(json_dir)
                         
                         # 只保存records数组、totalRecords和totalPages字段
                         filtered_data = {
@@ -130,10 +135,34 @@ class IEEEFetcher(ABC):
                             "totalPages": dic_obj.get("totalPages", 0)
                         }
                         
-                        with open(os.path.join(json_dir, "{}.json".format(page)), 'w', encoding='utf-8') as f:
-                            json.dump(filtered_data, f, ensure_ascii=False, indent=4)
+                        target_file = os.path.join(json_dir, "{}.json".format(page))
+                        temp_file = target_file + ".tmp"
                         
-                        logger.info(f"年份 {year} 页数 {page} 成功抓取。")
+                        # 使用临时文件进行原子写入
+                        try:
+                            # 先写入临时文件
+                            with open(temp_file, 'w', encoding='utf-8') as f:
+                                json.dump(filtered_data, f, ensure_ascii=False, indent=4)
+                            
+                            # 原子性地替换文件
+                            if os.name == 'nt':  # Windows系统
+                                if os.path.exists(target_file):
+                                    os.remove(target_file)  # Windows可能需要先删除目标文件
+                                os.rename(temp_file, target_file)
+                            else:  # POSIX系统（Linux, macOS等）
+                                os.replace(temp_file, target_file)  # 使用os.replace进行原子替换
+                                
+                            logger.info(f"年份 {year} 页数 {page} 成功抓取并保存。")
+                        except Exception as e:
+                            logger.error(f"写入文件 {target_file} 失败: {e}")
+                            # 清理临时文件
+                            if os.path.exists(temp_file):
+                                try:
+                                    os.remove(temp_file)
+                                except Exception as te:
+                                    logger.error(f"删除临时文件 {temp_file} 失败: {te}")
+                            raise
+                        
                         return total_records
                     else:
                         num_of_page = dic_obj.get('totalPages', 0)
