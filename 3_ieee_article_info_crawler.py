@@ -67,7 +67,7 @@ class IEEEDownloader(ABC):
         
         return logger
     
-    def _make_request(self, url, data, headers, retry=10):
+    def _make_request(self, url, data, headers, retry=15):
         """发送HTTP请求并处理重试逻辑"""
         for attempt in range(retry):
             try:
@@ -269,7 +269,7 @@ class ConferenceDownloader(IEEEDownloader):
             refresh_from_year=refresh_from_year
         )
     
-    def process_conference_page(self, pub_number, page, year=None, parent_pub_number=None, get_page_number=False, retry=10):
+    def process_conference_page(self, pub_number, page, year=None, parent_pub_number=None, get_page_number=False, retry=15):
         """处理会议页面"""
         self.logger.info(f"处理出版号 {pub_number} 页面 {page} 获取页数 {get_page_number}")
         
@@ -448,7 +448,7 @@ class JournalDownloader(IEEEDownloader):
             self.logger.error(f"检查期刊记录数失败，出版号 {pub_number} 年份 {year}: {e}")
             return None
     
-    def process_journal_year_page(self, pub_number, year, page, get_page_number=False, retry=10):
+    def process_journal_year_page(self, pub_number, year, page, get_page_number=False, retry=15):
         """处理期刊年份页面"""
         self.logger.info(f"处理出版号 {pub_number} 年份 {year} 页面 {page} 获取页数 {get_page_number}")
         

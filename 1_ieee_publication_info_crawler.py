@@ -32,7 +32,7 @@ logger = logging.getLogger('ieee_crawler')
 class IEEEFetcher(ABC):
     """IEEE数据抓取基类"""
     
-    def __init__(self, start_year, sleep_time=1, retry=10):
+    def __init__(self, start_year, sleep_time=1, retry=15):
         self.start_year = start_year
         self.sleep_time = sleep_time
         self.retry = retry
