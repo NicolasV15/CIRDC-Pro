@@ -23,8 +23,8 @@ mkdir -p ./log/1_publicationInfo
 
 # 确定起始年份(可以根据需要修改)
 # 如果想指定特定年份，可以删除下面两行，直接设置JOURNAL_START_YEAR和CONFERENCE_START_YEAR为固定值
-JOURNAL_START_YEAR=1884 # 期刊起始年份
-CONFERENCE_START_YEAR=1936 # 会议起始年份
+JOURNAL_START_YEAR=2000 # 期刊起始年份
+CONFERENCE_START_YEAR=2000 # 会议起始年份
 
 # 运行爬虫脚本
 echo -e "${BLUE}[步骤1] 开始运行Publication爬虫...${NC}"
