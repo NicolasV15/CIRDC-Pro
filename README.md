@@ -1,84 +1,97 @@
-# IEEE Publication Information Crawler
+# Comprehensive IEEE Research Data Collections (CIRDC)
 
-A tool to crawl publication information from IEEE Xplore digital library, including conferences and journals.
+This repository provides detailed information on all articles available through IEEE Xplore up to July 2024, organized for easy access and use by researchers. The repository also includes the necessary code for data collecting, facilitating further updates to the database. For an in-depth explanation of the dataset, please refer to the following publication: 
 
-## Requirements
+[Y. Zhang, Y. Li, S. Makonin and R. Kumar, "Descriptor: Comprehensive IEEE Research Data Collections (CIRDC)," IEEE Data Descriptions, vol. 1, pp. 80-86, 2024](https://ieeexplore.ieee.org/document/10716731)
 
-- Python 3.6+
-- Required packages:
-  - requests
-  - urllib3
-  - argparse
+## Database Structure
 
-## Installation
+The database is organized into two main directories: `articleInfo` and `publicationInfo`.
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/ieee-publication-crawler.git
-cd ieee-publication-crawler
+- **articleInfo**: This directory is divided into two main subdirectories: `Conferences` and `Journals`. 
+  - **Conferences**: This subdirectory contains folders named by `parentPublicationNumber`, each representing a specific conference. Within each folder, there are multiple JSON files named by `year.json`, containing metadata for all papers published in that conference for the specified year.
+  - **Journals**: This subdirectory contains folders named by `publicationNumber`, each representing a specific journal. Similar to the Conferences structure, each folder contains JSON files named by `year.json`, with metadata for all papers published in that journal for the specified year.
 
-# Install dependencies
-pip install -r requirements.txt
-```
+  ```
+  articleInfo/
+  ├── Conferences/
+  │   ├── 200/
+  │   │   ├── 1964.json
+  │   │   ├── 1965.json
+  │   │   ├── ...
+  │   ├── 201/
+  │   │   ├── 1970.json
+  │   │   ├── 1971.json
+  │   │   ├── ...
+  │   └── ...
+  ├── Journals/
+  │   ├── 100/
+  │   │   ├── 1980.json
+  │   │   ├── 1981.json
+  │   │   ├── ...
+  │   ├── 101/
+  │   │   ├── 1990.json
+  │   │   ├── 1991.json
+  │   │   ├── ...
+  │   └── ...
+  ```
 
-## Usage
+- **publicationInfo**: This directory provides additional metadata about the publications themselves, such as the name, type, and other relevant details. Each file in this directory is named by `publication number.json`, containing information about the corresponding journal or conference.
 
-The crawler can be used to fetch both conference and journal information from IEEE Xplore. You can specify different starting years for each data type.
+This structure allows for efficient access and management of both article-specific data and publication-level metadata.
 
-### Command-line Arguments
+## Data File Structure
 
-```
-usage: 1_ieee_publication_info_crawler.py [-h] [-c CONFERENCE] [-j JOURNAL] [year]
+Each JSON file contains a list, and each entity in the list corresponds to the metadata of a paper. The paper metadata is structured as follows:
 
-IEEE publication information crawler
+| Name                | Description                                                                 | Type   |
+|---------------------|-----------------------------------------------------------------------------|--------|
+| publicationNumber   | Identifier for the journal/conference                                        | String |
+| doi                 | Digital Object Identifier of the paper                                       | String |
+| publicationYear     | Year the paper was published                                                 | String |
+| publicationDate     | Full date of publication                                                     | String |
+| articleNumber       | A unique number assigned to the paper                                        | String |
+| articleTitle        | Title of the paper                                                           | String |
+| volume              | Volume number                                                               | String |
+| issue               | Issue number                                                                | String |
+| startPage           | Starting page number                                                        | String |
+| endPage             | Ending page number                                                          | String |
+| publisher           | Name of the publisher                                                       | String |
+| articleContentType  | Type of the paper (journal, conference, magazine, or early access article)    | String |
+| publicationTitle    | Name of journal/conference                                                   | String |
+| authors             | A list of authors                                                           | Array  |
 
-positional arguments:
-  year                  Set the starting year for both conference and journal data collection
+Each author entry in the `authors` field contains the following data:
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -c CONFERENCE, --conference CONFERENCE
-                        Set the starting year for conference data collection
-  -j JOURNAL, --journal JOURNAL
-                        Set the starting year for journal data collection
-```
+| Name            | Description                                 | Type   |
+|-----------------|---------------------------------------------|--------|
+| id              | ID number of the author in IEEE system      | Number |
+| preferredName   | Full name of the author                     | String |
+| firstName       | First name of the author                    | String |
+| lastName        | Last name of the author                     | String |
 
-### Usage Examples
+## Publication Number Index
 
-1. Fetch both conference and journal data using default starting years (1936 for conferences, 1884 for journals):
-   ```bash
-   python 1_ieee_publication_info_crawler.py
-   ```
+The `publication_number_index.csv` file provides an easy-to-navigate index of publication numbers, allowing users to quickly look up and cross-reference the corresponding publication number for specific journals and conferences by their names.
 
-2. Fetch both conference and journal data starting from a specific year:
-   ```bash
-   python 1_ieee_publication_info_crawler.py 2000
-   ```
+## Scripts for Data Collection
 
-3. Fetch only conference data starting from a specific year:
-   ```bash
-   python 1_ieee_publication_info_crawler.py -c 2000
-   ```
+The scripts for collecting CIRDC are in the `scripts` folder. As the maximum number of entries returned in a single query is restricted to 10,000 in IEEE Xplore, the collection involves a two-stage process. The first stage is to collect the `publication number` of all the journals and conferences. The second stage is to collect the data based on the `publication number` on a year-by-year process. As the search results are returned on multiple pages, we handle each page sequentially. 
 
-4. Fetch only journal data starting from a specific year:
-   ```bash
-   python 1_ieee_publication_info_crawler.py -j 2010
-   ```
+Follow the steps below to collect the data:
+1. Run `mkdir tmp`.
+2. Run `get_journal_info.py` and `get_conference_info.py`.
+These scripts are to download all journal and conference information. This will generate temporary folders `json_conference_year` and `json_journal_year`. 
+3. Run `get_all_publication_pubnumber.py`. This will process the downloaded conference and journal information to collect all publication numbers in temporary files `all_journals.json` and `all_conferences.json`. 
+4. Run `download_journal_paper_info.py` and `download_conference_paper_info.py`. This will download the data of IEEE Xplore papers based on the publication numbers to `download_source_json` folder.
+5. Run `post_process.py`. This will conduct post-processing for the downloaded json files.
 
-5. Fetch conference data starting from one year and journal data starting from another:
-   ```bash
-   python 1_ieee_publication_info_crawler.py -c 2000 -j 2010
-   ```
+The intermediate files generated during the process are saved in the `tmp` folder. The final output will be saved in `processed_json` folder.
 
-## Data Storage
+## Dependencies
 
-- Conference data is stored in `./publicationInfo/json_conference_year/{year}/` directories
-- Journal data is stored in `./publicationInfo/json_journal_year/{year}/` directories
-- Log files are stored in the `./log/` directory
+The scripts are tested using Python3.6. The following libraries are used. `requests (2.27.1)` library is required. Other versions could also work but haven't been tested. 
 
-## Notes
+## License
 
-- The crawler requires a stable internet connection
-- The process may take a long time, especially for earlier years
-- If no records are found for two consecutive years, the crawler will stop
-- The crawler respects existing data and will only update if the record count has changed
+This repository is licensed under the terms of the [Creative Commons Attribution 4.0 International License](LICENSE).
