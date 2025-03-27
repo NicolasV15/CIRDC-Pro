@@ -224,7 +224,7 @@ class IEEEDownloader(ABC):
             self.logger.error(f"读取文件 {dst_json} 失败: {e}")
             return 0
             
-    def _should_process_year(self, pub_number, year, web_record_count=None):
+    def _should_process_year(self, pub_number, year):
         """判断是否应该处理该年份的数据"""
         # 如果未指定刷新年份，则始终处理
         if self.refresh_from_year is None:
@@ -243,17 +243,8 @@ class IEEEDownloader(ABC):
             self.logger.info(f"出版号 {pub_number} 年份 {year} 早于刷新年份 {self.refresh_from_year}，跳过处理")
             return False
             
-        # 年份大于等于刷新年份，且文件存在，检查记录数
-        if web_record_count is not None:
-            existing_count = self._get_existing_records_count(pub_number, year)
-            if existing_count == web_record_count:
-                self.logger.info(f"出版号 {pub_number} 年份 {year} 记录数一致 ({existing_count})，跳过处理")
-                return False
-            else:
-                self.logger.info(f"出版号 {pub_number} 年份 {year} 记录数不一致 (本地: {existing_count}, 网页: {web_record_count})，需要处理")
-                return True
-                
-        # 默认需要处理
+        # 年份大于等于刷新年份，且文件存在，需要处理
+        self.logger.info(f"出版号 {pub_number} 年份 {year} 大于等于刷新年份 {self.refresh_from_year}，需要处理")
         return True
 
 
@@ -385,6 +376,19 @@ class ConferenceDownloader(IEEEDownloader):
                             self.logger.info(f"会议 {pub_number} ({year}年) 已处理且不需更新，跳过")
                             continue
                         
+                        # 获取网络记录数量
+                        web_record_count = self.check_conference_record_count(pub_number)
+                        
+                        # 检查记录数量是否一致
+                        dst_json = os.path.join(self.processed_data_path, str(parent_pub_number), f"{year}.json")
+                        if os.path.exists(dst_json) and web_record_count is not None:
+                            existing_count = self._get_existing_records_count(parent_pub_number, year)
+                            if existing_count == web_record_count:
+                                self.logger.info(f"会议 {pub_number} ({year}年) 记录数一致 ({existing_count})，跳过处理")
+                                continue
+                            elif existing_count != web_record_count:
+                                self.logger.info(f"会议 {pub_number} ({year}年) 记录数不一致 (本地: {existing_count}, 网页: {web_record_count})，需要处理")
+                        
                         # 需要处理会议数据
                         num_of_page = self.process_conference_page(
                             pub_number, 
@@ -499,13 +503,23 @@ class JournalDownloader(IEEEDownloader):
     def process_journal_year(self, pub_number, year):
         """处理期刊单一年份的所有页面"""
         # 首先检查是否需要处理该年份
-        web_record_count = self.check_journal_year_record_count(pub_number, year)
-        if not self._should_process_year(pub_number, year, web_record_count):
+        if not self._should_process_year(pub_number, year):
             self.logger.info(f"跳过处理出版号 {pub_number} 年份 {year}")
             return 0
         
-
-
+        # 获取网络记录数量
+        web_record_count = self.check_journal_year_record_count(pub_number, year)
+        
+        # 检查记录数量是否一致
+        dst_json = os.path.join(self.processed_data_path, str(pub_number), f"{year}.json")
+        if os.path.exists(dst_json) and web_record_count is not None:
+            existing_count = self._get_existing_records_count(pub_number, year)
+            if existing_count == web_record_count:
+                self.logger.info(f"出版号 {pub_number} 年份 {year} 记录数一致 ({existing_count})，跳过处理")
+                return 0
+            elif existing_count != web_record_count:
+                self.logger.info(f"出版号 {pub_number} 年份 {year} 记录数不一致 (本地: {existing_count}, 网页: {web_record_count})，需要处理")
+        
         self.logger.info(f"开始处理出版号 {pub_number} 年份 {year}")
         total_page = self.process_journal_year_page(pub_number, year, page=1, get_page_number=True)
         total_records = 0
@@ -648,7 +662,7 @@ def main(conference_file="./publicationInfo/all_conferences.json",
 if __name__ == "__main__":
     # 可以在这里修改参数
     main(
-        conference_file="./publicationInfo/empty.json", 
-        journal_file="./publicationInfo/test_journals.json",
-        refresh_from_year=2000  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
+        conference_file="./publicationInfo/test_conferences.json", 
+        journal_file="./publicationInfo/empty.json",
+        refresh_from_year=1966  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
     )
