@@ -503,7 +503,9 @@ class JournalDownloader(IEEEDownloader):
         if not self._should_process_year(pub_number, year, web_record_count):
             self.logger.info(f"跳过处理出版号 {pub_number} 年份 {year}")
             return 0
-            
+        
+
+
         self.logger.info(f"开始处理出版号 {pub_number} 年份 {year}")
         total_page = self.process_journal_year_page(pub_number, year, page=1, get_page_number=True)
         total_records = 0
@@ -646,7 +648,7 @@ def main(conference_file="./publicationInfo/all_conferences.json",
 if __name__ == "__main__":
     # 可以在这里修改参数
     main(
-        conference_file="./publicationInfo/all_conferences.json", 
-        journal_file="./publicationInfo/empty.json",
-        #refresh_from_year=1980  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
+        conference_file="./publicationInfo/empty.json", 
+        journal_file="./publicationInfo/test_journals.json",
+        refresh_from_year=2000  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
     )
