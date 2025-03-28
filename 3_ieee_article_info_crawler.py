@@ -1,39 +1,50 @@
 import json
 import os
-import urllib3
 import requests
 import logging
-from abc import ABC, abstractmethod
+import time
+from datetime import datetime
+import urllib3
 import traceback
-from datetime import datetime  # 导入datetime
 
+# 禁用不安全请求警告
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-class IEEEDownloader(ABC):
-    """IEEE论文下载器基类"""
+class IEEEDownloader:
+    """IEEE论文下载器"""
     
-    def __init__(self, log_file="download.log", processed_data_path=None, refresh_from_year=None):
-        """初始化下载器，设置日志"""
+    def __init__(self, conference_dir="./downloaded_conferences", journal_dir="./downloaded_journals"):
+        """初始化下载器
+        
+        Args:
+            conference_dir: 保存会议数据的目录
+            journal_dir: 保存期刊数据的目录
+        """
+        self.api_url = 'https://ieeexplore.ieee.org/rest/search'
+        self.conference_dir = conference_dir
+        self.journal_dir = journal_dir
+        self.last_request_time = 0  # 记录上次请求时间
+        
+        # 确保输出目录存在
+        for directory in [self.conference_dir, self.journal_dir]:
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            
+        # 设置日志
+        self.logger = self._setup_logger()
+        
+    def _setup_logger(self):
+        """设置日志记录器"""
         # 创建日志目录
-        log_dir = os.path.join("log", "3_articleinfo")
+        log_dir = "logs"
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)
             
         # 添加时间戳到日志文件名
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        log_file = os.path.join(log_dir, f"{timestamp}_{log_file}")
+        log_file = os.path.join(log_dir, f"{timestamp}_ieee_download.log")
         
-        self.logger = self._setup_logger(log_file)
-        self.processed_data_path = processed_data_path
-        self.refresh_from_year = refresh_from_year
-        
-        # 确保处理后的数据目录存在
-        if self.processed_data_path and not os.path.exists(self.processed_data_path):
-            os.makedirs(self.processed_data_path)
-            
-        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        
-    def _setup_logger(self, log_file):
-        """设置日志记录器"""
+        # 配置日志
         logger = logging.getLogger('ieee_downloader')
         logger.setLevel(logging.DEBUG)
         
@@ -43,50 +54,22 @@ class IEEEDownloader(ABC):
         
         # 创建控制台处理器
         console_handler = logging.StreamHandler()
-        console_handler.setLevel(logging.DEBUG)
+        console_handler.setLevel(logging.INFO)
         
         # 创建文件处理器
         file_handler = logging.FileHandler(log_file)
         file_handler.setLevel(logging.DEBUG)
         
-        # 创建错误日志文件处理器（只记录ERROR及以上级别的日志）
-        error_log_file = log_file.replace('.log', '_error.log')
-        error_file_handler = logging.FileHandler(error_log_file)
-        error_file_handler.setLevel(logging.ERROR)
-        
         # 设置格式
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
         console_handler.setFormatter(formatter)
         file_handler.setFormatter(formatter)
-        error_file_handler.setFormatter(formatter)
         
         # 添加处理器
         logger.addHandler(console_handler)
         logger.addHandler(file_handler)
-        logger.addHandler(error_file_handler)
         
         return logger
-    
-    def _make_request(self, url, data, headers, retry=15):
-        """发送HTTP请求并处理重试逻辑"""
-        for attempt in range(retry):
-            try:
-                res = requests.post(url=url, data=json.dumps(data), headers=headers, verify=False)
-                res.raise_for_status()
-                return res.json()
-            except requests.RequestException as e:
-                if attempt < retry - 1:
-                    self.logger.warning(f"请求错误，尝试 {attempt+1}/{retry}：{e}。重试中...")
-                else:
-                    self.logger.error(f"请求错误，已达到最大重试次数：{e}")
-            except json.JSONDecodeError as e:
-                if attempt < retry - 1:
-                    self.logger.warning(f"JSON解析错误，尝试 {attempt+1}/{retry}。重试中...")
-                else:
-                    self.logger.error(f"JSON解析错误，已达到最大重试次数：{e}")
-        
-        self.logger.error(f"在 {retry} 次尝试后请求失败。")
-        return None
     
     def _get_request_headers(self):
         """返回请求头"""
@@ -95,15 +78,78 @@ class IEEEDownloader(ABC):
             'Accept-Encoding': 'gzip,deflate,br',
             'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
             'Connection': 'keep-alive',
-            'Content-Length': '147',
             'Content-Type': 'application/json',
             'Referer': 'https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 '
                         'Safari/537.36 Edg/108.0.1462.46',
         }
     
+    def _wait_between_requests(self, delay=1.0):
+        """在请求之间等待指定的延迟时间
+        
+        Args:
+            delay: 等待的秒数，默认为1秒
+        """
+        current_time = time.time()
+        elapsed = current_time - self.last_request_time
+        
+        if elapsed < delay:
+            wait_time = delay - elapsed
+            self.logger.debug(f"等待 {wait_time:.2f} 秒...")
+            time.sleep(wait_time)
+            
+        self.last_request_time = time.time()
+    
+    def _make_request(self, data, retry=10):
+        """发送HTTP请求并处理重试逻辑
+        
+        Args:
+            data: 请求数据
+            retry: 重试次数
+            
+        Returns:
+            响应的JSON数据，失败时返回None
+        """
+        headers = self._get_request_headers()
+        
+        for attempt in range(retry):
+            try:
+                # 在发送请求前等待
+                self._wait_between_requests()
+                
+                self.logger.info(f"正在发送请求 (尝试 {attempt+1}/{retry})...")
+                res = requests.post(
+                    url=self.api_url, 
+                    data=json.dumps(data), 
+                    headers=headers, 
+                    verify=False
+                )
+                res.raise_for_status()
+                return res.json()
+            except requests.RequestException as e:
+                self.logger.warning(f"请求错误: {e}")
+                if attempt < retry - 1:
+                    self.logger.info("准备重试...")
+                else:
+                    self.logger.error(f"达到最大重试次数，请求失败")
+            except json.JSONDecodeError as e:
+                self.logger.error(f"JSON解析错误: {e}")
+                if attempt < retry - 1:
+                    self.logger.info("准备重试...")
+                else:
+                    self.logger.error(f"达到最大重试次数，请求失败")
+        
+        return None
+    
     def _process_records(self, records):
-        """处理记录数据，提取所需字段"""
+        """处理记录数据，提取所需字段
+        
+        Args:
+            records: API返回的原始记录列表
+            
+        Returns:
+            处理后的记录列表
+        """
         processed_records = []
         
         for record in records:
@@ -139,133 +185,52 @@ class IEEEDownloader(ABC):
         
         return processed_records
     
-    def _save_processed_json(self, processed_records, pub_number, year):
-        """保存处理后的JSON数据"""
-        if not self.processed_data_path:
-            return
-            
-        # 创建目标目录结构
-        dst_dir = os.path.join(self.processed_data_path, str(pub_number))
-        if not os.path.exists(dst_dir):
-            try:
-                os.makedirs(dst_dir)
-            except Exception as e:
-                self.logger.error(f"创建目录 {dst_dir} 失败: {e}")
-                return
-            
-        # 保存至目标JSON文件
-        dst_json = os.path.join(dst_dir, f"{year}.json")
-        # 创建临时文件用于原子写入
-        tmp_json = dst_json + ".tmp"
-        
-        # 如果文件已存在，读取并合并数据
-        if os.path.exists(dst_json):
-            try:
-                with open(dst_json, 'r', encoding='utf-8') as f:
-                    existing_data = json.load(f)
-                # 合并数据（通过doi去重）
-                existing_dois = {record.get('doi', '') for record in existing_data if record.get('doi')}
-                for record in processed_records:
-                    if record.get('doi') and record.get('doi') not in existing_dois:
-                        existing_data.append(record)
-                        existing_dois.add(record.get('doi', ''))
-                processed_records = existing_data
-            except json.JSONDecodeError as e:
-                self.logger.error(f"JSON解析错误，文件 {dst_json} 可能已损坏: {e}")
-                # 创建备份文件
-                try:
-                    import shutil
-                    backup_file = dst_json + ".bak"
-                    shutil.copy2(dst_json, backup_file)
-                    self.logger.info(f"已创建损坏文件的备份: {backup_file}")
-                except Exception as be:
-                    self.logger.error(f"创建备份文件失败: {be}")
-            except Exception as e:
-                self.logger.error(f"合并既有数据时出错: {e}")
-        
-        # 使用临时文件进行原子写入
-        try:
-            # 先写入临时文件
-            with open(tmp_json, 'w', encoding='utf-8') as f:
-                json.dump(processed_records, f, ensure_ascii=False, indent=4)
-            
-            # 原子性地替换文件
-            if os.name == 'nt':  # Windows系统
-                if os.path.exists(dst_json):
-                    os.remove(dst_json)  # Windows可能需要先删除目标文件
-                os.rename(tmp_json, dst_json)
-            else:  # POSIX系统（Linux, macOS等）
-                os.replace(tmp_json, dst_json)  # 使用os.replace进行原子替换
-                
-            self.logger.info(f"已保存处理后的数据到 {dst_json}，共 {len(processed_records)} 条记录")
-        except Exception as e:
-            self.logger.error(f"写入文件 {dst_json} 失败: {e}")
-            # 清理临时文件
-            if os.path.exists(tmp_json):
-                try:
-                    os.remove(tmp_json)
-                except Exception as te:
-                    self.logger.error(f"删除临时文件 {tmp_json} 失败: {te}")
-            
-    def _get_existing_records_count(self, pub_number, year):
-        """获取已存在的JSON文件中的记录数量"""
-        if not self.processed_data_path:
-            return 0
-            
-        dst_json = os.path.join(self.processed_data_path, str(pub_number), f"{year}.json")
-        if not os.path.exists(dst_json):
-            return 0
-            
-        try:
-            with open(dst_json, 'r', encoding='utf-8') as f:
-                existing_data = json.load(f)
-            return len(existing_data)
-        except Exception as e:
-            self.logger.error(f"读取文件 {dst_json} 失败: {e}")
-            return 0
-            
-    def _should_process_year(self, pub_number, year):
-        """判断是否应该处理该年份的数据"""
-        # 如果未指定刷新年份，则始终处理
-        if self.refresh_from_year is None:
-            return True
-            
-        # 获取已有文件路径
-        dst_json = os.path.join(self.processed_data_path, str(pub_number), f"{year}.json")
-        
-        # 文件不存在，需要处理
-        if not os.path.exists(dst_json):
-            self.logger.info(f"出版号 {pub_number} 年份 {year} 文件不存在，需要处理")
-            return True
-            
-        # 年份早于刷新年份且文件存在，跳过处理
-        if year < self.refresh_from_year:
-            self.logger.info(f"出版号 {pub_number} 年份 {year} 早于刷新年份 {self.refresh_from_year}，跳过处理")
-            return False
-            
-        # 年份大于等于刷新年份，且文件存在，需要处理
-        self.logger.info(f"出版号 {pub_number} 年份 {year} 大于等于刷新年份 {self.refresh_from_year}，需要处理")
-        return True
-
-
-class ConferenceDownloader(IEEEDownloader):
-    """会议论文下载器"""
+    ###################
+    # 会议下载相关方法 #
+    ###################
     
-    def __init__(self, processed_data_path=None, refresh_from_year=None):
-        """初始化会议下载器"""
-        self.api_url = 'https://ieeexplore.ieee.org/rest/search'
-        super().__init__(
-            log_file="download_conference.log", 
-            processed_data_path=processed_data_path,
-            refresh_from_year=refresh_from_year
-        )
-    
-    def process_conference_page(self, pub_number, page, year=None, parent_pub_number=None, get_page_number=False, retry=15):
-        """处理会议页面"""
-        self.logger.info(f"处理出版号 {pub_number} 页面 {page} 获取页数 {get_page_number}")
+    def get_conference_page_count(self, pub_number):
+        """获取会议的总页数
         
-        if get_page_number:
-            assert page == 1
+        Args:
+            pub_number: 会议出版号
+            
+        Returns:
+            总页数，失败时返回0
+        """
+        data = {
+            "newsearch": 'true',
+            "highlight": 'true',
+            'matchBoolean': 'true',
+            'matchPubs': 'true',
+            'action': 'search',
+            "queryText": f"(\"Publication Number\":{pub_number})",
+            "pageNumber": "1",
+            "rowsPerPage": 100,
+        }
+        
+        response = self._make_request(data)
+        
+        if not response:
+            self.logger.error(f"获取会议 {pub_number} 页数失败")
+            return 0
+            
+        total_pages = response.get('totalPages', 0)
+        self.logger.info(f"会议 {pub_number} 总页数: {total_pages}")
+        return total_pages
+    
+    def download_conference_page(self, pub_number, page_number, parent_pub_number=None):
+        """下载会议特定页面的数据
+        
+        Args:
+            pub_number: 会议出版号
+            page_number: 页码
+            parent_pub_number: 父会议系列出版号
+            
+        Returns:
+            成功返回True，失败返回False
+        """
+        self.logger.info(f"正在下载会议 {pub_number} 第 {page_number} 页...")
         
         data = {
             "newsearch": 'true',
@@ -274,160 +239,242 @@ class ConferenceDownloader(IEEEDownloader):
             'matchPubs': 'true',
             'action': 'search',
             "queryText": f"(\"Publication Number\":{pub_number})",
-            "pageNumber": str(page),
+            "pageNumber": str(page_number),
             "rowsPerPage": 100,
         }
         
-        headers = self._get_request_headers()
-        response_data = self._make_request(self.api_url, data, headers, retry)
+        response = self._make_request(data)
         
-        if not response_data:
-            self.logger.error(f"获取出版号 {pub_number} 页面 {page} 数据失败")
-            return None
+        if not response:
+            self.logger.error(f"下载会议 {pub_number} 第 {page_number} 页失败")
+            return False
+        
+        if 'records' not in response:
+            self.logger.error(f"会议 {pub_number} 第 {page_number} 页中没有records字段")
+            return False
             
-        if get_page_number:
-            return response_data.get('totalPages', 0)
+        if len(response['records']) == 0:
+            self.logger.warning(f"会议 {pub_number} 第 {page_number} 页中记录为空")
+            return False
+            
+        # 使用父会议系列出版号作为目录名，如果没有提供，则使用会议自身的出版号
+        save_pub_number = parent_pub_number or pub_number
+            
+        # 处理记录并保存到临时页面文件
+        try:
+            processed_records = self._process_records(response['records'])
+            self._save_conference_page_json(processed_records, save_pub_number, page_number, pub_number)
+            
+            self.logger.info(f"会议 {pub_number} 第 {page_number} 页处理成功，保存了 {len(processed_records)} 条记录")
+            return True
+        except Exception as e:
+            self.logger.error(f"处理会议 {pub_number} 第 {page_number} 页数据失败: {e}")
+            return False
+    
+    def _save_conference_page_json(self, processed_records, parent_pub_number, page, pub_number):
+        """保存单个会议页面的数据到临时文件
         
-        if 'records' not in response_data:
-            self.logger.error(f"出版号 {pub_number} 页面 {page} 中没有records字段")
+        Args:
+            processed_records: 处理后的记录
+            parent_pub_number: 父会议系列出版号
+            page: 页码
+            pub_number: 会议出版号
+        """
+        # 创建目标目录结构
+        dst_dir = os.path.join(self.conference_dir, str(parent_pub_number))
+        if not os.path.exists(dst_dir):
+            try:
+                os.makedirs(dst_dir)
+            except Exception as e:
+                self.logger.error(f"创建目录 {dst_dir} 失败: {e}")
+                return
+        
+        # 保存至临时页面文件
+        page_json = os.path.join(dst_dir, f"{pub_number}_page_{page}.tmp")
+        
+        try:
+            with open(page_json, 'w', encoding='utf-8') as f:
+                json.dump(processed_records, f, ensure_ascii=False, indent=4)
+            self.logger.info(f"已保存页面 {page} 数据到 {page_json}，共 {len(processed_records)} 条记录")
+        except Exception as e:
+            self.logger.error(f"写入文件 {page_json} 失败: {e}")
+    
+    def _merge_conference_page_files(self, pub_number, parent_pub_number, total_pages):
+        """合并所有会议页面临时文件到最终的JSON文件
+        
+        Args:
+            pub_number: 会议出版号
+            parent_pub_number: 父会议系列出版号
+            total_pages: 总页数
+            
+        Returns:
+            合并的记录数量
+        """
+        # 使用parent_pub_number作为目录名
+        dst_dir = os.path.join(self.conference_dir, str(parent_pub_number))
+        final_json = os.path.join(dst_dir, f"{pub_number}.json")
+        tmp_final_json = os.path.join(dst_dir, f"{pub_number}.tmp")
+        
+        all_records = []
+        processed_pages = 0
+        
+        # 读取所有临时页面文件并合并数据
+        for page in range(1, total_pages + 1):
+            page_json = os.path.join(dst_dir, f"{pub_number}_page_{page}.tmp")
+            if not os.path.exists(page_json):
+                self.logger.warning(f"页面 {page} 临时文件不存在: {page_json}")
+                continue
+                
+            try:
+                with open(page_json, 'r', encoding='utf-8') as f:
+                    page_records = json.load(f)
+                all_records.extend(page_records)
+                processed_pages += 1
+            except Exception as e:
+                self.logger.error(f"读取页面 {page} 临时文件失败: {e}")
+                continue
+        
+        # 如果没有成功处理任何页面，则退出
+        if processed_pages == 0:
+            self.logger.error(f"没有成功处理任何页面，不创建最终JSON文件")
             return 0
             
-        if len(response_data['records']) == 0:
-            self.logger.warning(f"出版号 {pub_number} 页面 {page} 中记录为空")
-            return 0
+        # 使用临时文件进行原子写入最终JSON
+        try:
+            # 如果最终文件已存在，删除它
+            if os.path.exists(final_json):
+                os.remove(final_json)
+                
+            # 先写入临时文件
+            with open(tmp_final_json, 'w', encoding='utf-8') as f:
+                json.dump(all_records, f, ensure_ascii=False, indent=4)
             
-        # 如果提供了年份和父出版号，使用它们；否则从记录中提取年份信息
-        save_year = year
+            # 原子性地替换文件
+            if os.name == 'nt':  # Windows系统
+                os.rename(tmp_final_json, final_json)
+            else:  # POSIX系统（Linux, macOS等）
+                os.replace(tmp_final_json, final_json)
+                
+            self.logger.info(f"已合并 {processed_pages} 个页面的数据到 {final_json}，共 {len(all_records)} 条记录")
+            
+            # 清理临时页面文件
+            for page in range(1, total_pages + 1):
+                page_json = os.path.join(dst_dir, f"{pub_number}_page_{page}.tmp")
+                if os.path.exists(page_json):
+                    try:
+                        os.remove(page_json)
+                    except Exception as e:
+                        self.logger.warning(f"删除临时页面文件 {page_json} 失败: {e}")
+            
+            return len(all_records)
+        except Exception as e:
+            self.logger.error(f"合并页面数据到最终文件失败: {e}")
+            # 清理临时文件
+            if os.path.exists(tmp_final_json):
+                try:
+                    os.remove(tmp_final_json)
+                except Exception as te:
+                    self.logger.error(f"删除临时文件 {tmp_final_json} 失败: {te}")
+            return 0
+    
+    def download_conference(self, pub_number, parent_pub_number=None):
+        """下载整个会议的所有页面
+        
+        Args:
+            pub_number: 会议出版号
+            parent_pub_number: 父会议系列出版号
+            
+        Returns:
+            成功下载的记录数
+        """
+        self.logger.info(f"开始下载会议 {pub_number} 的所有页面")
+        
+        # 使用父会议系列出版号，如果没有提供，则使用会议自身的出版号
         save_pub_number = parent_pub_number or pub_number
         
-        if not save_year:
-            try:
-                save_year = response_data['records'][0].get('publicationYear', 'unknown')
-            except Exception as e:
-                self.logger.error(f"获取出版号 {pub_number} 页面 {page} 年份信息失败: {e}")
-                save_year = 'unknown'
+        # 检查是否已下载
+        final_json = os.path.join(self.conference_dir, str(save_pub_number), f"{pub_number}.json")
+        if os.path.exists(final_json):
+            self.logger.info(f"会议 {pub_number} 已下载，跳过")
+            return 0
         
-        # 处理记录并保存
-        try:
-            processed_records = self._process_records(response_data['records'])
-            self._save_processed_json(processed_records, save_pub_number, save_year)
-            
-            self.logger.info(f"出版号 {pub_number} 年份 {save_year} 页面 {page} 处理成功，保存到目录 {save_pub_number}")
-            
-            # 返回记录数
-            return len(processed_records)
-        except Exception as e:
-            self.logger.error(f"处理记录失败，出版号 {pub_number} 年份 {save_year} 页面 {page}: {e}")
+        # 获取总页数
+        total_pages = self.get_conference_page_count(pub_number)
+        if total_pages == 0:
+            self.logger.error(f"无法获取会议 {pub_number} 的页数，下载失败")
             return 0
             
-    def check_conference_record_count(self, pub_number):
-        """检查会议记录总数"""
-        try:
-            data = {
-                "newsearch": 'true',
-                "highlight": 'true',
-                'matchBoolean': 'true',
-                'matchPubs': 'true',
-                'action': 'search',
-                "queryText": f"(\"Publication Number\":{pub_number})",
-                "pageNumber": "1",
-                "rowsPerPage": 100,
-            }
-            
-            headers = self._get_request_headers()
-            response_data = self._make_request(self.api_url, data, headers)
-            
-            if not response_data or 'totalRecords' not in response_data:
-                return None
-                
-            return response_data['totalRecords']
-        except Exception as e:
-            self.logger.error(f"检查会议记录数失败，出版号 {pub_number}: {e}")
-            return None
+        # 下载每一页
+        successful_pages = 0
+        for page in range(1, total_pages + 1):
+            if self.download_conference_page(pub_number, page, save_pub_number):
+                successful_pages += 1
+        
+        # 如果至少有一页下载成功，合并所有页面到一个文件
+        if successful_pages > 0:
+            total_records = self._merge_conference_page_files(pub_number, save_pub_number, total_pages)
+            self.logger.info(f"会议 {pub_number} 下载完成，合并了 {total_records} 条记录")
+            return total_records
+        else:
+            self.logger.error(f"会议 {pub_number} 所有页面下载失败")
+            return 0
     
-    def download_all(self, conferences_file):
-        """下载所有会议论文信息"""
-        self.logger.info(f"开始下载和处理会议论文信息，使用文件：{conferences_file}")
+    def download_all_conferences(self, conferences_file):
+        """下载JSON文件中指定的所有会议
+        
+        Args:
+            conferences_file: 包含会议信息的JSON文件路径
+        """
+        self.logger.info(f"开始下载文件 {conferences_file} 中的所有会议")
         
         try:
-            with open(conferences_file, 'r', encoding='utf-8') as fr:
-                all_conferences = json.load(fr)
-                total_conferences = len(all_conferences)
+            # 读取会议信息
+            with open(conferences_file, 'r', encoding='utf-8') as f:
+                conferences_data = json.load(f)
                 
-                for i, (parent_pub_number, conference_data) in enumerate(all_conferences.items(), 1):
-                    self.logger.info(f"处理会议系列 {parent_pub_number} - {conference_data.get('parentTitle', '')} ({i}/{total_conferences})")
-                    
-                    # 处理titleHistory中的每个会议年份
-                    title_history = conference_data.get('titleHistory', [])
-                    
-                    for title_item in title_history:
-                        pub_number = title_item.get('publicationNumber')
-                        year = title_item.get('year')
-                        display_title = title_item.get('displayTitle', '')
-                        
-                        if not pub_number or not year:
-                            self.logger.warning(f"跳过不完整的会议记录: {title_item}")
-                            continue
-                            
-                        self.logger.info(f"处理会议 {pub_number} - {display_title} ({year}年)")
-                        
-                        # 检查是否需要处理该会议年份
-                        if not self._should_process_year(parent_pub_number, int(year)):
-                            self.logger.info(f"会议 {pub_number} ({year}年) 已处理且不需更新，跳过")
-                            continue
-                        
-                        # 获取网络记录数量
-                        web_record_count = self.check_conference_record_count(pub_number)
-                        
-                        # 检查记录数量是否一致
-                        dst_json = os.path.join(self.processed_data_path, str(parent_pub_number), f"{year}.json")
-                        if os.path.exists(dst_json) and web_record_count is not None:
-                            existing_count = self._get_existing_records_count(parent_pub_number, year)
-                            if existing_count == web_record_count:
-                                self.logger.info(f"会议 {pub_number} ({year}年) 记录数一致 ({existing_count})，跳过处理")
-                                continue
-                            elif existing_count != web_record_count:
-                                self.logger.info(f"会议 {pub_number} ({year}年) 记录数不一致 (本地: {existing_count}, 网页: {web_record_count})，需要处理")
-                        
-                        # 需要处理会议数据
-                        num_of_page = self.process_conference_page(
-                            pub_number, 
-                            page=1,
-                            year=year,
-                            parent_pub_number=parent_pub_number,
-                            get_page_number=True
-                        )
-                        
-                        if num_of_page:
-                            for page in range(1, num_of_page+1):
-                                self.process_conference_page(
-                                    pub_number, 
-                                    page=page,
-                                    year=year,
-                                    parent_pub_number=parent_pub_number,
-                                    get_page_number=False
-                                )
+            total_conferences = len(conferences_data)
+            self.logger.info(f"共找到 {total_conferences} 个会议系列")
             
-            self.logger.info("会议论文信息下载和处理完成")
+            # 遍历每个会议系列
+            for i, (parent_pub_number, conference_data) in enumerate(conferences_data.items(), 1):
+                self.logger.info(f"正在处理会议系列 {parent_pub_number} ({i}/{total_conferences})")
+                
+                # 处理每个会议年份
+                title_history = conference_data.get('titleHistory', [])
+                for title_item in title_history:
+                    pub_number = title_item.get('publicationNumber')
+                    year = title_item.get('year')
+                    display_title = title_item.get('displayTitle', '')
+                    
+                    if not pub_number:
+                        self.logger.warning(f"跳过没有出版号的会议: {title_item}")
+                        continue
+                        
+                    self.logger.info(f"下载会议 {pub_number} - {display_title} ({year}年)")
+                    
+                    # 下载会议
+                    self.download_conference(pub_number, parent_pub_number)
+                    
+            self.logger.info("所有会议下载完成")
+            
         except Exception as e:
-            self.logger.error(f"处理会议数据时出现异常: {e}")
+            self.logger.error(f"下载会议时出错: {e}")
             self.logger.error(traceback.format_exc())
-
-
-class JournalDownloader(IEEEDownloader):
-    """期刊论文下载器"""
     
-    def __init__(self, processed_data_path=None, refresh_from_year=None):
-        """初始化期刊下载器"""
-        self.api_url = 'https://ieeexplore.ieee.org/rest/search'
-        super().__init__(
-            log_file="download_journal.log", 
-            processed_data_path=processed_data_path,
-            refresh_from_year=refresh_from_year
-        )
+    ###################
+    # 期刊下载相关方法 #
+    ###################
     
     def check_journal_year_record_count(self, pub_number, year):
-        """检查期刊特定年份的记录总数"""
+        """检查期刊特定年份的记录总数
+        
+        Args:
+            pub_number: 期刊出版号
+            year: 年份
+            
+        Returns:
+            记录总数，失败时返回None
+        """
         try:
             data = {
                 "newsearch": 'true',
@@ -441,20 +488,157 @@ class JournalDownloader(IEEEDownloader):
                 "ranges": [f"{year}_{year}_Year"]
             }
             
-            headers = self._get_request_headers()
-            response_data = self._make_request(self.api_url, data, headers)
+            response = self._make_request(data)
             
-            if not response_data or 'totalRecords' not in response_data:
+            if not response or 'totalRecords' not in response:
                 return None
                 
-            return response_data['totalRecords']
+            return response['totalRecords']
         except Exception as e:
             self.logger.error(f"检查期刊记录数失败，出版号 {pub_number} 年份 {year}: {e}")
             return None
     
-    def process_journal_year_page(self, pub_number, year, page, get_page_number=False, retry=15):
-        """处理期刊年份页面"""
-        self.logger.info(f"处理出版号 {pub_number} 年份 {year} 页面 {page} 获取页数 {get_page_number}")
+    def _get_existing_records_count(self, pub_number, year):
+        """获取已存在的JSON文件中的记录数量
+        
+        Args:
+            pub_number: 期刊出版号
+            year: 年份
+            
+        Returns:
+            记录数量，文件不存在或读取失败时返回0
+        """
+        dst_json = os.path.join(self.journal_dir, str(pub_number), f"{year}.json")
+        if not os.path.exists(dst_json):
+            return 0
+            
+        try:
+            with open(dst_json, 'r', encoding='utf-8') as f:
+                existing_data = json.load(f)
+            return len(existing_data)
+        except Exception as e:
+            self.logger.error(f"读取文件 {dst_json} 失败: {e}")
+            return 0
+    
+    def _save_journal_page_json(self, processed_records, pub_number, year, page):
+        """保存单个期刊页面的数据到临时文件
+        
+        Args:
+            processed_records: 处理后的记录
+            pub_number: 期刊出版号
+            year: 年份
+            page: 页码
+        """
+        # 创建目标目录结构
+        dst_dir = os.path.join(self.journal_dir, str(pub_number))
+        if not os.path.exists(dst_dir):
+            try:
+                os.makedirs(dst_dir)
+            except Exception as e:
+                self.logger.error(f"创建目录 {dst_dir} 失败: {e}")
+                return
+        
+        # 保存至临时页面文件
+        page_json = os.path.join(dst_dir, f"{year}_page_{page}.tmp")
+        
+        try:
+            with open(page_json, 'w', encoding='utf-8') as f:
+                json.dump(processed_records, f, ensure_ascii=False, indent=4)
+            self.logger.info(f"已保存期刊 {pub_number} 年份 {year} 页面 {page} 数据到 {page_json}，共 {len(processed_records)} 条记录")
+        except Exception as e:
+            self.logger.error(f"写入文件 {page_json} 失败: {e}")
+    
+    def _merge_journal_page_files(self, pub_number, year, total_pages):
+        """合并所有期刊页面临时文件到最终的JSON文件
+        
+        Args:
+            pub_number: 期刊出版号
+            year: 年份
+            total_pages: 总页数
+            
+        Returns:
+            合并的记录数量
+        """
+        # 设置目录和文件路径
+        dst_dir = os.path.join(self.journal_dir, str(pub_number))
+        final_json = os.path.join(dst_dir, f"{year}.json")
+        tmp_final_json = os.path.join(dst_dir, f"{year}.tmp")
+        
+        all_records = []
+        processed_pages = 0
+        
+        # 读取所有临时页面文件并合并数据
+        for page in range(1, total_pages + 1):
+            page_json = os.path.join(dst_dir, f"{year}_page_{page}.tmp")
+            if not os.path.exists(page_json):
+                self.logger.warning(f"期刊 {pub_number} 年份 {year} 页面 {page} 临时文件不存在: {page_json}")
+                continue
+                
+            try:
+                with open(page_json, 'r', encoding='utf-8') as f:
+                    page_records = json.load(f)
+                all_records.extend(page_records)
+                processed_pages += 1
+            except Exception as e:
+                self.logger.error(f"读取期刊 {pub_number} 年份 {year} 页面 {page} 临时文件失败: {e}")
+                continue
+        
+        # 如果没有成功处理任何页面，则退出
+        if processed_pages == 0:
+            self.logger.error(f"期刊 {pub_number} 年份 {year} 没有成功处理任何页面，不创建最终JSON文件")
+            return 0
+            
+        # 使用临时文件进行原子写入最终JSON
+        try:
+            # 如果最终文件已存在，删除它
+            if os.path.exists(final_json):
+                os.remove(final_json)
+                
+            # 先写入临时文件
+            with open(tmp_final_json, 'w', encoding='utf-8') as f:
+                json.dump(all_records, f, ensure_ascii=False, indent=4)
+            
+            # 原子性地替换文件
+            if os.name == 'nt':  # Windows系统
+                os.rename(tmp_final_json, final_json)
+            else:  # POSIX系统（Linux, macOS等）
+                os.replace(tmp_final_json, final_json)
+                
+            self.logger.info(f"已合并期刊 {pub_number} 年份 {year} 的 {processed_pages} 个页面数据到 {final_json}，共 {len(all_records)} 条记录")
+            
+            # 清理临时页面文件
+            for page in range(1, total_pages + 1):
+                page_json = os.path.join(dst_dir, f"{year}_page_{page}.tmp")
+                if os.path.exists(page_json):
+                    try:
+                        os.remove(page_json)
+                    except Exception as e:
+                        self.logger.warning(f"删除临时页面文件 {page_json} 失败: {e}")
+            
+            return len(all_records)
+        except Exception as e:
+            self.logger.error(f"合并期刊 {pub_number} 年份 {year} 页面数据到最终文件失败: {e}")
+            # 清理临时文件
+            if os.path.exists(tmp_final_json):
+                try:
+                    os.remove(tmp_final_json)
+                except Exception as te:
+                    self.logger.error(f"删除临时文件 {tmp_final_json} 失败: {te}")
+            return 0
+    
+    def download_journal_year_page(self, pub_number, year, page, get_page_number=False):
+        """处理期刊年份页面
+        
+        Args:
+            pub_number: 期刊出版号
+            year: 年份
+            page: 页码
+            get_page_number: 是否只获取总页数
+            
+        Returns:
+            get_page_number为True时返回总页数，否则返回处理结果（成功为True，失败为False）
+        """
+        self.logger.info(f"处理期刊 {pub_number} 年份 {year} 页面 {page} 获取页数 {get_page_number}")
         
         if get_page_number:
             assert page == 1
@@ -471,198 +655,156 @@ class JournalDownloader(IEEEDownloader):
             "ranges": [f"{year}_{year}_Year"]
         }
         
-        headers = self._get_request_headers()
-        response_data = self._make_request(self.api_url, data, headers, retry)
+        response = self._make_request(data)
         
-        if not response_data:
-            self.logger.error(f"获取出版号 {pub_number} 年份 {year} 页面 {page} 数据失败")
-            return None
+        if not response:
+            self.logger.error(f"获取期刊 {pub_number} 年份 {year} 页面 {page} 数据失败")
+            return None if get_page_number else False
             
         if get_page_number:
-            return response_data.get('totalPages', 0)
+            return response.get('totalPages', 0)
         
-        if 'records' not in response_data:
-            self.logger.error(f"出版号 {pub_number} 年份 {year} 页面 {page} 中没有records字段")
-            return 0
+        if 'records' not in response:
+            self.logger.error(f"期刊 {pub_number} 年份 {year} 页面 {page} 中没有records字段")
+            return False
             
-        if len(response_data['records']) == 0:
-            self.logger.warning(f"出版号 {pub_number} 年份 {year} 页面 {page} 中记录为空")
-            return 0
+        if len(response['records']) == 0:
+            self.logger.warning(f"期刊 {pub_number} 年份 {year} 页面 {page} 中记录为空")
+            return False
             
         try:
-            # 处理记录并保存
-            processed_records = self._process_records(response_data['records'])
-            self._save_processed_json(processed_records, pub_number, year)
+            # 处理记录并保存到临时页面文件
+            processed_records = self._process_records(response['records'])
+            self._save_journal_page_json(processed_records, pub_number, year, page)
             
-            self.logger.info(f"出版号 {pub_number} 年份 {year} 页面 {page} 处理成功，找到 {len(processed_records)} 条记录")
-            return len(processed_records)
+            self.logger.info(f"期刊 {pub_number} 年份 {year} 页面 {page} 处理成功，保存了 {len(processed_records)} 条记录")
+            return True
         except Exception as e:
-            self.logger.error(f"处理记录失败，出版号 {pub_number} 年份 {year} 页面 {page}: {e}")
-            return 0
+            self.logger.error(f"处理期刊 {pub_number} 年份 {year} 页面 {page} 数据失败: {e}")
+            return False
     
-    def process_journal_year(self, pub_number, year):
-        """处理期刊单一年份的所有页面"""
-        # 首先检查是否需要处理该年份
-        if not self._should_process_year(pub_number, year):
-            self.logger.info(f"跳过处理出版号 {pub_number} 年份 {year}")
+    def download_journal_year(self, pub_number, year):
+        """下载期刊单一年份的所有页面
+        
+        Args:
+            pub_number: 期刊出版号
+            year: 年份
+            
+        Returns:
+            处理的记录总数
+        """
+        self.logger.info(f"开始下载期刊 {pub_number} 年份 {year}")
+        
+        # 检查是否已下载
+        dst_json = os.path.join(self.journal_dir, str(pub_number), f"{year}.json")
+        if os.path.exists(dst_json):
+            self.logger.info(f"期刊 {pub_number} 年份 {year} 已下载，跳过")
             return 0
         
         # 获取网络记录数量
         web_record_count = self.check_journal_year_record_count(pub_number, year)
         
         # 检查记录数量是否一致
-        dst_json = os.path.join(self.processed_data_path, str(pub_number), f"{year}.json")
         if os.path.exists(dst_json) and web_record_count is not None:
             existing_count = self._get_existing_records_count(pub_number, year)
             if existing_count == web_record_count:
-                self.logger.info(f"出版号 {pub_number} 年份 {year} 记录数一致 ({existing_count})，跳过处理")
+                self.logger.info(f"期刊 {pub_number} 年份 {year} 记录数一致 ({existing_count})，跳过处理")
                 return 0
             elif existing_count != web_record_count:
-                self.logger.info(f"出版号 {pub_number} 年份 {year} 记录数不一致 (本地: {existing_count}, 网页: {web_record_count})，需要处理")
+                self.logger.info(f"期刊 {pub_number} 年份 {year} 记录数不一致 (本地: {existing_count}, 网页: {web_record_count})，需要处理")
         
-        self.logger.info(f"开始处理出版号 {pub_number} 年份 {year}")
-        total_page = self.process_journal_year_page(pub_number, year, page=1, get_page_number=True)
-        total_records = 0
+        # 获取总页数
+        total_pages = self.download_journal_year_page(pub_number, year, page=1, get_page_number=True)
+        if not total_pages:
+            self.logger.error(f"获取期刊 {pub_number} 年份 {year} 总页数失败")
+            return 0
         
-        if total_page:
-            for each_page in range(1, total_page+1):
-                records = self.process_journal_year_page(pub_number, year, page=each_page)
-                if records:
-                    total_records += records
+        # 下载每一页
+        successful_pages = 0
+        for page in range(1, total_pages + 1):
+            if self.download_journal_year_page(pub_number, year, page=page):
+                successful_pages += 1
         
-        return total_records
+        # 如果至少有一页下载成功，合并所有页面到一个文件
+        if successful_pages > 0:
+            total_records = self._merge_journal_page_files(pub_number, year, total_pages)
+            self.logger.info(f"期刊 {pub_number} 年份 {year} 下载完成，合并了 {total_records} 条记录")
+            return total_records
+        else:
+            self.logger.error(f"期刊 {pub_number} 年份 {year} 所有页面下载失败")
+            return 0
     
-    def download_all(self, journals_file):
-        """下载所有期刊论文信息"""
-        self.logger.info(f"开始下载和处理期刊论文信息，使用文件：{journals_file}")
+    def download_all_journals(self, journals_file):
+        """下载所有期刊论文信息
+        
+        Args:
+            journals_file: 包含期刊信息的JSON文件路径
+        """
+        self.logger.info(f"开始下载文件 {journals_file} 中的所有期刊")
         
         try:
-            with open(journals_file, 'r', encoding='utf-8') as fr:
-                all_journals = json.load(fr)
-                total_journals = len(all_journals)
+            # 读取期刊信息
+            with open(journals_file, 'r', encoding='utf-8') as f:
+                all_journals = json.load(f)
                 
-                for i, (pub_number, entry) in enumerate(all_journals.items(), 1):
-                    self.logger.info(f"处理期刊 {pub_number} - {entry.get('title', '')} ({i}/{total_journals})")
-                    
-                    start_year = int(entry['start_year'])
-                    end_year = entry['end_year']
-                    
-                    if end_year == 'Present':
-                        end_year = datetime.now().year  # 使用当前年份代替硬编码值
-                    else:
-                        end_year = int(end_year)
-                    
-                    for each_year in range(start_year, end_year+1):
-                        total_records = self.process_journal_year(pub_number, each_year)
-                        self.logger.info(f"出版号 {pub_number} 年份 {each_year} 处理完成，共 {total_records} 条记录")
+            total_journals = len(all_journals)
+            self.logger.info(f"共找到 {total_journals} 个期刊")
             
-            self.logger.info("期刊论文信息下载和处理完成")
+            # 遍历每个期刊
+            for i, (pub_number, entry) in enumerate(all_journals.items(), 1):
+                self.logger.info(f"处理期刊 {pub_number} - {entry.get('title', '')} ({i}/{total_journals})")
+                
+                start_year = int(entry['start_year'])
+                end_year = entry['end_year']
+                
+                if end_year == 'Present':
+                    end_year = datetime.now().year  # 使用当前年份代替硬编码值
+                else:
+                    end_year = int(end_year)
+                
+                for each_year in range(start_year, end_year+1):
+                    total_records = self.download_journal_year(pub_number, each_year)
+                    if total_records > 0:
+                        self.logger.info(f"期刊 {pub_number} 年份 {each_year} 处理完成，共 {total_records} 条记录")
+            
+            self.logger.info("所有期刊下载完成")
         except Exception as e:
             self.logger.error(f"处理期刊数据时出现异常: {e}")
             self.logger.error(traceback.format_exc())
 
 
-def main(conference_file="./publicationInfo/all_conferences.json", 
-         journal_file="./publicationInfo/all_journal.json",
-         refresh_from_year=None):
-    """
-    主函数，接受文件路径参数
+def main():
+    """主函数"""
+    # 配置文件路径
+    conference_file = "./publicationInfo/all_conferences.json"
+    journal_file = "./publicationInfo/all_journals.json"
     
-    参数:
-        conference_file: 会议文件路径
-        journal_file: 期刊文件路径
-        refresh_from_year: 从哪一年开始刷新数据，为None则全部刷新
-    """
+    # 输出目录
+    conference_dir = "./articleInfo/Conferences"
+    journal_dir = "./articleInfo/Journals"
     
-    # 创建日志目录
-    log_dir = os.path.join("log", "3_articleinfo")
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
+    # 创建下载器
+    downloader = IEEEDownloader(
+        conference_dir=conference_dir,
+        journal_dir=journal_dir
+    )
     
-    # 添加时间戳到日志文件名
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    main_log_file = os.path.join(log_dir, f"{timestamp}_ieee_main.log")
-    main_error_log_file = os.path.join(log_dir, f"{timestamp}_ieee_main_error.log")
+    # 根据命令行参数或配置选择下载内容
+    download_conferences = True
+    download_journals = True
     
-    # 设置主日志记录器
-    main_logger = logging.getLogger('ieee_main')
-    main_logger.setLevel(logging.DEBUG)
+    if download_conferences:
+        try:
+            downloader.download_all_conferences(conference_file)
+        except Exception as e:
+            print(f"下载会议数据时出错: {e}")
     
-    # 清除已有的处理器
-    if main_logger.handlers:
-        main_logger.handlers.clear()
-    
-    # 创建控制台和文件处理器
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.INFO)
-    
-    file_handler = logging.FileHandler(main_log_file)
-    file_handler.setLevel(logging.DEBUG)
-    
-    error_file_handler = logging.FileHandler(main_error_log_file)
-    error_file_handler.setLevel(logging.ERROR)
-    
-    # 设置格式
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    console_handler.setFormatter(formatter)
-    file_handler.setFormatter(formatter)
-    error_file_handler.setFormatter(formatter)
-    
-    # 添加处理器
-    main_logger.addHandler(console_handler)
-    main_logger.addHandler(file_handler)
-    main_logger.addHandler(error_file_handler)
-    
-    # 设置路径
-    base_dir = "./articleInfo"
-    
-    # 设置处理后数据的路径
-    processed_conference_path = os.path.join(base_dir, "Conferences")
-    processed_journal_path = os.path.join(base_dir, "Journals")
-    
-    main_logger.info("开始IEEE数据下载和处理任务")
-    if refresh_from_year:
-        main_logger.info(f"增量更新模式：从 {refresh_from_year} 年开始刷新数据")
-    else:
-        main_logger.info("全量更新模式：刷新所有数据")
-    
-    # 下载并处理会议论文信息
-    try:
-        main_logger.info("开始处理会议数据")
-        
-        conference_downloader = ConferenceDownloader(
-            processed_data_path=processed_conference_path,
-            refresh_from_year=refresh_from_year
-        )
-        conference_downloader.download_all(conferences_file=conference_file)
-        
-        main_logger.info("会议数据处理完成")
-    except Exception as e:
-        main_logger.error(f"处理会议数据时出错: {e}")
-        main_logger.error(traceback.format_exc())
-    
-    # 下载并处理期刊论文信息
-    try:
-        main_logger.info("开始处理期刊数据")
-        
-        journal_downloader = JournalDownloader(
-            processed_data_path=processed_journal_path,
-            refresh_from_year=refresh_from_year
-        )
-        journal_downloader.download_all(journals_file=journal_file)
-        
-        main_logger.info("期刊数据处理完成")
-    except Exception as e:
-        main_logger.error(f"处理期刊数据时出错: {e}")
-        main_logger.error(traceback.format_exc())
-    
-    main_logger.info("IEEE数据下载和处理任务完成")
+    if download_journals:
+        try:
+            downloader.download_all_journals(journal_file)
+        except Exception as e:
+            print(f"下载期刊数据时出错: {e}")
 
 
 if __name__ == "__main__":
-    # 可以在这里修改参数
-    main(
-        conference_file="./publicationInfo/test_conferences.json", 
-        journal_file="./publicationInfo/empty.json",
-        refresh_from_year=1966  # 从指定年份年开始刷新数据，之前的数据如果已存在则不再获取
-    )
+    main() 

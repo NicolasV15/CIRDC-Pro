@@ -25,16 +25,16 @@ if JOURNAL_FLAG:
                     for record in data.get('records', []):
                         title = record.get('title')
                         all_years = record.get('allYears', '')
-                        publication_number = record.get('publicationNumber')
+                        publicationNumber = record.get('publicationNumber')
                         
-                        if publication_number and publication_number not in all_journals:
+                        if publicationNumber and publicationNumber not in all_journals:
                             start_year, end_year = parse_years(all_years)
                             
-                            all_journals[publication_number] = {
+                            all_journals[publicationNumber] = {
                                 'title': title,
                                 'start_year': start_year,
                                 'end_year': end_year, 
-                                'publication_number': publication_number
+                                'publicationNumber': publicationNumber
                             }
 
                         # Process title history
@@ -42,13 +42,13 @@ if JOURNAL_FLAG:
                             history_title = history.get('displayTitle')
                             start_year = history.get('startYear')
                             end_year = history.get('endYear')
-                            history_publication_number = history.get('publicationNumber')
-                            if history_publication_number and history_publication_number not in all_journals:
-                                all_journals[history_publication_number] = {
+                            history_publicationNumber = history.get('publicationNumber')
+                            if history_publicationNumber and history_publicationNumber not in all_journals:
+                                all_journals[history_publicationNumber] = {
                                     'title': history_title,
                                     'start_year': start_year,
                                     'end_year': end_year,
-                                    'publication_number': history_publication_number
+                                    'publicationNumber': history_publicationNumber
                                 }
 
 
