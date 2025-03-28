@@ -36,7 +36,7 @@ class IEEEDownloader:
     def _setup_logger(self):
         """设置日志记录器"""
         # 创建日志目录
-        log_dir = "logs"
+        log_dir = "logs/3_articleInfo"
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)
             
