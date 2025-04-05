@@ -60,6 +60,8 @@ Each JSON file contains a list, and each entity in the list corresponds to the m
 | articleContentType  | Type of the paper (journal, conference, magazine, or early access article)    | String |
 | publicationTitle    | Name of journal/conference                                                   | String |
 | authors             | A list of authors                                                           | Array  |
+| abstract            | The abstract of the paper                                                   | String |
+| keywords            | The keywords of the paper, organized by type (e.g., IEEE Keywords, Author Keywords) | Object |
 
 Each author entry in the `authors` field contains the following data:
 
@@ -70,9 +72,14 @@ Each author entry in the `authors` field contains the following data:
 | firstName       | First name of the author                    | String |
 | lastName        | Last name of the author                     | String |
 
-## Publication Number Index
+The `keywords` field is an object with keyword types as keys and arrays of keywords as values. For example:
 
-The `publication_number_index.csv` file provides an easy-to-navigate index of publication numbers, allowing users to quickly look up and cross-reference the corresponding publication number for specific journals and conferences by their names.
+```json
+"keywords": {
+  "IEEE Keywords": ["keyword1", "keyword2", "keyword3"],
+  "Author Keywords": ["keyword4", "keyword5", "keyword6"]
+}
+```
 
 ## Scripts for Data Collection
 
