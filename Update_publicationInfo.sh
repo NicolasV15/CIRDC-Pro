@@ -63,7 +63,7 @@ if [ -z "$ARTICLE_STATUS" ] && [ -z "$PUBLICATION_STATUS" ]; then
 else
     # Build simplified commit message with just the update time
     COMMIT_MSG="Update publication data ($DATE)"
-    
+
     # Add and commit changes
     echo -e "${YELLOW}[Git] Committing changes: $COMMIT_MSG${NC}"
     

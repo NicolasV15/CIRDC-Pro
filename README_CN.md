@@ -2,7 +2,7 @@
 
 [English Version](README.md)
 
-本仓库提供了截至2024年7月通过IEEE Xplore提供的所有文章的详细信息，为研究人员提供便捷的访问和使用方式。该仓库还包含用于数据收集的必要代码，便于进一步更新数据库。有关数据集的深入解释，请参阅以下出版物：
+本仓库提供了截至2025年4月通过IEEE Xplore提供的所有文章的详细信息，为研究人员提供便捷的访问和使用方式。该仓库还包含用于数据收集的必要代码，便于进一步更新数据库。有关数据集的深入解释，请参阅以下出版物：
 
 [Y. Zhang, Y. Li, S. Makonin and R. Kumar, "Descriptor: Comprehensive IEEE Research Data Collections (CIRDC)," IEEE Data Descriptions, vol. 1, pp. 80-86, 2024](https://ieeexplore.ieee.org/document/10716731)
 
