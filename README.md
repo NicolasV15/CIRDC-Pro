@@ -1,5 +1,7 @@
 # Comprehensive IEEE Research Data Collections (CIRDC)
 
+[中文版](README_CN.md)
+
 This repository provides detailed information on all articles available through IEEE Xplore up to July 2024, organized for easy access and use by researchers. The repository also includes the necessary code for data collecting, facilitating further updates to the database. For an in-depth explanation of the dataset, please refer to the following publication: 
 
 [Y. Zhang, Y. Li, S. Makonin and R. Kumar, "Descriptor: Comprehensive IEEE Research Data Collections (CIRDC)," IEEE Data Descriptions, vol. 1, pp. 80-86, 2024](https://ieeexplore.ieee.org/document/10716731)
@@ -83,21 +85,50 @@ The `keywords` field is an object with keyword types as keys and arrays of keywo
 
 ## Scripts for Data Collection
 
-The scripts for collecting CIRDC are in the `scripts` folder. As the maximum number of entries returned in a single query is restricted to 10,000 in IEEE Xplore, the collection involves a two-stage process. The first stage is to collect the `publication number` of all the journals and conferences. The second stage is to collect the data based on the `publication number` on a year-by-year process. As the search results are returned on multiple pages, we handle each page sequentially. 
+The scripts for collecting CIRDC are in the `script` folder. As the maximum number of entries returned in a single query is restricted to 10,000 in IEEE Xplore, the collection involves a multi-stage process. The data collection workflow is designed to efficiently gather, process, and organize IEEE publication and article information.
 
-Follow the steps below to collect the data:
-1. Run `mkdir tmp`.
-2. Run `get_journal_info.py` and `get_conference_info.py`.
-These scripts are to download all journal and conference information. This will generate temporary folders `json_conference_year` and `json_journal_year`. 
-3. Run `get_all_publication_pubnumber.py`. This will process the downloaded conference and journal information to collect all publication numbers in temporary files `all_journals.json` and `all_conferences.json`. 
-4. Run `download_journal_paper_info.py` and `download_conference_paper_info.py`. This will download the data of IEEE Xplore papers based on the publication numbers to `download_source_json` folder.
-5. Run `post_process.py`. This will conduct post-processing for the downloaded json files.
+Follow the steps below to collect and update the data:
 
-The intermediate files generated during the process are saved in the `tmp` folder. The final output will be saved in `processed_json` folder.
+1. **Update Publication Information**: 
+   Run `./Update_publicationInfo.sh` to automatically execute the publication information collection process:
+   - Creates necessary directory structure
+   - Runs `1_ieee_publication_info_crawler.py` to collect publication metadata
+   - Executes `2_ieee_publication_info_integrater.py` to integrate and organize the data
+   - Automatically commits and pushes changes to the repository
+
+2. **Collect Article Information**:
+   Run `python3 script/3_ieee_article_info_crawler.py` to crawl detailed article information based on the publication data collected in step 1.
+
+3. **Download PDF Files** (Optional):
+   Run `python3 script/batch_download_from_json.py` to download PDF files of articles based on the collected article information.
+
+4. **Retrieve Abstracts and Keywords**:
+   Run `python3 script/getAbstract\&Keyword.py` to collect abstracts and keywords for articles and update the JSON files.
+
+5. **Citation Analysis** (Optional):
+   - `ieee_citations_fetcher.py`: Fetches citation information for specific articles
+   - `ieee_citations_tree.py`: Builds citation trees to visualize citation relationships
+   - `ieee_reference_scraper.py`: Extracts reference information from IEEE articles
+
+The data collection process is designed to be incremental, so you can run these scripts periodically to update the database with new publications and articles.
 
 ## Dependencies
 
-The scripts are tested using Python3.6. The following libraries are used. `requests (2.27.1)` library is required. Other versions could also work but haven't been tested. 
+The scripts require Python 3.6 or later and the following libraries:
+
+- `requests`: HTTP requests for API interactions
+- `beautifulsoup4`: HTML parsing for abstract and keyword extraction
+- `lxml`: XML/HTML parser used with BeautifulSoup
+- `PyPDF2`: PDF processing for downloaded papers
+- `pandas`: Data manipulation and analysis
+- `urllib3`: HTTP client for Python
+- `pathlib`: Object-oriented filesystem paths
+
+You can install all required dependencies using the requirements.txt file:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## License
 
