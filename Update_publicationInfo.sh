@@ -54,12 +54,15 @@ fi
 # Git operations
 echo -e "${BLUE}[STEP 3] Starting Git operations...${NC}"
 
-# Check if there are changes in the articleInfo and publicationInfo directories
-ARTICLE_STATUS=$(git status --porcelain -- ./articleInfo)
-PUBLICATION_STATUS=$(git status --porcelain -- ./publicationInfo)
+# Check if there are changes in the specified directories and files
+CONFERENCES_STATUS=$(git status --porcelain -- ./publicationInfo/Conferences/)
+JOURNALS_STATUS=$(git status --porcelain -- ./publicationInfo/Journals/)
+ALL_CONFERENCES_JSON_STATUS=$(git status --porcelain -- ./all_conferences.json)
+ALL_JOURNALS_JSON_STATUS=$(git status --porcelain -- ./all_journals.json)
 
-if [ -z "$ARTICLE_STATUS" ] && [ -z "$PUBLICATION_STATUS" ]; then
-    echo -e "${YELLOW}[INFO] No changes found to commit${NC}"
+# Check if any of the targeted files/directories have changes
+if [ -z "$CONFERENCES_STATUS" ] && [ -z "$JOURNALS_STATUS" ] && [ -z "$ALL_CONFERENCES_JSON_STATUS" ] && [ -z "$ALL_JOURNALS_JSON_STATUS" ]; then
+    echo -e "${YELLOW}[INFO] No changes found to commit in target files and directories${NC}"
 else
     # Build simplified commit message with just the update time
     COMMIT_MSG="Update publication data ($DATE)"
@@ -67,15 +70,25 @@ else
     # Add and commit changes
     echo -e "${YELLOW}[Git] Committing changes: $COMMIT_MSG${NC}"
     
-    # Add changes from both directories separately
-    if [ ! -z "$ARTICLE_STATUS" ]; then
-        git add ./articleInfo/
-        echo -e "${YELLOW}[Git] Added changes from articleInfo directory${NC}"
+    # Add changes only from specified directories and files
+    if [ ! -z "$CONFERENCES_STATUS" ]; then
+        git add ./publicationInfo/Conferences/
+        echo -e "${YELLOW}[Git] Added changes from publicationInfo/Conferences directory${NC}"
     fi
     
-    if [ ! -z "$PUBLICATION_STATUS" ]; then
-        git add ./publicationInfo/
-        echo -e "${YELLOW}[Git] Added changes from publicationInfo directory${NC}"
+    if [ ! -z "$JOURNALS_STATUS" ]; then
+        git add ./publicationInfo/Journals/
+        echo -e "${YELLOW}[Git] Added changes from publicationInfo/Journals directory${NC}"
+    fi
+    
+    if [ ! -z "$ALL_CONFERENCES_JSON_STATUS" ]; then
+        git add ./all_conferences.json
+        echo -e "${YELLOW}[Git] Added changes to all_conferences.json${NC}"
+    fi
+    
+    if [ ! -z "$ALL_JOURNALS_JSON_STATUS" ]; then
+        git add ./all_journals.json
+        echo -e "${YELLOW}[Git] Added changes to all_journals.json${NC}"
     fi
     
     git commit -m "$COMMIT_MSG"
