@@ -155,8 +155,8 @@ def main():
     
     # 查找所有JSON文件
     json_files = find_all_json_files(article_info_dir)
-    logger.info(f"找到 {len(json_files)} 个JSON文件")
-    
+    logger.info(f"找到 {len(json_files)} 个JSON文件") 
+
     # 从所有JSON文件中提取articleNumber
     all_articles = []
     for json_file in json_files:

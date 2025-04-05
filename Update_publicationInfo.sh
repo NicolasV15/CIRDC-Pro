@@ -1,99 +1,99 @@
 #!/bin/bash
 
-# 设置颜色输出
+# Set color output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# 设置日期格式
+# Set date format
 DATE=$(date +"%Y-%m-%d")
 TIME=$(date +"%H:%M:%S")
 DATETIME="$DATE $TIME"
 
-echo -e "${GREEN}[开始] $DATETIME 开始IEEE Publication信息更新流程${NC}"
+echo -e "${GREEN}[START] $DATETIME Starting IEEE Publication information update process${NC}"
 
-# 创建必要的目录
-echo -e "${BLUE}[提示] 检查并创建必要目录${NC}"
+# Create necessary directories
+echo -e "${BLUE}[INFO] Checking and creating necessary directories${NC}"
 mkdir -p ./publicationInfo
 mkdir -p ./publicationInfo/Journals
 mkdir -p ./publicationInfo/Conferences
 mkdir -p ./log/1_publicationInfo
 
-# 确定起始年份(可以根据需要修改)
-# 如果想指定特定年份，可以删除下面两行，直接设置JOURNAL_START_YEAR和CONFERENCE_START_YEAR为固定值
-JOURNAL_START_YEAR=2000 # 期刊起始年份
-CONFERENCE_START_YEAR=2000 # 会议起始年份
+# Determine start year (can be modified as needed)
+# If you want to specify a specific year, you can delete the two lines below and set JOURNAL_START_YEAR and CONFERENCE_START_YEAR to fixed values
+JOURNAL_START_YEAR=2000 # Journal start year
+CONFERENCE_START_YEAR=2000 # Conference start year
 
-# 运行爬虫脚本
-echo -e "${BLUE}[步骤1] 开始运行Publication爬虫...${NC}"
-echo -e "${YELLOW}[信息] 期刊起始年份: $JOURNAL_START_YEAR${NC}"
-echo -e "${YELLOW}[信息] 会议起始年份: $CONFERENCE_START_YEAR${NC}"
+# Run crawler script
+echo -e "${BLUE}[STEP 1] Starting Publication crawler...${NC}"
+echo -e "${YELLOW}[INFO] Journal start year: $JOURNAL_START_YEAR${NC}"
+echo -e "${YELLOW}[INFO] Conference start year: $CONFERENCE_START_YEAR${NC}"
 
-python3 1_ieee_publication_info_crawler.py -j $JOURNAL_START_YEAR -c $CONFERENCE_START_YEAR
-
-if [ $? -ne 0 ]; then
-    echo -e "${RED}[错误] Publication爬虫运行失败!${NC}"
-    exit 1
-else
-    echo -e "${GREEN}[完成] Publication爬虫运行成功!${NC}"
-fi
-
-# 运行整合脚本
-echo -e "${BLUE}[步骤2] 开始运行Publication整合脚本...${NC}"
-python3 2_ieee_publication_info_integrater.py
+python3 script/1_ieee_publication_info_crawler.py -j $JOURNAL_START_YEAR -c $CONFERENCE_START_YEAR
 
 if [ $? -ne 0 ]; then
-    echo -e "${RED}[错误] Publication整合脚本运行失败!${NC}"
+    echo -e "${RED}[ERROR] Publication crawler failed!${NC}"
     exit 1
 else
-    echo -e "${GREEN}[完成] Publication整合脚本运行成功!${NC}"
+    echo -e "${GREEN}[DONE] Publication crawler completed successfully!${NC}"
 fi
 
-# Git操作
-echo -e "${BLUE}[步骤3] 开始进行Git操作...${NC}"
+# Run integration script
+echo -e "${BLUE}[STEP 2] Starting Publication integration script...${NC}"
+python3 script/2_ieee_publication_info_integrater.py
 
-# 检查articleInfo和publicationInfo目录下是否有修改
+if [ $? -ne 0 ]; then
+    echo -e "${RED}[ERROR] Publication integration script failed!${NC}"
+    exit 1
+else
+    echo -e "${GREEN}[DONE] Publication integration script completed successfully!${NC}"
+fi
+
+# Git operations
+echo -e "${BLUE}[STEP 3] Starting Git operations...${NC}"
+
+# Check if there are changes in the articleInfo and publicationInfo directories
 ARTICLE_STATUS=$(git status --porcelain -- ./articleInfo)
 PUBLICATION_STATUS=$(git status --porcelain -- ./publicationInfo)
 
 if [ -z "$ARTICLE_STATUS" ] && [ -z "$PUBLICATION_STATUS" ]; then
-    echo -e "${YELLOW}[信息] 没有发现需要提交的更改${NC}"
+    echo -e "${YELLOW}[INFO] No changes found to commit${NC}"
 else
-    # 构建简化的commit信息，只包含更新时间
-    COMMIT_MSG="更新publication数据 ($DATE)"
+    # Build simplified commit message with just the update time
+    COMMIT_MSG="Update publication data ($DATE)"
     
-    # 添加并提交更改
-    echo -e "${YELLOW}[Git] 提交更改: $COMMIT_MSG${NC}"
+    # Add and commit changes
+    echo -e "${YELLOW}[Git] Committing changes: $COMMIT_MSG${NC}"
     
-    # 分别添加两个目录下的更改
+    # Add changes from both directories separately
     if [ ! -z "$ARTICLE_STATUS" ]; then
         git add ./articleInfo/
-        echo -e "${YELLOW}[Git] 添加articleInfo目录下的更改${NC}"
+        echo -e "${YELLOW}[Git] Added changes from articleInfo directory${NC}"
     fi
     
     if [ ! -z "$PUBLICATION_STATUS" ]; then
         git add ./publicationInfo/
-        echo -e "${YELLOW}[Git] 添加publicationInfo目录下的更改${NC}"
+        echo -e "${YELLOW}[Git] Added changes from publicationInfo directory${NC}"
     fi
     
     git commit -m "$COMMIT_MSG"
     
-    # 推送到远程仓库
-    echo -e "${YELLOW}[Git] 推送到origin main分支${NC}"
+    # Push to remote repository
+    echo -e "${YELLOW}[Git] Pushing to origin main branch${NC}"
     git push origin main
     
     if [ $? -ne 0 ]; then
-        echo -e "${RED}[错误] Git推送失败!${NC}"
+        echo -e "${RED}[ERROR] Git push failed!${NC}"
         exit 1
     else
-        echo -e "${GREEN}[完成] Git推送成功!${NC}"
+        echo -e "${GREEN}[DONE] Git push successful!${NC}"
     fi
 fi
 
-# 完成时间
+# Completion time
 END_TIME=$(date +"%Y-%m-%d %H:%M:%S")
-echo -e "${GREEN}[结束] $END_TIME IEEE Publication信息更新流程完成${NC}"
+echo -e "${GREEN}[END] $END_TIME IEEE Publication information update process completed${NC}"
 
 exit 0 
