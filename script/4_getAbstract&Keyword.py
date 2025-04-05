@@ -57,8 +57,25 @@ def get_ieee_abstract(articleNumber):
 
         json_str = pattern.search(script.string).group(1)
         json_data = json.loads(json_str)
-        abstract = json_data.get('abstract', '')  # 提取abstract
-        raw_keywords = json_data.get('keywords', [])  # 提取keywords
+        
+        # 检查abstract是否在网页数据中存在
+        abstract_exists = 'abstract' in json_data
+        if not abstract_exists:
+            logger.warning(f"文章 {articleNumber} 在网页中未找到abstract字段")
+        
+        # 检查keywords是否在网页数据中存在
+        keywords_exist = 'keywords' in json_data and json_data['keywords']
+        if not keywords_exist:
+            logger.warning(f"文章 {articleNumber} 在网页中未找到keywords字段")
+        
+        # 如果abstract或keywords任一项不存在，记录并返回None
+        if not abstract_exists or not keywords_exist:
+            logger.info(f"文章 {articleNumber} 缺少abstract或keywords字段，跳过更新")
+            return None
+        
+        # 提取abstract和keywords（此时已确认两者都存在）
+        abstract = json_data.get('abstract', '')
+        raw_keywords = json_data.get('keywords', [])
         
         # 将keywords数组重新格式化为以type为键名的结构
         formatted_keywords = {}
@@ -70,7 +87,7 @@ def get_ieee_abstract(articleNumber):
         return {
             'articleNumber': articleNumber,
             'abstract': abstract,
-            'keywords': formatted_keywords  # 以type为键名的keywords结构
+            'keywords': formatted_keywords
         }
 
     except json.JSONDecodeError as json_err:
@@ -89,9 +106,9 @@ def read_json_file(json_file_path):
         articles = []
         for i, article in enumerate(data):
             if 'articleNumber' in article:
-                # 检查是否已有abstract和keywords
-                has_abstract = 'abstract' in article and article['abstract']
-                has_keywords = 'keywords' in article and article['keywords']
+                # 检查是否已有abstract和keywords字段（无论值是否为空）
+                has_abstract = 'abstract' in article
+                has_keywords = 'keywords' in article
                 
                 articles.append({
                     'articleNumber': article['articleNumber'],
@@ -169,14 +186,15 @@ def main():
     # 处理每篇文章
     success_count = 0
     skipped_count = 0
+    missing_data_count = 0
     for i, article in enumerate(all_articles):
         articleNumber = article['articleNumber']
         json_file_path = article['json_file_path']
         index_in_file = article['index_in_file']
         
-        # 检查是否已有abstract和keywords
-        if article['has_abstract'] or article['has_keywords']:
-            logger.info(f"[{i+1}/{len(all_articles)}] 跳过文章: {articleNumber} (已有摘要或关键词)")
+        # 检查字段是否已存在（无论值是否为空）
+        if article['has_abstract'] and article['has_keywords']:
+            logger.info(f"[{i+1}/{len(all_articles)}] 跳过文章: {articleNumber} (已存在摘要和关键词字段)")
             skipped_count += 1
             continue
         
@@ -184,6 +202,8 @@ def main():
         
         # 获取摘要和关键词
         abstract_data = get_ieee_abstract(articleNumber)
+        
+        # 只有当成功获取到两项数据时，才更新JSON文件
         if abstract_data:
             # 更新原始JSON文件
             update_success = update_json_with_abstract_keywords(
@@ -192,11 +212,15 @@ def main():
             
             if update_success:
                 success_count += 1
+        else:
+            missing_data_count += 1
+            logger.info(f"[{i+1}/{len(all_articles)}] 文章 {articleNumber} 缺少必要数据，不更新JSON")
         
         # 添加间隔防止被封
         sleep(1)
     
     logger.info(f"成功处理 {success_count} 篇文章，跳过 {skipped_count} 篇已有内容的文章")
+    logger.info(f"有 {missing_data_count} 篇文章缺少abstract或keywords数据，未更新")
     logger.info("摘要和关键词获取程序运行完成")
 
 
