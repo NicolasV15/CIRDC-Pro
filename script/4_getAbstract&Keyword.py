@@ -38,7 +38,7 @@ gheaders = {
 }
 
 
-def get_ieee_abstract(articleNumber):
+def get_ieee_abstract_and_keywords(articleNumber):
     """获取单篇论文的摘要和关键词"""
     url = f'https://ieeexplore.ieee.org/document/{articleNumber}'
 
@@ -89,9 +89,9 @@ def read_json_file(json_file_path):
         articles = []
         for i, article in enumerate(data):
             if 'articleNumber' in article:
-                # 检查是否已有abstract和keywords
-                has_abstract = 'abstract' in article and article['abstract']
-                has_keywords = 'keywords' in article and article['keywords']
+                # 检查是否已有abstract和keywords字段（无论是否为空）
+                has_abstract = 'abstract' in article
+                has_keywords = 'keywords' in article
                 
                 articles.append({
                     'articleNumber': article['articleNumber'],
@@ -174,16 +174,16 @@ def main():
         json_file_path = article['json_file_path']
         index_in_file = article['index_in_file']
         
-        # 检查是否已有abstract和keywords
-        if article['has_abstract'] or article['has_keywords']:
-            logger.info(f"[{i+1}/{len(all_articles)}] 跳过文章: {articleNumber} (已有摘要或关键词)")
+        # 检查是否已同时有abstract和keywords字段
+        if article['has_abstract'] and article['has_keywords']:
+            logger.info(f"[{i+1}/{len(all_articles)}] 跳过文章: {articleNumber} (已有摘要和关键词字段)")
             skipped_count += 1
             continue
         
         logger.info(f"[{i+1}/{len(all_articles)}] 正在处理文章: {articleNumber}")
         
         # 获取摘要和关键词
-        abstract_data = get_ieee_abstract(articleNumber)
+        abstract_data = get_ieee_abstract_and_keywords(articleNumber)
         if abstract_data:
             # 更新原始JSON文件
             update_success = update_json_with_abstract_keywords(
