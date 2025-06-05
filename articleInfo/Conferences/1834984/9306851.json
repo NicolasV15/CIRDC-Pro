@@ -32,7 +32,43 @@
                 "firstName": "Quincey",
                 "lastName": "Koziol"
             }
-        ]
+        ],
+        "abstract": "Exascale HPC systems are being designed with accelerators, such as GPUs, to accelerate parts of applications. In machine learning workloads as well as large-scale simulations that use GPUs as accelerators, the CPU (or host) memory is currently used as a buffer for data transfers between GPU (or device) memory and the file system. If the CPU does not need to operate on the data, then this is sub-optimal because it wastes host memory by reserving space for duplicated data. Furthermore, this “bounce buffer” approach wastes CPU cycles spent on transferring data. A new technique, NVIDIA GPUDirect Storage (GDS), can eliminate the need to use the host memory as a bounce buffer. Thereby, it becomes possible to transfer data directly between the device memory and the file system. This direct data path shortens latency by omitting the extra copy and enables higher-bandwidth. To take full advantage of GDS in existing applications, it is necessary to provide support with existing I/O libraries, such as HDF5 and MPI-IO, which are heavily used in applications. In this paper, we describe our effort of integrating GDS with HDF5, the top I/O library at NERSC and at DOE leadership computing facilities. We design and implement this integration using a HDF5 Virtual File Driver (VFD). The GDS VFD provides a file system abstraction to the application that allows HDF5 applications to perform I/O without the need to move data between CPUs and GPUs explicitly. We compare performance of the HDF5 GDS VFD with explicit data movement approaches and demonstrate superior performance with the GDS method.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Libraries",
+                "Performance evaluation",
+                "Instruction sets",
+                "Metadata",
+                "Writing",
+                "Tuning"
+            ],
+            "Index Terms": [
+                "Data Transfer",
+                "High-performance Computing",
+                "Load Data",
+                "File System",
+                "GPU Memory",
+                "CPU Memory",
+                "High-performance Computing Systems",
+                "Device Memory",
+                "Smaller Size",
+                "Metadata",
+                "Block Size",
+                "Machine Learning Applications",
+                "Local Storage",
+                "Multiple Threads",
+                "System Calls",
+                "Memory Hierarchy",
+                "Multiple GPUs"
+            ],
+            "Author Keywords": [
+                "GPU I/O",
+                "NVIDIA GPUDirect Storage (GDS)",
+                "HDF5 GDS Virtual File Driver (VFD)"
+            ]
+        }
     },
     {
         "publicationNumber": "9306851",
@@ -67,7 +103,56 @@
                 "firstName": "Anderson",
                 "lastName": "Banihirwe"
             }
-        ]
+        ],
+        "abstract": "Pangeo is a community of scientists and software developers collaborating to enable Big Data Geoscience analysis interactively in the public cloud and on high-performance computing (HPC) systems. At the core of the Pangeo software stack is (1) Xarray, which adds labels to metadata such as dimensions, coordinates and attributes for raw array-oriented data, (2) Dask, which provides parallel computation and out-of-core memory capabilities, and (3) Jupyter Lab which offers the web-based interactive environment to the Pangeo platform. Geoscientists now have a strong candidate software stack to analyze large datasets, and they are very curious about performance differences between the Zarr and NetCDF4 data formats on both traditional file storage systems and object storage. We have written a benchmarking suite for the Pangeo stack that can measure scalability and performance information of both input/output (I/O) throughput and computation. We will describe how we performed these benchmarks, analyzed our results, and we will discuss the pros and cons of the Pangeo software stack in terms of I/O scalability on both cloud and HPC storage systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Throughput",
+                "Arrays",
+                "Supercomputers",
+                "Cloud computing",
+                "Standards",
+                "Scalability"
+            ],
+            "Index Terms": [
+                "Storage Systems",
+                "File System",
+                "Object Storage",
+                "Object Storage System",
+                "Scalable",
+                "Big Data",
+                "Data Format",
+                "Parallelization",
+                "Cloud Computing",
+                "High-performance Computing",
+                "Public Cloud",
+                "Benchmark Suite",
+                "Software Stack",
+                "High-performance Computing Systems",
+                "Total Size",
+                "Data Storage",
+                "Transfer Rate",
+                "Climatological",
+                "Read Data",
+                "GB Memory",
+                "Chunk Size",
+                "Strong Scaling",
+                "Jupyter Notebook",
+                "Open-source Python Package",
+                "Network Bandwidth",
+                "Data Storage System"
+            ],
+            "Author Keywords": [
+                "Pangeo",
+                "benchmark",
+                "cloud",
+                "HPC",
+                "object store",
+                "throughput",
+                "I/O"
+            ]
+        }
     },
     {
         "publicationNumber": "9306851",
@@ -102,7 +187,35 @@
                 "firstName": "Mai",
                 "lastName": "Zheng"
             }
-        ]
+        ],
+        "abstract": "Parallel file systems (PFSes) play an essential role in high performance computing. To ensure the integrity, many PFSes are designed with a checker component, which serves as the last line of defense to bring a corrupted PFS back to a healthy state. Motivated by real-world incidents of PFS corruptions, we perform a fine-grained study on the capability of PFS checkers in this paper. We apply type-aware fault injection to specific PFS structures, and examine the detection and repair policies of PFS checkers meticulously via a well-defined taxonomy. The study results on two representative PFS checkers show that they are able to handle a wide range of corruptions on important data structures. On the other hand, neither of them is perfect: there are multiple cases where the checkers may behave sub-optimally, leading to kernel panics, wrong repairs, etc. Our work has led to a new patch on Lustre. We hope to develop our methodology into a generic framework for analyzing the checkers of diverse PFSes, and enable more elegant designs of PFS checkers for reliable high-performance computing.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Metadata",
+                "Maintenance engineering",
+                "Data structures",
+                "Taxonomy",
+                "Software",
+                "Layout",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "File System",
+                "Parallel File System",
+                "Data Structure",
+                "Corruption",
+                "High-performance Computing",
+                "Parallel System",
+                "Checkers",
+                "Last Line Of Defense",
+                "Metadata",
+                "Local System",
+                "Key Observation",
+                "Power Outages",
+                "Defect Model",
+                "Software Defect"
+            ]
+        }
     },
     {
         "publicationNumber": "9306851",
@@ -179,7 +292,46 @@
                 "firstName": "Michel A.",
                 "lastName": "Kinsy"
             }
-        ]
+        ],
+        "abstract": "Understanding and alleviating I/O bottlenecks in HPC system workloads is difficult due to the complex, multilayered nature of HPC I/O subsystems. Even with full visibility into the jobs executed on the system, the lack of tooling makes debugging I/O problems difficult. In this work, we introduce Gauge, an interactive, data-driven, web-based visualization tool for HPC I/O performance analysis. Gauge aids in the process of visualizing and analyzing, in an interactive fashion, large sets of HPC application execution logs. It performs a number of functions met to significantly reduce the cognitive load of navigating these sets - some worth many years of HPC logs. For instance, as its first step in many processing chains, it arranges unordered sets of collected HPC logs into a hierarchy of clusters for later analysis. This clustering step allows application developers to quickly navigate logs, find how their jobs compare to those of their peers in terms of I/O utilization, as well as how to improve their future runs. Similarly, facility operators can use Gauge to `get a pulse' on the workloads running on their HPC systems, find clusters of under performing applications, and diagnose the reason for poor I/O throughput. In this work, we describe how Gauge arrives at the HPC jobs clustering, how it presents data about the jobs, and how it can be used to further narrow down and understand behavior of sets of jobs. We also provide a case study on using Gauge from the perspective of a facility operator.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tools",
+                "Principal component analysis",
+                "Navigation",
+                "Visualization",
+                "Throughput",
+                "Supercomputers",
+                "Performance analysis"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Interactive Visualization",
+                "Interactive Visualization Tool",
+                "High Performance Computing Applications",
+                "Development Of Applications",
+                "Debugging",
+                "Operation Of Facilities",
+                "High-performance Computing Systems",
+                "Large Values",
+                "Clustering Algorithm",
+                "Cluster Size",
+                "Small Clusters",
+                "Front End",
+                "Feature Engineering",
+                "Tool For Characterization",
+                "Job Characteristics",
+                "Access Patterns",
+                "Similar Job"
+            ],
+            "Author Keywords": [
+                "High-Performance Computing",
+                "I/O Analysis",
+                "Visualization",
+                "Clustering",
+                "Machine Learning"
+            ]
+        }
     },
     {
         "publicationNumber": "9306851",
@@ -238,7 +390,34 @@
                 "firstName": "Weikuan",
                 "lastName": "Yu"
             }
-        ]
+        ],
+        "abstract": "Scientific application workflows leverage the capabilities of cutting-edge high-performance computing (HPC) facilities to enable complex applications for academia, research, and industry communities. Data transfer and I/O dependency among different modules of modern HPC workflows can increase the complexity and hamper the overall performance of workflows. Understanding this complexity due to data-dependency and dataflow is an essential prerequisite for developing optimization strategies to improve I/O performance and, eventually, the entire workflow. In this paper, we discuss dataflow patterns for workflow applications on HPC systems. As existing I/O benchmarking tools lack in identifying and representing the dataflow in modern HPC workflows, we have implemented Wemul, an open-source workflow I/O emulation framework, to mimic different types of I/O behavior demonstrated by common and complex HPC application workflows for deeper analysis. We elaborate on the features and usage of Wemul, demonstrate its application to HPC workflows, and discuss the insights from the performance analysis results on Lassen supercomputing cluster at Lawrence Livermore National Laboratory (LLNL).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Emulation",
+                "Training",
+                "Benchmark testing",
+                "Tools",
+                "Performance analysis",
+                "Deep learning"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "High-performance Computing Systems",
+                "Benchmarking Tool",
+                "Storage Systems",
+                "Directed Acyclic Graph",
+                "File System",
+                "Caching",
+                "Access Patterns",
+                "List Of Files",
+                "Deep Learning Training",
+                "Checkpointing",
+                "Synthetic Benchmark",
+                "Execution Mode"
+            ]
+        }
     },
     {
         "publicationNumber": "9306851",
@@ -291,7 +470,38 @@
                 "firstName": "Philippe O. A.",
                 "lastName": "Navaux"
             }
-        ]
+        ],
+        "abstract": "I/O forwarding is an established and widely-adopted technique in HPC to reduce contention and improve I/O performance in the access to shared storage infrastructure. On such machines, this layer is often physically deployed on dedicated nodes, and their connection to the clients is static. Furthermore, the increasingly heterogeneous workloads entering HPC installations stress the I/O stack, requiring tuning and reconfiguration based on the applications' characteristics. Nonetheless, it is not always feasible in a production system to explore the potential benefits of this layer under different configurations without impacting clients. In this paper, we investigate the effects of I/O forwarding on performance by considering the application's I/O access patterns and system characteristics. We aim to explore when forwarding is the best choice for an application, how many I/O nodes it would benefit from, and whether not using forwarding at all might be the correct decision. To gather performance metrics, explore, and understand the impact of forwarding I/O requests of different access patterns, we implemented FORGE, a lightweight I/O forwarding layer in user-space. Using FORGE, we evaluated the optimal forwarding configurations for several access patterns on MareNostrum 4 (Spain) and Santos Dumont (Brazil) supercomputers. Our results demonstrate that shifting the focus from a static system-wide deployment to an on-demand reconfigurable I/O forwarding layer dictated by application demands can improve I/O performance on future machines.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Supercomputers",
+                "Hardware",
+                "Bandwidth",
+                "Random access memory",
+                "Program processors",
+                "Message systems",
+                "Layout"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Performance Metrics",
+                "Demand For Applications",
+                "Access Patterns",
+                "Course Of Action",
+                "Intel Xeon",
+                "System Configuration",
+                "File System",
+                "Allocation Decisions",
+                "Computing Nodes",
+                "Stochastic Dominance",
+                "Incoming Requests",
+                "Application Behavior",
+                "High-performance Computing Systems"
+            ],
+            "Author Keywords": [
+                "I/O forwarding, reconfiguration, supercomputer"
+            ]
+        }
     },
     {
         "publicationNumber": "9306851",
@@ -338,7 +548,42 @@
                 "firstName": "Bradley W.",
                 "lastName": "Settlemyer"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose a flexible and practical data protection scheme, fractional-overlap declustered parity (FODP), to explore the trade-offs between fault tolerance and rebuild performance. Our experiments show that FODP is able to bring forth up to 99% less probability of data loss in the presence of various failure regimes. Furthermore, by adding one additional spare drive capacity within each server, FODP yields up to 99% reduction in granularity of data loss.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Reliability",
+                "Servers",
+                "Layout",
+                "Disk drives",
+                "Drives",
+                "Data centers",
+                "Fault tolerant systems"
+            ],
+            "Index Terms": [
+                "Storage Systems",
+                "Data Loss",
+                "Protection Scheme",
+                "Fault-tolerant",
+                "Presence Of Loss",
+                "Probability Of Loss",
+                "Data Center",
+                "Enclosure",
+                "System Reliability",
+                "Exponential Distribution",
+                "Failure Events",
+                "Number Of Domains",
+                "Real Matrices",
+                "Pairwise Combinations",
+                "Latin Square",
+                "Magnitude Of Loss",
+                "Cascading Failures",
+                "Disk Drive",
+                "Single Disk",
+                "Thousands Of Nodes",
+                "Number Of Disks"
+            ]
+        }
     },
     {
         "publicationNumber": "9306851",
@@ -385,7 +630,45 @@
                 "firstName": "Robert B.",
                 "lastName": "Ross"
             }
-        ]
+        ],
+        "abstract": "HPC storage software developers rely on benchmarks as reference points for performance evaluation. Low-level synthetic microbenchmarks are particularly valuable for isolating performance bottlenecks in complex systems and identifying optimization opportunities. The use of low-level microbenchmarks also entails risk, however, especially if the benchmark behavior does not reflect the nuances of production data services or applications. In those cases, microbenchmark measurements can lead to unrealistic expectations or misdiagnosis of performance problems. Neither benchmark creators nor software developers are necessarily at fault in this scenario, however. The underlying problem is more often a subtle disconnect between the objective of the benchmark and the objective of the developer. In this paper we investigate examples of discrepancies between microbenchmark behavior and software developer expectations. Our goal is to draw attention to these pitfalls and initiate a discussion within the community about how to improve the state of the practice in performance engineering for HPC data services.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Performance evaluation",
+                "Bandwidth",
+                "Software",
+                "Hardware",
+                "System performance",
+                "Synchronization"
+            ],
+            "Index Terms": [
+                "Service Data",
+                "Benchmark Test",
+                "Software Development",
+                "Performance Measures",
+                "Operating System",
+                "Network Performance",
+                "Storage Systems",
+                "Fault-tolerant",
+                "Storage Devices",
+                "Violin Plots",
+                "Communication Patterns",
+                "Service Performance",
+                "File System",
+                "File Size",
+                "Caching",
+                "Storage Services",
+                "Default Configuration",
+                "Network Latency",
+                "Command Line Options",
+                "Synthetic Benchmark",
+                "Typical Benchmark"
+            ],
+            "Author Keywords": [
+                "HPC, storaage, I/O, benchmark, microbenchmark"
+            ]
+        }
     },
     {
         "publicationNumber": "9306851",
@@ -401,7 +684,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM Fifth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306851",
@@ -417,7 +702,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM Fifth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306851",
@@ -433,7 +720,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM Fifth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306851",
@@ -449,7 +738,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM Fifth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306851",
@@ -465,7 +756,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM Fifth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306851",
@@ -481,6 +774,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM Fifth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]

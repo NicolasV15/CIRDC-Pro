@@ -28,9 +28,9 @@
             },
             {
                 "id": 37086441871,
-                "preferredName": "Hugues de Lassus Saint-Geni\u00e8s",
+                "preferredName": "Hugues de Lassus Saint-Geniès",
                 "firstName": "Hugues",
-                "lastName": "de Lassus Saint-Geni\u00e8s"
+                "lastName": "de Lassus Saint-Geniès"
             },
             {
                 "id": 37306189000,
@@ -38,7 +38,40 @@
                 "firstName": "Eric",
                 "lastName": "Love"
             }
-        ]
+        ],
+        "abstract": "The RISC-V Vector instruction set extension (RVV) provides scalable data-parallel instructions suitable for accurate and performant implementations of numerical algorithms across many application domains [1]. The primary objective of this paper is to share our experience implementing vector C99 <math.h> (libm) functions using RVV. Our contributions are threefold: First, we contributed an RVV port of SLEEF, a multi-platform open-source vector libm. Second, we show that while SLEEF simplifies porting efforts, it also precludes some RVV-specific optimization opportunities. With SiFive’s X280 vector processor micro-architecture as a case-study, we highlight RVV features that optimized code can use. We also expand the discussion to how these features might be used differently when optimizing for other cores. Third, we compare the performance of our SLEEF RVV port to our own RVV-native routines. We present results from 1-ulp accurate implementations of Libm functions in a cycle-accurate simulation of the X280 pipeline to show the impact of RVV-enabled optimizations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Pipelines",
+                "Software algorithms",
+                "Writing",
+                "Vectors",
+                "Software",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "RISC-V Vector",
+                "Microarchitecture",
+                "Numerical Algorithm",
+                "Parallel Data",
+                "High Precision",
+                "Functional Unit",
+                "Vector Of Length",
+                "Memory System",
+                "Single Vector",
+                "Instruction Set Architecture",
+                "Critical Path",
+                "Bivariate Function",
+                "Surface Mining"
+            ],
+            "Author Keywords": [
+                "floating point",
+                "vector mathematical functions",
+                "RISC-V vectors",
+                "scalable vectors"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -67,7 +100,31 @@
                 "firstName": "Pavel",
                 "lastName": "Panchekha"
             }
-        ]
+        ],
+        "abstract": "In theory, interval arithmetic at high precision can compute mathematical expressions to any required accuracy. An arbitrary precision library like MPFR can thus be used to evaluate real-valued expressions. In practice, however, MPFR’s maximum representable exponent means some inputs cannot be evaluated to the required accuracy. This paper introduces movability flags, which soundly detect the majority of these inputs. Movability flags are set when overflow occurs and track whether recomputing at higher precision could possibly result in narrow intervals. In our tests on 481 expressions, movability flags detect 81.0% of unsamplable inputs. Compared to Mathematica, our movability-flag-enhanced interval arithmetic library resolves 60.3% more challenging inputs, returns 7.6× fewer completely indeterminate results, and avoids 64 cases of fatal error.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Digital arithmetic",
+                "Libraries",
+                "Mathematics computing"
+            ],
+            "Index Terms": [
+                "High Precision",
+                "Narrow Interval",
+                "Numeric",
+                "Infinity",
+                "Critical Point",
+                "Limited Precision",
+                "Decimal Digits",
+                "Left Endpoint"
+            ],
+            "Author Keywords": [
+                "Interval arithmetic",
+                "overflow",
+                "computable reals",
+                "multiple precision arithmetic"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -96,7 +153,23 @@
                 "firstName": "Georgios",
                 "lastName": "Karakonstantis"
             }
-        ]
+        ],
+        "abstract": "The adoption of aggressively down-scaled voltages along with worsening process variations render nanometer devices prone to timing errors that threaten system functionality [1] , [2] . Recent studies tried to predict timing errors using machine learning (ML), while considering some workload characteristics [3] , [4] , [5] . However, successfully training such models is challenging, since traditionally acquired samples are insufficient, especially in operating regions where timing errors occur rarely.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Computational modeling",
+                "Machine learning",
+                "Digital arithmetic",
+                "Nanoscale devices",
+                "Timing"
+            ],
+            "Index Terms": [
+                "Time Error",
+                "Machine Learning",
+                "Prediction Error Of Model"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -131,7 +204,18 @@
                 "firstName": "Joris",
                 "lastName": "Picot"
             }
-        ]
+        ],
+        "abstract": "Assume we use a binary floating-point arithmetic and that RN is the round-to-nearest function. Also assume that c is a constant or a real function of one or more variables, and that we have at our disposal a correctly rounded implementation of c, say ĉ = RN(c). For evaluating x • c (resp. x/c or c/x), the natural way is to replace it by RN(x • ĉ) (resp. RN(x/ĉ) or RN(ĉ/x)), that is, to call function ĉ and to perform a floating-point multiplication or division. This can be generalized to the approximation of n/d by RN(n̂ / d̂ ) and the approximation of n • d by RN(n̂ • d̂ ), where n̂ = RN(n) and d̂ = RN(d), and n and d are functions for which we have at our disposal a correctly rounded implementation. We discuss tight error bounds in ulps of such approximations. From our results, one immediately obtains tight error bounds for calculations such as x * pi, ln(2)/x, x/(y + z), (x + y) * z, x/sqrt(y), sqrt(x)/y, (x + y)(z + t), (x + y)/(z + t), (x + y)/(zt), etc. in floating-point arithmetic.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Digital arithmetic",
+                "Floating-point arithmetic"
+            ],
+            "Index Terms": [
+                "Floating-point Arithmetic",
+                "Binary Arithmetic"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -172,7 +256,44 @@
                 "firstName": "Wing Shek",
                 "lastName": "Wong"
             }
-        ]
+        ],
+        "abstract": "This paper presents an enhanced floating-point multiply-add (FMA) design for the Intel E-Core processor. FMA is one of the most widely used operation in many applications. The proposed FMA is executed in 4 cycles, fully pipelined, handles SSE/AVX operations for scalar/packed IEEE single and double precision, and supports all four rounding modes. Also, the proposed FMA fully supports both denormal inputs and underflow outputs without microcode assistance. To achieve the 4-cycle FMA with full denormal support, several optimization techniques are applied: one-way alignment, radix-16 Booth encoding for the multiplier, merged J-bit correction and aligned significand with the multiply array, modified leading zero anticipation (LZA) for masking the underflow, parallel sticky and all-ones detection with the normalization, and merged two’s complement with the rounding logic. As a result, the proposed FMA achieved not only full denormal support but also about 10 – 30% reduced area and about 10 – 20% reduced latency compared to the traditional FMAs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Digital arithmetic",
+                "Encoding",
+                "Delays",
+                "Optimization",
+                "Logic arrays",
+                "Next generation networking"
+            ],
+            "Index Terms": [
+                "Cylindrical",
+                "Under Flow",
+                "Double Precision",
+                "Single Precision",
+                "Infinity",
+                "Partial Products",
+                "Normal Number",
+                "Traditional Design",
+                "Additional Delay",
+                "Critical Path",
+                "Roundup",
+                "IEEE Standard",
+                "Amount Of Shift",
+                "2nd Level",
+                "1st Level",
+                "3rd Level",
+                "Sign Bit",
+                "4th Level"
+            ],
+            "Author Keywords": [
+                "Floating-point multiply-add",
+                "floating-point denormal numbers",
+                "floating-point arithmetic",
+                "high-speed computer arithmetic"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -219,7 +340,26 @@
                 "firstName": "Thanos",
                 "lastName": "Stouraitis"
             }
-        ]
+        ],
+        "abstract": "In this work, a Residue Numbering System (RNS)-based Convolutional Neural Network (CNN) accelerator utilizing a multiplier-free distributed-arithmetic Processing Element (PE) is proposed. A method for maximizing the utilization of the arithmetic hardware resources is presented. It leads to an increase of the system's throughput, by exploiting bit-level sparsity within the weight vectors. The proposed PE design takes advantage of the properties of RNS and Canonical Signed Digit (CSD) encoding to achieve higher energy efficiency and effective processing rate, without requiring any compression mechanism or introducing any approximation. An extensive design space exploration for various parameters (RNS base, PE micro-architecture, encoding) using analytical models as well as experimental results from CNN benchmarks is conducted and the various trade-offs are analyzed. A complete end-to-end RNS accelerator is developed based on the proposed PE. The introduced accelerator is compared to traditional binary and RNS counterparts as well as to other state-of-the-art systems. Implementation results in a 22-nm process show that the proposed PE can lead to 1.85× and 1.54× more energy-efficient processing compared to binary and conventional RNS, respectively, with a 1.88× maximum increase of effective throughput for the employed benchmarks. Compared to a state-of-the-art, all-digital, RNS-based system, the proposed accelerator is 8.87× and 1.11× more energy- and area-efficient, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Analytical models",
+                "Benchmark testing",
+                "Throughput",
+                "Digital arithmetic",
+                "Energy efficiency",
+                "Encoding",
+                "Vectors"
+            ],
+            "Index Terms": [
+                "Convolutional Neural Network",
+                "Convolutional Neural Network Accelerator",
+                "Weight Vector",
+                "Increase In Throughput",
+                "Design Space Exploration"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -248,7 +388,42 @@
                 "firstName": "Martin",
                 "lastName": "Langhammer"
             }
-        ]
+        ],
+        "abstract": "This work presents a set of techniques that allow implementing low-precision floating-point adders based on the embedded hard FP DSP Blocks available in contemporary Intel FPGAs. The presented architectures exploit the properties of these formats during exponent handling to obtain efficient implementations in terms of logic utilization. For instance, a half-precision floating-point adder implementation only requires 1 DSP Block and no extra logic. The newly available IEEE-754 compliant implementations can then be used as drop-in replacements in designs making use of these exact floating-point adder blocks. We present the case of a floating-point FFT implementation that benefits from these proposed architectures in order to substantially reduce logic utilization at the expense of using more DSP blocks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Computer architecture",
+                "Digital arithmetic",
+                "Adders",
+                "Field programmable gate arrays"
+            ],
+            "Index Terms": [
+                "Hard Blocks",
+                "DSP Blocks",
+                "Floating-point Adder",
+                "Architecture In Order",
+                "Drop-in Replacement",
+                "Cylindrical",
+                "Sum Of Products",
+                "Exponent Values",
+                "Regular Points",
+                "32-bit Floating-point",
+                "Error Handling",
+                "Binary Index"
+            ],
+            "Author Keywords": [
+                "FPGA",
+                "DSP",
+                "floating-point",
+                "adder",
+                "extraction",
+                "mapping",
+                "half-precision",
+                "bfloat16",
+                "FP-DSP"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -283,7 +458,37 @@
                 "firstName": "Arnaud",
                 "lastName": "Tisserand"
             }
-        ]
+        ],
+        "abstract": "The numerous and huge operations involved in homomorphic encryption applications require fast arithmetic. RNS arithmetic is popular in their software implementations. In this context, we proposed a hierarchical approach for RNS base extension. It leads to 50-60 % reduction of both computation time and constant storage requirements for large homomorphic parameters in our experimental setup. When state-of-the-art parameters are not suitable for our approach, we propose to use equivalent parameters leading to similar reductions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Multicore processing",
+                "Software algorithms",
+                "Parallel processing",
+                "Digital arithmetic",
+                "Software",
+                "Homomorphic encryption"
+            ],
+            "Index Terms": [
+                "Residue Number System",
+                "Computation Time",
+                "Reduction In Time",
+                "Reduce Computation Time",
+                "Computational Cost",
+                "Parallelization",
+                "Multi-core",
+                "Divisible",
+                "Divisor",
+                "Single Thread",
+                "Processing Architecture"
+            ],
+            "Author Keywords": [
+                "residue number system",
+                "base extension",
+                "homomorphic encryption"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -318,7 +523,40 @@
                 "firstName": "Joris",
                 "lastName": "Picot"
             }
-        ]
+        ],
+        "abstract": "The computation of Fast Fourier Transforms (FFTs) in floating-point arithmetic is inexact due to roundings, and for some applications it can prove very useful to know a tight bound on the final error. Although it can be almost attained by specifically built input values, the best known error bound for the Cooley-Tukey FFT seems to be much larger than most actually obtained errors. Also, interval arithmetic can be used to compute a bound on the error committed with a given set of input values, but it is in general considered hampered with large overestimation. We report results of intensive computations to test the two approaches, in order to estimate the numerical performance of state-of-the-art bounds. Surprisingly enough, we observe that while interval arithmetic-based bounds are overestimated, they remain, in our computations, tighter than general known bounds.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fast Fourier transforms",
+                "Digital arithmetic",
+                "Libraries",
+                "Floating-point arithmetic",
+                "Testing"
+            ],
+            "Index Terms": [
+                "Fourier Transform",
+                "Fast Fourier Transform",
+                "Error Bounds",
+                "Input Values",
+                "Computational Intensity",
+                "Numerical Analysis",
+                "Exact Value",
+                "Input Vector",
+                "Discrete Fourier Transform",
+                "Arithmetic Operations",
+                "Exact Results",
+                "Actual Error",
+                "Global Error",
+                "Floating-point Numbers",
+                "Root Of Unity",
+                "Complex Multiplication"
+            ],
+            "Author Keywords": [
+                "Fast Fourier Transform (FFT)",
+                "Floating-Point arithmetic",
+                "Error analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -337,9 +575,9 @@
         "authors": [
             {
                 "id": 837848506818495,
-                "preferredName": "Paul Geneau de Lamarli\u00e8re",
+                "preferredName": "Paul Geneau de Lamarlière",
                 "firstName": "Paul Geneau",
-                "lastName": "de Lamarli\u00e8re"
+                "lastName": "de Lamarlière"
             },
             {
                 "id": 37419431400,
@@ -353,7 +591,39 @@
                 "firstName": "Florian",
                 "lastName": "Faissole"
             }
-        ]
+        ],
+        "abstract": "Short of being able to exhaustively test all the inputs, writing a formal proof offers the highest possible confidence in the correctness of a mathematical library. This comes at a large cost though, since formal proofs require taking into account all the details, even the seemingly insignificant ones, which makes them tedious to write. This issue is compounded by the fact that the objects whose properties we need to verify (floating-point numbers) are not the ones we would like to reason about (real numbers and integers). This short paper explores some ways of reducing the overhead of formal proofs in the setting of mathematical libraries, so as to let the user focus on the details that really matter.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Codes",
+                "Writing",
+                "Digital arithmetic",
+                "Libraries",
+                "Behavioral sciences"
+            ],
+            "Index Terms": [
+                "Formal Proof",
+                "Mathematical Library",
+                "Real Numbers",
+                "Highest Confidence",
+                "Floating-point Numbers",
+                "Cylindrical",
+                "Exceptional Cases",
+                "Arithmetic Operations",
+                "Floating-point Operations",
+                "Rational Function",
+                "Polynomial Approximation",
+                "Proof Strategy",
+                "Floating-point Values"
+            ],
+            "Author Keywords": [
+                "Floating-point arithmetic",
+                "Mathematical libraries",
+                "Formal methods",
+                "Coq proof assistant"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -382,7 +652,47 @@
                 "firstName": "Franck",
                 "lastName": "Vedrine"
             }
-        ]
+        ],
+        "abstract": "This paper introduces the concept of chromatic numbers, which allows to tint a scalar or a set of scalars to estimate the relations between input and output variables under additive property. This consists in proposing a decomposition of a resulting value as a sum of tinted values. We illustrate how this concept can be used on a deep neural networks example by tinting group of value at once allowing to track a large number of values together.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Additives",
+                "Sensitivity analysis",
+                "Error analysis",
+                "Artificial neural networks",
+                "Digital arithmetic"
+            ],
+            "Index Terms": [
+                "Chromatic Analysis",
+                "Neural Network",
+                "Deep Neural Network",
+                "Additional Properties",
+                "Number Of Concepts",
+                "Sensitivity Analysis",
+                "Set Of Values",
+                "Input Parameters",
+                "Sparsity",
+                "Error Propagation",
+                "Learning Phase",
+                "Curse Of Dimensionality",
+                "Sigmoid Activation Function",
+                "Sum Of Contributions",
+                "Output Probability",
+                "Adversarial Attacks",
+                "Automatic Differentiation",
+                "Floating-point Numbers",
+                "Inference Phase",
+                "Python Function",
+                "Weight Of Pixel",
+                "Sequence Of Instructions"
+            ],
+            "Author Keywords": [
+                "IEEE-754",
+                "sensitivity analysis",
+                "automatic differentiation",
+                "rounding error analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -423,7 +733,38 @@
                 "firstName": "Sudipta",
                 "lastName": "Kundu"
             }
-        ]
+        ],
+        "abstract": "Verification of complex datapath circuits such as floating-point dividers are known to be a challenging problem. In this paper, we present a formal verification methodology to verify floating-point (FP) dividers. In general, floating-point division unit builds around a fixed-point division implementation. Our solution performs a two-step verification.The first step verifies the fixed-point division implementation. We target fixed-point division algorithms that compute a fixed number of quotient bits in each iteration. This step uses a combination of equivalence checking and assertion-based property checking techniques. We used property checking to show correctness of radix-2 restoring division and equivalence checking to show equivalence between the radix-2 restoring division and a prescaled radix-4 non-restoring division.The second step uses equivalence checking to compare the floating-point divider with a software golden reference of FP division. In this step we assume the fixed-point division is working correctly to make the proof tractable. Using the proposed steps, verification of single precision FP divider took 1 hour 30 minutes and double precision FP divider took 7 hours and 30 minutes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Digital arithmetic",
+                "Software",
+                "Formal verification"
+            ],
+            "Index Terms": [
+                "Formal Verification",
+                "Floating-point Division",
+                "Double Precision",
+                "Datapath",
+                "Single Precision",
+                "Double-precision Floating-point",
+                "Square Root",
+                "Essential Step",
+                "GB Memory",
+                "Reference Model",
+                "Divisor",
+                "IEEE Standard",
+                "Digital Settings",
+                "Continued Fraction",
+                "Outline Of The Proof"
+            ],
+            "Author Keywords": [
+                "formal verification",
+                "equivalence checking",
+                "datapath verification",
+                "floating-point division"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -442,14 +783,14 @@
         "authors": [
             {
                 "id": 37089642742,
-                "preferredName": "Or\u00e9gane Desrentes",
-                "firstName": "Or\u00e9gane",
+                "preferredName": "Orégane Desrentes",
+                "firstName": "Orégane",
                 "lastName": "Desrentes"
             },
             {
                 "id": 37418535200,
-                "preferredName": "Beno\u00eet Dupont de Dinechin",
-                "firstName": "Beno\u00eet Dupont",
+                "preferredName": "Benoît Dupont de Dinechin",
+                "firstName": "Benoît Dupont",
                 "lastName": "de Dinechin"
             },
             {
@@ -458,7 +799,39 @@
                 "firstName": "Florent",
                 "lastName": "de Dinechin"
             }
-        ]
+        ],
+        "abstract": "This article explores architectures of exact (correctly rounded) fused dot product and add operators suitable for the FP32 and FP64 binary floating-point representations with subnormal support, and other representations with a wide dynamic range such as bfloat16. The exact summation of terms before rounding requires a full-size accumulator, and this work discusses techniques to compress the identical bits of this accumulator. This requires the computation of the relative shift amounts of the terms, which is formulated as a parallel prefix algorithm, allowing for a low-latency implementation. Architectural options for the exact fused dot product and add operators with up to 16 products for FP32, FP64 and mixed-precision BF16 to FP32 are evaluated using the TSMC 16FFC technology node.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Heuristic algorithms",
+                "Computer architecture",
+                "Digital arithmetic",
+                "High dynamic range",
+                "Low latency communication"
+            ],
+            "Index Terms": [
+                "Dot Product",
+                "Fast Fourier Transform",
+                "Parallelization",
+                "Problematic Situations",
+                "Sum Of Products",
+                "Test Bench",
+                "Proper Placement",
+                "Least Significant Bit",
+                "Most Significant Bit",
+                "Floating-point Numbers",
+                "Homogeneous Case",
+                "Extra Bits",
+                "Sign Bit"
+            ],
+            "Author Keywords": [
+                "dot product",
+                "BF16",
+                "FP32",
+                "FP64",
+                "three-term sum"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -466,7 +839,7 @@
         "publicationYear": "2023",
         "publicationDate": "4-6 Sept. 2023",
         "articleNumber": "10461476",
-        "articleTitle": "Dual-Purpose Hardware Algorithms and Architectures \u2013 Part 1: Floating-Point Division",
+        "articleTitle": "Dual-Purpose Hardware Algorithms and Architectures – Part 1: Floating-Point Division",
         "volume": null,
         "issue": null,
         "startPage": "24",
@@ -487,7 +860,44 @@
                 "firstName": "Dae Hyun",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "Division is a time-consuming, but frequently-used arithmetic operation, so an enormous amount of effort has been made to improve the performance of dividers. Most of the division algorithms in the literature are offline algorithms that minimize the execution time of a single division, whereas some others are online algorithms that maximize the throughput (# divisions executed per time). In this paper, we propose an interval-analysis-based normal-binary floating-point division algorithm that can be used for both offline and online division. We implement two offline and four online dividers using the algorithm and compare them with recently-proposed offline and online dividers. The simulation results show that the offline versions are the best for a Binary64 offline division, whereas the online versions are the best for a Binary64 online division.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Energy consumption",
+                "Costs",
+                "Simulation",
+                "Computer architecture",
+                "Throughput",
+                "Digital arithmetic",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Floating-point Division",
+                "Arithmetic Operations",
+                "Online Algorithm",
+                "Energy Consumption",
+                "Quotient",
+                "Per Cycle",
+                "Dividend",
+                "Binary System",
+                "Hardware Implementation",
+                "Divisor",
+                "Critical Path",
+                "Clock Cycles",
+                "Current Cycle",
+                "Pipelining",
+                "Clock Period",
+                "Last Digit",
+                "Silicon Area",
+                "Incremental Update"
+            ],
+            "Author Keywords": [
+                "Divider",
+                "Floating-Point Arithmetic",
+                "Online Division"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -522,7 +932,43 @@
                 "firstName": "Fabrizio",
                 "lastName": "De Santis"
             }
-        ]
+        ],
+        "abstract": "Gaussian integers are a subset of complex numbers that have integer numbers in both their real and imaginary parts. Similar to ordinary integer numbers, they can be equipped with modulo operations, which creates Gaussian integer rings and fields. Depending on the chosen modulus, these structures can be isomorphic to corresponding algebraic structures over integer numbers. However, computing modulo reduction for Gaussian integers can be computationally expensive, especially when the modulus itself is a Gaussian integer.In this work, we present a novel and efficient reduction algorithm for Gaussian integer moduli of arbitrary form based on the ideas of Barrett reduction for integer numbers. We show that the computational complexity of our proposed reduction algorithm is equivalent to previously known Montgomery reduction over Gaussian integers. However, unlike Montgomery’s approach, our algorithm does not require domain transformations and can be more advantageous in various circumstances.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Digital arithmetic",
+                "Computational efficiency",
+                "Computational complexity"
+            ],
+            "Index Terms": [
+                "Efficient Algorithm",
+                "Gaussian Integers",
+                "Barrett Reduction",
+                "Computational Complexity",
+                "Imaginary Part",
+                "Reduction In Efficiency",
+                "Integer Number",
+                "Algebraic Structure",
+                "Gaussian Field",
+                "Modulo Operation",
+                "Final Results",
+                "Quotient",
+                "Arithmetic Operations",
+                "Integer Multiple",
+                "Faster Reduction",
+                "Cryptosystem",
+                "Elementary Operations",
+                "Complex Multiplication",
+                "Round Function"
+            ],
+            "Author Keywords": [
+                "Gaussian Integers",
+                "Modular Arithmetic",
+                "Modulo Reduction",
+                "Barrett Reduction"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -551,7 +997,41 @@
                 "firstName": "Guillaume",
                 "lastName": "Revy"
             }
-        ]
+        ],
+        "abstract": "Many floating-point formats are available, providing all different levels of precision. By mixing several of these formats in the same program, it is possible to achieve good performance while maintaining an acceptable level of output accuracy. Therefore various tools have been designed to adapt the precision of computations in floating-point programs for performance and accuracy purposes. However most of them do not consider the iterative nature of these programs. This article presents a tool that enables to adapt the precision of floating-point computations in iterative routines, at the iteration level. This tool is based on multiple-precision computations to evaluate the impact of some format adaptations on the output accuracy, and it uses the delta-debugging to isolate the most relevant instruction set to be tuned. The originality of our approach is that it relies on static loop transformations to duplicate loop body instructions, and thus to increase the number of possible instructions that can be targeted. These transformations include especially the loop splitting and unrolling, which enable to allocate different precisions for different iterations, and thus to improve the tuning process. We show the advantages of this approach on a representative set of iterative programs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Instruction sets",
+                "Digital arithmetic",
+                "Iterative methods",
+                "Tuning"
+            ],
+            "Index Terms": [
+                "Loop Transformation",
+                "Level Of Accuracy",
+                "Level Of Precision",
+                "Accurate Output",
+                "Tuning Process",
+                "Computer Program",
+                "Arc Length",
+                "Original Program",
+                "Numerous Programs",
+                "Dynamic Tool",
+                "Splitting Strategy",
+                "Motivating Example",
+                "Splitting Factor",
+                "General Workflow"
+            ],
+            "Author Keywords": [
+                "floating-point arithmetic",
+                "mixed-precision",
+                "dynamic precision tuning tool",
+                "multiple-precision",
+                "loop splitting and unrolling",
+                "delta-debugging algorithm"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -586,7 +1066,38 @@
                 "firstName": "Paul",
                 "lastName": "Zimmermann"
             }
-        ]
+        ],
+        "abstract": "We design algorithms for the correct rounding of the power function x<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">y</sup> in the binary64 IEEE 754 format, for all rounding modes, modulo the knowledge of hardest-to-round cases. Our implementation of these algorithms largely outperforms previous correctly-rounded implementations and is not far from the efficiency of current mathematical libraries, which are not correctly-rounded. Still, we expect our algorithms can be further improved for speed. The proofs of correctness are fully detailed in the extended version [9] of this paper, with the goal to enable a formal proof of these algorithms. We hope this work will motivate the next IEEE 754 revision committee to require correct rounding for mathematical functions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Error analysis",
+                "Software algorithms",
+                "Switches",
+                "Prediction algorithms",
+                "Digital arithmetic",
+                "Software",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Power Function",
+                "Cylindrical",
+                "Correction Algorithm",
+                "Worst Case",
+                "Efficient Implementation",
+                "Heavy Use",
+                "Error Bounds",
+                "Detailed Proof",
+                "Error Message"
+            ],
+            "Author Keywords": [
+                "IEEE 754",
+                "double precision",
+                "binary64 format",
+                "power function",
+                "correct rounding",
+                "efficiency"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -594,7 +1105,7 @@
         "publicationYear": "2023",
         "publicationDate": "4-6 Sept. 2023",
         "articleNumber": "10461487",
-        "articleTitle": "Dual-Purpose Hardware Algorithms and Architectures \u2013 Part 2: Integer Division",
+        "articleTitle": "Dual-Purpose Hardware Algorithms and Architectures – Part 2: Integer Division",
         "volume": null,
         "issue": null,
         "startPage": "1",
@@ -615,7 +1126,38 @@
                 "firstName": "Dae",
                 "lastName": "Hyun Kim"
             }
-        ]
+        ],
+        "abstract": "Integer division is different from floating-point division in that (1) the execution time of an integer division is highly dependent on the leading 1 locations of operands, (2) x and −x have different magnitude parts if x is a two’s complement integer, and (3) rounding is not necessary. In this paper, we apply the interval-analysis-based division algorithm proposed in \"Dual-Purpose Hardware Algorithms and Architecture – Part 1: Floating-Point Division\" [1] to offline and online integer division. We implement four online integer dividers using the algorithm, compare them with other dividers, and present detailed simulation results with in-depth analysis of the dividers. We find that the online dividers outperform the offline dividers when the waiting time for online operands goes up and the number of quotient bits to obtain goes down.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Energy consumption",
+                "Costs",
+                "Simulation",
+                "Computer architecture",
+                "Digital arithmetic",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Hardware Architecture",
+                "Quotient",
+                "Division Time",
+                "Per Cycle",
+                "Dividend",
+                "Time Of Stage",
+                "Hardware Implementation",
+                "Divisor",
+                "Most Significant Bit",
+                "Online Algorithm",
+                "Clock Period",
+                "Incremental Update",
+                "Shorter Execution Time"
+            ],
+            "Author Keywords": [
+                "Divider",
+                "Integer Arithmetic",
+                "Online Division"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -644,7 +1186,41 @@
                 "firstName": "Earl E.",
                 "lastName": "Swartzlander"
             }
-        ]
+        ],
+        "abstract": "The Montgomery multiplication algorithm is used to perform multiplication coupled with modular reduction without the need to employ a division operation. Serial Montgomery implementations may operate at a bit, digit, or word level. An established classification scheme for serial implementations considers two dimensions: whether the multiplication and reduction computations are separated or integrated, and whether operand or product words are prioritized for scanning. Presented here is an augmented version of the taxonomy, which adds a third dimension. The new dimension characterizes the degree of parallelism in performing low-level (bit or digit) computations. Introducing a small degree of bit or digit level parallelism to a formerly serial approach can enhance performance, both through the typical benefit of parallel computation, and by opportunistically avoiding unnecessary computations. This can be achieved for a modest incremental cost in increased area in lieu of the larger cost of realizing a fully parallel solution. In this way, a new region on the latency-area curve becomes available for tradeoff considerations. The novel Rescheduled Montgomery Multiplier is presented as an experimental realization of the augmented taxonomy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Computational modeling",
+                "Taxonomy",
+                "Computer architecture",
+                "Parallel processing",
+                "Digital arithmetic",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Montgomery Multiplication",
+                "Third Dimension",
+                "Series Of Approaches",
+                "Degree Of Parallelism",
+                "Unnecessary Computation",
+                "Partial Products",
+                "Lower Half",
+                "Upper Half",
+                "Pareto Front",
+                "Clock Cycles",
+                "Cycle Time Reduction",
+                "Modulus Function",
+                "Cycle Count"
+            ],
+            "Author Keywords": [
+                "modular arithmetic",
+                "modular multiplication",
+                "digit multiplication",
+                "Serial Montgomery Model",
+                "Rescheduled Montgomery Multiplier"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -652,7 +1228,7 @@
         "publicationYear": "2023",
         "publicationDate": "4-6 Sept. 2023",
         "articleNumber": "10461470",
-        "articleTitle": "Towards Machine-Efficient Rational L\u221e-Approximations of Mathematical Functions",
+        "articleTitle": "Towards Machine-Efficient Rational L∞-Approximations of Mathematical Functions",
         "volume": null,
         "issue": null,
         "startPage": "119",
@@ -673,7 +1249,39 @@
                 "firstName": "Silviu-Ioan",
                 "lastName": "Filip"
             }
-        ]
+        ],
+        "abstract": "Software implementations of mathematical functions often use approximations that can be either polynomial or rational in nature. While polynomials are the preferred approximation in most cases, rational approximations are nevertheless an interesting alternative when dealing with functions that have a pronounced \"nonpolynomial behavior\" (such as poles close to the approximation domain, asymptotes or finite limits at ±∞).The major challenge is that of computing good rational approximations with machine number coefficients (e.g. floating-point or fixed-point) with respect to the supremum norm, a key step in most procedures for evaluating a mathematical function. This is made more complicated by the fact that even when dealing with real-valued coefficients, optimal supremum norm solutions are sometimes difficult to obtain. Here, we introduce flexible and fast algorithms for computing such rational approximations with both real and machine number coefficients. Their effectiveness is explored on several examples.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Digital arithmetic",
+                "Approximation algorithms",
+                "Software",
+                "Behavioral sciences"
+            ],
+            "Index Terms": [
+                "Maximum Norm",
+                "Real Coefficients",
+                "Cylindrical",
+                "Discretion",
+                "Estimation Error",
+                "Denominator",
+                "Gaussian Kernel",
+                "Use Of Algorithms",
+                "Error Function",
+                "True Target",
+                "Distinct Points",
+                "Rational Function",
+                "Family Of Methods",
+                "Polynomial Basis",
+                "Polynomial Approximation",
+                "Normed Space",
+                "Machine Precision",
+                "Exchange Algorithm",
+                "Arbitrary Precision",
+                "Odd Function",
+                "Floating-point Values"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -708,7 +1316,45 @@
                 "firstName": "Vorapong",
                 "lastName": "Suppakitpaisarn"
             }
-        ]
+        ],
+        "abstract": "This paper presents efficient algorithms, designed to leverage SIMD for performing additions and Montgomery reductions on integers larger than 512 bits. The existing algorithms encounter inefficiencies when parallelized using SIMD due to extensive dependencies in both operations, particularly noticeable in ARM’s SVE where SIMD operations are costly. To mitigate this problem, a novel addition algorithm is introduced that simulates the addition of large integers using a smaller addition, quickly producing the same set of carries. These carries are then utilized to perform parallel additions on large integers. For Montgomery reductions, serial multiplications are replaced with precomputations that can be effectively calculated using SIMD extensions. Experimental evidence demonstrates that these proposed algorithms substantially enhance the performance of state-of-the-art implementations of several post-quantum cryptography algorithms. Notably, they deliver a 30% speed-up from the latest CTIDH implementation, an 11% speed-up from the latest CSIDH implementation in AVX-512 processors, and a 7% speed-up from Microsoft’s standard PQCrypto-SIDH for SIKEp503 on A64FX.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Pipelines",
+                "Digital arithmetic",
+                "Cryptography",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Large Integer",
+                "Parallelization",
+                "Throughput",
+                "General Purpose",
+                "Vector Of Length",
+                "Row Of Table",
+                "Partial Reduction",
+                "Divisible",
+                "Integer Multiple",
+                "Finite Field",
+                "CI Values",
+                "Open Reduction",
+                "Prime Number",
+                "Cryptosystem",
+                "Modulo Operation",
+                "Ti Values",
+                "Single Instruction",
+                "Half Adder"
+            ],
+            "Author Keywords": [
+                "arithmetic for cryptography",
+                "Montgomery reduction",
+                "additions",
+                "SIMD",
+                "AVX-512",
+                "SVE"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -731,7 +1377,49 @@
                 "firstName": "Nima",
                 "lastName": "Badizadegan"
             }
-        ]
+        ],
+        "abstract": "Many small microcontrollers today are equipped with single-cycle multipliers, but use division algorithms that compute only one bit at a time, resulting in division operations with up to 32 (or more) CPU cycles of latency, stalling the core during computing. This is primarily due to area constraints, since fast division algorithms based on iterative approximation require relatively large lookup tables to produce a useful speedup over slower algorithms.We propose an alternative to using lookup tables for the initial approximation. Instead, we augment the single-cycle multiplier to compute a heavily-quantized polynomial approximation of 1/D. The resulting approximation has 8-bit precision and computes in a single cycle at a cost of 400 added logic gates.Finally, we demonstrate a state machine that performs 32-bit integer division using the augmented multiplier and a microcontroller ALU to compute quotient and remainder with 3–11-cycle latency. When synthesized in a MAX 10 FPGA, the datapath with fast division used 3,260 logic elements, compared to 2,759 LEs for a microcontroller datapath without division, an area increase of only 18%, or 4x less than the area of a single-cycle multiplier.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Microarchitecture",
+                "Microcontrollers",
+                "Logic gates",
+                "Approximation algorithms",
+                "Hardware",
+                "Iterative algorithms"
+            ],
+            "Index Terms": [
+                "Quotient",
+                "Lookup Table",
+                "State Machine",
+                "Polynomial Approximation",
+                "Datapath",
+                "Division Operation",
+                "Logic Elements",
+                "Negation",
+                "Increase In Area",
+                "Fixed Point",
+                "Linear Term",
+                "Operating Frequency",
+                "Partial Products",
+                "Static Analysis",
+                "Compressor",
+                "Rounds Of Refinement",
+                "Expanded Form",
+                "Critical Path",
+                "Inverse Square Root",
+                "Newton Raphson Iteration"
+            ],
+            "Author Keywords": [
+                "Division",
+                "Integer Division",
+                "Digital arithmetic",
+                "Approximation methods",
+                "Newton Raphson method",
+                "Newton Raphson division"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -778,7 +1466,54 @@
                 "firstName": "T.",
                 "lastName": "Stouraitis"
             }
-        ]
+        ],
+        "abstract": "Residue Number System (RNS) has recently attracted interest for the hardware implementation of inference in machine-learning systems as it provides promising trade-offs in the area, time, and power dissipation space. In this paper we introduce a technique that utilizes regularization during training, and increases the percentage of residues which are zero, when the parameters of an artificial neural network (ANN) are expressed in an RNS. The proposed technique can also be used as a post-processing stage, allowing the optimization of pre-trained models for RNS implementation. By increasing the number of residues being zero, i.e., residue-level sparsity, the proposed technique facilitates new hardware architectures for RNS-based inference, allowing new trade-offs and improving performance over prior art without practically compromising accuracy. The introduced method increases residue sparsity by a factor of 4× to 6× in certain cases.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Neural network hardware",
+                "Degradation",
+                "Artificial neural networks",
+                "Computer architecture",
+                "Machine learning",
+                "Digital arithmetic"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Hardware Accelerators",
+                "Hardware Neural Network",
+                "Artificial Neural Network",
+                "Hardware Implementation",
+                "Neural Network Parameters",
+                "Hardware Architecture",
+                "Deep Neural Network",
+                "Dynamic Range",
+                "Convolutional Layers",
+                "Power Consumption",
+                "Weight Vector",
+                "Weight Index",
+                "Zero Values",
+                "Machine Learning Applications",
+                "Regularization Term",
+                "Number Of Weights",
+                "Word Length",
+                "General Architecture",
+                "Least Significant Bit",
+                "Compression Scheme",
+                "Memory Organization",
+                "Sparsity Level",
+                "Clock Frequency",
+                "Indicator Vector",
+                "Single Convolutional Layer",
+                "Contribution Of Channels"
+            ],
+            "Author Keywords": [
+                "residue number system",
+                "neural networks",
+                "sparsity",
+                "hardware acceleration"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -819,7 +1554,48 @@
                 "firstName": "Christoph",
                 "lastName": "Lauter"
             }
-        ]
+        ],
+        "abstract": "A parallel algorithm for accurate polynomial evaluation is proposed for SIMD architectures. This is a parallelized version of the compensated Horner scheme using error-free transformations. The proposed parallel algorithm in this paper is fast and is designed to achieve a result as if computed in twice the working precision and then rounded to the working precision. Numerical results are presented showing the performance of this new parallel algorithm.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computers",
+                "Limiting",
+                "Costs",
+                "Scalability",
+                "Computer architecture",
+                "Digital arithmetic",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Horner's Method",
+                "SIMD Architecture",
+                "Accuracy Rate",
+                "Parallelization",
+                "Parallel Algorithm",
+                "Algorithm In This Paper",
+                "Cylindrical",
+                "Calculation Results",
+                "Dot Product",
+                "Vector Data",
+                "Polynomial Of Degree",
+                "Under Flow",
+                "Classical Scheme",
+                "Double Precision",
+                "Floating-point Numbers",
+                "Single Instruction",
+                "Floating-point Values"
+            ],
+            "Author Keywords": [
+                "polynomial evaluation",
+                "compensated algorithms",
+                "error-free transformations",
+                "Horner scheme",
+                "rounding errors",
+                "parallel algorithms",
+                "SIMD",
+                "AVX"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -860,7 +1636,55 @@
                 "firstName": "David",
                 "lastName": "Bindel"
             }
-        ]
+        ],
+        "abstract": "The LAProof library provides formal machine-checked proofs of the accuracy of basic linear algebra operations: inner product using conventional multiply and add, inner product using fused multiply-add, scaled matrix-vector and matrix-matrix multiplication, and scaled vector and matrix addition. These proofs can connect to concrete implementations of low-level basic linear algebra subprograms; as a proof of concept we present a machine-checked correctness proof of a C function implementing sparse matrix-vector multiplication using the compressed sparse row format. Our accuracy proofs are backward error bounds and mixed backward-forward error bounds that account for underflow, proved subject to no assumptions except a low-level formal model of IEEE-754 arithmetic. We treat low-order error terms concretely, not approximating as $\\mathcal{O}\\left( {{u^2}} \\right)$.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Error analysis",
+                "Libraries",
+                "Mathematical models",
+                "Roundoff errors",
+                "Vectors",
+                "Stability analysis",
+                "Sparse matrices"
+            ],
+            "Index Terms": [
+                "Correction Algorithm",
+                "Linear Algebra",
+                "Formal Proof",
+                "Error Term",
+                "Smooth Function",
+                "Matrix Multiplication",
+                "Linear Operator",
+                "Under Flow",
+                "Error Bounds",
+                "Basic Algebra",
+                "Cylindrical",
+                "Data Structure",
+                "Preconditioning",
+                "Error Analysis",
+                "Error Function",
+                "Sparse Matrix",
+                "Software Applications",
+                "Dot Product",
+                "Projection Matrix",
+                "Linear Solver",
+                "Matrix-vector Product",
+                "Vector Operations",
+                "Floating-point Values",
+                "Formal Errors",
+                "Postconditioning",
+                "Scale Matrix",
+                "Equivalence Relation",
+                "Binary Format"
+            ],
+            "Author Keywords": [
+                "rounding error analysis",
+                "formal verification",
+                "floating-point arithmetic",
+                "program verification"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -868,7 +1692,7 @@
         "publicationYear": "2023",
         "publicationDate": "4-6 Sept. 2023",
         "articleNumber": "10461455",
-        "articleTitle": "Modulo-(2q \u2212 3) Multiplication with Fully Modular Partial Product Generation and Reduction",
+        "articleTitle": "Modulo-(2q − 3) Multiplication with Fully Modular Partial Product Generation and Reduction",
         "volume": null,
         "issue": null,
         "startPage": "68",
@@ -901,7 +1725,44 @@
                 "firstName": "Jeong-A",
                 "lastName": "Lee"
             }
-        ]
+        ],
+        "abstract": "Given the residue number systems that contain moduli of the form 2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> ± 1 and 2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> ± 3, it is desirable to employ delay-balanced adders and multipliers, in order to synchronize the operation of parallel residue channels. The required modulo-(2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> ± 3) adders, with compatible speed with modulo- (2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> ± 1) adders, already exist with parallel prefix architectures. However, the previously reported modulo-(2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> ± 3) multipliers, in one way or another, produce the non-modular products of the residues at the outset and work towards yielding the final modular product. This seems to be the main source of incompatible performance with the existing modulo- (2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> ± 1) fully modular multipliers. Therefore, as the first endeavor, we were motivated to design and implement efficient modulo-(2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> − 3) multipliers with fully modular partial product generation and reduction that are more compatible with their modulo- (2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> − 1) counterparts. However, unlike the case of modulo 2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> − 1, it turns out that the straightforward modulo-(2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> − 3) partial product reduction (e.g., via Wallace-tree reduction with greedy use of full adders and half adders) falls into an infinite loop of reduction stages. Therefore, we undertake a modified reduction algorithm that requires at most two reduction levels more than that of the modulo- (2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">q</sup> − 1) case to converge. To ensure the correct operation of the algorithm and ease the design process, an in-house software program produces the exact composition of reduction cells in each level of partial product reduction. Analytical and synthesis-based evaluations of the proposed design, and the previous ones, exhibit better figures of merit, as regards the delay (≥ 24%), area-delay (≥ 6%) and energy (≥ 10%) measures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Software algorithms",
+                "Energy measurement",
+                "Market research",
+                "Digital arithmetic",
+                "Software",
+                "Delays"
+            ],
+            "Index Terms": [
+                "Partial Products",
+                "Partial Reduction",
+                "Modular Product",
+                "Partial Product Generator",
+                "Partial Product Reduction",
+                "Reduction In Levels",
+                "Parallelization",
+                "Figure Of Merit",
+                "In-house Software",
+                "In-house Program",
+                "Half Adder",
+                "Relevant Literature",
+                "Compressor",
+                "Evaluation Work",
+                "Rightmost Column",
+                "Leftmost Column",
+                "Pure Pixels",
+                "Residual Generator"
+            ],
+            "Author Keywords": [
+                "Residue number system",
+                "Fully modular multiplication",
+                "Partial product reduction"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -930,7 +1791,37 @@
                 "firstName": "Leonel",
                 "lastName": "Sousa"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a method for hardware integer division by a constant, based only on combinational logic, i.e. without requiring storage and feedback in calculations. The proposed scheme for division consists of adders and encoders, where encoders are systems of Boolean functions. The proposed divisor provides at the output the quotient and the residue (at the same time or separately). Experiments conducted on FPGA demonstrate up to three times improvement in area cost compare to the optimized divisor circuits provided by the Xilinx tools, while the delay is improved by 25% for dividends with less than 48-bit. It is also shown in this paper that the proposed approach is scalable, and in comparison to the state-of-the-art, the proposed approach improves the area or the delay, or both for many constant values and input bit sizes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Boolean functions",
+                "Computer architecture",
+                "Digital arithmetic",
+                "Hardware",
+                "Delays",
+                "Field programmable gate arrays"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Constant Division",
+                "Dividend",
+                "Divisor",
+                "Combinational Logic",
+                "Boolean Function",
+                "Arbitrary Value",
+                "Small Constant",
+                "Least Significant Bit",
+                "Critical Path",
+                "Hardware Architecture",
+                "Truth Table",
+                "Continued Fraction",
+                "Circuit Area",
+                "Logic Blocks",
+                "Logic Elements"
+            ]
+        }
     },
     {
         "publicationNumber": "10461386",
@@ -946,7 +1837,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10461386",
@@ -962,7 +1855,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10461386",
@@ -978,7 +1873,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10461386",
@@ -994,7 +1891,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10461386",
@@ -1010,7 +1909,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10461386",
@@ -1026,7 +1927,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10461386",
@@ -1042,7 +1945,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10461386",
@@ -1058,7 +1963,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10461386",
@@ -1074,7 +1981,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10461386",
@@ -1090,6 +1999,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2023 IEEE 30th Symposium on Computer Arithmetic (ARITH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

@@ -50,7 +50,56 @@
                 "firstName": "Tapas",
                 "lastName": "Pal"
             }
-        ]
+        ],
+        "abstract": "Privacy is a major concern in large-scale digital applications, such as cloud-computing, machine learning services, and access control. Users want to protect not only their plain data but also their associated attributes (e.g., age, location, etc). Functional encryption (FE) is a cryptographic tool that allows fine-grained access control over encrypted data. However, existing FE fall short as they are either inefficient and far from reality or they leak sensitive user-specific information. We propose SACfe, a novel attribute-based FE scheme that provides secure, fine-grained access control and hides both the user's attributes and the function applied to the data, while preserving the data's confidentiality. Moreover, it enables users to encrypt unbounded-length messages along with an arbitrary number of hidden attributes into ciphertexts. We design SACfe, a protocol for performing linear computation on encrypted data while enforcing access control based on inner product predicates. We show how SACfe can be used for online biometric authentication for privacy-preserving access control. As an additional contribution, we introduce an attribute-based linear FE for unbounded length of messages and functions where access control is realized by monotone span programs. We implement our protocols using the CiFEr cryptographic library and show its efficiency for practical settings.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Access control",
+                "Privacy",
+                "Data privacy",
+                "Protocols",
+                "Biometrics (access control)",
+                "Authentication",
+                "Machine learning"
+            ],
+            "Index Terms": [
+                "Access Control",
+                "Secure Access Control",
+                "Functional Encryption",
+                "Encrypted Data",
+                "Biometric Identification",
+                "User Attributes",
+                "Linear Function",
+                "Weight Vector",
+                "Index Set",
+                "Hash Function",
+                "Group Generated",
+                "Secret Key",
+                "Public Key",
+                "Access Structure",
+                "Biometric Data",
+                "Secret Sharing",
+                "Bilinear Map",
+                "Key Generation",
+                "Key Size",
+                "Key Vector",
+                "Attribute-based Encryption",
+                "Strict Set",
+                "Encryption Time",
+                "Reference Template",
+                "Decryption Key",
+                "Random Oracle",
+                "Pairing",
+                "Vector Function",
+                "Value Of Products",
+                "Security Analysis"
+            ],
+            "Author Keywords": [
+                "Functional encryption",
+                "Access control",
+                "Unbounded data"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -85,7 +134,48 @@
                 "firstName": "Matthieu",
                 "lastName": "Rivain"
             }
-        ]
+        ],
+        "abstract": "This paper presents MQ on my Mind (MQOM), a digital signature scheme based on the difficulty of solving multivariate systems of quadratic equations (MQ problem). MQOM has been submitted to the NIST call for additional post-quantum signature schemes. MQOM relies on the MPC-in-the-Head (MPCitH) paradigm to build a zero-knowledge proof of knowledge (ZK-PoK) for MQ which is then turned into a signature scheme through the Fiat-Shamir heuristic. The underlying MQ problem is non-structured in the sense that the system of quadratic equations defining an instance is drawn uniformly at random. This is one of the hardest and most studied problems from multivariate cryptogra-phy which hence constitutes a conservative choice to build candidate post-quantum cryptosystems. For the efficient application of the MPCitH paradigm, we design a specific MPC protocol to verify the solution of an MQ instance. Compared to other multivariate signature schemes based on non-structured MQ instances, MQOM achieves the shortest signatures (6.3-7.8 KB) while keeping very short public keys (few dozen of bytes). Other multivariate signature schemes are based on structured MQ problems (less conservative) which either have large public keys (e.g UOV) or use recently proposed variants of these MQ problems (e.g. MAYO).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Public key",
+                "NIST",
+                "Digital signatures"
+            ],
+            "Index Terms": [
+                "Public Key",
+                "Solution Representation",
+                "Cryptosystem",
+                "Multi-party Computation",
+                "Signature Scheme",
+                "Zero-knowledge Proof",
+                "Hardness",
+                "Choice Of Parameters",
+                "Pseudo-random",
+                "Hash Function",
+                "Security Level",
+                "Polynomial Of Degree",
+                "Extensive Field",
+                "Secret Key",
+                "Triangular Matrix",
+                "Local Computing",
+                "Seed Stock",
+                "Key Generation",
+                "Number Of Parties",
+                "Phases 0",
+                "Random Oracle",
+                "Random Oracle Model",
+                "Field Elements",
+                "Polynomial Interpolation",
+                "Rejection Sampling"
+            ],
+            "Author Keywords": [
+                "Post-Quantum Signatures",
+                "MPC in the Head",
+                "Multivariate Quadratic Problem"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -132,7 +222,55 @@
                 "firstName": "Karn",
                 "lastName": "Seth"
             }
-        ]
+        ],
+        "abstract": "We present a novel construction that enables two parties to securely train a logistic regression model on private secret-shared data. Our goal is to minimize online communication and round complexity, while still allowing for an efficient offline phase. As part of our construction, we develop many building blocks of independent interest. These include a new ap-proximation technique for the sigmoid function that results in a secure protocol with better communication, protocols for secure powers evaluation and secure spline computation on fixed-point values, and a new comparison protocol that optimizes online communication. We also present a new two-party protocol for generating keys for distributed point functions (DPFs) over arithmetic sharing, where previous constructions do this only for Boolean outputs. We implement our protocol in an end-to-end system and benchmark its efficiency. We can securely evaluate a batch of 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">3</sup> sigmoids with <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\approx 0.5$</tex> MB of online communication, 4 online rounds, and <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\approx 1.6$</tex> seconds of online time over WAN. This is <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\approx 30\\times$</tex> less in online communication, <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\approx 31\\times$</tex> fewer online rounds, and <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\approx 5.5\\times$</tex> less online time than the well-known MP-SPDZ's protocol. Our system can train a logistic regression model over 6 epochs and a database containing 70, 000 samples and 15 features with 208.09 MB of online communication and 9.68 minutes of online time. We compare our logistic regression training against MP-SPDZ over a synthetic dataset of 1000 samples and 10 features and show an improvement of <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\approx 130\\times$</tex> in online communication and ≈ 4.75× in online time over WAN. We converge to virtually the same model as plaintext in all cases. We open-source our system and include extensive tests.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wide area networks",
+                "Training",
+                "Logistic regression",
+                "Privacy",
+                "Protocols",
+                "Databases",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Logistic Regression",
+                "Sigmoid Function",
+                "Online Communities",
+                "Plaintext",
+                "Complex Communication",
+                "Security Protocols",
+                "Exponent",
+                "Fixed Point",
+                "Detailed Comparison",
+                "Stochastic Gradient Descent",
+                "Taylor Series",
+                "Dot Product",
+                "Efficient Communication",
+                "Communication Cost",
+                "Least Significant Bit",
+                "Secret Sharing",
+                "Key Generation",
+                "Input Length",
+                "Multi-party Computation",
+                "Online Phase",
+                "Communication Rounds",
+                "Bit Length",
+                "Gradient Descent Step",
+                "Input Bits",
+                "Setup Phase",
+                "Input Domain",
+                "Auction",
+                "Spline Approximation",
+                "Gradient Descent"
+            ],
+            "Author Keywords": [
+                "Privacy preserving machine learning",
+                "Function secret sharing",
+                "Secure two-party computation"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -185,7 +323,56 @@
                 "firstName": "Yuval",
                 "lastName": "Elovici"
             }
-        ]
+        ],
+        "abstract": "Information and communication technology (ICT) is playing an expanding and critical role in our modern lives. Due to its proliferation, ICT has a significant impact on global energy consumption, which in turn contributes to air pollution, climate change, water pollution, etc. The proliferation of ICT has been accompanied by the emergence of cybersecurity technologies and solutions, which play an integral role in society's digitalization. Wherever there is ICT, there is a need to secure it, resulting in an increase in global cybersecurity energy consumption as well. This paper discusses the energy-related aspects of cybersecurity solutions and defines a “Green Security” taxonomy. We highlight the inefficiencies stemming from various cybersecu-rity practices, such as processing the same data repeatedly. Within this context, we analyze cybersecurity solutions in common use cases, demonstrating the inherent energy consumption inefficiencies. In addition, we propose a method of measuring the energy consumed by cybersecurity solutions and present several optimization strategies that reduce their energy consumption. We evaluate our proposed optimization strategies and demonstrate their ability to reduce energy consumption while considering the organizational risk profile and maintaining the required security level.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Climate change",
+                "Computer security",
+                "Information security",
+                "Green design",
+                "Energy consumption",
+                "Information and communication technology"
+            ],
+            "Index Terms": [
+                "Energy Consumption",
+                "Measurement Framework",
+                "Measure Energy Consumption",
+                "Air Pollution",
+                "Information And Communication Technologies",
+                "Risk Profile",
+                "Reduce Energy Consumption",
+                "Security Level",
+                "Primary Energy Consumption",
+                "Antiviral",
+                "Energy Conservation",
+                "Energy Cost",
+                "Optimal Energy",
+                "Signatures Database",
+                "Total Energy Consumption",
+                "Scanning Frequency",
+                "Security Mechanisms",
+                "Energy Consumption Of Devices",
+                "Relevant Signatures",
+                "Security Solutions",
+                "Malware",
+                "Hardware Specifications",
+                "Risk-based Strategy",
+                "Online Phase",
+                "CPU Usage",
+                "File Type",
+                "Battery-powered Devices"
+            ],
+            "Author Keywords": [
+                "Cybersecurity",
+                "Information security",
+                "Cyber",
+                "Security",
+                "Green security",
+                "Energy consumption",
+                "Energy optimization"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -238,7 +425,51 @@
                 "firstName": "Avinash",
                 "lastName": "Sudhodanan"
             }
-        ]
+        ],
+        "abstract": "The Single Sign-On based account linking process (SSOLinking in short) allows users to link their accounts at Service Provider (SP) websites to their Identity Providers (IdP) accounts. We focus on a serious (and overlooked) attack, namely an Account Hijack targeting the SSOLinking and relying on two CSRF vulnerabilities, one affecting the IdP and the other the SP. The former is an Authentication CSRF (also known as Login CSRF) and the latter is a CSRF on the button triggering the SSOLinking. We propose a security testing approach to help testers automatically detect such attacks. We implemented our testing technique as an extension (namely SSOLinking Checker) to the open-source penetration testing tool Micro-Id-Gym. To demonstrate the effectiveness of our approach and the pervasiveness of the SSOLinking Account Hijack, we conducted an experimental analysis against a selection of popular SPs that offer the SSOLinking with major IdPs. The results of our experiments are alarming: out of the 648 web sites we considered, 48 qualified for conducting our experiments and 21 of these suffered from SSOLinking vulnerability (i.e. 43.7%). Our findings (we responsibly disclosed to the affected vendors) include severe vulnerabilities among the web sites of Goodreads, Naver, Workable, etc.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Authentication",
+                "Web sites",
+                "Security",
+                "Testing",
+                "Penetration testing"
+            ],
+            "Index Terms": [
+                "Single Sign-on",
+                "Web Site",
+                "Testing Tools",
+                "Open-source Tool",
+                "Testing Techniques",
+                "Penetration Test",
+                "Twitter",
+                "Metadata",
+                "User Experience",
+                "Active Users",
+                "Human-computer Interaction",
+                "Web Browser",
+                "State Parameters",
+                "Activity Sessions",
+                "Daily Mail",
+                "Successful Execution",
+                "HTTP Requests",
+                "User Account",
+                "Authentication Protocol",
+                "Attack Vector",
+                "Facebook",
+                "LinkedIn",
+                "Popular Sites",
+                "Malware",
+                "Blue Rectangle",
+                "Identity Management"
+            ],
+            "Author Keywords": [
+                "Security testing",
+                "SSO-based account linking",
+                "Account Hijack Attack",
+                "CSRF vulnerabilities"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -279,7 +510,52 @@
                 "firstName": "Kenneth G.",
                 "lastName": "Paterson"
             }
-        ]
+        ],
+        "abstract": "Nextcloud is a leading cloud storage platform with more than 20 million users. Nextcloud offers an end-to-end encryption (E2EE) feature that is claimed to be able “to keep extremely sensitive data fully secure even in case of a full server breach”. They also claim that the Nextcloud server “has Zero Knowledge, that is, never has access to any of the data or keys in unencrypted form”. This is achieved by having encryption and decryption operations that are done using file keys that are only available to Nextcloud clients, with those file keys being protected by a key hierarchy that ultimately relies on long passphrases known exclusively to the users. We provide the first detailed documentation and security analysis of Nextcloud's E2EE feature. Nextcloud's strong security claims motivate conducting the analysis in the setting where the server itself is considered malicious. We present three distinct attacks against the E2EE security guarantees in this setting. Each one enables the confidentiality and integrity of all user files to be compromised. All three attacks are fully practical and we have built proof-of-concept implementations for each. The vulnerabilities make it trivial for a malicious Nextcloud server to access and manipulate users' data. We have responsibly disclosed the three vulnerabilities to N extcloud. The second and third vulnerabilities have been remediated. The first was addressed by temporarily disabling file sharing from the E2EE feature until a redesign of the feature can be made. We reflect on broader lessons that can be learned for designers of E2EE systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Documentation",
+                "Encryption",
+                "Peer-to-peer computing",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Cloud Computing",
+                "Plaintext",
+                "Security Guarantees",
+                "Encryption And Decryption",
+                "Broader Lessons",
+                "End-to-end Encryption",
+                "Synchronization",
+                "Service Providers",
+                "White Paper",
+                "Language Model",
+                "Highest Index",
+                "Mnemonic",
+                "Secret Key",
+                "Public Key",
+                "Message Authentication",
+                "Threat Model",
+                "Metadata File",
+                "User Authentication",
+                "Encryption Key",
+                "Cloud Providers",
+                "Encrypted File",
+                "Message Authentication Code",
+                "Public Key Infrastructure",
+                "File Version",
+                "Causes Of Vulnerability",
+                "File Content"
+            ],
+            "Author Keywords": [
+                "Real-world cryptography",
+                "End-to-end encryption",
+                "Attacks",
+                "Cloud storage",
+                "Nextcloud"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -320,7 +596,50 @@
                 "firstName": "Lieven",
                 "lastName": "Desmet"
             }
-        ]
+        ],
+        "abstract": "Synthetically generated benchmark datasets are vitally important for machine learning and network intrusion research. When producing intrusion datasets for research, providers make complex, subtle and sometimes unwary decisions that can affect data utility. Unfortunately, examining network data is difficult, so these decisions are rarely audited. We perform an in-depth manual analysis of seven highly-cited benchmark datasets, discovering six suspect design patterns, which we term ‘data design smells’. We formulate six heuristics to measure the prevalence of these issues. These design choices, if not properly accounted for, can introduce severe experimental bias, which we demonstrate with four concrete examples. We then conduct a systematic impact analysis of the wider literature that relies on these datasets. Our results suggest that bad design smells correlate with poor data diversity, murky labelling and poorly-defined generalisation criteria. Worryingly, we find that improper usage of these datasets can weaken their utility as benchmarks which, in turn, biases downstream intrusion detection research. We conclude with some recommendations for using and creating NIDS datasets to help alleviate these issues.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Systematics",
+                "Intrusion detection",
+                "Manuals",
+                "Machine learning",
+                "Benchmark testing",
+                "Reliability",
+                "Labeling"
+            ],
+            "Index Terms": [
+                "Network Intrusion Detection Systems",
+                "Design Smells",
+                "Machine Learning",
+                "Heuristic",
+                "Benchmark Datasets",
+                "Design Choices",
+                "Observer Bias",
+                "Information Leakage",
+                "Manual Analysis",
+                "Intrusion Detection",
+                "Synthetic Generation",
+                "Bad Smell",
+                "Random Forest",
+                "Feature Space",
+                "F1 Score",
+                "Real-world Data",
+                "Network State",
+                "Image Recognition",
+                "Anomaly Detection",
+                "Class Of Attacks",
+                "Source Dataset",
+                "DoS Attacks",
+                "Flow Statistics",
+                "Target Dataset",
+                "Concept Drift",
+                "Single Flow",
+                "Version Of Dataset",
+                "Popular Datasets",
+                "Machine Learning Pipeline"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -355,7 +674,50 @@
                 "firstName": "Philipp",
                 "lastName": "Jovanovic"
             }
-        ]
+        ],
+        "abstract": "Public randomness is a fundamental component in many cryptographic protocols and distributed systems and often plays a crucial role in ensuring their security, fairness, and transparency properties. Driven by the surge of interest in blockchain and cryptocurrency platforms and the usefulness of such a building block in those areas, designing secure protocols to generate public randomness in a distributed manner has received considerable attention in recent years. This paper presents a systematization of knowledge on the topic of public randomness with a focus on cryptographic tools providing public verifiability and key themes underlying these systems. We provide concrete insights on how state-of-the-art protocols achieve this task efficiently in an adversarial setting and present various research gaps that may be of interest for future research.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Manifolds",
+                "Proof of stake",
+                "Protocols",
+                "Scalability",
+                "Voting",
+                "Vectors"
+            ],
+            "Index Terms": [
+                "Distribution System",
+                "Corruption",
+                "Unpredictability",
+                "Pseudo-random",
+                "Random Values",
+                "Fault-tolerant",
+                "Hash Function",
+                "Microgrid",
+                "Secret Key",
+                "Public Key",
+                "Complex Communication",
+                "Secret Sharing",
+                "Number Of Parties",
+                "Party Groups",
+                "Broadcast Channel",
+                "Setup Phase",
+                "Random Oracle",
+                "Signature Scheme",
+                "Leader Election",
+                "Random Oracle Model",
+                "Public Blockchain",
+                "Source Of Randomness",
+                "Key Generation",
+                "Health-related Quality Of Life",
+                "Sole Contributor",
+                "Zero-knowledge Proof",
+                "Leaderless",
+                "Public Boards",
+                "Internet Gaming"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -432,7 +794,49 @@
                 "firstName": "Srikanth V.",
                 "lastName": "Krishnamurthy"
             }
-        ]
+        ],
+        "abstract": "Today, DNS exfiltration attacks are detected by checking for anomalies present in the traffic, such as unusu-ally high transmission rates to a single domain and/or DNS query patterns that are very different from those in benign queries. While such approaches are seemingly robust, we show in this paper that our carefully designed and novel DNS exfiltration attack, Dolos, that uses a generative adversarial network (GAN), can guide the encoding of sensitive data in a manner that both evades these detectors and significantly speeds up the exfiltration rate compared to prior methods. At its core, Dolos divides the exfiltration data into smaller chunks, and projects each chunk into a representation that is very similar to benign queries. In addition, Dolosadaptively tunes its exfiltration rate to conform with benign DNS traffic from the compromised host, and introduces proper levels of spurious traffic to reduce entropy. Importantly, Dolos evades machine learning (ML) based detectors with no prior knowledge of their architectures or training sets (i.e., it is a blackbox exfiltration). We perform extensive evaluations using multiple datasets and also have a real im-plementation of DOLOS. Our evaluations show that DOLOS has a 12% detection probability even if 6 out of the 9 state-of-the-art defenses that we consider, are jointly used to detect exfiltration; if any of today's baseline exfiltration techniques try to achieve the same rate as Dolos in this setting, they are almost surely detected. If we reduce the rates of the baselines to achieve even a low albeit slightly higher detection probability than Dolos (0.15), we see that they take 25 x longer to achieve the exfiltration. With the other three defenses, we find that baselines are almost surely detected while Dolos remains relatively unaffected regardless of the rate of exfiltration.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "MIMICs",
+                "Closed box",
+                "Detectors",
+                "Machine learning",
+                "Generative adversarial networks",
+                "Entropy"
+            ],
+            "Index Terms": [
+                "Generative Adversarial Networks",
+                "Training Set",
+                "Sensitive Data",
+                "Detection Probability",
+                "Almost Surely",
+                "Time Window",
+                "Decoding",
+                "Maximum Length",
+                "Latent Space",
+                "Anomaly Detection",
+                "Latent Representation",
+                "Credit Card",
+                "Caching",
+                "Remote Sites",
+                "Primary Domains",
+                "External Sites",
+                "Intrusion Detection System",
+                "Previous Attack",
+                "Malware",
+                "Query Length",
+                "Text Dataset",
+                "Cache Misses",
+                "Recovery Error",
+                "Whitelist",
+                "Sequence Of Characters",
+                "Codeword",
+                "Encoder-decoder Framework",
+                "Threat Model"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -467,7 +871,57 @@
                 "firstName": "Tatsuya",
                 "lastName": "Mori"
             }
-        ]
+        ],
+        "abstract": "Autonomous systems that rely on object recognition are susceptible to the unique vulnerability of phantom attacks. In these scenarios, adversaries exploit the system by projecting sophisticated deceptive illusions that cause confusion between real objects and their virtual shadows. Despite the growing consensus on the importance of this threat, previous research has lacked comprehensive and quantitative assessments. In an effort to address this research gap, we first methodically investigated the success rates of attacks at various projection distances and angles. Following this baseline assessment, we conducted targeted experiments on two different setups: a black-box approach using the commercial DJI Mavic Air drone with its ActiveTrack feature, and a white-box approach using the open-source Tello drone integrated with YOLOv3 object recognition. These real-world evaluations clearly demonstrated the effectiveness of the phantom attacks. Considering the identified vulnerabilities, we developed DeGhost, a deep learning framework capable of distinguishing real entities from their projected counterparts. To ensure a holistic understanding of its performance, we projected phantoms using different types of projectors onto various surfaces such as concrete, screens, white cloth, white walls, whiteboards, and wooden boards. DeGhost was then evaluated against a range of SoTA object detectors, including the YOLO series, Faster R-CNN, and CenterNet. Our results underscored the ability of DeGhost to detect these phantom attacks with high accuracy, as evidenced by an AUC of 0.998, an FNR of 0.013, and an FPR of 0.018. In addition, the incorporation of an advanced Fourier technique enhanced the robustness of the model. This study not only illuminates the feasibility of the attack but also offers practical security countermeasures for emerging autonomous technologies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "YOLO",
+                "Deep learning",
+                "Accuracy",
+                "Heuristic algorithms",
+                "Phantoms",
+                "Robustness",
+                "Object recognition"
+            ],
+            "Index Terms": [
+                "Autonomic System",
+                "Recognition System",
+                "False Positive Rate",
+                "Object Detection",
+                "Object Recognition",
+                "False Negative Rate",
+                "Attack Rate",
+                "Faster R-CNN",
+                "Effects Of Attacks",
+                "White Walls",
+                "Wooden Board",
+                "Real Entities",
+                "Attack Success Rate",
+                "Projection Distance",
+                "Horizontal Plane",
+                "Test Dataset",
+                "Uneven Surface",
+                "Autonomous Vehicles",
+                "Real-world Scenarios",
+                "Ambient Light",
+                "Surface Projection",
+                "Liquid Crystal Display",
+                "Project Size",
+                "Autonomous Drone",
+                "Advanced Driver Assistance Systems",
+                "Unknown Objects",
+                "Attack Success",
+                "Object Tracking",
+                "Square Of The Distance",
+                "Threat Model"
+            ],
+            "Author Keywords": [
+                "security",
+                "drone",
+                "phantom attack",
+                "machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -496,7 +950,52 @@
                 "firstName": "Mingsheng",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "We introduce NTRU-PIR and NTRU-PIR-FREE, two single-server PIR protocols that offer new trade-offs in terms of storage, communication, and computation. Both of the protocols rely on the toolkit we developed for efficient homomorphic operations and ciphertext conversion algorithms on NTRU and an NTRU-based GSW-like scheme. Across a broad range of database configurations, NTRU-PIR simultaneously achieves a 1.5-26× reduction in public parameter size and a 1.7-4.2× increase in server throughput compared to previous counterparts. NTRU-PIR-FREE, a variant of NTRU-PIR by removing the query compression technique, eliminates the storage burden on the server. In the streaming setting, when the previous best-performing scheme Spiral-streampack(s&p 2022) reaches its highest throughput, NTRU-PIR-FREE achieves a comparable throughput with a query size of only 8 MB (compared to 30 MB for Spiralstreampack)and without requiring public parameters (compared to 125 MB for Spiralstreampack).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Databases",
+                "Throughput",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Fully Homomorphic Encryption",
+                "Private Information Retrieval",
+                "Single-server Private Information Retrieval",
+                "Increase In Throughput",
+                "Public Parameters",
+                "Highest Throughput",
+                "High Throughput",
+                "Decoding",
+                "Plaintext",
+                "Third Dimension",
+                "Security Level",
+                "Computational Overhead",
+                "Increase In Modulus",
+                "Secret Key",
+                "Homomorphism",
+                "Communication Overhead",
+                "Automorphism",
+                "Computing Services",
+                "Encryption Scheme",
+                "Column Index",
+                "Row Index",
+                "Error Growth",
+                "Static Set",
+                "Partial Errors",
+                "Output In Order",
+                "Security Parameter",
+                "Parameter Selection",
+                "Quotient Ring",
+                "Increase In Size",
+                "Structural Database"
+            ],
+            "Author Keywords": [
+                "Private information retrieval",
+                "Fully homomorphic encryption"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -537,7 +1036,51 @@
                 "firstName": "Jeongeun",
                 "lastName": "Park"
             }
-        ]
+        ],
+        "abstract": "Oblivious RAM (ORAM) allows a client to out-source storage to a remote server while hiding the data access pattern from the server. Many ORAM designs have been proposed to reduce the computational overhead and bandwidth blowup for the client. A recent work, Onion Ring ORAM (CCS'19), is able to achieve <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$O(1)$</tex> bandwidth blowup in the online phase using fully homomorphic encryption (FHE) techniques, at the cost of a computationally expensive client-side offline phase. Furthermore, such a scheme can be categorized as a stateful construction, meaning that the client has to locally maintain a dynamic state representing the order of remote database elements. We present Panacea: a novel design of ORAM based on FHE techniques, which is non-interactive and stateless, achieves <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$O(1)$</tex> bandwidth blowup, and does not require an expensive offline phase for the client to perform; in that sense, our design is the first of its kind among other ORAM designs. To provide the client with such performance benefits, our design delegates all expensive computation to the resourceful server. We additionally show how to boost the server performance significantly using probabilistic batch codes at the cost of only 1.5x in additional bandwidth blowup and 3x expansion in server storage, but less amortized bandwidth. Our experimental results show that our design, with the batching technique, is practical in terms of server computation overhead as well. Specifically, for a database size of 2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">19</sup>, it takes only 1.16 seconds of amortized computation time for a server to respond to a query. As a result of the statelessness and low computational overhead on the client, and reasonable computational overhead on the server, our design is very suitable to be deployed as a cloud-based privacy-preserving storage outsourcing solution with a portable client running on a lightweight device.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Codes",
+                "Databases",
+                "Random access memory",
+                "Bandwidth",
+                "Probabilistic logic",
+                "Outsourcing"
+            ],
+            "Index Terms": [
+                "Oblivious RAM",
+                "Computation Time",
+                "Encryption",
+                "Computational Overhead",
+                "Database Size",
+                "Computing Services",
+                "Online Phase",
+                "Low Computational Overhead",
+                "Computational Cost",
+                "Parallelization",
+                "Unit Vector",
+                "Data Elements",
+                "Plaintext",
+                "Hash Function",
+                "Probability Of Failure",
+                "Distinct Elements",
+                "Small Probability",
+                "Multiple Devices",
+                "Storage Cost",
+                "Binary Tree",
+                "Update Phase",
+                "Single Query",
+                "Index Of Element",
+                "Original Index",
+                "Original Database",
+                "State Database",
+                "Core Design",
+                "Interesting Future Work",
+                "Updated Data",
+                "Interactive"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -572,7 +1115,48 @@
                 "firstName": "Corina",
                 "lastName": "Păsăreanu"
             }
-        ]
+        ],
+        "abstract": "Cryptographic protocols play a crucial role in safeguarding network communications. However, it has been shown that many design flaws and implementation bugs in cryptographic protocols lie in plain sight, only to be discovered many years after their deployment. At the design level, symbolic protocol provers, such as Tamarin and ProVerif, assume a symbolic or Dolev-Yao attacker model and are shown to be effective in ruling out logical errors in protocol specifications. However, little work has been done on automatically analyzing such security guarantees (secure under Dolev-Yao) for an existing protocol implementation. We present an automated and systematic framework, ProInspector, to uncover logic errors in protocol implementations. Central to our approach is a tailored conformance testing algorithm which generates test cases, taking into consideration, a Dolev-Yao attacker. Our approach enables us to generate test cases that contain inputs from the attacker. ProInspector then uses generic symbolic provers to check if inconsistencies between the specification and implementation lead to exploits. We test ProInspector on popular TLS implementations and rediscover several CVEs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Systematics",
+                "Computer bugs",
+                "Conformance testing",
+                "Security",
+                "Logic",
+                "Cryptographic protocols"
+            ],
+            "Index Terms": [
+                "Implementation Of Protocol",
+                "Systematic Framework",
+                "Types Of Attacks",
+                "Security Protocols",
+                "Security Guarantees",
+                "Tamarins",
+                "Symbolic Model",
+                "Test Case Generation",
+                "Reference Model",
+                "State Machine",
+                "Test Suite",
+                "Secret Key",
+                "Public Key",
+                "Model Checking",
+                "Model Protocol",
+                "Concrete Case",
+                "Formal Verification",
+                "Interesting Future Work",
+                "Symbolic Analysis",
+                "Protocol Specification",
+                "Messaging Protocol",
+                "Session Key",
+                "Cryptographic Primitives",
+                "Mutual Authentication",
+                "Domain-specific Languages",
+                "Certificate Authority",
+                "Authentication Service",
+                "Fuzzy Set"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -601,7 +1185,48 @@
                 "firstName": "Sandro",
                 "lastName": "Pinto"
             }
-        ]
+        ],
+        "abstract": "Machine learning (ML) is shifting from the cloud to the edge. Edge computing reduces the surface exposing private data and enables reliable throughput guarantees in real-time applications. Of the panoply of devices deployed at the edge, resource-constrained microcontrollers (MCUs), e.g., Arm Cortex-M, are more prevalent, orders of magnitude cheaper, and less power-hungry than application processors (APUs) or graphical processing units (GPUs). Thus, enabling intelligence at the so-called deep/extreme edge is the zeitgeist, with researchers focusing on unveiling novel approaches to deploy artificial neural networks (ANN) on these constrained devices. Quantization is a well-established technique that has proved effective, i.e., negligible impact on accuracy, in enabling the deployment of neural networks on MCUs; however, it is still an open question to understand the robustness of quantized neural networks (QNNs) in the face of well-known adversarial examples. To fill this gap, we empirically evaluate the effectiveness of attacks and defenses from (full-precision) ANNs on (constrained) QNNs. Our evaluation suite includes three QNNs targeting TinyML applications, ten attacks, and six defenses. With this study, we draw a set of interesting findings. First, quantization increases the point distance to the decision boundary and leads the gradient estimated by some attacks to explode or vanish. Second, quantization can act as a noise attenuator or amplifier, depending on the noise magnitude, and causes gradient misalignment. Regarding adversarial defenses, we conclude that input pre-processing defenses show impressive results on small perturbations; however, they fall short as the perturbation increases. At the same time, train-based defenses increase adversarial robustness by increasing the average point distance to the decision boundary, which holds even after quantization. However, we argue that train-based defenses still need to smooth the quantization-shift and gradient misalignment phenomenons to counteract adversarial example transferability to QNNs. All artifacts are open-sourced to enable independent validation of results and encourage further exploration of the robustness of QNNs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Quantization (signal)",
+                "Tiny machine learning",
+                "Perturbation methods",
+                "Noise",
+                "Artificial neural networks",
+                "Throughput",
+                "Robustness"
+            ],
+            "Index Terms": [
+                "Empirical Evaluation",
+                "Quantum Neural Network",
+                "Deep Edge",
+                "Neural Network",
+                "Artificial Neural Network",
+                "Perturbation Theory",
+                "Processing Unit",
+                "Graphics Processing Unit",
+                "Gradient Approximation",
+                "Decision Boundary",
+                "Edge Computing",
+                "Adversarial Examples",
+                "Adversarial Robustness",
+                "Accuracy Of Model",
+                "Machine Learning Applications",
+                "Adversarial Training",
+                "Least Significant Bit",
+                "Machine Learning Systems",
+                "Black-box Attacks",
+                "White-box Attack",
+                "Static Random Access Memory",
+                "Adversarial Attacks",
+                "Fractional Part",
+                "Integer Part",
+                "Type Of Defense",
+                "Direct Attack",
+                "Perturbation Magnitude"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -660,7 +1285,51 @@
                 "firstName": "Hongjie",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "Sensing data integrity in a cyber-physical system (CPS) is critical to its safe operation. Intolerable data manipulation can potentially lead to very hazardous consequences. Numerous countermeasures have proven capable of protecting sensitive circuitry, cabling, and their signals from the effects of electromagnetic interference (EMI). However, in the case of intentional electromagnetic interference (IEMI), existing countermeasures possess limited efficacy. IEMI-capable adversaries attack the signal processing circuits and signal paths between sensors/actuators and the controller, seeking to manipulate the signals and falsify data. On a printed circuit board (PCB), the traces carrying these signals act as unintentional receiving antennae to a time-varying electromagnetic field generated by an adversary. In this paper, we demonstrate IEMI attacks on the PCBs used in electric vehicle (EV) charging systems, a highly safety-critical CPS. To mitigate these attacks, we implement passive PCB-level countermeasures, namely, differential signaling, via-fencing, and optical fiber for interconnects. In addition, we propose and implement a multiplexer-based defense that dynamically modifies the route path and evades the adversary. All four countermeasures have been extensively evaluated against multiple adversarial setups and ranked based on their impact. Further, adaptive attacker strategies have been proposed to circumvent the effective countermeasures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multiplexing",
+                "Electromagnetic interference",
+                "Printed circuits",
+                "Receiving antennas",
+                "Optical fiber cables",
+                "Integrated circuit interconnections",
+                "Signal processing"
+            ],
+            "Index Terms": [
+                "Efficacy Of Countermeasures",
+                "Intentional Electromagnetic Interference",
+                "Circuitry",
+                "Optical Fiber",
+                "Electromagnetic Field",
+                "Differential Signal",
+                "Printed Circuit Board",
+                "Circuit Board",
+                "Electromagnetic Interference",
+                "Cyber-physical Systems",
+                "Signal Path",
+                "Electric Vehicles Charging",
+                "Attack Strategy",
+                "High Power",
+                "Frequency Sweep",
+                "Denial Of Service",
+                "Frequency Of Attacks",
+                "Sensor Output",
+                "Adversarial Attacks",
+                "Gate Signals",
+                "Inductor Voltage",
+                "Battery Management System",
+                "Electrostatic Discharge",
+                "Trace Length",
+                "Message Authentication Code",
+                "Optical Interconnects",
+                "Gate Driver",
+                "Differential Pair",
+                "Stray Field",
+                "Mean Voltage"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -695,7 +1364,56 @@
                 "firstName": "Aslan",
                 "lastName": "Askarov"
             }
-        ]
+        ],
+        "abstract": "Transport layer data leaks metadata unintentionally - such as who communicates with whom. While tools for strong transport layer privacy exist, they have adoption obstacles, including performance overheads incompatible with mobile devices. We posit that by changing the objective of metadata privacy for all traffic, we can open up a new design space for pragmatic approaches to transport layer privacy. As a first step in this direction, we propose using techniques from information flow control and present a principled approach to constructing formal models of systems with metadata privacy for some, deniable, traffic. We prove that deniable traffic achieves metadata privacy against strong adversaries- this constitutes the first bridging of information flow control and anonymous communication to our knowledge. Additionally, we show that existing state-of-the-art protocols can be extended to support metadata privacy, by designing a novel protocol for deniable instant messaging (DenIM), which is a variant of the Signal protocol. To show the efficacy of our approach, we implement and evaluate a proof-of-concept instant messaging system running DenIM on top of unmodified Signal. We empirically show that the DenIM on Signal can maintain low-latency for unmodified Signal traffic without breaking existing features, while at the same time supporting deniable Signal traffic.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Privacy",
+                "Protocols",
+                "Instant messaging",
+                "Telecommunication traffic",
+                "Metadata",
+                "Tunneling"
+            ],
+            "Index Terms": [
+                "Metadata",
+                "Instant Messaging",
+                "Model Formulation",
+                "Information Flow",
+                "Information Leakage",
+                "Transport Layer",
+                "Formal Analysis",
+                "User Behavior",
+                "Secret Key",
+                "Public Key",
+                "Serialized",
+                "Key Material",
+                "Regular Communication",
+                "Internet Service Providers",
+                "Key Generation",
+                "Threat Model",
+                "Public Channel",
+                "Group Chat",
+                "Key Exchange",
+                "Privacy Guarantee",
+                "CPU Utilization",
+                "Kinds Of Messages",
+                "End-to-end Encryption",
+                "Facebook Messenger",
+                "Protocol States",
+                "Message Signal",
+                "Security Analysis",
+                "Security Guarantees",
+                "Low Latency",
+                "Telegram"
+            ],
+            "Author Keywords": [
+                "metadata privacy",
+                "information flow",
+                "anonymous communication"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -736,7 +1454,46 @@
                 "firstName": "Liz",
                 "lastName": "Izhikevich"
             }
-        ]
+        ],
+        "abstract": "In this work, we analyze to what extent actors target poorly-secured cloud storage buckets for attack. We deployed hundreds of AWS S3 honeybuckets with different names and content to lure and measure different scanning strategies. Actors exhibited clear preferences for scanning buckets that appeared to belong to organizations, especially commercial entities in the technology sector with a vulnerability disclosure program. Actors continuously engaged with the content of buckets by downloading, uploading, and deleting files. Most alarmingly, we recorded multiple instances in which malicious actors downloaded, read, and understood a document from our honeybucket, leading them to attempt to gain unauthorized server access.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Organizations",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Cloud Computing",
+                "Security Vulnerabilities",
+                "Technology Sector",
+                "Unauthorized Access",
+                "Commercial Entities",
+                "Scanning Strategy",
+                "Autonomic System",
+                "Publicly Accessible",
+                "Major Activity",
+                "Email Address",
+                "Sensitive Data",
+                "Access Control",
+                "Collusion",
+                "Information Leakage",
+                "Secret Key",
+                "Individual Files",
+                "Malware",
+                "Cryptocurrencies",
+                "Cloud Providers",
+                "File Upload",
+                "Bitcoin",
+                "Set Of Names",
+                "Unique Address",
+                "Fake Data",
+                "Address Space",
+                "Brand Reputation",
+                "Technology Company",
+                "Penetration Test",
+                "Unique Identifier"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -801,7 +1558,57 @@
                 "firstName": "Etienne",
                 "lastName": "Rivière"
             }
-        ]
+        ],
+        "abstract": "The Ethereum Global Network (EGN) hosts a complete ecosystem of decentralized services, including blockchains such as Ethereum mainnet but also exchange markets, content delivery networks, and many more. Service discovery is a fundamental mechanism in the EGN, allowing new nodes to look up and connect to other nodes already participating in one of these services. The current service discovery of the EGN, DISCv5, is not scalable and efficient enough to support the current and future needs of the ecosystem. We present DISC-NG, a novel service discovery protocol for the EGN that is scalable, efficient, and secure. DISC-NG leverages the EGN-wide DHT to allow service participation advertisements to meet service discovery requests. DISC-NG compensates the unbalance in service popularity and minimizes the potential for abuse by malicious nodes. We implement DISC-NG in devp2p, the network stack used by the majority of clients connecting to the EGN, as well as in a large-scale simulator. DISC-NG can discover services in the EGN faster than DISCv5 while being more robust to malicious nodes. DISC-NG is now in a staging phase and scheduled for deployment as an improvement to DISCv5.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Content distribution networks",
+                "Smart contracts",
+                "Ecosystems",
+                "Blockchains",
+                "Cryptocurrency",
+                "Security",
+                "Open source software"
+            ],
+            "Index Terms": [
+                "Service Discovery",
+                "Popularity",
+                "Malicious Nodes",
+                "Health-related Quality Of Life",
+                "Random Walk",
+                "Waiting Time",
+                "Load Distribution",
+                "Load Balancing",
+                "Public Key",
+                "Network Throughput",
+                "Determination Mechanism",
+                "Threat Model",
+                "Algorithm Running",
+                "Admission Control",
+                "P2P Network",
+                "Malicious Behavior",
+                "Key Space",
+                "Ongoing Attempts",
+                "Popularity Of Services",
+                "Routing Table",
+                "Occupational Score",
+                "DoS Attacks",
+                "Random Placement",
+                "Network Size",
+                "Model System",
+                "Registration Process",
+                "Large-scale Networks",
+                "Incoming Requests"
+            ],
+            "Author Keywords": [
+                "Decentralized networks",
+                "Service discovery",
+                "Scalability",
+                "Robustness",
+                "Ethereum",
+                "Web3"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -830,7 +1637,55 @@
                 "firstName": "Anja",
                 "lastName": "Lehmann"
             }
-        ]
+        ],
+        "abstract": "Asymmetric Password-Authenticated Key Exchange (aPAKE) protocols, particularly Strong aPAKE (saPAKE) have enjoyed significant attention, both from academia and industry, with the well-known OPAQUE protocol currently undergoing standardization. In (s)aPAKE, a client and a server collaboratively establish a high-entropy key, relying on a previously exchanged password for authentication. A main feature is its resilience against offline and precomputation (for saPAKE) attacks. OPAQUE, as well as most other aPAKE protocols, have been designed and analyzed in a single-user setting, i.e., modelling that only a single user interacts with the server. By the composition framework of UC, security for the actual multi-user setting is then conjectured. As any real-world (s)aPAKE instantiation will need to cater multiple users, this introduces a dangerous gap in which developers are tasked to extend the single-user protocol securely and in a UC-compliant manner. In this work, we extend the (s)aPAKE definition to directly model the multi-user setting, and explicitly capture the impact that a server compromise has across user accounts. We show that the currently standardized multi-user version of OPAQUE might not provide the expected security, as it is insecure against offline attacks as soon as the file for one user in the system is compromised. This is due to using shared state among different users, which violates the UC composition framework. However, we show that another change introduced in the standardization draft which also involves a shared state does not compromise security. When extending the aPAKE security in the multi-client setting, we notice that the widely used security definition captures significantly weaker security guarantees than what is offered by many protocols. Essentially, the aPAKE definition assumes that the server stores unsalted password-hashes, whereas several protocols explicitly use a salt to protect against precomputation attacks. We therefore propose a definitional framework that captures different salting approaches - thus showing that the security gap between aPAKE and saPAKE can be smaller than expected.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resistance",
+                "Industries",
+                "Protocols",
+                "Transforms",
+                "Passwords",
+                "Security",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Multiple Users",
+                "Security Protocols",
+                "Single User",
+                "Security Guarantees",
+                "Key Exchange",
+                "Definition Of Security",
+                "Building Blocks",
+                "Ephemeral",
+                "Security Level",
+                "Part Of Protocol",
+                "Single File",
+                "Secret Key",
+                "Symmetric Encryption",
+                "End Of Protocol",
+                "Salt Levels",
+                "Joint State",
+                "Security Model",
+                "Draft Version",
+                "Security Proof",
+                "Single Server",
+                "Session Key",
+                "Millions Of Users",
+                "Random Oracle",
+                "Random Oracle Model",
+                "Encryption Key",
+                "Decryption Key",
+                "Setup Phase",
+                "Multiple Clients"
+            ],
+            "Author Keywords": [
+                "password authentication",
+                "salting",
+                "strong aPAKE",
+                "Universal Composability"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -865,7 +1720,54 @@
                 "firstName": "Ghada",
                 "lastName": "Almashaqbeh"
             }
-        ]
+        ],
+        "abstract": "Cryptocurrencies and blockchain technology provide an innovative model for reshaping digital services. Driven by the movement toward Web 3.0, recent systems started to provide distributed services, such as computation outsourcing or file storage, on top of the currency exchange medium. By allowing anyone to join and collect cryptocurrency payments for serving others, these systems create decentralized markets for trading digital resources. Yet, there is still a big gap between the promise of these markets and their practical viability. Existing initiatives are still early-stage and have already encountered security and efficiency obstacles. At the same time, existing work around promising ideas, specifically sidechains, fall short in exploiting their full potential in addressing these problems. To bridge this gap, we propose chainBoost, a secure performance booster for decentralized resource markets. It expedites service related operations, reduces the blockchain size, and supports flexible service-payment exchange modalities at low overhead. At its core, chainBoost employs a sidechain, that has a (security and semantic) mutual-dependence with the mainchain, to which the system offloads heavy/frequent operations. To enable it, we develop a novel sidechain architecture composed of temporary and permanent blocks, a block suppression mechanism to prune the sidechain, a syncing protocol to permit arbitrary data exchange between the two chains, and an autorecovery protocol to support robustness and resilience. We analyze the security of chainBoost, and implement a proof-of-concept prototype for a distributed file storage market as a use case. For a market handling around 2000 transactions per round, our experiments show up to 11x improvement in throughput and 94% reduction in confirmation time. They also show that chainBoost can reduce the main blockchain size by ~90%, and that it outperforms comparable optimistic rollup solutions by reducing transaction finality by 99.7%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Semantic Web",
+                "Protocols",
+                "Semantics",
+                "Prototypes",
+                "Throughput",
+                "Robustness",
+                "Blockchains"
+            ],
+            "Index Terms": [
+                "Throughput",
+                "File System",
+                "Cryptocurrencies",
+                "Throughput Improvement",
+                "Changes In Conditions",
+                "Block Size",
+                "Committee Members",
+                "Rollback",
+                "Security Analysis",
+                "Block Type",
+                "Quantity Of Services",
+                "Consensus Protocol",
+                "Smart Contracts",
+                "End Of Epoch",
+                "Setup Phase",
+                "Unified Architecture",
+                "Traffic Distribution",
+                "Beginning Of Each Round",
+                "Zero-knowledge Proof",
+                "Bitcoin",
+                "End Of Contraction",
+                "Set Of Servers",
+                "Unified Interface",
+                "Threat Model",
+                "Communication Protocol",
+                "Public Key",
+                "Open Market",
+                "Health-related Quality Of Life"
+            ],
+            "Author Keywords": [
+                "Blockchain-based resource markets",
+                "dependent sidechains",
+                "secure performance boosting"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -900,7 +1802,53 @@
                 "firstName": "Roberto",
                 "lastName": "Zunino"
             }
-        ]
+        ],
+        "abstract": "Most blockchain platforms from Ethereum onwards render smart contracts as stateful reactive objects that update their state and transfer crypto-assets in response to transactions. A drawback of this design is that when users submit a transaction, they cannot predict in which state it will be executed. This exposes them to transaction-ordering attacks, a widespread class of attacks where adversaries with the power to construct blocks of transactions can extract value from smart contracts (the so-called MEV attacks). The UTXO model is an alternative blockchain design that thwarts these attacks by requiring new transactions to spend past ones: since transactions have unique identifiers, reordering attacks are ineffective. Currently, the blockchains following the UTXO model either provide contracts with limited expressiveness (Bitcoin), or require complex run-time environments (Cardano). We present Illum, an Intermediate-Level Language for the UTXO Model. Illum can express real-world smart contracts, e.g. those found in Decentralized Finance. We define a compiler from Illum to a bare-bone UTXO blockchain with loop-free scripts. Our compilation target only requires minimal extensions to Bitcoin Script: in particular, we exploit covenants, a mechanism for preserving scripts along chains of transactions. We prove the security of our compiler: namely, any attack targeting the compiled contract is also observable at the Illumlevel. Hence, the compiler does not introduce new vulnerabilities that were not already present in the source Illumcontract. We evaluate the practicality of ILLUM as a compilation target for higher-level languages. To this purpose, we implement a compiler from a contract language inspired by Solidity to ILLUM, and we apply it to a benchmark or real-world smart contracts.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Smart contracts",
+                "Finance",
+                "Bitcoin",
+                "Benchmark testing",
+                "Blockchains",
+                "Security",
+                "Open source software"
+            ],
+            "Index Terms": [
+                "Smart Contracts",
+                "Semantic",
+                "Activity Parameters",
+                "Auction",
+                "Boolean Logic",
+                "Computational Strategy",
+                "Normal Form",
+                "Public Key",
+                "Status Updates",
+                "Internal Parameters",
+                "External Parameters",
+                "Computer Running",
+                "Active Contraction",
+                "Scripting Language",
+                "Source Of Randomness",
+                "Contracted State",
+                "Number Of Arguments",
+                "Coherence Relations",
+                "Blockchain Nodes",
+                "Crowdfunding",
+                "Blockchain Network",
+                "Signature Verification",
+                "Conditional Branches",
+                "Part Of The State",
+                "Take Back",
+                "Parallelization",
+                "Adversary Model"
+            ],
+            "Author Keywords": [
+                "Blockchain",
+                "smart contracts",
+                "UTXO model"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -941,7 +1889,51 @@
                 "firstName": "Jun",
                 "lastName": "Sakuma"
             }
-        ]
+        ],
+        "abstract": "We propose a Trojan horse-type attribute inference attack (AlA) against the gradient boosting decision trees (GBDT) in the federated learning setting. Our Trojan AlA consists of a Trojan tree creation and an attribute inference. Both algorithms leverage the characteristics of the federated learning protocol for the GBDT training. First, the adversary creates a decision tree, a Trojan tree, that isolates a target data record from other data records. The adversary sends the Trojan tree to the server through the federated learning protocol at their round. Trojan tree forces the victim's tree to “memorize” a target attribute value of target data record that the adversary wants to know. The adversary can recover the target attribute value by observing the tree submitted by the victim if the victim uses the target data record for training the tree. For the regression task, we derive sufficient conditions for a successful attack. According to our theorem, if the target data record is distinct in the victim's dataset, the proposed attack is always successful. Experiments on multiple datasets and settings show results that align with the above theoretical analysis. Even if some conditions for theoretical analysis are relaxed, the proposed attack outperforms baseline attacks. To the best of our knowledge, this is the first study of an attribute inference attack against the GBDT in the federated learning setting.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Sufficient conditions",
+                "Protocols",
+                "Federated learning",
+                "Boosting",
+                "Inference algorithms",
+                "Trojan horses"
+            ],
+            "Index Terms": [
+                "Decision Tree",
+                "Gradient Boosting Decision Tree",
+                "Inference Attacks",
+                "Attribute Inference Attack",
+                "Attribute Inference",
+                "Theoretical Analysis",
+                "Record Data",
+                "Federated Learning",
+                "Attribute Values",
+                "Global Model",
+                "Target Value",
+                "Mean Absolute Error",
+                "Confidence Score",
+                "Objective Value",
+                "Leaf Node",
+                "Child Nodes",
+                "Tree Of Sequences",
+                "Local Training",
+                "Objective Variables",
+                "Ground Truth Values",
+                "Decision Node",
+                "Left Child",
+                "Locality Sensitive Hashing",
+                "Top Of The Tree",
+                "Previous Rounds",
+                "Candidate Values",
+                "CatBoost",
+                "Training Round",
+                "LightGBM",
+                "General Data Protection Regulation"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -982,7 +1974,49 @@
                 "firstName": "Kui",
                 "lastName": "Ren"
             }
-        ]
+        ],
+        "abstract": "Single Input Functionality (SIF) is a special case of MPC, where only one distinguished party called dealer holds the secret input. SIF allows the dealer to complete a computation task and send to other parties their respective outputs without revealing any additional information about its secret input. SIF has many applications, including multiple-verifier zero-knowledge and verifiable relation sharing, etc. Recently, several works devote to round-efficient realization of SIF, and achieve 2-round communication in the honest majority setting (Applebaum et al., Crypto 2022; Baum et al., CCS 2022; Yang and Wang, Asiacrypt 2022). In this work, we focus on concrete efficiency and propose the first practical construction for SIF against a dishonest majority in the preprocessing model; moreover, the online phase of our protocol is only 2-round and is highly efficient, as it requires no cryptographic operations and achieves information theoretical security. For SIF among 5 parties, our scheme takes 152.34ms (total) to evaluate an AES-128 circuit with 7.36ms online time. Compared to the state-of-the-art (honest majority) solution (Baum et al., CCS 2022), our protocol is roughly 2 × faster in the online phase, although more preprocessing time is needed. Compared to the state-of-the-art generic MPC against a dishonest majority (Wang et al., CCS 2017; Cramer et al., Crypto 2018), our protocol outperforms them with respect to both total running time and online running time.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Data preprocessing",
+                "Cryptography",
+                "Task analysis",
+                "Integrated circuit modeling"
+            ],
+            "Index Terms": [
+                "Running Time",
+                "Total Run Time",
+                "Online Phase",
+                "Preprocessing Time",
+                "Information-theoretic Security",
+                "Literary Works",
+                "Random Values",
+                "Plaintext",
+                "Collusion",
+                "Relevant Work",
+                "Network Configuration",
+                "Extensive Field",
+                "Security Protocols",
+                "Secret Sharing",
+                "Hardware Configuration",
+                "Ideal World",
+                "Preprocessing Phase",
+                "High-level Description",
+                "Secure Channel",
+                "Small Positive Constant",
+                "Multiple Gates",
+                "Phase Of The Protocol",
+                "Majority Of Players",
+                "Broadcast Channel",
+                "Message Authentication Code",
+                "Online Communities",
+                "Key Observation"
+            ],
+            "Author Keywords": [
+                "Single-Input Functionality; Multiple-Verifier Zero-Knowledge; Dishonest Majority"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1023,7 +2057,48 @@
                 "firstName": "Xueqiang",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "Online scams pose a growing threat to the cyberspace, with cybercriminals frequently using fake evidence, such as identification and financial documents, to illicitly elevate their credibility in online activities. This deceptive trend is fueled by an emerging set of fake evidence generators (FEGens). These FeGensreplicate the output of authoritative sources, such as official bank applications, to automatically generate large quantities of authentic-looking fake evidence. To the best of our knowledge, FeGens,as effective tools for cybercriminals, have not been systematically analyzed in terms of their supply chain, including development, promotion, and delivery, as well as the risks and impacts they pose to end users. In this paper, we present the first systematic empirical analysis of FegEnsand related fake evidence. Our findings shed light on the FegEn ecosystem, particularly the tactics employed by FegEndevelopers and retailers to mimic authoritative sources and promote the use of FeGens. We also evaluate the effectiveness of FeGensand associated risks in cybercrime.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Systematics",
+                "Supply chains",
+                "Ecosystems",
+                "Cyberspace",
+                "Market research",
+                "Generators",
+                "Computer crime"
+            ],
+            "Index Terms": [
+                "Evidence Generation",
+                "Fake Evidence",
+                "Analysis System",
+                "Supply Chain",
+                "Online Activities",
+                "Authoritative Sources",
+                "Cybercrime",
+                "Predators",
+                "Personal Information",
+                "User Study",
+                "Trade Balance",
+                "Types Of Evidence",
+                "Short Video",
+                "Number Of Scans",
+                "Android Application",
+                "Regular Users",
+                "Online Users",
+                "Cryptocurrencies",
+                "Delivery Channels",
+                "Apple App Store",
+                "Malware",
+                "Online Gambling",
+                "Supply Chain Perspective",
+                "Promotion Messages",
+                "Google Search",
+                "Common Label",
+                "Google LLC"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1064,7 +2139,59 @@
                 "firstName": "Musard",
                 "lastName": "Balliu"
             }
-        ]
+        ],
+        "abstract": "Smart home devices collect and transmit user data to smart home Trigger Action Platforms (TAPs) for processing and executing automation rules. However, this data can also be used to infer user activities or other sensitive information. In this paper, we propose PTAP, a privacy-preserving approach based on adversarial example attacks. PTAP injects targeted perturbations into time-series sensor data, effectively confounding potentially malicious TAP classifiers. Our approach significantly reduces the chance of user activity recognition for a malicious TAP while preserving the essential information for automation rule execution, thus safeguarding TAP utility. We evaluated PTAP using a real-world smart-home dataset and examined its effectiveness in preserving utility through the execution of various IoT applications. Our results demonstrate that PTAP effectively preserves user privacy (reducing the accuracy of a malicious classifier 91 to 6 percent) while maintaining automation rule integrity, providing a practical and effective solution to protect user privacy in smart-home environments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Privacy",
+                "Data privacy",
+                "Automation",
+                "Accuracy",
+                "Perturbation methods",
+                "Smart homes",
+                "Activity recognition"
+            ],
+            "Index Terms": [
+                "Action Recognition",
+                "Classification Accuracy",
+                "User Data",
+                "Sensor Data",
+                "Active Users",
+                "Internet Of Things Applications",
+                "Smart Home",
+                "User Privacy",
+                "Adversarial Attacks",
+                "Adversarial Examples",
+                "Application Execution",
+                "Time Window",
+                "Deep Neural Network",
+                "Power Consumption",
+                "Long Short-term Memory",
+                "Human-computer Interaction",
+                "Generative Adversarial Networks",
+                "Real-world Scenarios",
+                "Internet Of Things Devices",
+                "Activity Classification",
+                "Fast Gradient Sign Method",
+                "Fake Data",
+                "Threat Model",
+                "Privacy Preservation",
+                "Attack Methods",
+                "Perturbation Vector",
+                "Set Of Sensors",
+                "Adversarial Perturbations",
+                "Saliency Map",
+                "Human Activity Recognition"
+            ],
+            "Author Keywords": [
+                "Data privacy",
+                "Adversarial example",
+                "Activity recognition",
+                "Trigger Action platform",
+                "Smart home",
+                "Data perturbation"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1111,7 +2238,48 @@
                 "firstName": "Giancarlo",
                 "lastName": "Pellegrino"
             }
-        ]
+        ],
+        "abstract": "Clickbait PDFs, an entry point for multiple Web attacks, are distributed via SEO poisoning and rank high in search results due to being massively uploaded on abused or compromised websites. The central role of these hosts in the distribution of clickbait PDFs remains understudied, and it is unclear whether attackers differentiate the types of hosting for PDF uploads, how long they rely on hosts, and how affected parties respond to abuse. To address this, we conducted real-time analyses on hosts, collecting data on 4,648,939 clickbait PDFs served by 177,835 hosts over 17 months. Our results revealed a diverse infrastructure, with hosts falling into three main hosting types. We also identified at scale the presence of eight software components which facilitate file uploads and which are likely exploited for clickbait PDF distribution. We contact affected parties to report the misuse of their resources via a large-scale vulnerability notification. While we observed some effectiveness in terms of number of cleaned-up PDFs following the notification, long-term improvement in this infrastructure remained insignificant. This finding raises questions about the hosting providers' role in combating abuse and the actual impact of vulnerability notifications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Software",
+                "Real-time systems"
+            ],
+            "Index Terms": [
+                "Infrastructure Support",
+                "Search Results",
+                "Search Optimization",
+                "Software Components",
+                "File Upload",
+                "Treatment Groups",
+                "Convolutional Neural Network",
+                "Search Engine",
+                "Analysis Of Properties",
+                "Manual Analysis",
+                "Type Host",
+                "Domain Name",
+                "Goal Of This Section",
+                "Visual Similarity",
+                "Third-party Service",
+                "PDF Files",
+                "Vulnerable Components",
+                "Site In Host",
+                "Path Segment",
+                "Incoming Links",
+                "Phishing",
+                "Malware",
+                "Software Stack",
+                "HTTP Requests",
+                "Policy Cooperation",
+                "Autonomic System"
+            ],
+            "Author Keywords": [
+                "Web security",
+                "phishing",
+                "cybercrime",
+                "Clickbait PDF"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1152,7 +2320,57 @@
                 "firstName": "Anja",
                 "lastName": "Lehmann"
             }
-        ]
+        ],
+        "abstract": "Light Fidelity (LiFi) networks transmit information via light waves and are an interesting alternative to Radio Frequency networks: as light can be confined easily, LiFi provides better performance and makes eavesdropping attacks much more difficult. A core application of LiFi networks is self-contained and local networks among a group of autonomous devices, e.g., in industrial or medical environments. Cryptographic protocols are used to secure these networks, however the key exchange sometimes relies solely on the confineability of light signals and sends key material in plain over the network. This is clearly not desirable from a security perspective and newer standards recommend key exchange protocols to establish shared keys. A crucial part in any authenticated key exchange protocol is how to bootstrap trust, e.g., by assuming a PKI, pre-installed keys or an out-of-band-channel. Well established solutions exist, but they are not ideal for the type of self-contained networks targeted by LiFi communication. In this work we investigate how the physical properties of a LiFi channel can be used to replace these mechanisms, resulting in a more convenient and also more efficient solution for key exchange. To this end we propose a new type of secret-less key exchange (SEKA) that does not rely on any pre-shared secrets, and instead runs in two phases: a short bootstrap phase where we make stronger assumptions on the physical security, ruling out active attacks. This can be realized by putting all devices in a closed room, taking advantage of the light's confineability feature. The bootstrap phase is followed by a more classical key-exchange phase, where the actual key material gets exchanged in the presence of active attacks - relying on the shared states from the bootstrap phase. We formally define this new type of key-exchange protocol which offers authenticated key exchange with post-compromise security without relying on pre-shared secrets. We then show that a simpler and more efficient version of the signed Diffie-Hellmann protocol, now relying on MACs instead of signatures for the mutual authentication, can be proven secure in our model. Finally, a proof-of-concept implementation of the SEKA protocol is evaluated in a testbed demonstrating the efficiency gains of our approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Protocols",
+                "Authentication",
+                "Games",
+                "Jitter",
+                "Light fidelity",
+                "Encryption"
+            ],
+            "Index Terms": [
+                "Key Exchange",
+                "LiFi Networks",
+                "Symmetric Encryption",
+                "Light Wave",
+                "Short Phase",
+                "Physical Security",
+                "Key Material",
+                "Mutual Authentication",
+                "Message Authentication Code",
+                "Model Formulation",
+                "Test Session",
+                "Random Generation",
+                "Secret Key",
+                "Public Key",
+                "Orthogonal Frequency Division Multiplexing",
+                "Side-channel",
+                "Message Authentication",
+                "Dragonfly",
+                "Secret Sharing",
+                "Network Devices",
+                "Session Key",
+                "Security Model",
+                "Man-in-the-middle",
+                "Cryptographic Operations",
+                "Passive Attacks",
+                "Cryptographic Primitives",
+                "Industrial Communication",
+                "Future Sessions",
+                "Industrial Internet Of Things",
+                "Network Infrastructure"
+            ],
+            "Author Keywords": [
+                "LiFi Security",
+                "Post-Compromise Security",
+                "IEEE 802.15.13",
+                "Key Exchange"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1217,7 +2435,58 @@
                 "firstName": "Stefan",
                 "lastName": "Mangard"
             }
-        ]
+        ],
+        "abstract": "Memory tagging allows to establish memory safety for software developed in unsafe languages like C/C++. Since it is an effective mechanism with low architectural complexity, ISA extensions, like ARM MTE or SPARC ADI, already integrate memory tagging on the architectural level for commodity computer systems. However, despite being in high demand, memory tagging features are currently absent in modern x86 processors. This work presents IntegriTag, a hardware-enforced memory tagging solution for existing commodity x86 CPUs. We leverage the Intel® Total Memory Encryption-Multi-Key (Intel® TME-MK) hardware feature that was initially envisioned for virtual machine isolation to instead provide memory tagging capabilities on off-the-shelf x86 processors. Unlike ARM MTE and SPARC ADI, this does not require the integration of a separate tagged memory architecture, which would increase the overall system complexity. Instead, our solution allows us to implicitly enforce the desired security policies by incorporating them into the existing memory encryption integrity checks. In addition, our design addresses security issues that affect tagged memory architectures with small tag spaces. Intel® TME-MK allows for a greater number of key identifier bits, thus offering significantly stronger security compared to the 4-bit tags of ARM MTE and SPARC ADI. We implement a holistic open-source software framework based on Intel® TME-MK, supporting several software-controlled and hardware-enforced memory safety policies. Moreover, we evaluate our design's performance overhead and security properties, underlining the practicability and efficacy of our approach. Our design is binary-compatible with existing software and provides both temporal and spatial memory safety while imposing an overhead of 32–41%, which is significantly lower than the overheads of memory safety schemes in software on commodity hardware that provide comparable security properties.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Program processors",
+                "Memory architecture",
+                "Prototypes",
+                "Tagging",
+                "Hardware",
+                "Safety"
+            ],
+            "Index Terms": [
+                "Spatial Memory",
+                "Security Policy",
+                "Instruction Set Architecture",
+                "Software Framework",
+                "Total Memory",
+                "Temporal Memory",
+                "Performance Overhead",
+                "Hardware Features",
+                "Integrity Checking",
+                "Metadata",
+                "Detection Probability",
+                "Test Suite",
+                "Forward Error Correction",
+                "Local Memory",
+                "Object Memory",
+                "Additional Overhead",
+                "Threat Model",
+                "Read Operation",
+                "Encryption And Decryption",
+                "Subsequent Reading",
+                "Message Authentication Code",
+                "Number Of Keys",
+                "Encryption Key",
+                "Physical Address",
+                "Memory Allocation",
+                "Virtual Memory",
+                "Linux Kernel",
+                "Integrity Violations",
+                "Physical Memory",
+                "Detection Capability"
+            ],
+            "Author Keywords": [
+                "Memory Safety",
+                "Memory Sanitization",
+                "Intel® TME-MK",
+                "Memory Encryption",
+                "Memory Tagging"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1282,7 +2551,56 @@
                 "firstName": "Rongxing",
                 "lastName": "Lu"
             }
-        ]
+        ],
+        "abstract": "Generative Adversarial Networks (GANs) have been widely used in various application scenarios. Since the production of a commercial GAN requires substantial computational and human resources, the copyright protection of GANs is urgently needed. This paper presents a novel finger-printing scheme for the Intellectual Property (IP) protection of image-to-image GANs based on a trusted third party. We break through the stealthiness and robustness bottlenecks suffered by previous fingerprinting methods for classification models being naively transferred to GANs. Specifically, we innovatively construct a composite deep learning model from the target GAN and a classifier. Then we generate fingerprint samples from this composite model, and embed them in the classifier for effective ownership verification. This scheme inspires some concrete methodologies to practically protect the modern image-to-image translation GANs. Theoretical analysis proves that these methods can satisfy different security requirements necessary for IP protection. We also conduct extensive experiments to show that our solutions outperform existing strategies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Deep learning",
+                "Design methodology",
+                "Computational modeling",
+                "Production",
+                "Intellectual property",
+                "Fingerprint recognition",
+                "Generative adversarial networks"
+            ],
+            "Index Terms": [
+                "Generative Adversarial Networks",
+                "Classification Model",
+                "Deep Learning Models",
+                "Composite Model",
+                "Security Requirements",
+                "Intellectual Property Protection",
+                "Fingerprinting Method",
+                "Fingerprints Of Samples",
+                "Normal Samples",
+                "Feature Space",
+                "Super-resolution",
+                "Diffusion Model",
+                "Peak Signal-to-noise Ratio",
+                "Transformer Model",
+                "Clean Samples",
+                "Target Model",
+                "Output Samples",
+                "Public Key",
+                "Verification Process",
+                "Image Transformation",
+                "Verification Samples",
+                "Generative Adversarial Networks Model",
+                "Adversarial Examples",
+                "Unique Label",
+                "Adversarial Attacks",
+                "Triplet Loss",
+                "Cryptographic Primitives",
+                "Security Parameter",
+                "Threat Model",
+                "Output Image"
+            ],
+            "Author Keywords": [
+                "Generative Adversarial Networks",
+                "IP Protection",
+                "Fingerprinting"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1335,7 +2653,50 @@
                 "firstName": "Vladislav",
                 "lastName": "Mladenov"
             }
-        ]
+        ],
+        "abstract": "Single Sign-On (SSO) with OAuth 2.0 and OpenID Connect 1.0 is essential for user authentication and autho-rization on the Internet. Billions of users rely on SSO services provided by Google, Facebook, and Apple. For large-scale measurements on the security of SSO, researchers need to reliably detect SSO implementations in the wild. In this paper, we survey the current state of 36 SSO measurement tools from prior work and discover gaps leading to blind spots in the SSO landscape that hinder the community from improving large-scale research. We observe unreliable measurements and a lack of reproducibility, making comparisons between studies difficult, if not impossible. We fill these gaps with SSO-MONITOR, our open-source, modular, and highly extensible framework for large-scale SSO landscape and security measurements. SSO-MONITOR achieves a high accuracy of 93% and, compared to pre-vious tools, significantly improves the reliability of SSO measurements by 19 %. It continuously takes snapshots of SSO implementations on the top 1M web sites to compose an SSO archive that is reproducible by design. Therefore, it passively monitors the SSO flows and provides an extensive set of landscape and security insights on sso-monitor.me. Our SSO archive allows researchers to perform comprehensive measurements over time and even beyond the scope of SSO. We use the data in our SSO archive to measure the security of 89k SSO authentication flows on the top 1M websites. Thereby, we discover 33k violations of OAuth Security Best Current Practices and 339 severe security vulnerabilities. They include 30 username and password leaks and 28 token leaks that allow full account takeovers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Surveys",
+                "Systematics",
+                "Current measurement",
+                "Authentication",
+                "Passwords",
+                "Time measurement",
+                "Internet",
+                "Security",
+                "Reliability",
+                "Web sites"
+            ],
+            "Index Terms": [
+                "Security Measures",
+                "Single Sign-on",
+                "Reliable Detection",
+                "Top Site",
+                "Large-scale Measurements",
+                "Search Engine",
+                "Human-computer Interaction",
+                "Reachable",
+                "Security Issues",
+                "Automatic Detection",
+                "State Parameters",
+                "Regular Expressions",
+                "Security Research",
+                "Security Parameter",
+                "Security Evaluation",
+                "Browser Window",
+                "API Calls"
+            ],
+            "Author Keywords": [
+                "Single Sign-On",
+                "Authentication",
+                "Authorization",
+                "OAuth",
+                "OpenID Connect",
+                "Web Archive",
+                "SSO Archive"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1370,7 +2731,54 @@
                 "firstName": "Ji Won",
                 "lastName": "Yoon"
             }
-        ]
+        ],
+        "abstract": "Recent speech-based services such as voice assistants and cloud computing services have brought security concerns, since those services constantly send user's speech data to the server. Speech data contain user's sensitive biometric data and spoken words and can be misused if it is leaked into wrong hands. In this context, Signal Processing in Encrypted Domain (SPED) can be a solution by mixing up Homomorphic Encryption (HE) with signal processing. Using HE enables computing on user's encrypted data without decrypting it, thus providing security and privacy. In this paper, we present a simple, but fast homomorphic Quantized Fourier Transform (QFT) with efficient packing of speech signals. Our work is based on the Fully Homomor-phic Encryption (FHE) scheme TFHE, which was proposed by Chillotti et al. We then present a thorough noise analysis of our QFT that helps to keep a reasonable noise level. Also, considering the TFHE's bootstrapping manner, we statistically analyze the boundary of the QFT coefficients, and present a simple criterion for scaling up the coefficients. Our criteria help keep the message precision as high as possible during the TFHE bootstrapping. We use our criteria to evaluate the magnitude of QFT with low latency, but with reasonable precision. Finally, we provide a proof-of-concept implementation of our QFT. With a ring dimension of 1024 and TFHE parameters that achieve 106 bits of security, we show that the QFT can be evaluated in 35 milliseconds for a single ciphertext of length 1024. This result is 74.6 times faster than in the previous work. We also built a homomorphic end-to-end speech processing framework that processes and classifies gender (resp. vowel) of encrypted speech data from the VoxCeleb (resp. PCVC) dataset. Our implementation classifies the gender (resp. vowel) with more than 83% (resp. 79%) accuracy with a minimum of 0.05 (resp. 0.56) seconds with multithreading.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Speech analysis",
+                "Multithreading",
+                "Noise",
+                "Discrete Fourier transforms",
+                "Personal voice assistants",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Discrete Fourier Transform",
+                "Fully Homomorphic Encryption",
+                "Fourier Transform",
+                "Signal Processing",
+                "Decoding",
+                "User Data",
+                "Speech Processing",
+                "Speech Signal",
+                "Encrypted Data",
+                "Noise Analysis",
+                "Encryption Scheme",
+                "Speech Data",
+                "Virtual Assistant",
+                "Support Vector Machine",
+                "Parallelization",
+                "Multilayer Perceptron",
+                "Gender Binary",
+                "Noise Variance",
+                "Most Significant Bit",
+                "Public Key",
+                "Laplace Distribution",
+                "Audio Data",
+                "Mel-frequency Cepstral Coefficients",
+                "Short-time Fourier Transform",
+                "Pseudo-random Number Generator",
+                "Different Sets Of Parameters",
+                "Linear Support Vector Machine"
+            ],
+            "Author Keywords": [
+                "Homomorphic Encryption",
+                "QFT",
+                "Fourier Transform",
+                "Speech Processing"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1405,7 +2813,51 @@
                 "firstName": "An",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "Machine learning models, in particular deep neural networks, are currently an integral part of various applications, from healthcare to finance. However, using sensitive data to train these models raises concerns about privacy and security. One method that has emerged to verify if the trained models are privacy-preserving is Membership Inference Attacks (MIA), which allows adversaries to determine whether a specific data point was part of a model's training dataset. While a series of MIAs have been proposed in the literature, only a few can achieve high True Positive Rates (TPR) in the low False Positive Rate (FPR) region (0.01% ~ 1%). This is a crucial factor to consider for an MIA to be practically useful in real-world settings. In this paper, we present a novel approach to MIA that is aimed at significantly improving TPR at low FPRs. Our method, named learning-based difficulty calibration for MIA (LDC-MIA), characterizes data records by their hardness levels using a neural network classifier to determine membership. The experiment results show that LDC-MIA can improve TPR at low FPR by up to 4x compared to the other difficulty calibration-based MIAs. It also has the highest Area Under ROC curve (AUC) across all datasets. Our method's cost is comparable with most of the existing MIAs, but is orders of magnitude more efficient than one of the state-of-the-art methods, LiRA, while achieving similar performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Data privacy",
+                "Costs",
+                "Finance",
+                "Medical services",
+                "Machine learning",
+                "Artificial neural networks"
+            ],
+            "Index Terms": [
+                "Membership Inference Attacks",
+                "Neural Network",
+                "Machine Learning",
+                "Receiver Operating Characteristic Curve",
+                "Training Dataset",
+                "False Positive Rate",
+                "Machine Learning Models",
+                "Partial Model",
+                "Record Data",
+                "Part Of Dataset",
+                "Low False Positive Rate",
+                "High True Positive Rate",
+                "Hardness Levels",
+                "Dataset For Model Training",
+                "Dataset Size",
+                "Data Augmentation",
+                "Target Sample",
+                "Model Architecture",
+                "Model Dataset",
+                "Reference Model",
+                "Target Model",
+                "Membership Scores",
+                "Auxiliary Model",
+                "Auxiliary Dataset",
+                "Attack Performance",
+                "Neighborhood Information",
+                "Balanced Accuracy",
+                "Multilayer Perceptron Model",
+                "Differential Privacy",
+                "Precision-recall Curve"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1440,7 +2892,55 @@
                 "firstName": "Nasir",
                 "lastName": "Memon"
             }
-        ]
+        ],
+        "abstract": "With the rise of AI-enabled Real-Time Deepfakes (RTDFs), the integrity of online video interactions has become a growing concern. RTDFs have now made it feasible to replace an imposter's face with their victim in live video interactions. Such advancement in deepfakes also coaxes detection to rise to the same standard. However, existing deepfake detection techniques are asynchronous and hence ill-suited for RTDFs. To bridge this gap, we propose a challenge-response approach that establishes authenticity in live settings. We focus on talking-head style video interaction and present a taxonomy of challenges that specifically target inherent limitations of RTDF generation pipelines. We evaluate representative examples from the taxonomy by collecting a unique dataset comprising eight challenges, which consistently and visibly degrades the quality of state-of-the-art deepfake generators. These results are corroborated both by humans and a new automated scoring function, leading to 88.6% and 80.1% AUC, respectively. The findings under-score the promising potential of challenge-response systems for explainable and scalable real-time deepfake detection in practical scenarios. We provide access to data and code at https://github.com/mittalgovind/GOTCHA-Deepfakes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Deepfakes",
+                "Codes",
+                "Taxonomy",
+                "Pipelines",
+                "Streaming media",
+                "Real-time systems",
+                "Robustness"
+            ],
+            "Index Terms": [
+                "Deepfake Detection",
+                "Practical Scenarios",
+                "Unique Dataset",
+                "Interactive Video",
+                "Generation Pipeline",
+                "Health-related Quality Of Life",
+                "Facial Expressions",
+                "Videoconferencing",
+                "Head Movements",
+                "Video Frames",
+                "Online Assessment",
+                "Neck Region",
+                "Face Detection",
+                "Job Interview",
+                "Threat Model",
+                "Original Video",
+                "Types Of Artifacts",
+                "Facial Shape",
+                "Target Face",
+                "Color Correction",
+                "Fidelity Scores",
+                "Facial Deformity",
+                "Landmark Detection",
+                "Users Face",
+                "Loss Of Fidelity",
+                "Target Data",
+                "Scalable Way"
+            ],
+            "Author Keywords": [
+                "Deepfakes",
+                "Video Calls",
+                "Real-time Deepfakes",
+                "Challenge-Response",
+                "Authentication"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1493,7 +2993,53 @@
                 "firstName": "Debdeep",
                 "lastName": "Mukhopadhyay"
             }
-        ]
+        ],
+        "abstract": "Fully Homomorphic Encryption (FHE) schemes are widely used cryptographic primitives for performing arbitrary computations on encrypted data. However, FHE incorporates a computationally intensive mechanism called bootstrapping, that resets the noise in the ciphertext to a lower level allowing the computation on circuits of arbitrary depth. This process can take significant time, ranging from several minutes to hours. To address the above issue, in this work, we propose an Electronic Design Automation (EDA) framework <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\mathsf{FHEDA}$</tex> that generates efficient Boolean representations of circuits compatible with the Torus-FHE (ASIACRYPT 2020) scheme. To the best of our knowledge, this is the first work in the EDA domain of FHE. We integrate logic synthesis and gate optimization techniques into our <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\mathsf{FHEDA}$</tex> framework for reducing the total number of bootstrapping operations in a Boolean circuit, which leads to a significant (up to 50%) reduction in homomorphic computation time. Our <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\mathsf{FHEDA}$</tex> is built upon the observation that in Torus-FHE two consecutive Boolean gate evaluations over fresh encryptions require only one bootstrapping instead of two, based on appropriate parameter choices. By integrating this observation with logic replacement techniques into <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\mathsf{FHEDA}$</tex>, we could reduce the total number of bootstrapping operations along with the circuit depth. This eventually reduces the homomorphic evaluation time of Boolean circuits. In order to verify the efficacy of our approach, we assess the performance of the proposed EDA flow on a diverse set of representative benchmarks including privacy-preserving machine learning and different symmetric key block ciphers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Industries",
+                "Ciphers",
+                "Circuits",
+                "Noise",
+                "Neural networks",
+                "Machine learning",
+                "Logic gates"
+            ],
+            "Index Terms": [
+                "Efficient Circuit",
+                "Fully Homomorphic Encryption",
+                "Circuit Synthesis",
+                "Computation Time",
+                "Reduction In Time",
+                "Symmetric Encryption",
+                "Encrypted Data",
+                "Encryption Scheme",
+                "Boolean Gating",
+                "Block Cipher",
+                "Electronic Design Automation",
+                "Convolutional Neural Network",
+                "Plaintext",
+                "Standard Library",
+                "Secret Key",
+                "Original Scheme",
+                "Blocking Layer",
+                "Boolean Variable",
+                "Optimal Representation",
+                "Multi-party Computation",
+                "Set Of Libraries",
+                "Boolean Function",
+                "Gate Opening",
+                "Number Of Bootstraps",
+                "High-level Description",
+                "Synthesis Tool",
+                "Algebraic Operations"
+            ],
+            "Author Keywords": [
+                "TFHE",
+                "Bootstrapping",
+                "EDA"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1546,7 +3092,58 @@
                 "firstName": "Nidhi",
                 "lastName": "Rastogi"
             }
-        ]
+        ],
+        "abstract": "Deep neural networks for classification are vulnerable to adversarial attacks, where small perturbations to input samples lead to incorrect predictions. This susceptibility, combined with the black-box nature of such networks, limits their adoption in critical applications like autonomous driving. Feature-attribution-based explanation methods provide relevance of input features for model predictions on input samples, thus explaining model decisions. However, we observe that both model predictions and feature attributions for input samples are sensitive to noise. We develop a practical method for this characteristic of model prediction and feature attribution to detect adversarial samples. Our method, PASA, requires the computation of two test statistics using model prediction and feature attribution and can reliably detect adversarial samples using thresholds learned from benign samples. We validate our lightweight approach by evaluating the performance of PASA on varying strengths of FGSM, PGD, BIM, and CW attacks on multiple image and non-image datasets. On average, we outperform state-of-the-art statistical unsupervised adversarial detectors on CIFAR-10 and ImageNet by 14% and 35% ROC-AUC scores, respectively. Moreover, our approach demonstrates competitive performance even when an adversary is aware of the defense mechanism.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sensitivity analysis",
+                "Computational modeling",
+                "Perturbation methods",
+                "Noise",
+                "Detectors",
+                "Predictive models",
+                "Feature extraction"
+            ],
+            "Index Terms": [
+                "Adversarial Detection",
+                "Prediction Model",
+                "Neural Network",
+                "Deep Neural Network",
+                "Input Features",
+                "Characterization Of Properties",
+                "Input Samples",
+                "Exploratory Methods",
+                "Adversarial Attacks",
+                "Benign Samples",
+                "Projected Gradient Descent",
+                "Detection Methods",
+                "Convolutional Neural Network",
+                "Changes In Properties",
+                "False Positive Rate",
+                "Input Image",
+                "Model Sensitivity",
+                "Unsupervised Methods",
+                "Gradient Method",
+                "Differences In Predictions",
+                "Adversarial Examples",
+                "Adversarial Perturbations",
+                "Attribution Methods",
+                "AUC Score",
+                "Attribution Scores",
+                "Attack Success Rate",
+                "Image X",
+                "Performance Of Detection Methods",
+                "Noise Parameters",
+                "MNIST Dataset"
+            ],
+            "Author Keywords": [
+                "adversarial attack",
+                "deep learning",
+                "evasion",
+                "feature attribution",
+                "explanation"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1581,7 +3178,51 @@
                 "firstName": "Jean-Pierre",
                 "lastName": "Seifert"
             }
-        ]
+        ],
+        "abstract": "Graphic Processing Units (GPUs) have transcended their traditional use-case of rendering graphics and nowadays also serve as a powerful platform for accelerating ubiquitous, non-graphical rendering tasks. One prominent task is inference of neural networks, which process vast amounts of personal data, such as audio, text or images. Thus, GPUs became integral components for handling vast amounts of potentially confidential data, which has awakened the interest of security researchers. This lead to the discovery of various vulnerabilities in GPUs in recent years. In this paper, we uncover yet another vulnerability class in GPUs: We found that some GPU implementations lack proper register initialization routines before shader execution, leading to unintended register content leakage of previously executed shader kernels. We showcase the existence of the aforementioned vulnerability on products of 3 major vendors - Apple, NVIDIA and Qualcomm. The vulnerability poses unique challenges to an adversary due to opaque scheduling and register remapping algorithms present in the GPU firmware, complicating the reconstruction of leaked data. In order to illustrate the real-world impact of this flaw, we showcase how these challenges can be solved for attacking various workloads on the GPU. First, we showcase how uninitialized registers leak arbitrary pixel data processed by fragment shaders. We further implement information leakage attacks on intermediate data of Convolutional Neural Networks (CNNs) and present the attack's capability to leak and reconstruct the output of Large Language Models (LLMs).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Neural networks",
+                "Graphics processing units",
+                "Rendering (computer graphics)",
+                "Vectors",
+                "Scheduling",
+                "Registers",
+                "Security"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Neural Network",
+                "Convolutional Neural Network",
+                "Information Leakage",
+                "Scheduling Algorithm",
+                "Pixel Data",
+                "Convolutional Layers",
+                "Input Image",
+                "Parallelization",
+                "Recurrent Neural Network",
+                "Attention Mechanism",
+                "Latent Space",
+                "Application Programming Interface",
+                "Reconstruction Algorithm",
+                "Types Of Attacks",
+                "Binary Code",
+                "Embedding Vectors",
+                "Type Of Neural Network",
+                "Memory Speed",
+                "Physical Attacks",
+                "Tile Size",
+                "Position Embedding",
+                "Threat Model",
+                "Positional Encoding",
+                "Pipeline Stages"
+            ],
+            "Author Keywords": [
+                "System Security",
+                "GPU",
+                "Machine Learning Security"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1616,7 +3257,57 @@
                 "firstName": "Meiyappan",
                 "lastName": "Nagappan"
             }
-        ]
+        ],
+        "abstract": "Android enforces access control checks to protect sensitive framework APIs. If not properly protected, APIs can open the door for malicious, underprivileged apps to access sensitive resources. Unfortunately, as reported by the existing literature, such access control flaws are prevalent in Android APIs, notably in those introduced by customization parties. Hence, various solutions have been proposed to detect the flaws, particularly those due to inconsistencies. The solutions can be largely divided into two categories: convergence-based techniques and probabilistic inference approaches. In this paper, we are motivated by the promising application of using code constructs - beyond convergence analysis as proposed by the recent probabilistic approaches, to recommend access control enforcement and detect inconsistencies. Specifically, we propose a deep learning-based approach that aims to automatically learn the correspondence between various code constructs and access control requirement. This task faces significant challenges, particularly due the path-sensitive nature of Android access control implementation. To this end, we develop a static analysis pipeline that extracts and abstracts an API's implementation to succinct execution traces that can be correlated with access control labels. We then employ the statically derived features to fine-tune CodeBERT for our access control recommendation task. The fine-tuned model achieves an accuracy of 91 %, pre-cision of 91 %, and recall of 92 % on AOSP data. Additionally, our evaluation on custom ROMs shows that the model is able to rediscover previously reported inconsistencies, and even discover new ones. Hence, demonstrating its complementary nature to the existing access control evaluation and recom-mendation systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Access control",
+                "Deep learning",
+                "Codes",
+                "Accuracy",
+                "Pipelines",
+                "Static analysis",
+                "Feature extraction"
+            ],
+            "Index Terms": [
+                "Access Control",
+                "Execution Path",
+                "Static Analysis",
+                "Probabilistic Approach",
+                "Deep Learning-based Approaches",
+                "Fine-tuned Model",
+                "Probabilistic Inference",
+                "Code Construction",
+                "False Positive",
+                "Deep Learning",
+                "Training Dataset",
+                "Source Code",
+                "Deep Learning Models",
+                "Flow Control",
+                "Class Imbalance",
+                "Design Decisions",
+                "Denial Of Service",
+                "Single Label",
+                "Semantic Properties",
+                "Low Number Of Observations",
+                "Malware Detection",
+                "Inconsistent Detection",
+                "Conditional Statements",
+                "Sufficient Training Data",
+                "Training Corpus",
+                "Pre-trained Language Models",
+                "Manual Investigation",
+                "Probabilistic Rules",
+                "Deep Learning Solutions",
+                "Ambiguous Cases"
+            ],
+            "Author Keywords": [
+                "android",
+                "access control",
+                "deep learning",
+                "static analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1663,7 +3354,54 @@
                 "firstName": "Rahul",
                 "lastName": "Chatterjee"
             }
-        ]
+        ],
+        "abstract": "Previous research has shown that abusers in an intimate relationship can find plenty of technical advice, tools, and how-to guides online for covertly conducting intimate partner surveillance (IPS). However, it is unclear what resources survivors seeking to defend themselves against IPS can use. To address this gap, we first conducted a survey-based study with 63 survivors recruited via Prolific to understand what resources survivors rely on. We showed that 45% utilized online resources for assistance, with 67% of them relying on search engines. We then conducted a systematic survey of the results obtained via Google search engine to identify resources available for survivors. We found that the resources survivors can find online contain poor, inaccurate, and unactionable advice. They are hard to understand and do not help mitigate IPS. To investigate whether the lack of useful resources is solely experienced by survivors, we also crawled resources that abusers will find online. We found that abusers can easily find resources recommending spyware apps and hidden devices and often explicitly promoting IPS. We also compared the understandability and actionability of the resources using an adopted Patient Education Materials Assessment Tool (PEMAT) score. We concluded that resources available to abusers are significantly more understandable and actionable than those available to survivors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Surveys",
+                "Systematics",
+                "Surveillance",
+                "Education",
+                "Search engines",
+                "Virtual private networks",
+                "Internet",
+                "IP networks",
+                "Spyware"
+            ],
+            "Index Terms": [
+                "Online Resource",
+                "Intimate Partner",
+                "Search Engine",
+                "Search Results",
+                "Cloud Computing",
+                "Web Page",
+                "Intimate Partner Violence",
+                "Adequate Resources",
+                "Legality",
+                "Search Queries",
+                "Internet Of Things Devices",
+                "Online Search",
+                "Forms Of Abuse",
+                "Search Behavior",
+                "GPS Tracking",
+                "Professional Assistance",
+                "Target Surveillance",
+                "Relevant Pages",
+                "Chatbot",
+                "Online Search Engines",
+                "Virtual Private Network",
+                "Lack Of Advice",
+                "Security Cameras",
+                "Online Forums",
+                "Location Tracking",
+                "Blog Posts"
+            ],
+            "Author Keywords": [
+                "tech abuse",
+                "surveillance",
+                "IPS"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1692,7 +3430,52 @@
                 "firstName": "Awais",
                 "lastName": "Rashid"
             }
-        ]
+        ],
+        "abstract": "As the need for secure systems grows, the exploration of secure hardware like Morello, based on the Capability Hardware Enhanced RISC Instructions (CHERI) architecture, becomes crucial. As Morello navigates towards market induction, establishing systematic approaches for transitioning software to its pure capability mode emerges as a crucial research endeavor. This paper investigates two main areas: a comparison with CERT guidelines and an exploitation analysis on the Morello platform. The comparison aims to identify potential developer-induced vulnerabilities and compiler limitations, elucidating how the Morellollvm compiler behaves when there are CERT rule violations. Our exploitation analysis explores the limitations of the Morello-llvm compiler toolchain and the developer errors that could bypass Morello's advanced security features. The findings highlight that despite advancements in toolchains, developer-induced vulnerabilities remain a significant issue, emphasizing the importance of adhering to established programming standards like CERT guidelines.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Navigation",
+                "Computer architecture",
+                "Programming",
+                "Hardware",
+                "Software",
+                "Vectors",
+                "Safety"
+            ],
+            "Index Terms": [
+                "Security Implications",
+                "Cybersecurity",
+                "Potential Vulnerability",
+                "Pure Mode",
+                "Hardware Security",
+                "Response Variables",
+                "Processing Software",
+                "Flow Control",
+                "Denial Of Service",
+                "Security Vulnerabilities",
+                "Instruction Set Architecture",
+                "Dynamic Allocation",
+                "Security Model",
+                "Hybrid Mode",
+                "Default Configuration",
+                "Memory Operations",
+                "Protective Memory",
+                "Fine-grained Control",
+                "Dynamic Memory",
+                "Error Handling",
+                "Memory Allocation",
+                "Memory Management",
+                "Buffer Overflow",
+                "Security Posture",
+                "Vulnerable Category",
+                "Potential Security"
+            ],
+            "Author Keywords": [
+                "Morello/CHERI exploitation",
+                "CERT guidelines",
+                "Porting efforts"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1751,7 +3534,58 @@
                 "firstName": "Shi",
                 "lastName": "Wu"
             }
-        ]
+        ],
+        "abstract": "Software composition analysis (SCA) has attracted the attention of the industry and academic community in recent years. Given a piece of program source code, SCA facilitates extracting certain components from the input program and matching the extracted components with opensource software (OSS) libraries. Despite the prosperous development of SCA, binary SCA (BSCA) is highly challenging and still underdeveloped. Few available BSCA solutions are either closed source (for commercial usage) or suffer from low performance. Nevertheless, a related line of research, binary similarity analysis (BSA), which decides the similarity between two pieces of binary code, has been progressively developed in academia for decades. De facto BSA techniques, often based on deep learning, efficiently analyze large-scale executables with high accuracy. This study explores bridging the gap between state-of-the-art (SOTA) BSA and BSCA. We spent considerable manual effort building the first large real-world benchmark dataset, containing over 55 million lines of C/C++ code. Then, we establish our BSCA pipeline by extending and calibrating the SOTA SCA pipeline. Particularly, we concretize the key procedure of BSCA, namely matching a binary component with OSS using six SOTA BSA techniques. Evaluation using our benchmark dataset reveals that simply employing BSA in BSCA exhibits less desirable accuracy, as BSCA faces unique challenges. After inspecting the failed cases, we propose three enhancements whose hybrid usage improves the F1 score of BSCA by over 30% and outperforms SOTA commercial BSCA software. Our experiment on 1-day vulnerability detection demonstrates our BSCA framework's effectiveness. We also discuss several open challenges and potential solutions to augment BSCA solutions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Industries",
+                "Accuracy",
+                "Source coding",
+                "Pipelines",
+                "Manuals",
+                "Benchmark testing",
+                "Software"
+            ],
+            "Index Terms": [
+                "Open-source Software",
+                "Source Code",
+                "F1 Score",
+                "Benchmark Datasets",
+                "Binary Code",
+                "Manual Effort",
+                "False Positive",
+                "Semantic",
+                "Similarity Score",
+                "False Alarm",
+                "Precision And Recall",
+                "Technical Solutions",
+                "Hash Function",
+                "Submodule",
+                "Matching Model",
+                "Reverse Engineering",
+                "Functional Database",
+                "Embedding Vectors",
+                "Binary Function",
+                "Commercial Tools",
+                "Open Source Software Projects",
+                "Control Flow Graph",
+                "Call Graph",
+                "Exact Version",
+                "Security Community",
+                "Third-party Libraries",
+                "Malware",
+                "Potential Vulnerability",
+                "Input Function",
+                "Specific Version"
+            ],
+            "Author Keywords": [
+                "Software composition analysis",
+                "Software reuse",
+                "Binary code analysis",
+                "Binary similarity analysis",
+                "Vulnerability detection"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1816,7 +3650,49 @@
                 "firstName": "Lingxiao",
                 "lastName": "Jiang"
             }
-        ]
+        ],
+        "abstract": "Modern Android apps consist of both host app code and third-party libraries. Traditional static analysis tools conduct taint analysis for API misuses on the entire app code, while third-party library (TPL) detection tools focus solely on library code. Both approaches, however, are prone to some inherent false negatives: taint analysis tools may neglect third-party libraries or face timeouts/errors in whole app-based analysis, and TPL detection tools are not designed for pinpointing specific vulnerable methods. These challenges underscore the need for enhanced identification of insecure methods in Android apps, particularly for app markets addressing open-source security incidents. In this paper, we aim to complement the identification of missed false negatives in both TPL detection and taint analysis by directly identifying clones of insecure methods, regardless of whether they are in the host app code or a shrunk library. We propose MtdScout, a novel crosslayer, method-level clone detection tool for Android apps. MtdScout generates bytecode signatures for flawed source methods using compiler-style interpretation and abstraction, and efficiently matches them with target app bytecode using signature-mapped search trees. Our experiment using ground-truth apps shows that MtdScout achieves the highest accuracy among three tested clone detection tools, with a precision of 92.5% and recall of 87.2%. A large-scale experiment with 23.9K apps from Google Play demonstrates MtdScout's effectiveness in complementing both LibScout and CryptoGuard by identifying numerous false negatives they missed due to app shrinking, method-only cloning, and inherent timeouts and failures in expensive taint analysis. Additionally, our experiment uncovers four security findings that highlight the disparities between MtdScout's methodlevel clone detection and package-level library detection.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cross layer design",
+                "Codes",
+                "Accuracy",
+                "Cloning",
+                "Static analysis",
+                "Libraries",
+                "Internet"
+            ],
+            "Index Terms": [
+                "Android Apps",
+                "Signature Generation",
+                "False Negative",
+                "Tool For Detection",
+                "Static Analysis",
+                "Large-scale Experiments",
+                "Tree Search",
+                "Clone Detection",
+                "Third-party Libraries",
+                "Source Code",
+                "F1 Score",
+                "Lookup Table",
+                "Class Assignment",
+                "Leaf Node",
+                "Secret Key",
+                "Regular Expressions",
+                "Open-source Library",
+                "Typical Signature",
+                "Depth-first",
+                "Message Authentication Code",
+                "Abstract Syntax Tree",
+                "Return Type",
+                "Call Graph",
+                "Search Settings",
+                "Control Flow Graph",
+                "Pairs Of Trees",
+                "Single Signature",
+                "Tencent"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1863,7 +3739,57 @@
                 "firstName": "Thomas",
                 "lastName": "Eisenbarth"
             }
-        ]
+        ],
+        "abstract": "The cloud computing landscape has evolved sig-nificantly in recent years, embracing various sandboxes to meet the diverse demands of modern cloud applications. These sandboxes encompass container-based technologies like Docker and gVisor, microVM-based solutions like Fire-cracker, and security-centric sandboxes relying on Trusted Execution Environments (TEEs) such as Intel SGX and AMD SEV. However, the practice of placing multiple tenants on shared physical hardware raises security and privacy concerns, most notably side-channel attacks. In this paper, we investigate the possibility of fingerprinting containers through CPU frequency reporting sensors in Intel and AMD CPUs. One key enabler of our attack is that the current CPU frequency information can be accessed by user-space attackers. We demonstrate that Docker images exhibit a unique frequency signature, enabling the distinction of different containers with up to 84.5 % accuracy even when multiple containers are running simultaneously in different cores. Additionally, we assess the effectiveness of our attack when performed against several sandboxes deployed in cloud environments, including Google's gVisor, AWS’ Firecracker, and TEE-based platforms like Gramine (utilizing Intel SGX) and AMD SEV. Our empirical results show that these attacks can also be carried out successfully against all of these sandboxes in less than 40 seconds, with an accuracy of over 70 % in all cases. Finally, we propose a noise injection-based countermeasure to mitigate the proposed attack on cloud environments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Privacy",
+                "Accuracy",
+                "Microarchitecture",
+                "Noise",
+                "Side-channel attacks",
+                "Containers"
+            ],
+            "Index Terms": [
+                "Sandbox Environment",
+                "Fingerprinting Attack",
+                "Cloud Computing",
+                "Graminis",
+                "Side-channel",
+                "Cloud Environment",
+                "Docker Image",
+                "Execution Environment",
+                "Cloud Applications",
+                "CPU Frequency",
+                "Natural Environment",
+                "Public Repository",
+                "Convolutional Layers",
+                "Convolutional Neural Network Model",
+                "Microarchitecture",
+                "Virtual Machines",
+                "Version Of Image",
+                "Multiple Cores",
+                "Dynamic Frequency",
+                "Cloud Providers",
+                "Docker Container",
+                "ML Models",
+                "Online Phase",
+                "Microservices",
+                "System Calls",
+                "Threat Model",
+                "Noise Injection",
+                "Performance Overhead",
+                "Set Of Arguments"
+            ],
+            "Author Keywords": [
+                "side-channel attacks",
+                "dynamic frequency",
+                "container technology",
+                "serverless computing",
+                "sandbox environment"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1922,7 +3848,50 @@
                 "firstName": "Sambuddho",
                 "lastName": "Chakravarty"
             }
-        ]
+        ],
+        "abstract": "Smartphone app usage has steeply risen in India in the past decade. But limited efforts in the past assess the privacy aspects of these smartphone apps. Many of these are used for common utilities and handle sensitive user data. Such sensitive data leaks can have a wide variety of consequences when exposed to untrusted players (e.g., repressive governments, data/content hosting companies, and other third parties). These could range from mere embar-rassment to personal targeting and surveillance. This paper presents a measurement study on the data collection and privacy considerations of some of the most popular apps on the Indian Google Play Store. We selected 24 apps, and analyzed their data collection behavior on phones as well as the security of the servers to whom they send the data. We also obfuscated the data being collected and sent to the backend servers. Interestingly, for the non-government apps we found that extensive (mostly personally identifiable information), often “unnecessary”, data collection is being performed. In other words, we observed that a lot of these apps work fine even without these pieces of sensitive information. We then classified the data collected as necessary or not necessary based on this information. Furthermore, we found that often such sensitive data may be available in plaintext to the intermediate players managing/deploying the hosting infrastructure. We also found that while the governmental services-based apps collect fewer such unnecessary data points, they often store the data on web-fronted back-end databases with little to no user authentication mechanisms enabled. We expect our study to enable better understanding among both users and app developers about the privacy implications of these data collection practices.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data privacy",
+                "Privacy",
+                "Databases",
+                "Government",
+                "Companies",
+                "Data collection",
+                "Internet"
+            ],
+            "Index Terms": [
+                "User Data",
+                "Data Privacy",
+                "Pieces Of Information",
+                "Sensitive Data",
+                "Information Leakage",
+                "App Use",
+                "Personal Details",
+                "Personal Identifiers",
+                "App Developers",
+                "Play Store",
+                "Popular Apps",
+                "User Authentication",
+                "Data Collection Practices",
+                "Privacy Considerations",
+                "Decoding",
+                "Personal Data",
+                "Access To Information",
+                "Kinds Of Data",
+                "Lot Of Data",
+                "Privacy Policies",
+                "Edge Server",
+                "End-to-end Encryption",
+                "External Attacks",
+                "Threat Model",
+                "Infrastructure Performance",
+                "Reserve Bank Of India",
+                "Integrity Checking",
+                "Identity Theft",
+                "App Features"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -1963,7 +3932,51 @@
                 "firstName": "Frank",
                 "lastName": "Hartmann"
             }
-        ]
+        ],
+        "abstract": "Computing the maximum from a list of secret inputs is a widely-used functionality that is employed either indirectly as a building block in secure computation frameworks, such as ABY (NDSS'15) or directly used in multiple applications that solve optimisation problems, such as secure machine learning or secure aggregation statistics. Incremental distributed point function (I-DPF) is a powerful primitive (IEEE S&P'21) that significantly reduces the client-to-server communication and are employed to efficiently and securely compute aggregation statistics. In this paper, we investigate whether I-DPF can be used to improve the efficiency of secure two-party computation (2PC) with an emphasis on computing the maximum value and the k-th (with <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$k$</tex> unknown to the computing parties) ranked value from a list of secret inputs. Our answer is affirmative, and we propose novel secure 2PC protocols that use I-DPF as a building block, resulting in significant efficiency gains compared to the state-of-the-art. More precisely, our contributions are: (i) We present two new secure computation frameworks that efficiently compute secure aggregation statistics bit-wisely or batch-wisely; (ii) we propose novel protocols to compute the maximum value, the k-th ranked value from a list of secret inputs; (iii) we provide variations of the proposed protocols that can perform batch computations and thus provide further efficiency improvements; and (iv) we provide an extensive performance evaluation for all proposed protocols. Our protocols have a communication complexity that is independent of the number of secret inputs and linear to the length of the secret input domain. Our experimental results show enhanced efficiency over state-of-the-art solutions, particularly notable when handling large-scale inputs. For instance, in scenarios involving an input set of five million elements with an input domain size of 31 bits, our protocol <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\Pi_{\\text{Max}}$</tex> achieves an 18% reduction in online execution time and a 67% decrease in communication volume compared to the most efficient existing solution.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Protocols",
+                "Machine learning",
+                "Computational efficiency",
+                "Complexity theory",
+                "Optimization",
+                "Sorting"
+            ],
+            "Index Terms": [
+                "Complex Communication",
+                "Rank Value",
+                "Multi-party Computation",
+                "Input Domain",
+                "Input List",
+                "Communication Volume",
+                "Input Size",
+                "Computational Overhead",
+                "Binary String",
+                "Public Key",
+                "Single Round",
+                "Binary Tree",
+                "Least Significant Bit",
+                "Most Significant Bit",
+                "Secret Sharing",
+                "Key Generation",
+                "Online Evaluation",
+                "Key Size",
+                "Security Parameter",
+                "Communication Rounds",
+                "Value Of Bit",
+                "Online Phase",
+                "Trusted Third Party",
+                "Maximum Computation",
+                "Public Parameters",
+                "Hitters",
+                "Cardinality",
+                "Round-trip Time",
+                "Number Of Values",
+                "Information Leakage"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -2022,7 +4035,46 @@
                 "firstName": "Blase",
                 "lastName": "Ur"
             }
-        ]
+        ],
+        "abstract": "Home Internet of Things (IoT) devices can be difficult for users to secure. Prior work has suggested measuring these devices' network behaviors and using these characterizations to create allowlists of permitted endpoints. Unfortunately, previous studies have typically been conducted in controlled lab settings, with one or two devices per product. In this paper, we examine whether popular home IoT products' network behaviors generalize via both in-lab experiments of 24 devices and a large, crowdsourced dataset of IoT devices in the wild. We find that observing traffic from one device in one lab is often insufficient to fully characterize an IoT product's network behaviors. For example, specifying which endpoints a device may contact based on initial measurements in our lab led 25% of products to stop functioning later, and even more when using a VPN. We then used the crowdsourced dataset to better understand this traffic's heterogeneity and pinpoint how to create more generalizable allowlists. We identified causes of failure, such as regionalization, CDN usage, third-party integrations, and API changes. Finally, we used the crowdsourced data in numerous configurations to specify which endpoints each product in our lab could contact. We found that domain-level allowlists enabled the majority of devices to function in our lab using data collected years in the past. For the remaining devices, we characterize how to mitigate the failures observed and pave the way to creating more generalizable allowlists.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Virtual private networks",
+                "Internet of Things"
+            ],
+            "Index Terms": [
+                "Internet Of Things",
+                "Internet Of Things Devices",
+                "Network Behavior",
+                "Home Internet Of Things",
+                "Cause Of Failure",
+                "Production Networks",
+                "Controlled Laboratory Setting",
+                "Crowdsourced Data",
+                "Original Authors",
+                "Anomaly Detection",
+                "Functional Devices",
+                "Load Balancing",
+                "Product Name",
+                "Set Of Devices",
+                "Network Devices",
+                "Device Behavior",
+                "Domain Name",
+                "Threat Model",
+                "Internet Of Things Networks",
+                "Domain Representation",
+                "Distributed Denial Of Service",
+                "Home Network",
+                "Stop Working",
+                "Production Of Datasets",
+                "Cloud Providers",
+                "Popular Devices",
+                "Region C",
+                "Device Group",
+                "Cloud Computing",
+                "Level Of Abstraction"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -2038,7 +4090,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE 9th European Symposium on Security and Privacy (EuroS&P)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10628975",
@@ -2054,7 +4108,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE 9th European Symposium on Security and Privacy (EuroS&P)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10628975",
@@ -2070,7 +4126,13 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE 9th European Symposium on Security and Privacy (EuroS&P)",
-        "authors": []
+        "authors": [],
+        "abstract": "Message from Program Chairs: EuroSP 2024",
+        "keywords": {
+            "Index Terms": [
+                "Program Chair"
+            ]
+        }
     },
     {
         "publicationNumber": "10628975",
@@ -2099,7 +4161,9 @@
                 "firstName": "Matteo",
                 "lastName": "Maffei"
             }
-        ]
+        ],
+        "abstract": "A warm welcome to Vienna! We're excited to host the IEEE EuroS&P 2024 at the University of Vienna's Faculty of Informatics from July 8th to 12th. It brings together researchers and enthusiasts in security&privacy from all over the world for in-person discussions and collaborations. Huge thanks to the organizers and everyone involved in making this event possible!",
+        "keywords": {}
     },
     {
         "publicationNumber": "10628975",
@@ -2115,7 +4179,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE 9th European Symposium on Security and Privacy (EuroS&P)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10628975",
@@ -2131,7 +4197,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE 9th European Symposium on Security and Privacy (EuroS&P)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10628975",
@@ -2147,7 +4215,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE 9th European Symposium on Security and Privacy (EuroS&P)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10628975",
@@ -2163,7 +4233,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE 9th European Symposium on Security and Privacy (EuroS&P)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10628975",
@@ -2179,7 +4251,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE 9th European Symposium on Security and Privacy (EuroS&P)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10628975",
@@ -2195,6 +4269,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE 9th European Symposium on Security and Privacy (EuroS&P)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

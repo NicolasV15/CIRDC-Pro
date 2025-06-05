@@ -38,7 +38,49 @@
                 "firstName": null,
                 "lastName": "Mitsuhisa Sato"
             }
-        ]
+        ],
+        "abstract": "Emerging 64bitOS’s supply a huge amount of memory address space that is essential for new applications using very large data. It is expected that the memory in connected nodes can be used to store swapped pages efficiently, especially in a dedicated cluster which has a high-speed network such as 10GbE and Infiniband. In this paper, we propose the Distributed Large Memory System (DLM), which provides very large virtual memory by using remote memory distributed over the nodes in a cluster. The performance of DLM programs using remote memory is compared to ordinary programs using local memory. The results of STREAM, NPB and Himeno benchmarks show that the DLM achieves better performance than other remote paging schemes using a block swap device to access remote memory. In addition to performance, DLM offers the advantages of easy availability and high portability, because it is a user-level software without the need for special hardware. To obtain high performance, the DLM can tune its parameters independently from kernel swap parameters. We also found that DLM’s independence of kernel swapping provides more stable behavior.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Arrays",
+                "Memory management",
+                "Servers",
+                "Bandwidth",
+                "Performance evaluation",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Large Systems",
+                "Memory System",
+                "Cluster Nodes",
+                "Large Memory",
+                "Remote Memory",
+                "Stable Behavior",
+                "Local Memory",
+                "Specific Hardware",
+                "High-speed Network",
+                "High Portability",
+                "Virtual Memory",
+                "State Data",
+                "Local Processes",
+                "Size Ratio",
+                "Local Host",
+                "Array Size",
+                "Benchmark Test",
+                "Ethernet",
+                "Memory Size",
+                "Remote Processing",
+                "Remote Server",
+                "Memory Bandwidth",
+                "Dynamic Allocation",
+                "File Access",
+                "Hardware Modifications",
+                "Specific Kernel",
+                "Kernel Parameters",
+                "End Of The Computation"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -67,7 +109,42 @@
                 "firstName": "Krzysztof",
                 "lastName": "Kuchcinski"
             }
-        ]
+        ],
+        "abstract": "Program parallelization and distribution becomes increasingly important when new multi-core architectures and cheaper cluster technology provide ways to improve performance. Using declarative languages, such as constraint programming, can make the transition to parallelism easier for the programmer. In this paper, we address parallel and distributed search in constraint programming (CP) by proposing several load-balancing methods. We show how these methods improve the execution-time scalability of constraint programs. Scalability is the greatest challenge of parallelism and it is particularly an issue in constraint programming, where load-balancing is difficult. We address this problem by proposing CP-specific load-balancing methods and evaluating them on a cluster by using benchmark problems. Our experimental results show that the methods behave differently well depending on the type of problem and the type of search. This gives the programmer the opportunity to optimize the performance for a particular problem.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computers",
+                "Program processors",
+                "Programming",
+                "Parallel processing",
+                "Scalability",
+                "Search problems",
+                "Shape"
+            ],
+            "Index Terms": [
+                "Constraint Satisfaction Problem",
+                "Load Balancing Method",
+                "Scalable",
+                "Parallelization",
+                "Constraint Programming",
+                "Exercise",
+                "Heuristic",
+                "Optimization Problem",
+                "Number Of Values",
+                "Tree Branches",
+                "Tree Search",
+                "Terminal Phase",
+                "Depth-first",
+                "Entire Tree",
+                "Network Load",
+                "Global Constraints",
+                "Fastest Method",
+                "Split Off",
+                "Inconsistent Values",
+                "Parallel Search",
+                "Worker Size"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -108,7 +185,43 @@
                 "firstName": null,
                 "lastName": "Yoshihiko Hotta"
             }
-        ]
+        ],
+        "abstract": "Recently, several energy reduction techniques using DVFS have been presented for PC clusters. This work proposes a Code-instrumented Runtime DVFS control, in which the combination of frequency and voltage (called a gear) is managed at the instrumented code at runtime. The codes are inserted by defining the program regions that have the same characteristics. The Code-instrumented Runtime DVFS control method is better than the Interrupt-based Runtime DVFS control method, in which the gear is managed by periodic interrupt, because it can reflect the program information to control DVFS. Though Static DVFS control, which makes use of the power profile before execution, gives better energy reduction, the proposed Code-instrumented Runtime DVFS control is easier to use, because it requires no information such as profile. The proposed DVFS control method was designed and implemented. The beta-adaptation was used as the runtime algorithm to choose the appropriate gear. The results show that the proposed method can improve the performance and energy consumption compared with Interrupt-based Runtime DVFS control. Although our Code-instrumented Runtime DVFS control can select lower voltages and frequencies than the present Runtime DVFS control given a certain deadline, unfortunately, it was also found to increase power consumption of the PC cluster due to an increase in the execution time.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Energy consumption",
+                "Gears",
+                "Instruments",
+                "Power demand",
+                "Frequency control",
+                "Time frequency analysis"
+            ],
+            "Index Terms": [
+                "Code Instrumentation",
+                "Energy Consumption",
+                "Lower Frequency",
+                "Power Consumption",
+                "Energy Reduction",
+                "Computer Cluster",
+                "Static Control",
+                "Power Profile",
+                "High Performance",
+                "Source Code",
+                "Highest Frequency",
+                "Performance Degradation",
+                "Increased Energy Expenditure",
+                "High-performance Computing",
+                "Reduce Energy Consumption",
+                "Reduction In Power",
+                "Performance Information",
+                "Program Characteristics",
+                "Frequency Selectivity",
+                "Program Execution",
+                "Static Power Consumption",
+                "Good Energy"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -155,7 +268,36 @@
                 "firstName": "Michihiro",
                 "lastName": "Koibuchi"
             }
-        ]
+        ],
+        "abstract": "In addition to its use in local area networks, Ethernet has been used for connecting hosts in the area of high-performance computing. Here, we investigated the impact of topology and link aggregation on a large-scale PC cluster with Ethernet. Ethernet topology that allows loops and its routing can be implemented by the VLAN routing method without creating broadcast storms. To simplify the system configuration without modifying system software, the VLAN tag is added to a frame at switches in our implementation of topologies. Each host creates VLAN interfaces that have different local network addresses on a physical interface, so that a switch learns the MAC addresses of hosts in a PC cluster by broadcast. Evaluation results showed that the performance characteristics of an eight-switch network are comparable to those of an ideal 1-switch (full crossbar) network in the execution of High-Performance LINPACK Benchmark (HPL) on a 225-host PC cluster. On the other hand, evaluation results using NAS Parallel Benchmarks indicated that topologies achieved by the proposed methodology showed performance improvements of up to about 650% as compared to the simple tree topology. These results indicate that topology and link aggregation have marked impacts and commodity switches can be used instead of expensive and high functional switches.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Topology",
+                "Routing",
+                "Network topology",
+                "Ethernet networks",
+                "Switches",
+                "Benchmark testing",
+                "System software"
+            ],
+            "Index Terms": [
+                "Computer Cluster",
+                "Impact Of Topology",
+                "Local Network",
+                "High-performance Computing",
+                "Local Area Network",
+                "Simple Topology",
+                "Hosts In Areas",
+                "Routing Method",
+                "Physical Interface",
+                "Large-scale Clustering",
+                "High Performance",
+                "Parallelization",
+                "Highest Performance",
+                "Untagged",
+                "Single Linkage"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -190,7 +332,38 @@
                 "firstName": "Alexandre",
                 "lastName": "Denis"
             }
-        ]
+        ],
+        "abstract": "The current trend in clusters architecture leads toward a massive use of multicore chips. This hardware evolution raises bottleneck issues at the network interface level. The use of multiple parallel networks allows to overcome this problem as it provides an higher aggregate bandwidth. But this bandwidth remains theoretical as only a few communication libraries are able to exploit multiple networks. In this paper, we present an optimization strategy for the NEWMADELEINE communication library. This strategy is able to efficiently exploit parallel interconnect links. By sampling each networkpsilas capabilities, it is possible to estimate a transfer duration a priori. Splitting messages and sending chunks of messages over parallel links can thus be performed efficiently to reach the theoretical aggregate bandwidth. NEWMADELEINE is multithreaded and exploits multicore chips to send small packets, that involve CPU-consuming copies, in parallel.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Magnetic cores",
+                "Bandwidth",
+                "Libraries",
+                "Computer architecture",
+                "Aggregates",
+                "Peer to peer computing",
+                "Synchronization"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Network Capabilities",
+                "Parallel Network",
+                "Implementation Of Strategies",
+                "Single Network",
+                "Split Ratio",
+                "Heterogeneous Network",
+                "Transfer Time",
+                "Network Bandwidth",
+                "Serialized",
+                "Power-of-two",
+                "Multiple Links",
+                "Communication Flow",
+                "Multi-threaded",
+                "Maximum Bandwidth",
+                "Quadric",
+                "Message Size"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -231,7 +404,36 @@
                 "firstName": "Mehaut",
                 "lastName": "Jean-Francois"
             }
-        ]
+        ],
+        "abstract": "Using MPI as communication interface, one or several applications may introduce complex communication behaviors over the network cluster. This effect is increased when nodes of the cluster are multi-processors, and where communications can income or outgo from the same node with a common interval time. Our goal is to understand those behaviors to build a class of predictive models of bandwidth sharing, knowing, on the one hand the flow control mechanisms and, on the other hand, a set of experimental results. This paper present experiences that show how is shared the bandwidth on gigabit Ethernet, Myrinet 2000 and Infiniband network before to introduce the models for Gigabit Ethernet and Myrinet 2000 networks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Ethernet networks",
+                "Predictive models",
+                "Bandwidth",
+                "Computational modeling",
+                "Mathematical model",
+                "Delay",
+                "Protocols"
+            ],
+            "Index Terms": [
+                "High-performance Cluster",
+                "Flow Control",
+                "Cluster Nodes",
+                "Set Of Experimental Results",
+                "Emission Spectra",
+                "Model Evaluation",
+                "GB Memory",
+                "Communication Methods",
+                "Communication Time",
+                "Communication Tasks",
+                "Communication Scheme",
+                "Message Length",
+                "Kind Of Conflict",
+                "Source Task",
+                "Synthetic Benchmark"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -266,7 +468,32 @@
                 "firstName": null,
                 "lastName": "Yutaka Ishikawa"
             }
-        ]
+        ],
+        "abstract": "Multiple processors or multi-core CPUs are now in common, and the number of processes running concurrently is increasing in a cluster. Each process issues contiguous I/O requests individually, but they can be interrupted by the requests of other processes if all the processes enter the I/O phase together. Then, I/O nodes handle these requests as non-contiguous. This increases the disk seek time, and causes performance degradation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "File systems",
+                "Servers",
+                "Electronics packaging",
+                "Computer architecture",
+                "Benchmark testing",
+                "Bandwidth",
+                "Program processors"
+            ],
+            "Index Terms": [
+                "File System",
+                "Parallel File System",
+                "Multi-core Clusters",
+                "Multiple Processors",
+                "Scientific Applications",
+                "Parallel System",
+                "Control Nodes",
+                "Total Execution Time",
+                "System Calls",
+                "Message Passing Interface",
+                "Linux Operating System"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -295,7 +522,36 @@
                 "firstName": "Shirley",
                 "lastName": "Moore"
             }
-        ]
+        ],
+        "abstract": "Several performance analysis tools support hybrid applications. Most originated as MPI profiling or tracing tools and OpenMP capabilities were added to extend the performance analysis capabilities for the hybrid parallelization case. In this paper we describe our experience with the other path to support both programming paradigms. Our starting point is a profiling tool for OpenMP called ompP that was extended to handle MPI related data. The measured data and the method of presentation follow our focus on the OpenMP side of the performance optimization cycle. For example, the existing overhead classification scheme of ompP was extended to cover time in MPI calls as a new type of overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monitoring",
+                "Performance analysis",
+                "Radiation detectors",
+                "Programming",
+                "Parallel processing",
+                "Synchronization",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Profiling Tool",
+                "Tracing Tool",
+                "Programming Paradigm",
+                "Powerful Tool",
+                "Instrumentation",
+                "Mutually Exclusive",
+                "Volume Of Data",
+                "Development Of Applications",
+                "Root Node",
+                "Pie Chart",
+                "Single Thread",
+                "Domain Decomposition",
+                "Critical Section",
+                "Load Imbalance"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -336,7 +592,36 @@
                 "firstName": null,
                 "lastName": "Rui Liu"
             }
-        ]
+        ],
+        "abstract": "This paper presents a design and implementation of a HyperTransport (HT) core in lattice SCM FPGA which can run at 800 MHz DDR link frequency. An effective approach is also proposed to solve the ordering problem caused by different virtual channels which exists not only in HT but also PCI-e. HT is a high performance, low latency I/O standard which can be used directly to connect with some general-purpose processors, such as AMDpsilas Opteron processor family. HT interface on Opteron processor run at a maximum of 1 GHz frequency. However, most HT core in FPGA runs at a maximum of 500 MHz frequency which limits the performance of communication. In this paper, a 16 bit 800 MHz HT core is proposed to reduce the gap of ASIC and FPGA.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Clocks",
+                "Program processors",
+                "Synchronization",
+                "Registers",
+                "Bandwidth",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Core Design",
+                "Low Latency",
+                "Virtual Channel",
+                "Series Data",
+                "Parallelization",
+                "Simulation Environment",
+                "High-performance Computing",
+                "Lookup Table",
+                "Physical Layer",
+                "Control Logic",
+                "Parallel Data",
+                "Clock Frequency",
+                "Clock Cycles",
+                "Original Order",
+                "Multilayer Architecture"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -344,7 +629,7 @@
         "publicationYear": "2008",
         "publicationDate": "29 Sept.-1 Oct. 2008",
         "articleNumber": "4663785",
-        "articleTitle": "Parallel multistage preconditioners by Hierarchical Interface Decomposition on \u201cT2K Open Super Computer (Todai Combined Cluster)\u201d with Hybrid parallel programming models",
+        "articleTitle": "Parallel multistage preconditioners by Hierarchical Interface Decomposition on “T2K Open Super Computer (Todai Combined Cluster)” with Hybrid parallel programming models",
         "volume": null,
         "issue": null,
         "startPage": "298",
@@ -359,7 +644,44 @@
                 "firstName": "Kengo",
                 "lastName": "Nakajima"
             }
-        ]
+        ],
+        "abstract": "In this work, parallel preconditioning methods based on ldquoHierarchical Interface Decomposition (HID)rdquo and hybrid parallel programming models were applied to finite-element based simulations of linear elasticity problems in media with heterogeneous material properties. Reverse Cuthill-McKee reordering with cyclic multicoloring (CM-RCM) was applied for parallelism through OpenMP. The developed code has been tested on the ldquoT2K Open Super Computer (Todai Combined Cluster)rdquo using up to 512 cores. Preconditioners based on HID provide a scalable performance and robustness in comparison to conventional localized block Jacobi preconditioners. Performance of Hybrid 4x4 parallel programming model is competitive with that of Flat MPI.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Magnetic cores",
+                "Connectors",
+                "Computational modeling",
+                "Parallel programming",
+                "Jacobian matrices",
+                "Programming",
+                "Finite element methods"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Programming Model",
+                "Hierarchical Decomposition",
+                "Parallel Programming Model",
+                "Scalable",
+                "Linear Problem",
+                "Hybrid Performance",
+                "Conventional Block",
+                "Degrees Of Freedom",
+                "Young’s Modulus",
+                "Finite Element Method",
+                "Linear Solver",
+                "Problem Size",
+                "Iterative Solver",
+                "Strong Scaling",
+                "Domain Decomposition",
+                "Flat Model",
+                "Number Of Processors",
+                "Local Structure Of Data",
+                "University Of Tokyo",
+                "Performance Of Solver",
+                "Ill-conditioned Problem",
+                "Parallel Procedure"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -406,7 +728,35 @@
                 "firstName": null,
                 "lastName": "Jianping Fan"
             }
-        ]
+        ],
+        "abstract": "MPI collective operations on multi-core clusters should be multi-core aware. In this paper, collective algorithms with hierarchical virtual topology focus on the performance difference among different communication levels on multi-core clusters, simply for intra-node and inter-node communication; Furthermore, to select befitting segment sizes for intra-node collective communication can cater to cache hierarchy in multi-core processors. Based on existing collective algorithms in MPICH2, above two techniques construct portable optimization methodology over MPICH2 for collective operations on multi-core clusters. Conforming to above optimization methodology, multi-core aware broadcast algorithm has been implemented and evaluated as a case study. The results of performance evaluation show that the multi-core aware optimization methodology over MPICH2 is efficient.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clustering algorithms",
+                "Peer to peer computing",
+                "Optimization",
+                "Topology",
+                "Program processors",
+                "Algorithm design and analysis",
+                "Conferences"
+            ],
+            "Index Terms": [
+                "Segment Size",
+                "Optimization Methodology",
+                "Entire Dataset",
+                "Parallelization",
+                "Flow Data",
+                "Communication Performance",
+                "Level Of Communication",
+                "Data Cache",
+                "Root Process",
+                "Message Size",
+                "Parallel Applications",
+                "L2 Cache",
+                "Cache Hit",
+                "Memory Hierarchy"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -441,7 +791,45 @@
                 "firstName": "Reiji",
                 "lastName": "Suda"
             }
-        ]
+        ],
+        "abstract": "A new Dynamic Load Balancing (DLB) method for automatic performance tuning in parallel, adaptive, 3-D mesh refinement is developed based on study of characteristics of Finite Element Method (FEM) on electromagnetics with tetrahedra. On the top of existing DLB algorithms, the new design optimized the task pool location of each Processing Element (PE) and the initial data assignments in multiprocessor parallel architecture. To accomplish our method, we investigate it by applying the algorithm in implementations of parallel 3-D Hierarchical Tetrahedra and Octahedra (HTO) mesh refinement. By comparing the benchmark results derived from the performance measures of the new method with the performance results from other two existing DLB algorithms running the same HTO example geometric mesh refinement model and on the same parallel architecture, the benefits of the new method for achieving high performance parallel mesh refinement are demonstrated.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Finite element methods",
+                "Program processors",
+                "Load management",
+                "Heuristic algorithms",
+                "Algorithm design and analysis",
+                "Timing",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Finite Element",
+                "Tetrahedral",
+                "3D Mesh",
+                "Load Balancing",
+                "Mesh Refinement",
+                "Dynamic Load Balancing",
+                "Load Balancing Method",
+                "Parallelization",
+                "Octahedral",
+                "Finite Element Method",
+                "Design Optimization",
+                "Dynamic Balance",
+                "Mutually Exclusive",
+                "Computation Time",
+                "Performance Of Method",
+                "Task Force",
+                "Data Transfer",
+                "Parallel System",
+                "Work Domain",
+                "Benchmark Test",
+                "Message Passing Interface",
+                "Race Conditions",
+                "Resonant Cavity",
+                "Number Of Processors"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -464,7 +852,14 @@
                 "firstName": "Dhabaleswar K.",
                 "lastName": "Panda"
             }
-        ]
+        ],
+        "abstract": "Clusters with commodity multi-core processors and commodity networking technologies are providing cost-effective solutions for building next generation high-end systems including HPC clusters, servers, parallel file systems and multi-tier data-centers. The talk focus on two emerging networking technologies (InfiniBand and 10 GE/iWARP) and their associated protocols for designing such systems. In this talk, we critically examine the current and future trends of these technologies and their applicability for designing next generation petascale clusters. The talk start with the motivations behind these technologies and then focus on their architectural aspects and applicability to SAN, LAN and WAN-based clusters. Designing next generation clusters with high performance, scalability and RAS (reliability, availability and serviceability) capabilities by using these technologies will be examined. Current and future trends of InfiniBand and iWARP products was highlighted. The emerging OpenFabrics software stack, focusing both these technologies in an integrated manner, was presented. Finally, a set of case studies in designing various clusters with these networking technologies was presented to outline the associated opportunities and challenges.",
+        "keywords": {
+            "Index Terms": [
+                "Network Technology",
+                "Set Of Case Studies"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -487,7 +882,17 @@
                 "firstName": "Daniel A.",
                 "lastName": "Reed"
             }
-        ]
+        ],
+        "abstract": "Without doubt, scientific discovery, business practice and social interactions are moving rapidly from a world of homogeneous and local systems to a world of distributed software, virtual organizations and cloud computing infrastructure, all powered by multicore processors and large-scale infrastructure. In science, a tsunami of new experimental and computational data and a suite of increasingly ubiquitous sensors pose vexing problems in data analysis, transport, visualization and collaboration. In society and business, software as a service and cloud computing are empowering distributed groups. Letpsilas step back and think about the longer term future. Where is the technology going and what are the implications? What architectures are appropriate? How to we manage power and scale? What are the right size building blocks? How do we come to grips with the fact that our clusters and data centers are now bigger than the Internet was just a few years ago? How do we develop and support malleable software? What is the ecosystem of components in which distributed, data rich applications will operate? How do we optimize performance and reliability? How do we program these systems?",
+        "keywords": {
+            "Index Terms": [
+                "Cloud Computing",
+                "Multi-core",
+                "Scientific Findings",
+                "Business Practices",
+                "Data Analysis Problems"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -510,7 +915,34 @@
                 "firstName": "D. Scott",
                 "lastName": "Guthridge"
             }
-        ]
+        ],
+        "abstract": "We have developed a highly reliable InfiniBand host attached block storage management and virtualization system that supports several off-the-shelf Fibre Channel RAID controllers on the back end. The system is based on the existing IBM TotalStorage SAN Volume Controller (SVC) product, and therefore offers performance, a wide array of storage virtualization features, and support for many existing storage controllers. We provide an overview of the driver design as well as performance results. Large read performance from SVC cache exceeds 3 GB/s in a minimal two-node cluster configuration.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Static VAr compensators",
+                "Driver circuits",
+                "Throughput",
+                "Servers",
+                "Performance evaluation",
+                "Prototypes",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Prototype",
+                "Back End",
+                "Storage Management",
+                "Throughput",
+                "Resource Management",
+                "Direct Access",
+                "High-performance Computing",
+                "Storage Devices",
+                "Standard Product",
+                "State Machine",
+                "Limited Bandwidth",
+                "Side Of Fig",
+                "External Storage"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -533,7 +965,36 @@
                 "firstName": "Reiji",
                 "lastName": "Suda"
             }
-        ]
+        ],
+        "abstract": "Divisible load model allows scheduling algorithms that give nearly optimal makespan with practical computational complexity. Beaumont et al. have shown that their algorithm produces a schedule whose makespan is within 1+O(1/radicT) times larger than the optimal solution when the total amount of tasks T scales up and the other conditions are fixed. We have proposed an extension of their algorithm for multiple masters with heterogeneous performance of processors but limited to uniform network performance. This paper analyzes the asymptotic performance of our algorithm, and shows that the asymptotic performance of our algorithm is either 1+O(1/radicT), 1+O(log T/T) or 1+O(1/T ), depending on the problem. For the latter two cases, our algorithm asymptotically outperforms the algorithm by Beaumont et al.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Schedules",
+                "Fault currents",
+                "Circuit faults",
+                "Current transformers",
+                "Computed tomography",
+                "Algorithm design and analysis"
+            ],
+            "Index Terms": [
+                "Asymptotic Optimality",
+                "Scheduling Algorithm",
+                "Asymptotic Performance",
+                "Scaling Factor",
+                "Low Complexity",
+                "Class Of Problems",
+                "Low Computational Complexity",
+                "Communication Time",
+                "Heterogeneous Process",
+                "Epilogue",
+                "Idle Time",
+                "Single Master",
+                "Single Port",
+                "Number Of Processors",
+                "Amount Of Tasks"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -568,7 +1029,35 @@
                 "firstName": null,
                 "lastName": "Baoyin Zhang"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a new multi-pattern parallel I/O benchmark called Jetter, which evaluates parallel I/O throughput with either the contiguous I/O pattern or the non-contiguous I/O pattern, in either the share-one-file model or the file-per-process model, by either the POSIX interface or the MPI-I/O interface. Jetter helps end users make sense of the pattern performance law, and helps them develop efficient applications in a platform. We have evaluated the parallel I/O bandwidth in a 32 CPU shared memory computer with Jetter. The results show that I/O pattern determines throughput. Optimizing I/O model, interface, etc. in a pattern will improve bandwidth 2 or 3 times.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Bandwidth",
+                "Throughput",
+                "Computers",
+                "Arrays",
+                "Computational modeling",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Throughput",
+                "End-users",
+                "Data Availability",
+                "System Performance",
+                "Maximum Time",
+                "Development Of Applications",
+                "Local Time",
+                "High-performance Computing",
+                "File System",
+                "Fortran",
+                "Access Patterns",
+                "Access Mode",
+                "Abstraction Layer",
+                "Abstract Patterns"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -603,7 +1092,40 @@
                 "firstName": "Satoshi",
                 "lastName": "Matsuoka"
             }
-        ]
+        ],
+        "abstract": "Fault-tolerance for HPC systems with long-running applications of massive and growing scale is now essential. Although checkpointing with rollback recovery is a popular technique, automated checkpointing is becoming troublesome in a real system, due to the extremely large size of collective application memory. Therefore, automated optimization of the checkpoint interval is essential, but the optimal point depends on hardware failure rates and I/O bandwidth. Our new model and an algorithm, which is an extension of Vaidyapsilas model, solve the problem by taking such parameters into account. Prototype implementation on our fault-tolerant MPI framework ABARIS showed approximately 5.5% improvement over statically user-determined cases.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Checkpointing",
+                "Bandwidth",
+                "Fault tolerant systems",
+                "Fault tolerance",
+                "Benchmark testing",
+                "Computational modeling",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Checkpointing",
+                "Fault-tolerant",
+                "Popular Technique",
+                "Rollback",
+                "Memory Size",
+                "Prototype Implementation",
+                "Benchmark",
+                "Application Process",
+                "Exponential Distribution",
+                "Monitoring Tool",
+                "Network Bandwidth",
+                "Optimal Interval",
+                "Time Warping",
+                "Node Failure",
+                "Parallel Applications",
+                "Parallel Coordinates",
+                "Application Running",
+                "Bandwidth Consumption",
+                "Application Execution"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -638,7 +1160,45 @@
                 "firstName": "Jesus",
                 "lastName": "Labarta"
             }
-        ]
+        ],
+        "abstract": "Parallel programming on SMP and multi-core architectures is hard. In this paper we present a programming model for those environments based on automatic function level parallelism that strives to be easy, flexible, portable, and performant. Its main trait is its ability to exploit task level parallelism by analyzing task dependencies at run time. We present the programming environment in the context of algorithms from several domains and pinpoint its benefits compared to other approaches. We discuss its execution model and its scheduler. Finally we analyze its performance and demonstrate that it offers reasonable performance without tuning, and that it can rival highly tuned libraries with minimal tuning effort.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Arrays",
+                "Programming",
+                "Runtime",
+                "Parallel processing",
+                "Computer architecture",
+                "Matrix decomposition",
+                "Runtime library"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Programming Environment",
+                "Parallelization",
+                "Programming Model",
+                "Task Dependency",
+                "Lower Bound",
+                "Size Parameters",
+                "Block Size",
+                "Matrix Multiplication",
+                "Information In Order",
+                "Linear Algebra",
+                "Cholesky Decomposition",
+                "Scheduling Algorithm",
+                "Code Examples",
+                "Part Of Code",
+                "Supermatrix",
+                "Single Precision",
+                "Sequential Execution",
+                "Memory Address",
+                "Recursive Function",
+                "LU Factorization",
+                "Programming Paradigm",
+                "Runtime Overhead",
+                "Recursive Step"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -673,7 +1233,51 @@
                 "firstName": "Andrew",
                 "lastName": "Lumsdaine"
             }
-        ]
+        ],
+        "abstract": "Multistage interconnection networks based on central switches are ubiquitous in high-performance computing. Applications and communication libraries typically make use of such networks without consideration of the actual internal characteristics of the switch. However, application performance of these networks, particularly with respect to bisection bandwidth, does depend on communication paths through the switch. In this paper we discuss the limitations of the hardware definition of bisection bandwidth (capacity-based) and introduce a new metric: effective bisection bandwidth. We assess the effective bisection bandwidth of several large-scale production clusters by simulating artificial communication patterns on them. Networks with full bisection bandwidth typically provided effective bisection bandwidth in the range of 55-60%. Simulations with application-based patterns showed that the difference between effective and rated bisection bandwidth could impact overall application performance by up to 12%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Routing",
+                "Network topology",
+                "Benchmark testing",
+                "Topology",
+                "Peer to peer computing",
+                "Traffic control"
+            ],
+            "Index Terms": [
+                "Static Routing",
+                "High-performance Computing",
+                "Communication Patterns",
+                "Bandwidth Range",
+                "Effective Bandwidth",
+                "Pairing",
+                "Hot Spots",
+                "Real Applications",
+                "Network Topology",
+                "Simulation System",
+                "Real-world Applications",
+                "Diffuse Pattern",
+                "Time-dependent Density Functional Theory",
+                "Output Ports",
+                "Communication Overhead",
+                "Traffic Patterns",
+                "Routing Algorithm",
+                "Communication Scheme",
+                "Communication Rounds",
+                "Quadric",
+                "Average Bandwidth",
+                "Routing Table",
+                "Application Running",
+                "Point-to-point Communication",
+                "Link Bandwidth",
+                "Routing Scheme",
+                "Pre-defined Patterns",
+                "Benchmark",
+                "Arbitrary Patterns",
+                "Octopus"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -702,7 +1306,39 @@
                 "firstName": "Andrew",
                 "lastName": "Lumsdaine"
             }
-        ]
+        ],
+        "abstract": "Message progression schemes that enable communication and computation to be overlapped have the potential to improve the performance of parallel applications. With currently available high-performance networks there are several options for making progress: manual progression, use of a progress thread, and communication offload. In this paper we analyze threaded progression approaches, comparing the effects of using shared or dedicated CPU cores for progression. To perform these comparisons, we propose time-based and work-based benchmark schemes. As expected, threaded progression performs well when a spare core is available to be dedicated to communication progression, but a number of operating system effects prevent the same benefits from being obtained when communication progress must share a core with computation. We show that some limited performance improvement can be obtained in the shared-core case by real-time scheduling of the progress thread.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Libraries",
+                "Operating systems",
+                "Hardware",
+                "Manuals",
+                "Receivers",
+                "Real time systems"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Benchmark",
+                "Operating System",
+                "Multi-core",
+                "Stage 2",
+                "Human-computer Interaction",
+                "User Intervention",
+                "Silver Bullet",
+                "Open Reduction",
+                "Strategy In Cases",
+                "Message Transmission",
+                "Asynchronous Communication",
+                "Communication Rounds",
+                "System Calls",
+                "Messaging Strategies",
+                "Message Passing Interface",
+                "Common Implementation",
+                "Context Switching"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -737,7 +1373,47 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "This paper describes the application of various search techniques to the problem of automatic empirical code optimization. The search process is a critical aspect of auto-tuning systems because the large size of the search space and the cost of evaluating the candidate implementations makes it infeasible to find the true optimum point by brute force. We evaluate the effectiveness of Nelder-Mead Simplex, Genetic Algorithms, Simulated Annealing, Particle Swarm Optimization, Orthogonal search, and Random search in terms of the performance of the best candidate found under varying time limits.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Tuning",
+                "Simulated annealing",
+                "Gallium",
+                "Generators",
+                "Genetic algorithms",
+                "Arrays"
+            ],
+            "Index Terms": [
+                "Heuristic Search",
+                "Optimal Code",
+                "Empirical Optimization",
+                "Limited Time",
+                "Search Space",
+                "Particle Swarm Optimization",
+                "Simulated Annealing",
+                "Random Search",
+                "Search Engine",
+                "Variety Of Applications",
+                "Random Generation",
+                "Search Method",
+                "Block Size",
+                "Matrix Multiplication",
+                "Exhaustive Search",
+                "Discrete Fourier Transform",
+                "Linear Algebra",
+                "Code Generation",
+                "Survival Of The Fittest",
+                "Loop Order",
+                "L2 Cache",
+                "Dimension Of The Search Space",
+                "Cache Size",
+                "Nelder-Mead Algorithm",
+                "Cache Misses",
+                "Simplex Algorithm"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -790,7 +1466,39 @@
                 "firstName": null,
                 "lastName": "Haogang Chen"
             }
-        ]
+        ],
+        "abstract": "In this paper, we describe a whole-system live migration scheme, which transfers the whole system run-time state, including CPU state, memory data, and local disk storage, of the virtual machine (VM). To minimize the downtime caused by migrating large disk storage data and keep data integrity and consistency, we propose a three-phase migration (TPM) algorithm. To facilitate the migration back to initial source machine, we use an incremental migration (IM) algorithm to reduce the amount of the data to be migrated. Block-bitmap is used to track all the write accesses to the local disk storage during the migration. Synchronization of the local disk storage in the migration is performed according to the block-bitmap. Experiments show that our algorithms work well even when I/O-intensive workloads are running in the migrated VM. The downtime of the migration is around 100 milliseconds, close to shared-storage migration. Total migration time is greatly reduced using IM. The block-bitmap based synchronization mechanism is simple and effective. Performance overhead of recording all the writes on migrated VM is very low.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Synchronization",
+                "Driver circuits",
+                "Resumes",
+                "Redundancy",
+                "Availability",
+                "Bandwidth",
+                "Degradation"
+            ],
+            "Index Terms": [
+                "Virtual Machines",
+                "Virtual Machines Migration",
+                "Migration Time",
+                "Migration Strategies",
+                "Local Storage",
+                "CPU Memory",
+                "Synchronization Mechanism",
+                "Performance Overhead",
+                "Disk Storage",
+                "Local Data",
+                "Transfer Rate",
+                "Migration Process",
+                "File System",
+                "Memory State",
+                "Block Level",
+                "Workload Intensity",
+                "Beginning Of Iteration",
+                "Physical Machines"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -825,7 +1533,33 @@
                 "firstName": "Dhabaleswar K.",
                 "lastName": "Panda"
             }
-        ]
+        ],
+        "abstract": "A significant component of a high-performance cluster is the compute node interconnect. InfiniBand, is an interconnect of such systems that is enjoying wide success due to low latency (1.0-3.0 musec) and high bandwidth and other features. The Message Passing Interface (MPI) is the dominant programming model for parallel scientific applications. As a result, the MPI library and interconnect play a significant role in the scalability. These clusters continue to scale to ever-increasing levels making the role very important. As an example, the ldquoRangerrdquo system at the Texas Advanced Computing Center (TACC) includes over 60,000 cores with nearly 4000 InfiniBand ports. Previous work has shown that memory usage simply for connections when using the Reliable Connection (RC) transport of InfiniBand can reach hundreds of megabytes of memory per process at that level. To address these scalability problems a new InfiniBand transport, eXtended Reliable Connection, has been introduced. In this paper we describe XRC and design MPI over this new transport. We describe the variety of design choices that must be made as well as the various optimizations that XRC allows. We implement our designs and evaluate it on an InfiniBand cluster against RC-based designs. The memory scalability in terms of both connection memory and memory efficiency for communication buffers is evaluated for all of the configurations. Connection memory scalability evaluation shows a potential 100 times improvement over a similarly configured RC-based design. Evaluation using NAMD shows a 10% performance improvement for our XRC-based prototype for the jac2000 benchmark.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Peer to peer computing",
+                "Magnetic cores",
+                "Memory management",
+                "Scalability",
+                "Benchmark testing",
+                "Libraries",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Reliable Connection",
+                "Message Passing Interface",
+                "Memory Usage",
+                "Semantic",
+                "Benchmark Test",
+                "Amount Of Memory",
+                "Core System",
+                "Primary Transport",
+                "Single Connection",
+                "Linearizable",
+                "Message Size",
+                "Datagram"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -872,7 +1606,51 @@
                 "firstName": null,
                 "lastName": "Haikun Liu"
             }
-        ]
+        ],
+        "abstract": "The concept of green computing has attracted much attention recently in cluster computing. However, previous local approaches focused on saving the energy cost of the components in a single workstation without a global vision on the whole cluster, so it achieved undesirable power reduction effect. Other cluster-wide energy saving techniques could only be applied to homogeneous workstations and specific applications. This paper describes the design and implementation of a novel approach that uses live migration of virtual machines to transfer load among the nodes on a multilayer ring-based overlay. This scheme can reduce the power consumption greatly by regarding all the cluster nodes as a whole. Plus, it can be applied to both the homogeneous and heterogeneous servers. Experimental measurements show that the new method can reduce the power consumption by 74.8% over base at most with certain adjustably acceptable overhead. The effectiveness and performance insights are also analytically verified.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Magnetic multilayers",
+                "Workstations",
+                "Servers",
+                "Lead",
+                "Magnetic separation",
+                "Power demand",
+                "Virtual machining"
+            ],
+            "Index Terms": [
+                "Virtual Machines",
+                "Cluster Reduction",
+                "Energy Conservation",
+                "Power Consumption",
+                "Global Vision",
+                "Workflow",
+                "Poisson Distribution",
+                "Supply Voltage",
+                "Average Use",
+                "Job Type",
+                "Outer Ring",
+                "Localization Techniques",
+                "Inner Ring",
+                "Benchmark Test",
+                "Arrival Rate",
+                "Memory Space",
+                "Subset Of Nodes",
+                "Percentage Terms",
+                "Total Execution Time",
+                "Log-normal Function",
+                "Submission Rates",
+                "Physical Machines",
+                "Voltage Scaling",
+                "CPU Resources",
+                "Migration Cost",
+                "Migration Time",
+                "Web Server",
+                "Clustering Performance",
+                "Service Quality",
+                "Outer Layer"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -907,7 +1685,41 @@
                 "firstName": "Lior",
                 "lastName": "Amar"
             }
-        ]
+        ],
+        "abstract": "The renewed interest in virtualization gives rise to new opportunities for running high performance computing (HPC) applications on clusters and grids. These include the ability to create a uniform (virtual) run-time environment on top of a multitude of hardware and software platforms, and the possibility for dynamic resource allocation towards the improvement of process performance, e.g., by virtual machine (VM) migration as a means for load-balancing. This paper deals with issues related to running HPC applications on multi-clusters and grids using VMware, a virtualization package running on Windows, Linux and OS X. The paper presents the ldquoJobrunrdquo system for transparent, on-demand VM launching upon job submission, and its integration with the MOSIX cluster and grid management system. We present a novel approach to job migration, combining VM migration with process migration using Jobrun, by which it is possible to migrate groups of processes and parallel jobs among different clusters in a multi-cluster or in a grid. We use four real HPC applications to evaluate the overheads of VMware (both on Linux and Windows), the MOSIX cluster extensions and their combination, and present detailed measurements of the performance of Jobrun.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linux",
+                "Virtual machining",
+                "Memory management",
+                "Servers",
+                "Resource management",
+                "Software",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Virtual Machines",
+                "Virtual Machines Migration",
+                "Running",
+                "Dynamic Allocation",
+                "Cluster Management",
+                "Goal Of This Paper",
+                "Migration Process",
+                "Single Node",
+                "Migration Time",
+                "Clearance Time",
+                "Computational Grid",
+                "Network Congestion",
+                "Remote Memory",
+                "Windows XP",
+                "Creation Time",
+                "System Calls",
+                "Multiple Processors",
+                "Worker Nodes",
+                "Checkpointing"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -942,7 +1754,51 @@
                 "firstName": "Hiroaki",
                 "lastName": "Kobayashi"
             }
-        ]
+        ],
+        "abstract": "A commodity personal computer (PC) can be seen as a hybrid computing system equipped with two different kinds of processors, i.e. CPU and a graphics processing unit (GPU). Since the superiorities of GPUs in the performance and the power efficiency strongly depend on the system configuration and the data size determined at the runtime, a programmer cannot always know which processor should be used to execute a certain kernel. Therefore, this paper presents a runtime environment that dynamically selects an appropriate processor so as to improve the energy efficiency. The evaluation results clearly indicate that the runtime processor selection at executing each kernel with given data streams is promising for energy-aware computing on a hybrid computing system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Runtime",
+                "Engines",
+                "Programming",
+                "Switches",
+                "Computer languages",
+                "Energy consumption"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "Computer System",
+                "Graphics Processing Unit",
+                "Data Streams",
+                "Dynamic Selection",
+                "Runtime Environment",
+                "Energy Consumption",
+                "Programming Language",
+                "Power Consumption",
+                "Performance Parameters",
+                "Kernel Function",
+                "Data Transfer",
+                "Single Element",
+                "Framework Programme",
+                "Stream Processing",
+                "Parallel Data",
+                "Programming Tools",
+                "Multiple Codes",
+                "Switching Dynamics",
+                "Input Stream",
+                "LU Factorization",
+                "High-performance Computing Systems",
+                "Memory Bandwidth",
+                "Effective Bandwidth",
+                "Output Stream",
+                "L2 Cache",
+                "Executable File",
+                "Energy Conservation",
+                "Qualifier",
+                "Performance Gain"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -989,7 +1845,44 @@
                 "firstName": "P.",
                 "lastName": "Sadayappan"
             }
-        ]
+        ],
+        "abstract": "Distributed file systems that use multiple servers to store data in parallel are becoming commonplace. Much work has already gone into such systems to maximize data throughput. However, metadata management has historically been treated as an afterthought. In previous work we focused on improving metadata management techniques by placing file metadata along with data on object-based storage devices (OSDs). However, we did not investigate directory operations. This work looks at the possibility of designing directory structures directly on OSDs, without the need for intervening servers. In particular, the need for atomicity is a fundamental requirement that we explore in depth. Through performance results of benchmarks and applications we show the feasibility of using OSDs directly for metadata, including directory operations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "File systems",
+                "Servers",
+                "Kernel",
+                "Protocols",
+                "Access protocols",
+                "Performance evaluation",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Parallel System",
+                "File System",
+                "Parallel File System",
+                "Storage Devices",
+                "Metadata File",
+                "Data Throughput",
+                "Multiple Servers",
+                "Scalable",
+                "System Performance",
+                "File Naming",
+                "Objective Data",
+                "Hash Function",
+                "Object Properties",
+                "Benchmark Test",
+                "Communication Overhead",
+                "Serialized",
+                "Common Operations",
+                "Round-trip Time",
+                "Single Server",
+                "Linearizable",
+                "Removal Operation",
+                "Insertion Operator",
+                "Multiple Clients"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1024,7 +1917,39 @@
                 "firstName": "Alexandr",
                 "lastName": "Pshenichkin"
             }
-        ]
+        ],
+        "abstract": "We present reliability solutions for adaptable network RAM systems running on general-purpose clusters. Network RAM allows nodes with over-committed memory to swap pages over the network, storing them in the idle RAM of other nodes and avoiding swapping to slow, local disk. An adaptable network RAM system adjusts the amount of RAM currently available for storing remotely swapped pages in response to changes in nodespsila local RAM usage. It is important that network RAM systems provide reliability for remotely swapped page data. Without reliability, a single node failure can result in failure of unrelated processes running on other nodes by losing their remotely swapped pages. Adaptable network RAM systems pose extra difficulties in providing reliability because each nodepsilas capacity for storing remotely swapped pages changes over time, and because pages may move from node to node in response to these changes. Our novel dynamic RAID-based reliability solutions use idle RAM for storing page and reliability data, avoiding using slow disk for reliability. They are designed to work with the adaptive nature of our network RAM system (Nswap), allowing page and reliability data to migrate from node to node and allowing pages to be added to or removed from different parity groups. Additionally, page recovery runs concurrently with cluster applications, so that cluster applications do not have to wait until all data from a failed node is recovered before resuming execution. We present results comparing Nswap to disk swapping for a set of benchmarks running on our gigabit cluster. Our results show that reliable Nswap is up to 32 times faster than swapping to disk, and that there is virtually no impact on the performance of applications as they run concurrently with page recovery.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Random access memory",
+                "Reliability",
+                "Kernel",
+                "Peer to peer computing",
+                "Computer network reliability",
+                "Linux"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Node Changes",
+                "Node Failure",
+                "Running",
+                "Count Data",
+                "Fault-tolerant",
+                "Network Bandwidth",
+                "Cluster Nodes",
+                "Reliable Solution",
+                "Remote Memory",
+                "Recovery Algorithm",
+                "Storage Nodes",
+                "Data Page",
+                "Additional Messages",
+                "Server Node",
+                "Partition Of Nodes",
+                "Virtual Memory",
+                "Group Page"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1065,7 +1990,51 @@
                 "firstName": "Karsten",
                 "lastName": "Schwan"
             }
-        ]
+        ],
+        "abstract": "A key benefit of utility data centers and cloud computing infrastructure is the level of consolidation they can offer to arbitrary guest applications, and the substantial saving in operational costs and resources that can be derived in the process. However, significant challenges remain before it becomes possible to effectively and at low cost manage virtualized systems, particularly in the face of increasing complexity of individual many-core platforms, and given the dynamic behaviors and resource requirements exhibited by cloud guest VMs. This paper describes the active coordination (ACT) approach, aimed to address a specific issue in the management domain, which is the fact that management actions must (1) typically touch upon multiple resources in order to be effective, and (2) must be continuously refined in order to deal with the dynamism in the platform resource loads. ACT relies on the notion of class-of-service, associated with (sets of) guest VMs, based on which it maps VMs onto platform units, the latter encapsulating sets of platform resources of different types. Using these abstractions, ACT can perform active management in multiple ways, including a VM-specific approach and a black box approach that relies on continuous monitoring of the guest VMs' runtime behavior and on an adaptive resource allocation algorithm, termed Multiplicative Increase, Subtractive Decrease Algorithm with Wiggle Room. In addition, ACT permits explicit external events to trigger VM or application-specific resource allocations, e.g., leveraging emerging standards such as WSDM. The experimental analysis of the ACT prototype, built for Xen-based platforms, use industry-standard benchmarks, including RUBiS, Hadoop, and SPEC. They demonstrate ACT's ability to efficiently manage the aggregate platform resources according to the guest VMs' relative importance (class-of-service), for both the black-box and the VM-specific approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clouds",
+                "Resource management",
+                "Monitoring",
+                "Magnetic cores",
+                "Prototypes",
+                "Bandwidth",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Infrastructure",
+                "Benchmark",
+                "Resource Allocation",
+                "Management Actions",
+                "Cloud Computing",
+                "External Events",
+                "Resource Requirements",
+                "Virtual Machines",
+                "Management Domain",
+                "Different Types Of Resources",
+                "Black-box Approach",
+                "Coordinate Approach",
+                "Resource Utilization",
+                "Physical Component",
+                "Types Of Resources",
+                "Level Of Resources",
+                "Resource Usage",
+                "Network Resources",
+                "Network Bandwidth",
+                "CPU Resources",
+                "Service Class",
+                "CPU Utilization",
+                "Changes In Allocation",
+                "Single Thread",
+                "Adaptive Modulation",
+                "Increase In Usage",
+                "Increase In Allocation",
+                "Current Prototype",
+                "Physical Machines"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1094,7 +2063,41 @@
                 "firstName": "Le",
                 "lastName": "Gruenwald"
             }
-        ]
+        ],
+        "abstract": "Query response time is the number one metrics when it comes to database performance. Because of data proliferation, efficient access methods and data storage techniques have become increasingly critical to maintain an acceptable query response time. Retrieving data from disk is several orders of magnitude slower than retrieving it from memory, it is easy to see the direct correlation between query response time and the number of disk I/Os. One of the common ways to reduce disk I/Os and therefore improve query response time is database clustering, which is a process that partitions the database vertically (attribute clustering) and/or horizontally (record clustering). A clustering is optimized for a given set of queries. However in dynamic systems the queries change with time, the clustering in place becomes obsolete, and the database needs to be re-clustered dynamically. This paper presents an efficient algorithm for attribute clustering that dynamically and automatically generates attribute clusters based on closed item sets mined from the attributes sets found in the queries running against the database. The paper then discusses how this algorithm can be implemented using the cluster computing paradigm to reduce query response time even further through parallelism and data redundancy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clustering algorithms",
+                "Databases",
+                "Partitioning algorithms",
+                "Data mining",
+                "Time factors",
+                "Memory",
+                "Humans"
+            ],
+            "Index Terms": [
+                "Dynamic Clustering",
+                "Automatic Clustering",
+                "Data Storage",
+                "Redundant Data",
+                "Query Set",
+                "Number Of Disks",
+                "Data Mining",
+                "Clustering Algorithm",
+                "Clustering Techniques",
+                "Cluster Solution",
+                "Frequent Items",
+                "Affinity Matrix",
+                "Clustering Problem",
+                "Optimal Partition",
+                "Edge Connectivity",
+                "Cost Aggregation",
+                "Distributed Database",
+                "Binary Partitioning",
+                "Frequent Itemsets",
+                "Query Performance"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1123,7 +2126,37 @@
                 "firstName": "Phillip",
                 "lastName": "Dickens"
             }
-        ]
+        ],
+        "abstract": "Lustre is becoming an increasingly important file system for large-scale computing clusters. The problem, however, is that many data-intensive applications use MPI-IO for their I/O requirements, and MPI-IO performs poorly in a Lustre file system environment. While this poor performance has been well documented, the reasons for such performance are currently not well understood. Our research suggests that the primary performance issues have to do with the assumptions underpinning most of the parallel I/O optimizations implemented in MPI-IO, which do not appear to hold in a Lustre environment. Perhaps the most important assumption is that optimal performance is obtained by performing large, contiguous I/O operations. However, the research results presented in this poster show that this is often the worst approach to take in a Lustre file system. In fact, we found that the best performance is often achieved when each process performs a series of smaller, non-contiguous I/O requests. In this poster, we provide experimental results supporting these non-intuitive ideas, and provide alternative approaches that significantly enhance the performance of MPI-IO in a Lustre file system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "File systems",
+                "Servers",
+                "Program processors",
+                "Driver circuits",
+                "Optimization",
+                "Aggregates",
+                "Analytical models"
+            ],
+            "Index Terms": [
+                "File System",
+                "Poor Performance",
+                "Performance Issues",
+                "Primary Issue",
+                "High Performance",
+                "Understanding Of Function",
+                "Increase In Performance",
+                "High-performance Computing",
+                "Communication Patterns",
+                "Assembly Patterns",
+                "Data Block",
+                "Access Patterns",
+                "Argonne National Laboratory",
+                "Overhead Costs",
+                "Round Robin",
+                "Multiple Clients"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1158,7 +2191,37 @@
                 "firstName": "John A.",
                 "lastName": "Chandy"
             }
-        ]
+        ],
+        "abstract": "The increasing performance and decreasing cost of processors and memory are causing system intelligence to move from the CPU to peripherals such as disk drives. Storage system designers are using this trend toward excessive computation capability to perform more complex processing and optimizations directly inside the storage devices. Such kind of optimizations have been performed only at low levels of the storage protocol. Another factor to consider is the current trends in storage density, mechanics, and electronics, which are eliminating the bottleneck encountered while moving data off the media, and putting pressure on interconnects and host processors to move data more efficiently. Previous work on active storage has taken advantage of the extra processing power on individual disk drives to run application-level code. This idea of moving portions of an applicationpsilas processing to run directly at disk drives can dramatically reduce data traffic and take advantage of the parallel storage already present in large systems today. This paper aims at demonstrating active storage on an iSCSI OSD standards-based object oriented framework.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Java",
+                "Object oriented modeling",
+                "Databases",
+                "Performance evaluation",
+                "Sorting",
+                "File systems"
+            ],
+            "Index Terms": [
+                "Storage Systems",
+                "Storage Devices",
+                "Processing Power",
+                "Object-oriented",
+                "Disk Drive",
+                "Final Results",
+                "Sensor Data",
+                "Interconnected Network",
+                "Object Properties",
+                "File System",
+                "Client-side",
+                "Kinds Of Objects",
+                "Storage Management",
+                "Storage Demand",
+                "Application Code",
+                "Logic Unit"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1199,7 +2262,47 @@
                 "firstName": "Yifeng",
                 "lastName": "Zhu"
             }
-        ]
+        ],
+        "abstract": "One of the challenging issues in performance evaluation of parallel storage systems through synthetic-trace-driven simulation is to accurately characterize the I/O demands of data-intensive scientific applications. This paper analyzes several I/O traces collected from different distributed systems and concludes that correlations in parallel I/O inter-arrival times are inconsistent, either with little correlation or with evident and abundant correlations. Thus conventional Poisson or Markov arrival processes are inappropriate to model I/O arrivals in some applications. Instead, a new and generic model based on the μ-stable process is proposed and validated in this paper to accurately model parallel I/O burstiness in both workloads with little and strong correlations. This model can be used to generate reliable synthetic I/O sequences in simulation studies. Experimental results presented in this paper show that this model can capture the complex I/O behaviors of real storage systems more accurately and faithfully than conventional models, particularly for the burstiness characteristics in the parallel I/O workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Correlation",
+                "Benchmark testing",
+                "Computational modeling",
+                "Physics",
+                "Stochastic processes",
+                "Mathematical model",
+                "Predictive models"
+            ],
+            "Index Terms": [
+                "Scientific Applications",
+                "Distribution System",
+                "Storage Systems",
+                "Stable Process",
+                "Parallel System",
+                "Inter-arrival Time",
+                "Arrival Process",
+                "Burstiness",
+                "Hypothetical",
+                "Maximum Likelihood Method",
+                "Normalization Method",
+                "Autocorrelation Function",
+                "Example Of Model",
+                "Heavy-tailed",
+                "Real Distribution",
+                "File System",
+                "Arrival Rate",
+                "Matching Degree",
+                "Long-range Dependencies",
+                "Physical Simulation",
+                "Los Alamos National Laboratory",
+                "Fractional Brownian Motion",
+                "Function Of Lag",
+                "Real Data Distribution",
+                "Real Traces",
+                "Disc Level"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1234,7 +2337,48 @@
                 "firstName": "Vijay",
                 "lastName": "Mann"
             }
-        ]
+        ],
+        "abstract": "Various studies have pointed out the debilitating effects of OS jitter on the performance of parallel applications on large clusters such as the ASCI Purple and the Mare Nostrum at Barcelona Supercomputing Center. These clusters use commodity OSes such as AIX and Linux respectively. The biggest hindrance in evaluating any technique to mitigate jitter is getting access to such large scale production HPC systems running a commodity OS. An earlier attempt aimed at solving this problem was to emulate the effects of OS jitter on more widely available and jitter-free systems such as BlueGene/L. In this paper, we point out the shortcomings of previous such approaches and present the design and implementation of an emulation framework that helps overcome those shortcomings by using innovative techniques. We collect jitter traces on a commodity OS with a given configuration, under which we want to study the scaling behavior. These traces are then replayed on a jitter-free system to predict scalability in presence of OS jitter. The application of this emulation framework to predict scalability is illustrated through a comparative scalability study of an off-the-shelf Linux distribution with a minimal configuration (runlevel 1) and a highly optimized embedded Linux distribution, running on the IO nodes of BlueGene/L. We validate the results of our emulation both on a single node as well as on a real cluster. Our results indicate that an optimized OS along with a technique to synchronize jitter can reduce the performance degradation due to jitter from 99% (in case of the off-the-shelf Linux without any synchronization) to a much more tolerable level of 6% (in case of highly optimized BlueGene/L IO node Linux with synchronization) at 2048 processors. Furthermore, perfect synchronization can give linear scaling with less than 1% slowdown, regardless of the type of OS used. However, as the jitter at different nodes starts getting desynchronized, even with a minor skew across nodes, the optimized OS starts outperforming the off-the-shelf OS.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Jitter",
+                "Linux",
+                "Emulation",
+                "Benchmark testing",
+                "Scalability",
+                "Synchronization",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Large Clusters",
+                "Emulation Framework",
+                "Single Node",
+                "Minimum Configuration",
+                "Perfect Synchronization",
+                "Parallel Applications",
+                "Real Cluster",
+                "Running",
+                "Safeguard",
+                "Use Of Techniques",
+                "Greater Than Or Equal",
+                "Start-up",
+                "Amount Of Work",
+                "Kullback-Leibler",
+                "Intel Xeon",
+                "Sleep Time",
+                "Experiments In This Paper",
+                "Time Synchronization",
+                "System Calls",
+                "Number Of Processors",
+                "Real Traces",
+                "Maximum Completion Time",
+                "System Overhead",
+                "Virtual Nodes",
+                "Coprocessor",
+                "Blue Gene"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1257,7 +2401,51 @@
                 "firstName": "John",
                 "lastName": "Cavazos"
             }
-        ]
+        ],
+        "abstract": "The industry is now in agreement that the future of architecture design lies in multiple cores. As a consequence, all computer systems today, from embedded devices to petascale computing systems, are being developed using multicore processors. Although researchers in industry and academia are exploring many different multicore hardware design choices, most agree that developing portable software that achieves high performance on multicore processors is a major unsolved problem. We now see a plethora of architectural features, with little consensus on how the computation, memory, and communication structures in multicore systems will be organized. The wide disparity in hardware systems available has made it nearly impossible to write code that is portable in functionality while still taking advantage of the performance potential of each system. In this paper, we propose exploring the viability of developing intelligent compilers, focusing on key components that will allow application portability while still achieving high performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Predictive models",
+                "Program processors",
+                "Radiation detectors",
+                "Training",
+                "Computer architecture",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Computer System",
+                "Multi-core",
+                "Industrial Research",
+                "Multiple Cores",
+                "Prediction Model",
+                "Machine Learning",
+                "Heuristic",
+                "Knowledge Base",
+                "Learning Algorithms",
+                "Machine Learning Techniques",
+                "Dynamic Characteristics",
+                "Predictive Performance Of Models",
+                "Learning Problem",
+                "Heuristic Algorithm",
+                "Optimal Sequence",
+                "Area Of Space",
+                "Random Search",
+                "Training Instances",
+                "Intelligent Control",
+                "Dynamic Optimization",
+                "L2 Cache",
+                "Cache Misses",
+                "Optimal Code",
+                "Feature Coding",
+                "Benchmark Test",
+                "Automatic Generation",
+                "Benchmark Suite",
+                "Clock Rate",
+                "Development Of Applications",
+                "Supervised Learning"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1280,7 +2468,39 @@
                 "firstName": "Brice",
                 "lastName": "Goglin"
             }
-        ]
+        ],
+        "abstract": "Open-MX is a new message passing layer implemented on top of the generic Ethernet stack of the Linux kernel. Open-MX works on all Ethernet hardware, but it suffers from expensive memory copy requirements on the receiver side due to the hardwarepsilas inability to deposit messages directly in the target application buffers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Ethernet networks",
+                "Driver circuits",
+                "Receivers",
+                "Throughput",
+                "Engines",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Ethernet",
+                "Target Application",
+                "Receiver Side",
+                "Local Communication",
+                "CPU Usage",
+                "Communication Network",
+                "Data Transfer",
+                "Application Programming Interface",
+                "Bottom Half",
+                "Usage In Applications",
+                "Data Cache",
+                "Small Copy",
+                "Physical Memory",
+                "System Calls",
+                "Message Size",
+                "Chunk Size",
+                "Address Space",
+                "Virtual Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1315,7 +2535,46 @@
                 "firstName": "Felix",
                 "lastName": "Wolf"
             }
-        ]
+        ],
+        "abstract": "To support the development of efficient parallel codes on cluster systems, event tracing is a widely used technique with a broad spectrum of applications ranging from performance analysis, performance prediction and modeling to debugging. Usually, events are recorded along with the time of their occurrence to measure the temporal distance between them and/or to establish a total event ordering. Obviously, measuring the time between concurrent events requires a global clock, which often, however, is not available on clusters. Assuming that potentially different drifts of local clocks remain constant over time, linear offset interpolation can be applied postmortem to map local onto global timestamps. In this study, we investigate the robustness of the above assumption using different timers and show that the error of timestamps derived in this way can easily lead to a misrepresentation of the logical event order imposed by the semantics of the underlying communication substrate. We conclude that linear offset interpolation alone may be insufficient for many applications of event tracing and discuss further options.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Synchronization",
+                "Clocks",
+                "Program processors",
+                "Interpolation",
+                "Software",
+                "Hardware",
+                "Radiation detectors"
+            ],
+            "Index Terms": [
+                "Concurrent Effects",
+                "Event Timestamps",
+                "Clock Drift",
+                "Semantic",
+                "Parallelization",
+                "Linear Interpolation",
+                "Logical Order",
+                "Local Clock",
+                "Inaccuracy",
+                "Local Effects",
+                "Network Topology",
+                "Local Time",
+                "Initial Programme",
+                "Clock Rate",
+                "Global Access",
+                "Starfish",
+                "Single Chip",
+                "Longer Run",
+                "Oak Ridge National Laboratory",
+                "Constant Drift",
+                "Point-to-point Communication",
+                "Clock Synchronization",
+                "Parallel Applications",
+                "Source Of Inaccuracy",
+                "Aachen University"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1350,7 +2609,48 @@
                 "firstName": "Frederic",
                 "lastName": "Suter"
             }
-        ]
+        ],
+        "abstract": "Applications raising in many scientific fields exhibit both data and task parallelism that have to be exploited efficiently. A classic approach is to structure those applications by a task graph whose nodes represent parallel computations. Scheduling such mixed-parallel applications is challenging even on a single homogeneous platform, such as a cluster. Most of the mixed-parallel application scheduling algorithms rely on two decoupled steps: allocation and mapping. This separation can induce unnecessary or costly data redistributions that have an impact on the overall performance. This is particularly true for data intensive applications. In this paper, we propose an original approach in which the allocations determined in the first step can be adapted during the second step in order to minimize the impact of these data redistributions. Two redistribution aware mapping strategies are detailed and a study of their impact on the schedule length is proposed through a comparison with an efficient two step algorithm over a broad range of experimental scenarios.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resource management",
+                "Program processors",
+                "Parallel processing",
+                "Schedules",
+                "Scheduling algorithm",
+                "Computational modeling",
+                "Processor scheduling"
+            ],
+            "Index Terms": [
+                "Step In Order",
+                "Scheduling Algorithm",
+                "Broad Range Of Scenarios",
+                "Number Of Experiments",
+                "Time Task",
+                "Task Execution",
+                "High-performance Computing",
+                "Communication Cost",
+                "Classification Applications",
+                "Subsequent Task",
+                "Mapping Procedure",
+                "Critical Path",
+                "Makespan",
+                "Communication Tasks",
+                "Bottom Level",
+                "Sorting Strategy",
+                "Map Tasks",
+                "Two-step Algorithm",
+                "Task Execution Time",
+                "Number Of Processors",
+                "Level Tasks",
+                "Parallel Type",
+                "Parallel Applications",
+                "Recursive Algorithm",
+                "Processing Unit",
+                "Performance Metrics",
+                "Total Work"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1385,7 +2685,35 @@
                 "firstName": "Dhabaleswar K.",
                 "lastName": "Panda"
             }
-        ]
+        ],
+        "abstract": "Efficient intra-node shared memory communication is important for High Performance Computing (HPC), especially with the emergence of multi-core architectures. As clusters continue to grow in size and complexity, the use of Virtual Machine (VM) technologies has been suggested to ease the increasing number of management issues. As demonstrated by earlier research, shared memory communication must be optimized for VMs to attain the native-level performance required by HPC centers. In this paper, we enhance intra-node shared memory communication for VM environments. We propose a one-copy approach. Instead of following the traditional approach used in most MPI implementations, copying data in and out of a pre-allocated shared memory region, our approach dynamically maps user buffers between VMs, allowing data to be directly copied to its destination. We also propose a grant/mapping cache to reduce expensive buffer mapping cost in VM environment. We integrate this approach into MVAPICH2, our implementation of MPI-2 library. For intra-node communication, we are able to reduce the large message latency in VM-based environments by up to 35%, and increase bandwidth by up to 38% even as compared with unmodified MVAPICH2 running in a native environment. Evaluation with the NAS Parallel Benchmarks suite shows up to 15% improvement.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Receivers",
+                "Protocols",
+                "Libraries",
+                "Kernel",
+                "Pipelines",
+                "Virtual machine monitors",
+                "Driver circuits"
+            ],
+            "Index Terms": [
+                "Virtual Machines",
+                "Shared Memory",
+                "Shared Communication",
+                "Natural Environment",
+                "High-performance Computing",
+                "Scope Of This Paper",
+                "Focus Of This Paper",
+                "Additional Complexity",
+                "Communication Patterns",
+                "Caching",
+                "Receiver Side",
+                "System Calls",
+                "Address Space",
+                "Cache Hit"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1420,7 +2748,46 @@
                 "firstName": "Jesus",
                 "lastName": "Labarta"
             }
-        ]
+        ],
+        "abstract": "Scalability and performance of applications is a very important issue today. As more complex have become high performance architectures, it is more complex to predict the behavior of a given application running on them. In this paper, we propose a methodology which automatically and quickly predicts, from a very limited number of runs using very few processors, the scalability and performance of a given application in a wide range of supercomputers taking into account details of the architecture and the network of the machines.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Computer architecture",
+                "Computational modeling",
+                "Predictive models",
+                "Analytical models",
+                "Blades",
+                "Accuracy"
+            ],
+            "Index Terms": [
+                "Message Passing",
+                "Scalable",
+                "High-performance Computing",
+                "Performance In Applications",
+                "Prediction Accuracy",
+                "Computation Time",
+                "Real-valued",
+                "Computational Resources",
+                "Economic Resources",
+                "Per Cycle",
+                "Interconnected Network",
+                "Prediction Scheme",
+                "Network Bandwidth",
+                "Load Balancing",
+                "Communication Time",
+                "Total Computation Time",
+                "Processing Architecture",
+                "Fast Simulation",
+                "Parallel Machines",
+                "Fundamental Operation",
+                "Application Behavior",
+                "Application Execution",
+                "Number Of Processors",
+                "Kind Of Prediction",
+                "Fast Prediction"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1449,7 +2816,51 @@
                 "firstName": "Alistair P.",
                 "lastName": "Rendell"
             }
-        ]
+        ],
+        "abstract": "The field of reinforcement learning has developed techniques for choosing beneficial actions within a dynamic environment. Such techniques learn from experience and do not require teaching. This paper explores how reinforcement learning techniques might be used to determine efficient storage formats for sparse matrices. Three different storage formats are considered: coordinate, compressed sparse row, and blocked compressed sparse row. Which format performs best depends heavily on the nature of the matrix and the computer system being used. To test the above a program has been written to generate a series of sparse matrices, where any given matrix performs optimally using one of the three different storage types. For each matrix several sparse matrix vector products are performed. The goal of the learning agent is to predict the optimal sparse matrix storage format for that matrix. The proposed agent uses five attributes of the sparse matrix: the number of rows, the number of columns, the number of non-zero elements, the standard deviation of non-zeroes per row and the mean number of neighbours. The agent is characterized by two parameters: an exploration rate and a parameter that determines how the state space is partitioned. The ability of the agent to successfully predict the optimal storage format is analyzed for a series of 1,000 automatically generated test matrices.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sparse matrices",
+                "Learning",
+                "Tuning",
+                "Arrays",
+                "Sensors",
+                "Actuators",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Sparse Matrix",
+                "Performance Tuning",
+                "Sparse Matrix Format",
+                "State Space",
+                "Vector Matrix",
+                "Natural Matrix",
+                "Storage Form",
+                "Learning Agent",
+                "Reinforcement Learning Techniques",
+                "Matrix-vector Product",
+                "Sparse Format",
+                "Learning Algorithms",
+                "Dimensional Space",
+                "Work In This Area",
+                "Matrix Size",
+                "Matrix Multiplication",
+                "Generator Matrix",
+                "Number Of Matrices",
+                "Optimal Action",
+                "Reward Signal",
+                "Actual Reward",
+                "Reinforcement Learning Approach",
+                "Storage Scheme",
+                "Row Index",
+                "Column Index",
+                "Exploration Rate",
+                "Zero Element",
+                "Large State Space",
+                "Blocking Factor",
+                "Column Array"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1490,7 +2901,37 @@
                 "firstName": "M.",
                 "lastName": "Islam"
             }
-        ]
+        ],
+        "abstract": "High-speed interconnects are frequently used to provide scalable communication on increasingly large high-end computing systems. Often, these networks are nonblocking, where there exist independent paths between all pairs of nodes in the system allowing for simultaneous communication with zero network contention. This performance, however, comes at a heavy cost as the number of components needed (and hence cost) increases superlinearly with the number of nodes in the system. In this paper, we study the behavior of real and synthetic supercomputer workloads to understand the impact of the networkpsilas nonblocking capability on overall performance. Starting from a fully nonblocking network, we begin by assessing the worse-case performance degradation caused by removing interstage communication links, resulting in over provisioning and hence potentially blocking in the communication network.We also study the impact of several factors on this behavior, including system workloads, multicore processors, and switch crossbar sizes. Our observations show that a significant reduction in the number of interstage links can be tolerated on all of the workloads analyzed, causing less than 5% overall loss of performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Magnetic cores",
+                "Bandwidth",
+                "Peer to peer computing",
+                "Network topology",
+                "Resource management",
+                "Aggregates"
+            ],
+            "Index Terms": [
+                "Large Systems",
+                "Pair Of Nodes",
+                "Communication Links",
+                "Impact Of Networks",
+                "Interstage",
+                "Network Topology",
+                "Network Performance",
+                "End Time",
+                "Start Time",
+                "System Size",
+                "Interconnected Network",
+                "Single Node",
+                "Network Bandwidth",
+                "Impact Of Concentration",
+                "Network Cost",
+                "Worse Case"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1531,7 +2972,51 @@
                 "firstName": "Jesus",
                 "lastName": "Carretero"
             }
-        ]
+        ],
+        "abstract": "In this paper we present new techniques for simulating high performance MPI applications on large storage networks. Performance analysis of high performance application on large storage networks is a very complex and time-consuming task. However, modelling and studying the behaviour of any application on complex network architectures is crucial to obtain good performance. The goal of this work is to predict both scalability degree and performance of any high computing applications on any network architecture. A very interesting feature of this work is that our approach does not require to modify the application in order to simulate its behaviour. Also, there is no need to modify the simulator code to test different architectures. It can be done just creating a new configuration file. In order to perform those analyses we have used SIMCAN, a simulation tool to analyzing high-performance I/O architectures, developed at University Carlos III de Madrid. To validate this work we have used the BIPS3D application on several hardware-based architectures and on our simulator. The comparative results of those environments are presented to show the accuracy and efficiency of our approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Computer architecture",
+                "Servers",
+                "File systems",
+                "Performance evaluation",
+                "Program processors",
+                "Synchronization"
+            ],
+            "Index Terms": [
+                "Large Networks",
+                "Network Storage",
+                "Scalable",
+                "Complex Network",
+                "Time-consuming Task",
+                "High-performance Applications",
+                "Difficult Task",
+                "Parallelization",
+                "Real Applications",
+                "Simulation Environment",
+                "Digital Networks",
+                "Group Processes",
+                "Storage Devices",
+                "Simulation Test",
+                "Communication Protocol",
+                "File System",
+                "Application Server",
+                "Kinds Of Applications",
+                "Parallel Simulator",
+                "Simulation Applications",
+                "Storage Nodes",
+                "Kinds Of Nodes",
+                "Parallel Applications",
+                "Disk Drive",
+                "Rank Number",
+                "Simulated Reads",
+                "Hardware Platform",
+                "Clock Rate",
+                "Communication Network",
+                "Processing Time"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1560,7 +3045,50 @@
                 "firstName": "Henry M.",
                 "lastName": "Tufo"
             }
-        ]
+        ],
+        "abstract": "The special priority and urgent computing environment (SPRUCE) provides on-demand access to high-performance computing resources for time-critical applications. While SPRUCE supports computationally intensive applications, it does not fully support high-priority, data intensive applications. To support data intensive applications in urgent computing environments, we developed the urgent computing environment data resource manager (CEDAR). CEDAR provides storage resource provisioning capabilities that manage the availability and quality of service of storage resources used by urgent computing applications. In this paper, we describe the architecture of CEDAR, illustrate how CEDAR will integrate with urgent computing environments, and evaluate the capabilities of CEDAR in simulated urgent computing environments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Data models",
+                "Predictive models",
+                "Quality of service",
+                "Weather forecasting",
+                "Forecasting",
+                "Adaptation model"
+            ],
+            "Index Terms": [
+                "Storage Resources",
+                "Computational Environment",
+                "Service Quality",
+                "Resource Management",
+                "Computational Resources",
+                "Data Resources",
+                "Provision Of Resources",
+                "Application Of Resources",
+                "Specific Priorities",
+                "Management System",
+                "Data Management",
+                "Data Storage",
+                "Forecasting",
+                "Storage Systems",
+                "Tool Version",
+                "Service Data",
+                "Work In Progress",
+                "File System",
+                "Data Management System",
+                "Forecasting Tool",
+                "Weather Research And Forecasting",
+                "Urgent Management",
+                "Discrete Event Simulation",
+                "Policy Model",
+                "Policy Execution",
+                "Workflow",
+                "Decision Strategy",
+                "Storage Management",
+                "Severe Weather"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1607,7 +3135,51 @@
                 "firstName": "Emilio",
                 "lastName": "Luque"
             }
-        ]
+        ],
+        "abstract": "Performance is a main issue in parallel application development. Dynamic tuning is a technique that acts over application parameters to raise execution performance indexes. To perform that, it is necessary to collect measurements, analyze application behavior using a performance model and carry out tuning actions. Computational Grids present proclivity for dynamic changes on their features during application execution. Thus, dynamic tuning tools are indispensable to reach the expected performance indexes on those environments. A particular problem which provokes performance bottlenecks is the load distribution in master/worker applications. This paper addresses the performance modeling of such applications on Computational Grids for the perspective of dynamic tuning. It is inferred that grain size and number of workers are critical parameters to reduce execution time while raising the efficiency of resources usage. A heuristic to dynamically tune granularity and number of workers is proposed. The experimental simulated results of a matrix multiplication application in a heterogeneous Grid environment are shown.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tuning",
+                "Program processors",
+                "Grain size",
+                "Performance analysis",
+                "Bandwidth",
+                "Computational modeling",
+                "Equations"
+            ],
+            "Index Terms": [
+                "Computational Grid",
+                "Parallel Applications",
+                "Dynamic Tuning",
+                "Heuristic",
+                "Dynamic Changes",
+                "Performance Indicators",
+                "Grain Size",
+                "Number Of Workers",
+                "Load Distribution",
+                "Worker Size",
+                "Application Execution",
+                "Network Characteristics",
+                "Maximum Efficiency",
+                "Local Clustering",
+                "Processing Power",
+                "Heterogeneous Network",
+                "Network Bandwidth",
+                "Coarse-grained",
+                "Load Balancing",
+                "Work Unit",
+                "Total Execution Time",
+                "Heterogeneous Scenarios",
+                "Tuning Process",
+                "Network Interface",
+                "Grid System",
+                "Round-trip Time",
+                "Initial Grain",
+                "Heterogeneous Process",
+                "Communication Volume",
+                "Shared Environment"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1654,7 +3226,39 @@
                 "firstName": "Mitsuhisa",
                 "lastName": "Sato"
             }
-        ]
+        ],
+        "abstract": "Although recent high-end interconnection network devices and switches provide a high performance/cost ratio, most of the small to medium sized PC clusters are still built on the commodity network, Ethernet. To enhance performance on commonly used Gigabit Ethernet networks, link aggregation or binding technology is used. Currently, a Linux kernel is equipped with a software solution named Linux Channel Bonding (LCB), which is based on IEEE802.3ad Link Aggregation technology. However, standard LCB has the problem of mismatching with the commonly used TCP protocol, which consequently implies several problems of both large latency and instability on bandwidth improvement. The fault-tolerant feature is also supported, but the usability is not sufficient. We have developed a new implementation similar to LCB named RI2N/DRV (Redundant Interconnection with Inexpensive Network with Driver) for use on a Gigabit Ethernet with a complete software stack that is very compatible with the TCP protocol. Our algorithm suppresses unnecessary ACK packets and retransmission of packets even in imbalanced network traffic and link failures on multiple links. It provides both high-bandwidth and fault-tolerant communication on multi-link Gigabit Ethernet. We confirmed that this system improves the performance and reliability of the network, and our system can be applied to ordinary UNIX services such as NFS, without any modification of other modules.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Ethernet networks",
+                "Protocols",
+                "Throughput",
+                "IP networks",
+                "Driver circuits",
+                "Performance evaluation",
+                "Bonding"
+            ],
+            "Index Terms": [
+                "Fault-tolerant",
+                "Computer Cluster",
+                "Fault-tolerant Network",
+                "Network Reliability",
+                "Network Devices",
+                "Multiple Links",
+                "Protocol Number",
+                "Performance Degradation",
+                "Data Transfer",
+                "High-performance Computing",
+                "Low Latency",
+                "High Bandwidth",
+                "Short Message",
+                "Single Linkage",
+                "Failure Detection",
+                "Message Passing Interface",
+                "Mean Time To Failure",
+                "Receiver Node"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1683,7 +3287,39 @@
                 "firstName": "Pete",
                 "lastName": "Beckman"
             }
-        ]
+        ],
+        "abstract": "Scientific simulation and modeling often aid in making critical decisions in such diverse fields as city planning, severe weather prediction and influenza modeling. In some of these situations the computations operate under strict deadlines, after which point the results may have very little value. In these cases of urgent computing, it is imperative that these computations begin execution as quickly as possible. The special priority and urgent compute environment (SPRUCE) is a framework designed to enable these high priority computations to quickly access computational grid resources through elevated batch queue priority. However, participating resources are allowed to decide locally how to respond to urgent requests. For instance, some may offer next-to-run status while others may preempt currently executing jobs to clear off the necessary nodes. However, the user is still faced with the problem of resource selection - namely, which resource (and corresponding urgent computing policy) provides the best probability of meeting a given deadline? This paper introduces a set of methodologies and heuristics aimed at generating an empirical-based probabilistic upper bound on the total turnaround time for an urgent computation. These upper bounds can then be used to guide the user in selecting a resource with greater confidence that their deadline will be met.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delay",
+                "Upper bound",
+                "Probes",
+                "Computational modeling",
+                "Probabilistic logic",
+                "Servers",
+                "Atmospheric modeling"
+            ],
+            "Index Terms": [
+                "Upper Bound",
+                "Computational Resources",
+                "Resource Selection",
+                "Specific Priorities",
+                "Set Of Methodologies",
+                "Set Of Heuristics",
+                "Resource Allocation",
+                "Tungsten",
+                "Input Files",
+                "Transfer Activity",
+                "Average Delay",
+                "Individual Phases",
+                "Delay Activity",
+                "Level Of Urgency",
+                "Upper Quantiles",
+                "Case Study Application",
+                "Normal Configuration",
+                "Execution Delay"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1724,7 +3360,41 @@
                 "firstName": "Ron",
                 "lastName": "Brightwell"
             }
-        ]
+        ],
+        "abstract": "Remote atomic memory operations are critical for achieving high-performance synchronization in tightly-coupled systems. Previous approaches to implementing atomic memory operations on high-performance networks have explored providing the primitives necessary to achieve low latency and low host processor overhead. In this paper, we explore the implementation of atomic memory operations with a focus on achieving high message rate. We believe that high message rate is a key performance characteristic that will determine the viability of a high-performance network to support future multi-petascale systems, especially those that expect to employ a partitioned global address space (PGAS) programming model. As an example, many have proposed using network interface level atomic operations to enhance the performance of the HPCC RandomAccess benchmark. This paper explores several issues relevant to the design of an atomic unit on the network interface. We explore the implications of the size of the cache as well as the associativity. Given the growing ratio of bandwidth to latency of modern host interfaces, we explore some of the interactions that impact the concurrency needed to saturate the interface.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Network interfaces",
+                "Bandwidth",
+                "Registers",
+                "Hardware",
+                "Concurrent computing",
+                "Synchronization"
+            ],
+            "Index Terms": [
+                "Message Rate",
+                "Atomic Units",
+                "Remote Memory",
+                "Linearizable",
+                "Network Interface",
+                "Cache Size",
+                "Secondary Structure",
+                "Functional Unit",
+                "Unique Position",
+                "System Size",
+                "Network Bandwidth",
+                "Caching",
+                "Local Memory",
+                "Written Back",
+                "Memory Bandwidth",
+                "Memory Address",
+                "Virtual Channel",
+                "Shared Memory",
+                "Cache Misses",
+                "Bytes Of Data"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1771,7 +3441,39 @@
                 "firstName": "John",
                 "lastName": "Keane"
             }
-        ]
+        ],
+        "abstract": "SUDA2 is a recursive search algorithm for minimal unique itemset detection. Such sets of items are formed via combinations of non-obvious attributes enabling individual record identification. The nature of SUDA2 allows work to be divided into non-overlapping tasks enabling parallel execution. Earlier work developed a parallel implementation for SUDA2 on an SMP cluster, and this was found to be several orders of magnitude faster than sequential SUDA2. However, if fixed-granularity parallel tasks are scheduled naively in the order of their generation, the system load tends to be imbalanced with little work at the beginning and end of the search. This paper investigates the effectiveness of variable-grained and dynamic work generation strategies for parallel SUDA2. These methods restrict the number of sub-tasks to be generated, based on the criterion of probable work size. The further we descend in the search recursion tree, the smaller the tasks become, thus we only select the largest tasks at each level of recursion as being suitable for scheduling. The revised algorithm runs approximately twice as fast as the existing parallel SUDA2 for finer levels of granularity when variable-grained work generation is applied. The dynamic method, performing level-wise task selection based on size, outperforms the other techniques investigated.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Itemsets",
+                "Particle separators",
+                "Gain",
+                "Load modeling",
+                "Correlation",
+                "Computer science"
+            ],
+            "Index Terms": [
+                "Level Of Granularity",
+                "Recursive Algorithm",
+                "Parallel Implementation",
+                "Parallel Execution",
+                "End Of The Search",
+                "Search Space",
+                "Step Function",
+                "Tree Nodes",
+                "Values Of Items",
+                "Amount Of Computation",
+                "Load Balancing",
+                "Tree Search",
+                "Level Of Generation",
+                "Good Scalability",
+                "Number Of Processors",
+                "Middle Of Process",
+                "Load Imbalance",
+                "Frequent Itemsets"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1818,7 +3520,43 @@
                 "firstName": "Barton P.",
                 "lastName": "Miller"
             }
-        ]
+        ],
+        "abstract": "Parallel performance monitoring extends parallel measurement systems with infrastructure and interfaces for online performance data access, communication, and analysis. At the same time it raises concerns for the impact on application execution from monitor overhead. The application monitoring scheme parameterized by performance events to monitor, access frequency and the type of data analysis operation defines a set of monitoring requirements. The monitoring infrastructure presents its own choices, particularly the amount and configuration of resources devoted explicitly to monitoring. The key to scalable, low-overhead parallel performance monitoring is to match the application monitoring demands to the effective operating range of the monitoring system (or vice-versa). A poor match can result in over-provisioning (wasted resources) or in under-provisioning (lack of scalability, high overheads and poor quality of performance data). We present a methodology and evaluation framework to determine the sweet-spots for performance monitoring using TAU and MRNet.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monitoring",
+                "Runtime",
+                "Iron",
+                "Histograms",
+                "Matched filters",
+                "Estimation",
+                "Program processors"
+            ],
+            "Index Terms": [
+                "Performance Monitoring",
+                "High Overhead",
+                "Poor Match",
+                "Infrastructure Monitoring",
+                "Application Execution",
+                "Parallelization",
+                "Direct Costs",
+                "Data Reduction",
+                "Capacity Of System",
+                "Sudden Drop",
+                "Error Threshold",
+                "Sweet Spot",
+                "Open Reduction",
+                "Large Spikes",
+                "Reductive Cycle",
+                "Parallel Monitoring",
+                "Global Consistency",
+                "Fan-out",
+                "Parallel Applications",
+                "Iterative Application",
+                "Monitoring Interval",
+                "Choice Of Interval"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1853,7 +3591,51 @@
                 "firstName": "Shao-Liang",
                 "lastName": "Zhang"
             }
-        ]
+        ],
+        "abstract": "In this paper, we present a new approach to optimizing the blocking strategy for the householder QR decomposition. In high performance implementations of the householder QR algorithm, it is common to use a blocking technique for the efficient use of the cache memory. There are several well known blocking strategies like the fixed-size blocking and recursive blocking, and usually their parameters such as the block size and the recursion level are tuned according to the target machine and the problem size. However, strategies generated with this kind of parameter optimization constitute only a small fraction of all possible blocking strategies. Given the complex performance characteristics of modern microprocessors, non-standard strategies may prove effective on some machines. Considering this situation, we first propose a new universal model that can express a far larger class of blocking strategies than has been considered so far. Next, we give an algorithm to find a near-optimal strategy from this class using dynamic programming. As a result of this approach, we found an effective blocking strategy that has never been reported. Performance evaluation on the Opteron and Core2 processors show that our strategy achieves about 1.2 times speedup over recursive blocking when computing the QR decomposition of a 6000 times 6000 matrix.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Matrix decomposition",
+                "Binary trees",
+                "Algorithm design and analysis",
+                "Partitioning algorithms",
+                "Microprocessors",
+                "Optimization",
+                "Mathematical model"
+            ],
+            "Index Terms": [
+                "Dynamic Programming",
+                "QR Decomposition",
+                "Blocking Strategy",
+                "Householder QR",
+                "Problem Size",
+                "Classical Scheme",
+                "Remote Memory",
+                "Block Technique",
+                "Times Speedup",
+                "Degrees Of Freedom",
+                "Rest Of The Paper",
+                "Numerical Experiments",
+                "Matrix Size",
+                "Points In Space",
+                "Grid Points",
+                "Matrix Production",
+                "Matrix Multiplication",
+                "Original Algorithm",
+                "Input Matrix",
+                "Triangular Matrix",
+                "Binary Tree",
+                "Recursive Algorithm",
+                "Partial Decomposition",
+                "Upper Triangular",
+                "Lower Triangular",
+                "Unified Manner",
+                "Recursive Structure",
+                "Hybrid Algorithm",
+                "Linear Algebra",
+                "Orthogonal Matrix"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1894,7 +3676,37 @@
                 "firstName": "Jesus",
                 "lastName": "Carretero"
             }
-        ]
+        ],
+        "abstract": "This paper presents Two-Phase Compressed I/O (TPC I/O,) an optimization of the Two-Phase collective I/O technique from ROMIO, the most popular MPI-IO implementation. In order to reduce network traffic, TPC I/O employs LZO algorithm to compress and decompress exchanged data in the inter-node communication operations. The compression algorithm has been fully implemented in the MPI collective technique, allowing to dynamically use (or not) compression. Compared with Two-Phase I/O, Two-Phase Compressed I/O obtains important improvements in the overall execution time for many of the considered scenarios.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Libraries",
+                "Finite element methods",
+                "Mathematical model",
+                "Writing",
+                "Merging",
+                "Data compression"
+            ],
+            "Index Terms": [
+                "Source Code",
+                "Data Exchange",
+                "Compression Algorithm",
+                "Data Structure",
+                "Parallel System",
+                "Buffer Exchange",
+                "File System",
+                "File Size",
+                "Poisson Equation",
+                "Compression Level",
+                "Lossless Compression",
+                "Stage Cost",
+                "Number Of Processors",
+                "Message Size",
+                "Parallel Applications",
+                "File Access"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1929,7 +3741,43 @@
                 "firstName": null,
                 "lastName": "Ninghui Sun"
             }
-        ]
+        ],
+        "abstract": "In the medium and small cluster systems, the centralized file server such as NFS is the main approach to provide the storage service with low cost and easy management. However, when multiple parallel applications access the shared storage at the same time, the I/O performance decreases much because of the interference of the I/O requests coming from the different clients. In this paper, a hint-based I/O mechanism is proposed and implemented in the United-FS. By analyzing the hint information of the I/O requests, the related requests are grouped, sorted and scheduled by our hint-based I/O scheduler. The experiments show that our hint-based I/O mechanism nearly doubles the read performance compared with NFS, and has better scalability.",
+        "keywords": {
+            "IEEE Keywords": [
+                "File systems",
+                "Servers",
+                "File servers",
+                "Performance evaluation",
+                "Bandwidth",
+                "Scalability",
+                "Time factors"
+            ],
+            "Index Terms": [
+                "File Server",
+                "Scalable",
+                "Multiple Applications",
+                "Reading Performance",
+                "Storage Services",
+                "Parallel Applications",
+                "Local System",
+                "Performance In Applications",
+                "Top Level",
+                "File System",
+                "File Size",
+                "User Identification",
+                "Block Level",
+                "Client-side",
+                "Bottom Level",
+                "Written Back",
+                "Server Side",
+                "Segmental Pattern",
+                "Local File",
+                "Priority Queue",
+                "Linux Kernel",
+                "Scheduling Mechanism"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1958,7 +3806,34 @@
                 "firstName": "Pedro D.",
                 "lastName": "Medeiros"
             }
-        ]
+        ],
+        "abstract": "We present part of our recent work on performance enhancement of cluster file systems using shared disks over a SAN. This work is built around the proposal of pCFS, a file system specifically targeting those environments. In we presented the objectives and design principles of pCFS and a proof-of-concept implementation, carried out by modifying Red Hatpsilas GFS , showing significant improvements in operations over files shared among processes running in different nodes. pCFS differs from GFS in two main aspects: its use of cooperative caching and a finer grain of locking. The first aspect, which used the LAN to enhance performance in write sharing situations, was described elsewhere ; we now introduce a complementary strategy - locking file regions instead of the whole file - which enables us to use the SAN while delivering a high level of performance in those same write sharing situations. pCFS may apply inter-node locks to regions, allowing processes to operate in parallel with a minimum of coherency overhead among nodes; a process cannot access outside its region(s) and, when a writer unlocks a region, others can then lock it and be able to see modified data immediately. Through a set of experiments where a file is shared between processes running in different nodes, we show that the described approach allows a gain of, at least, an order of magnitude over plain GFS.",
+        "keywords": {
+            "IEEE Keywords": [
+                "File systems",
+                "Kernel",
+                "Storage area networks",
+                "Peer to peer computing",
+                "Cooperative caching",
+                "Linux",
+                "Databases"
+            ],
+            "Index Terms": [
+                "File System",
+                "High-level Functions",
+                "Fine Grain",
+                "Red Hat",
+                "Intrusion",
+                "Test Sequences",
+                "Single Node",
+                "Global Database",
+                "Local Database",
+                "Distinct Nodes",
+                "Data Cache",
+                "File Access",
+                "Linux Kernel"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -1993,7 +3868,43 @@
                 "firstName": "Luc",
                 "lastName": "Bouge"
             }
-        ]
+        ],
+        "abstract": "We consider the problem of efficiently managing massive data in a large-scale distributed environment. We consider data strings of size in the order of Terabytes, shared and accessed by concurrent clients. On each individual access, a segment of a string, of the order of Megabytes, is read or modified. Our goal is to provide the clients with efficient fine-grain access the data string as concurrently as possible, without locking the string itself. This issue is crucial in the context of applications in the field of astronomy, databases, data mining and multimedia. We illustrate these requirements with the case of an application for searching supernovae. Our solution relies on distributed, RAM-based data storage, while leveraging a DHT-based, parallel metadata management scheme. The proposed architecture and algorithms have been validated through a software prototype and evaluated in a cluster environment.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pediatrics",
+                "Concurrent computing",
+                "Distributed databases",
+                "Writing",
+                "Telescopes",
+                "Random access memory",
+                "Astronomy"
+            ],
+            "Index Terms": [
+                "Supernova",
+                "Data Mining",
+                "Massive Data",
+                "Binary String",
+                "Efficient Access",
+                "Software Prototype",
+                "Weaving",
+                "Moment In Time",
+                "Fault-tolerant",
+                "Algorithm Design",
+                "Experimental Platform",
+                "Storage Space",
+                "File System",
+                "Binary Tree",
+                "Number Of Providers",
+                "Substring",
+                "Caching",
+                "Part Segmentation",
+                "Serialized",
+                "Tree Segmentation",
+                "Sky View",
+                "Physical Nodes"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -2028,7 +3939,45 @@
                 "firstName": null,
                 "lastName": "Shao-Liang Zhang"
             }
-        ]
+        ],
+        "abstract": "The nonlinear eigenvalue problem plays an important role in various fields such as nonlinear elasticity, electronic structure calculation and theoretical fluid dynamics. We recently proposed a new algorithm for the nonlinear eigenvalue problem, which reduces the original problem to a smaller generalized linear eigenvalue problem with Hankel coefficient matrices through complex contour integral. This algorithm has a unique feature that it can find all the eigenvalues in a closed curve on the complex plane. Moreover, it has large-grain parallelism and is suited for execution in a Grid environment. In this paper, we study the numerical properties of our algorithm theoretically. In particular, we analyze the effect of numerical integration to the computed eigenvalues and give a guideline on how to choose the size of the Hankel matrices properly. Also, we show the parallel performance of our algorithm implemented on a PC cluster using OmniRPC, a Grid RPC system. Parallel efficiency of 75% is achieved when solving a nonlinear eigenvalue problem of order 1000 using 14 processors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Eigenvalues and eigenfunctions",
+                "Algorithm design and analysis",
+                "Clustering algorithms",
+                "Sensitivity",
+                "Parallel processing",
+                "Nonlinear equations",
+                "Approximation algorithms"
+            ],
+            "Index Terms": [
+                "Eigenvalue Problem",
+                "Parallel Algorithm",
+                "Nonlinear Eigenvalue Problem",
+                "Nonlinear Problem",
+                "Coefficient Matrix",
+                "Linear Problem",
+                "Algorithm For Problem",
+                "Complex Integration",
+                "Numerous Properties",
+                "Computer Cluster",
+                "Complex Plane",
+                "Electronic Structure Calculations",
+                "Closed Curve",
+                "Parallel Efficiency",
+                "Nonlinear Elasticity",
+                "Right-hand Side",
+                "Eigenvectors",
+                "Parallelization",
+                "Analysis Algorithm",
+                "Newton Method",
+                "Complex Conjugate Pairs",
+                "Trapezoidal Rule",
+                "Generalized Eigenvalue Problem",
+                "Integrand"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -2063,7 +4012,35 @@
                 "firstName": "Robert J.",
                 "lastName": "Fowler"
             }
-        ]
+        ],
+        "abstract": "We report our experiences with using high-throughput techniques to run large sets of performance experiments on collections of grid accessible parallel computer systems for the purpose of deploying optimally compiled and configured scientific applications. In these environments, the set of variable parameters (compiler, link, and runtime flags; application and library options; partition size) can be very large, so running the performance ensembles is labor intensive, tedious, and prone to errors. Automating this process improves productivity, reduces barriers to deploying and maintaining multi-platform codes, and facilitates the tracking of application and system performance over time. We describe the design and implementation of our system for running performance ensembles and we use two case studies as the basis for evaluating the long term potential for this approach. The architecture of a prototype benchmarking system is presented along with results on the efficacy of the workflow approach.",
+        "keywords": {
+            "Index Terms": [
+                "Performance Tuning",
+                "Computer System",
+                "System Architecture",
+                "Scientific Applications",
+                "Partition Size",
+                "Running",
+                "Web Server",
+                "Hurricane",
+                "Molecular Systems",
+                "Input Files",
+                "High-performance Computing",
+                "Target System",
+                "Relational Database",
+                "Fine Grid",
+                "Wave Model",
+                "Linear Algebra",
+                "Storm Surge",
+                "Combination Of Options",
+                "Federal Emergency Management Agency",
+                "Deployment Of Applications",
+                "Remote Computer",
+                "Configuration Options",
+                "High-performance Computing Systems"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -2086,7 +4063,42 @@
                 "firstName": "Edward",
                 "lastName": "Walker"
             }
-        ]
+        ],
+        "abstract": "A job proxy is an abstraction for provisioning CPU resources. This paper proposes an adaptive algorithm for allocating job proxies to distributed host clusters with the objective of improving large-scale job ensemble throughput. Specifically, the paper proposes a decision metric for selecting appropriate pending job proxies for migration between host clusters, and a self-synchronizing Paxos-style distributed consensus algorithm for performing the migration of these selected job proxies. The algorithm is further described in the context of a concrete application, the MyCluster system, which implements a framework for submitting, managing and adapting job proxies across distributed high performance computing (HPC) host clusters. To date, the system has been used to provision many hundreds of thousands of CPUs for computational experiments requiring high throughput on HPC infrastructures like the NSF TeraGrid. Experimental evaluation of the proposed algorithm shows significant improvement in user job throughput: an average of 8% in simulation, and 15% in a real-world experiment.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Clustering algorithms",
+                "Software",
+                "Software algorithms",
+                "Proposals",
+                "Resource management",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Real-world Experiments",
+                "Throughput Improvement",
+                "CPU Resources",
+                "Running",
+                "Advertising",
+                "Simulation Software",
+                "Waiting Time",
+                "Simulation Run",
+                "Local Host",
+                "Fair Share",
+                "Job Scheduling",
+                "Local Job",
+                "Multi-objective Genetic Algorithm",
+                "Running State",
+                "High Performance Computing Cluster",
+                "Virtual Sessions",
+                "Consensus In Round",
+                "Real Cluster",
+                "Average Wait",
+                "Throughput Values"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -2121,7 +4133,50 @@
                 "firstName": null,
                 "lastName": "Lingfang Zeng"
             }
-        ]
+        ],
+        "abstract": "Object-based storage is emerging as a next generation of distributed storage technology. Aiming at improving the performance and load-balancing of large-scale object-based storage system, we present a dynamic weight-based cooperative caching scheme referred to as DWC<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup>, which allows an object-based storage device (OSD) to use the available free cache of the neighbouring OSD. Our proposed DWC<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> replaces objects based on their weights which is a function of object size, popularity and replica number, and dynamically partitions the memory of OSD into local cache and remote cache according to activity workload. An object data is cached in local cache or remote cache of the cooperative OSDs, thus increasing cache hit ratio, reducing expensive disk access time as well as improving load balance. We benchmarked our proposed DWC<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> with existing cooperative caching schemes under various OSD environments. Our rigorous experiment results conclusively demonstrate that our DWC<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> is scalable and can achieve a significant cache hit ratio, average response time, and load balancing for large-scale OSD cluster.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cooperative caching",
+                "Servers",
+                "File systems",
+                "Time factors",
+                "Computer architecture",
+                "Performance evaluation",
+                "Resource management"
+            ],
+            "Index Terms": [
+                "Dynamic Strategy",
+                "Caching Scheme",
+                "Object Storage",
+                "Cooperative Caching",
+                "Cooperative Caching Scheme",
+                "Popularity",
+                "Scalable",
+                "Storage Systems",
+                "Objective Data",
+                "Object Size",
+                "Large-scale Systems",
+                "Load Balancing",
+                "Cooperative Strategy",
+                "Average Response Time",
+                "Remote Memory",
+                "Large-scale Storage",
+                "Large-scale Clustering",
+                "Cache Hit",
+                "High Performance",
+                "Local Memory",
+                "Large Objects",
+                "Small Objects",
+                "File System",
+                "Cache Size",
+                "High-speed Network",
+                "Replacement Policy",
+                "Objective Weight",
+                "Storage Management",
+                "Candidate Objects"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -2162,7 +4217,44 @@
                 "firstName": null,
                 "lastName": "Ninghui Sun"
             }
-        ]
+        ],
+        "abstract": "Instead of all using commodity components, an approach building a personal parallel computer on top of a non-coherent HyperTransport (HT) fabric is presented in the paper. The advantage is to provide both lower cost and higher performance compared with the existing method. A HT switch is designed and implemented for the interconnection of a set of AMD Opteron processors for building an in-a-box cluster. On our prototyping system, the result of evaluation experiments shows this approach gives the better performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Program processors",
+                "Computers",
+                "Bandwidth",
+                "Fabrics",
+                "Protocols",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Personal Computer",
+                "High Performance",
+                "Prototype System",
+                "High-performance Computing",
+                "Communication Protocol",
+                "Logic Model",
+                "Parallel System",
+                "Configuration Space",
+                "Memory Control",
+                "Ethernet",
+                "Global Space",
+                "Load Operation",
+                "Remote Memory",
+                "Effective Bandwidth",
+                "Quadric",
+                "Multiple Processors",
+                "Storage Operations",
+                "Virtual Channel",
+                "Kernel Images",
+                "Peripheral Devices",
+                "Auxiliary Components",
+                "Virtual Devices"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -2191,7 +4283,51 @@
                 "firstName": null,
                 "lastName": "Zhixiang Li"
             }
-        ]
+        ],
+        "abstract": "This paper presents a differentiated storage service in object-based storage system, called DifferStore. To enable differentiated storage service for different applications in a single object-based storage platform, DifferStore utilizes a two-layer architecture to efficiently decouple upper-layer application specific storage policies and lower-layer application independent storage functions. For the lower application independent layer, this paper proposes a weight-based object I/O scheduler with differentiated scheduling policy for different request classes, and a versatile storage manager. The versatile storage manager implements differentiated storage policies in terms of disk layout and free space allocation, as well as an efficient object namespace management enabling directly access object on-disk data just with object ID. The DifferStore also provides ability for upper application specific layer to assign complex striping, placement, load-balancing policies and specific metadata structure of file. Experimental evaluation on our user space prototype demonstrates that the DifferStore can perform well under mixed workloads and satisfy requirements of different applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resource management",
+                "File systems",
+                "Couplings",
+                "Quality of service",
+                "Bandwidth",
+                "Layout",
+                "Time factors"
+            ],
+            "Index Terms": [
+                "Storage Systems",
+                "Object Storage",
+                "Free Space",
+                "Direct Access",
+                "Application Requirements",
+                "Objective Data",
+                "Single Platform",
+                "Storage Management",
+                "Storage Platform",
+                "Block Size",
+                "Index Levels",
+                "Small Objects",
+                "Object Size",
+                "Multiple Applications",
+                "Service Time",
+                "Leaf Node",
+                "Large Objects",
+                "Objective Space",
+                "File System",
+                "Reading Performance",
+                "Video Applications",
+                "Object Placement",
+                "Logic Unit",
+                "Efficient Scheduling",
+                "Continuous Block",
+                "Full Cluster",
+                "Scheduling Mechanism",
+                "Scheduling Algorithm",
+                "Service Class",
+                "Throughput"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -2226,7 +4362,39 @@
                 "firstName": "Seungryoul",
                 "lastName": "Maeng"
             }
-        ]
+        ],
+        "abstract": "User-level communication allows an application process to access the network interface directly. Bypassing the kernel requires that a user process accesses the network interface using its own virtual address which should be translated to a physical address. A small caching structure which is similar to the hardware TLB on the host processor has been used to cache the mappings between virtual and physical addresses on the network interface memory. In this study, we propose a new TLB architecture for the network interface. The proposed architecture splits an original caching structure into as many partitions as the number of processors on the SMP system and assigns a separate partition to each application process. In addition, the architecture becomes aware of user contexts and switches the content of caching structure in accordance with context switching. According to our experiments, our scheme achieves significant reduction in application execution time compared to the previous approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Network interfaces",
+                "Kernel",
+                "Computer architecture",
+                "Indexes",
+                "Switches",
+                "Protocols",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "Address Translation",
+                "Application Process",
+                "Caching",
+                "Network Interface",
+                "Number Of Processors",
+                "Physical Address",
+                "Separate Partitions",
+                "Context Switching",
+                "End Groups",
+                "Block Size",
+                "High-performance Computing",
+                "Degree Of Association",
+                "Communication Protocol",
+                "Single Entry",
+                "Data Cache",
+                "Kernel Space",
+                "Parallel Applications",
+                "Address Space"
+            ]
+        }
     },
     {
         "publicationNumber": "4655410",
@@ -2242,7 +4410,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2258,7 +4428,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2274,7 +4446,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2290,7 +4464,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2306,7 +4482,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2322,7 +4500,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2338,7 +4518,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2354,7 +4536,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2370,7 +4554,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2386,7 +4572,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover or splash screen of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2402,7 +4590,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a schedule of conference events and a listing of which papers were presented in each session.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2418,7 +4608,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: cluster computing; scheduling; virtualization technology; multicore architecture; parallel file system; I/O library; high performance message passing library; data intensive computing; scientific computing; matrix computing and automatic performance tuning.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2434,7 +4626,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose papers are published in the conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2450,7 +4644,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "You have reached the end of this document.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2466,7 +4662,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides instructions on viewing the proceedings articles in PDF format and support information for CD users.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2482,7 +4680,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference organizers greatly appreciate the support of the various corporate sponsors listed.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2498,7 +4698,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2514,7 +4716,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the proceedings page that links various sections of the overall electronic record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2530,7 +4734,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose papers are published in the conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2546,7 +4752,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides instructions and guidelines to prospective authors who wish to submit manuscripts.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2562,7 +4770,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides instructions on viewing the proceedings articles in PDF format and support information for CD users.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4655410",
@@ -2578,6 +4788,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2008 IEEE International Conference on Cluster Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference offers a note of thanks and lists its reviewers.",
+        "keywords": {}
     }
 ]

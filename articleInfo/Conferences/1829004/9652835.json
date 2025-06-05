@@ -38,7 +38,58 @@
                 "firstName": "Michael",
                 "lastName": "Bader"
             }
-        ]
+        ],
+        "abstract": "Resilient algorithms in high-performance computing are subject to rigorous non-functional constraints. Resiliency must not increase the runtime, memory footprint or I/O demands too significantly. We propose a task-based soft error detection scheme that relies on error criteria per task outcome. They formalise how &#x201C;dubious&#x201D; an outcome is, i.e. how likely it contains an error. Our whole simulation is replicated once, forming two teams of MPI ranks that share their task results. Thus, ideally each team handles only around half of the workload. If a task yields large error criteria values, i.e. is dubious, we compute the task redundantly and compare the outcomes. Whenever they disagree, the task result with a lower error likeliness is accepted. We obtain a self-healing, resilient algorithm which can compensate silent floating-point errors without a significant performance, I/O or memory footprint penalty. Case studies however suggest that a careful, domain-specific tailoring of the error criteria remains essential.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Conferences",
+                "Computational modeling",
+                "Software algorithms",
+                "Redundancy",
+                "Fault tolerant systems",
+                "Software"
+            ],
+            "Index Terms": [
+                "Corrupted Data",
+                "Soft Errors",
+                "Silent Data Corruption",
+                "Error Detection",
+                "Results Of Task",
+                "Memory Footprint",
+                "Error Criterion",
+                "Time Step",
+                "Numeric",
+                "Second Derivative",
+                "Partial Differential Equations",
+                "Data Exchange",
+                "Majority Voting",
+                "Hash Function",
+                "Local Computing",
+                "Combination Of Criteria",
+                "Negative Density",
+                "Algorithmic Framework",
+                "Resilience Strategies",
+                "Mesh Cell",
+                "Checkpointing",
+                "Mean Time To Failure",
+                "Redundancy Check",
+                "Hyperbolic Equation",
+                "Domain Decomposition",
+                "Second Derivative Maximum",
+                "Strong Scaling",
+                "Synchronization",
+                "Level Of Redundancy",
+                "Types Of Tasks"
+            ],
+            "Author Keywords": [
+                "soft errors",
+                "detection",
+                "correction",
+                "fault tolerance",
+                "fault resilience"
+            ]
+        }
     },
     {
         "publicationNumber": "9652835",
@@ -73,7 +124,51 @@
                 "firstName": "Rong",
                 "lastName": "Ge"
             }
-        ]
+        ],
+        "abstract": "Power and reliability are two intertwined challenges in GPU-accelerated large-scale computing. Aggressive power reduction pushes hardware to its operating limit and increases the failure rate. Resilience allows programs to progress when subjected to faults and is an integral component of large-scale systems, but incurs significant time and energy overhead. Managing power and resilience is challenging, due to the heterogeneous compute capability, power consumption, and varying failure rates between CPUs and GPUs. Previous works have shown that redundancy-based approaches are more energy efficient than checkpointing/restart at extreme-scales, but current solutions only support parallel programs running on CPU-based homogeneous systems. Simply extending redundancy approaches from CPU-based systems results in sub-optimal performance and/or energy efficiency because existing redundancy solutions typically rely on identical replicas with expensive synchronization. In this work, we explore redundancy techniques and energy efficient techniques for GPU-accelerated systems running MPI parallel workloads. Specifically, we design a novel redundancy technique that relaxes the requirement of synchronization and identicalness for replica processes and allows them to run in lower-precision and at lower power/performance states with periodical rejuvenation or asynchronization, enabling resources and power reduction. This relaxed replication mechanism complicates fault detection and recovery over the homogeneous exact replication. We discuss techniques to handle and mitigate these complexities for both process/node failures and silent data corruption. Evaluation results on a 16-GPU cluster show our techniques reduce energy by up to 15% for unmodified programs and 32% for programs that are able to adapt the precision of the replicas.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tensors",
+                "Power demand",
+                "Power system management",
+                "Redundancy",
+                "Graphics processing units",
+                "Energy efficiency",
+                "Large-scale systems"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "GPU Computation",
+                "Power Consumption",
+                "Parallelization",
+                "Rejuvenation",
+                "Large-scale Systems",
+                "Corrupted Data",
+                "Time Overhead",
+                "Exact Replication",
+                "Energy Conservation",
+                "Form Of Equation",
+                "Multi-core",
+                "Power Values",
+                "High-performance Computing",
+                "Fault-tolerant",
+                "Low Precision",
+                "Linear Solver",
+                "Power Management",
+                "Double Precision",
+                "Dynamic Voltage",
+                "Node Failure",
+                "Single Precision",
+                "Mean Time To Failure",
+                "Replication Strategy",
+                "Application Execution",
+                "Synchronous Mode",
+                "Remote Memory",
+                "GPU Card",
+                "Asynchronous Mode",
+                "Data Structure"
+            ]
+        }
     },
     {
         "publicationNumber": "9652835",
@@ -138,7 +233,66 @@
                 "firstName": "Gal",
                 "lastName": "Oren"
             }
-        ]
+        ],
+        "abstract": "As the High Performance Computing (HPC) world moves towards the Exa-Scale era, huge amounts of data should be analyzed, manipulated and stored. In the traditional stor-age/memory hierarchy, each compute node retains its data objects in its local volatile DRAM. Whenever the DRAM's capacity becomes insufficient for storing this data, the computation should either be distributed between several compute nodes, or some portion of these data objects must be stored in a non-volatile block device such as a hard disk drive (HDD) or an SSD storage device. These standard block devices offer large and relatively cheap non-volatile storage, but their access times are orders-of-magnitude slower than those of DRAM. Optane™ DataCenter Persistent Memory Module (DCPMM) [1], a new technology introduced by Intel, provides non-volatile memory that can be plugged into standard memory bus slots (DDR DIMMs) and therefore be accessed much faster than standard storage devices. In this work, we present and analyze the results of a comprehensive performance assessment of several ways in which DCPMM can 1) replace standard storage devices, and 2) replace or augment DRAM for improving the performance of HPC scientific computations. To achieve this goal, we have configured an HPC system such that DCPMM can service I/O operations of scientific applications, replace standard storage devices and file systems (specifically for diagnostics and checkpoint-restarting), and serve for expanding applications' main memory. We focus on keeping the scientific codes with as few changes as possible, while allowing them to access the NVM transparently as if they access persistent storage. Our results show that DCPMM allows scientific applications to fully utilize nodes' locality by providing them with sufficiently-large main memory. Moreover, it can also be used for providing a high-performance replacement for persistent storage. Thus, the usage of DCPMM has the potential of replacing standard HDD and SSD storage devices in HPC architectures and enabling a more efficient platform for modern supercomputing annlications. The source code used by this work, as well as the benchmarks and other relevant sources, are available at: https://github.com/Scientific-Computing-Lab-NRCN/StoringStorage.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Codes",
+                "Nonvolatile memory",
+                "Scientific computing",
+                "High performance computing",
+                "Random access memory",
+                "Distributed databases"
+            ],
+            "Index Terms": [
+                "Computer Science",
+                "Persistent Memory",
+                "High Performance",
+                "Objective Data",
+                "Scientific Applications",
+                "High-performance Computing",
+                "Storage Devices",
+                "Huge Amount Of Data",
+                "File System",
+                "Non-volatile Memory",
+                "Standard Device",
+                "Computing Nodes",
+                "Standard Block",
+                "High-performance Computing Systems",
+                "Standard Storage",
+                "Operating System",
+                "Rest Of The Paper",
+                "Fault-tolerant",
+                "Performance In Applications",
+                "Storage Space",
+                "System Calls",
+                "End Of Each Iteration",
+                "Virtual Memory",
+                "Primary Memory",
+                "Local File",
+                "Octopus",
+                "Memory Hierarchy",
+                "Linear Algebra",
+                "Data Nodes",
+                "Storage Media"
+            ],
+            "Author Keywords": [
+                "Non-Volatile RAM",
+                "Optane™ DCPMM",
+                "NAS Parallel Benchmark",
+                "PolyBench",
+                "FIO",
+                "PMFS",
+                "SplitFS",
+                "NOVA",
+                "ext4-dax",
+                "xfs",
+                "DAOS",
+                "DMTCP",
+                "SCR"
+            ]
+        }
     },
     {
         "publicationNumber": "9652835",
@@ -191,7 +345,57 @@
                 "firstName": "William M.",
                 "lastName": "Jones"
             }
-        ]
+        ],
+        "abstract": "HPC clusters and supercomputers are capital investments and undergo great scrutiny to be sure that the system meets agreed upon metrics of performance, reliability, and usability. As such, careful evaluation of a system occurs once delivered to evaluate the agreed upon specifications have been met. This evaluation is referred to as an &#x201C;acceptance test.&#x201D; Both the HPC vendor and the data center buying the system have a vested interest in passing this test, though their goals sometimes are at odds. While the buyer wants the system agreed upon, the vendor wants the test to pass in a timely manner so that they can be paid. This creates a delicate balance where both parties agree upon testing parameters to satisfy their goals and optimize their objectives. This paper focuses on the reliability testing aspect of an acceptance test and outlines how test parameters are set up for length of test and number of acceptable failures. The recommended frequentist (non-Bayesian) statistical techniques are based on a Poisson failure model and it is shown that if both parties expect low probability of failing their respective objectives, the test is likely to be unreasonably long. Two party optimizations and constraints on testing duration are considered as well. Once a test is ongoing, it is shown how failure times from the test can be used in a Bayesian approach to calculate that the probability that the machine has a higher MTBF than prescribed. Techniques for accepting a less reliable machine and those ramifications are presented as well. Finally, simulations are performed that analyze six different HPC workloads and how impactful accepting a less reliable machine will be on the buyer. The techniques presented in this paper could be used by data center operators and procurement teams to evaluate systems during acceptance testing as well as HPC vendors to minimize their risk of failure.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Procurement",
+                "Measurement",
+                "Data centers",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Supercomputers",
+                "Usability"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Acceptable Test",
+                "Bayesian Model",
+                "Performance Metrics",
+                "Parametric Tests",
+                "Reliability Test",
+                "Test Duration",
+                "Failure Time",
+                "Test Length",
+                "Reliability Metrics",
+                "Mean Time To Failure",
+                "Objective Function",
+                "Number Of Tests",
+                "Results In Cases",
+                "Exponential Distribution",
+                "Hours Of Time",
+                "Bayesian Probability",
+                "Optimal Interval",
+                "Baseline Case",
+                "Checkpointing",
+                "Los Alamos National Laboratory",
+                "Makespan",
+                "Baseline System",
+                "Probability Interval",
+                "Conjugate Prior",
+                "Test Failure",
+                "Machine Failure",
+                "Job Scheduling",
+                "Node Failure"
+            ],
+            "Author Keywords": [
+                "acceptance testing",
+                "reliability testing",
+                "optimization",
+                "simulation",
+                "statistical modeling"
+            ]
+        }
     },
     {
         "publicationNumber": "9652835",
@@ -220,7 +424,54 @@
                 "firstName": "Herman",
                 "lastName": "Lam"
             }
-        ]
+        ],
+        "abstract": "As the design space for high-performance computer (HPC) systems grows larger and more complex, modeling and simulation (MODSIM) techniques become more important to better optimize systems. Furthermore, recent extreme-scale systems and newer technologies can lead to higher system fault rates, which negatively affect system performance and other metrics. Therefore, it is important for system designers to consider the effects of faults and fault-tolerance (FT) techniques on system design through MODSIM. BE-SST is an existing MODSIM methodology and workflow that facilitates preliminary exploration & reduction of large design spaces, particularly by highlighting areas of the space for detailed study and pruning less optimal areas. This paper presents the overall methodology for adding fault-tolerance awareness (FT-awareness) into BE-SST. We present the process used to extend BE-SST, enabling the creation of models that predict the time needed to perform a checkpoint instance for the given system configuration. Additionally, this paper presents a case study where a full HPC system is simulated using BE-SST, including application, hardware, and checkpointing. We validate the models and simulation against actual system measurements, finding an average percent error of less than 17 % for the instance models and about 20 % for system simulation, a level of accuracy acceptable for initial exploration and pruning of the design space. Finally, we show how FT-aware simulation results are used for comparing FT levels in the design space.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fault tolerance",
+                "Computational modeling",
+                "System performance",
+                "Conferences",
+                "Fault tolerant systems",
+                "Measurement uncertainty",
+                "Predictive models"
+            ],
+            "Index Terms": [
+                "System-level Simulation",
+                "System Performance",
+                "System Design",
+                "High-performance Computing",
+                "Design Space",
+                "Area Of Space",
+                "Effect Of Defects",
+                "System Fault",
+                "Defect Rate",
+                "Design Space Exploration",
+                "Checkpointing",
+                "High-performance Computing Systems",
+                "Model Analysis",
+                "Training Data",
+                "Model Validation",
+                "Lookup Table",
+                "Problem Size",
+                "Benchmark Data",
+                "Coarse-grained Model",
+                "Performance Overhead",
+                "Hardware Architecture",
+                "Model Development Process",
+                "Level Of Parallelism",
+                "Corrupted Data",
+                "Third Power",
+                "Hardware Components",
+                "Application Version"
+            ],
+            "Author Keywords": [
+                "fault-tolerance aware system design and evaluation",
+                "System-level modeling and simulation",
+                "high-performance computing",
+                "design space exploration"
+            ]
+        }
     },
     {
         "publicationNumber": "9652835",
@@ -236,7 +487,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 11th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652835",
@@ -252,7 +505,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 11th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652835",
@@ -268,7 +523,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 11th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652835",
@@ -284,7 +541,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 11th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Copyright and Reprint Permissions: Abstracting is permitted with credit to the source. Libraries may photocopy beyond the limits of US copyright law, for private use of patrons, those articles in this volume that carry a code at the bottom of the first page, provided that the per-copy fee indicated in the code is paid through the Copyright Clearance Center, 222 Rosewood Drive, Danvers, MA 01923.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652835",
@@ -300,6 +559,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 11th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     }
 ]

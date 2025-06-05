@@ -38,7 +38,30 @@
                 "firstName": "Matthew",
                 "lastName": "Curry"
             }
-        ]
+        ],
+        "abstract": "This paper explores how we used IO500 and the Mistral tool from Ellexus to observe detailed performance characteristics to inform tuning IO performance on Astra, a ARM-based Sandia machine with an all flash, Lustre-based storage array. Through this case study, we demonstrate that IO500 serves as a meaningful storage benchmark, even for all flash storage. We also demonstrate that using fine-grained profiling tools, such as Mistral, is essential for revealing tuning requirement details. Overall, this paper demonstrates the value of a broad spectrum benchmark, like IO500, together with a fine grained performance analysis tool, such as Mistral, for understanding detailed storage system performance for better informed tuning.",
+        "keywords": {
+            "Index Terms": [
+                "Benchmark",
+                "System Performance",
+                "Storage Systems",
+                "Profiling Tool",
+                "Monitoring Tool",
+                "Performance Loss",
+                "Microhardness",
+                "File System",
+                "Caching",
+                "Solid-state Drives",
+                "Easy Test"
+            ],
+            "Author Keywords": [
+                "IO500",
+                "Mistral",
+                "Ellexus",
+                "System Monitoring",
+                "IO Performance"
+            ]
+        }
     },
     {
         "publicationNumber": "8947627",
@@ -79,7 +102,41 @@
                 "firstName": "Yue",
                 "lastName": "Cheng"
             }
-        ]
+        ],
+        "abstract": "Python-written data analytics applications can be modeled as and compiled into a directed acyclic graph (DAG) based workflow, where the nodes are fine-grained tasks and the edges are task dependencies.Such analytics workflow jobs are increasingly characterized by short, fine-grained tasks with large fan-outs. These characteristics make them well-suited for a new cloud computing model called serverless computing or Function-as-a-Service (FaaS), which has become prevalent in recent years. The auto-scaling property of serverless computing platforms accommodates short tasks and bursty workloads, while the pay-per-use billing model of serverless computing providers keeps the cost of short tasks low. In this paper, we thoroughly investigate the problem space of DAG scheduling in serverless computing. We identify and evaluate a set of techniques to make DAG schedulers serverless-aware. These techniques have been implemented in WUKONG , a serverless, DAG scheduler attuned to AWS Lambda. WUKONG provides decentralized scheduling through a combination of static and dynamic scheduling. We present the results of an empirical study in which WUKONG is applied to a range of microbenchmark and real-world DAG applications. Results demonstrate the efficacy of WUKONG in minimizing the performance overhead introduced by AWS Lambda — WUKONG achieves competitive performance compared to a serverful DAG scheduler, while improving the performance of real-world DAG jobs by as much as 4.1x at larger scale.",
+        "keywords": {
+            "Index Terms": [
+                "Directed Acyclic Graph",
+                "Real-world Applications",
+                "Short Task",
+                "Dynamic Scheduling",
+                "Support Vector Machine",
+                "Singular Value Decomposition",
+                "Task Execution",
+                "Problem Size",
+                "Leaf Node",
+                "Virtual Machines",
+                "Load Balancing",
+                "Edge Region",
+                "Communication Overhead",
+                "Task Scheduling",
+                "Intermediate Data",
+                "Cold Start",
+                "Straw Man",
+                "Large-sized Problems",
+                "Storage Management",
+                "External Storage",
+                "Intermediate Storage",
+                "Intermediate Objective",
+                "Cluster Of Machines",
+                "Counter Value",
+                "Linear Algebra",
+                "Intermediate Results",
+                "High-level Design",
+                "Depth-first",
+                "Communication Protocol"
+            ]
+        }
     },
     {
         "publicationNumber": "8947627",
@@ -120,7 +177,48 @@
                 "firstName": "Suren",
                 "lastName": "Byna"
             }
-        ]
+        ],
+        "abstract": "Parallel I/O is an indispensable part of scientific applications. The current stack of parallel I/O contains many tunable parameters. While changing these parameters can increase I/O performance many-fold, the application developers usually resort to default values because tuning is a cumbersome process and requires expertise. We propose two auto-tuning models, based on active learning that recommend a good set of parameter values (currently tested with Lustre parameters and MPI-IO hints) for an application on a given system. These models use Bayesian optimization to find the values of parameters by minimizing an objective function. The first model runs the application to determine these values, whereas, the second model uses an I/O prediction model for the same. Thus the training time is significantly reduced in comparison to the first model (e.g., from 800 seconds to 18 seconds). Also both the models provide flexibility to focus on improvement of either read or write performance. To keep the tuning process generic, we have focused on both read and write performance. We have validated our models using an I/O benchmark (IOR) and 3 scientific application I/O kernels (S3D-IO, BT-IO and GenericIO) on two supercomputers (HPC2010 and Cori). Using the two models, we achieve an increase in I/O bandwidth of up to 11× over the default parameters. We got up to 3× improvements for 37 TB writes, corresponding to 1 billion particles in GenericIO. We also achieved up to 3.2× higher bandwidth for 4.8 TB of noncontiguous I/O in BT-IO benchmark.",
+        "keywords": {
+            "Index Terms": [
+                "Benchmark",
+                "Prediction Model",
+                "Default Parameters",
+                "Objective Function",
+                "Set Of Values",
+                "Active Learning",
+                "Training Time",
+                "Development Of Applications",
+                "Scientific Applications",
+                "High-performance Computing",
+                "Bayesian Optimization",
+                "Machine Learning",
+                "Training Set",
+                "Training Data",
+                "Learning Algorithms",
+                "Machine Learning Models",
+                "Machine Learning Approaches",
+                "Search Space",
+                "Block Size",
+                "File System",
+                "Best Set Of Parameters",
+                "Random Search",
+                "Average Read",
+                "Bandwidth Improvement",
+                "Exact Parameters",
+                "Maximum Improvement",
+                "Predictive Performance Of Models",
+                "Extreme Gradient Boosting",
+                "Application Code"
+            ],
+            "Author Keywords": [
+                "Parallel I/O",
+                "auto-tuning",
+                "active learning",
+                "performance prediction",
+                "machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "8947627",
@@ -167,7 +265,28 @@
                 "firstName": "Tonglin",
                 "lastName": "Li"
             }
-        ]
+        ],
+        "abstract": "With scientific applications moving toward exascale levels, an increasing amount of data is being produced and analyzed. Providing efficient data access is crucial to the productivity of the scientific discovery process. Compared to improvements in CPU and network speeds, I/O performance lags far behind, such that moving data across the storage hierarchy can take longer than data generation or analysis. To alleviate this I/O bottleneck, asynchronous read and write operations have been provided by the POSIX and MPI-I/O interfaces and can overlap I/O operations with computation, and thus hide I/O latency. However, these standards lack support for non-data operations such as file open, stat, and close, and their read and write operations require users to both manually manage data dependencies and use low-level byte offsets. This requires significant effort and expertise for applications to utilize. To overcome these issues, we present an asynchronous I/O framework that provides support for all I/O operations and manages data dependencies transparently and automatically. Our prototype asynchronous I/O implementation as an HDF5 VOL connector demonstrates the effectiveness of hiding the I/O cost from the application with low overhead and easy-to-use programming interface.",
+        "keywords": {
+            "Index Terms": [
+                "Background Thread",
+                "Scientific Applications",
+                "Application Programming Interface",
+                "Low Overhead",
+                "Computation Time",
+                "High-performance Computing",
+                "Correct Order",
+                "Reading Times",
+                "Communication Cost",
+                "File System",
+                "Deadlock",
+                "Independent Operators",
+                "Code Changes",
+                "Series Of Applications",
+                "Task Queue",
+                "HDF5 File"
+            ]
+        }
     },
     {
         "publicationNumber": "8947627",
@@ -214,7 +333,44 @@
                 "firstName": "Nicholas J.",
                 "lastName": "Wright"
             }
-        ]
+        ],
+        "abstract": "The utilization and performance of storage, compute, and network resources within HPC data centers have been studied extensively, but much less work has gone toward characterizing how these resources are used in conjunction to solve larger scientific challenges. To address this gap, we present our work in characterizing workloads and workflows at a data-center-wide level by examining all data transfers that occurred between storage, compute, and the external network at the National Energy Research Scientific Computing Center over a three-month period in 2019. Using a simple abstract representation of data transfers, we analyze over 100 million transfer logs from Darshan, HPSS user interfaces, and Globus to quantify the load on data paths between compute, storage, and the wide-area network based on transfer direction, user, transfer tool, source, destination, and time. We show that parallel I/O from user jobs, while undeniably important, is only one of several major I/O workloads that occurs throughout the execution of scientific workflows. We also show that this approach can be used to connect anomalous data traffic to specific users and file access patterns, and we construct time-resolved user transfer traces to demonstrate that one can systematically identify coupled data motion for individual workflows.",
+        "keywords": {
+            "Index Terms": [
+                "Data Center",
+                "High-performance Computing",
+                "Data Transfer",
+                "Network Resources",
+                "External Networks",
+                "Datapath",
+                "Wide Area Network",
+                "Transfer Tool",
+                "Semantic",
+                "Volume Of Data",
+                "Variety Of Systems",
+                "End Time",
+                "Storage Systems",
+                "Human-computer Interaction",
+                "Figure Of Merit",
+                "Load Data",
+                "Heavy Use",
+                "File System",
+                "Transfer Volume",
+                "Transfer Vector",
+                "File Transfer",
+                "Caching",
+                "Human-in-the-loop",
+                "High-speed Network",
+                "Ground Truth Values",
+                "Log Files",
+                "Shaded Region"
+            ],
+            "Author Keywords": [
+                "data movement",
+                "storage",
+                "workflows"
+            ]
+        }
     },
     {
         "publicationNumber": "8947627",
@@ -285,7 +441,39 @@
                 "firstName": "Feiyi",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "In high-performance computing (HPC), I/O performance prediction offers the potential to improve the efficiency of scientific computing. In particular, accurate prediction can make runtime estimates more precise, guide users toward optimal checkpoint strategies, and better inform facility provisioning and scheduling policies. HPC I/O performance is notoriously difficult to predict and model, however, in large part because of inherent variability and a lack of transparency in the behaviors of constituent storage system components. In this work we seek to advance the state of the art in HPC I/O performance prediction by (1) modeling the mean performance to address high variability, (2) deriving model features from write patterns, system architecture and system configurations, and (3) employing Lasso regression model to improve model accuracy. We demonstrate the efficacy of our approach by applying it to a crucial subset of common HPC I/O motifs, namely, file-per-process checkpoint write workloads. We conduct experiments on two distinct production HPC platforms - Titan at the Oak Ridge Leadership Computing Facility and Cetus at the Argonne Leadership Computing Facility - to train and evaluate our models. We find that we can attain ≤ 30% relative error for 92.79% and 99.64% of the samples in our test set on these platforms, respectively.",
+        "keywords": {
+            "Index Terms": [
+                "Machine Learning",
+                "High-performance Computing",
+                "System Configuration",
+                "Training Set",
+                "Use Of Resources",
+                "Model Selection",
+                "Small Set",
+                "Validation Set",
+                "End-users",
+                "Performance Variables",
+                "Pooled Data",
+                "Block Size",
+                "Target System",
+                "Load Distribution",
+                "Central Limit Theorem",
+                "Sequence Blocks",
+                "Access Patterns",
+                "Total Execution Time",
+                "Shrinkage Parameter",
+                "Bytes Of Data",
+                "Checkpointing"
+            ],
+            "Author Keywords": [
+                "Large-scale parallel filesystem",
+                "write performance",
+                "production supercomputer",
+                "machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "8947627",
@@ -344,7 +532,48 @@
                 "firstName": "Carlos",
                 "lastName": "Maltzahn"
             }
-        ]
+        ],
+        "abstract": "In the post-Moore era, systems and devices with new architectures will arrive at a rapid rate with significant impacts on the software stack. Applications will not be able to fully benefit from new architectures unless they can delegate adapting to new devices in lower layers of the stack. In this paper we introduce physical design management which deals with the problem of identifying and executing transformations on physical designs of stored data, i.e. how data is mapped to storage abstractions like files, objects, or blocks, in order to improve performance. Physical design is traditionally placed with applications, access libraries, and databases, using hard-wired assumptions about underlying storage systems. Yet, storage systems increasingly not only contain multiple kinds of storage devices with vastly different performance profiles but also move data among those storage devices, thereby changing the benefit of a particular physical design. We advocate placing physical design management in storage, identify interesting research challenges, provide a brief description of a prototype implementation in Ceph, and discuss the results of initial experiments at scale that are replicable using Cloudlab. These experiments show performance and resource utilization trade-offs associated with choosing different physical designs and choosing to transform between physical designs.",
+        "keywords": {
+            "Index Terms": [
+                "Storage Systems",
+                "Physical Design",
+                "Research Challenges",
+                "Storage Devices",
+                "Software Stack",
+                "Access Library",
+                "Data Structure",
+                "Object Classification",
+                "Multiple Objects",
+                "Target Object",
+                "Cost Model",
+                "File System",
+                "Object Naming",
+                "Application Layer",
+                "Storage Services",
+                "Standardized Reading",
+                "Physical Transformation",
+                "Transformation In Order",
+                "Transformation Plan",
+                "Heterogeneous Devices",
+                "Primary Transformants",
+                "Multiple Servers",
+                "Query Performance",
+                "Column Formation",
+                "External Interface",
+                "Parallel Streams",
+                "Database Application",
+                "Availability Of Methods",
+                "Serialized",
+                "Top Row"
+            ],
+            "Author Keywords": [
+                "storage systems",
+                "data processing",
+                "data management",
+                "physical design"
+            ]
+        }
     },
     {
         "publicationNumber": "8947627",
@@ -391,7 +620,37 @@
                 "firstName": "Michael",
                 "lastName": "Lang"
             }
-        ]
+        ],
+        "abstract": "With the increasing complexity of memory and storage, it is important to automate the decision of how to assign data structures to memory and storage devices. On one hand, this requires developing models to reconcile application access patterns against the limited capacity of higher-performance devices. On the other, such a modeling task demands a set of primitives to build from, and a toolkit that implements those primitives in a robust, dynamic fashion. We focus on the latter problem, and to that end we present an interface that abstracts the physical layout of data from the application developer. This will allow developers focused on optimized data placement to use our abstract as the basis for their implementation, while application developers will see a unified, scalable, and resilient memory environment.",
+        "keywords": {
+            "Index Terms": [
+                "Data Placement",
+                "Data Structure",
+                "Development Of Applications",
+                "Storage Devices",
+                "Memory Devices",
+                "Results Of Experiments",
+                "Time Step",
+                "Data Management",
+                "Objective Data",
+                "Performance In Applications",
+                "Object-oriented",
+                "Data Sharing",
+                "Data Version",
+                "Fragmentation Data",
+                "Storage Media",
+                "Transport Method",
+                "Sanity Check",
+                "Memory Allocation",
+                "Global Synchronization",
+                "Creation Of Objects",
+                "Checkpointing",
+                "Ghost Cells",
+                "Performance Overhead",
+                "Global Array",
+                "Formal Language"
+            ]
+        }
     },
     {
         "publicationNumber": "8947627",
@@ -407,7 +666,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Fourth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8947627",
@@ -423,7 +684,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Fourth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8947627",
@@ -439,7 +702,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Fourth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8947627",
@@ -455,7 +720,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Fourth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8947627",
@@ -471,6 +738,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Fourth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]

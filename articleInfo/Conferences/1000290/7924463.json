@@ -50,7 +50,43 @@
                 "firstName": "Shawki",
                 "lastName": "Areibi"
             }
-        ]
+        ],
+        "abstract": "Convolutional Neural Networks (CNNs) have gained significant traction in the field of machine learning, particularly due to their high accuracy in visual recognition. Recent works have pushed the performance of GPU implementations of CNNs showing significant improvements in their classification and training times. With these improvements, many frameworks have become available for implementing CNNs on both CPUs and GPUs, with no support for FPGA implementations. In this work we present a modified version of the popular CNN framework Caffe, with FPGA support. This allows for classification using CNN models and specialized FPGA implementations with the flexibility of reprogramming the device when necessary, seamless memory transactions between host and device, simple-to-use test benches, and the ability to create pipelined layer implementations. To validate the framework, we use the Xilinx SDAccel environment to implement an FPGA-based Winograd convolution engine and show that it can be used alongside other layers running on a host processor to run several popular CNNs (AlexNet, GoogleNet, VGG A, Overfeat). The results show that our framework achieves 50 GFLOPS across 3×3 convolutions in the benchmarks. This is achieved within a practical framework, which will aid in future development of FPGA-based CNNs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Convolution",
+                "Parallel processing",
+                "Graphics processing units",
+                "Pipelines",
+                "Kernel",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Convolutional Neural Network",
+                "Convolutional Neural Network Model",
+                "AlexNet",
+                "Test Bench",
+                "Field Of Machine Learning",
+                "Convolutional Neural Network Framework",
+                "GPU Implementation",
+                "Popular Convolutional Neural Networks",
+                "Learning Algorithms",
+                "Convolutional Layers",
+                "Per Cycle",
+                "Dot Product",
+                "Processing Elements",
+                "Convolutional Neural Network Classifier",
+                "Computing Units",
+                "Output Feature Map",
+                "Floating-point Operations",
+                "Set Of Transformations",
+                "Tile Size",
+                "Benchmark Suite",
+                "Static Regions",
+                "Device Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -97,7 +133,39 @@
                 "firstName": "Masato",
                 "lastName": "Motomura"
             }
-        ]
+        ],
+        "abstract": "A pre-trained deep convolutional neural network (CNN) is a feed-forward computation perspective, which is widely used for the embedded systems, requires high power-and-area efficiency. This paper realizes a binarized CNN which treats only binary 2-values (+1/-1) for the inputs and the weights. In this case, the multiplier is replaced with an EX-NOR circuit. To reduce both power and area, we realize the 2-valued CNN by off- and on-chip memories. Since our 2D convolution operations are realized by the on-chip memory, our implementation consumes lower power than the DSP block. We decompose the memory part, and realize them by a cascade of memories (LUT cascade). By introducing a batch normalization technique, the classification error for the binarized CNN can be improved. We implemented the CIFAR-10 benchmark on the NetFPGA-SUME board, which has the Xilinx Inc. Virtex 7 FPGA and three on-chip QDR II+ Synchronous SRAMs. Compared with the conventional FPGA realizations, the performance is 2.82 times faster, the power efficiency is 1.76 times, and the area efficiency is 29.13 times better.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Table lookup",
+                "Two dimensional displays",
+                "Memory management",
+                "Neural networks",
+                "Field programmable gate arrays",
+                "System-on-chip",
+                "Convolution"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Convolutional Neural Network",
+                "Deep Convolutional Neural Network",
+                "Deep Neural Network",
+                "Batch Normalization",
+                "Classification Error",
+                "Power Efficiency",
+                "On-chip Memory",
+                "Feature Maps",
+                "Pooling Layer",
+                "Amount Of Memory",
+                "Memory Size",
+                "Shift Register",
+                "Functional Decomposition",
+                "2D Convolutional Layers",
+                "Off-chip Memory",
+                "RGB Color Images",
+                "Convolutional Neural Network Implementation"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -134,8 +202,8 @@
             },
             {
                 "id": 37276355800,
-                "preferredName": "J\u00fcrgen Teich",
-                "firstName": "J\u00fcrgen",
+                "preferredName": "Jürgen Teich",
+                "firstName": "Jürgen",
                 "lastName": "Teich"
             },
             {
@@ -144,7 +212,43 @@
                 "firstName": "Daniel",
                 "lastName": "Ziener"
             }
-        ]
+        ],
+        "abstract": "During the design of embedded systems, many design decisions have to be made to trade off between conflicting objectives such as cost, performance, and power. Approximate computing allows to optimize each objective, yet for the sake of accuracy. This means that a functional flaw is allowed to produce an error as long as this is small enough to maintain a feasible operation of the system or guarantee a certain accuracy of the results. In this paper, we propose a new technique for approximate addition optimized for LUT-Based FPGAs with segmented carry chains. Our optimized adder structure is able to a) best exploit artifacts of LUT-Based FPGAs such as unused inputs and b) provide a smaller average error than previously proposed approximate adder structures, as well as c) a reduced critical path delay than dedicated accurate logic in modern FPGAs. We present a novel stochastic error calculus that is able to take into account also non-uniform input distributions and present a detailed comparison of approximate adder structures proposed in literature with our novel LUT-Based approximate arithmetic structure.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Adders",
+                "Power demand",
+                "Field programmable gate arrays",
+                "Error analysis",
+                "Table lookup",
+                "Delays",
+                "Approximate computing"
+            ],
+            "Index Terms": [
+                "Approximate Adders",
+                "Average Error",
+                "Approximate Computation",
+                "Critical Path",
+                "Uniform Distribution",
+                "Power Consumption",
+                "Mean Distance",
+                "Number Of Combinations",
+                "Power Efficiency",
+                "Input Combinations",
+                "Error Metrics",
+                "Least Significant Bit",
+                "Split Point",
+                "Input Bits",
+                "Output Bits",
+                "Half Adder"
+            ],
+            "Author Keywords": [
+                "Approximate Adder",
+                "Approximate computing",
+                "LUT-Based FPGAs",
+                "Low-latency Adders"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -179,7 +283,43 @@
                 "firstName": "Kiyoshi",
                 "lastName": "Oguri"
             }
-        ]
+        ],
+        "abstract": "Super-resolution technologies are used to fill the gap between high-resolution displays and lower-resolution contents. There are various algorithms to interpolate information, one of which is using a convolutional neural network (CNN). This paper shows FPGA implementation and performance evaluation of a CNN-based super-resolution system, which can process moving images in real time. We apply horizontal and/or vertical flips to network input images instead of commonly used pre-enlargement techniques. This method prevents information loss and enables the network to utilize the best of its input image size. Our system can perform super-resolution from 960×540 pixels to 1920×1080 pixels at not less than 48fps with a latency of less than 1 ms. Even though the network scale and the size of filters are limited due to resource restriction of the FPGA, the system generates clear super-resolution images with smooth edges. The evaluation results also reveal that the proposed system achieves superior quality in terms of the structural similarity (SSIM) index, compared to other systems using pre-enlargement.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image resolution",
+                "Field programmable gate arrays",
+                "Neural networks",
+                "Image restoration",
+                "Real-time systems",
+                "Hardware",
+                "Interpolation"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Convolutional Neural Network",
+                "FPGA Implementation",
+                "Super-resolution System",
+                "Real-time Super-resolution",
+                "Structural Similarity",
+                "Input Image",
+                "Filter Size",
+                "Input Image Size",
+                "Structural Similarity Index",
+                "Vertical Flip",
+                "Amount Of Information",
+                "Image Pixels",
+                "Network Configuration",
+                "Output Image",
+                "Still Images",
+                "Width Of Layer",
+                "Fractional Part",
+                "Learning Dataset",
+                "Bicubic Interpolation",
+                "Bit-width",
+                "Neural Network Framework"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -220,7 +360,47 @@
                 "firstName": "Simpei",
                 "lastName": "Sato"
             }
-        ]
+        ],
+        "abstract": "A random forest (RF) is a kind of ensemble machine learning algorithm used for a classification and a regression. It consists of multiple decision trees that are built from randomly sampled data. The RF has a simple, fast learning, and identification capability compared with other machine learning algorithms. It is widely used for applicable to various recognition systems. Since it is necessary to un-balanced trace for each tree and requires communication for all the ones, the random forest is not suitable in SIMD architectures such as GPUs. Although the accelerators using the FPGA have been proposed, such implementations were based on HDL design. Thus, they required longer design time compared with the soft-ware based realizations. In this paper, we show the accelerator for the RF using the Altera SDK for OpenCL, which is a kind of high-level synthesis. To accelerate the RF classification, we propose the fully pipelined architecture to increase the memory bandwidth using on-chip memories on the FPGA. Also, we apply appropriate bit fixed point representation instead of 32 bit floating point one in order to reduce the hardware size, power consumption, and increase the memory bandwidth. We implemented the RF on the Terasic Corp. DE5-NET FPGA board, and compared with the CPU and the GPU implementations, As for the LPS (lookups per second), the FPGA realization was 10.7 times faster than the GPU one, and it was 14.0 times faster than the CPU one. As for the LPS per power consumption, the FPGA realization was 61.3 times better than the GPU one, and it was 12.1 times better than the CPU one.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Radio frequency",
+                "Decision trees",
+                "Field programmable gate arrays",
+                "Graphics processing units",
+                "Acceleration",
+                "Vegetation",
+                "Training"
+            ],
+            "Index Terms": [
+                "Random Forest",
+                "Machine Learning",
+                "Learning Algorithms",
+                "Random Sampling",
+                "Decision Tree",
+                "Power Consumption",
+                "Fixed Point",
+                "Representative Points",
+                "On-chip Memory",
+                "High-level Synthesis",
+                "Training Set",
+                "Hyperparameters",
+                "Classification Accuracy",
+                "Variety Of Features",
+                "Parallelization",
+                "Multi-core",
+                "Low Bias",
+                "Core Processes",
+                "Bitstream",
+                "Off-chip Memory",
+                "All-to-all Communication",
+                "Influence Diagram",
+                "Grid Search Algorithm",
+                "Machine Learning Tasks",
+                "Parallel Data",
+                "Method For Tasks"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -261,7 +441,29 @@
                 "firstName": "Hideharu",
                 "lastName": "Amano"
             }
-        ]
+        ],
+        "abstract": "Cool mega-array (CMA) is a kind of coarse grained reconfigurable architecture (CGRA) which has shown its ability of ultra low-power computation. However, as CMA completely eliminates clock trees and registers, the performance improvement has been limited. In this paper, we introduce a variable pipeline structure to CMA with the minimum essential registers to provide more wide trade-off between performance and energy. Comparing with the baseline CMA (non-pipelined structure), an average of 77% improvement for performance was achieved with a small power overhead. Moreover, the energy efficiency was 1461 MOPS/mW at most which was about 2× that of the baseline structure. The best pipeline depth for an arbitrary energy-performance trade-off became selectable with only 11% area overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Pipelines",
+                "Arrays",
+                "Clocks",
+                "Micromechanical devices",
+                "Pipeline processing"
+            ],
+            "Index Terms": [
+                "Coarse-grained",
+                "Pipeline Structure",
+                "Reconfigurable Array",
+                "Energy Efficiency",
+                "Area Overhead",
+                "Power Consumption",
+                "Maximum Performance",
+                "Target Application",
+                "Clock Cycles"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -302,7 +504,37 @@
                 "firstName": null,
                 "lastName": "Linli Wang"
             }
-        ]
+        ],
+        "abstract": "This paper introduces a hardware TCP Offload Engine (TOE) aiming at low-latency communication systems. The throughput can reach 9.99 Gbps with the Jumbo frame. The input-to-output receiving latency of a packet consists of 100 bytes payload and 64 bytes header with timestamp is close to 90 nanoseconds. The application-to-application latency between the proposed acceleration system and the native Windows socket is one tenth of the measurement result compared with the latency between the native Linux socket without TOE acceleration and the native Windows socket.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Hardware",
+                "Engines",
+                "Field programmable gate arrays",
+                "Kernel",
+                "TCPIP"
+            ],
+            "Index Terms": [
+                "Performance Measures",
+                "GB Memory",
+                "Physical Layer",
+                "Network Throughput",
+                "Hardware Architecture",
+                "Medium Access Control",
+                "Wide Area Network",
+                "High-level Synthesis",
+                "Video-on-demand",
+                "Throughput Measurements",
+                "Verification Measures"
+            ],
+            "Author Keywords": [
+                "TCP Offload Engine",
+                "Low Latency",
+                "10 Gigabits Ethernet",
+                "Kernel Bypass"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -343,7 +575,37 @@
                 "firstName": "M.",
                 "lastName": "O'Neill"
             }
-        ]
+        ],
+        "abstract": "As the development of a viable quantum computer nears, existing widely used public-key cryptosystems, such as RSA, will no longer be secure. Thus, significant effort is being invested into post-quantum cryptography (PQC). Lattice-based cryptography (LBC) is one such promising area of PQC, which offers versatile, efficient, and high performance security services. However, the vulnerabilities of these implementations against side-channel attacks (SCA) remain significantly understudied. Most, if not all, lattice-based cryptosystems require noise samples generated from a discrete Gaussian distribution, and a successful timing analysis attack can render the whole cryptosystem broken, making the discrete Gaussian sampler the most vulnerable module to SCA. This research proposes countermeasures against timing information leakage with FPGA-based designs of the CDT-based discrete Gaussian samplers with constant response time, targeting encryption and signature scheme parameters. The proposed designs are compared against the state-of-the-art and are shown to significantly outperform existing implementations. For encryption, the proposed sampler is 9× faster in comparison to the only other existing time-independent CDT sampler design. For signatures, the first time-independent CDT sampler in hardware is proposed.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encryption",
+                "Timing",
+                "Hardware",
+                "Clocks",
+                "Field programmable gate arrays",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Discrete Gaussian",
+                "Discrete Distribution",
+                "Public Key",
+                "Side-channel",
+                "Encryption Scheme",
+                "Signature Scheme",
+                "Throughput",
+                "Hardness",
+                "Search Space",
+                "Kullback-Leibler",
+                "Exact Match",
+                "Binary Search",
+                "Clock Cycles",
+                "Digital Signature",
+                "Random Bits",
+                "Statistical Distance",
+                "Sign Bit"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -390,7 +652,41 @@
                 "firstName": "Amitava",
                 "lastName": "Majumdar"
             }
-        ]
+        ],
+        "abstract": "FPGAs have evolved rapidly over the past decade with a significant increase in size and complexity. Today's FPGA is indeed a system-on-chip (SOC) with a wide variety of hardened functionality, multiple asynchronous clock domains and widening interactions among different parts of the chip. It is commonplace to find applications that transfer data and control across clock-domains. This growing complexity, coupled with shrinking design cycles, has turned debug and verification into a critical design concern. Although software analysis tools have made significant progress over the years, this is not the case for debugging applications running on FPGAs. This paper describes a framework that enables non-intrusive application hardware debugging in the presence of multiple asynchronous clock domains. It offers full observability at minimal area and performance cost. The proposed approach uses Readback to retrieve the entire state of the circuit, a feature available in one form or another, in most commercial FPGAs today. Features such as single stepping and waveform reconstruction offer the same level of debug capability for applications accelerated on FPGAs, as simulation tools do for RTL implementations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Field programmable gate arrays",
+                "Tools",
+                "Radiation detectors",
+                "Debugging",
+                "Table lookup",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Multiple Clock",
+                "Asynchronous Clock",
+                "Simulation Tool",
+                "Minimum Area",
+                "Significant Increase In Size",
+                "Analysis Software Tool",
+                "Types Of Defects",
+                "Preparation Time",
+                "Design Elements",
+                "Number Of Domains",
+                "Bitstream",
+                "Clock Control"
+            ],
+            "Author Keywords": [
+                "FPGA",
+                "debugging",
+                "verification",
+                "readback",
+                "clock-stoppage",
+                "asynchronous clocks"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -431,7 +727,37 @@
                 "firstName": "Oliver",
                 "lastName": "Diessel"
             }
-        ]
+        ],
+        "abstract": "SRAM-based Field-Programmable Gate Arrays (FPGAs) are susceptible to radiation-induced Single Event Upsets (SEUs). Techniques for partially reconfiguring corrupted modules of Triple Modular Redundant (TMR) FPGA-based designs have been described in the literature. Most of these techniques require some form of network-on-chip for aggregating voter error messages from the system's TMR components to a central reconfiguration controller in order to trigger the partial reconfiguration of modules when they become faulty. The frequency at which TMR components fail in the system depends on their soft-error vulnerability. However, most error recovery techniques adopt a static voter error checking schedule, which leads to delays in checking TMR components with high failure probability. In this paper we propose a Voter Scheduling Engine (VSE) for dynamically prioritizing and managing TMR voter checks so as to minimize the error detection time in the system and to thereby maximize the system's reliability. Software and hardware implementations of the VSE are proposed. Moreover, we have implemented the classic static voter checking schedule and the VSE on a real TMR system and evaluated the reliabilities of both approaches for varying radiation environments. Results demonstrate that the likelihood of system failure can be decreased by up to 50% when the VSE, rather than static voter checking, is incorporated into the TMR system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tunneling magnetoresistance",
+                "Reliability",
+                "Field programmable gate arrays",
+                "Hardware",
+                "Engines",
+                "Dynamic scheduling",
+                "Schedules"
+            ],
+            "Index Terms": [
+                "Triple Modular Redundancy",
+                "Components Of System",
+                "System Reliability",
+                "Probability Of Failure",
+                "Higher Probability Of Failure",
+                "Recovery Error",
+                "Resource Utilization",
+                "Operating Frequency",
+                "Bit Error Rate",
+                "Leaf Node",
+                "Bit Error",
+                "Tree Search",
+                "Binary Tree",
+                "Components In Order",
+                "Vulnerable Components",
+                "GPS Satellites"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -466,7 +792,39 @@
                 "firstName": "Paolo",
                 "lastName": "Ienne"
             }
-        ]
+        ],
+        "abstract": "Despite the popularity of C-based High-Level Synthesis (HLS) tools, their generic input programming languages make it challenging for the designer to find the expression that will result in adequate hardware quality and performance. Moreover, the syntactic variance of the input description often causes the inability of the HLS tool to fully identify and benefit from the properties of the computations. In this work, we propose extending standard C-based HLS tools with the concept of computational patterns. In particular, we present a template-based hardware generation strategy which enables complete exploitation of the pattern properties to produce high-quality hardware modules. The parametric templates allow us to automatically scale the implementation to the resource and data-bandwidth constraints of the target device, independent from the analysis abilities of the HLS tool. To demonstrate the benefits of our approach, we generated hardware implementations for six applications which we composed using a set of computational patterns (i.e. map, zip and reduce), achieving 1.3× to 2.8× speed-up over a state-of-the-art commercial HLS tool.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tools",
+                "Hardware",
+                "Optimization",
+                "Throughput",
+                "Parallel processing",
+                "Computer languages",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Parallel Patterns",
+                "High-level Synthesis",
+                "Template Pattern",
+                "Programming Language",
+                "Hardware Implementation",
+                "Data Rate",
+                "Parallelization",
+                "Flow Data",
+                "Resource Usage",
+                "Design Points",
+                "Computing Units",
+                "Output Of Block",
+                "Properties Of Patterns",
+                "Refactoring",
+                "Input Elements",
+                "Collection Of Elements",
+                "Input Block",
+                "Template-based Approach"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -501,7 +859,40 @@
                 "firstName": null,
                 "lastName": "Huaqing Min"
             }
-        ]
+        ],
+        "abstract": "Medical ultrasound imaging is a typical clinical diagnostic method which has been widely applied to heart movement monitoring, fetal development status tracking, and liver interventional surgery, etc. Among various medical ultrasound imaging algorithms, delay-and-sum algorithm is the most common algorithm which can be found in almost every medical ultrasonic scanner. The execution of delay-and-sum beamforming algorithm is not time-consuming typically. However, when constructing a medical imaging cloud service, the computing speed of the delay-and-sum algorithm on the cloud server has to be much faster than the computing speed of the algorithm implementation on regular ultrasonic scanner processor, so as to overcome the cloud data transfer speed constraint on the real-time imaging requirement for medical ultrasound. As such, this paper demonstrated the implementation of the parallel delay-and-sum beamforming algorithm on the FPGA with coherent accelerator processor interface. Furthermore, the performance evaluation results were also demonstrated in the paper.",
+        "keywords": {
+            "Index Terms": [
+                "Ultrasound Imaging",
+                "Medical Ultrasound Imaging",
+                "Medical Imaging",
+                "Cloud Computing",
+                "Implementation Of Algorithm",
+                "Data Transfer",
+                "Performance Evaluation Results",
+                "Beamforming Algorithm",
+                "Parallelization",
+                "Final Image",
+                "Line Scan",
+                "Image Formation",
+                "Output Image",
+                "Bitstream",
+                "Implementation Of Scheme",
+                "Speed Of The Algorithm",
+                "Parallel Algorithm",
+                "Echo Signal",
+                "Clock Cycles",
+                "Parallel Implementation",
+                "Processor Chip",
+                "Floating-point Numbers",
+                "32-bit Floating-point"
+            ],
+            "Author Keywords": [
+                "parallel implementation",
+                "computational acceleration",
+                "CAPI-enabled FPGA"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -554,7 +945,36 @@
                 "firstName": "Muhammad",
                 "lastName": "Rashid"
             }
-        ]
+        ],
+        "abstract": "In modern SRAM based Field Programmable Gate Arrays, a Look-Up Table (LUT) is the principal constituent logic element which can realize every possible Boolean function. However, this flexibility of LUTs comes with a heavy area penalty. A part of this area overhead comes from the increased amount of configuration memory which rises exponentially as the LUT size increases. To reduce the area as well as the number of configuration bits, we have further explored and improved a previously proposed novel FPGA architecture which allows sharing of LUTs memory tables among NPN equivalent functions. A recently proposed high performance Boolean matching algorithm has been employed to perform NPN classification. Furthermore, a new clustering technique has also been proposed which packs NPN equivalent functions together inside a Configurable Logic Block (CLB). Consequently, this work explores the SRAM-table sharing approach for a range of LUT sizes (4–7), while varying the cluster sizes (4–16). Experimental results on MCNC benchmark circuits set show an overall area reduction of ∼ 3.7% while maintaining the same critical path delay.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Table lookup",
+                "Field programmable gate arrays",
+                "Random access memory",
+                "Clustering algorithms",
+                "Benchmark testing",
+                "Logic functions"
+            ],
+            "Index Terms": [
+                "Lookup Table",
+                "Cluster Size",
+                "Functional Equation",
+                "Clustering Techniques",
+                "Boolean Function",
+                "Area Overhead",
+                "Logic Blocks",
+                "Logic Elements",
+                "Negation",
+                "Implementation Details",
+                "Clustering Method",
+                "Clustering Approach",
+                "Input Size",
+                "Boolean Logic",
+                "Benchmark Suite",
+                "Entire Suite"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -595,7 +1015,43 @@
                 "firstName": "Xuguang",
                 "lastName": "Guan"
             }
-        ]
+        ],
+        "abstract": "The Zynq™-7000 family is Xilinx's first extensible processing platform (EPP). This product combines an ARM® dual-core Cortex™-A9 MPCore™ processing system with a Xilinx 28nm field programmable gate array (FPGA) which offers the flexibility and scalability. Nowadays, real-time control systems and easy-to-use operating systems are both required for many industry applications. Combining the high-performance Bare-Metal system and flexible Linux operating system, the Asymmetric Multiprocessing (AMP) based on Zynq SoC is a powerful solution to meet various demands in motion control. This paper proposes a method to implement the AMP on Zynq SoC which runs Linux and Bare-Metal system on two separate cores, and describes two motion control demonstrations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linux",
+                "Real-time systems",
+                "Streaming media",
+                "Operating systems",
+                "Motion control",
+                "Field programmable gate arrays",
+                "Acceleration"
+            ],
+            "Index Terms": [
+                "Motor Control",
+                "Operating System",
+                "Separate Core",
+                "Accelerometer",
+                "Electric Vehicles",
+                "Revolutions Per Minute",
+                "Object Color",
+                "Hardware Accelerators",
+                "Programmable Logic",
+                "High-performance Applications",
+                "Race Car",
+                "On-chip Memory",
+                "Physical Address",
+                "L2 Cache"
+            ],
+            "Author Keywords": [
+                "Zynq SoC",
+                "AMP",
+                "Motion Control",
+                "Linux",
+                "Bare-Metal",
+                "FPGA"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -630,7 +1086,37 @@
                 "firstName": "Thambipillai",
                 "lastName": "Srikanthan"
             }
-        ]
+        ],
+        "abstract": "The large number of soft core processors available today make it challenging to select the best processor for a given application. This issue is further exacerbated by the numerous configuration options available for soft core processors while customizing for contradictory design requirements such as performance and area. In this paper, we propose a framework for rapid application-specific soft core processor customization as well as selection to achieve best performance within user-specified area constraint. The proposed technique is scalable to the large number of configuration options available in modern soft core processors by relying on rapid and accurate estimation models instead of time consuming FPGA synthesis and execution steps. Experimental results on two leading commercial soft core processors executing applications from the popular CHStone benchmark suite show over 93% accuracy in processor performance estimation, completed in order of seconds, leading to a rapid and reliable soft core processor customization and selection.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Estimation",
+                "Field programmable gate arrays",
+                "Clocks",
+                "Benchmark testing",
+                "Cyclones",
+                "Performance evaluation",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Design Space",
+                "Design Space Exploration",
+                "Rapid Exploration",
+                "Soft Selection",
+                "Soft Processor",
+                "Configuration Options",
+                "Area Constraints",
+                "Estimation Error",
+                "Performance In Applications",
+                "Trends In Outcomes",
+                "Design Points",
+                "Instruction Set Architecture",
+                "Clock Cycles",
+                "Programmable Logic",
+                "Hard Core",
+                "Compile Time"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -671,7 +1157,38 @@
                 "firstName": "Zdenek",
                 "lastName": "Kotasek"
             }
-        ]
+        ],
+        "abstract": "This paper presents an approach to fault-tolerant systems design and synthesis based on High-level Synthesis (HLS). A description and evaluation of the impacts of HLS optimization methods are shown as well. The higher reliability is achieved through modification of input description in the C++ programming language on which the HLS synthesis tools are based on. Our work targets SRAM-based FPGAs, which are prone to Single Event Upsets (SEUs). For the evaluation of impacts of HLS optimization methods we use our evaluation platform, which allows us to test fault tolerance properties of the Design Under Test (DUT). The evaluation platform is based on functional verification combined with fault injection.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fault tolerant systems",
+                "Fault tolerance",
+                "Robots",
+                "Field programmable gate arrays",
+                "C++ languages",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Fault-tolerant",
+                "Functional Verification",
+                "Evaluation Platform",
+                "High-level Synthesis",
+                "C++ Programming Language",
+                "Tolerance Level",
+                "Lookup Table",
+                "Error Detection",
+                "Robot Control",
+                "Digital Circuits",
+                "Datapath",
+                "C++ Language"
+            ],
+            "Author Keywords": [
+                "High Level Synthesis",
+                "CatapultC",
+                "Fault Tolerance",
+                "Robot Controller"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -700,7 +1217,26 @@
                 "firstName": "Ken",
                 "lastName": "Eguro"
             }
-        ]
+        ],
+        "abstract": "Soft processors are one way to raise the computational abstraction of FPGAs while keeping the advantages of reconfigurable hardware, such as adaptability, deterministic performance and high performance/watt. Software developers can quickly build, test and deploy applications using familiar tools while still leveraging important optimizations such as application-specific custom instructions. However, they also present unique debugging problems. For example, the higher-level programming abstraction runs contradictory to classical low-level debugging tools like logic analyzers. In this work we present a debugging framework for FPGA-based soft processors that enables step-by-step debugging at the level of all soft processor instructions, time-travel debugging, post-mortem memory dumps, and performance metrics. By using knowledge about the soft processor's internals, our framework can capture execution traces up to 60× more space-efficient than traditional embedded logic analyzers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Debugging",
+                "Hardware",
+                "Instruments",
+                "Field programmable gate arrays",
+                "Tools",
+                "Radiation detectors"
+            ],
+            "Index Terms": [
+                "Performance Metrics",
+                "Software Development",
+                "Resource Usage",
+                "Memory Trace",
+                "Program Execution"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -729,7 +1265,37 @@
                 "firstName": "Paolo",
                 "lastName": "Ienne"
             }
-        ]
+        ],
+        "abstract": "Correct modeling of the FPGA architecture is a fundamental step in the design and testing of new architectures. Such modeling must include the logic components of the FPGA as well as the wires connecting these components. In recent years, researchers have been investigating tools to perform automatic modeling of FPGAs with either a fixed structure (e.g., COFFE) or even unconstrained architecture designs (e.g., FPRESSO). And, although these tools highlight the importance of intercomponent wire modeling, FPRESSO does not model wire loads due to the difficulty in determining the length of the wires without a fixed cluster structure, while COFFE approximates the wirelength by assuming a simplified topology and a predefined placement of components. In this paper, we present an automatic and generic method to not only model the intercomponent wires but also to minimize the total wirelength, by floorplanning the cluster and finding the best placement of its components. Our algorithms were integrated into FPRESSO to improve its modeling by including wire loads in its FPGA architecture modeling.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wires",
+                "Field programmable gate arrays",
+                "Load modeling",
+                "Computer architecture",
+                "Solid modeling",
+                "Tools",
+                "Vegetation"
+            ],
+            "Index Terms": [
+                "Wire Model",
+                "FPGA Architecture",
+                "Design Steps",
+                "Parasite",
+                "Left Corner",
+                "Lookup Table",
+                "Simulated Annealing",
+                "Tree Nodes",
+                "Ground Plane",
+                "Child Nodes",
+                "Lower Left Corner",
+                "Path Delay",
+                "Tree Representation",
+                "Feedback Path",
+                "Set Of Architectures",
+                "Worse Solutions"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -766,11 +1332,38 @@
             },
             {
                 "id": 37277186400,
-                "preferredName": "Fr\u00e9d\u00e9ric Rousseau",
-                "firstName": "Fr\u00e9d\u00e9ric",
+                "preferredName": "Frédéric Rousseau",
+                "firstName": "Frédéric",
                 "lastName": "Rousseau"
             }
-        ]
+        ],
+        "abstract": "Networks-on-chip (NoCs) have become a de facto communication standard for many core systems-on-chip (SoCs). A NoC has large design space composed of several parameters such as routing algorithm, task mapping, among others. SoC designers deeply rely on automatic evaluation tools in order to deal with the complexity of NoC design. An important class of NoCs evaluation tools are the platforms based on FPGAs, which improve the evaluation time and precision when compared to other solutions. There are different architectures of FPGA-based NoC evaluation tools. Details are scattered among several papers, making a comparative analysis hard to accomplish. This paper presents a comprehensive overview of FPGA tools for NoC evaluation. Our analysis covers aspects like network architecture, traffic generation and interface to the host PC. This provides insight on the platforms and their usefulness for different NoC evaluation tasks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Tools",
+                "Computer architecture",
+                "Analytical models",
+                "Emulation",
+                "Software",
+                "Performance evaluation"
+            ],
+            "Index Terms": [
+                "Evaluation Platform",
+                "Routing Algorithm",
+                "Management System",
+                "Network Model",
+                "Accuracy Rate",
+                "Performance Metrics",
+                "Network Layer",
+                "Multi-core",
+                "Printed Circuit Board",
+                "Simulation Platform",
+                "Traffic Model",
+                "Design Space Exploration",
+                "Time-division Multiplexing"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -805,7 +1398,42 @@
                 "firstName": "Zdenek",
                 "lastName": "Kotasek"
             }
-        ]
+        ],
+        "abstract": "The aim of this paper is to present the use of a stochastic context-free grammar in the domain of stimulus generation. Nowadays, the randomly constructed stimuli are largely applied in functional verification to verify a proper design and final implementation. Context-free grammar cannot be used by itself in the stimuli generation, therefore, an additional logic in the form of constraints has to be applied. The aim of the research is to create versatile solution for stimuli generation that can be used for various systems. The results achieved till now are used in verifying fault tolerance qualities of electromechanical designs, the control unit of which is implemented into FPGA.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Grammar",
+                "Generators",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Stochastic processes",
+                "Information technology",
+                "Field programmable gate arrays"
+            ],
+            "Index Terms": [
+                "Random Generation",
+                "Stimulus Generation",
+                "Random Stimuli",
+                "Context-free Grammar",
+                "Probabilistic Context-free Grammar",
+                "Stochastic Grammars",
+                "Fault-tolerant",
+                "Form Of Constraints",
+                "Functional Verification",
+                "Research In The Field",
+                "Application Of Rules",
+                "Valid Stimuli",
+                "Input Block",
+                "Compile Time",
+                "Machine Code"
+            ],
+            "Author Keywords": [
+                "Context-Free Grammar",
+                "Random Stimuli Generation",
+                "Stimulus",
+                "Constraint"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -840,7 +1468,46 @@
                 "firstName": "M. N.",
                 "lastName": "Marsono"
             }
-        ]
+        ],
+        "abstract": "This paper presents a modular architecture for dynamically reconfigurable middlebox with a customized reconfiguration handler. The data plane of this middlebox can be updated remotely at run-time by client to support post-deployment feature extension, customization and optimization. The proposed Reconfiguration Handler can achieve at least 3.19 Gbps of reconfiguration throughput, which reduces the platform service downtime during dynamic partial reconfiguration. In order to reduce the latency and transmission overhead of remote functional update, partial bitstream is compressed before transmission. The application of the proposed architecture is not limited to network processing as data analytics circuitries can be embedded into the data plane for big data applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Middleboxes",
+                "Random access memory",
+                "Computer architecture",
+                "Switches",
+                "Encoding",
+                "Ports (Computers)"
+            ],
+            "Index Terms": [
+                "Dynamic Reconfiguration",
+                "Middlebox",
+                "Network Process",
+                "Service Platform",
+                "Modularity",
+                "File Size",
+                "Demand For Applications",
+                "Management Platform",
+                "Clock Cycles",
+                "Control Plane",
+                "Network Packets",
+                "Partial Transmission",
+                "Entire Plane",
+                "Packet Forwarding",
+                "Reference Architecture",
+                "Output Stream",
+                "Functional Circuitry",
+                "Bandwidth Demand"
+            ],
+            "Author Keywords": [
+                "Dynamic partial reconfiguration",
+                "NetFPGA",
+                "Remote functional update",
+                "Middlebox",
+                "ICAP"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -875,7 +1542,51 @@
                 "firstName": "Ben",
                 "lastName": "Juurlink"
             }
-        ]
+        ],
+        "abstract": "Processing and understanding of visual data has a significant importance in many applications such as robotics and vision aid devices. Extracting image features is one of the important tasks in computer vision. This paper focuses on KAZE features algorithm, due to its good performance. KAZE features is a multi-scale 2D feature detection and description algorithm. It describes 2D features in a non-linear scale space by means of non-linear diffusion filtering. In this paper, the algorithm was optimized for speed, memory usage and portability. The paper presents a hardware accelerator for the scale-space analysis part of the algorithm on FPGA. A high speed-up has been achieved by this accelerator by parallelizing several parts of the algorithm and reducing the memory bandwidth.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Algorithm design and analysis",
+                "Hardware",
+                "Aerospace electronics",
+                "Field programmable gate arrays",
+                "Ports (Computers)",
+                "Random access memory"
+            ],
+            "Index Terms": [
+                "Feature Extraction Algorithm",
+                "Hardware Accelerators",
+                "Descriptive Characteristics",
+                "Feature Detection",
+                "Multi-scale Features",
+                "Memory Usage",
+                "Description Of Algorithm",
+                "Scale Space",
+                "Part Of Algorithm",
+                "2D Feature",
+                "Memory Bandwidth",
+                "Nonlinear Space",
+                "High-resolution",
+                "Computation Time",
+                "Input Image",
+                "Second Derivative",
+                "Adaptive Algorithm",
+                "Gaussian Filter",
+                "Scale-invariant",
+                "Scale Level",
+                "ARM Processor",
+                "Speeded Up Robust Features",
+                "Scale-invariant Feature Transform",
+                "Registration Stage",
+                "Clock Cycles",
+                "Written Back",
+                "Network Interface",
+                "Intel Processor",
+                "Pipeline Stages",
+                "Software Running"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -934,7 +1645,41 @@
                 "firstName": null,
                 "lastName": "Yishu Mao"
             }
-        ]
+        ],
+        "abstract": "In the workflow of SKA-SDP (Square Kilometer Array Radio Telescope-Scientific Data Processing), FFT (Fast Fourier Transform) calculation takes a significant proportion of computation overhead. Moreover, FFT computation has to be done within the tight power budget, which existing generic high performance computing architectures cannot meet. To explore power efficiency of FFT computation, this study is designed with initial evaluation of FFT implementation in variable precision on Xilinx ML605 FPGA (field programmable gate array). The FPGA-based implementation of FFT includes a Xilinx IP Core version 7.1, which supports fixed-point and floating-point computation in single precision. The input data width and phase factor width of fixed-point computation can be varied from 8 bits to 34 bits, allowing that calculation accuracy can be adjusted by setting the width. Since single precision is redundant to accuracy requirement of SKA-SDP, fixed-point calculation is designed to emulate single-precision floating point computation. Calculational power dissipation and throughput with different phase factors on FPGA was measured respectively. The final result demonstrates that the implementation on FPGA ensures sufficient precision at a much less power cost compared with floating-point FFT. In other words, this study indicates variable precision computation would be an efficient way to improve power efficiency.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Power dissipation",
+                "Throughput",
+                "IP networks",
+                "Power measurement",
+                "Power demand",
+                "High performance computing"
+            ],
+            "Index Terms": [
+                "Fast Fourier Transform",
+                "Variable Precision",
+                "Computational Efficiency",
+                "High-performance Computing",
+                "Power Efficiency",
+                "Single Precision",
+                "Tight Budget",
+                "Convolution",
+                "Power Consumption",
+                "Fixed Point",
+                "Graphics Processing Unit",
+                "Double Precision",
+                "Gridding",
+                "Radio Telescope"
+            ],
+            "Author Keywords": [
+                "Variable Precision Computing",
+                "FFT",
+                "Power Efficiency",
+                "FPGA"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -963,7 +1708,31 @@
                 "firstName": "Chin Yang",
                 "lastName": "Koay"
             }
-        ]
+        ],
+        "abstract": "In this paper, we present a design time tool, EASTA, that combines reconfigurability in FPGAs and Dynamic Frequency Scaling to realize an efficient multiprocessing architecture on a single-FPGA system. Multiple deadlines, re-convergent nodes, flow dependency and processor constraints of the multi-processor problem on a general task graph are rigorously taken into consideration. EASTA is able to determine the minimum number of PEs required to create a feasible schedule, represented in an efficient tree-based table, and dynamically adjust the clock speed of each processing element to reclaim slack. Energy savings of approximately 32% are obtained for a sample task graph.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Schedules",
+                "Clocks",
+                "Field programmable gate arrays",
+                "Tools",
+                "Job shop scheduling",
+                "Dynamic scheduling",
+                "Monte Carlo methods"
+            ],
+            "Index Terms": [
+                "Clock Rate",
+                "Feasible Schedule",
+                "Monte Carlo Simulation",
+                "Start Time",
+                "Time Task",
+                "Active Task",
+                "Markov Decision Process",
+                "Critical Path",
+                "Task Workload",
+                "Longest Branch"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -998,7 +1767,48 @@
                 "firstName": "Wayne",
                 "lastName": "Luk"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a new parallel architecture for incremental training of a Support Vector Machine (SVM), which produces an optimal solution based on manipulating the Karush-Kuhn-Tucker (KKT) conditions. Compared to batch training methods, our approach avoids re-training from scratch when training dataset changes. The proposed architecture is the first to adopt an efficient dataflow organisation. The main novelty is a parametric description of the parallel dataflow architecture, which deploys customisable arithmetic units for dense linear algebraic operations involved in updating the KKT conditions. The proposed architecture targets on-line SVM training applications. Experimental evaluation with real world financial data shows that our architecture implemented on Stratix-V FPGA achieved significant speedup against LIBSVM on Core i7-4770 CPU.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Support vector machines",
+                "Training",
+                "Table lookup",
+                "Digital signal processing"
+            ],
+            "Index Terms": [
+                "Support Vector Machine",
+                "Support Vector Machine Training",
+                "Optimal Support Vector Machine",
+                "Incremental Training",
+                "Incremental Support Vector Machine",
+                "Training Dataset",
+                "Parallelization",
+                "Experimental Evaluation",
+                "Financial Data",
+                "Main Novelty",
+                "KKT Conditions",
+                "Training Batch",
+                "Training Architecture",
+                "Sample Set",
+                "Window Size",
+                "Time Complexity",
+                "Training Algorithm",
+                "Quadratic Programming",
+                "Resource Usage",
+                "Random Access",
+                "Quadratic Programming Problem",
+                "Incremental Algorithm",
+                "Random Access Memory",
+                "Sequential Minimal Optimization",
+                "Numerical Accuracy",
+                "Order Book",
+                "LIBSVM Package",
+                "Clock Cycles",
+                "Datapath",
+                "Training Error"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1051,7 +1861,34 @@
                 "firstName": "Toshinori",
                 "lastName": "Sueyoshi"
             }
-        ]
+        ],
+        "abstract": "Field-programmable gate arrays (FPGAs) have demonstrated great speed performance and power efficiency advantages over conventional computers in various domains. However, it is still difficult for general software engineers to employ FPGA-based hardware accelerators because of the gap between hardware and software development methods. In this paper, we propose a heterogeneous computing oriented development environment (hCODE) to simplify the creation, sharing, and project integration of hardware accelerators. The hCODE defines hardware specifications and interface design rules. Hardware developers can provide designs that follow these rules, allowing software engineers to easily search, download, and integrate accelerators in their applications without caring about the details of the hardware.",
+        "keywords": {
+            "IEEE Keywords": [
+                "IP networks",
+                "Hardware",
+                "Field programmable gate arrays",
+                "Open source software",
+                "Tools",
+                "Ports (Computers)"
+            ],
+            "Index Terms": [
+                "Software Development",
+                "Hardware Accelerators",
+                "Hardware Development",
+                "Hardware Details",
+                "Throughput",
+                "Scalable",
+                "Design Tool",
+                "Intellectual Property",
+                "Target Application",
+                "Design Patterns",
+                "Clock Frequency",
+                "Online Repository",
+                "Design Flow",
+                "Open-source Community"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1098,7 +1935,37 @@
                 "firstName": "Jakub",
                 "lastName": "Szefer"
             }
-        ]
+        ],
+        "abstract": "SATA is the de-facto standard computer interface that connects a host, typically a computing device, to a persistent storage device, such as a hard drive or solid-state drive. In order for FPGA-based designs to be able to leverage the variety of persistent storage devices, a SATA core is needed. Over time, the SATA standard has been revised to provide greater bandwidth, with SATA III being the newest version of the standard. In this paper, we are the first to present a SATA III core designed for Altera Stratix V FPGAs. Our implementation is written using Verilog, and tested using an industry-standard SATA protocol analyzer. We evaluate the performance of our SATA core by measuring the throughput of random and sequential read and write operations using various hard drives and solid-state drives. In addition, we compare the complexity of our SATA III core implementation with those of the older SATA I and II open-source implementations, and show that SATA III is still feasible, using only about 11% of Stratix V FPGA resources.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Throughput",
+                "Standards",
+                "Open source software",
+                "Physical layer",
+                "Bandwidth",
+                "High definition video"
+            ],
+            "Index Terms": [
+                "Storage Devices",
+                "Computing Devices",
+                "Solid-state Drives",
+                "Random Read",
+                "State Machine",
+                "Random Access",
+                "Physical Layer",
+                "Transport Layer",
+                "Application Layer",
+                "Core Layer",
+                "Frame Information",
+                "Increase In Throughput",
+                "Woodchuck",
+                "Core Design",
+                "Cyclic Redundancy Check",
+                "Link Layer"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1163,7 +2030,50 @@
                 "firstName": "Hayden Kwok-Hay",
                 "lastName": "So"
             }
-        ]
+        ],
+        "abstract": "A real-time object detection and classification system using FPGA developed for high-speed asymmetric time-stretched optical microscopy (ATOM) framework is presented. Due to the massive amount of data generated by optical frontend, storing the raw data for offline post-processing is slow and impractical for the targeted single cell analysis applications. The proposed FPGA solution eliminates the need to transfer and persist the entire raw data by processing low-level signals and forming high-level images in real-time. Objects of interest are detected and segmented from the image stream and a classifier subsequently performs high-level analysis on the segmented images. When compared with existing software-based post-processing workflow, this FPGA-based approach will improve both the number of objects captured per experiment and the overall end-to-end object classification performance. The system also allows co-optimization between optical system, low-level signal processing and image analytic in a unified environment that enables new scientific discoveries previously unachievable.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Image segmentation",
+                "Imaging",
+                "Real-time systems",
+                "Atom optics",
+                "Detectors",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Object Detection",
+                "Object Classification",
+                "High-speed Microscopy",
+                "Real-time Object Detection",
+                "Raw Data",
+                "Image Segmentation",
+                "Single-cell Analysis",
+                "Object Of Interest",
+                "Massive Amounts Of Data",
+                "Low-level Processing",
+                "Image Stream",
+                "Imaging System",
+                "Learning Algorithms",
+                "Support Vector Machine",
+                "Photodetector",
+                "System Architecture",
+                "Resource Consumption",
+                "Line Scan",
+                "Image Formation",
+                "Emulsion Droplets",
+                "Group Velocity Dispersion",
+                "Real-time Data Processing",
+                "Clock Cycles",
+                "Linear Speed",
+                "Microfluidic Flow",
+                "Memory Space",
+                "Droplet Concentration",
+                "Alignment Module",
+                "Storage Nodes"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1210,7 +2120,49 @@
                 "firstName": null,
                 "lastName": "Jiahua Lu"
             }
-        ]
+        ],
+        "abstract": "In this demonstration, we develop a moving object extraction and classification system based on a heterogeneous acceleration platform that consists of a local Zynq terminal and FPGA clusters on the IBM SuperVessel cloud. Extraction of the moving object from the streaming video input is offloaded to the Zynq terminal, while the classification is executed on the cloud. FPGA high level synthesis and Xilinx SDSoC Environment are applied to develop the extraction part of the system. In evaluation, the extraction and classification parts of our system achieve performance of 30 fps and 1 fps respectively for 1080P streaming video input. This demonstration displays a feasible framework for the hardware acceleration of computer vision applications and a possible job division between the terminal and the cloud.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "IP networks",
+                "Acceleration",
+                "Hardware",
+                "Streaming media",
+                "Libraries",
+                "Image communication"
+            ],
+            "Index Terms": [
+                "Object Classification",
+                "Extraction System",
+                "Part Of Class",
+                "Computer Vision Applications",
+                "Hardware Accelerators",
+                "High-level Synthesis",
+                "Heterogeneous Platforms",
+                "Image Processing",
+                "Power Calculation",
+                "Processing Speed",
+                "Image Object",
+                "Binary Image",
+                "Image Frames",
+                "Median Filter",
+                "Development Cycle",
+                "Transmission Images",
+                "White Balance",
+                "Hardware Architecture",
+                "Static Background",
+                "OpenCV Library",
+                "Foreground Regions",
+                "Frame Difference",
+                "ImageNet Database"
+            ],
+            "Author Keywords": [
+                "Moving Object Extraction and Classification",
+                "Heterogeneous Acceleration Framework",
+                "High Level Synthesis"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1235,8 +2187,8 @@
             },
             {
                 "id": 37085641195,
-                "preferredName": "Maria M\u00e9ndez Real",
-                "firstName": "Maria M\u00e9ndez",
+                "preferredName": "Maria Méndez Real",
+                "firstName": "Maria Méndez",
                 "lastName": "Real"
             },
             {
@@ -1263,7 +2215,35 @@
                 "firstName": "Guy",
                 "lastName": "Gogniat"
             }
-        ]
+        ],
+        "abstract": "Somewhat Homomorphic Encryption (SHE) schemes allow to carry out operations on data in the cipher domain. In a cloud computing scenario, personal information can be processed secretly, inferring a high level of confidentiality. Most practical Somewhat Homomorphic Encryption (SHE) schemes require the implementation of fast polynomial arithmetic, that is why hardware accelerators usually target the FFT/NTT algorithm. This paper proposes a co-design hardware/software approach to accelerate SHE using Karatsuba algorithm. Depending on the needs, Karatsuba algorithm allows to implement additional computations to the hardware in order to reduce software computation time. Our accelerator is designed to speed up arithmetic on degree 2560 polynomials with 125 bits coefficients. We provide 3 different approaches: An area efficient design, a balanced design, and a performance-oriented design. Our accelerator performs a polynomial multiplication in respectively 2.46 ms, 1.70 ms and 1.24 ms, and a relinearization operation in 2.28 ms, 1.53 ms and 1.1 ms, while a functionally equivalent design using the FFT [1] performs the multiplication in 1.96 ms and the relinearization in 4.79 ms for hardware resources consumption equivalent to the balanced design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Switches",
+                "Software",
+                "Computer architecture",
+                "Encryption",
+                "Algorithm design and analysis",
+                "Organizations"
+            ],
+            "Index Terms": [
+                "Hardware Operation",
+                "Karatsuba Algorithm",
+                "Homomorphic Encryption Operations",
+                "Computation Time",
+                "Resource Consumption",
+                "Hardware Resources",
+                "Balanced Design",
+                "Encryption Scheme",
+                "Hardware Accelerators",
+                "Multiple Algorithms",
+                "Hardware Implementation",
+                "Switching Operation",
+                "Polynomial Ring",
+                "Co-design Approach"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1304,7 +2284,37 @@
                 "firstName": "Masato",
                 "lastName": "Inagi"
             }
-        ]
+        ],
+        "abstract": "With the recent explosive growth of data in the real world, data mining techniques to obtain characteristics and knowledge from big data attract more attention. This paper focuses on a method to detect outliers in streaming data, and proposes a fast FPGA implementation of outlier detection based on the Mahalanobis distance. The proposed circuit is fully pipelined, and in every clock cycle, a given sample data can be judged as an outlier or not. Experimental evaluation shows that the proposed circuit is 37 times faster than the software implementation of the Mahalanobis distance-based outlier detection.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Covariance matrices",
+                "Field programmable gate arrays",
+                "Clocks",
+                "Linear matrix inequalities",
+                "Sensors",
+                "Computers",
+                "Symmetric matrices"
+            ],
+            "Index Terms": [
+                "Data Streams",
+                "Outlier Detection",
+                "FPGA Implementation",
+                "Mahalanobis Distance",
+                "Clock Cycles",
+                "Implementation Of Detection",
+                "Throughput",
+                "Computation Time",
+                "Covariance Matrix",
+                "Invertible",
+                "Multi-core",
+                "Linear Solver",
+                "Mean Vector",
+                "Host Computer",
+                "Pipeline Stages",
+                "Outlier Detection Methods"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1345,7 +2355,41 @@
                 "firstName": "Zdenek",
                 "lastName": "Kotasek"
             }
-        ]
+        ],
+        "abstract": "The aim of this paper is to present a new platform for evaluating impact of faults on electro-mechanical systems based on SRAM-based FPGAs. Functional verification together with the fault injector serve as a tool for the fault tolerance evaluation. The article demonstrates the use of the verification environment for evaluating impacts of faults in electro-mechanical systems. Our system consists of mechanical robot and its electronic controller implemented into FPGA. The experimental results gained from the verification process are also presented and discussed in the paper.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Fault tolerant systems",
+                "Fault tolerance",
+                "Robots",
+                "Circuit faults",
+                "Computers",
+                "Testing"
+            ],
+            "Index Terms": [
+                "Functional Verification",
+                "Impact Of Defects",
+                "Fault-tolerant",
+                "Electronic Control",
+                "Electromechanical System",
+                "Running",
+                "Functional Unit",
+                "Part Of Mechanism",
+                "Robot Control",
+                "Bitstream",
+                "Ethernet",
+                "Electronic Parts",
+                "Evaluation Platform"
+            ],
+            "Author Keywords": [
+                "Functional Verification",
+                "Robot Controller",
+                "Electro-mechanical Systems",
+                "Fault Tolerance",
+                "Maze"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1398,7 +2442,39 @@
                 "firstName": null,
                 "lastName": "Lingli Wang"
             }
-        ]
+        ],
+        "abstract": "Deformable Part Model (DPM) is one of the best algorithms for image-based object detection. However, the high computation intensity leads to relatively long detecting time. Even with the powerful CPU or GPU computing system, it is still too slow for practical applications. To solve this problem, this paper proposes a high performance DPM accelerator based on FPGA, where a dedicated JPEG decoder is integrated to process the images with the 1080p JPEG format. Pipelined architecture and data reuse strategies are developed to achieve the high throughput and energy efficiency. The proposed accelerator can process input images with 22 fps at the frequency of 156MHz on Xilinx VC709 board, which outperforms previous approaches.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Convolution",
+                "Mathematical model",
+                "Field programmable gate arrays",
+                "Computational modeling",
+                "Object detection",
+                "Computer architecture",
+                "Training"
+            ],
+            "Index Terms": [
+                "Deformation Model",
+                "High Accelerator",
+                "Deformable Part Model",
+                "Object Detection",
+                "Detection Time",
+                "Results In Cases",
+                "Convolution Operation",
+                "Bilinear Interpolation",
+                "Optimal Placement",
+                "Histogram Of Oriented Gradients",
+                "Image Pyramid",
+                "Column Direction"
+            ],
+            "Author Keywords": [
+                "Deformabe Part Model",
+                "high performance accelerator",
+                "pipelined architecture",
+                "data reuse"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1469,7 +2545,38 @@
                 "firstName": null,
                 "lastName": "Xiang Wang"
             }
-        ]
+        ],
+        "abstract": "Fixed polarity Reed-Muller expressions (FPRMs) are well-suited for many practical applications due to they have many excellent properties. In order to obtain an optimal FPRM with fewest product terms, we propose an efficient minimization algorithm (EMA-FPRMs) for FPRMs. The main idea behind the EMA-FPRMs is that, firstly, the incompletely specified Boolean function is transformed into the zero polarity incompletely specified fixed polarity RM expression (ISFPRM) by using the proposed ISFPRM acquisition algorithm; secondly, the polarity and allocation of don't care terms of ISFPRM is encoded as chromosome; lastly, the optimal FPRM with fewest product terms is obtained by using genetic algorithm (GA), in which the FPRM that corresponds to the given chromosome is obtained by using the proposed chromosome conversion algorithm. The experimental results on MCNC benchmark circuits show that compared with the traditional polarity optimization approach which neglects the don't care terms, the EMA-FPRMs is highly effective in minimizing the number of product terms of FPRMs. Moreover, the EMA-FPRMs is faster than the GA based minimization algorithm which also considers the don't care terms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Biological cells",
+                "Algorithm design and analysis",
+                "Minimization",
+                "Resource management",
+                "Boolean functions",
+                "Benchmark testing",
+                "Genetic algorithms"
+            ],
+            "Index Terms": [
+                "Efficient Algorithm",
+                "Minimization Algorithm",
+                "Product Term",
+                "Boolean Function",
+                "Input Variables",
+                "Fitness Function",
+                "Percentage Of Time",
+                "Boolean Logic",
+                "Binary Format",
+                "Polarization Conversion"
+            ],
+            "Author Keywords": [
+                "Reed-Muller",
+                "Product Terms",
+                "Incompletely Specified Boolean Function",
+                "Allocation of Don't Care Terms",
+                "Genetic Algorithm"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1510,7 +2617,42 @@
                 "firstName": null,
                 "lastName": "Hongxiang Fan"
             }
-        ]
+        ],
+        "abstract": "Fault injection attacks (FIAs) are becoming a serious threat to the security of integrated circuits (ICs). Circuit designers need a simple and effective method to evaluate the ability of their IC designs against the FIAs at design stage. To address the need, this paper based on FPGA emulation proposes a method, which mimics FIAs on a circuit design implemented on a FPGA by instantiating a uniform architecture which can generate different fault models and span the space of faults and inserting fault injection logic into the design. After the circuit design is submitted to the emulation platform, the fault generation and injection are executed automatically, and a report about the ability of the IC design against the FIAs is generated. The method works at the circuit netlist level, leaves the source codes of the circuit design unmodified, and makes the evaluation a transparent process to the designers. The experiment with various fault models and differential fault analysis on AES-128 encryption circuit shows the effectiveness of the method.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Circuit faults",
+                "Emulation",
+                "Field programmable gate arrays",
+                "Integrated circuit modeling",
+                "Security",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Injection Attacks",
+                "Security Evaluation",
+                "Fault Injection Attacks",
+                "Source Code",
+                "Design Stage",
+                "Circuit Design",
+                "Defect Model",
+                "Integrated Circuit Design",
+                "Error Rate",
+                "Scan Mode",
+                "Types Of Defects",
+                "Total Run Time",
+                "Bitstream",
+                "Fault Features",
+                "Time Overhead",
+                "Area Overhead",
+                "Transient Faults"
+            ],
+            "Author Keywords": [
+                "FPGA emulation",
+                "fault injection attack",
+                "integrated circuit security"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1569,7 +2711,34 @@
                 "firstName": "Hideharu",
                 "lastName": "Amano"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a software/hardware co-design system for a Trax solver. Since development with Hardware Description Language (HDL) is tough work, we selected an approach: 1.writing C++ code, 2.finding bottleneck of the problem, and 3. re-writing the bottleneck part in the High Level Synthesis (HLS). Generally, game AI algorithm is divided into 3 parts, data structure, searching, and board evaluation. In this design, we focused on the data structure and implemented an incremental update algorithm. As a result, we can detect a line and an attack with O(1). Also, we implemented a local pruning, which reduces search area when the search depth becomes large in alpha beta tree search. The implemented solver works with 150MHz clock on Xilinx XC7Z020-CLG484 of Digilent ZedBoard.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Games",
+                "Artificial intelligence",
+                "Field programmable gate arrays",
+                "Data structures",
+                "Algorithm design and analysis",
+                "Time complexity",
+                "Hardware design languages"
+            ],
+            "Index Terms": [
+                "Update Algorithm",
+                "Incremental Algorithm",
+                "Incremental Update",
+                "Data Structure",
+                "Tree Search",
+                "High-level Synthesis",
+                "Time Complexity",
+                "Exhaustive Search",
+                "Tree Depth",
+                "Board Size",
+                "Pruning Method",
+                "Monte Carlo Tree Search",
+                "ARM Processor"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1598,7 +2767,37 @@
                 "firstName": "Benjamin Carrion",
                 "lastName": "Schafer"
             }
-        ]
+        ],
+        "abstract": "Multi-Context Runtime Reconfigurable FPGAs have unique characteristics that make them extremely vulnerable to Hardware Trojan (HT). These FPGA families reconfigure themselves every clock cycle updating the functionality of the data path. A State Transition Controller (STC) typically holds the configuration code for each of the contexts. This architecture makes these type of architectures very efficient, but also extremely vulnerable to malicious alterations across any of the steps from design to fabrication of the FPGA. This work specifically targets the detection, but also the avoidance of HT being triggered in runtime reconfigurable FPGAs and in particular Coarse-Grained Runtime Reconfigurable Arrays (CGRRA). Experimental results show that our proposed method is very effective and has very little power overhead with no net area overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Context",
+                "Trojan horses",
+                "Runtime",
+                "Hardware",
+                "Field programmable gate arrays",
+                "Load modeling"
+            ],
+            "Index Terms": [
+                "Hardware Trojan",
+                "Clock Cycles",
+                "Datapath",
+                "Power Overhead",
+                "Simulation Model",
+                "Triggering Mechanism",
+                "Threat Model",
+                "Physical Design",
+                "Hardware Accelerators",
+                "External Memory",
+                "Integrated Development Environment",
+                "High-level Synthesis",
+                "System C"
+            ],
+            "Author Keywords": [
+                "Hardware Trojan",
+                "CGRRA"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1627,7 +2826,31 @@
                 "firstName": null,
                 "lastName": "Quansheng Yang"
             }
-        ]
+        ],
+        "abstract": "With an emerging market of ARM embedded processors and rapidly updating techniques used in manufacture process of FPGA, the structure of CPU combining with FPGA is increasingly attracting attention, such as the Zynq SoC heterogeneous computing platform developed by Xilinx which integrates a dual-core Cortex-A9 ARM processor and a FPGA in one chip. In this paper, we propose an 4-node Zynq based stacked multi CPU-FPGA architecture SMCFA. The dual-core ARM processors act as transaction process handler, and the FPGA implements the function of hardware acceleration. Four Zynq boards connected into stacked multi CPU-FPGA architecture by an external bus, which is specifically designed for this structural called SEU-mBUS. For experiment, we utilize SMCFA to accelerate satellite image retrieval. The Accelerator IP core is 9.2× faster than i5-3470 CPU when handling images, and using SMCFA can achieve a 5.3× speedup on the entire satellite image retrieval system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "IP networks",
+                "Satellites",
+                "Hardware",
+                "Acceleration",
+                "Feature extraction",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Satellite Images",
+                "Hardware Accelerators",
+                "ARM Processor",
+                "Data Transmission",
+                "Comprehensive Test",
+                "Low Power Consumption",
+                "Communication Protocol",
+                "Transmission Speed",
+                "Asynchronous Mode",
+                "Parallel Acceleration"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1674,7 +2897,36 @@
                 "firstName": null,
                 "lastName": "Chuanjun Wang"
             }
-        ]
+        ],
+        "abstract": "In the field of high-performance and energy-efficient scientific computing, FPGAs are promising candidates. In this paper, we show a case study of applying FPGA-based system for Modified Newtonian Dynamics (MOND) cosmological simulation. The numerical simulation is based on TreePM algorithm of N-body problem. TreePM algorithm combines the PM (Particle Mesh) method on large scales with a tree method to provide fine resolution. So two kinds of accelerate module are integrated in FPGA. We leverage the customizability of the FPGA on-chip memory to construct a dynamic reconfigurable cache in order to enhance the performance of the interface between accelerate modules and external memory. Our solution achieve 37.3 times performance than CPU implementation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Algorithm design and analysis",
+                "Field programmable gate arrays",
+                "Computational modeling",
+                "Table lookup",
+                "Digital signal processing"
+            ],
+            "Index Terms": [
+                "FPGA Accelerator",
+                "Tree Method",
+                "Time Step",
+                "Regular Grid",
+                "Tree Structure",
+                "Leaf Node",
+                "Dark Matter",
+                "Poisson Equation",
+                "Gravitational Potential",
+                "Particle-mesh Method",
+                "Adaptive Mesh Refinement",
+                "Xeon E5"
+            ],
+            "Author Keywords": [
+                "N-body",
+                "TreePM",
+                "Modified Newton Dynamic"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1733,7 +2985,31 @@
                 "firstName": null,
                 "lastName": "Zhigang Mao"
             }
-        ]
+        ],
+        "abstract": "Recently, logic-in-memory (LIM) is gaining growing interest because it eliminates the unnecessary data movement between the memory and logic components that embarrasses both performance and power dissipation in modern microprocessors. However, most of the existing LIM just puts the logic and memory closer rather than a true integration due to the incompatibility of logic and memory circuit structures. In this paper, we propose a in-situ LIM design by leveraging the emerging ReRAM memory in a crossbar structure. It performs in-situ logic processing using the same memory cells based on the resistive states of ReRAMs with non-destructive operations, and therefore can exploit the large internal bandwidth available in the array without data readout. The logic exploration exposes that the proposed LIM can support different logical functions and get in-situ results without moving data in and out of the memory. We believe that the proposed design provides a promising solution for a true logic processing capability within memory.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Organizations",
+                "Logic gates",
+                "Switches",
+                "Adders",
+                "Bandwidth",
+                "Logic circuits",
+                "Electrodes"
+            ],
+            "Index Terms": [
+                "Resistance State",
+                "Boolean Logic",
+                "Large Bandwidth",
+                "Logical Process",
+                "Calculation Steps",
+                "Input State",
+                "Left Block",
+                "Memory Structure",
+                "High Resistance State",
+                "Hybrid Organizations"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1768,7 +3044,43 @@
                 "firstName": null,
                 "lastName": "Tian Xiang"
             }
-        ]
+        ],
+        "abstract": "Most of Frame Buffer Compression (FBC) methods are based on variable-length compression algorithm. The proposed fixed-ratio frame buffer compressor, which is based on S3 texture compression (S3TC) algorithm, compresses the recently rendered image into DXT format so that it can be employed as input compressed texture. We have optimized the frame buffer compressor to achieve real time performance and FPGA implementation, which occupies 406 slice registers and 1133 slice LUT in Xilinx Spartan6 FPGA. The compressor consumes 10% additional silicon space, but it reduces the bandwidth consumption to 16.8%-45.8% compared to that of 50-90% by the variable-length compression methods.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image coding",
+                "Image color analysis",
+                "Real-time systems",
+                "Field programmable gate arrays",
+                "Gravity",
+                "Graphics"
+            ],
+            "Index Terms": [
+                "Compressor",
+                "Regeneration Buffer",
+                "Real-time Performance",
+                "Compression Method",
+                "Compression Algorithm",
+                "Bandwidth Consumption",
+                "Maximum And Minimum",
+                "Center Of Mass",
+                "Source Code",
+                "Graphics Processing Unit",
+                "Color Space",
+                "Random Access",
+                "Codeword",
+                "Image Synthesis",
+                "Compression Ratio",
+                "Uncompressed",
+                "Consumption Ratio",
+                "Central Segment",
+                "Written Back",
+                "Optimal Curve",
+                "Pixel Block",
+                "Binary Index",
+                "Division Operation"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1803,7 +3115,30 @@
                 "firstName": "Jakub",
                 "lastName": "Lojda"
             }
-        ]
+        ],
+        "abstract": "This paper presents concepts of FPNN which can be used for the implementation of artificial neural networks in FPGAs and introduces fault tolerant techniques applied on this concept that are developed by the authors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Biological neural networks",
+                "Neurons",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Fault-tolerant",
+                "Fault-tolerance Techniques",
+                "Neural Network",
+                "Artificial Neural Network",
+                "Implementation Of Neural Networks",
+                "Time Complexity",
+                "Space Complexity",
+                "Identity Operator",
+                "Neural Resources",
+                "Constant Operation"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1826,7 +3161,33 @@
                 "firstName": "Donald G.",
                 "lastName": "Bailey"
             }
-        ]
+        ],
+        "abstract": "The horizon effect of truncating the search tree within Trax can be overcome by detecting complex threats within a single evaluation. This requires recognising the tile patterns associated with complex threats. The application of equivalence principles enables two-dimensional patterns to be reduced to a one-dimensional end representation, with pattern detection becoming one of recognising one-dimensional template patterns. A hierarchical state machine based matching process is proposed which can match multiple patterns in parallel, processing the position at one end per clock cycle. This enables the evaluation of over 1 million moves per second, facilitating high speed game tree exploration.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Games",
+                "Pattern matching",
+                "Color",
+                "Clocks",
+                "Field programmable gate arrays",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Pattern Matching",
+                "State Machine",
+                "Detection Of Patterns",
+                "Tree Search",
+                "Parallel Patterns",
+                "Clock Cycles",
+                "Neural Network",
+                "Convolutional Neural Network",
+                "Evaluation Of Function",
+                "Playground",
+                "Game Engine",
+                "End Of Path",
+                "Monte Carlo Search"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1849,7 +3210,49 @@
                 "firstName": "Akira",
                 "lastName": "Kojima"
             }
-        ]
+        ],
+        "abstract": "In this paper, we describe our Trax player implemented on FPGA for FPT2016 design competition, which is designed by using a high-level synthesis tool, Xilinx Vivado HLS. The previous version of our design had recursive functions in the AI part, which could not be synthesized by Vivado HLS. They were processed by software using a hard IP processor. We rewrite them to non-recursive functions to synthesize using the HLS tool. The most part of our code becomes synthesizable in the current version.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Games",
+                "Artificial intelligence",
+                "Algorithm design and analysis",
+                "IP networks",
+                "Field programmable gate arrays",
+                "Tools",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "High-level Synthesis",
+                "High-level Synthesis Tools",
+                "Recursive Function",
+                "Tertiary Education",
+                "Evaluation Of Function",
+                "Search Algorithm",
+                "Current Design",
+                "Leaf Node",
+                "Debugging",
+                "Tree Search",
+                "Number Of Attacks",
+                "Node Level",
+                "Left Branch",
+                "Vertical Length",
+                "Horizontal Length",
+                "Game Conditions",
+                "Central Branch",
+                "Minimum Node",
+                "Monte Carlo Tree",
+                "Monte Carlo Tree Search",
+                "ARM Processor"
+            ],
+            "Author Keywords": [
+                "High Level Synthesis",
+                "Alpha-Beta Pruning",
+                "Iterative Deepening",
+                "Programmable SoC",
+                "Removing Recursion"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1902,7 +3305,56 @@
                 "firstName": "Debbie",
                 "lastName": "Marr"
             }
-        ]
+        ],
+        "abstract": "Deep neural networks (DNNs) are widely used in data analytics, since they deliver state-of-the-art accuracies. Binarized neural networks (BNNs) are recently proposed optimized variant of DNNs. BNNs constraint network weight and/or neuron value to either +1 or −1, which is representable in 1 bit. This leads to dramatic algorithm efficiency improvement, due to reduction in the memory and computational demands. This paper evaluates the opportunity to further improve the execution efficiency of BNNs through hardware acceleration. We first proposed a BNN hardware accelerator design. Then, we implemented the proposed accelerator on Aria 10 FPGA as well as 14-nm ASIC, and compared them against optimized software on Xeon server CPU, Nvidia Titan X server GPU, and Nvidia TX1 mobile GPU. Our evaluation shows that FPGA provides superior efficiency over CPU and GPU. Even though CPU and GPU offer high peak theoretical performance, they are not as efficiently utilized since BNNs rely on binarized bit-level operations that are better suited for custom hardware. Finally, even though ASIC is still more efficient, FPGA can provide orders of magnitudes in efficiency improvements over software, without having to lock into a fixed ASIC solution.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Neurons",
+                "Random access memory",
+                "Biological neural networks",
+                "Field programmable gate arrays",
+                "Graphics processing units",
+                "Hardware",
+                "System-on-chip"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Binary Neural Networks",
+                "High Performance",
+                "Deep Neural Network",
+                "Efficiency Improvement",
+                "Network Weights",
+                "Computational Demands",
+                "Hardware Accelerators",
+                "Execution Efficiency",
+                "Memory Reduction",
+                "Energy Efficiency",
+                "Weight Matrix",
+                "Cloud Computing",
+                "Large Model",
+                "Matrix Multiplication",
+                "Per Cycle",
+                "Fully-connected Layer",
+                "Peak Performance",
+                "Population Counts",
+                "Bitwise Operations",
+                "Internet Of Things Platform",
+                "Number Pe",
+                "Cache Hit",
+                "Efficiency Gap",
+                "Deeper Network"
+            ],
+            "Author Keywords": [
+                "Deep learning",
+                "binarized neural networks",
+                "FPGA",
+                "CPU",
+                "GPU",
+                "ASIC",
+                "data analytics",
+                "hardware accelerator"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1943,7 +3395,56 @@
                 "firstName": "Christoph",
                 "lastName": "Hagleitner"
             }
-        ]
+        ],
+        "abstract": "FPGAs (Field Programmable Gate Arrays) are making their way into data centers (DC). They are used as accelerators to boost the compute power of individual server nodes and to improve the overall power efficiency. However, this approach limits the number of FPGAs per node and hinders the acceleration of large-scale distributed applications. We propose a system architecture to deploy large-scale DC applications on standalone FPGAs, independently of the number of CPUs. In our architecture, the FPGAs are directly attached to the DC network, making the FPGA infrastructure scalable and flexible. This FPGA infrastructure enables the creation of flexible multi-FPGA fabrics by connecting several FPGAs together over the DC network. We implemented a prototype of the network-attached FPGA and ported a distributed text-analytics application onto such a multi-FPGA fabric. We compared our approach with a SW-only implementation and an implementation accelerated with PCIeattached FPGAs. The results show that the network-attached FPGAs outperform both other implementations by large margins.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Servers",
+                "Fabrics",
+                "Prototypes",
+                "Protocols",
+                "Ports (Computers)",
+                "Scalability"
+            ],
+            "Index Terms": [
+                "Data Center",
+                "Infrastructure",
+                "Scalable",
+                "Large-scale Applications",
+                "Power Efficiency",
+                "Individual Nodes",
+                "Power Nodes",
+                "Server Node",
+                "Big Data",
+                "Latent Variables",
+                "Data Pre-processing",
+                "Processing Pipeline",
+                "Communication Protocol",
+                "Communication Links",
+                "Regular Expressions",
+                "Network Throughput",
+                "Tight Coupling",
+                "Serialized",
+                "Named Entity Recognition",
+                "Network Packets",
+                "High-level Synthesis",
+                "Protocol Stack",
+                "Management Layer",
+                "Network Interface",
+                "Prototype Implementation",
+                "Master Node",
+                "Datapath",
+                "Improvement In Latency",
+                "Unstructured Data"
+            ],
+            "Author Keywords": [
+                "network-attached FPGA",
+                "multi-FPGA fabric",
+                "distributed computing",
+                "data center"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -1984,7 +3485,41 @@
                 "firstName": "Ryan",
                 "lastName": "Kastner"
             }
-        ]
+        ],
+        "abstract": "High-level synthesis tools allow programmers to use OpenCL to create FPGA designs. Unfortunately, these tools have a complex compilation process that can take several hours to synthesize a single design. This creates a significant barrier for design optimization since even experts typically need to test many designs due to the non-obvious interactions between the different optimizations. Thus, understanding the design space, and guiding the optimization process is a crucial requirement for enabling the widespread adoption of these high-level synthesis tools. However this requires a significant amount of design space data that is currently unavailable or difficult to generate. To solve this problem, we present an OpenCL FPGA benchmark suite. We outfitted each benchmark with a range of optimization parameters (or knobs), compiled over 8300 unique designs using the Altera OpenCL SDK, executed them on a Terasic DE5 board, and recorded their corresponding performance and utilization characteristics. We describe the resulting design spaces, and perform a statistical analysis of the optimization configurations which provides valuable architecture insights to FPGA developers. We make the benchmarks and results completely open-source to give opportunities for the community to perform additional analyses and provide a repository of well-documented designs for follow-on research.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Manuals",
+                "Benchmark testing",
+                "Discrete cosine transforms",
+                "Histograms",
+                "Open source software",
+                "Pipelines",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Benchmark Suite",
+                "Design Space",
+                "High-level Synthesis",
+                "Running Time",
+                "Matrix Multiplication",
+                "Gini Coefficient",
+                "Design Setting",
+                "Computing Units",
+                "Local Memory",
+                "Multiple Blocks",
+                "Discrete Cosine Transform",
+                "Finite Impulse Response Filter",
+                "Breadth-first Search",
+                "Local Storage",
+                "Sobel Operator",
+                "Rodinia",
+                "Design Space Exploration",
+                "Block Dimensions",
+                "Compile Time",
+                "Local Histogram"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2025,7 +3560,50 @@
                 "firstName": "Mehdi B.",
                 "lastName": "Tahoori"
             }
-        ]
+        ],
+        "abstract": "Due to recent technology scaling trends and increased circuit complexity, process and runtime variabilities are becoming major threats for correct circuit operation. Among these, transient voltage fluctuations appear to be the most critical issue, accounting for the biggest component of timing margin, at increased cost. As various design and workload parameters have an impact on voltage fluctuations, they need to be fully understood in order to design efficient countermeasures and margining. FPGAs are predestined for this analysis by allowing more control over such experiments at lower cost than ASICs. Even more, they highly suffer from the same issues, which are typically only handled by excessive and over-pessimistic timing margining built into the mapping tools. In this work, we implemented and calibrated sensors in configurable logic appropriate to observe delay changes caused by transient voltage fluctuations. We place them at multiple locations on the chip to evaluate temporal and spatial changes in timing margin due to different workload-characteristics. This analysis provides useful insights to designers for application mapping and workload scheduling.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sensors",
+                "Delays",
+                "Transient analysis",
+                "Field programmable gate arrays",
+                "Latches",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Voltage Fluctuations",
+                "Transient Voltage",
+                "Transient Fluctuations",
+                "Circuit Performance",
+                "Absolute Difference",
+                "Activity Time",
+                "Duty Cycle",
+                "Voltage Drop",
+                "Voltage Variation",
+                "Average Delay",
+                "Active Switches",
+                "Variable Delay",
+                "Delay Line",
+                "Higher Drop",
+                "Thermal Variation",
+                "Delay Increases",
+                "Low Drop",
+                "Technology Node",
+                "Path Delay",
+                "Induction Of Components",
+                "Power Distribution Network",
+                "Time-to-digital Converter",
+                "Fast Transients",
+                "Transient Drop",
+                "Clock Period",
+                "Complex Design",
+                "Scheduling Period",
+                "Operating Frequency",
+                "Clock Signal",
+                "Spatial Spread"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2066,7 +3644,49 @@
                 "firstName": null,
                 "lastName": "Jinwei Xu"
             }
-        ]
+        ],
+        "abstract": "Convolutional neural networks (CNNs) have gained great success in various computer vision applications. However, state-of-the-art CNN models are computation-intensive and hence are mainly processed on high performance processors like server CPUs and GPUs. Owing to the advantages of high performance, energy efficiency and reconfigurability, Field-Programmable Gate Arrays (FPGAs) have been widely explored as CNN accelerators. In this paper, we propose parallel structures to exploit the inherent parallelism and efficient computation units to perform operations in convolutional and fully-connected layers. Further, an automatic generator is proposed to generate Verilog HDL source code automatically according to high-level hardware description language. Execution time, DSP consumption and performance are analytically modeled based on some critical design variables. We demonstrate the automatic methodology by implementing two representative CNNs (LeNet and AlexNet) and evaluate the execution time models by comparing estimated and measured values. Our results show that the proposed automatic methodology yields hardware design with good performance and saves much developing round time.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Convolutional codes",
+                "Field programmable gate arrays",
+                "Parallel processing",
+                "Random access memory",
+                "Convolvers",
+                "Digital signal processing"
+            ],
+            "Index Terms": [
+                "Convolutional Neural Network",
+                "Automatic Generation",
+                "Automatic Code Generation",
+                "Convolutional Layers",
+                "Source Code",
+                "Criterion Variables",
+                "Convolutional Neural Network Model",
+                "Fully-connected Layer",
+                "AlexNet",
+                "High Energy Efficiency",
+                "Computing Units",
+                "High-level Description",
+                "Hardware Description",
+                "Image Classification",
+                "Feature Maps",
+                "Input Features",
+                "Large Capacity",
+                "Pooling Layer",
+                "Abundant Resources",
+                "Output Feature Map",
+                "Normalization Layer",
+                "Degree Of Parallelism",
+                "Bit Length",
+                "State Machine",
+                "Domain-specific Languages",
+                "Time Of Layer",
+                "Convolutional Neural Network Layers",
+                "Neighborhood Characteristics",
+                "Memory Bandwidth"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2091,9 +3711,9 @@
             },
             {
                 "id": 37332553000,
-                "preferredName": "Jean-Christophe Pr\u00e9votet",
+                "preferredName": "Jean-Christophe Prévotet",
                 "firstName": "Jean-Christophe",
-                "lastName": "Pr\u00e9votet"
+                "lastName": "Prévotet"
             },
             {
                 "id": 37265979300,
@@ -2101,7 +3721,31 @@
                 "firstName": "Fabienne",
                 "lastName": "Nouvel"
             }
-        ]
+        ],
+        "abstract": "In the last decade, the research on CPU-FPGA hybrid architectures has become a hot topic. One of the main challenges in this domain consists in efficiently and safely managing dynamic partial reconfiguration (DPR) resources. This paper focuses on the management of the reconfiguration by an hypervisor on an ARM-FPGA platform. Using the virtualization approach, virtual machines (VM) may access resources independently, being unaware of the existence of other VMs. The purpose of our work is to provide an abstract and transparent interface for virtual machines to access reconfigurable resources. The underlying infrastructure of partial reconfiguration management is hidden from the virtual machines, so that software developers do not need to consider the implementation details. We propose a framework where DPR accelerators are presented as virtual devices, which are universally mapped in each VM space as ordinary peripherals. The hypervisor automatically detects VM's requests for DPR resources and handles them dynamically according to a preemptive allocation mechanism. Our custom hypervisor guarantees the independent and isolation of VM domains. We also evaluate the efficiency of our framework by measuring the critical overheads during DPR management and allocations. The results demonstrate that our mechanism is implemented with low overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Virtual machine monitors"
+            ],
+            "Index Terms": [
+                "Reconfigurable Accelerator",
+                "Virtual Machines",
+                "Low Overhead",
+                "Allocation Mechanism",
+                "Virtual Devices",
+                "State Machine",
+                "Data Frame",
+                "Management Mechanism",
+                "Priority Level",
+                "Hardware Accelerators",
+                "System-on-chip",
+                "Extra Overhead",
+                "Virtualization Technology",
+                "Execution Path",
+                "ARM Processor"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2120,23 +3764,65 @@
         "authors": [
             {
                 "id": 37086007874,
-                "preferredName": "Denis Matou\u0161ek",
+                "preferredName": "Denis Matoušek",
                 "firstName": "Denis",
-                "lastName": "Matou\u0161ek"
+                "lastName": "Matoušek"
             },
             {
                 "id": 37595345800,
-                "preferredName": "Jan Ko\u0159enek",
+                "preferredName": "Jan Kořenek",
                 "firstName": "Jan",
-                "lastName": "Ko\u0159enek"
+                "lastName": "Kořenek"
             },
             {
                 "id": 37085392516,
-                "preferredName": "Viktor Pu\u0161",
+                "preferredName": "Viktor Puš",
                 "firstName": "Viktor",
-                "lastName": "Pu\u0161"
+                "lastName": "Puš"
             }
-        ]
+        ],
+        "abstract": "Pattern matching is a complex task which is widely used in network security monitoring applications. With the growing speed of network links, pattern matching architectures have to be improved in order to retain wire-speed processing. Multi-striding is a well-known technique on how to increase throughput of pattern matching architectures. In the paper we provide an analysis of scalability of multi-striding and show that it does not scale well and cannot be used for 100Gbps throughput because utilization of FPGA resources grows exponentially. Therefore, we have designed a new hardware architecture for high-speed pattern matching that combines the multi-striding technique and parallel processing using pipelined finite state machines (FSMs). The architecture shares a single packet buffer for all parallel FSMs. Efficient implementation of the packet buffer reduces the number of BlockRAMs to 18% when compared to simple parallel implementation. Instead of multiplexing input data, the architecture pipelines the states of FSMs. Such pipelined processing with only local communication has a direct positive impact on frequency and throughput and allows us to scale the architecture to hundreds of Gbps.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Automata",
+                "Throughput",
+                "Field programmable gate arrays",
+                "Table lookup",
+                "Random access memory",
+                "Pattern matching"
+            ],
+            "Index Terms": [
+                "Regular Expressions",
+                "Regular Expression Matching",
+                "Scalable",
+                "Exponential Growth",
+                "Multiplexing",
+                "State Machine",
+                "Pattern Matching",
+                "Hardware Architecture",
+                "Direct Positive Impact",
+                "Single Packet",
+                "Series Data",
+                "Processing Speed",
+                "Parallelization",
+                "Set Of Rules",
+                "Results Of System",
+                "Lookup Table",
+                "Expression Of Set",
+                "Network Throughput",
+                "System Throughput",
+                "Input Symbols",
+                "Datapath",
+                "Clock Cycles",
+                "Intrusion Detection System",
+                "Achievable Throughput",
+                "Pipeline Stages",
+                "Separate Paths",
+                "Dynamic Reconfiguration",
+                "Critical Path",
+                "Parallel Configuration"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2171,7 +3857,44 @@
                 "firstName": "George A.",
                 "lastName": "Constantinides"
             }
-        ]
+        ],
+        "abstract": "We propose the first hardware implementation of standard arithmetic operators - addition, multiplication, and division - that utilises constant compute resource but allows numerical precision to be adjusted arbitrarily at run-time. Traditionally, precision must be set at design-time so that addition and multiplication, which calculate the least significant digit (LSD) of their results first, and division, which calculates the most significant digit (MSD) first, can be chained together. To get around this, we employ online operators, which are always MSD-first, and thus allow successive operations to be pipelined. Even online operators require precision to be fixed at design-time because multiplication and division traditionally involve parallel adders. To avoid this, we propose an architecture, which we have implemented on an FPGA, that reuses a fixed-precision adder and stores residues in on-chip RAM. As such, we can use a single piece of hardware to perform calculations to any precision, limited only by the availability of on-chip RAM. For instance, we obtain an 8× speed-up, compared to the parallel-in-serial-out (PISO) fixed-point method, when executing 100 iterations of Newton's method at a precision of 64 digits, while the product of circuit area and latency stays comparable.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Adders",
+                "Registers",
+                "Hardware",
+                "Computer architecture",
+                "Delays",
+                "Field programmable gate arrays",
+                "System-on-chip"
+            ],
+            "Index Terms": [
+                "Newton Method",
+                "Arithmetic Operations",
+                "Online Operation",
+                "Half Adder",
+                "High Precision",
+                "Circuitry",
+                "Iterative Algorithm",
+                "Control Logic",
+                "Architecture For Classification",
+                "Critical Path",
+                "Clock Cycles",
+                "Hardware Architecture",
+                "Precision Requirements",
+                "Combinational Logic",
+                "Iteration Count",
+                "Area Overhead",
+                "Arbitrary Precision",
+                "Pipelining",
+                "Iterative Operation",
+                "Maximum Precision",
+                "Cycle Calculation",
+                "On-chip Memory",
+                "Classical Operator"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2206,7 +3929,42 @@
                 "firstName": "Vaughn",
                 "lastName": "Betz"
             }
-        ]
+        ],
+        "abstract": "Many important applications demand large amounts of on-chip memory both to fully utilize an FPGA's computational capacity and to minimize energy-consuming off-chip memory accesses, leading some recent commercial FPGAs to add higher-capacity on-chip block RAMs (BRAMs). While memory is becoming more important to FPGA designs, SRAM scaling is becoming more difficult because of increasing device variation. An alternative is to build FPGA BRAM from magnetic tunnel junction (MTJ) cells as this emerging embedded memory features a small cell size, low energy usage, and good scalability. In this work, we conduct a detailed comparison study of SRAM and MTJ BRAMs that includes cell designs that are robust with device variation, transistor-level design and optimization of all the required BRAM-specific circuits, and variation-aware simulation at the 22nm node. We find that as the capacity of a BRAM increases, the MTJ benefits of high-density and low-energy increase and its drawback of lower speed is mitigated. At a 256 Kb block size, MTJ-BRAM is 3.06× denser and 55% more energy efficient and its F<inf xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">max</inf> is 274 MHz, which is adequate for most FPGA system clock domains. We detail how the non-volatility of an MTJ-BRAM saves energy, especially for narrow write operations which are common for the width-configurable BRAMs of FPGAs. For a RAM architecture similar to the latest commercial FPGAs, MTJ-based block RAMs reduce the FPGA fabric area by 28%, or alternatively could expand FPGA memory capacity by 2.95× with no die size increase.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Field programmable gate arrays",
+                "Magnetic tunneling",
+                "Bandwidth",
+                "Routing",
+                "System-on-chip",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "Block RAMs",
+                "Block Size",
+                "Memory Capacity",
+                "Good Scalability",
+                "Device Variation",
+                "On-chip Memory",
+                "Off-chip Memory",
+                "Static Random Access Memory",
+                "Monte Carlo Simulation",
+                "Memory Cells",
+                "Small Blocks",
+                "Key Metrics",
+                "Read Operation",
+                "General Route",
+                "Circuit Configuration",
+                "Transistor Size",
+                "Control Pulse",
+                "Word Line",
+                "Logic Blocks",
+                "Sense Amplifier",
+                "Data Readout"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2247,7 +4005,50 @@
                 "firstName": "Philip H.W.",
                 "lastName": "Leong"
             }
-        ]
+        ],
+        "abstract": "Random projections have recently emerged as a powerful technique for large scale dimensionality reduction in machine learning applications. Crucially, the projection can be obtained from sparse probability distributions, enabling hardware implementations with little overhead. In this paper, we describe a Field-Programmable Gate Array (FPGA) implementation alongside a kernel adaptive filter (KAF) that is capable of reducing computational resources by introducing a controlled error term, achieving higher modelling capacity for given hardware resources. Empirical results involving classification, regression and novelty detection show that a 40% net increase in available resources and improvements in prediction accuracy is achievable for projections which halve the input vector length, enabling us to scale-up hardware implementations of KAF learning algorithms by at least a factor of 2. An implementation on a FPGA-based network card allows novelty detection of an 8× 24-bit input vector with latency of 404 ns, this being a 26-fold reduction compared to an Intel Core i5-2400 processor.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Principal component analysis",
+                "Hardware",
+                "Kernel",
+                "Prediction algorithms",
+                "Mathematical model",
+                "Dictionaries"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Random Projection",
+                "Learning Algorithms",
+                "Dimensionality Reduction",
+                "Computational Resources",
+                "Intel Core",
+                "Input Vector",
+                "Machine Learning Applications",
+                "Hardware Implementation",
+                "Gate Array",
+                "Novelty Detection",
+                "Input Variables",
+                "Resource Utilization",
+                "Fixed Point",
+                "Kernel Function",
+                "Singular Value Decomposition",
+                "Anomaly Detection",
+                "Random Matrix",
+                "High-dimensional Problems",
+                "Single Processor",
+                "Resource Savings",
+                "Clock Cycles",
+                "Truncated Singular Value Decomposition",
+                "Scikit-learn Python Package",
+                "Datapath",
+                "Orthogonal Matching Pursuit",
+                "Random Module",
+                "MHz Clock",
+                "Batch Learning"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2276,7 +4077,44 @@
                 "firstName": "Steven J. E.",
                 "lastName": "Wilton"
             }
-        ]
+        ],
+        "abstract": "High-Level Synthesis (HLS) has emerged as a leading technology to reduce the design time and complexity that is associated with reconfigurable systems. In order to maintain the productivity promised by HLS, it is important that the designer can debug the system in the context of the high-level code. Currently, software simulations offer a quick and familiar method to target logic and syntax bugs, while software/hardware co-simulations are useful for synthesis verification. However, to analyze the behaviour of the circuit as it is running, the user is forced to understand waveforms from the synthesized design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruments",
+                "Hardware",
+                "Tools",
+                "Software",
+                "Computer bugs",
+                "Debugging",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "High-level Synthesis",
+                "Simulation Software",
+                "Memory Trace",
+                "Instrumental Techniques",
+                "Circuit Performance",
+                "Low Overhead",
+                "Memory Structure",
+                "Circuit Behavior",
+                "Part Of The Instrument",
+                "Workstation",
+                "Source Code",
+                "Resource Utilization",
+                "Data Capture",
+                "Flow Control",
+                "Design Software",
+                "Array Elements",
+                "Control Construct",
+                "Longer History",
+                "Benchmark Test",
+                "Integrated Development Environment",
+                "Control Flow Graph",
+                "System-on-chip",
+                "Global Scope"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2323,7 +4161,50 @@
                 "firstName": "Oliver",
                 "lastName": "Diessel"
             }
-        ]
+        ],
+        "abstract": "Space processing applications deployed on SRAM-based Field Programmable Gate Arrays (FPGAs) are vulnerable to radiation-induced Single Event Upsets (SEUs). Compared with the well-known SEU mitigation solution - Triple Modular Redundancy (TMR) with configuration memory scrubbing - TMR with module-based error recovery (MER) is notably more energy efficient and responsive in repairing soft-errors in the system. Unfortunately, TMR-MER systems also need to resort to scrubbing when errors occur in sub-components, such as nets, which are not recovered by MER. This paper addresses this problem by proposing a fine-grained module-based error recovery technique that without additional system hardware can localize and correct errors that classic MER fails to do. We evaluate our proposal via a fault-injection campaign on a Xilinx Artix-7 application circuit and compare the reliability, the error correction latency and the energy cost of repairing errors, of our proposal with those of a conventional MER approach and with periodic and on-demand blind scrubbing. We find the reliability of our proposal to be the highest and the energy expenditure to be the lowest amongst those methods considered.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tunneling magnetoresistance",
+                "Radiation detectors",
+                "Field programmable gate arrays",
+                "Reliability",
+                "Single event upsets",
+                "Integrated circuit interconnections",
+                "Integrated circuit modeling"
+            ],
+            "Index Terms": [
+                "Recovery Error",
+                "Triple Modular Redundancy",
+                "Energy Efficiency",
+                "Additional Hardware",
+                "Lookup Table",
+                "Error Signal",
+                "Dose Concentration",
+                "Output Of Module",
+                "Considerable Energy",
+                "Low Earth Orbit",
+                "Repair Strategies",
+                "Typical Implementation",
+                "Single Error",
+                "Set Of Frames",
+                "Flash Memory",
+                "Absence Of Errors",
+                "External Memory",
+                "Number Of Checks",
+                "Test Circuit",
+                "Dynamic Reconfiguration",
+                "Logic Blocks",
+                "Cyclic Redundancy Check",
+                "Side Of The Device",
+                "Transient Error",
+                "Modulation Of Circuits",
+                "Systematic Errors",
+                "Repair Time",
+                "State Machine",
+                "Ground Plane"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2364,7 +4245,48 @@
                 "firstName": "Oliver",
                 "lastName": "Sinnen"
             }
-        ]
+        ],
+        "abstract": "The Square Kilometre Array (SKA) project will be the world largest radio telescope array. With the growth of the number of antennas, the signals that need to be processed increase dramatically. One import element of the SKA central signal processor (CSP) package is pulsar search. This paper focuses on the FPGA-based acceleration of the frequency-domain acceleration search (FDAS) module, part of SKA pulsar search. In FDAS, the frequency-domain input signals have to be processed by 85 421-tap FIR filters within a short time limit and for thousands of input arrays. Because of the large scale of input length and FIR filter size, even high-end FPGA devices cannot parallelize the task completely. We start by investigating both time-domain FIR filter (TDFIR) and frequency-domain FIR filter (FDFIR) to tackle the FDAS task. We applied the overlap-add algorithm (OLA) to split the coefficient array of TDFIR and the overlap-save algorithm (OLS) to split the input signals of FDFIR. To achieve fast prototyping design, we applied OpenCL, which is a high-level FPGA development technique, to develop high-end FPGAs. The performance and power consumption are evaluated and compared with GPU results, which is achieved by porting FPGA-based OpenCL kernels. The experimental evaluation shows that the FD solution is very competitive in terms of performance, with a clear energy consumption advantage over the GPU solution.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Finite impulse response filters",
+                "Acceleration",
+                "Convolution",
+                "Fourier transforms",
+                "Frequency-domain analysis",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Power Consumption",
+                "Parallelization",
+                "Input Signal",
+                "Filter Size",
+                "Radio Telescope",
+                "Input Array",
+                "Fourier Transform",
+                "Working Group",
+                "Fast Fourier Transform",
+                "Element-wise Multiplication",
+                "Inverse Fourier Transform",
+                "Average Latency",
+                "Multiple Filters",
+                "Clock Cycles",
+                "Hardware Accelerators",
+                "Relative Root Mean Square Error",
+                "32-bit Floating-point",
+                "Single Kernel",
+                "Memory Bandwidth",
+                "Array Output",
+                "Memory Bank",
+                "Radio Sources",
+                "Radio Astronomy",
+                "Output Buffer",
+                "Shift Register",
+                "System Power Consumption",
+                "Single Filter"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2399,7 +4321,46 @@
                 "firstName": "Benton H.",
                 "lastName": "Calhoun"
             }
-        ]
+        ],
+        "abstract": "The rapid development of the Internet-of-Things requires hardware that is both low-energy and flexible, and a near/sub-threshold FPGA is a very promising solution. In the design of near/sub-threshold FPGAs, the biggest challenge is reducing global interconnect energy, which is the most energy-consuming part in the entire FPGA. Dynamic voltage scaling is an effective technique in reducing energy, but it is not widely used in FPGA interconnects because of the high area overhead of separately provisioning the buffers in the switch boxes to support different voltages on different paths. A low-swing interconnect, which removes buffers, allows this technique to be applied to the FPGA interconnects. In this paper, we propose a novel low-swing FPGA interconnect architecture that integrates dynamic voltage scaling and power-gating techniques with custom tool support. While the power-gating technique is widely used in existing designs for reducing leakage energy of idle drivers and buffers, we also apply power-gating to configuration bitcells in switch boxes, because it is a dominant energy consumer in near/sub-threshold. Including the energy overhead of voltage regulators, our work achieves a 10.1% energy saving in active circuits, 27.0% - 91.3% in idle circuits, and 19.0% - 53.1% in the entire FPGA on average, compared to an already optimized base case that only uses low-swing interconnect but no dynamic voltage scaling or power-gating. In addition, our dynamic voltage scaling allows us to adjust the delay of the low-swing FPGA interconnect from 0.14μs to 0.43μs or adjust its energy per operation from 5.5pJ to 35.7pJ when implementing the MCNC benchmarks at 0.6V.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Integrated circuit interconnections",
+                "Field programmable gate arrays",
+                "Voltage control",
+                "Delays",
+                "Clocks",
+                "Dynamic voltage scaling",
+                "Switches"
+            ],
+            "Index Terms": [
+                "Dynamic Scaling",
+                "Dynamic Voltage Scaling",
+                "Interconnected Architecture",
+                "Benchmark",
+                "Energy Conservation",
+                "Voltage Regulation",
+                "Circuit Activity",
+                "Area Overhead",
+                "Energy Leakage",
+                "Voltage Values",
+                "Energy Reduction",
+                "Short-circuit Current",
+                "Voltage Control",
+                "Supply Voltage",
+                "Circuit Components",
+                "Clock Frequency",
+                "Critical Path",
+                "Nominal Voltage",
+                "Circuit Level",
+                "Clock Signal",
+                "Technology Node",
+                "Input Clock",
+                "Interconnected Model",
+                "Energy Adjustment",
+                "Path Delay"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2428,7 +4389,46 @@
                 "firstName": "auMingjie",
                 "lastName": "Lin"
             }
-        ]
+        ],
+        "abstract": "For many intensive computing tasks, simultaneous data access into multi-dimensional data arrays is highly restricted by its data mapping strategy and memory port constraint. As such, to increase memory accessing bandwidth, innovative memory partitioning and mapping algorithms have been proposed to simultaneously access multiple memory blocks through physically distributing data elements in the same logical array onto multiple memory blocks. Fortunately, FPGA device provides an unique opportunity of implementing application-specific memory infrastructure that maximizes memory access performance. However, even with the help of existing high-level synthesis (HLS) tools, customizing memory architecture still poses severe challenges that impede the performance of data path. In fact, existing memory partitioning and mapping schemes exploit either linear skewing or hyper-plane partitioning, therefore causing excessive run-time delay and non-optimal memory block space utilization. This work presents a hardware-efficient memory partitioning and mapping scheme with both low computing complexity and low hardware overhead for accessing multidimensional arrays. Targeting at affine memory access patterns often found in many data-intensive applications, our key idea is to leverage the geometric concept of tessellation widely known in combinatorial study and adopt a partitioning scheme based on geometric arguments instead of counting integer points in polytopes for intra-block offset generation. Aiming to assist HLS, our tessellation-based memory scheme exploits hidden memory parallelism through leveraging physically independent memory blocks in FPGAs. Using FPGA devices, our experimental results have shown that our memory partitioning algorithm saves up to 63.7% in the amount of arithmetic operations, around 15% in execution time, and 31.1% in storage overhead relative to the state-of-the-art approach on average across five widely-used circuit benchmarks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Arrays",
+                "Memory management",
+                "Shape",
+                "Hardware",
+                "Kernel",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Mapping Strategy",
+                "High-level Synthesis",
+                "Memory Mapping",
+                "Data Elements",
+                "Mapping Algorithm",
+                "Partitioning Scheme",
+                "Access Patterns",
+                "Polytope",
+                "Multiple Memory",
+                "Memory Block",
+                "Limitations Of Methods",
+                "Parallelization",
+                "Block Size",
+                "Heuristic Search",
+                "Regular Shape",
+                "Local Memory",
+                "Memory Space",
+                "Clock Cycles",
+                "Linear Scheme",
+                "Mapping Problem",
+                "Partitioning Problem",
+                "Deep Pipeline",
+                "Code Snippets",
+                "Memory Bank",
+                "Offset Vector"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2457,7 +4457,40 @@
                 "firstName": "Michael",
                 "lastName": "Huebner"
             }
-        ]
+        ],
+        "abstract": "This paper explores the capabilities and limitations of soft GPGPU-based computing on fixed-point arithmetic. The work is based on an existing soft GPU architecture which has been improved and extended to cover broader benchmarks. A generic ALU design for modern FPGA architectures is presented. The enhanced ISA includes conditional instructions and global atomic operations. We extended the tool flow with an LLVM-Backend and used the clang frontend to provide an OpenCL compiler. The improved architecture is evaluated against multiple other solutions: a single MicroBlaze soft processor, a Cortex-A9 ARM with the NEON vector coprocessor and equivalent HLS implementations. We have recorded an average speed up of 10-47× over the MicroBlaze and 0.6-3.4× over the ARM with the NEON engine for the smallest and the biggest soft GPU cores, respectively. Although these cores have an area overhead of 6-22× in comparison to the single soft processor solution, they consumed on average 2.8-7.1× less energy to perform the same tasks. We noticed no performance degradation in comparison to the HLS implementations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Graphics processing units",
+                "Registers",
+                "Table lookup",
+                "Coprocessors",
+                "Clocks"
+            ],
+            "Index Terms": [
+                "Integer Computation",
+                "Benchmark",
+                "Area Overhead",
+                "Linearizable",
+                "Single Processor",
+                "Power Consumption",
+                "Application Programming Interface",
+                "Wavefront",
+                "Edge Detection",
+                "Problem Size",
+                "Memory Control",
+                "Computing Units",
+                "Image Filtering",
+                "Access Patterns",
+                "Atomic Units",
+                "Clock Frequency",
+                "Clock Cycles",
+                "Written Back",
+                "ARM Processor",
+                "Extra Education"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2516,7 +4549,45 @@
                 "firstName": "Oliver",
                 "lastName": "Diessel"
             }
-        ]
+        ],
+        "abstract": "FPGAs are promising candidates for computational tasks in space applications. However, they are susceptible to radiation-induced errors, the most common failure being due to the corruption of their configuration memory. Module-based partial reconfiguration and frame-based scrubbing are the two most commonly used techniques for detecting and recovering from configuration memory errors. Both methods require user-designed reconfiguration controllers (RC) to read and write FPGA configuration memory data. This paper proposes a Programmable Configuration Controller (PCC) specifically designed for fault-tolerant applications. PCC has a soft Application Specific Instruction Set Processor (ASIP) architecture. The PCC is software programmable using the C language, which allows it to be used in a wide variety of fault-tolerant applications with minimal design and/or hardware overhead. PCC also has instruction extensions to accelerate commonly-used reconfiguration operations such as reading and writing configuration data. Through 5 case studies, we demonstrate that the use of an ASIP architecture for reconfiguration control in applications prone to radiation-induced corruption strikes the right balance between speed, resource utilization and flexibility.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Writing",
+                "Error correction codes",
+                "Software",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Resource management"
+            ],
+            "Index Terms": [
+                "Resource Utilization",
+                "Space Applications",
+                "Common Failure",
+                "Soft Set",
+                "External Sources",
+                "Smooth Function",
+                "Performance Requirements",
+                "Single Frame",
+                "Error Detection",
+                "State Machine",
+                "Resource Usage",
+                "Bit Error",
+                "Bitstream",
+                "Network Throughput",
+                "Forward Error Correction",
+                "Flash Memory",
+                "Computing Nodes",
+                "Fundamental Operation",
+                "Recovery Algorithm",
+                "Flexibility Requirements",
+                "Recovery Error",
+                "Standalone Mode",
+                "External Storage",
+                "Off-chip Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2551,7 +4622,34 @@
                 "firstName": "Nachiket",
                 "lastName": "Kapre"
             }
-        ]
+        ],
+        "abstract": "Reducing worst case routing latencies while delivering high throughput and low energy are key design concerns in the engineering of overlay packet-switched NoCs for FPGA fabrics. Deflection routed torus NoCs are known to map particularly well to modern wire-rich FPGA substrates with fracturable LUT organizations while delivering high sustained bandwidths for various workloads and traffic patterns. However, they suffer from significantly higher worst case routing latencies due to deflections, particularly at large system sizes, when compared to classic buffered NoCs. To tackle this challenge, we design a deadlock-free hierarchical torus that (1) targets worst case latencies in deflection torus NoCs by separating deflections into two levels of the NoC, (2) delivers an FPGA-friendly design for deadlock freedom by providing physical escape channels in the lower levels, and (3) naturally supports physical layout for large multi-die FPGA chips by mapping upper level links to expensive interposer connections between dies. We generate layouts for implementing the NoC on the ML605 board (XCV6LX240T FPGA), VC707 board (XC7VX485T FPGA) and large multi-die XC7V2000T chips while delivering fast 300–500MHz NoCs while consuming 10–15% of FPGA LUT resources. For instance with the 16×16 NoC, we reduce worst case deflection costs by 1.5–10× while simultaneously improving sustained rates by 1.5–2× and lowering energy requirements by 25% for a range of statistically-generated traffic patterns.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "System recovery",
+                "Table lookup",
+                "Routing",
+                "Two dimensional displays",
+                "Fabrics",
+                "Switches"
+            ],
+            "Index Terms": [
+                "System Size",
+                "Traffic Patterns",
+                "Physical Layout",
+                "Physical Channel",
+                "Large System Size",
+                "Life Cycle Assessment",
+                "Flow Control",
+                "Operating Frequency",
+                "Injection Rate",
+                "Lower Stage",
+                "Average Latency",
+                "Multi-level Network",
+                "Virtual Channel"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2570,8 +4668,8 @@
         "authors": [
             {
                 "id": 38540561800,
-                "preferredName": "Bj\u00f6rn Liebig",
-                "firstName": "Bj\u00f6rn",
+                "preferredName": "Björn Liebig",
+                "firstName": "Björn",
                 "lastName": "Liebig"
             },
             {
@@ -2580,7 +4678,45 @@
                 "firstName": "Andreas",
                 "lastName": "Koch"
             }
-        ]
+        ],
+        "abstract": "Many high-level synthesis (HLS) tools aim at the hardware translation of input programs with relatively short loop bodies, often with a very regular control flow. However, codes from domains such as control engineering and numerical simulation often have a considerably different structure with large loop bodies holding (tens of) thousands of individual operations. Compilation of such codes not only requires the sharing of hardware operators, but also the efficient storage and forwarding of many intermediate results. Both academic as well as industrial synthesis tools have great difficulty coping with such input programs. We present Nymble-RS, a C-to-hardware compiler optimized to translate such complex programs. When evaluated on codes for the domain of convex solvers, the generated accelerators reach clock frequencies of over 200 MHz (exceeding those achieved by a state-of-the-art industrial tool by more than 3×), and offer speed-ups of up to 5× over software executing on the 800 MHz Cortex-A9 CPUs used in typical reconfigurable system-on-chips.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Tools",
+                "Multiplexing",
+                "Registers",
+                "Optimization",
+                "Field programmable gate arrays",
+                "Program processors"
+            ],
+            "Index Terms": [
+                "Microarchitecture",
+                "High-level Synthesis",
+                "Intermediate Results",
+                "Control Technology",
+                "Efficient Storage",
+                "Clock Frequency",
+                "Synthesis Tool",
+                "Industrial Tools",
+                "Benchmark",
+                "General Case",
+                "Signatures Of Selection",
+                "Convex Optimization",
+                "Shared Resource",
+                "Floating-point Operations",
+                "Simple Modules",
+                "Clock Cycles",
+                "Hardware Accelerators",
+                "Chip Area",
+                "Datapath",
+                "Pipelining",
+                "Shift Register",
+                "Bit-width",
+                "Design Space Exploration",
+                "Address Space"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2615,7 +4751,42 @@
                 "firstName": "Russell",
                 "lastName": "Tessier"
             }
-        ]
+        ],
+        "abstract": "Recent research has shown that the integration of a custom-silicon network-on-chip (NoC) into an FPGA fabric can significantly help on-chip communication bandwidth. Although not appropriate for all communication, FPGA hard NoCs provide a scalable infrastructure that will increase in importance as FPGA sizes increase. To date, most FPGA hard NoC implementation has focused on packet-switched routing which requires dynamic run-time decision making to transfer data from source to destination. In this paper we explore expanding hard NoC routers to support both packet-switched and prescheduled time-multiplexed communication. By limiting the use of energy-hungry routing buffers, time-multiplexed routing allows for throughput-predictable data transport with reduced energy consumption versus packet-switching for a variety of traffic patterns. The area overhead required to convert a packet-switched router to a hybrid packet-switched/time-multiplexed version is minimal (about 9%). In this research, we show significant NoC energy improvement (about 33%) while maintaining or improving packet latency values versus packet switching for select data traffic patterns.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Routing",
+                "Ports (Computers)",
+                "Time division multiplexing",
+                "Switches",
+                "Context",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Traffic Patterns",
+                "Circuitry",
+                "Area Values",
+                "Shortest Path",
+                "Time Slot",
+                "Data Streams",
+                "Communication Patterns",
+                "Output Ports",
+                "Input Port",
+                "Tornado",
+                "Dynamic Energy",
+                "Contextual Memory",
+                "Dynamic Power",
+                "Clock Cycles",
+                "Packet Size",
+                "Insertion Rate",
+                "Routing Algorithm",
+                "Synopsys",
+                "Virtual Channel",
+                "Time-division Multiplexing",
+                "Dynamic Power Consumption"
+            ]
+        }
     },
     {
         "publicationNumber": "7924463",
@@ -2638,7 +4809,9 @@
                 "firstName": "Andrew",
                 "lastName": "Putnam"
             }
-        ]
+        ],
+        "abstract": "The Catapult project has brought the power and performance of FPGA-based reconfigurable computing to Microsoft's hyperscale datacenters, accelerating major production cloud applications such as Bing web search and Microsoft Azure, and enabling a new generation of machine learning and artificial intelligence applications.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2661,7 +4834,9 @@
                 "firstName": "Jason",
                 "lastName": "Anderson"
             }
-        ]
+        ],
+        "abstract": "High-level synthesis (HLS) was first proposed in the 1980s. After spending decades on the sidelines of mainstream RTL digital design, there has been tremendous buzz around HLS technology in recent years. Indeed, HLS is on the upswing as a design methodology for field-programmable gate arrays (FPGAs) to improve designer productivity and ultimately, to make FPGA technology accessible to software engineers having limited hardware expertise. The hope is that down the road, software developers could use HLS to realize FPGA-based accelerators customized to applications that work in tandem with standard processors to raise computational throughput and energy efficiency. And, the further hope is that such HLS-generated accelerators operate close to the speed and energy efficiency of human-expert-designed accelerators. In this talk, I will overview the trends behind the recent drive towards FPGA HLS and why the need for, and use of, HLS will only become more pronounced in the coming years. I will argue that HLS, as opposed to traditional RTL design, is on the “right side of history”. The talk will highlight current HLS research directions and expose some of the challenges for HLS that may hinder its update in the digital design community. I will also describe work underway in the LegUp HLS project at the University of Toronto - a publicly available HLS tool that has been downloaded by over 4000 groups from around the world.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2684,7 +4859,9 @@
                 "firstName": null,
                 "lastName": "Yonghua Lin"
             }
-        ]
+        ],
+        "abstract": "IBM is the leader of Accelerator cloud technology innovation in industry. IBM Supervessel Cloud is the first cloud providing FPGA accelerator service and FPGA DevOps service to developers. In this talk, Yonghua Lin, Supervessel Cloud leader will share her view on why FPGA service in cloud is important, and how FPGA service could accelerate the Cognitive Computing in Cloud. Meanwhile, Yonghua will introduce the key technologies supporting FPGA service in cloud. Supervessel Cloud has launched FPGA as service for more than 18 months. The FPGA service has been used by developers from different countries. In this talk, Yonghua will also share the gap learned from all these users, and her vision for future.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2700,7 +4877,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2716,7 +4895,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2732,7 +4913,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: reliability; high level synthesis; and network on chip.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2748,7 +4931,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2764,7 +4949,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2780,7 +4967,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2796,7 +4985,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2812,7 +5003,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2828,7 +5021,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2844,7 +5039,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2860,7 +5057,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Conference proceedings front matter may contain various advertisements, welcome messages, committee or program information, and other miscellaneous conference information. This may in some cases also include the cover art, table of contents, copyright statements, title-page or half title-pages, blank pages, venue maps or other general information relating to the conference that was part of the original conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2876,7 +5075,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2892,7 +5093,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7924463",
@@ -2908,6 +5111,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 International Conference on Field-Programmable Technology (FPT)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     }
 ]

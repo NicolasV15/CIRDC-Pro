@@ -50,7 +50,54 @@
                 "firstName": "Dirk",
                 "lastName": "Pflüger"
             }
-        ]
+        ],
+        "abstract": "Meeting both scalability and performance portability requirements is a challenge for any HPC application, especially for adaptively refined ones. In Octo-Tiger, an astrophysics application for the simulation of stellar mergers, we approach this with existing solutions: We employ HPX to obtain fine-grained tasks to easily distribute work and finely overlap communication and computation. For the computations themselves, we use Kokkos to turn these tasks into compute kernels capable of running on hardware ranging from a few CPU cores to powerful accelerators. There is a missing link, however: while the fine-grained parallelism exposed by HPX is useful for scalability, it can hinder GPU performance when the tasks become too small to saturate the device, causing low resource utilization. To bridge this gap, we investigate multiple different GPU work aggregation strategies within Octo-Tiger, adding one new strategy, and evaluate the node-level performance impact on recent AMD and NVIDIA GPUs, achieving noticeable speedups.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Productivity",
+                "Scalability",
+                "Graphics processing units",
+                "Programming",
+                "Parallel processing",
+                "Turning"
+            ],
+            "Index Terms": [
+                "GPU Kernel",
+                "Multi-core",
+                "Aggregation Scheme",
+                "Adaptive Refinement",
+                "Kernel Computation",
+                "Multiple GPUs",
+                "Running",
+                "Energy Conservation",
+                "Implementation Details",
+                "Parallelization",
+                "Combination Of Strategies",
+                "Data Transfer",
+                "New Work",
+                "Load Balancing",
+                "Computing Units",
+                "Number Of Kernels",
+                "Multiple Kernel",
+                "Large Kernel",
+                "Parallel Efficiency",
+                "Overall Number Of Cells",
+                "Adaptive Mesh Refinement",
+                "Ghost Cells",
+                "API Calls",
+                "Application Code"
+            ],
+            "Author Keywords": [
+                "HPX",
+                "HIP",
+                "CUDA",
+                "Kokkos",
+                "Work Aggregation",
+                "Performance Portability",
+                "Task-based Programming"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -91,7 +138,47 @@
                 "firstName": "Simon",
                 "lastName": "McIntosh-Smith"
             }
-        ]
+        ],
+        "abstract": "In order to take advantage of the burgeoning diversity in processors at the frontier of supercomputing, the HPC community is migrating and improving codes to utilise heterogeneous nodes, where accelerators, principally GPUs, are highly prevalent in top-tier supercomputer designs. Programs therefore need to embrace at least some of the complexities of heterogeneous architectures. Parallel programming models have evolved to express heterogeneous paradigms whilst providing mechanisms for writing portable, performant programs. History shows that technologies first introduced at the frontier percolate down to local workhorse systems. However, we expect there will always be a mix of systems, some heterogeneous, but some remaining as homogeneous CPU systems. Thus it is important to ensure codes adapted for heterogeneous systems continue to run efficiently on CPUs. In this study, we explore how well widely used heterogeneous programming models perform on CPU-only platforms, and survey the performance portability they offer on the latest CPU architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Codes",
+                "Limiting",
+                "Parallel programming",
+                "Graphics processing units",
+                "Benchmark testing",
+                "Writing"
+            ],
+            "Index Terms": [
+                "Programming Model",
+                "High-performance Computing",
+                "Heterogeneous Systems",
+                "Heterogeneous Model",
+                "Environmental Variables",
+                "Parallel Data",
+                "GCC Compiler",
+                "Memory Space",
+                "Fortran",
+                "Code Version",
+                "Parallel Work",
+                "Graviton",
+                "Memory Bandwidth",
+                "Concurrent Work",
+                "Physical Cores",
+                "Highest Level Of Performance",
+                "Compile Time",
+                "Theoretical Peak"
+            ],
+            "Author Keywords": [
+                "CPU",
+                "Heterogeneous programming models",
+                "Kokkos",
+                "OpenMP",
+                "Performance portability",
+                "SYCL"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -180,7 +267,49 @@
                 "firstName": "Sunita",
                 "lastName": "Chandrasekaran"
             }
-        ]
+        ],
+        "abstract": "The OpenMP language continues to evolve with every new specification release, as does the need to validate and verify the new features that have been implemented by the different vendors. With the release of OpenMP 5.0 and OpenMP 5.1, new target offload and host-based features have been introduced to the programming model. While OpenMP continues to grow in maturity, there is an observable growth in the number of compiler and hardware vendors that support OpenMP. In this manuscript, the main focus is on evaluating the conformity and OpenMP implementation progress of various compiler vendors such as Cray, IBM, GNU, Clang/LLVM, NVIDIA, and Intel. More specifically, the 4.5, 5.0, and 5.1 versions of the OpenMP specification are analyzed. For our experimental setup, the Crusher and Summit computing systems hosted by Oak Ridge National Lab’s Computing Facilities are utilized. The effort of vendor agnostic analysis of these implementations is especially valuable for application developers who are using new OpenMP features to accelerate their scientific codes. Insights are presented into the current implementation status of various vendors, the progression of specific compiler’s support for OpenMP overtime, the subset of OpenMP 4.5, 5.0, and 5.1 that is supported by all compilers, and examples of how our test suite has influenced discussion regarding the correct interpretation of the OpenMP specification. By evaluating OpenMP conformity of pre-Exascale computing systems, the aim is to detail progress and status of AMD + Cray ecosystem before the system and their OpenMP implementation is used for mission critical applications when the first Exascale Computer Frontier is made available to applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Codes",
+                "Conferences",
+                "Mission critical systems",
+                "Ecosystems",
+                "Graphics processing units",
+                "C++ languages"
+            ],
+            "Index Terms": [
+                "Verification And Validation",
+                "Exascale Computing Project",
+                "Current Status",
+                "Frontier",
+                "Computer System",
+                "Development Of Applications",
+                "Test Suite",
+                "Oak Ridge National Laboratory",
+                "Target Region",
+                "Parallelization",
+                "Application Programming Interface",
+                "Heterogeneous Systems",
+                "List Of Items",
+                "Software Libraries",
+                "Department Of Energy",
+                "Pass Rate",
+                "Specific Version",
+                "Version Of Function",
+                "Level Of Parallelism",
+                "Conditional Statements",
+                "Shared Memory",
+                "Parallel Applications"
+            ],
+            "Author Keywords": [
+                "OpenMP",
+                "GPU",
+                "Offloading",
+                "LLVM"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -233,7 +362,61 @@
                 "firstName": "Kevin",
                 "lastName": "Obrejan"
             }
-        ]
+        ],
+        "abstract": "This paper presents the performance portable implementation of a kinetic plasma simulation code with C++ parallel algorithm to run across multiple CPUs and GPUs. Relying on the language standard parallelism stdpar and proposed language standard multi-dimensional array support mdspan, we demonstrate that a performance portable implementation is possible without harming the readability and productivity. We obtain a good overall performance for a mini-application in the range of 20 % to the Kokkos version on Intel Icelake, NVIDIA V100, and A100 GPUs. Our conclusion is that stdpar can be a good candidate to develop a performance portable and productive code targeting the Exascale era platform, assuming this approach will be available on AMD and/or Intel GPUs in the future.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Plasma simulation",
+                "Codes",
+                "Conferences",
+                "C++ languages",
+                "Kinetic theory",
+                "Parallel algorithms"
+            ],
+            "Index Terms": [
+                "Parallel Algorithm",
+                "Readability",
+                "Standard Language",
+                "Data Structure",
+                "Parallelization",
+                "Periodic Boundary Conditions",
+                "Programming Model",
+                "Problem Size",
+                "Lagrange Interpolation",
+                "Parallel Operation",
+                "Device-to-device",
+                "Functor",
+                "Oak Ridge National Laboratory",
+                "Parallel Reduction",
+                "Memory Bandwidth",
+                "Performance Overhead",
+                "Tile Size",
+                "C++ Language",
+                "Integral Kernel",
+                "NVIDIA GPU",
+                "Performance Of Solver",
+                "Advection Equation",
+                "Parallel Loops",
+                "Multidimensional Index",
+                "Backward Scheme",
+                "Future Platforms",
+                "Poisson Equation",
+                "Spline Interpolation",
+                "Fast Fourier Transform"
+            ],
+            "Author Keywords": [
+                "Intel Icelake",
+                "NVIDIA V100",
+                "NVIDIA A100",
+                "AMD MI100",
+                "Semi-Lagrangian",
+                "Kokkos",
+                "OpenMP",
+                "C++17 Parallel algorithm",
+                "C++23 mdspan"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -268,7 +451,59 @@
                 "firstName": "David M.",
                 "lastName": "Rogers"
             }
-        ]
+        ],
+        "abstract": "The roofline model provides a concise overview of the maximum performance capabilities of a given computer system through a combination of peak memory bandwidth and compute performance rates. The increasing complexity of scheduling and cache in recent GPUs, however, has introduced complicated performance variability that is not captured by arithmetic intensity alone. This work examines the effect of problem size and GPU launch configurations on roofline performance for V100, A100, MI100, and MI250X graphics processing units. We introduce an extended roofline model that takes problem size into account, and find that strong scaling on GPUs can be characterized by saturation problem sizes as additional key metrics. Saturation problem sizes break up a plot of GPU performance vs. problem size into three distinct performance regimes– size-limited, cache-bound, and DRAM-bound. With our extended roofline model, we are able to provide a robust view of these performance regimes across recent GPU architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Limiting",
+                "Instruction sets",
+                "Computational modeling",
+                "Memory management",
+                "Graphics processing units",
+                "Random access memory",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Empirical Performance",
+                "Strong Scaling",
+                "Extended Model",
+                "Problem Size",
+                "Maximum Performance",
+                "Memory Bandwidth",
+                "Performance Of Algorithm",
+                "Extensive Work",
+                "US Government",
+                "Wavefront",
+                "Levels Of Hierarchy",
+                "Department Of Energy",
+                "Small Problems",
+                "Computing Units",
+                "Peak Performance",
+                "Sweet Spot",
+                "Clock Cycles",
+                "Oak Ridge National Laboratory",
+                "Skyline Plot",
+                "Bytes Of Data",
+                "L2 Cache",
+                "Kernel Computation",
+                "Cache Size",
+                "Theoretical Peak",
+                "Large-sized Problems",
+                "Device Memory",
+                "Saturation Point",
+                "Double Precision",
+                "Matrix Multiplication"
+            ],
+            "Author Keywords": [
+                "HPC",
+                "roofline model",
+                "performance analysis",
+                "GPU",
+                "CUDA",
+                "HIP"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -297,7 +532,58 @@
                 "firstName": "Michèle",
                 "lastName": "Weiland"
             }
-        ]
+        ],
+        "abstract": "Sparse matrices and linear algebra are at the heart of scientific simulations. More than 70 sparse matrix storage formats have been developed over the years, targeting a wide range of hardware architectures and matrix types. Each format is developed to exploit the particular strengths of an architecture, or the specific sparsity patterns of matrices, and the choice of the right format can be crucial in order to achieve optimal performance. The adoption of dynamic sparse matrices that can change the underlying data-structure to match the computation at runtime without introducing prohibitive overheads has the potential of optimizing performance through dynamic format selection.In this paper, we introduce Morpheus, a library that provides an efficient abstraction for dynamic sparse matrices. The adoption of dynamic matrices aims to improve the productivity of developers and end-users who do not need to know and understand the implementation specifics of the different formats available, but still want to take advantage of the optimization opportunity to improve the performance of their applications. We demonstrate that by porting HPCG to use Morpheus, and without further code changes, 1) HPCG can now target heterogeneous environments and 2) the performance of the Sparse Matrix-Vector Multiplication (SpMV) kernel is improved up to 2.5× and 7× on CPUs and GPUs respectively, through runtime selection of the best format on each MPI process.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Heart",
+                "Runtime",
+                "Linear algebra",
+                "Computer architecture",
+                "Libraries",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Sparse Matrix",
+                "Linear Algebra",
+                "Dynamic Matrix",
+                "Type Of Matrix",
+                "Storage Form",
+                "Choice Of Form",
+                "Code Changes",
+                "Pattern Matrix",
+                "Sparsity Pattern",
+                "Data Structure",
+                "Adaptive Algorithm",
+                "Data Transfer",
+                "Types Of Values",
+                "System Matrix",
+                "Vector Data",
+                "Problem Size",
+                "Nonzero Elements",
+                "Hybrid Forms",
+                "Discrete Method",
+                "Memory Space",
+                "Remote Parts",
+                "Original Implementation",
+                "Iterative Solver",
+                "Sparse Format",
+                "Switching Dynamics",
+                "Code Modifications",
+                "Column Index",
+                "Strong Scaling",
+                "Memory Hierarchy",
+                "Computer Technology"
+            ],
+            "Author Keywords": [
+                "sparse matrix storage formats",
+                "generic programming",
+                "dynamic matrices",
+                "performance portability",
+                "productivity"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -332,7 +618,58 @@
                 "firstName": "Pieter",
                 "lastName": "Maris"
             }
-        ]
+        ],
+        "abstract": "The emergence of accelerator-based computer architectures and programming models makes it challenging to achieve performance portability for large-scale scientific simulation software. In this paper, we focus on a sparse block diagonal matrix multiple vector (SpMM) computational kernel and discuss techniques that can be used to achieve performance portability on NVIDIA and AMD based accelerators using CUDA, HIP, OpenACC, Kokkos. We show that performance portability can vary significantly across programming models, GPU architectures, and problem settings, by up to 52× in the explored problems. Our study visits the performance portability aggregation techniques to guide the development and the selection of performance portable algorithmic variants.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Productivity",
+                "Schedules",
+                "Runtime",
+                "Computational modeling",
+                "Graphics processing units",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Sparse Matrix",
+                "Block Diagonal",
+                "Block Diagonal Matrix",
+                "Sparse Vector",
+                "Block Sparsity",
+                "Performance Portability",
+                "Programming Model",
+                "Variety Of Algorithms",
+                "Problem Setting",
+                "Kernel Computation",
+                "Parallelization",
+                "Intel Xeon",
+                "Nonzero Elements",
+                "Outer Loop",
+                "Levels Of Conflict",
+                "Fortran",
+                "V100 GPU",
+                "Sparsity Pattern",
+                "Hamiltonian Matrix",
+                "Level Of Spread",
+                "Concurrent Levels",
+                "Configuration Problem",
+                "Eigensolver",
+                "Architecture Configuration",
+                "Scheduling Mechanism",
+                "Set Of Platforms",
+                "Non-zero Elements Of Matrix"
+            ],
+            "Author Keywords": [
+                "Performance Portability",
+                "GPU",
+                "Sparse Methods",
+                "Atomics",
+                "OpenACC",
+                "Kokkos",
+                "CUDA",
+                "HIP"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -373,7 +710,43 @@
                 "firstName": "Jack",
                 "lastName": "Kirk"
             }
-        ]
+        ],
+        "abstract": "Tensor contractions form the fundamental computational operation of computational chemistry, and these contractions dictate the performance of widely used coupled-cluster (CC) methods in computational chemistry. In this work, we study a single-source, cross-platform C++ abstraction layer programming model, SYCL, for applications related to the computational chemistry methods such as CCSD(T) coupled-cluster formalism. An existing optimized CUDA implementation was migrated to SYCL to make use of the novel algorithm that provides tractable GPU memory needs for solving high-dimensional tensor contractions for accelerating CCSD(T). We present the cross-platform performance achieved using SYCL implementations for the non-iterative triples contribution of the CCSD(T) formalism which is considered as the performance bottle neck on NVIDIA A100 and AMD Instinct MI250X. Additionally, we also draw comparisons of similar performance metrics from vendor-based native programming models such as CUDA and ROCm HIP. Our results indicate that the performance of SYCL measured at-scale was on-par with the code written in HIP for AMD MI250X GPUs while the performance is slightly lacking on NVIDIA A100 GPUs in comparison to CUDA.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Measurement",
+                "Chemistry",
+                "Tensors",
+                "Conferences",
+                "Computational modeling",
+                "Graphics processing units"
+            ],
+            "Index Terms": [
+                "Coupled Cluster Method",
+                "Perturbative Triples",
+                "Programming Model",
+                "Chemical Calculations",
+                "Basis Set",
+                "Multi-core",
+                "High-performance Computing",
+                "Memory Model",
+                "Built-in Function",
+                "Parallel Data",
+                "Local Memory",
+                "Single GPU",
+                "Instruction Set Architecture",
+                "6-31G Basis Set",
+                "Hardware Accelerators",
+                "Strong Scaling",
+                "Double Excitations",
+                "Tile Size",
+                "Shared Memory",
+                "GPU Implementation",
+                "NVIDIA GPU",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -426,7 +799,50 @@
                 "firstName": "Isaac",
                 "lastName": "Ault"
             }
-        ]
+        ],
+        "abstract": "The wide adoption of Deep Neural Networks (DNN) has served as an incentive to design and manufacture powerful and specialized hardware technologies, targeting systems from Edge devices to Cloud and supercomputers.While the proposed ONNX as a de facto for DNN model description, provides portability across various AI frameworks, supporting DNN models on various hardware architectures remains challenging.SYCL provides a C++-based portable parallel programming model to target various devices. Thus, enabling SYCL backend for an AI framework can lead to a hardware-agnostic model for heterogeneous systems.This paper proposes a SYCL backend for ONNXRuntime as a possible solution towards the performance portability of deep learning algorithms. The proposed backend uses existing state-of-the-art SYCL-DNN and SYCL-BLAS libraries to invoke tuned SYCL kernels for DNN operations. Our performance evaluation shows that the proposed approach can achieve comparable performance with respect to the state-of-the-art optimized vendor-specific libraries.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Deep learning",
+                "Productivity",
+                "Runtime",
+                "Parallel programming",
+                "Neural networks",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Performance Portability",
+                "Neural Network",
+                "Deep Neural Network",
+                "Deep Neural Network Model",
+                "Hardware Architecture",
+                "Open-source",
+                "Artificial Neural Network",
+                "Types Of Devices",
+                "Network Operators",
+                "Load Data",
+                "Inference System",
+                "Implementation Performance",
+                "Device-to-device",
+                "Graph Partitioning",
+                "Memory Operations",
+                "CPU Intel",
+                "VGG16 Model",
+                "ResNet-50 Model",
+                "Graph Optimization",
+                "Device Memory",
+                "NVIDIA GPU",
+                "Just-in-time",
+                "High-level Architecture",
+                "Memory Allocation",
+                "Rest Of The Paper",
+                "Hardware Accelerators",
+                "Open Standards",
+                "Amount Of Time",
+                "Interoperability"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -497,7 +913,54 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "The SLATE project is implementing a distributed dense linear algebra library for highly-scalable distributed-memory accelerator-based computer systems. The goal is to provide a library that can be easily ported to different hardware (CPUs, GPUs, accelerators) and will provide high performance for machines into the future. Current ports include CPUs, CUDA, ROCm, and oneAPI. We achieve both performance and portability by leveraging several layers and abstractions, including OpenMP tasks to track data dependencies, MPI for distributed communication, and the BLAS++ and LAPACK++ libraries developed as a portable layer across vendor-optimized CPU and GPU BLAS and LAPACK functionality. We rely on the C++ standard library and templating to reduce code duplication for better maintainability. The few kernels not present in BLAS are implemented in CUDA, HIP, and OpenMP target offload, and are easily ported to new platforms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Graphics processing units",
+                "C++ languages",
+                "Linear algebra",
+                "Libraries",
+                "Robustness",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Linear Algebra",
+                "Exascale",
+                "Dense Linear Algebra",
+                "High Performance",
+                "Standard Library",
+                "Message Passing Interface",
+                "High Production",
+                "Real-valued",
+                "Linear System",
+                "Workspace",
+                "Block Size",
+                "Singular Value Decomposition",
+                "Square Matrix",
+                "Sustainability Performance",
+                "Eigenvalue Problem",
+                "Cholesky Decomposition",
+                "GPU Memory",
+                "Task Scheduling",
+                "Job Scheduling",
+                "QR Decomposition",
+                "LU Factorization",
+                "GPU Acceleration",
+                "Memory Allocation",
+                "NVIDIA GPU",
+                "GPU Computation",
+                "CPU Memory",
+                "Multiple Streams",
+                "Operational Performance"
+            ],
+            "Author Keywords": [
+                "numerical linear algebra",
+                "distributed computing",
+                "GPU computing"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -544,7 +1007,56 @@
                 "firstName": "Jeffrey S.",
                 "lastName": "Vetter"
             }
-        ]
+        ],
+        "abstract": "Accelerator-based heterogeneous computing is the de facto standard in current and upcoming exascale machines. These heterogeneous resources empower computational scientists to select a machine or platform well-suited to their domain or applications. However, this diversity of machines also poses challenges related to programming model selection: inconsistent availability of programming models across different exascale systems, lack of performance portability for those programming models that do span several systems, and inconsistent performance between different models on a single platform. We explore these challenges on exascale-similar hardware, including AMD MI100 and NVIDIA A100 GPUs. By extending the sourceto-source compiler OpenARC, we demonstrate the power of automated translation of applications written in a single frontend programming model (OpenACC) into a variety of backend models (OpenMP, OpenCL, CUDA, HIP) that span the upcoming exascale environments. This translation enables us to compare performance within and across devices and to analyze programming model behavior with profiling tools.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Productivity",
+                "Computational modeling",
+                "Graphics processing units",
+                "Programming",
+                "Software",
+                "Heterogeneous networks"
+            ],
+            "Index Terms": [
+                "Performance Comparison",
+                "Programming Model",
+                "Single Program",
+                "Profiling Tool",
+                "Benchmark",
+                "Part Of Project",
+                "Source Code",
+                "Parallelization",
+                "Relative Performance",
+                "Data Transfer",
+                "Grid Size",
+                "High-performance Computing",
+                "Mapping Strategy",
+                "Hardware Platform",
+                "Peak Performance",
+                "Memory Unit",
+                "Orange Bars",
+                "Literal Translation",
+                "Level Of Parallelism",
+                "API Calls",
+                "NVIDIA GPU",
+                "Header File",
+                "Software Stack",
+                "Department Of Energy",
+                "Runtime Performance",
+                "Translation Tool"
+            ],
+            "Author Keywords": [
+                "OpenACC",
+                "OpenMP",
+                "CUDA",
+                "HIP",
+                "OpenCL",
+                "OpenARC",
+                "CCAMP"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -591,7 +1103,52 @@
                 "firstName": "Thomas R.W.",
                 "lastName": "Scogland"
             }
-        ]
+        ],
+        "abstract": "OpenMP offload improves the application development complexity of HPC GPU codes and provides portability. A source of poor performance is the lockstep execution of data transfers and computation. Overlapping these operations can provide significant performance gains. However, the developer must manually slice data transfers and kernel execution, and efficiently schedule these operations for execution, which is a hard and error-prone task.We propose Piper, an automatic mechanism for OpenMP offload to perform overlapping. Piper statically analyzes offload kernels and associates computations with memory locations. The extended runtime system exploits this analysis information, divides a kernel into independent sub-tasks, and schedules them for pipelined execution for overlapping. At any point in time, Piper also controls the coarseness and number of sub-tasks executed. By doing so, Piper allows the execution of kernels whose memory requirements exceed the GPU device memory. Piper speeds up execution up to 2.67× compared to OpenMP offload execution.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Schedules",
+                "Runtime",
+                "Memory management",
+                "Graphics processing units",
+                "Static analysis",
+                "Data transfer",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Compiler Optimization",
+                "Data Transfer",
+                "Static Analysis",
+                "Local Memory",
+                "Device Memory",
+                "Analysis Techniques",
+                "Upper Bound",
+                "Programming Model",
+                "Memory Capacity",
+                "Problem Size",
+                "Outer Loop",
+                "Binary Tree",
+                "Access Patterns",
+                "GPU Memory",
+                "Multiple Streams",
+                "Critical Path",
+                "Model Execution",
+                "Parallel Execution",
+                "Hardware Technology",
+                "Memory Management",
+                "Memory Transfer",
+                "L2 Cache",
+                "Parallel Loops",
+                "Kernel Computation",
+                "Application Execution",
+                "Treemap"
+            ],
+            "Author Keywords": [
+                "OpenMP",
+                "GPGPU",
+                "memory optimization"
+            ]
+        }
     },
     {
         "publicationNumber": "10024588",
@@ -607,7 +1164,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024588",
@@ -623,7 +1182,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024588",
@@ -639,7 +1200,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024588",
@@ -655,7 +1218,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024588",
@@ -671,7 +1236,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024588",
@@ -687,6 +1254,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

@@ -32,7 +32,52 @@
                 "firstName": "Balaji",
                 "lastName": "Viswanathan"
             }
-        ]
+        ],
+        "abstract": "The rise in popularity of permissioned blockchain platforms in recent time is significant. Hyperledger Fabric is one such permissioned blockchain platform and one of the Hyperledger projects hosted by the Linux Foundation. The Fabric comprises various components such as smart-contracts, endorsers, committers, validators, and orderers. As the performance of blockchain platform is a major concern for enterprise applications, in this work, we perform a comprehensive empirical study to characterize the performance of Hyperledger Fabric and identify potential performance bottlenecks to gain a better understanding of the system. We follow a two-phased approach. In the first phase, our goal is to understand the impact of various configuration parameters such as block size, endorsement policy, channels, resource allocation, state database choice on the transaction throughput & latency to provide various guidelines on configuring these parameters. In addition, we also aim to identify performance bottlenecks and hotspots. We observed that (1) endorsement policy verification, (2) sequential policy validation of transactions in a block, and (3) state validation and commit (with CouchDB) were the three major bottlenecks. In the second phase, we focus on optimizing Hyperledger Fabric v1.0 based on our observations. We introduced and studied various simple optimizations such as aggressive caching for endorsement policy verification in the cryptography component (3x improvement in the performance) and parallelizing endorsement policy verification (7x improvement). Further, we enhanced and measured the effect of an existing bulk read/write optimization for CouchDB during state validation & commit phase (2.5x improvement). By combining all three optimizations1, we improved the overall throughput by 16x (i.e., from 140 tps to 2250 tps).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fabrics",
+                "Peer-to-peer computing",
+                "Proposals",
+                "Organizations",
+                "Cryptography"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Hyperledger Fabric",
+                "Throughput",
+                "Resource Allocation",
+                "Parallelization",
+                "Block Size",
+                "Configuration Parameters",
+                "Major Bottleneck",
+                "Caching",
+                "Smart Contracts",
+                "Simple Optimization",
+                "Performance Bottleneck",
+                "Transaction Validation",
+                "Increase In The Number",
+                "Fault-tolerant",
+                "Hash Function",
+                "Order Phase",
+                "Public Network",
+                "Chaincode",
+                "Signature Verification",
+                "Arrival Rate",
+                "Number Of Peers",
+                "Blockchain Network",
+                "CPU Utilization",
+                "Bitcoin",
+                "Validation Phase",
+                "Consensus Protocol",
+                "Serialized"
+            ],
+            "Author Keywords": [
+                "Hyperledger Fabric",
+                "Blockchain",
+                "Performance"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -51,8 +96,8 @@
         "authors": [
             {
                 "id": 37086424603,
-                "preferredName": "J\u00f3akim von Kistowski",
-                "firstName": "J\u00f3akim",
+                "preferredName": "Jóakim von Kistowski",
+                "firstName": "Jóakim",
                 "lastName": "von Kistowski"
             },
             {
@@ -69,8 +114,8 @@
             },
             {
                 "id": 37086517423,
-                "preferredName": "Andr\u00e9 Bauer",
-                "firstName": "Andr\u00e9",
+                "preferredName": "André Bauer",
+                "firstName": "André",
                 "lastName": "Bauer"
             },
             {
@@ -85,7 +130,61 @@
                 "firstName": "Samuel",
                 "lastName": "Kounev"
             }
-        ]
+        ],
+        "abstract": "Modern distributed applications offer complex performance behavior and many degrees of freedom regarding deployment and configuration. Researchers employ various methods of analysis, modeling, and management that leverage these degrees of freedom to predict or improve non-functional properties of the software under consideration. In order to demonstrate and evaluate their applicability in the real world, methods resulting from such research areas require test and reference applications that offer a range of different behaviors, as well as the necessary degrees of freedom. Existing production software is often inaccessible for researchers or closed off to instrumentation. Existing testing and benchmarking frameworks, on the other hand, are either designed for specific testing scenarios, or they do not offer the necessary degrees of freedom. Further, most test applications are difficult to deploy and run, or are outdated. In this paper, we introduce the TeaStore, a state-of-the-art micro-service-based test and reference application. TeaStore offers services with different performance characteristics and many degrees of freedom regarding deployment and configuration to be used as a benchmarking framework for researchers. The TeaStore allows evaluating performance modeling and resource management techniques; it also offers instrumented variants to enable extensive run-time analysis. We demonstrate TeaStore's use in three contexts: performance modeling, cloud resource management, and energy efficiency analysis. Our experiments show that TeaStore can be used for evaluating novel approaches in these contexts and also motivates further research in the areas of performance modeling and resource management.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Software",
+                "Analytical models",
+                "Resource management",
+                "Predictive models",
+                "Instruments"
+            ],
+            "Index Terms": [
+                "Resource Management",
+                "Degrees Of Freedom",
+                "Instrumentation",
+                "Energy Efficiency",
+                "Many Degrees Of Freedom",
+                "Response Time",
+                "Power Consumption",
+                "Start-up",
+                "Demand For Services",
+                "Product Information",
+                "Heterogeneous Systems",
+                "Relational Database",
+                "Multiple Host",
+                "Virtual Machines",
+                "Load Balancing",
+                "Volume Load",
+                "Memory Load",
+                "Network Throughput",
+                "Caching",
+                "Activity Sessions",
+                "Service Recommendation",
+                "Docker Container",
+                "Authentication Service",
+                "Representational State Transfer",
+                "Single Service",
+                "HTTP Requests",
+                "Open Challenges",
+                "Average Response Time",
+                "Scalable",
+                "Internet Shopping"
+            ],
+            "Author Keywords": [
+                "Microservice",
+                "Benchmarking",
+                "Performance",
+                "Power",
+                "Energy Efficiency",
+                "Models",
+                "Auto Scaler",
+                "Container",
+                "Cloud"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -144,7 +243,56 @@
                 "firstName": "Weikuan",
                 "lastName": "Yu"
             }
-        ]
+        ],
+        "abstract": "Deep neural networks have recently gained tremendous interest due to their capabilities in a wide variety of application areas such as computer vision and speech recognition. Thus it is important to exploit the unprecedented power of leadership High-Performance Computing (HPC) systems for greater potential of deep learning. While much attention has been paid to leverage the latest processors and accelerators, I/O support also needs to keep up with the growth of computing power for deep neural networks. In this research, we introduce an entropy-aware I/O framework called DeepIO for large-scale deep learning on HPC systems. Its overarching goal is to coordinate the use of memory, communication, and I/O resources for efficient training of datasets. DeepIO features an I/O pipeline that utilizes several novel optimizations: RDMA (Remote Direct Memory Access)-assisted in-situ shuffling, input pipelining, and entropy-aware opportunistic ordering. In addition, we design a portable storage interface to support efficient I/O on any underlying storage system. We have implemented DeepIO as a prototype for the popular TensorFlow framework and evaluated it on a variety of different storage systems. Our evaluation shows that DeepIO delivers significantly better performance than existing memory-based storage systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Neural networks",
+                "Bandwidth",
+                "Pipeline processing",
+                "Tensile stress",
+                "Prediction algorithms"
+            ],
+            "Index Terms": [
+                "Deep Learning",
+                "Pipelining",
+                "High-performance Computing Systems",
+                "Large-scale Deep Learning",
+                "Neural Network",
+                "Deep Neural Network",
+                "Storage Systems",
+                "Use Of Memory",
+                "Large Datasets",
+                "Gradient Descent",
+                "Entire Dataset",
+                "Dataset Size",
+                "Raw Images",
+                "Stochastic Gradient Descent",
+                "Training Iterations",
+                "Parallel System",
+                "Storage Buffer",
+                "File System",
+                "Octopus",
+                "Reading Performance",
+                "Random Read",
+                "Read Buffer",
+                "Memory Block",
+                "Remote Memory",
+                "Training Framework",
+                "Input In Order",
+                "Read Datasets",
+                "Mini-batch Gradient Descent",
+                "Input Sequence",
+                "List Of IDs"
+            ],
+            "Author Keywords": [
+                "I/O",
+                "HPC",
+                "Deep Neural Network",
+                "TensorFlow"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -179,7 +327,57 @@
                 "firstName": "Sophie",
                 "lastName": "Chabridon"
             }
-        ]
+        ],
+        "abstract": "Failure prediction of industrial systems is a promising application domain for data mining approaches and should naturally rely on log messages which are a prime source of data as they are generated by many systems. However, before extracting relevant information of such log messages, another critical step is to parse the logs, that is to say to transform a raw unstructured text from the log messages into a suitable input for data mining. These two problems (log parsing then log mining) are often studied separately while they are directly related in the context of failure prediction; moreover, few performance benchmarks are publicly available. In this paper, we focus on the impact of log parsing techniques via natural language processing on the performances of log mining on two datasets. The first one is a log of an industrial aeronautical system comprising over 4,500,000 messages collected over one year of operation; the second one is a public benchmark set from an HDFS cluster. On the latter, we show that it is possible to raise the F-score from 96% to 99.2% while using simpler and more robust log parsing techniques that require less parameter tuning provided that they are correctly combined with log mining techniques.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Data mining",
+                "Natural language processing",
+                "Computational modeling",
+                "Vocabulary",
+                "Transforms",
+                "Semantics"
+            ],
+            "Index Terms": [
+                "Log Parsing",
+                "Log Mining",
+                "Data Mining",
+                "Critical Step",
+                "Natural Language",
+                "Industrial Systems",
+                "Predictors Of Failure",
+                "Public Benchmark",
+                "Decision Tree",
+                "Public Datasets",
+                "Long Short-term Memory",
+                "Precision And Recall",
+                "Benchmark Datasets",
+                "State Machine",
+                "Anomaly Detection",
+                "Word Embedding",
+                "Human Operator",
+                "Dataset In Order",
+                "Individual Words",
+                "Latent Dirichlet Allocation",
+                "Natural Language Processing Techniques",
+                "Constant Part",
+                "Random Forest Technique",
+                "Removing Stop Words",
+                "Multiple Instance Learning",
+                "System Logs",
+                "Tokenized",
+                "Vocabulary Size",
+                "Parametrized"
+            ],
+            "Author Keywords": [
+                "Machine Learning",
+                "Failure Prediction",
+                "Data Mining",
+                "Natural Language Processing",
+                "Log Parsing"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -214,7 +412,52 @@
                 "firstName": "Yang",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "Testing a scalability bottleneck requires a large system to generate sufficient load, which is usually not accessible to researchers. To address this problem, this paper extrapolates the workload to a bottleneck node. The key observation that motivates our approach is that systems at a large scale are often repeating their behaviors at small scales, by running a job more times, running more nodes of the same type, or running more iterations of the same loop. Following this observation, we record a node's workloads at small scales and extrapolate such workload at a large scale. Towards this goal, we have developed PatternMiner, a semi-automatic tool to identify how workload patterns change with scale. We have tested our method on HDFS NameNode and YARN's Resource Manager. Our evaluation shows that PatternMiner is able to predict 98% of the workloads for NameNode and 83% of the workloads for the Resource Manager. Furthermore, by utilizing the extrapolated workload, we are able to emulate a cluster of up to 60,000 nodes with only 8 physical machines to evaluate NameNode and Resource Manager.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Scalability",
+                "Tools",
+                "Servers",
+                "Extrapolation",
+                "Task analysis",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Scalability Bottleneck",
+                "Small Scale",
+                "Resource Management",
+                "Types Of Nodes",
+                "Loop Iteration",
+                "Physical Machines",
+                "Benchmark",
+                "Information Flow",
+                "End Of Phase",
+                "Input Files",
+                "Heavy Load",
+                "System Scale",
+                "Statistical Patterns",
+                "Repetitive Patterns",
+                "Target System",
+                "File System",
+                "Multiple Segments",
+                "Target Node",
+                "Return Value",
+                "MapReduce",
+                "Argument Values",
+                "Number Of Containers",
+                "Small-scale Experiments",
+                "Segmental Information",
+                "Microsoft Azure"
+            ],
+            "Author Keywords": [
+                "Extrapolation",
+                "Simulation",
+                "Scalability",
+                "Distributed system"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -261,7 +504,47 @@
                 "firstName": "Youngjae",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "Deduplication has been largely employed in distributed storage systems to improve space efficiency. Traditional deduplication research ignores the design specifications of shared-nothing distributed storage systems such as no central metadata bottleneck, scalability, and storage rebalancing. Further, deduplication introduces transactional changes, which are prone to errors in the event of a system failure, resulting in inconsistencies in data and deduplication metadata. In this paper, we propose a robust, fault-tolerant and scalable cluster-wide deduplication that can eliminate duplicate copies across the cluster. We design a distributed deduplication metadata shard which guarantees performance scalability while preserving the design constraints of shared-nothing storage systems. The placement of chunks and deduplication metadata is made cluster-wide based on the content fingerprint of chunks. To ensure transactional consistency and garbage identification, we employ a flag-based asynchronous consistency mechanism. We implement the proposed deduplication on Ceph. The evaluation shows high disk-space savings with minimal performance degradation as well as high robustness in the event of sudden server failure.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Metadata",
+                "Data structures",
+                "Databases",
+                "Scalability",
+                "Fault tolerance",
+                "Fault tolerant systems"
+            ],
+            "Index Terms": [
+                "Storage Systems",
+                "Fault-tolerant",
+                "Fingerprint",
+                "Design Constraints",
+                "Disc Space",
+                "Space Efficiency",
+                "High Performance",
+                "Data Structure",
+                "Data Integration",
+                "File System",
+                "Object Naming",
+                "High Scalability",
+                "Storage Services",
+                "Clustering Objective",
+                "Map Objects",
+                "Multiple Servers",
+                "Data Chunks",
+                "Performance Overhead",
+                "Chunk Size",
+                "Reference Count"
+            ],
+            "Author Keywords": [
+                "Distributed Storage Systems",
+                "Data Deduplication",
+                "Distributed and cloud computing",
+                "Storage and file systems"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -290,7 +573,54 @@
                 "firstName": "Katia",
                 "lastName": "Obraczka"
             }
-        ]
+        ],
+        "abstract": "This paper explores clustering as a technique to improve energy efficiency for a variety of current and emerging IoT application scenarios. We introduce a novel load balanced clustering algorithm based on Simulated Annealing whose main goal is to increase network lifetime while maintaining adequate sensing coverage in scenarios where sensor nodes produce uniform or non-uniform data traffic. To this end, we also introduce a new clustering cost function that accounts not only for sensor node traffic load but also for the cost of communicating over physical distances. Through extensive simulations comparing the proposed algorithm to leading state-of-the-art clustering approaches, we show that our algorithm is able to improve both network lifetime as well as network coverage by keeping more sensor nodes alive for longer periods of time at lower computational cost.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clustering algorithms",
+                "Wireless sensor networks",
+                "Genetic algorithms",
+                "Ad hoc networks",
+                "Simulated annealing",
+                "Sociology",
+                "Statistics"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "Internet Of Things",
+                "Load Balancing",
+                "Internet Of Things Applications",
+                "Cost Function",
+                "Clustering Algorithm",
+                "Clustering Approach",
+                "Simulated Annealing",
+                "Low Computational Cost",
+                "Traffic Load",
+                "Network Coverage",
+                "Network Lifetime",
+                "Random Assignment",
+                "Equal Loading",
+                "Energy Model",
+                "Clustering Techniques",
+                "Simulated Algorithm",
+                "Load Current",
+                "Smart Grid",
+                "Wireless Sensor Networks",
+                "Simulated Annealing Algorithm",
+                "Crossover Operator",
+                "Smart Buildings",
+                "Number Of Sensor Nodes",
+                "Stringent Demands",
+                "Transmission Range",
+                "Sensor Failure",
+                "Ad Hoc Networks",
+                "Uniform Load",
+                "Communication Range"
+            ],
+            "Author Keywords": [
+                "WSN, Clustering, Internet of Things, Load Balancing, Unequal Load, Simulated Annealing, Stochastic"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -331,7 +661,54 @@
                 "firstName": "Leana",
                 "lastName": "Golubchik"
             }
-        ]
+        ],
+        "abstract": "The success of Deep Neural Networks (DNNs) has created significant interest in the development of software tools, hardware architectures, and cloud systems to meet the huge computational demand of their training jobs. A common approach to speeding up an individual job is to distribute training data and computation among multiple nodes, periodically exchanging intermediate results. In this paper, we address two important problems for the application of this strategy to large-scale clusters and multiple, heterogeneous jobs. First, we propose and validate a queueing model to estimate the throughput of a training job as a function of the number of nodes assigned to the job; this model targets asynchronous Stochastic Gradient Descent (SGD), a popular strategy for distributed training, and requires only data from quick, two-node profiling in addition to job characteristics (number of requested training epochs, mini-batch size, size of DNN parameters, assigned bandwidth). Throughput estimations are then used to explore several classes of scheduling heuristics to reduce response time in a scenario where heterogeneous jobs are continuously submitted to a large-scale cluster. These scheduling algorithms dynamically select which jobs to run and how many nodes to assign to each job, based on different trade-offs between service time reduction and efficiency (e.g., speedup per additional node). Heuristics are evaluated through extensive simulations of realistic DNN workloads, also investigating the effects of early termination, a common scenario for DNN training jobs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Computational modeling",
+                "Servers",
+                "Time factors",
+                "Throughput",
+                "Machine learning",
+                "Load modeling"
+            ],
+            "Index Terms": [
+                "Stochastic Gradient Descent",
+                "Asynchronous Stochastic Gradient Descent",
+                "Response Time",
+                "Deep Neural Network",
+                "Intermediate Results",
+                "Service Time",
+                "Job Training",
+                "Queueing System",
+                "Additional Nodes",
+                "Hardware Architecture",
+                "Deep Neural Network Parameters",
+                "Number Of Workers",
+                "Malleable",
+                "Exponential Distribution",
+                "TensorFlow",
+                "Waiting Time",
+                "Single Node",
+                "Training Examples",
+                "Deep Neural Network Model",
+                "System Load",
+                "Worker Nodes",
+                "Parameter Server",
+                "Mean Value Analysis",
+                "Mean Response Time",
+                "Job Scheduling",
+                "Server Node",
+                "Machine Learning Framework",
+                "Deep Neural Network Architecture",
+                "Scheduling Mechanism",
+                "Level Of Parallelism"
+            ],
+            "Author Keywords": [
+                "Distributed Machine Learning, Parallel Schedul ing, Queueing Networks, TensorFlow"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -360,7 +737,45 @@
                 "firstName": "Peter A.",
                 "lastName": "Dinda"
             }
-        ]
+        ],
+        "abstract": "Runtimes and applications that rely heavily on asynchronous event notifications suffer when such notifications must traverse several layers of processing in software. Many of these layers necessarily exist in order to support a general-purpose, portable kernel architecture, but they introduce considerable overheads for demanding, high-performance parallel runtimes and applications. Other overheads can arise from a mismatched event programming or system call interface. Whatever the case, the average latency and variance in latency of commonly used software mechanisms for event notifications is abysmal compared to the capabilities of the hardware, which can exhibit orders of magnitude lower latency. We leverage the flexibility and freedom of the previously proposed Hybrid Runtime (HRT) model to explore the construction of low-latency, asynchronous software events uninhibited by interfaces and execution models commonly imposed by general-purpose OSes. We propose several mechanisms in a system we call Nemo which employs kernel mode-only features to accelerate event notifications by up to 4,000 times and we provide a detailed evaluation of our implementation using extensive microbenchmarks. We carry out our evaluation both on a modern x64 server and the Intel Xeon Phi. Finally, we propose a small addition to existing interrupt controllers (APICs) that could push the limit of asynchronous events closer to the latency of the hardware cache coherence network.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Runtime",
+                "Kernel",
+                "Instruction sets",
+                "Linux",
+                "Unicast"
+            ],
+            "Index Terms": [
+                "Modern Hardware",
+                "Latent Variables",
+                "Average Latency",
+                "Network Cohesion",
+                "Model Execution",
+                "System Calls",
+                "Hardware Capabilities",
+                "Variety Of Conditions",
+                "Mechanical Performance",
+                "General Purpose",
+                "Application Programming Interface",
+                "Single Node",
+                "Clock Rate",
+                "Synchronous Events",
+                "Performance Event",
+                "Message Delivery",
+                "Single CPU",
+                "Hardware Features",
+                "Kernel Images",
+                "Context Switching"
+            ],
+            "Author Keywords": [
+                "software events",
+                "operating systems",
+                "hybrid runtimes"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -401,7 +816,50 @@
                 "firstName": "Ralf",
                 "lastName": "Steinmetz"
             }
-        ]
+        ],
+        "abstract": "Music belongs to one of the most popular content categories overall, and it is nowadays mainly consumed using online streaming services. With YouTube being the largest source of traffic in most networks about half of all YouTube requests address music videos. To cope with the continuously growing demand for content and thus increasing network traffic, YouTube operates its own CDN, a globally distributed network of caches. This allows serving content from locations close to the users, which circumvents potential network bottlenecks and increases the user-perceived QoE due to reduced latency. Recently, proactive caching and prefetching has shown superior performance results compared with traditional reactive caching schemes such as LRU and LFU. Due to the substantial footprint of music videos on today's Internet, we propose a novel proactive caching strategy specifically for music videos. This strategy incorporates two key observations: i) Music genre and mood popularity varies over the course of the day and ii) A video's past views are predictive for its future popularity development. For the classification task, we use a Convolutional Neural Network while investigating several predictive models for the popularity estimation. The proposed caching system can increase the cache hit rate up to 4.5% which is substantial for caching systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mood",
+                "YouTube",
+                "Music",
+                "Feature extraction",
+                "Streaming media",
+                "Predictive models",
+                "Support vector machines"
+            ],
+            "Index Terms": [
+                "Music Videos",
+                "Popularity Prediction",
+                "Neural Network",
+                "Convolutional Neural Network",
+                "Music Genres",
+                "Potential Bottlenecks",
+                "Content Popularity",
+                "Caching Scheme",
+                "Cache Hit",
+                "Classification Accuracy",
+                "Support Vector Machine",
+                "Work In This Area",
+                "Daily Counts",
+                "Univariate Linear Model",
+                "Video Segments",
+                "Mean Relative Error",
+                "Cumulative Counts",
+                "Musical Features",
+                "Persistence Model",
+                "Cache Size",
+                "Proactive Policy",
+                "Popular Video",
+                "Mel-frequency Cepstral Coefficients"
+            ],
+            "Author Keywords": [
+                "proactive caching",
+                "video caching",
+                "ConvNet based caching",
+                "Multivariate Popularity Prediction"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -436,7 +894,45 @@
                 "firstName": "Carey",
                 "lastName": "Williamson"
             }
-        ]
+        ],
+        "abstract": "Traffic in today's edge networks is diverse, exhibiting many different patterns. This paper focuses on periodic network traffic, which is often used by known network services (e.g., Network Time Protocol, Akamai CDN) as well as by malicious applications (e.g., botnets, vulnerability scanning). We use a simple and flexible SQL-based approach as our computational model for detecting periodic traffic, and apply it to the analysis of seven weeks of Bro connection logs from a campus edge network. Our results show that periodic traffic analysis is effective for detecting P2P, gaming, cloud, scanning, and botnet traffic flows, which often exhibit periodic network communications. We present a classication taxonomy for periodic traffic, and provide an in-depth characterization of this traffic on our campus edge network.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Time series analysis",
+                "Image edge detection",
+                "Correlation",
+                "Reactive power",
+                "Analytical models",
+                "Spectral analysis"
+            ],
+            "Index Terms": [
+                "Lifespan",
+                "Time Series",
+                "Empirical Data",
+                "Video Games",
+                "Special Services",
+                "Discrete Fourier Transform",
+                "Multiple Host",
+                "Cardinality Of The Set",
+                "Patterns In Order",
+                "Intrusion Detection",
+                "Modern Networks",
+                "P2P Network",
+                "Horizontal Band",
+                "Transport Protocol",
+                "End-use Applications",
+                "Vertical Bands",
+                "Destination Port",
+                "Software Vendors",
+                "Cloud-based Services"
+            ],
+            "Author Keywords": [
+                "Periodic traffic",
+                "workload characterization",
+                "Network traffic measurement"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -483,7 +979,44 @@
                 "firstName": "Erez",
                 "lastName": "Waisbard"
             }
-        ]
+        ],
+        "abstract": "Hierarchical heavy hitters (HHH) identification is useful for various network utilities such as anomaly detection, DDoS mitigation, and traffic analysis. However, the increasing support for jumbo frames enables attackers to overload the system with fewer packets, avoiding detection by packet counting techniques. This paper suggests an efficient algorithm for detecting HHH based on their traffic volume that asymptotically improves the runtime of previous works. We implement our algorithm in Open vSwitch (OVS) and incur a 4-6% overhead compared to a 42% throughput reduction experienced by the state-of-the-art.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer crime",
+                "Frequency measurement",
+                "IP networks",
+                "Approximation algorithms",
+                "Throughput",
+                "Volume measurement",
+                "Performance evaluation"
+            ],
+            "Index Terms": [
+                "Heavy Hitters",
+                "Anomaly Detection",
+                "Distributed Denial Of Service",
+                "False Positive",
+                "Ancestry",
+                "Internet Of Things",
+                "Probability Sampling",
+                "Single Instance",
+                "Denial Of Service",
+                "Volumetric Measurements",
+                "Accuracy Error",
+                "Previous Algorithms",
+                "Network Devices",
+                "Update Time",
+                "Packet Size",
+                "Datapath",
+                "Control Plane",
+                "Virtual Network Functions",
+                "Small Packets",
+                "Packet Arrival",
+                "Packet Header",
+                "Line Speed",
+                "Functional Networks"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -530,7 +1063,54 @@
                 "firstName": "Chita R.",
                 "lastName": "Das"
             }
-        ]
+        ],
+        "abstract": "Despite high degrees of parallelism in terms of the number of chips and channels on state-of-the-art SSDs, resource contention continues to be a big impediment to boosting their performance for both read and write requests. This is particularly significant in the delays due to queueing for service from individual NAND-flash chips that can take dozens/hundreds of microseconds to perform the read/write operations. Owing to the no-write-in-place policy that is employed in flash chips, writes are inherently suited to be redirected to chips with lower load, in case their original destination chip is overloaded. However, to date, there has been no work to redirect read requests, since they cannot be serviced by other chips, which do not have the data. While blindly replicating all the data everywhere seems very promising from a read redirection perspective, doing so results in high space overheads, high write/replication overheads and lower endurance. This paper presents a novel approach to selective replication, wherein the popularity of data is used to figure out the \"what\", \"how much\", \"where\" and \"when\" questions for replication. Leveraging value locality/popularity, that is often observed in practice, popular data is replicated across multiple chips to provide more opportunities for dynamic read redirection to less loaded flash chips. Using extensive workload traces running over weeks from real systems, we show that our Read Redirected SSD (RR-SSD) can provide up to 45% improvement in read performance, with average improvement of 23.9%, and up to 40% improvement when considering both read and write requests, with 16% improvement on average.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Analytical models",
+                "Parallel processing",
+                "Complexity theory",
+                "Computer architecture",
+                "Electric breakdown",
+                "Performance evaluation"
+            ],
+            "Index Terms": [
+                "Reading Performance",
+                "Flash Memory",
+                "Popular Data",
+                "Resource Contention",
+                "Multiple Chips",
+                "Number Of Chips",
+                "Percentage Values",
+                "End Of The Day",
+                "Replication Process",
+                "Performance Benefits",
+                "Hash Function",
+                "Service Time",
+                "Internal Resources",
+                "Map Information",
+                "Power Outages",
+                "Load Balancing",
+                "Amount Of Space",
+                "Mapping Unit",
+                "Temporal Localization",
+                "Profile Information",
+                "Mapping Table",
+                "Queuing Time",
+                "Replication Strategy",
+                "Content Popularity",
+                "Incoming Requests",
+                "Reference Count",
+                "Internal Architecture"
+            ],
+            "Author Keywords": [
+                "SSD",
+                "Content Popularity",
+                "Replication",
+                "Read Redirection"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -559,7 +1139,41 @@
                 "firstName": "Mahmut T.",
                 "lastName": "Kandemir"
             }
-        ]
+        ],
+        "abstract": "Solid State Drives (SSDs) have many attractive features, and they are well-positioned to replace traditional HDDs in cloud and enterprise storages. However, some specific features they have such as erase-before-write and limited erase count make this transition more challenging. To tackle the issues brought by these features, Flash Translation Layer (FTL) leverages functionalities such as Garbage Collection (GC) to provide free space by erasing the blocks and cleaning the stale data. This process occupies SSD resources and causes extra waiting time for normal IO requests, and ultimately increases response time. Cloud workloads include many applications with small random write access patterns which cause frequent GC invocations. Flash occupation at the time of GC causes inconsistent performance and increases tail latency which may in turn violate SLA in these applications. In this paper, we modify the conventional GC process and propose a Cache-assisted Garbage Collection (CachedGC). CachedGC postpones writing back valid pages during the GC, erases the block at the first possible time, and hence resumes normal SSD operations sooner. CachedGC reduces request response time and tail latency by reducing the effective latency of GC. Our experimental results using a variety of workloads show that CachedGC reduces read tail latency by 19% and improves write IOPS by as much as 27%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delays",
+                "Time factors",
+                "Writing",
+                "Random access memory",
+                "Flash memories",
+                "Buffer storage",
+                "Electric breakdown"
+            ],
+            "Index Terms": [
+                "Solid-state Drives",
+                "Response Time",
+                "Free Space",
+                "Cloud Computing",
+                "Storage Systems",
+                "Access Patterns",
+                "Written Back",
+                "Time Of Request",
+                "High Capacity",
+                "Buffering Capacity",
+                "Amount Of Space",
+                "Temporal Localization",
+                "Idle Time",
+                "Flash Memory",
+                "Individual Sectors",
+                "Host Side",
+                "Buffer Space"
+            ],
+            "Author Keywords": [
+                "Solid State Drives, NAND Flash Memory, FTL, Garbage Collection"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -594,7 +1208,60 @@
                 "firstName": "Don",
                 "lastName": "Towsley"
             }
-        ]
+        ],
+        "abstract": "The design of caching algorithms to maximize hit probability has been extensively studied. In this paper, we associate each content with a utility, which is a function of either corresponding content hit rate or hit probability. We formulate a cache optimization problem to maximize the sum of utilities over all contents under stationary and ergodic request process. This problem is non-convex in general but we reformulate it as a convex optimization problem when the inter-request time (irt) distribution has a non-increasing hazard rate function. We provide explicit optimal solutions for some irt distributions, and compare the solutions of the hit-rate based (HRB) and hit probability based (HPB) problems. We also propose decentralized algorithms that can be implemented using limited information and are guaranteed to provide optimal solutions. We find that decentralized algorithms that solve HRB are more robust than decentralized HPB algorithms. Informed by these results, we further propose lightweight Poisson approximate decentralized and online algorithms that are accurate and efficient in achieving optimal hit rates and hit probabilities.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Approximation algorithms",
+                "Analytical models",
+                "Computational modeling",
+                "Convex functions",
+                "Measurement",
+                "Optimization",
+                "Hazards"
+            ],
+            "Index Terms": [
+                "Poisson Approximation",
+                "Optimization Problem",
+                "Convex Optimization Problem",
+                "Hazard Rate",
+                "Stationary Process",
+                "Collision Probability",
+                "Online Algorithm",
+                "Request Process",
+                "Sum Of Utilities",
+                "Maximum And Minimum",
+                "Convergence Rate",
+                "Exponential Distribution",
+                "Poisson Process",
+                "Distributed Algorithm",
+                "Arrival Rate",
+                "Utility Maximization",
+                "Occupancy Probability",
+                "Pareto Distribution",
+                "Arrival Process",
+                "Content Popularity",
+                "Generalized Pareto Distribution",
+                "Cache Hit",
+                "Content Request",
+                "Content Caching",
+                "Cache Size",
+                "Utility Maximization Problem",
+                "Zipf Distribution",
+                "Cache Misses",
+                "Request Rate",
+                "Penalty Function"
+            ],
+            "Author Keywords": [
+                "Caching algorithms",
+                "Time to live (TTL) cache",
+                "Utility Maximization",
+                "Stationary Requests",
+                "Poisson Approximation",
+                "Distributed Algorithms",
+                "Online Algorithms"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -635,7 +1302,49 @@
                 "firstName": "Mahmut T.",
                 "lastName": "Kandemir"
             }
-        ]
+        ],
+        "abstract": "The following topics are dealt with: storage management; cache storage; pattern clustering; cloud computing; optimisation; flash memories; resource allocation; scheduling; parallel processing; data mining.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Parallel processing",
+                "Machine learning",
+                "Routing",
+                "Computational modeling",
+                "Data models",
+                "Computer architecture",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Data Availability",
+                "Prediction Model",
+                "Machine Learning",
+                "Hardware Resources",
+                "Practical Calculations",
+                "Rest Of The Paper",
+                "Support Vector Machine",
+                "Parallelization",
+                "Memory Control",
+                "Source Node",
+                "Machine Learning-based Approaches",
+                "Inference Phase",
+                "Memory Bank",
+                "Alternative Schedules",
+                "Application Code",
+                "Tile Size",
+                "Physical Address",
+                "ML-based Approaches",
+                "Network-on-chip",
+                "L2 Cache",
+                "Cache Misses",
+                "Off-chip Memory",
+                "Cache Hit"
+            ],
+            "Author Keywords": [
+                "Manycore",
+                "Data parallelism",
+                "Network on Chip"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -694,7 +1403,43 @@
                 "firstName": "David",
                 "lastName": "Du"
             }
-        ]
+        ],
+        "abstract": "Meeting latency SLOs (Service Level Objectives) in a networked storage environment is essential while challenging. In this environment, a storage request has to go through client I/O stacks, dynamically changing networks, and the storage system attached to a server. Its response also has to traverse all the way back to the client. Along this long I/O path, any of these components can become congested. The behavior of one component may affect the performance of the others. Isolated control on each component is not effective to meet latency SLOs of storage requests. In this paper, we propose and implement JoiNS, a system trying to guarantee latency SLO for applications that access data on a remote networked storage. JoiNS carefully considers all the components along the I/O path and controls them in a coordinated fashion. JoiNS has both global network and storage visibilities with a logically centralized controller which keeps monitoring the status of each involved component. JoiNS coordinates these components and adjusts the priority of I/O packets in each component based on the latency SLO, network and storage status, time estimation, and characteristics of each I/O request. We integrate Software Defined Network(SDN) into our system to coordinate with storage. Our evaluation shows JoiNS can achieve up to 6X speedup in this networked storage environment with various loads of background traffic.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monitoring",
+                "Servers",
+                "Probes",
+                "Estimation",
+                "Quality of service",
+                "Computational modeling",
+                "Analytical models"
+            ],
+            "Index Terms": [
+                "Service Level Objectives",
+                "Storage Conditions",
+                "Time Estimation",
+                "Storage Time",
+                "Network State",
+                "Performance Of Others",
+                "Storage Devices",
+                "Output Ports",
+                "Propagation Delay",
+                "Network Congestion",
+                "Packet Size",
+                "Network Packets",
+                "Storage Nodes",
+                "Return Path",
+                "Burstiness",
+                "Multiple Packets"
+            ],
+            "Author Keywords": [
+                "Networked Storage",
+                "SLO",
+                "Software Defined Network",
+                "Latency"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -729,7 +1474,55 @@
                 "firstName": "Ioannis",
                 "lastName": "Koltsidas"
             }
-        ]
+        ],
+        "abstract": "To satisfy increasing storage demands in both capacity and performance, industry has turned to multiple storage technologies, including Flash SSDs and SMR disks. These devices employ a translation layer that conceals the idiosyncrasies of their mediums and enables random access. Device translation layers are, however, inherently constrained: resources on the drive are scarce, they cannot be adapted to application requirements, and lack visibility across multiple devices. As a result, performance and durability of many storage devices is severely degraded. In this paper, we present SALSA: a translation layer that executes on the host and allows unmodified applications to better utilize commodity storage. SALSA supports a wide range of single-and multi-device optimizations and, because is implemented in software, can adapt to specific workloads. We describe SALSA's design, and demonstrate its significant benefits using microbenchmarks and case studies based on three applications: MySQL, the Swift object store, and a video server.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Magnetic recording",
+                "Software",
+                "Drives",
+                "Flash memories",
+                "Media",
+                "Random access memory"
+            ],
+            "Index Terms": [
+                "Translation Layer",
+                "Storage Devices",
+                "Multiple Devices",
+                "Optimal Device",
+                "Solid-state Drives",
+                "Throughput",
+                "Grain Size",
+                "Number Of Workers",
+                "Hybrid System",
+                "Small Objects",
+                "User-generated Content",
+                "Single Control",
+                "Caching",
+                "Non-volatile Memory",
+                "Hybrid Control",
+                "Flash Memory",
+                "Dual Control",
+                "Read Operation",
+                "Type Of Storage",
+                "Physical Address",
+                "Address Space",
+                "Storage Pool",
+                "Linux Kernel",
+                "Durable Benefit",
+                "Mapping Table",
+                "Sparse Map",
+                "Control Setup"
+            ],
+            "Author Keywords": [
+                "Data storage systems",
+                "Flash memories",
+                "Nonvolatile memory",
+                "Hard disks",
+                "System software"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -776,7 +1569,44 @@
                 "firstName": "Kartik",
                 "lastName": "Gopalan"
             }
-        ]
+        ],
+        "abstract": "Virtual Machines (VM) frequently run parallel applications in cloud environments, and high performance computing platforms. It is well known that configuring a VM with too many virtual processors (vCPUs) worsens application performance due to scheduling cross-talk between the hypervisor and the guest OS. Specifically, when the number of vCPUs assigned to a VM exceeds available physical CPUs then parallel applications in the VM experience worse performance, even when number of application threads remains fixed. In this paper, we first track the root cause of this performance loss to inefficient hypervisor-level emulation of inter-vCPU synchronization events. We then present three techniques to minimize hypervisor-induced overheads on parallel workloads in large-VCPU VMs. The first technique pins application threads to dedicated vCPUs to eliminate inter-vCPU thread migrations, reducing the overhead of emulating inter-processor interrupts (IPIs). The second technique para-virtualizes inter-vCPU TLB flush operations. The third technique enables faster reactivation of idle vCPUs by prioritizing the delivery of rescheduling IPIs. Unlike existing solutions which rely on heavyweight and slow vCPU hotplug mechanisms, our techniques are lightweight and provide more flexibility in migrating large-vCPU VMs. Using several parallel benchmarks, we demonstrate the effectiveness of our prototype implementation in the Linux KVM/QEMU virtualization platform. Specifically, we demonstrate that with our techniques, parallel applications can maintain their performance even when up to 255 VCPUs are assigned to a VM running on as few as 6 physical cores.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Virtual machine monitors",
+                "Virtualization",
+                "Program processors",
+                "Schedules",
+                "Scheduling",
+                "Emulation",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Virtual Machines",
+                "Synchronization",
+                "Parallel Applications",
+                "Physical Cores",
+                "Multi-core",
+                "Load Balancing",
+                "Hardware Resources",
+                "Prior Approaches",
+                "Scheduling Decisions",
+                "Cloud Providers",
+                "Semantic Gap",
+                "Spin-lock",
+                "Number Of Processors",
+                "CPU Utilization",
+                "Idle Mode",
+                "Baseline Configuration",
+                "Linux Kernel"
+            ],
+            "Author Keywords": [
+                "Virtualization",
+                "Virtual Machine",
+                "Virtual CPU",
+                "Scheduling"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -805,7 +1635,57 @@
                 "firstName": "Feng",
                 "lastName": "Chen"
             }
-        ]
+        ],
+        "abstract": "Object-based cloud storage presents an unconventional storage model. Exploiting its unique characteristics, such as the strong semantic correlations among objects and the high I/O parallelism potential, can greatly enhance user experience. Unfortunately, current storage optimization techniques, such as the caching and prefetching schemes, are designed for conventional storage and thus are sub-optimal for cloud storage services. In this paper, we propose a client-side cache management framework, called Pacaca, which integrates object clustering, parallelized prefetching, and cost-aware caching to exploit I/O parallelism and object correlations on cloud storage. We first develop an efficient mining scheme, called Frequent Cluster Mining (FCM), to discover object correlations from the access sequence, and then build a prefetching scheme to fetch the correlated objects in parallel. These two schemes are closely coordinated for achieving high prefetching accuracy, proper control on parallelism degree, and effective mis-prefetching detection and handling. After studying the impact of parallelized prefetching on cache management, we further present a cost-aware caching scheme to differentiate low-cost and high-cost objects for efficient caching by leveraging the awareness of parallelism and object correlations. Our experimental results show that our optimization schemes can effectively reduce the access latency, outperforming traditional schemes by up to 58%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Prefetching",
+                "Correlation",
+                "Parallel processing",
+                "Optimization",
+                "Semantics",
+                "Search problems"
+            ],
+            "Index Terms": [
+                "Cloud Computing",
+                "Enhance User Experience",
+                "Semantic",
+                "Parallelization",
+                "Frequency Of Clusters",
+                "Mining Strategy",
+                "Degree Of Parallelism",
+                "Caching Scheme",
+                "Cluster Size",
+                "Storage Systems",
+                "Object Size",
+                "Confidence Threshold",
+                "Network Bandwidth",
+                "Wide Adoption",
+                "Design Goals",
+                "Average Latency",
+                "Increase In Latency",
+                "Cost Of Access",
+                "Association Rules",
+                "Support Threshold",
+                "Clustering Objective",
+                "Cache Misses",
+                "Parallel Cluster",
+                "Search Scope",
+                "Remote Memory",
+                "Mining Results",
+                "Cache Hit",
+                "Expiratory Time",
+                "Cloud Environment"
+            ],
+            "Author Keywords": [
+                "Cloud Storage",
+                "Object Correlations",
+                "Parallelism",
+                "Prefetching",
+                "Caching"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -840,7 +1720,54 @@
                 "firstName": "Mirco",
                 "lastName": "Tribastone"
             }
-        ]
+        ],
+        "abstract": "Accurate estimation of resource demands is one of the key challenges to be able to use queuing networks (QNs) for performance prediction, especially in cases where the profiling is to be performed through a non-intrusive system instrumentation. This problem is worsened when one needs to obtain a continuously updated model (e.g., for control and adaptation purposes) because it becomes crucial to use fast estimation methods that do not interfere with the behavior of the running system. A crucial limitation in the state of the art is the assumption that the measurement are taken from a system in the steady state regime. To the best of our knowledge, this paper presents the first approach-here developed for single-class QNs-that does not make such assumption. Our service-demand estimation technique relies on a deterministic approximation of the QN where the transient evolution of the queue lengths is modeled by means of a compact analytical representation based on a system of coupled nonlinear ordinary differential equations. We set up a moving-horizon estimation problem whereby the governing equations of the model, appropriately unfolded over a given time horizon, represent the constraints of a quadratic program that seeks to find the optimal choice of service demands that minimize the error between the measured queue lengths and the predicted ones. An extensive numerical evaluation demonstrates the efficiency and the effectiveness of our approach against the state-of-the-art techniques for service demands estimation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Estimation",
+                "Mathematical model",
+                "Computational modeling",
+                "Servers",
+                "Steady-state",
+                "Predictive models",
+                "Length measurement"
+            ],
+            "Index Terms": [
+                "Demand For Services",
+                "Moving Horizon Estimation",
+                "Estimation Method",
+                "Ordinary Differential Equations",
+                "Quadratic Programming",
+                "Queueing System",
+                "Nonlinear Ordinary Differential Equations",
+                "Queue Length",
+                "Steady-state Regime",
+                "Discretion",
+                "Throughput",
+                "Time Step",
+                "Optimization Problem",
+                "Levels Of Use",
+                "Network Topology",
+                "System Size",
+                "Decision Variables",
+                "Nonlinear Programming",
+                "Service Rate",
+                "Solution Of Ordinary Differential Equations",
+                "Running Example",
+                "System Of Ordinary Differential Equations",
+                "Load Balancing",
+                "Gibbs Sampling",
+                "Observation Window",
+                "Transition Probability Matrix",
+                "Rate Vector"
+            ],
+            "Author Keywords": [
+                "queuing network",
+                "service demand estimation",
+                "optimization",
+                "ordinary differential equations"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -875,7 +1802,54 @@
                 "firstName": "Chita",
                 "lastName": "Das"
             }
-        ]
+        ],
+        "abstract": "Constant technology scaling has enabled modern computing systems to achieve high degrees of thread-level parallelism, making the design of a highly scalable and dense main memory subsystem a major challenge, especially for data-intensive workloads. While during the past three decades DRAM has been widely used as the dominant technology to build main memory, it faces serious scalability and power consumption problems at sub-micron scales. Phase Change Memory (PCM) has been proposed as one of the most promising technologies to replace DRAM in future computing systems, because of its short access latency and high scalability. However, PCM has some reliability problems below 20nm technology. As the cell size scales down, the thermal-disturbance between the cells is exacerbated. More precisely, the generated heat during the write operation can disseminate to the adjacent cells and potentially change their values. This phenomenon is known as the write disturbance problem. In this work, we study the impact of write disturbance along the word-line and bit-line in a PCM-based main memory. We then propose two low-overhead mechanisms to address this problem in different dimensions. Our proposed schemes are based on a rank subsetting memory architecture where each chip can be accessed separately. To mitigate the write disturbance problem along the word-line, we use a combination of differential write (DW) and verify-and-correct (VnC) schemes only if the chance of having cascaded verification steps is low. Otherwise, we write into all the vulnerable cells within the target chip to avoid performance loss. To tolerate write disturbance along the bit-line, we use data compression to compact the data and place the adjacent memory lines in a non-overlapping fashion. We further use the extra space within a compressed memory line to store BCH code, in order to protect read-intensive memory lines against write-intensive addresses. Our proposed schemes guarantee reliable write operations in a super dense PCM-based main memory, and improve the system performance by 17% on average, compared to the state-of-the-art mechanism in this domain.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Phase change materials",
+                "Computer architecture",
+                "Microprocessors",
+                "Random access memory",
+                "Resistance",
+                "Scalability",
+                "Reliability"
+            ],
+            "Index Terms": [
+                "Source Code",
+                "Power Consumption",
+                "Adjacent Cells",
+                "Performance Loss",
+                "Adjacent Lines",
+                "Memory Architecture",
+                "Reduction In The Number",
+                "Data Storage",
+                "Neighboring Cells",
+                "Low Power Consumption",
+                "Clear Statement",
+                "Memory Control",
+                "Work Domain",
+                "Compression Ratio",
+                "Average Number Of Cells",
+                "Program Strategies",
+                "Store Of Value",
+                "Data Placement",
+                "Step Of Cascade",
+                "Memory Address",
+                "Number Of Writers",
+                "Read Operation",
+                "Bytes Of Data",
+                "Idle Mode",
+                "Thermal Disturbance",
+                "Major Issue",
+                "Memory Hierarchy",
+                "Defect Model",
+                "Error Line"
+            ],
+            "Author Keywords": [
+                "Phase Change Memory",
+                "Write Disturbance Error"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -910,7 +1884,53 @@
                 "firstName": "Ethan L.",
                 "lastName": "Miller"
             }
-        ]
+        ],
+        "abstract": "The need for reliable and cost-effective data storage grows as digital information becomes increasingly ubiquitous. Archival systems must store valuable data for years while adapting to changing user needs, capacity, and performance requirements. Storage devices differ in terms of performance, capacity, reliability, acquisition cost, power consumption, and the rates at which their features change over time. As a result, choosing the best storage technology to use for an archive has become increasingly challenging with the proliferation of new technologies alongside existing ones. We have designed a simulator that models the capacity, performance, acquisition cost, and power cost of an archival system using the characteristics of the drives and media that comprise it. We simulate and compare four storage technologies that exhibit different cost and performance characteristics: tape, optical disc, hard disk, and NAND flash SSD. We evaluate the total cost of ownership for each storage technology within an archival system, and we explore the effect that prospective technological advancements and growth rates over time may have on the relative cost and viability of each storage technology for archival systems. We show that the lifecycle and upgrade cost of drives are significant cost factors for removable media archives. We observe that increasing performance requires adding more drives to an archival system, and the cost of each drive dominates the cost to increase performance. We compare trends in storage technologies to suggest developments that could minimize the long-term total cost of ownership for archival systems. We show that hard disks and flash could become cost-competitive with tape-based archives by adopting new designs to minimize infrastructure and electricity costs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Media",
+                "Bandwidth",
+                "Drives",
+                "Power demand",
+                "Performance evaluation",
+                "Hard disks",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Storage Systems",
+                "Archival Storage",
+                "Growth Rate",
+                "Total Cost",
+                "Data Storage",
+                "Power Consumption",
+                "Optic Nerve Head",
+                "Performance Requirements",
+                "Storage Devices",
+                "Archiving System",
+                "Power Cost",
+                "Infrastructure Costs",
+                "Solid-state Drives",
+                "High Throughput",
+                "Surface Density",
+                "Data Center",
+                "Data Repository",
+                "News Media",
+                "Increase In Capacity",
+                "Compound Annual Growth Rate",
+                "Capital Costs",
+                "Storage Cost",
+                "Probability Of Failure",
+                "Workload Intensity",
+                "Optical Media",
+                "Mean Time To Failure",
+                "Storage Media",
+                "Growth Capacity",
+                "Annual Growth Rate"
+            ],
+            "Author Keywords": [
+                "archival storage, simulation, total cost of ownership, performance, power consumption"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -957,7 +1977,48 @@
                 "firstName": "Dennis",
                 "lastName": "Hahn"
             }
-        ]
+        ],
+        "abstract": "In multi-tier storage systems, moving data from one tier to the next can be inefficient. And because each type of storage device has its own idiosyncrasies with respect to the workloads that it can best support, unnecessary data movement might result. In this paper, we explore a fully connected storage architecture in which data can move from any storage pool to another. We propose a Chunk-level storage-aware workload Analyzer framework, abbreviated as ChewAnalyzer, to facilitate efficient data placement. Access patterns are characterized in a flexible way by a collection of I/O accesses to a data chunk. ChewAnalyzer employs a Hierarchical Classifier [1] to analyze the chunk patterns step by step. In each classification step, the Chunk Placement Recommender suggests new data placement policies according to the device properties. Based on the analysis of access pattern changes, the Storage Manager can adequately distribute or migrate the data chunks across different storage pools. Our experimental results show that ChewAnalyzer improves the initial data placement and that it migrates data into the proper pools directly and efficiently.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Taxonomy",
+                "Random access memory",
+                "Performance evaluation",
+                "Servers",
+                "Analytical models",
+                "Computational modeling",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Storage Pool",
+                "Storage Systems",
+                "Types Of Devices",
+                "Storage Devices",
+                "Load Data",
+                "Hierarchical Classification",
+                "Access Patterns",
+                "Data Placement",
+                "Data Chunks",
+                "Storage Management",
+                "Current Status",
+                "Free Space",
+                "Non-volatile Memory",
+                "Flash Memory",
+                "Total Amount Of Data",
+                "Multiple Pools",
+                "Chunk Size",
+                "Placement Decisions",
+                "Target Pool",
+                "Hadoop Distributed File System"
+            ],
+            "Author Keywords": [
+                "Storage",
+                "Fully connected storage",
+                "Hierarchical Classifier",
+                "Data placement",
+                "Data movement"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -992,7 +2053,61 @@
                 "firstName": "Anne",
                 "lastName": "Remke"
             }
-        ]
+        ],
+        "abstract": "Hybrid Petri nets with general transitions (HPnGs) provide a formalism for modeling safety-critical systems and evaluating their dependability with means of model checking. HPnGs form a restricted subclass of Stochastic Hybrid Automata and allow discrete, continuous and stochastic variables. Previously, discrete-event simulation and Statistical Model Checking (SMC) have been used to overcome the restrictions of existing analytical approaches, e.g., to a limited number of random variables. Also when simulating, the evolution of continuous variables has been restricted to piecewise-linear trajectories, where derivatives do not change between two events. Here, we extend the modeling formalism, the simulation and SMC approach to variables with a non-linear continuous evolution. The core idea of this extension lies in transforming the input system into a so-called second-order quantized state system. A case study on the Kinetic Battery Model validates our approach by comparing results to those obtained by Matlab.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mathematical model",
+                "Stochastic processes",
+                "Batteries",
+                "Petri nets",
+                "Model checking",
+                "Computational modeling",
+                "Trajectory"
+            ],
+            "Index Terms": [
+                "Dependability",
+                "Random Variables",
+                "Continuous Development",
+                "Kinetic Model",
+                "Simulation Approach",
+                "Quantum System",
+                "Safety-critical",
+                "Model Checking",
+                "Discrete Event Simulation",
+                "Petri Nets",
+                "Nonlinear Evolution",
+                "Quantum",
+                "Differential Equations",
+                "Transition State",
+                "Ordinary Differential Equations",
+                "Nonlinear Behavior",
+                "Previous Events",
+                "Transition Dynamics",
+                "Simulation Run",
+                "Adaptive Rate",
+                "Nominal Rate",
+                "Continuous Transition",
+                "Definition Of Events",
+                "Non-linear Trajectories",
+                "Firing Time",
+                "Differential-algebraic Equations",
+                "Fluid Levels",
+                "Safety Properties",
+                "Nonlinear Variation",
+                "Certain Point In Time"
+            ],
+            "Author Keywords": [
+                "hybrid Petri nets",
+                "HPnGs",
+                "Statistical Model Checking",
+                "Discrete event simulation",
+                "non linear continuous evolution",
+                "quantized state systems",
+                "dependability",
+                "battery powered systems"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1045,7 +2160,47 @@
                 "firstName": "Ioannis",
                 "lastName": "Lambadaris"
             }
-        ]
+        ],
+        "abstract": "We first consider the static problem of allocating resources to (i.e., scheduling) multiple distributed application frameworks, possibly with different priorities and server preferences, in a private cloud with heterogeneous servers. Several fair scheduling mechanisms have been proposed for this purpose. We extend prior results on max-min fair (MMF) and proportional fair (PF) scheduling to this constrained multiresource and multiserver case for generic fair scheduling criteria. The task efficiencies (a metric related to proportional fairness) of max-min fair allocations found by progressive filling are compared by illustrative examples. In the second part of this paper, we consider the online problem (with framework churn) by implementing variants of these schedulers in Apache Mesos using progressive filling to dynamically approximate max-min fair allocations. We evaluate the implemented schedulers in terms of overall execution time of realistic distributed Spark workloads. Our experiments show that resource efficiency is improved and execution times are reduced when the scheduler is \"server specific\" or when it leverages characterized required resources of the workloads (when known).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Resource management",
+                "Task analysis",
+                "Optimization",
+                "Cloud computing",
+                "Scheduling",
+                "Processor scheduling"
+            ],
+            "Index Terms": [
+                "Private Cloud",
+                "Illustrative Example",
+                "Resource Efficiency",
+                "Static Problem",
+                "Online Problem",
+                "Proportional Fairness",
+                "Best Fit",
+                "Resource Allocation",
+                "GB Memory",
+                "Demand For Resources",
+                "Virtual Machines",
+                "Residual Capacity",
+                "Scheduling Algorithm",
+                "Containerized",
+                "Multiple Servers",
+                "Cloud Providers",
+                "Public Cloud",
+                "Current Allocation",
+                "High Resource Utilization",
+                "Online Scheduling"
+            ],
+            "Author Keywords": [
+                "private cloud",
+                "scheduling",
+                "heterogeneity",
+                "progressive filling"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1074,7 +2229,55 @@
                 "firstName": "Li",
                 "lastName": "Xiao"
             }
-        ]
+        ],
+        "abstract": "mmWave bands have large chunks of spectrum and are promising for satisfying the unprecedented cellular traffic demands of future cellular networks. Unfortunately, the characteristic that mmWaves have high attenuation against physical objects and even atmosphere hinder its feasibility. High gain directional antennas are required to combat the attenuation. However, user mobility might change the signal direction, introduce physical objects in the line-of-sight of the signal and might block the directional signal. Additionally, user mobility might also make two directional signals to interfere with one another. The blockage and interference incidents must be handled with care. In this paper, the mmWave-enabled HetNet cells record the fingerprints of the incidents and the cells' transmission parameters. When a user is moving, and the serving cell's transmission parameters are approaching a fingerprint, the HetNet takes necessary actions to mitigate interference or avoid disconnection before it happens. Our results show that for typical indoor scenarios, most of the blockage and interference can be predicted so that countermeasures can be applied in advance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interference",
+                "Cellular networks",
+                "Handover",
+                "Databases",
+                "Global Positioning System",
+                "Array signal processing"
+            ],
+            "Index Terms": [
+                "HetNets",
+                "Blockage Prediction",
+                "Cellular Networks",
+                "Physical Body",
+                "Mobile Users",
+                "Directional Antenna",
+                "Transmission Parameters",
+                "mmWave Band",
+                "Mobile Devices",
+                "Small Cell",
+                "Global Positioning System",
+                "Reachable",
+                "Beamwidth",
+                "Transmission Power",
+                "Set Of Cells",
+                "Path Loss",
+                "Radio Waves",
+                "Beam Direction",
+                "Mobility Patterns",
+                "Interference Mitigation",
+                "Static Obstacles",
+                "Beam Configuration",
+                "Cloud Radio Access Network",
+                "Coverage Probability",
+                "Indoor Localization",
+                "Cellular Technology",
+                "Received Signal Strength"
+            ],
+            "Author Keywords": [
+                "Blockage",
+                "Interference",
+                "Prediction",
+                "HetNets",
+                "Cellular Networks",
+                "Resource Management"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1109,7 +2312,37 @@
                 "firstName": "Yufan",
                 "lastName": "Zhao"
             }
-        ]
+        ],
+        "abstract": "With the data growing explosively, data center networks (DCN) have to possess the characteristics of incrementally scalable, cost-efficient, high network capacity and fault tolerance. However, the widely used DCNs can not meet the demands above. In this paper, we propose a new type of data center topology named Criso to settle the challenges. Different from the existed works, Criso has the advantages of both switch-centric topologies (servers do not participate in routing) and the server-centric topologies (the scalability is not limited by the ports of switches). It is constructed based on pods, The internal structure of each pod is the same and there are only four external interfaces. By applying such structure, a pod-based and fault-tolerant routing algorithm is designed to handle multiple types of failures. Criso is hierarchically, recursively defined and high-network capacity which can scale up to millions of nodes. The analysis results demonstrate that the Criso model is significantly superior to four state-of-the-art data center structures in terms of the network capacity, scalability, cost, power consumption and other static characteristics. Criso achieves the target of low-cost, low-energy consumption and highly-scalability simultaneously.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Data centers",
+                "Topology",
+                "Network topology",
+                "Routing",
+                "Switches",
+                "Buildings"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Data Center",
+                "Fault-tolerant",
+                "Routing Algorithm",
+                "Energy Consumption",
+                "Core Level",
+                "Number Of Switches",
+                "Two-dimensional Array",
+                "Switch Positions",
+                "Number Of Wires"
+            ],
+            "Author Keywords": [
+                "Data center network",
+                "Scalability",
+                "Cost efficiency",
+                "Incremental scalability"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1144,7 +2377,57 @@
                 "firstName": "Feng",
                 "lastName": "Chen"
             }
-        ]
+        ],
+        "abstract": "Flash-based key-value caching is becoming popular in data centers for providing high-speed key-value services. These systems adopt slab-based space management on flash and provide a low-cost solution for key-value caching. However, optimizing cache efficiency for flash-based key-value cache systems is highly challenging, due to the huge number of key-value items and the unique technical constraints of flash devices. In this paper, we present a dynamic on-line compression scheme, called SlimCache, to improve the cache hit ratio by virtually expanding the usable cache space through data compression. We have investigated the effect of compression granularity to achieve a balance between compression ratio and speed, and leveraged the unique workload characteristics in key-value systems to efficiently identify and separate hot and cold data. In order to dynamically adapt to workload changes during runtime, we have designed an adaptive hot/cold area partitioning method based on a cost model. Inorder to avoid unnecessary compression, SlimCache also estimates data compressibility to determine whether the data are suitable for compression or not. We have implemented a prototype based on Twitter's Fatcache. Our experimental results show that SlimCache can accommodate more key-value items in flash by up to 125.9%, effectively increasing throughput and reducing average latency by up to 255.6% and 78.9%, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Slabs",
+                "Data compression",
+                "Twitter",
+                "Image coding",
+                "Data centers",
+                "Computer science",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Source Code",
+                "Caching",
+                "Throughput",
+                "Cost Model",
+                "Compression Ratio",
+                "Average Latency",
+                "Space Usage",
+                "Prototype-based",
+                "Cache Hit",
+                "Collection Process",
+                "Load Data",
+                "Hash Function",
+                "Computational Overhead",
+                "Hot Areas",
+                "JPEG Images",
+                "Compression Algorithm",
+                "Cold Areas",
+                "Flash Memory",
+                "Small Items",
+                "Compressed Format",
+                "Cache Size",
+                "Zipf Distribution",
+                "Backend Database",
+                "Disk Drive",
+                "Multiple Pages",
+                "Compressed Layer",
+                "Twitter Dataset",
+                "Mapping Table",
+                "High Compression Ratio",
+                "Compression Efficiency"
+            ],
+            "Author Keywords": [
+                "Flash memory",
+                "SSD",
+                "Key value caching",
+                "Compression"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1197,7 +2480,52 @@
                 "firstName": "Marco A. Z.",
                 "lastName": "Alves"
             }
-        ]
+        ],
+        "abstract": "Recently we are seeing a considerable effort from both academy and industry in proposing new technologies for storage devices. Often these devices are not readily available for evaluation and methods to allow performing their tests just from their performance parameters are an important tool for system administrators. Simulators are a traditional approach for carrying out such evaluations, however, they are more suitable for evaluating the storage device as an isolate component, mostly due to time constraints. In this paper, we propose an approach based on virtual machine technology that is capable of emulate storage devices transparently for the operating system allowing evaluation of simulating devices within a real system using any synthetic or real workload. To emulate devices in real environments it is necessary to use the currently available devices as a storage medium which creates a difficulty when the device to be emulated is faster than this storage medium. To circumvent this limitation we introduce a new technique called Freezing Time, which takes advantage of virtual machine pausing mechanism to manipulate the virtual machine clock and hide the real I/O completion time. Our approach can be implemented just requiring the hypervisor to be modified, providing a high degree of compatibility and flexibility since it is not necessary to modify neither the operating system nor the application. We evaluate our tool under a real system using old magnetic disks to emulate faster storage devices. Experiments using our technique presented an average latency error of 6.08% for read operations and 6.78% for write operations when comparing a real to device.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Virtual machine monitors",
+                "Clocks",
+                "Kernel",
+                "Random access memory",
+                "Performance evaluation",
+                "Virtual machining",
+                "Tools"
+            ],
+            "Index Terms": [
+                "Storage Devices",
+                "Freezing Time",
+                "Operating System",
+                "Virtual Machines",
+                "Storage Media",
+                "Running",
+                "Open-source Software",
+                "Storage Systems",
+                "Configuration Space",
+                "Host Guest",
+                "Device Behavior",
+                "Space Usage",
+                "Real Devices",
+                "Time Dilation",
+                "Small Overhead",
+                "Virtual Devices",
+                "Time Distortion"
+            ],
+            "Author Keywords": [
+                "freezing",
+                "time",
+                "hypervisor",
+                "storage",
+                "workload",
+                "virtual",
+                "machine",
+                "pausing",
+                "devices",
+                "real",
+                "system",
+                "simulating"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1238,7 +2566,46 @@
                 "firstName": "Peter",
                 "lastName": "Desnoyers"
             }
-        ]
+        ],
+        "abstract": "We introduce FSTL, a Framework for Shingled Translation Layers: a toolkit for implementing host-side block translation layers for Shingled Magnetic Recording (SMR) drives. It provides a Linux kernel implementation of key translation mechanisms (write allocation, LBA translation, map persistence, and consistent copying) while allowing translation policy (e.g. layout, cleaning algorithms, crash recovery) to be implemented in a user-space controller which communicates through an ioctl-based API to the kernel data plane. Due to its use of a journaled write format, FSTL-based translation layers are able to handle synchronous and durable writes to random LBAs at high speed. We describe the architecture and implementation of FSTL, and present two FSTL-based translation layers implemented in 400 lines of Python each. Despite the simplicity of the controllers, experiments show our first translation layer performing 1.5x to 10x better than a drive-managed translation layer on trace replay experiments, with performance roughly comparable to the drive-managed device for real file system-based benchmarks; the second translation layer, based on a full-volume extent map, is shown to offer significantly better performance than prior work. Furthermore, we implement and evaluate three cleaning algorithms to demonstrate how FSTL-based translation layers may be readily modified, while still offering the robustness needed for long-duration benchmarks and use.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cleaning",
+                "Performance evaluation",
+                "Resource management",
+                "Metadata",
+                "Linux",
+                "Computer crashes",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "High Performance",
+                "Throughput",
+                "Metadata",
+                "Start-up",
+                "Read Data",
+                "Memory Usage",
+                "File System",
+                "Single Thread",
+                "Update Function",
+                "Cleaning Process",
+                "Home Location",
+                "Memory Efficiency",
+                "Written Back",
+                "Control Plane",
+                "Skylight",
+                "Physical Address",
+                "Number Of Writers",
+                "Checkpointing",
+                "Cleaning Operations"
+            ],
+            "Author Keywords": [
+                "Shingled Magnetic Recording",
+                "framework",
+                "device mapper",
+                "translation layer"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1285,7 +2652,45 @@
                 "firstName": "Shankaranarayanan",
                 "lastName": "Puzhavakath Narayanan"
             }
-        ]
+        ],
+        "abstract": "Network clouds are typically private clouds owned by the network provider, consisting of a large number of geo-distributed sites with heterogeneous capabilities and small capacities. Each of these small clouds often run specialized service chains of Virtual Network Functions (VNFs), which need to meet strict Service Level Objectives (SLOs), especially along the lines of availability (e.g., First responder services). Hence, VNFs in such thinly provisioned clouds may need to be moved (rehomed), both within and across sites, much more frequently than in traditional public clouds (like Amazon's EC2 cloud), in order to meet the performance SLOs, when reacting to various cloud events like hotspots, interference from co-located VMs, failures and upgrades. Rehoming is also required by the infrastructure (platform) providers for various other reasons such as consolidation of resources for saving energy and improving the platform utilization. In this paper, we propose a model-based approach to show that naive strategies for rehoming, applied uniformly across all VNFs of the service chain, are often sub-optimal when considering different metrics like user-perceived service disruption time and the time taken to complete the rehoming action. Our model leverages the transparency between the services and platforms on private clouds (grayness), and provides appropriate rehoming recommendations based on various factors including service characteristics and runtime platform dynamics. We validate our models using a simple, yet ubiquitously deployed service chain, and using out-of-the-box rehoming options provided by Openstack, the most commonly used open-source cloud. Our results show that our graybox approach is able to achieve significant reductions in service disruption times and time taken for the rehoming action.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Web servers",
+                "Measurement",
+                "Analytical models",
+                "Hardware",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Service Chain",
+                "Model-based Approach",
+                "Public Cloud",
+                "Virtual Network Functions",
+                "Private Cloud",
+                "Activity Time",
+                "Empirical Results",
+                "Web Server",
+                "Increase In Costs",
+                "Image Size",
+                "Function Of Size",
+                "Cost Model",
+                "Regression Fit",
+                "Service Performance",
+                "Optimal Action",
+                "Migration Cost",
+                "Disc Size",
+                "Part Of Future Work",
+                "Cost Metrics"
+            ],
+            "Author Keywords": [
+                "rehoming",
+                "virtual network functions",
+                "graybox",
+                "modeling"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1326,7 +2731,57 @@
                 "firstName": "Kirk W.",
                 "lastName": "Cameron"
             }
-        ]
+        ],
+        "abstract": "With the dramatic increase in scale expected for Exascale computing, there is a dire need for tuning of hardware configurations and software optimizations such that they are in unison. However, the expected increase in tunable hardware parameters makes searching through the design space for optimal hardware-and-software configurations much more challenging. Towards this end, we propose a composable hardware-software optimization framework called Prometheus. Prometheus uses a combination of analytical and machine-learning techniques to capture application characteristics and subsequently determine the hardware-software configuration for near-optimal performance. We evaluate Prometheus for its efficacy using two widely used proxy applications: LULESH and CoMD. We demonstrate that Prometheus identifies near-optimal hardware-software configurations and verify the results via brute-force search of the design space.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Analytical models",
+                "Machine learning",
+                "Computational modeling",
+                "Mathematical model",
+                "Software",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Hardware Optimization",
+                "Machine Learning",
+                "Machine Learning Techniques",
+                "Design Space",
+                "Increase In Scale",
+                "Hardware Configuration",
+                "Hardware Software",
+                "Hardware Parameters",
+                "Model Analysis",
+                "Energy Consumption",
+                "Scalable",
+                "Usability",
+                "Learning Algorithms",
+                "Validity Of The Results",
+                "Supervised Learning",
+                "Search Space",
+                "Scale Effect",
+                "Automata",
+                "Machine Model",
+                "Automatic Generation",
+                "System Clock",
+                "Clock Frequency",
+                "Hardware Components",
+                "Memory Bandwidth",
+                "Strong Scaling",
+                "Domain-specific Languages",
+                "Application Execution",
+                "Configuration Of Components",
+                "Supervised Machine Learning Models",
+                "Workflow"
+            ],
+            "Author Keywords": [
+                "high performance computing",
+                "domain specific languages",
+                "performance modeling",
+                "reconfigurable hardware"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1379,7 +2834,56 @@
                 "firstName": "Ethan",
                 "lastName": "Miller"
             }
-        ]
+        ],
+        "abstract": "Increasingly, archival systems are relying on authentication-based techniques that leverage secret-splitting rather than encryption to secure data for long-term storage. Secret-splitting data across multiple independent repositories reduces complexities in key management, eliminates the need for updates due to encryption algorithm deprecation over time, and reduces the risk of insider compromise. While reconstruction of stored data objects is straightforward if a user-maintained index is available, the system must also support disaster recovery incase the index is unavailable. Designing a mechanism for efficient index-free reconstruction, that does not increase the risk of attacker compromise, is a challenge. Reconstruction requires the association of chunks that make up an object, which is the kind of information attackers can use to identify chunks they must steal to illicitly obtain data. We propose two new techniques, the set-subset reconstruction and secret-split secure hash (S3H) reconstruction, which allow chunks of data to be correlated and quickly reconstructed without providing useful information to an attacker. Both techniques operate on the entire collections of secret-split chunks in the archive. While they can efficiently rebuild an entire archive, they are inefficient and impractical for rebuilding single objects, making them useless for attackers that do not have access to all of the data. These techniques can each be tuned to trade-off between reconstruction performance and security, reducing overall runtime from O(N<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">K</sup>) (for N objects requiring K recombined chunks each to return the original object) to between O(N) and O(N<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup>). These runtimes are practical for archives containing as many as 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">7</sup> objects for the secret-split secure hash method and 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">9</sup> objects for the set-subset method. Larger archives can run these techniques with manageable runtimes by grouping data into separate smaller collections and running the algorithms on each collection in parallel.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Encryption",
+                "Indexes",
+                "Reliability",
+                "Object recognition",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Reconstruction Efficiency",
+                "Recombination",
+                "Archive",
+                "Data Storage",
+                "Encryption",
+                "Objective Data",
+                "Single Object",
+                "Original Objective",
+                "Reconstruction Performance",
+                "Data Chunks",
+                "Set Of Values",
+                "Cardinality",
+                "Number Of Values",
+                "Number Of Tests",
+                "Data Security",
+                "Objective Value",
+                "Hash Function",
+                "Shared Values",
+                "Number Of Siblings",
+                "Reduction Of Space",
+                "Information-theoretic Security",
+                "Space Reconstruction",
+                "Quadratic Growth",
+                "Multiple Servers",
+                "Reconstruction Time",
+                "Intrusion Detection",
+                "Combinatorial Explosion",
+                "Runtime Analysis",
+                "Single Server",
+                "Naive Method"
+            ],
+            "Author Keywords": [
+                "archival storage",
+                "disaster recovery",
+                "secret-splitting",
+                "security"
+            ]
+        }
     },
     {
         "publicationNumber": "8526478",
@@ -1395,7 +2899,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8526478",
@@ -1411,7 +2917,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8526478",
@@ -1427,7 +2935,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8526478",
@@ -1443,7 +2953,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8526478",
@@ -1459,7 +2971,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8526478",
@@ -1475,7 +2989,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8526478",
@@ -1491,7 +3007,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8526478",
@@ -1507,7 +3025,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference offers a note of thanks and lists its reviewers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8526478",
@@ -1523,7 +3043,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8526478",
@@ -1539,6 +3061,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE 26th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]

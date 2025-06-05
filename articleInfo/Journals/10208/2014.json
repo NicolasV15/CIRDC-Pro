@@ -32,7 +32,48 @@
                 "firstName": "Leonel",
                 "lastName": "Sousa"
             }
-        ]
+        ],
+        "abstract": "The Roofline model graphically represents the attainable upper bound performance of a computer architecture. This paper analyzes the original Roofline model and proposes a novel approach to provide a more insightful performance modeling of modern architectures by introducing cache-awareness, thus significantly improving the guidelines for application optimization. The proposed model was experimentally verified for different architectures by taking advantage of built-in hardware counters with a curve fitness above 90%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Modeling",
+                "Performance evaluation",
+                "Multiprocessing systems",
+                "Simulation"
+            ],
+            "Index Terms": [
+                "Roofline Model",
+                "Modern Architecture",
+                "Performance Of Architectures",
+                "Optimal Guidelines",
+                "Original Form",
+                "Problem Size",
+                "Maximum Performance",
+                "Floating-point Operations",
+                "Access Patterns",
+                "Single Iteration",
+                "Memory Operations",
+                "Memory Bandwidth",
+                "On-chip Memory",
+                "L2 Cache",
+                "Memory Hierarchy"
+            ],
+            "Author Keywords": [
+                "C.0.d Modeling of computer architecture < C.0 General < C Computer Systems Organization",
+                "C.4.g Measurement",
+                "evaluation",
+                "modeling",
+                "simulation of multiple-processor systems < C.4 Performance of Systems < C Computer Syst",
+                "C.0.e System architectures",
+                "integration and modeling < C.0 General < C Computer Systems Organization",
+                "C.4.d Modeling techniques < C.4 Performance of Systems < C Computer Systems Organization"
+            ],
+            "Author Free Keywords": [
+                "Multicore computer architectures",
+                "Performance modeling",
+                "Application optimization"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -67,7 +108,35 @@
                 "firstName": "Derek",
                 "lastName": "Chiou"
             }
-        ]
+        ],
+        "abstract": "We present a method for accelerating server applications using a hybrid CPU+FPGA architecture and demonstrate its advantages by accelerating Memcached, a distributed key-value system. The accelerator, implemented on the FPGA fabric, processes request packets directly from the network, avoiding the CPU in most cases. The accelerator is created by profiling the application to determine the most commonly executed trace of basic blocks which are then extracted. Traces are executed speculatively within the FPGA. If the control flow exits the trace prematurely, the side effects of the computation are rolled back and the request packet is passed to the CPU. When compared to the best reported software numbers, the Memcached accelerator is 9.15× more energy efficient for common case requests.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Client-server systems",
+                "Hybrid systems",
+                "Computer architecture",
+                "Program processors"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "Rollback",
+                "Application Server",
+                "Power Consumption",
+                "Multi-core",
+                "Power Efficiency",
+                "State Machine",
+                "Hash Function",
+                "Memory System",
+                "Datapath",
+                "Fast Path",
+                "Packet Processing"
+            ],
+            "Author Keywords": [
+                "C.1.3.f Heterogeneous (hybrid) systems",
+                "C.2.4.a Client/server"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -96,7 +165,49 @@
                 "firstName": "Lieven",
                 "lastName": "Eeckhout"
             }
-        ]
+        ],
+        "abstract": "Weighted speedup is nowadays the most commonly used multiprogram workload performance metric. Weighted speedup is a weighted-IPC metric, i.e., the multiprogram IPC of each program is first weighted with its isolated IPC. Recently, Michaud questions the validity of weighted-IPC metrics by arguing that they are inconsistent and that weighted speedup favors unfairness [4]. Instead, he advocates using the arithmetic or harmonic mean of the raw IPC values of the programs in the multiprogram workload. We show that weighted-IPC metrics are not inconsistent, and that weighted speedup is fair in giving equal importance to each program. We argue that, in contrast to raw-IPC metrics, weighted-IPC metrics have a system-level meaning, and that raw-IPC metrics are affected by the inherent behavior of the programs. We also show that the choice of a metric may adversely affect the conclusions from an experiment. We suggest to use two weighted-IPC metrics - system throughput (STP) and average normalized turnaround time (ANTT) - for evaluating multiprogram workload performance, and to avoid raw-IPC metrics.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Throughput",
+                "Harmonic analysis",
+                "Degradation",
+                "Multicore processing",
+                "Weight measurement"
+            ],
+            "Index Terms": [
+                "Performance Metrics",
+                "Arithmetic Mean",
+                "Turnaround Time",
+                "Harmonic Mean",
+                "System Throughput",
+                "Validation Metrics",
+                "Inherent Behavior",
+                "Benchmark",
+                "High Throughput",
+                "Differences In Performance",
+                "Geometric Mean",
+                "Unit Time",
+                "Performance Degradation",
+                "Alternative Designs",
+                "Contradictory Conclusions",
+                "Total Throughput"
+            ],
+            "Author Keywords": [
+                "C Computer Systems Organization",
+                "C.1 Processor Architectures",
+                "C.1.4 Parallel Architectures",
+                "C.1.4.e Multi-core/single-chip multiprocessors",
+                "C Computer Systems Organization",
+                "C.1 Processor Architectures",
+                "C.1.3 Other Architecture Styles",
+                "C.1.3.h Multithreaded processors",
+                "C Computer Systems Organization",
+                "C.4 Performance of Systems",
+                "C.4.c Measurement techniques"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -137,7 +248,51 @@
                 "firstName": "Ahmad",
                 "lastName": "Patooghy"
             }
-        ]
+        ],
+        "abstract": "STT-RAM technology has recently emerged as one of the most promising memory technologies. However, its major problems, limited write endurance and high write energy, are still preventing it from being used as a drop-in replacement of SRAM cache. In this paper, we propose a novel coding scheme for STT-RAM last level cache based on the concept of value locality. We reduce switching probability in cache by swapping common patterns with limited weight codes (LWC) to make writes less often as well as more uniform. We also define some policies for swapping these patterns. Our evaluation shows that bit write variance in memory cells can be reduced by about 20% on average resulting in a more uniform wear-out directly enhancing lifetime and improving cell reliability. In addition, writes in cache lines can be reduced by about 12% compared to one of the most effective circuit level techniques known as early write termination (EWT) [12]. Our method increases memory hierarchy access time by about 0.08% on average, which is negligible. We have shown that our method doesn't adversely affect last level cache energy-delay<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup>. The non-uniformity caused by the coding scheme can be used for another coding scheme at main memory or L1 cache depending on their technologies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encoding",
+                "Random access memory",
+                "Nonvolatile memory",
+                "Computer architecture",
+                "Three-dimensional displays"
+            ],
+            "Index Terms": [
+                "Circuit Level",
+                "Remote Memory",
+                "Local Concepts",
+                "Switching Probability",
+                "L2 Cache",
+                "Memory Hierarchy",
+                "Drop-in Replacement",
+                "Energy Consumption",
+                "Patterns In Data",
+                "Frequent Pattern",
+                "3D Architecture",
+                "Codeword",
+                "Degree Of Localization",
+                "Spin Transfer Torque",
+                "Lifetime Of Cells",
+                "Number Of Writers",
+                "Power Overhead"
+            ],
+            "Author Keywords": [
+                "C Computer Systems Organization",
+                "C.1 Processor Architectures",
+                "B Hardware",
+                "B.3 Memory Structures"
+            ],
+            "Author Free Keywords": [
+                "STT-RAM",
+                "cache",
+                "memory endurance",
+                "write energy",
+                "write hotspot",
+                "nonvolatile memory",
+                "limited weight code"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -172,7 +327,45 @@
                 "firstName": "Haibo",
                 "lastName": "Chen"
             }
-        ]
+        ],
+        "abstract": "Flash-based solid-state drive (SSD) is now being widely deployed in cloud computing platforms due to the potential advantages of better performance and less energy consumption. However, current virtualization architecture lacks support for highperformance I/O virtualization over persistent storage, which results in sub-optimal I/O performance for guest virtual machines (VMs) on SSD. Further, current software-based I/O virtualization violates the “don't hide power” principle due to inefficient support for some advanced SSD commands (e.g., TRIM) and constrained parallelism, leading to sub-optimal performance and life cycle.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Parallel processing",
+                "Performance evaluation",
+                "Random access memory",
+                "Solid state circuits",
+                "Computer architecture",
+                "Multiprocessing systems"
+            ],
+            "Index Terms": [
+                "Solid-state Drives",
+                "Cloud Computing",
+                "Virtual Machines",
+                "Performance Overhead",
+                "Small Overhead",
+                "Vanilla",
+                "Complex Operations",
+                "Spatial Partitioning",
+                "Serialized",
+                "Flash Memory",
+                "Mapping Table",
+                "Virtual Devices",
+                "Cache Hit"
+            ],
+            "Author Keywords": [
+                "B.4.4 Performance Analysis and Design Aids",
+                "C.4.g Measurement",
+                "evaluation",
+                "modeling",
+                "simulation of multiple-processor systems"
+            ],
+            "Author Free Keywords": [
+                "Solid State Drive",
+                "I/O virtualization"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -213,7 +406,54 @@
                 "firstName": "Avi",
                 "lastName": "Mendelson"
             }
-        ]
+        ],
+        "abstract": "The EARtH algorithm finds the optimal voltage and frequency operational point of the processor in order to achieve minimum energy of the computing platform. The algorithm is based on a theoretical model employing a small number of parameters, which are extracted from real systems using off-line and run-time methods. The model and algorithm have been validated on real systems using 45nm, 32nm and 22nm Intel® Core processors. The algorithm can save up to 44% energy compared with the commonly used fixed frequency policies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Earth",
+                "Frequency measurement",
+                "Computational modeling",
+                "Algorithm design and analysis",
+                "Energy measurement",
+                "Voltage measurement",
+                "Energy management"
+            ],
+            "Index Terms": [
+                "Energy Minimization",
+                "Optimal Frequency",
+                "High Power",
+                "Running Time",
+                "Energy Efficiency",
+                "Energy Conservation",
+                "Total Power",
+                "Minimum Frequency",
+                "Core I7",
+                "Constant Power",
+                "Minimum Point",
+                "CPU Frequency",
+                "Energy-saving Potential",
+                "CPU Power"
+            ],
+            "Author Keywords": [
+                "B Hardware",
+                "B.9 Power Management",
+                "B Hardware",
+                "B.9 Power Management",
+                "B.9.2 Energy-aware systems",
+                "C Computer Systems Organization",
+                "C.4 Performance of Systems",
+                "C Computer Systems Organization",
+                "C.5 Computer System Implementation",
+                "C.5.4 VLSI Systems",
+                "C Computer Systems Organization",
+                "C.5 Computer System Implementation",
+                "C.5.5 Servers"
+            ],
+            "Author Free Keywords": [
+                "Power Management",
+                "Heterogeneous cores"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -254,7 +494,52 @@
                 "firstName": "Vijay Janapa",
                 "lastName": "Reddi"
             }
-        ]
+        ],
+        "abstract": "Web browsing on mobile devices is undoubtedly the future. However, with the increasing complexity of webpages, the mobile device's computation capability and energy consumption become major pitfalls for a satisfactory user experience. In this paper, we propose a mechanism to effectively leverage processor frequency scaling in order to balance the performance and energy consumption of mobile web browsing. This mechanism explores the performance and energy tradeoff in webpage loading, and schedules webpage loading according to the webpages' characteristics, using the different frequencies. The proposed solution achieves 20.3% energy saving compared to the performance mode, and improves webpage loading performance by 37.1 % compared to the battery saving mode.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Loading",
+                "Energy consumption",
+                "Cascading style sheets",
+                "Load modeling",
+                "HTML",
+                "Mobile communication",
+                "Market research"
+            ],
+            "Index Terms": [
+                "Web Browsing",
+                "Energy Consumption",
+                "Mobile Devices",
+                "Computational Capabilities",
+                "Energy Devices",
+                "Energy Consumption Of Devices",
+                "Parallelization",
+                "Tree Structure",
+                "Mobile System",
+                "Heterogeneous Systems",
+                "Energy Model",
+                "Web Browser",
+                "Optimal Frequency",
+                "Image Synthesis",
+                "Tree Depth",
+                "Computational Intensity",
+                "Minimum Energy Consumption",
+                "Processing Overhead"
+            ],
+            "Author Keywords": [
+                "C Computer Systems Organization",
+                "C Computer Systems Organization",
+                "C.2 Communication/Networking and Information Technology",
+                "C.2.8 Mobile Computing"
+            ],
+            "Author Free Keywords": [
+                "Energy",
+                "EDP",
+                "Cutoff",
+                "Performance",
+                "Webpages"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -307,7 +592,54 @@
                 "firstName": "Uri C.",
                 "lastName": "Weiser"
             }
-        ]
+        ],
+        "abstract": "Switch on Event Multithreading (SoE MT, also known as coarse-grained MT and block MT) processors run multiple threads on a pipeline machine, while the pipeline switches threads on stall events (e.g., cache miss). The thread switch penalty is determined by the number of stages in the pipeline that are flushed of in-flight instructions. In this paper, Continuous Flow Multithreading (CFMT), a new architecture of SoE MT, is introduced. In CFMT, a multistate pipeline register (MPR) holds the microarchitectural state of multiple different threads within the execution pipeline stages, where only one thread is active at a time. The MPRs eliminate the need to flush in-flight instructions and therefore significantly improve performance. In recent years, novel memory technologies such as Resistive RAM (RRAM) and Spin Torque Transfer Magnetoresistive RAM (STT-MRAM), have been developed. All of these technologies are nonvolatile, store data as resistance, and can be described as “memristors.” Memristors are power efficient, dense, and fast as compared to standard memory technologies such as SRAM, DRAM, and Flash. Memristors therefore provide the opportunity to place the MPRs physically within the pipeline stages. A performance analysis of CFMT is compared to conventional SoE MT processors, demonstrating up to a 2X performance improvement, while the operational mechanism, due to the use of memristors, is low power and low complexity as compared to conventional SoE MT processors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multithreading",
+                "Integrated circuits",
+                "Memory management",
+                "Systems deisgn and analysis",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Continuous Flow",
+                "Non-volatile",
+                "Microarchitecture",
+                "Multiple Threads",
+                "Resistive Random Access Memory",
+                "Pipeline Stages",
+                "Spin Transfer Torque",
+                "Memory Technologies",
+                "Cache Misses",
+                "Bottom Layer",
+                "Clock Cycles",
+                "Saturation Region",
+                "L2 Cache",
+                "Ferroelectric Memory"
+            ],
+            "Author Keywords": [
+                "B Hardware",
+                "B.3 Memory Structures",
+                "B Hardware",
+                "B.7 Integrated Circuits",
+                "B.7.1 Types and Design Styles",
+                "B.7.1.e Memory technologies",
+                "C Computer Systems Organization",
+                "C.0 General",
+                "C.0.a Emerging technologies",
+                "C Computer Systems Organization",
+                "C.0 General",
+                "C.0.d Modeling of computer architecture"
+            ],
+            "Author Free Keywords": [
+                "memristor",
+                "multithreaded processors",
+                "phase change memory",
+                "RRAM",
+                "STT-MRAM"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -354,7 +686,45 @@
                 "firstName": "Luca P.",
                 "lastName": "Carloni"
             }
-        ]
+        ],
+        "abstract": "Accelerators integrated on-die with General-Purpose CPUs (GP-CPUs) can yield significant performance and power improvements. Their extensive use, however, is ultimately limited by their area overhead; due to their high degree of specialization, the opportunity cost of investing die real estate on accelerators can become prohibitive, especially for general-purpose architectures. In this paper we present a novel technique aimed at mitigating this opportunity cost by allowing GP-CPU cores to reuse accelerator memory as a non-uniform cache architecture (NUCA) substrate. On a system with a last level-2 cache of 128kB, our technique achieves on average a 25% performance improvement when reusing four 512 kB accelerator memory blocks to form a level-3 cache. Making these blocks reusable as NUCA slices incurs on average in a 1.89% area overhead with respect to equally-sized ad hoc cache slices.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Transform coding",
+                "Silicon",
+                "Acceleration",
+                "Memory management",
+                "Power demand"
+            ],
+            "Index Terms": [
+                "Dark Silicon",
+                "Memory Reuse",
+                "Opportunity Cost",
+                "High Degree Of Specificity",
+                "Area Overhead",
+                "Memory Block",
+                "L2 Cache",
+                "Power Consumption",
+                "Clock Frequency",
+                "Scalable Technology",
+                "Remote Memory",
+                "Data Cache",
+                "Baseline System",
+                "Network Interface",
+                "Benchmark Suite",
+                "Shared Memory",
+                "Access Latency",
+                "System C"
+            ],
+            "Author Keywords": [
+                "Cache memory",
+                "Accelerator architectures"
+            ],
+            "Author Free Keywords": [
+                "Cache memory",
+                "accelerator architectures"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -401,7 +771,42 @@
                 "firstName": "Uri",
                 "lastName": "Weiser"
             }
-        ]
+        ],
+        "abstract": "Consider a workload comprising a consecutive sequence of program execution segments, where each segment can either be executed on general purpose processor or offloaded to a hardware accelerator. An analytical optimization framework based on MultiAmdhal framework and Lagrange multipliers, for selecting the optimal set of accelerators and for allocating resources among them under constrained area is proposed. Due to the practical implementation of accelerators, the optimal architecture under area constraints may exclude some of the accelerators. As the fraction of the workload that can be accelerated decreases, resources (e.g. area) may shift from accelerators into the general purpose processor. The framework can be extended in a number of ways, spanning from SoC partitioning, bandwidth to power distribution, energy and other constrained resources.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multicore processing",
+                "System-on-a-chip",
+                "Acceleration",
+                "Resource management",
+                "Optimization",
+                "Hardware",
+                "Mathematical model"
+            ],
+            "Index Terms": [
+                "Lagrange Multiplier",
+                "Hardware Accelerators",
+                "Area Constraints",
+                "Step Function",
+                "Multi-core",
+                "Optimal Allocation",
+                "Maximum Area",
+                "Minimum Area",
+                "Optimal Resource Allocation",
+                "Total Execution Time",
+                "Acceleration Performance"
+            ],
+            "Author Keywords": [
+                "Chip Multiprocessors",
+                "Modeling of computer architecture",
+                "MultiAmdahl"
+            ],
+            "Author Free Keywords": [
+                "MultiAmdahl",
+                "Chip Multiprocessors",
+                "Modeling of computer architecture"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -442,7 +847,50 @@
                 "firstName": "Jangwoo",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "Programmer-managed GPU memory is a major challenge in writing GPU applications. Programmers must rewrite and optimize an existing code for a different GPU memory size for both portability and performance. Alternatively, they can achieve only portability by disabling GPU memory at the cost of significant performance degradation. In this paper, we propose ScaleGPU, a novel GPU architecture to enable high-performance memory-unaware GPU programming. ScaleGPU uses GPU memory as a cache of CPU memory to provide programmers a view of CPU memory-sized programming space. ScaleGPU also achieves high performance by minimizing the amount of CPU-GPU data transfers and by utilizing the GPU memory's high bandwidth. Our experiments show that ScaleGPU can run a GPU application on any GPU memory size and also improves performance significantly. For example, ScaleGPU improves the performance of the hotspot application by ~48% using the same size of GPU memory and reduces its memory size requirement by ~75% maintaining the target performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Memory management",
+                "Data transfer",
+                "Programming",
+                "Random access memory",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Graphics Processing Units Architecture",
+                "Graphics Processing Units Programming",
+                "High Performance",
+                "Performance Degradation",
+                "Data Transfer",
+                "High Bandwidth",
+                "Memory Size",
+                "Amount Of Transfer",
+                "CPU Memory",
+                "View Of Space",
+                "Graphics Processing Unit Memory",
+                "High Throughput",
+                "Shortest Path",
+                "Performance Loss",
+                "Large Memory",
+                "Memory Data",
+                "Small Memory",
+                "Current Architecture",
+                "Memory Bandwidth",
+                "Memory Transfer",
+                "Code Modifications",
+                "Indirect Access",
+                "Manual Modification"
+            ],
+            "Author Keywords": [
+                "I.3.1.a Graphics processors",
+                "C.1.2.j SIMD processors",
+                "C.1.4.e Multi-core/single-chip multiprocessors",
+                "C.1.5.e Memory hierarchy"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -489,7 +937,52 @@
                 "firstName": "Hui",
                 "lastName": "Li"
             }
-        ]
+        ],
+        "abstract": "Optical interconnect is a promising alternative to substitute the electrical interconnect for intra-chip communications. The topology of optical Network-on-Chip (ONoC) has a great impact on the network performance. However, the size of ONoC is limited by the power consumption and crosstalk noise, which are mainly resulted from the waveguide crossings in the topology. In this paper, a diagonal Mesh topology (DMesh) is proposed to relieve the limitation of scalability by reducing the number of waveguide crossing, which is only 20% that of Mesh. In addition, the number of optical routers in DMesh is less than half of that in Mesh-based ONoC. Due to its compact architecture and favorable scalability, DMesh topology is suitable for large-scale ONoC design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wavelength division multiplexing",
+                "Network topology",
+                "Optical routers",
+                "Optical interconnects"
+            ],
+            "Index Terms": [
+                "Optical Interconnects",
+                "Power Consumption",
+                "Network Performance",
+                "Mesh Network",
+                "Compact Architecture",
+                "Electrical Interconnection",
+                "Network Topology",
+                "Power Loss",
+                "Shortest Path",
+                "Power Grid",
+                "Levels Of Loss",
+                "Deadlock",
+                "Cost Of Devices",
+                "Optical Loss",
+                "Optical Networks",
+                "Wavelength Division Multiplexing",
+                "Routing Algorithm",
+                "Area Overhead",
+                "Network Packets",
+                "Delay Performance",
+                "Hop Count",
+                "Ultra-low Levels"
+            ],
+            "Author Keywords": [
+                "topology",
+                "multiprocessors",
+                "wavelength division multiplexing",
+                "optical router"
+            ],
+            "Author Free Keywords": [
+                "Topology",
+                "multiprocessors",
+                "wavelength division multiplexing",
+                "optical router"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -536,7 +1029,48 @@
                 "firstName": "Depei",
                 "lastName": "Qian"
             }
-        ]
+        ],
+        "abstract": "To make applications with dynamic data sharing among threads benefit from GPU acceleration, we propose a novel software transactional memory system for GPU architectures (GPU-STM). The major challenges include ensuring good scalability with respect to the massively multithreading of GPUs, and preventing livelocks caused by the SIMT execution paradigm of GPUs. To this end, we propose (1) a hierarchical validation technique and (2) an encounter-time lock-sorting mechanism to deal with the two challenges, respectively. Evaluation shows that GPU-STM outperforms coarse-grain locks on GPUs by up to 20×.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multicore processing",
+                "Parallel processing",
+                "Runtime environment",
+                "Multiprocessing systems"
+            ],
+            "Index Terms": [
+                "GPU Architecture",
+                "Memory System",
+                "Proportion Of Time",
+                "Hash Function",
+                "Small Amount Of Data",
+                "Labyrinth",
+                "Deadlock",
+                "Local Memory",
+                "Functional Blocks",
+                "Serialized",
+                "Limited Scalability",
+                "L2 Level",
+                "On-chip Memory",
+                "Global Version",
+                "Shared Memory",
+                "Critical Section",
+                "L2 Cache",
+                "Off-chip Memory"
+            ],
+            "Author Keywords": [
+                "Multicore Processors",
+                "Parallel Programming",
+                "Run-time Environments",
+                "SIMD Processors"
+            ],
+            "Author Free Keywords": [
+                "Multicore Processors",
+                "Parallel Programming",
+                "Run-time Environments",
+                "SIMD Processors"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -561,11 +1095,52 @@
             },
             {
                 "id": 37297953700,
-                "preferredName": "Per Stenstr\u00f6m",
+                "preferredName": "Per Stenström",
                 "firstName": "Per",
-                "lastName": "Stenstr\u00f6m"
+                "lastName": "Stenström"
             }
-        ]
+        ],
+        "abstract": "Replication of values causes poor utilization of on-chip cache memory resources. This paper addresses the question: How much cache resources can be theoretically and practically saved if value replication is eliminated? We introduce the concept of value-aware caches and show that a sixteen times smaller value-aware cache can yield the same miss rate as a conventional cache. We then make a case for a value-aware cache design using Huffman-based compression. Since the value set is rather stable across the execution of an application, one can afford to reconstruct the coding tree in software. The decompression latency is kept short by our proposed novel pipelined Huffman decoder that uses canonical codewords. While the (loose) upper-bound compression factor is 5.2×, we show that, by eliminating cache-block alignment restrictions, it is possible to achieve a compression factor of 3.4× for practical designs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Huffman coding",
+                "Engines",
+                "Clocks",
+                "Indexes",
+                "Decoding",
+                "System-on-a-chip"
+            ],
+            "Index Terms": [
+                "Upper Bound",
+                "Missing Rate",
+                "Data Cache",
+                "Compression Factor",
+                "Application Execution",
+                "Geometric Mean",
+                "Contributions Of This Paper",
+                "Data Storage",
+                "Metadata",
+                "Block Size",
+                "Evidential",
+                "Critical Path",
+                "Clock Cycles",
+                "Code Construction",
+                "Coding Tree",
+                "Pipeline Stages",
+                "Cache Size",
+                "L2 Cache",
+                "Codeword Length"
+            ],
+            "Author Keywords": [
+                "B Hardware",
+                "B.3 Memory Structures",
+                "B.3.2 Design Styles",
+                "B.3.2.b Cache memories",
+                "E Data",
+                "E.4 Coding and Information Theory",
+                "E.4.a Data compaction and compression"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -606,7 +1181,52 @@
                 "firstName": "Srinivas",
                 "lastName": "Devadas"
             }
-        ]
+        ],
+        "abstract": "Chip-multiprocessors (CMPs) have become the mainstream parallel architecture in recent years; for scalability reasons, designs with high core counts tend towards tiled CMPs with physically distributed shared caches. This naturally leads to a Non-Uniform Cache Access (NUCA) design, where on-chip access latencies depend on the physical distances between requesting cores and home cores where the data is cached. Improving data locality is thus key to performance, and several studies have addressed this problem using data replication and data migration. In this paper, we consider another mechanism, hardware-level thread migration. This approach, we argue, can better exploit shared data locality for NUCA designs by effectively replacing multiple round-trip remote cache accesses with a smaller number of migrations. High migration costs, however, make it crucial to use thread migrations judiciously; we therefore propose a novel, on-line prediction scheme which decides whether to perform a remote access (as in traditional NUCA designs) or to perform a thread migration at the instruction level. For a set of parallel benchmarks, our thread migration predictor improves the performance by 24% on average over the shared-NUCA design that only uses remote accesses.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Context",
+                "Computer architecture",
+                "Benchmark testing",
+                "Coherence",
+                "Protocols",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Data Cache",
+                "Thread Migration",
+                "Benchmark",
+                "Data Sharing",
+                "Remote Access",
+                "Remote Memory",
+                "Migration Cost",
+                "Migration Rate",
+                "Natural Context",
+                "Multiple Access",
+                "Deadlock",
+                "Single Thread",
+                "Misprediction",
+                "Special Register",
+                "Depth Threshold",
+                "Memory Address"
+            ],
+            "Author Keywords": [
+                "C Computer Systems Organization",
+                "C.1 Processor Architectures",
+                "C.1.4 Parallel Architectures",
+                "B Hardware",
+                "B.3 Memory Structures",
+                "B.3.2 Design Styles",
+                "B.3.2.g Shared memory"
+            ],
+            "Author Free Keywords": [
+                "Parallel Architecture",
+                "Distributed Caches",
+                "Cache Coherence",
+                "Data Locality"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -629,7 +1249,54 @@
                 "firstName": "Carole-Jean",
                 "lastName": "Wu"
             }
-        ]
+        ],
+        "abstract": "Increased power dissipation in computing devices has led to a sharp rise in thermal hotspots, creating thermal runaway. To reduce the additional power requirement caused by increased temperature, current approaches apply cooling mechanisms to remove heat or apply management techniques to avoid thermal emergencies by slowing down heat generation. This paper proposes to tackle the heat management problem of computing platforms with a fundamentally new approach - instead of heat removal using cooling mechanisms and heat avoidance using dynamic thermal/power management techniques, this work investigates the mechanisms to recover wasted heat into reusable energy for sustainable computing.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Temperature measurement",
+                "Cooling",
+                "Waste heat",
+                "Power distribution",
+                "Resistance heating",
+                "Energy conservation"
+            ],
+            "Index Terms": [
+                "Thermal Energy",
+                "Energy Harvesting",
+                "Thermal Energy Harvesting",
+                "Management Techniques",
+                "Computing Devices",
+                "Waste Heat",
+                "Thermoelectric Materials",
+                "Thermoelectric Devices",
+                "Thermal Runaway",
+                "Commercial Off-the-shelf",
+                "Power In Watts",
+                "Temperature Difference",
+                "Temperature Gradient",
+                "Computer System",
+                "Heat Source",
+                "Electrical Energy",
+                "Electron Hole",
+                "Voltage Difference",
+                "Heat Sink",
+                "Light Load",
+                "Thermoelectric Generators",
+                "Mean Time To Failure",
+                "Steady-state Temperature",
+                "Power Supply Unit",
+                "Increasing Failure Rate",
+                "Thermoelectric Effect",
+                "Junction Temperature",
+                "Amount Of Electricity",
+                "Electric Fan",
+                "Spatial Temperature"
+            ],
+            "Author Keywords": [
+                "Energy-aware systems",
+                "Temperature-aware design"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -688,7 +1355,65 @@
                 "firstName": "Dean M.",
                 "lastName": "Tullsen"
             }
-        ]
+        ],
+        "abstract": "Resistive Computation was suggested by [6] as an idea for tacking the power wall by replacing conventional CMOS logic with Magnetic Tunnel Junction (MTJ) based Look-Up Tables (LUTs). Spin Transfer Torque RAM (STTRAM) is an emerging CMOS-compatible non-volatile memory technology based on Magnetic Tunnel Junctions as a memory bit [3]. The principal advantage of STTRAM is that it is leakage-resistant, which is an important characteristic beyond the 45nm technology node, where leakage concerns are becoming a limiting factor in microprocessor performance. Although STTRAM is a good candidate for replacing SRAM for on-chip memory, we argue in this article MTJ-based LUTs are unnecessarily expensive in terms of area, power, and performance when implementing fixed combinational logic that does not require the reprogramming ability provided by MTJs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Table lookup",
+                "CMOS integrated circuits",
+                "Delays",
+                "Magnetic tunneling",
+                "Transistors",
+                "Power distribution",
+                "Logic gates",
+                "Low power electronics"
+            ],
+            "Index Terms": [
+                "Impedance",
+                "Lookup Table",
+                "Spin Transfer Torque",
+                "High Resistance",
+                "Low Voltage",
+                "Short-circuit",
+                "Open Circuit",
+                "Low Leakage",
+                "Least Significant Bit",
+                "Circuit Performance",
+                "Low Resistance State",
+                "High Resistance State",
+                "High Gate",
+                "Reduction In Leakage",
+                "Standby Mode",
+                "Open Path",
+                "Output Bits",
+                "Leakage Path",
+                "NAND Gate",
+                "Sense Amplifier",
+                "NOR Gate",
+                "Half Adder",
+                "Reference Tree",
+                "Threshold Voltage",
+                "Evaluation Phase",
+                "Dynamic Performance",
+                "Resistance State",
+                "Output Switching"
+            ],
+            "Author Keywords": [
+                "B.2.1 Design Styles",
+                "B.6.1.e Memory used as logic",
+                "B.7.1.a Advanced technologies",
+                "B.9.1 Low-power design",
+                "C.0.a Emerging technologies"
+            ],
+            "Author Free Keywords": [
+                "Resistive computation",
+                "magnetic-tunnel junctions",
+                "spin transfer torque RAM",
+                "MRAM",
+                "dynamic current-mode logic",
+                "leakage power"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -723,7 +1448,46 @@
                 "firstName": "Jaehyuk",
                 "lastName": "Huh"
             }
-        ]
+        ],
+        "abstract": "Since most of the current multi-core processors use a large last-level cache (LLC), efficient use of an LLC is critical for the overall performance of multi-cores. To improve the caching efficiency, page coloring is a representative software-based approach to allow the OS to control placement of pages on an LLC to improve their cache utility and to avoid conflicts among cores. However, system virtualization, with additional address translation by the hypervisor, can make page coloring techniques used by the guest OS ineffective, as guest physical addresses used by the guest OS for coloring differ from real addresses used for cache indexing in the LLCs. In this paper, we propose a novel LLC architecture to provide the guest OS with a flexible control over LLC placement in virtualized systems. The proposed vCache architecture can preserve coloring information set by the guest OS. In addition to color preservation, vCache can potentially eliminate the traditional limitation of page coloring, the cost of dynamic color changes for memory pages. By using the pollute buffer mechanism, one of the color-based cache optimization techniques, vCache shows performance improvement of benchmark applications up to 33% without degrading the performance of another co-running application in the VM.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cache storage",
+                "Virtual machine monitors",
+                "Multicore processing",
+                "Memory management",
+                "Virtualization"
+            ],
+            "Index Terms": [
+                "Pollution",
+                "Dynamic Changes",
+                "Caching",
+                "Balloon",
+                "Physical Space",
+                "Virtual Machines",
+                "Memory Space",
+                "Correctional Settings",
+                "Dynamic Memory",
+                "Physical Memory",
+                "Memory Management",
+                "Memory Regions",
+                "Binary Index",
+                "Additional Bits",
+                "Address Space",
+                "Cache Misses",
+                "Extra Bits"
+            ],
+            "Author Keywords": [
+                "B.3.2.b Cache memories",
+                "C.1.4.e Multi-core/single-chip multiprocessors",
+                "C.1.5.e Memory hierarchy"
+            ],
+            "Author Free Keywords": [
+                "Virtualization",
+                "Page coloring",
+                "Cache partitioning"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -758,7 +1522,58 @@
                 "firstName": "Ran",
                 "lastName": "Ginosar"
             }
-        ]
+        ],
+        "abstract": "Power consumption, off-chip memory bandwidth, chip area and Network on Chip (NoC) capacity are among main chip resources limiting the scalability of Chip Multiprocessors (CMP). A closed form analytical solution for optimizing the CMP cache hierarchy and optimally allocating area among hierarchy levels under such constrained resources is developed. The optimization framework is extended by incorporating the impact of data sharing on cache miss rate. An analytical model for cache access time as a function of cache size is proposed and verified using CACTI simulation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multiprocessing systems",
+                "Optimization",
+                "Resource management",
+                "Bandwidth",
+                "Analytical models",
+                "Integrated circuit modeling",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Power Consumption",
+                "Function Of Size",
+                "Multi-core",
+                "Access Time",
+                "Levels Of Hierarchy",
+                "Optimal Allocation",
+                "Optimization Framework",
+                "Chip Area",
+                "Cache Size",
+                "Network-on-chip",
+                "Cache Misses",
+                "Off-chip Memory",
+                "Objective Function",
+                "Time Constant",
+                "Power-law",
+                "Single Level",
+                "Core Area",
+                "Inequality Constraints",
+                "Minimum Area",
+                "Wide Range Of Sizes",
+                "Average Delay",
+                "Data Cache",
+                "Power-law Model",
+                "Number Of Private",
+                "Average Memory"
+            ],
+            "Author Keywords": [
+                "Chip Multiprocessor",
+                "Cache Hierarchy",
+                "Analytical Performance Models",
+                "Resource Allocation Optimization"
+            ],
+            "Author Free Keywords": [
+                "Chip Multiprocessor",
+                "Cache Hierarchy",
+                "Analytical Performance Models",
+                "Resource Allocation Optimizations"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -783,8 +1598,8 @@
             },
             {
                 "id": 37283824400,
-                "preferredName": "H\u00e5kan Grahn",
-                "firstName": "H\u00e5kan",
+                "preferredName": "Håkan Grahn",
+                "firstName": "Håkan",
                 "lastName": "Grahn"
             },
             {
@@ -793,7 +1608,39 @@
                 "firstName": "Anders",
                 "lastName": "Isberg"
             }
-        ]
+        ],
+        "abstract": "JavaScript is a sequential programming language, and Thread-Level Speculation has been proposed to dynamically extract parallelism in order to take advantage of parallel hardware. In previous work, we have showed significant speed-ups with a simple on/off speculation heuristic. In this paper, we propose and evaluate three heuristics for dynamically adapt the speculation: a 2-bit heuristic, an exponential heuristic, and a combination of these two. Our results show that the combined heuristic is able to both increase the number of successful speculations and decrease the execution time for 15 popular web applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Parallel processing",
+                "Java",
+                "Benchmark testing",
+                "Multithreading",
+                "Social network services"
+            ],
+            "Index Terms": [
+                "Heuristic",
+                "Web Application",
+                "Popular Application",
+                "Multi-core",
+                "Rollback",
+                "Regular Function",
+                "Function Calls",
+                "Regular Calls",
+                "LinkedIn"
+            ],
+            "Author Keywords": [
+                "C.1.4 Parallel Architectures",
+                "C.1.4.f Speculative multi-threading"
+            ],
+            "Author Free Keywords": [
+                "Multicore processors",
+                "Parallel Computing",
+                "Automatic Parallelization",
+                "JavaScript"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -822,7 +1669,43 @@
                 "firstName": "Yosi",
                 "lastName": "Ben Asher"
             }
-        ]
+        ],
+        "abstract": "Graphics Processing Units accelerate data-parallel graphic calculations using wide SIMD vector units. Compiling programs to use the GPU's SIMD architectures require converting multiple control flow paths into a single stream of instructions. IF-conversion is a compiler transformation, which converts control dependencies into data dependencies, and it is used by vectorizing compilers to eliminate control flow and enable efficient code generation. In this work we enhance the IF-conversion transformation by using a block unification method to improve the currently used block flattening method. Our experimental results demonstrate that our IF-conversion method is effective in reducing the number of predicated instructions and in boosting kernel execution speed.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Vectors",
+                "Merging",
+                "Computer architecture",
+                "Registers",
+                "Kernel",
+                "Graphics processing unit"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Flow Control",
+                "Single Stream",
+                "Pairing",
+                "Single Operation",
+                "Outer Loop",
+                "Arithmetic Operations",
+                "Side Branches",
+                "Execution Of Operations",
+                "Memory Operations",
+                "Domain-specific Languages",
+                "Vector Process",
+                "Kernel Computation"
+            ],
+            "Author Keywords": [
+                "Software/Software Engineering",
+                "Programming Languages",
+                "Processors",
+                "Compilers",
+                "Software/Software Engineering",
+                "Programming Languages",
+                "Processors",
+                "Code generation"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -851,7 +1734,41 @@
                 "firstName": "Sudhanva",
                 "lastName": "Gurumurthi"
             }
-        ]
+        ],
+        "abstract": "A major problem in managing large-scale datacenters is diagnosing and fixing machine failures. Most large datacenter deployments have a management infrastructure that can help diagnose failure causes, and manage assets that were fixed as part of the repair process. Previous studies identify only actual hardware replacements to calculate Annualized Failure Rate (AFR) and component reliability. In this paper, we show that service availability is significantly affected by soft failures and that this class of failures is becoming an important issue at large datacenters with minimum human intervention. Soft failures in the datacenter do not require actual hardware replacements, but still result in service downtime, and are equally important because they disrupt normal service operation. We show failure trends observed in a large datacenter deployment of commodity servers and motivate the need to modify conventional datacenter designs to help reduce soft failures and increase service availability.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data centers",
+                "Client-server systems",
+                "Hard disks",
+                "Transient analysis",
+                "Maintenance engineering",
+                "Large-scale systems",
+                "Market research"
+            ],
+            "Index Terms": [
+                "Machine Failure",
+                "Minimal Human Intervention",
+                "Actual Hardware",
+                "Diagnostic Accuracy",
+                "Cloud Computing",
+                "Increase In The Probability",
+                "Probability Of Failure",
+                "Disk Drive",
+                "Percentage Of Failure",
+                "Hardware Modifications"
+            ],
+            "Author Keywords": [
+                "C.5.5 Servers",
+                "C.4 Performance of Systems"
+            ],
+            "Author Free Keywords": [
+                "Datacenter",
+                "Reliability",
+                "Characterization",
+                "Management"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -892,7 +1809,57 @@
                 "firstName": "Jeen-Luc",
                 "lastName": "Gaudiot"
             }
-        ]
+        ],
+        "abstract": "The divide-and-conquer paradigm can be used to express many computationally significant problems, but an important subset of these applications is inherently load-imbalanced. Load balancing is a challenge for irregular parallel divide-and-conquer algorithms and efficiently solving these applications will be a key requirement for future many-core systems. To address the load imbalance issue, instead of attempting to dynamically balancing the workloads, this paper proposes an energy and performance efficient Dynamic Voltage and Frequency Scaling (DVFS) scheduling scheme, which takes into account the load imbalance behavior exhibited by these applications. More specifically, we examine the core of the divide-and-conquer paradigm and determine that the base-case-reached point where recursion stops is a suitable place in a divide-and-conquer paradigm to apply the proposed DVFS scheme. To evaluate the proposed scheme, we implement four representative irregular parallel divide-and-conquer algorithms, tree traversal, quicksort, finding primes, and n-queens puzzle, on the Intel Single-chip Cloud Computer (SCC) many-core machine. We demonstrate that, on average, the proposed scheme can improve performance by 41% while reducing energy consumption by 36% compared to the baseline running the whole computation with the default frequency configuration (400MHz).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Operating systems",
+                "Software engiineering",
+                "Distributed prcessing",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Divide-and-conquer Approach",
+                "Single-chip Cloud Computer",
+                "Reduce Energy Consumption",
+                "Frequency Scale",
+                "Load Balancing",
+                "Dynamic Frequency",
+                "Dynamic Voltage",
+                "Voltage Scaling",
+                "Load Imbalance",
+                "Benchmark",
+                "Power Consumption",
+                "Input Values",
+                "Lowest Frequency",
+                "Amount Of Input",
+                "Problem Size",
+                "Reduction In Power",
+                "Binary Tree",
+                "Parallel Implementation",
+                "Subrange",
+                "Division Phase",
+                "Workload Balance"
+            ],
+            "Author Keywords": [
+                "D.4.8.a Measurements < D.4.8 Performance < D.4 Operating Systems < D Software/Software Engineering",
+                "D Software/Software Engineering",
+                "D.4 Operating Systems",
+                "D.4.7 Organization and Design",
+                "D.4.7.b Distributed systems",
+                "D Software/Software Engineering",
+                "D.4 Operating Systems",
+                "D.4.7 Organization and Design",
+                "D.4.7.f Parallel systems"
+            ],
+            "Author Free Keywords": [
+                "DVFS",
+                "Divide-and-conquer",
+                "Intel SCC",
+                "Load Imbalance"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -921,7 +1888,39 @@
                 "firstName": "Oguz",
                 "lastName": "Ergin"
             }
-        ]
+        ],
+        "abstract": "A novel method to protect a system against errors resulting from soft errors occurring in the virtual address (VA) storing structures such as translation lookaside buffers (TLB), physical register file (PRF) and the program counter (PC) is proposed in this paper. The work is motivated by showing how soft errors impact the structures that store virtual page numbers (VPN). A solution is proposed by employing linear block encoding methods to be used as a virtual addressing scheme at link time. Using the encoding scheme to assign VPNs for VAs, it is shown that the system can tolerate soft errors using software with the help of the discussed decoding techniques applied to the page fault handler. The proposed solution can be used on all of the architectures using virtually indexed addressing. The main contribution of this paper is the decreasing of AVF for data TLB by 42.5%, instruction TLB by 40.3%, PC by 69.2% and PRF by 33.3%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Memory management",
+                "Virtual memory",
+                "Fault tolerance"
+            ],
+            "Index Terms": [
+                "Virtually",
+                "Linear Block",
+                "Operating System",
+                "Transmission Channel",
+                "Hamming Distance",
+                "Codeword",
+                "Single Error",
+                "Linear Code",
+                "Written Back",
+                "Detection Circuit",
+                "Physical Address",
+                "Hardware Structure"
+            ],
+            "Author Keywords": [
+                "B Hardware",
+                "B.3 Memory Structures",
+                "B.3.4 Reliability, Testing and Fault-Tolerance",
+                "B Hardware",
+                "B.3 Memory Structures",
+                "B.3.2 Design Styles",
+                "B.3.2.h Virtual memory"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -956,7 +1955,49 @@
                 "firstName": "Roger D.",
                 "lastName": "Chamberlain"
             }
-        ]
+        ],
+        "abstract": "Memory access times are the primary bottleneck for many applications today. This “memory wall” is due to the performance disparity between processor cores and main memory. To address the performance gap, we propose the use of custom memory subsystems tailored to the application rather than attempting to optimize the application for a fixed memory subsystem. Custom subsystems can take advantage of application-specific properties as well as memory-specific properties to improve access times or write-backs given constraints on size or power.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory management",
+                "Hardware",
+                "Performance evaluation",
+                "Multiprocessing systems",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Access Time",
+                "Core Processes",
+                "Written Back",
+                "Memory Wall",
+                "Wide Range Of Applications",
+                "Random Walk",
+                "Cycle Time",
+                "Simulated Annealing",
+                "Point Of Comparison",
+                "Memory System",
+                "Memory Trace",
+                "Optimization Goal",
+                "Word Size",
+                "Memory Component",
+                "Number Of Memory",
+                "Memory Block",
+                "General-purpose Computer"
+            ],
+            "Author Keywords": [
+                "B Hardware",
+                "B.3 Memory Structures",
+                "B.3.2 Design Styles",
+                "B Hardware",
+                "B.3 Memory Structures",
+                "B.3.3 Performance Analysis and Design Aids",
+                "B.3.3.b Simulation",
+                "C Computer Systems Organization",
+                "C.1 Processor Architectures",
+                "C.1.5 Micro-architecture implementation considerations",
+                "C.1.5.e Memory hierarchy"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -964,7 +2005,7 @@
         "publicationYear": "2014",
         "publicationDate": "28 July-Dec. 2014",
         "articleNumber": "6671573",
-        "articleTitle": "On Optimal Kernel Size for Integrated CPU-GPUs \u2014 A Case Study",
+        "articleTitle": "On Optimal Kernel Size for Integrated CPU-GPUs — A Case Study",
         "volume": "13",
         "issue": "2",
         "startPage": "81",
@@ -985,7 +2026,48 @@
                 "firstName": "Malgorzata",
                 "lastName": "Marek-Sadowska"
             }
-        ]
+        ],
+        "abstract": "Integrated CPU-GPU architectures with a fully addressable shared memory completely eliminate any CPU-GPU data transfer overhead. Since such architectures are relatively new, it is unclear what level of interaction between the CPU and GPU attains the best energy efficiency. Too coarse grained or larger kernels with fairly low CPU - GPU interaction could cause poor utilization of the shared resources while too fine grained kernels could cause frequent interrupts of GPU computation and performance degradation. Also larger kernels require larger shared resources causing increase in area and parasitics which affect the latency sensitive CPU cores. In this paper, we show the effect of granularity on the overall system's energy efficiency using a synthetic workload. We describe how our framework models a truly unified shared memory in integrated architectures with frequent CPU - GPU communication.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Energy efficiency",
+                "Memory management",
+                "Computational modeling",
+                "Memory management",
+                "Central Processing Unit"
+            ],
+            "Index Terms": [
+                "Efficient System",
+                "Energy Efficiency",
+                "Data Transfer",
+                "Multi-core",
+                "System Energy Efficiency",
+                "Power Consumption",
+                "Row Vector",
+                "Matrix Multiplication",
+                "Intermediate Results",
+                "Ground Plane",
+                "Interconnected Network",
+                "Improve Energy Efficiency",
+                "Time T2",
+                "Hardware Configuration",
+                "Data Cache",
+                "L2 Cache",
+                "Cache Misses"
+            ],
+            "Author Keywords": [
+                "C.1.3.f Heterogeneous (hybrid) systems",
+                "C.4.g Measurement",
+                "evaluation",
+                "modeling",
+                "simulation of multiple-processor systems",
+                "D.4.4 Communications Management",
+                "B.4.4.b Simulation",
+                "B.3.2.g Shared memory",
+                "B.9.2 Energy-aware systems"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -1014,7 +2096,41 @@
                 "firstName": "Ronald D.",
                 "lastName": "Barnes"
             }
-        ]
+        ],
+        "abstract": "Long-latency cache accesses cause significant performance-impacting delays for both in-order and out-of-order processor systems. To address these delays, runahead pre-execution has been shown to produce speedups by warming-up cache structures during stalls caused by long-latency memory accesses. While improving cache related performance, basic runahead approaches do not otherwise utilize results from accurately pre-executed instructions during normal operation. This simple model of execution is potentially inefficient and performance constraining. However, a previous study showed that exploiting the results of accurately pre-executed runahead instructions for out-of-order processors provide little performance improvement over simple re-execution. This work will show that, unlike out-of-order runahead architectures, the performance improvement from runahead result use for an in-order pipeline is more significant, on average, and in some situations provides dramatic performance improvements. For a set of SPEC CPU2006 benchmarks which experience performance improvement from basic runahead, the addition of result use to the pipeline provided an additional speedup of 1.14× (high - 1.48×) for an in-order processor model compared to only 1.05× (high - 1.16×) for an out-of-order one. When considering benchmarks with poor data cache locality, the average speedup increased to 1.21× for in-order compared to only 1.10× for out-of-order.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Pipeline processing",
+                "Registers",
+                "Hidden Markov models",
+                "Out of order"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Normal Operation",
+                "Model Execution",
+                "Dramatic Performance",
+                "Low Group",
+                "Multi-core",
+                "Multiple Inputs",
+                "Longer Sequences",
+                "Moderate Time",
+                "Executive Order",
+                "Execution Of Operations",
+                "Load Operation",
+                "Cache Misses"
+            ],
+            "Author Keywords": [
+                "C.1.5.c Superscalar dynamically-scheduled and statically-scheduled implementation",
+                "C.1.5.e Memory hierarchy"
+            ],
+            "Author Free Keywords": [
+                "Runahead",
+                "Pre-Execution",
+                "Memory Wall"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -1067,7 +2183,45 @@
                 "firstName": "Mateo",
                 "lastName": "Valero"
             }
-        ]
+        ],
+        "abstract": "We present for the first time the concept of per-task energy accounting (PTEA) and relate it to per-task energy metering (PTEM). We show the benefits of supporting both in future computing systems. Using the shared last-level cache (LLC) as an example: (1) We illustrate the complexities in providing PTEM and PTEA; (2) we present an idealized PTEM model and an accurate and low-cost implementation of it; and (3) we introduce a hardware mechanism to provide accurate PTEA in the cache.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multicore processing",
+                "Energy management",
+                "Energy consumption",
+                "Benchmark testing",
+                "Computational modeling",
+                "Radiation detectors",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "Energy Meter",
+                "Benchmark",
+                "Energy Consumption",
+                "Sample Set",
+                "Sampling Period",
+                "Data Center",
+                "Data Privacy",
+                "Multi-core",
+                "Per Cycle",
+                "Shared Resource",
+                "Energy Profile",
+                "Fair Share",
+                "Hardware Resources",
+                "Dynamic Energy",
+                "Accurate Energy",
+                "Data Cache",
+                "Energy Leakage",
+                "Running Tasks",
+                "CPU Utilization",
+                "Hardware Support",
+                "L2 Cache",
+                "Energy Requirements",
+                "Accurate Account",
+                "System Energy Consumption"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -1083,7 +2237,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -1099,7 +2255,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement: IEEE Computer Society.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -1115,7 +2273,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement: IEEE Computer Society",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -1131,7 +2291,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides instructions and guidelines to prospective authors who wish to submit manuscripts.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -1147,7 +2309,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides instructions and guidelines to prospective authors who wish to submit manuscripts.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -1163,7 +2327,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current staff, committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -1179,7 +2345,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents for this issue of this publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -1195,6 +2363,8 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents for this issue of the periodical.",
+        "keywords": {}
     }
 ]

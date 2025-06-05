@@ -26,7 +26,41 @@
                 "firstName": "Paul",
                 "lastName": "Walker"
             }
-        ]
+        ],
+        "abstract": "The vectorization of loops invoking math function is an important optimization that is available in most commercial compilers. This paper describes a new command line option, -fsimdmath, available in Arm Compiler for HPC [1], that enables auto-vectorization of math functions in C and C++ code, and that will also be applicable to Fortran code in a future versions. The design of -fsimdath is based on open standards and public architectural specifications. The library that provides the vector implementation of the math routines, libsimdmath. so, is shipped with the compiler and based on the SLEEF library libsleefgnuabi. so. SLEEF<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup>1https://sleef.org is a project that aims to provide a vector implementation of all C99 math functions, for a wide variety of vector extensions and architectures, across multiple platforms. This feature is very important for HPC programmers, because the vector units of new CPUs are getting wider. Whether you are targeting Intel architectures with the AVX512 vector extension, or Arm architectures with the Scalable Vector Extension, good quality auto-vectorization is of increasing importance. Although -fsimdmath has been implemented in a commercial compiler, it has been designed with portability and compatibility in mind, so that its use is not limited only to the vector extensions of the Arm architectures, but can be easily introduced as a major optimization for all the vector extensions that LLVM supports. If accepted upstream, this new feature will enlarge the set of loops that LLVM will be able to auto-vectorize.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Libraries",
+                "Computer architecture",
+                "Neon",
+                "Standards",
+                "Optimization",
+                "Program processors",
+                "User interfaces"
+            ],
+            "Index Terms": [
+                "Implementation Of Functions",
+                "Open Standards",
+                "Command Line Options",
+                "Open-source",
+                "Vector Function",
+                "Vector Graphics",
+                "Implementation Of Analysis",
+                "Code Generation",
+                "Function Calls",
+                "Open-source Community",
+                "Header File"
+            ],
+            "Author Keywords": [
+                "compilers",
+                "vector math routines",
+                "SIMD",
+                "Arm",
+                "SVE",
+                "fsimdmath",
+                "SLEEF"
+            ]
+        }
     },
     {
         "publicationNumber": "8632665",
@@ -61,7 +95,50 @@
                 "firstName": "Jeffrey S.",
                 "lastName": "Vetter"
             }
-        ]
+        ],
+        "abstract": "OpenACC was launched in 2010 as a portable programming model for heterogeneous accelerators. Although various implementations already exist, no extensible, open-source, production-quality compiler support is available to the community. This deficiency poses a serious risk for HPC application developers targeting GPUs and other accelerators, and it limits experimentation and progress for the OpenACC specification. To address this deficiency, Clacc is a recent effort funded by the US Exascale Computing Project to develop production OpenACC compiler support for Clang and LLVM. A key feature of the Clacc design is to translate OpenACC to OpenMP to build on Clang's existing OpenMP compiler and runtime support. In this paper, we describe the Clacc goals and design. We also describe the challenges that we have encountered so far in our prototyping efforts, and we present some early performance results.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tools",
+                "Runtime",
+                "Ecosystems",
+                "Production",
+                "Programming",
+                "Graphics processing units",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Source Code",
+                "Parallelization",
+                "Prescriptive",
+                "Multi-core",
+                "Original Source",
+                "Alternative Designs",
+                "Data Sharing",
+                "Subtree",
+                "Debugging",
+                "AST Levels",
+                "Test Configuration",
+                "Code Blocks",
+                "Semantic Data",
+                "Lattice Boltzmann Method",
+                "Current Prototype",
+                "Command Line Options",
+                "Parallel Loops",
+                "High-level Design"
+            ],
+            "Author Keywords": [
+                "OpenACC",
+                "OpenMP",
+                "LLVM",
+                "multicore",
+                "GPU",
+                "accelerators",
+                "source-to-source translation",
+                "compiler"
+            ]
+        }
     },
     {
         "publicationNumber": "8632665",
@@ -108,7 +185,51 @@
                 "firstName": "C.",
                 "lastName": "Bertolli"
             }
-        ]
+        ],
+        "abstract": "Domain Specific Languages or Active Library frameworks have recently emerged as an important method for gaining performance portability, where an application can be efficiently executed on a wide range of HPC architectures without significant manual modifications. Embedded DSLs such as OP2, provides an API embedded in general purpose languages such as C/C++/Fortran. They rely on source- to-source translation and code refactorization to translate the higher-level API calls to platform specific parallel implementations. OP2 targets the solution of unstructured-mesh computations, where it can generate a variety of parallel implementations for execution on architectures such as CPUs, GPUs, distributed memory clusters and heterogeneous processors making use of a wide range of platform specific optimizations. Compiler tool-chains supporting source-to-source translation of code written in mainstream languages currently lack the capabilities to carry out such wide-ranging code transformations. Clang/LLVM's *The following names are subject to trademark: LLVM™, CLANG™, NVIDIA™, P100™, CUDA™, INTEL™, Tooling library (LibTooling) has long been touted as having such capabilities but have only demonstrated its use in simple source refactoring tasks. In this paper we introduce OP2-Clang, a source-to-source translator based on LibTooling, for OP2's C/C++ API, capable of generating target parallel code based on SIMD, OpenMP, CUDA and their combinations with MPI. OP2-Clang is designed to significantly reduce maintenance, particularly making it easy to be extended to generate new parallelizations and optimizations for hardware platforms. In this research, we demonstrate its capabilities including (1) the use of LibTooling's AST matchers together with a simple strategy that use parallelization templates or skeletons to significantly reduce the complexity of generating radically different and transformed target code and (2) chart the challenges and solution to generating optimized parallelizations for OpenMP, SIMD and CUDA. Results indicate that OP2-Clang produces near-identical parallel code to that of OP2's current source-to-source translator. We believe that the lessons learnt in OP2-Clang can be readily applied to developing other similar source-to-source translators, particularly for DSLs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Tools",
+                "Libraries",
+                "DSL",
+                "Optimization",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Fortran",
+                "Parallel Implementation",
+                "Refactoring",
+                "Specific Library",
+                "Domain-specific Languages",
+                "API Calls",
+                "Source Code",
+                "Development Of Applications",
+                "Programming Model",
+                "Specific Codes",
+                "Array Structure",
+                "Loop Iteration",
+                "Code Generation",
+                "Functional Signatures",
+                "Access Mode",
+                "Unstructured Mesh",
+                "C++ Programming",
+                "Kernel Computation",
+                "Parallel Loops"
+            ],
+            "Author Keywords": [
+                "Source-to-source translation",
+                "Clang",
+                "LibTooling",
+                "CUDA",
+                "OpenMP",
+                "automatic parallelization",
+                "DSL",
+                "OP2",
+                "unstructured-mesh"
+            ]
+        }
     },
     {
         "publicationNumber": "8632665",
@@ -127,9 +248,9 @@
         "authors": [
             {
                 "id": 37085991652,
-                "preferredName": "G\u00fcray \u00d6zen",
-                "firstName": "G\u00fcray",
-                "lastName": "\u00d6zen"
+                "preferredName": "Güray Özen",
+                "firstName": "Güray",
+                "lastName": "Özen"
             },
             {
                 "id": 37085594519,
@@ -155,7 +276,49 @@
                 "firstName": "Gary",
                 "lastName": "Klimowicz"
             }
-        ]
+        ],
+        "abstract": "Graphics Processing Units (GPUs) have been widely adopted to accelerate the execution of High Performance Computing (HPC) workloads due to their enormous computational throughput, ability to execute a large number of threads inside SIMD groups in parallel, and their use of multithreaded hardware to hide long pipelining and memory access latency. However, developing applications able to exploit the high performance of GPUs requires proper code tuning. As a consequence, computer scientists proposed different approaches to simplify GPU programming, including directive-based programming models such as OpenMP and OpenACC. Their intention is to solve the aforementioned programming challenges with a directive-based approach which allows the users to insert non-executable pragma constructs that guide the compiler to handle the low-level complexities of the system. Flang, a Fortran front end for the LLVM Compiler Infrastructure, has drawn attention from the HPC community. Although Flang supports OpenMP for multicore architectures, it has no capability of offloading parallel regions to accelerator devices. In this paper, we present OpenMP Offload support in Flang targeting NVIDIA GPUs. Our goal is to investigate possible implementation strategies of OpenMP GPU offloading into Flang. The experimental results show that our implementation achieve similar performance to those of existing compilers with OpenMP GPU offload support.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Parallel processing",
+                "Programming",
+                "Kernel",
+                "Instruction sets",
+                "Multicore processing",
+                "Runtime library"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Multi-core",
+                "Programming Model",
+                "High-performance Computing",
+                "Front End",
+                "Fortran",
+                "Pipelining",
+                "Target Region",
+                "Parallelization",
+                "Flow Control",
+                "Interoperability",
+                "GB Memory",
+                "Global Variables",
+                "Code Generation",
+                "Back End",
+                "Set Of Directions",
+                "Code Blocks",
+                "Parallel Dynamics"
+            ],
+            "Author Keywords": [
+                "Flang",
+                "NVIDIA",
+                "GPU",
+                "Offload",
+                "OpenMP",
+                "Clang",
+                "LLVM",
+                "compiler"
+            ]
+        }
     },
     {
         "publicationNumber": "8632665",
@@ -184,7 +347,38 @@
                 "firstName": "Hal",
                 "lastName": "Finkel"
             }
-        ]
+        ],
+        "abstract": "Directives for the compiler such as pragmas can help programmers to separate an algorithm's semantics from its optimization. This keeps the code understandable and easier to optimize for different platforms. Simple transformations such as loop unrolling are already implemented in most mainstream compilers. We recently submitted a proposal to add generalized loop transformations to the OpenMP standard. We are also working on an implementation in LLVM/Clang/Polly to show its feasibility and usefulness. The current prototype allows applying patterns common to matrix-matrix multiplication optimizations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Metadata",
+                "Semantics",
+                "Pipelines",
+                "Syntactics",
+                "Prototypes",
+                "Program processors"
+            ],
+            "Index Terms": [
+                "Loop Transformation",
+                "Current Prototype",
+                "Metadata",
+                "Parallelization",
+                "Code Generation",
+                "Multiple Loops",
+                "Multiple Transformations",
+                "Prototype Implementation"
+            ],
+            "Author Keywords": [
+                "OpenMP",
+                "Pragma",
+                "Loop Transformation",
+                "C/C++",
+                "Clang",
+                "LLVM",
+                "Polly"
+            ]
+        }
     },
     {
         "publicationNumber": "8632665",
@@ -231,7 +425,33 @@
                 "firstName": "Hideki",
                 "lastName": "Saito"
             }
-        ]
+        ],
+        "abstract": "Currently, there are three vectorizers in the LLVM trunk: Loop Vectorizer, SLP Vectorizer, and Load-Store Vectorizer. There is a need for vectorizing functions/kernels: 1) Function calls are an integral part of programming real world application code and we cannot always rely on fully inlining them. When a function call is made from a vectorized context such as vectorized loop or vectorized function, if there are no vectorized callees available, the call has to be made to a scalar callee, one vector element at a time. At the programming model level, OpenMP declare simd is a standardized syntax to address this problem. LLVM needs a vectorizer to properly vectorize OpenMP declare simd functions. 2) Also, in the GPGPU programming model, such as OpenCL, work-item (thread) parallelism is not expressed with a loop; it is implicit in the execution of the kernels. In order to exploit SIMD parallelism at this top-level (thread-level), we need to start from vectorizing the kernel. One of the obvious ways to vectorize functions/kernels is to add a fourth vectorizer that specifically deals with function vectorization. In this paper, we argue that such a naive approach will lead us to sub-optimal performance and/or higher maintenance burden. Instead, we present a technique to take advantages of the current functionalities and future improvements of Loop Vectorizer in order to vectorize functions and kernels.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Parallel processing",
+                "Programming",
+                "Cloning",
+                "Context",
+                "Libraries",
+                "Transforms"
+            ],
+            "Index Terms": [
+                "Programming Model",
+                "Naive Approach",
+                "Function Calls",
+                "Function Parameters",
+                "3D Space",
+                "High-performance Computing",
+                "Vector Of Length",
+                "Vector Function",
+                "Use Of Parameters",
+                "Original Function",
+                "Vector Graphics",
+                "Return Value"
+            ]
+        }
     },
     {
         "publicationNumber": "8632665",
@@ -260,7 +480,53 @@
                 "firstName": "Josh",
                 "lastName": "Milthorpe"
             }
-        ]
+        ],
+        "abstract": "Measuring performance-critical characteristics of application workloads is important both for developers, who must understand and optimize the performance of codes, as well as designers and integrators of HPC systems, who must ensure that compute architectures are suitable for the intended workloads. However, if these workload characteristics are tied to architectural features that are specific to a particular system, they may not generalize well to alternative or future systems. An architecture-independent method ensures an accurate characterization of inherent program behaviour, without bias due to architecture-dependent features that vary widely between different types of accelerators. This work presents the first architecture-independent workload characterization framework for heterogeneous compute platforms, proposing a set of metrics determining the suitability and performance of an application on any parallel HPC architecture. The tool, AIWC, is a plugin for the open-source Oclgrind simulator. It supports parallel workloads and is capable of characterizing OpenCL codes currently in use in the supercomputing setting. AIWC simulates an OpenCL device by directly interpreting LLVM instructions, and the resulting metrics may be used for performance prediction and developer feedback to guide device-specific optimizations. An evaluation of the metrics collected over a subset of the Extended OpenDwarfs Benchmark Suite is also presented.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Parallel processing",
+                "Memory management",
+                "Entropy",
+                "Tools",
+                "Kernel",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Parallelization",
+                "High-performance Computing",
+                "Set Of Metrics",
+                "High-performance Computing Systems",
+                "Load Data",
+                "Problem Size",
+                "Computing Devices",
+                "Local Memory",
+                "Least Significant Bit",
+                "Lower Triangular",
+                "Memory Footprint",
+                "Instruction Set Architecture",
+                "Control Metrics",
+                "Local Entropy",
+                "Dependency Graph",
+                "Misprediction",
+                "Entropy Metrics",
+                "Total Footprint",
+                "Application Code",
+                "Load Imbalance",
+                "LU Factorization",
+                "Independent Metrics",
+                "L2 Cache",
+                "Entropy Score",
+                "Average Entropy",
+                "Tiny Size",
+                "Large-sized Problems"
+            ],
+            "Author Keywords": [
+                "workload characterisation",
+                "analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "8632665",
@@ -313,7 +579,38 @@
                 "firstName": "Stephen A.",
                 "lastName": "Jarvis"
             }
-        ]
+        ],
+        "abstract": "With the diversification of HPC architectures beyond traditional CPU-based clusters, a number of new frameworks for performance portability across architectures have arisen. One way of implementing such frameworks is to use C++ templates and lambda expressions to design loop-like functions. However, lower level programming APIs that these implementations must use are often designed with C in mind and do not specify how they interact with C++ features such as lambda expressions. This paper discusses a change to the behavior of the OpenMP specification with respect to lambda expressions such that when functions generated by lambda expressions are called inside GPU regions, any pointers used in the lambda expression correctly refer to device pointers. This change has been implemented in a branch of the Clang C++ compiler and demonstrated with two representative codes. This change has also been accepted into the draft OpenMP<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">®</sup>specification for inclusion in OpenMP 5. Our results show that the implicit mapping of lambda expressions always exhibits identical performance to an explicit mapping but without breaking the abstraction provided by the high level frameworks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "C++ languages",
+                "Programming",
+                "Graphics processing units",
+                "Standards",
+                "Performance evaluation",
+                "Kernel",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Implicit Function",
+                "Explicit Function",
+                "Target Region",
+                "Programming Model",
+                "Problem Size",
+                "Simple Implementation",
+                "Tea Leaves",
+                "Memory Space",
+                "Floating-point Operations",
+                "Single GPU",
+                "Implicit Scheme",
+                "Small Kernel",
+                "Domain-specific Languages",
+                "Number Of Arrays",
+                "Performance Penalty",
+                "Nested Data Structure"
+            ]
+        }
     },
     {
         "publicationNumber": "8632665",
@@ -338,9 +635,9 @@
             },
             {
                 "id": 37086638274,
-                "preferredName": "Yannik M\u00fcller",
+                "preferredName": "Yannik Müller",
                 "firstName": "Yannik",
-                "lastName": "M\u00fcller"
+                "lastName": "Müller"
             },
             {
                 "id": 37077374500,
@@ -356,11 +653,66 @@
             },
             {
                 "id": 37960082200,
-                "preferredName": "Matthias S. M\u00fcller",
+                "preferredName": "Matthias S. Müller",
                 "firstName": "Matthias S.",
-                "lastName": "M\u00fcller"
+                "lastName": "Müller"
             }
-        ]
+        ],
+        "abstract": "The relationship of application performance to its required development effort plays an important role in today's budget-oriented HPC environment. This effort-performance relationship is especially affected by the structure and characterization of an HPC application. We aim at a classification of HPC applications using (design) patterns for parallel programming. For an efficient analysis of parallel patterns and applicable pattern definitions, we introduce our tool PInT that is based on source code instrumentation and Clang LibTooling. Furthermore, we propose metrics to examine occurrences and compositions of patterns that can be automatically evaluated by PInT. In two case studies, we show the applicability and functionality of PInT.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruments",
+                "Tools",
+                "Arrays",
+                "Measurement",
+                "Programming",
+                "Concurrent computing"
+            ],
+            "Index Terms": [
+                "Instrumentation",
+                "HPC Applications",
+                "Pattern Analysis",
+                "Source Code",
+                "Parallelization",
+                "Relative Performance",
+                "Design Patterns",
+                "Parallel Patterns",
+                "Similarity Measure",
+                "Intersection Over Union",
+                "Mental Representations",
+                "Design Space",
+                "Hash Function",
+                "Software Engineering",
+                "Manual Analysis",
+                "Static Analysis",
+                "Front End",
+                "Occurrence Patterns",
+                "Set Of Metrics",
+                "Graph Pattern",
+                "Calculation Of Metrics",
+                "Code Section",
+                "Coding Patterns",
+                "Control Flow Graph",
+                "Rodinia",
+                "Function Calls",
+                "Breadth-first Search",
+                "Functional Nodes",
+                "Analysis Code"
+            ],
+            "Author Keywords": [
+                "Parallel Pattern",
+                "Design Pattern",
+                "Pattern Analysis",
+                "Application Classification",
+                "LLVM",
+                "Clang LibTooling",
+                "Abstract Syntax Tree",
+                "Static Code Analysis",
+                "Source Code Instrumentation",
+                "Development Effort",
+                "High-Performance Computing"
+            ]
+        }
     },
     {
         "publicationNumber": "8632665",
@@ -376,7 +728,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 5th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8632665",
@@ -392,7 +746,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 5th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8632665",
@@ -408,7 +764,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 5th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8632665",
@@ -424,6 +782,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 5th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     }
 ]

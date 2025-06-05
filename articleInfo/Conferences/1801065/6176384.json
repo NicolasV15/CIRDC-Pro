@@ -26,7 +26,48 @@
                 "firstName": "Bart",
                 "lastName": "Kienhuis"
             }
-        ]
+        ],
+        "abstract": "The move towards heterogeneous parallel computing is underway as witnessed by the emergence of novel computing platforms combining architecturally diverse components such as CPUs, GPUs and special function units. We approach mapping of streaming applications onto heterogeneous architectures using a Process Network (PN) model of computation. In this paper, we present an approach for exploiting coarse-grain pipeline parallelism exposed by a dataflow graph and describe its mapping onto CPU-GPU architecture. First experimental results conducted on a Tesla C2050 GPU indicate that use of a dataflow model on heterogeneous platforms not only enables exploiting different forms of parallelism (such as task, pipeline and data parallelism), but also has a potential to become an effective solution for reducing I/O overheads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing unit",
+                "Computational modeling",
+                "Parallel processing",
+                "Instruction sets",
+                "Kernel",
+                "Pipelines",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Heterogeneous Platforms",
+                "Stream Buffer",
+                "Computational Model",
+                "Parallelization",
+                "Network Process",
+                "Parallel Data",
+                "Parallel Forms",
+                "Heterogeneous Architecture",
+                "Transformer",
+                "Data Transfer",
+                "Data Streams",
+                "Load Data",
+                "Lexicographic",
+                "Single Thread",
+                "Iterative Point",
+                "Execution Efficiency",
+                "Running Example",
+                "Memory Transfer",
+                "Application Execution",
+                "Hybrid Platform"
+            ],
+            "Author Keywords": [
+                "Dataflow",
+                "PPN",
+                "streaming",
+                "pipeline parallelism",
+                "CUDA"
+            ]
+        }
     },
     {
         "publicationNumber": "6176384",
@@ -85,7 +126,47 @@
                 "firstName": "Theo",
                 "lastName": "Ungerer"
             }
-        ]
+        ],
+        "abstract": "Future computing systems (Teradevices) will probably contain more than 1000 cores on a single die. To exploit this parallelism, threaded dataflow execution models are promising, since they provide side-effect free execution and reduced synchronization overhead. But the terascale transistor integration of such chips make them orders of magnitude more vulnerable to voltage fluctuation, radiation, and process variations. This means reliability techniques have to be an essential part of such future systems, too.In this paper, we conceptualize a fault tolerant architecture for a scalable threadeddataflow system. We provide methods to detect permanent, intermittent, and transientfaults during the execution. Furthermore, we propose a recovery technique for dataflow threads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Message systems",
+                "Instruction sets",
+                "Computer architecture",
+                "Hardware",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Fault detection"
+            ],
+            "Index Terms": [
+                "Dataflow Systems",
+                "Fault-tolerant",
+                "Model Execution",
+                "Transient Faults",
+                "Global Status",
+                "Flow Control",
+                "Multi-core",
+                "Core Level",
+                "Interconnected Network",
+                "Low Latency",
+                "Multiple Defects",
+                "Forward Error Correction",
+                "Node Level",
+                "Single Thread",
+                "Recovery Mechanisms",
+                "Reliable Manner",
+                "Checkpointing",
+                "Multiple Bits",
+                "Spatial Redundancy"
+            ],
+            "Author Keywords": [
+                "reliability",
+                "fault tolerance",
+                "dataflow",
+                "many-core",
+                "teradevice"
+            ]
+        }
     },
     {
         "publicationNumber": "6176384",
@@ -132,7 +213,56 @@
                 "firstName": "Guang",
                 "lastName": "Gao"
             }
-        ]
+        ],
+        "abstract": "The many-core revolution brought forward by recent advances in computer architecture has created immense challenges in the writing of parallel programs for High Performance Computing (HPC). Development of parallel HPC programs remains an art, and a universaldoctrine for synchronization, scheduling and execution in general has not been found for many-core/multi-core architectures. These issues are exacerbated by the popularity of traditional execution models derived from the serial-programming school of thought.Previous solutions for parallel programming, such as OpenMP, MPI and similar models, require significant effort from the programmer to achieve high performance.This paper provides an introduction to the Time Iterated Dependency Flow (TIDeFlow) model, a parallel execution model inspired by dataflow, and a description of its associated runtime system. TIDeFlow was designed forefficient development of high performance parallel programs for many-core architectures. The TIDeFlow execution model was designed to efficiently express (1) parallel loops, (2) dependencies (data, control or other) between parallel loops and (3) to allow composability of programs.TIDeFlow is a work in progress. This paper presents an introduction to the TIDeFlow execution model and shows examples and preliminary results to illustrate the qualities of TIDeFlow. The main contributions of this paper are:1) A brief description of the TIDeFlow execution model, and its programming model,2) A description of the implementation of the TIDeFlow runtime system and its capabilities and 3) Preliminary results showing the suitability of TIDeFlow to express parallel programs in many-core architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Computational modeling",
+                "Program processors",
+                "Kernel",
+                "Data models",
+                "Computer architecture",
+                "Programming"
+            ],
+            "Index Terms": [
+                "Model Execution",
+                "Synchronization",
+                "Parallelization",
+                "Programming Model",
+                "High-performance Computing",
+                "Work In Progress",
+                "Parallel Loops",
+                "Scalable",
+                "Time Instants",
+                "State Machine",
+                "Memory Model",
+                "Finite-difference Time-domain",
+                "Management Tasks",
+                "Program Execution",
+                "Loop Iteration",
+                "Intermediate Representation",
+                "Decentralized System",
+                "Termination Signal",
+                "Petri Nets",
+                "State Diagram",
+                "Tile Size",
+                "Subject Of Publications",
+                "Pipelining",
+                "System Overhead"
+            ],
+            "Author Keywords": [
+                "TIDeFlow",
+                "dataflow",
+                "execution model",
+                "runtime system",
+                "graph languages",
+                "codelets",
+                "iterated dataflow",
+                "dependency graph",
+                "parallel programming"
+            ]
+        }
     },
     {
         "publicationNumber": "6176384",
@@ -161,7 +291,59 @@
                 "firstName": "Scott B.",
                 "lastName": "Baden"
             }
-        ]
+        ],
+        "abstract": "In the current practice, scientific programmer and HPC users are required to develop code that exposes a high degree of parallelism, exhibits high locality, dynamically adapts to the available resources, and hides communication latency. Hiding communication latency is crucial to realize the potential of today's distributed memory machines with highly parallel processing modules, and technological trends indicate that communication latencies will continue to be an issue as the performance gap between computation and communication widens. However, under Bulk Synchronous Parallel models, the predominant paradigm in scientific computing, scheduling is embedded into the application code. All the phases of a computation are defined and laid out as a linear sequence of operations limiting overlap and the program's ability to adapt to communication delays. In this paper we present an alternative model, called Tarragon, to overcome the limitations of Bulk Synchronous Parallelism. Tarragon, which is based on dataflow, targets latency tolerant scientific computations. Tarragon supports a task-dependency graph abstraction in which tasks, the basic unit of computation, are organized as a graph according to their data dependencies, i.e. task precedence. In addition to the task graph, Tarragon supports metadata abstractions, annotations to the task graph, to express locality information and scheduling policies to improve performance. Tarragon's functionality and underlying programming methodology are demonstrated on three classes of computations used in scientific domains: structured grids, sparse linear algebra, and dynamic programming. In the application studies, Tarragon implementations achieve high performance, in many cases exceeding the performance of equivalent latency-tolerant, hard coded MPI implementations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Programming",
+                "Object oriented modeling",
+                "Processor scheduling",
+                "Hardware",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Synchronization",
+                "Metadata",
+                "Computer Science",
+                "Regular Grid",
+                "Dynamic Programming",
+                "Linear Algebra",
+                "Communication Latency",
+                "Message Passing Interface",
+                "Graph Abstraction",
+                "Scoring Function",
+                "Parallelization",
+                "Flow Control",
+                "Programming Model",
+                "Graphical Analysis",
+                "Design Choices",
+                "Remainder Of This Section",
+                "Communication Cost",
+                "Alignment Score",
+                "Poisson Equation",
+                "Partial Order",
+                "Ghost Cells",
+                "Multi-threaded",
+                "Critical Path",
+                "Upper Triangular",
+                "LU Factorization",
+                "Refactoring",
+                "Constant Cost",
+                "Recurrence Relation",
+                "Model Execution",
+                "Implicit Function"
+            ],
+            "Author Keywords": [
+                "runtime",
+                "dataflow",
+                "programming model",
+                "distributed computing",
+                "scientific computing",
+                "high performance computing",
+                "parallel computing"
+            ]
+        }
     },
     {
         "publicationNumber": "6176384",
@@ -202,7 +384,26 @@
                 "firstName": "Costas",
                 "lastName": "Kyriacou"
             }
-        ]
+        ],
+        "abstract": "Threaded Data-Flow systems schedule threads based on data-availability i.e. a thread can be scheduled for execution only after all its inputs have been generated by its producer threads. This requires that all data dependencies are resolved. Two approaches are typically utilized for resolving the dependencies:- Compile-time: which is efficient but cannot handle programs with run-time determined dependencies- Run-time: which can handle run-time determined dependencies but incurs run-time overheads even when part of the dependencies can be determined at compile-timeIn this work, we combine the two approaches. The compiler (or the programmer) attempts to resolve all the dependencies and encodes them into the Data-Flow dependency graph. For any unresolved dependency, it generates a helper thread that resolves the dependency at run-time and updates the graph accordingly with the help of I-Structures. Thus, it gains the benefits of both compile-time and run-time dependency resolution. This can be also utilized to improve the programmability, in the case where the programmer has to manually resolve data-dependencies, by deferring part of the dependency resolution to run-time.In this paper we describe our approach and present the implementation and evaluation on the Data-Driven Multithreading Virtual Machine (DDM-VM). The evaluation demonstrates that the overhead of the run-time dependency resolution can increase the execution time for small thread granularities, but it can be mostly eliminated when the thread granularity increases.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Microprocessors",
+                "Arrays",
+                "Multithreading",
+                "Message systems"
+            ],
+            "Index Terms": [
+                "Topological States",
+                "Runtime Dependencies",
+                "Hash Function",
+                "Array Elements",
+                "Single Thread",
+                "Read Operation",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "6176384",
@@ -233,9 +434,9 @@
             },
             {
                 "id": 37087565961,
-                "preferredName": "Mikel Luj\u00b4n",
+                "preferredName": "Mikel Luj´n",
                 "firstName": "Mikel",
-                "lastName": "Luj\u00b4n"
+                "lastName": "Luj´n"
             },
             {
                 "id": 37343949800,
@@ -243,7 +444,41 @@
                 "firstName": "Ian",
                 "lastName": "Watson"
             }
-        ]
+        ],
+        "abstract": "Multi-core processors have renewed interest in programming models which can efficiently exploit general purpose parallelism. Data-Flow is one such model which has demonstrated significant potential in the past. However, it is generally associated with functional styles of programming which do not deal well with shared mutable state. There have been a number of attempts to introduce state into Data-Flow models and functional languages but none have proved able to maintain the simplicity and efficiency of pure Data-Flow parallelism. Transactional memory is a concurrency control mechanism that simplifies sharing data when developing parallel applications while at the same time promises to deliver affordable performance. In this paper we report our experience of integrating Transactional Memory and Data-Flow. The ability of the Data-Flow model to expose large amounts of parallelism is maintained while Transactional Memory provides simplified sharing of mutable data in those circumstances where it is important to the expression of the program. The isolation property of transactions ensures that the exploitation of Data-Flow parallelism is not compromised.In this study we extend the TFlux platform, a Data-Driven Multi-threading implementation, to support transactions. We achieve this by proposing new pragmas that allow the programmer to specify transactions. In addition we extend the runtime functionality by integrating a software transactional memory library with TFlux. To test the proposed system, we ported two applications that require transactional memory: Random Counter and Labyrinth an implementation of Lee's parallel routing algorithm. Our results show good opportunities for scaling when using the integration of the two models.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Parallel processing",
+                "Instruction sets",
+                "Monitoring",
+                "Complexity theory",
+                "Radiation detectors"
+            ],
+            "Index Terms": [
+                "Implementation Of Algorithm",
+                "Data Sharing",
+                "Labyrinth",
+                "Steps 1",
+                "Parallelization",
+                "Mapping Approach",
+                "Grid Points",
+                "Linear Solver",
+                "Linear Algebra",
+                "Monitoring Of Variables",
+                "Global Grid",
+                "Linearizable",
+                "Array Position",
+                "Application Execution"
+            ],
+            "Author Keywords": [
+                "Programming models",
+                "Future Multi-cores",
+                "Transactional Memory",
+                "Data-Flow model",
+                "Data-Driven Multi-threading"
+            ]
+        }
     },
     {
         "publicationNumber": "6176384",
@@ -278,7 +513,55 @@
                 "firstName": "Andrew",
                 "lastName": "Lumsdaine"
             }
-        ]
+        ],
+        "abstract": "As the emerging trends in hardware architectureguided by performance, power efficiency and complexity driveus towards massive processor parallelism, there has been arenewed interest in dataflow models for large-scale computing.Dataflow programming models, being declarative in nature,lead to improved programmability at scale by implicitly man-aging the computation and communication for the application.In this paper, we present GoDEL, a multidirectional dataflowexecution model based on propagation networks. Propaga-tor networks allow general-purpose parallel computation onpartial data. Implemented with efficiency and programmerproductivity as its goals, we describe the syntax and semantics of the GoDEL language and discuss its implementation and runtime. We further discuss representative examples from various programming paradigms that are encompassed by and benefit from the flexibility in the multidirectional execution model.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Programming",
+                "Mathematical model",
+                "Parallel processing",
+                "Semantics",
+                "Computer architecture",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Model Execution",
+                "Semantic",
+                "Propionate",
+                "Parallelization",
+                "Representative Examples",
+                "Network Propagation",
+                "Programming Paradigm",
+                "General-purpose Computer",
+                "Programming Language",
+                "General Function",
+                "Flow Data",
+                "Values Of Cells",
+                "General Purpose",
+                "Directed Graph",
+                "Newton Method",
+                "Level Of Granularity",
+                "Directed Acyclic Graph",
+                "Real-valued Function",
+                "Emptiness",
+                "Newton-Raphson Method",
+                "Program Logic",
+                "Domain-specific Languages",
+                "Reverse Network",
+                "Task Dependency",
+                "Merge Function",
+                "Merge Operation",
+                "Multiple Paradigms",
+                "Application Execution"
+            ],
+            "Author Keywords": [
+                "Parallel programming",
+                "Computer languages",
+                "Runtime library",
+                "Concurrent computing"
+            ]
+        }
     },
     {
         "publicationNumber": "6176384",
@@ -319,7 +602,43 @@
                 "firstName": "Vivek",
                 "lastName": "Sarkar"
             }
-        ]
+        ],
+        "abstract": "Stream processing is a special form of the dataflow execution model that offers extensive opportunities for optimization and automatic parallelization. To take full advantage of the paradigm, however, typically requires programmers to learn a new language and re-implement their applications. This work shows that it is possible to exploit streaming as a safe and automatic optimization of a more general dataflow-based modelâ€\"one in which computation kernels are written in standard, general-purpose languages and organizedas a coordination graph.We propose Streaming Concurrent Collections (SCnC), a streaming system that can efficiently run a subset of programs supported by Concurrent Collections (CnC). CnC is a general purpose parallel programming paradigm with a task-parallel look and feel but based on dataflow graph principles. Its expressiveness extends to any arbitrary task graph. Integration of these models would allow application developers to benefit from the performance and tight memory footprint of stream parallelism for eligible subgraphs of their application.In this paper we formally define the requirements (streaming access patterns) needed for using SCnC, and outline a static decision procedure for identifying and processing eligible SCnC subgraphs.We present initial results on an prototype implementation that show that transitioning from general CnC to SCnC leads to a throughput increase of up to 40x for certain benchmarks, and also enable programs with large data sizes to execute in available memory for cases where CnC execution may run out of memory.",
+        "keywords": {
+            "IEEE Keywords": [
+                "System recovery",
+                "Runtime",
+                "Synchronization",
+                "Programming",
+                "Computational modeling",
+                "Shape",
+                "Prototypes"
+            ],
+            "Index Terms": [
+                "Parallel Dynamics",
+                "Parallelization",
+                "Stream Processing",
+                "Access Patterns",
+                "Increase In Throughput",
+                "Prototype Implementation",
+                "Synchronization",
+                "Deterministic",
+                "Programming Model",
+                "Beamforming",
+                "Input Size",
+                "Edge Detection",
+                "Divisible",
+                "Buffer Size",
+                "Code Generation",
+                "Prime Number",
+                "Application Code"
+            ],
+            "Author Keywords": [
+                "streaming",
+                "dataflow",
+                "dynamic task parallelism"
+            ]
+        }
     },
     {
         "publicationNumber": "6176384",
@@ -335,7 +654,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6176384",
@@ -351,7 +672,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6176384",
@@ -367,7 +690,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "The First International workshop on \"Data-Flow Models (DFM) for extreme scale computing\" was held in Galveston Island, Texas, USA in October 2011 in conjunction with PACT 2011. Its purpose was to bring together those researchers interested in novel computational models based on Data-Flow principles of execution. The switch to multi-core systems has raised concurrency to the level of a major issue if we are to use the increasing number of cores in a chip. This workshop and these proceedings are meant to appeal to researchers and practitioners interested in the design of new models of execution. We feel that data-flow principles are to be vital in the design not only of multicore systems, but also in the much heralded Exascale systems. Therefore, we expect that this will be only the beginning of an exciting thread of research and we look forward to much successful work along these lines.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6176384",
@@ -383,7 +708,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Proceedings - 2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing - DFM 2011.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6176384",
@@ -399,7 +726,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "The publication offers a note of thanks and lists its reviewers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6176384",
@@ -415,7 +744,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Table of Contents of the 2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing - DFM 2011.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6176384",
@@ -431,7 +762,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6176384",
@@ -447,7 +780,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "The author index contains an entry for each author and coauthor included in the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6176384",
@@ -463,7 +798,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Copyright (c) 2012 by The Institute of Electrical and Electronics Engineers, Inc. All rights reserved. Copyright and Reprint Permissions: Abstracting is permitted with credit to the source. Libraries may photocopy beyond the limits of US copyright law, for private use of patrons, those articles in this volume that carry a code at the bottom of the first page, provided that the per-copy fee indicated in the code is paid through the Copyright Clearance Center, 222 Rosewood Drive, Danvers, MA 01923.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6176384",
@@ -479,6 +816,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2011 First Workshop on Data-Flow Execution Models for Extreme Scale Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of panel members.",
+        "keywords": {}
     }
 ]

@@ -32,7 +32,54 @@
                 "firstName": "K.",
                 "lastName": "Lai"
             }
-        ]
+        ],
+        "abstract": "Writing concurrent programs is difficult because of the complexity of ensuring proper synchronization. Conventional lock-based synchronization suffers from well-known limitations, so researchers have considered nonblocking transactions as an alternative. Recent hardware proposals have demonstrated how transactions can achieve high performance while not suffering limitations of lock-based mechanisms. However, current hardware proposals require programmers to be aware of platform-specific resource limitations such as buffer sizes, scheduling quanta, as well as events such as page faults, and process migrations. If the transactional model is to gain wide acceptance, hardware support for transactions must be virtualized to hide these limitations in much the same way that virtual memory shields the programmer from platform-specific limitations of physical memory. This paper proposes virtual transactional memory (VTM), a user-transparent system that shields the programmer from various platform-specific resource limitations. VTM maintains the performance advantage of hardware transactions, incurs low overhead in time, and has modest costs in hardware support. While many system-level challenges remain, VTM takes a step toward making transactional models more widely acceptable.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Yarn",
+                "Programming profession",
+                "Proposals",
+                "Switches",
+                "Microarchitecture",
+                "Scheduling",
+                "Computer architecture",
+                "Delay",
+                "Read-write memory"
+            ],
+            "Index Terms": [
+                "Buffer Size",
+                "Transactional Model",
+                "Physical Memory",
+                "Hardware Support",
+                "Virtual Memory",
+                "Data Structure",
+                "Operating System",
+                "Original Position",
+                "Virtual World",
+                "Hash Function",
+                "Common Case",
+                "Local Memory",
+                "Single Thread",
+                "Hardware Resources",
+                "Critical Path",
+                "Conflict Detection",
+                "Physical Address",
+                "Bloom Filter",
+                "Address Space",
+                "Cache Misses",
+                "Context Switching",
+                "Cache Hit",
+                "Transactive Systems",
+                "Coprocessor",
+                "Buffer Overflow",
+                "Incoming Requests",
+                "Memory Block",
+                "Multi-threaded",
+                "Shared Object",
+                "Conflict Resolution"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -67,7 +114,51 @@
                 "firstName": "D.M.",
                 "lastName": "Tullsen"
             }
-        ]
+        ],
+        "abstract": "This paper examines the area, power, performance, and design issues for the on-chip interconnects on a chip multiprocessor, attempting to present a comprehensive view of a class of interconnect architectures. It shows that the design choices for the interconnect have significant effect on the rest of the chip, potentially consuming a significant fraction of the real estate and power budget. This research shows that designs that treat interconnect as an entity that can be independently architected and optimized would not arrive at the best multi-core design. Several examples are presented showing the need for careful co-design. For instance, increasing interconnect bandwidth requires area that then constrains the number of cores or cache sizes, and does not necessarily increase performance. Also, shared level-2 caches become significantly less attractive when the overhead of the resulting crossbar is accounted for. A hierarchical bus structure is examined which negates some of the performance costs of the assumed base-line architecture.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Computer architecture",
+                "Space technology",
+                "Delay",
+                "Power system interconnection",
+                "Joining processes",
+                "Space exploration",
+                "Computer science",
+                "Design engineering",
+                "Power engineering and energy"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Multi-core Architecture",
+                "Real Estate",
+                "Cache Size",
+                "L2 Cache",
+                "Arbitration",
+                "Metal Layer",
+                "Memory Control",
+                "Multiple Cores",
+                "Dynamic Power",
+                "Written Back",
+                "Data Cache",
+                "Area Overhead",
+                "Minimum Latency",
+                "On-chip Memory",
+                "High Plane",
+                "Local Clock",
+                "Interconnected Areas",
+                "Metallic Plane",
+                "Non-uniform Density",
+                "Data Bus",
+                "Power Overhead",
+                "Number Of Wires",
+                "Cache Hit",
+                "Point-to-point Links",
+                "Total Power",
+                "Bandwidth Requirements"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -96,7 +187,48 @@
                 "firstName": "K.",
                 "lastName": "Asanovic"
             }
-        ]
+        ],
+        "abstract": "In this paper, we consider tiled chip multiprocessors (CMP) where each tile contains a slice of the total on-chip L2 cache storage and tiles are connected by an on-chip network. The L2 slices can be managed using two basic schemes: 1) each slice is treated as a private L2 cache for the tile; 2) all slices are treated as a single large L2 cache shared by all tiles. Private L2 caches provide the lowest hit latency but reduce the total effective cache capacity, as each tile creates local copies of any line it touches. A shared L2 cache increases the effective cache capacity for shared data, but incurs long hit latencies when L2 data is on a remote tile. We present a new cache management policy, victim replication, which combines the advantages of private and shared schemes. Victim replication is a variant of the shared scheme which attempts to keep copies of local primary cache victims within the local L2 cache slice. Hits to these replicated copies reduce the effective latency of the shared L2 cache, while retaining the benefits of a higher effective capacity for shared data. We evaluate the various schemes using full-system simulation of both single-threaded and multi-threaded benchmarks running on an 8-processor tiled CMP. We show that victim replication reduces the average memory access latency of the shared L2 cache by an average of 16% for multi-threaded benchmarks and 24% for single-threaded benchmarks, providing better overall performance than either private or shared schemes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wire",
+                "Delay",
+                "Tiles",
+                "Cache storage",
+                "Yarn",
+                "Computer science",
+                "Artificial intelligence",
+                "Laboratories",
+                "Throughput",
+                "Clocks"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Average Latency",
+                "Data Cache",
+                "Access Latency",
+                "Network-on-chip",
+                "L2 Cache",
+                "Replica",
+                "Work Settings",
+                "Memory System",
+                "Checkers",
+                "Local Nodes",
+                "Caching",
+                "Remote Data",
+                "Network Congestion",
+                "Clock Cycles",
+                "Remote Memory",
+                "Additional Tag",
+                "Benchmark Suite",
+                "Cache Size",
+                "Additional Bits",
+                "Dancehall",
+                "Cache Misses",
+                "Line L2",
+                "Off-chip Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -149,7 +281,54 @@
                 "firstName": "R.",
                 "lastName": "Rangan"
             }
-        ]
+        ],
+        "abstract": "Processor designers require estimates of the architectural vulnerability factor (AVF) of on-chip structures to make accurate soft error rate estimates. AVF is the fraction of faults from alpha particle and neutron strikes that result in user-visible errors. This paper shows how to use a performance model to calculate the AVF of address-based structures, using a data cache, a data translation buffer, and a store buffer as examples. We describe how to perform a detailed breakdown of lifetime components (e.g., fill-to-read, read-to-evict) of bits in these structures into ACE (required for architecturally correct execution), un-ACE (unnecessary for ACE), and unknown components. This lifetime analysis produces best estimate AVFs for these three structures' data arrays of 6%, 36%, and 4%, respectively. We then present a new technique, hamming-distance-one analysis, and show that it predicts surprisingly low best estimate AVFs of 0.41%, 3%, and 7.7% for the structures' tag arrays. Finally, using our lifetime analysis framework, we show how two AVF reduction techniques - periodic flushing and incremental scrubbing - can reduce the AVF by converting ACE lifetime components into un-ACE without affecting performance significantly.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Buffer storage",
+                "Sun",
+                "Computer science",
+                "Computer architecture",
+                "Computer errors",
+                "Hamming distance",
+                "Computer aided manufacturing",
+                "CADCAM",
+                "Statistics",
+                "Data analysis"
+            ],
+            "Index Terms": [
+                "Error Rate",
+                "Array Data",
+                "Unknown Components",
+                "Data Cache",
+                "Lifetime Analysis",
+                "Breakdown Of Components",
+                "Benchmark",
+                "False Positive",
+                "Edge Effects",
+                "Error Detection",
+                "Maximum Loss",
+                "Bit Error",
+                "Random Access Memory",
+                "Cool-down",
+                "Masked Images",
+                "False Positive Cases",
+                "Block A",
+                "False Negative Cases",
+                "Single Error",
+                "Parity-check",
+                "Written Back",
+                "Data Buffer",
+                "Bytes Of Data",
+                "False Matches",
+                "Entire Block",
+                "Memory Hierarchy",
+                "Negative Cases",
+                "Scrubber",
+                "False Events",
+                "False Negative"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -184,7 +363,54 @@
                 "firstName": "B.",
                 "lastName": "Calder"
             }
-        ]
+        ],
+        "abstract": "Significant time is spent by companies trying to reproduce and fix the bugs that occur for released code. To assist developers, we propose the BugNet architecture to continuously record information on production runs. The information collected before the crash of a program can be used by the developers working in their execution environment to deterministically replay the last several million instructions executed before the crash. BugNet is based on the insight that recording the register file contents at any point in time, and then recording the load values that occur after that point can enable deterministic replaying of a program's execution. BugNet focuses on being able to replay the application's execution and the libraries it uses, but not the operating system. But our approach provides the ability to replay an application's execution across context switches and interrupts. Hence, BugNet obviates the need for tracking program I/O, interrupts and DMA transfers, which would have otherwise required more complex hardware support. In addition, BugNet does not require a final core dump of the system state for replaying, which significantly reduces the amount of data that must be sent back to the developer.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Debugging",
+                "Computer bugs",
+                "Computer crashes",
+                "Hardware",
+                "Core dumps",
+                "Computer architecture",
+                "Software systems",
+                "Application software",
+                "Computer science",
+                "Continuous production"
+            ],
+            "Index Terms": [
+                "Debugging",
+                "Program Execution",
+                "Operating System",
+                "Loading Values",
+                "Production Run",
+                "Record Information",
+                "Execution Of Operations",
+                "Application Execution",
+                "Context Switching",
+                "Logistics",
+                "Amount Of Space",
+                "Local Memory",
+                "Single Thread",
+                "Memory Space",
+                "Table Entries",
+                "Position Table",
+                "Memory Operations",
+                "Shared Object",
+                "Beginning Of Interval",
+                "Multiple Checkpoints",
+                "Start Of Interval",
+                "Shared Memory",
+                "Counter Value",
+                "L2 Cache",
+                "System Calls",
+                "System Crashes",
+                "Address Space",
+                "Header Information",
+                "Application Code",
+                "Sequence Of Instructions"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -219,7 +445,40 @@
                 "firstName": "T.N.",
                 "lastName": "Vijaykumar"
             }
-        ]
+        ],
+        "abstract": "Chip multiprocessors substantially increase capacity pressure on the on-chip memory hierarchy while requiring fast access. Neither private nor shared caches can provide both large capacity and fast access in CMPs. We observe that compared to symmetric multiprocessors (SMPs), CMPs change the latency capacity tradeoff in two significant ways. We propose three novel ideas to exploit the changes: (1) Through placing copies close to requestors allows fast access for read-only sharing, the copies also reduce the already-limited on-chip capacity in CMPs. We propose controlled replication to reduce capacity pressure by not making extra copies in some cases, and obtaining the data from an existing on-chip copy. This option is not suitable for SMPs because obtaining data from another processor is expensive and capacity is not limited to on-chip storage. (2) Unlike SMPs, CMPs allow fast on-chip communication between processors for read-write sharing. Instead of incurring slow access to read-write shared data through coherence misses as do SMPs, we propose in situ communication to provide fast access without making copies or incurring coherence misses. (3) Accessing neighbor's caches is not as expensive in CMPs as it is in SMPs. We propose capacity stealing in which private data that exceeds a core's capacity is placed in a neighboring cache with less capacity demand. To incorporate our ideas, we use a hybrid of private, per-processor tag arrays and a shared data array. Because the shared data is slow, we employ non-uniform access and distance associativity from previous proposals to hold frequently-accessed data in regions close to the requestor. We extend the previously-proposed non-uniform access with replacement and placement using distance associativity (NuRAPID) ro CMPs, and call our cache CMP-NuRAPID. Our result show that for a 4-core CMP with 8 MB cache, CMP-NuRAPID improves performance by 13% over a shared cache and 8% over private caches for three commercial multithreaded workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wire",
+                "Pressure control",
+                "Proposals",
+                "Delay effects",
+                "Costs"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Data Privacy",
+                "Array Data",
+                "Data Sharing",
+                "Fast Access",
+                "Demand Capacity",
+                "Data Cache",
+                "Single Copy",
+                "Multiple Copies",
+                "Hybrid Structure",
+                "Promotion Policies",
+                "Data Block",
+                "Capacity Utilization",
+                "Cut-and-paste",
+                "Incorrect Data",
+                "Space Of Interest",
+                "Uncontrolled Replication",
+                "Multiple Tags",
+                "L2 Cache",
+                "Cache Misses",
+                "Replacement Policy"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -260,7 +519,54 @@
                 "firstName": "A.K.",
                 "lastName": "Gupta"
             }
-        ]
+        ],
+        "abstract": "Evolving semiconductor and circuit technology has greatly increased the pin bandwidth available to a router chip. In the early 90s, routers were limited to 10Gb/s of pin bandwidth. Today 1Tb/s is feasible, and we expect 20Tb/s of I/O bandwidth by 2010. A high-radix router that provides many narrow Dalports is more effective in converting pin band-width to reduced latency and reduced cost than the alternative of building a router with a few wide ports. However, increasing the radix (or degree) of a router raises several challenges as internal switches and allocators scale as the square of the radix. This paper addresses these challenges by proposing and evaluating alternative microarchitectures for high radix routers. We show that the use of a hierarchical switch organization with per-virtual-channel buffers in each subswitch enables an area savings of 40% compared to a fully buffered crossbar and a throughput increase of 20-60% compared to a conventional crossbar implementation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microarchitecture",
+                "Bandwidth",
+                "Switches",
+                "Delay",
+                "Costs",
+                "Multiprocessor interconnection networks",
+                "Throughput",
+                "Buildings",
+                "Laboratories",
+                "Research and development"
+            ],
+            "Index Terms": [
+                "Microarchitecture",
+                "Increase In Throughput",
+                "Technological Advances",
+                "Aspect Ratio",
+                "Growth Area",
+                "Interconnected Network",
+                "Control Logic",
+                "Output Ports",
+                "Storage Area",
+                "Traffic Patterns",
+                "Routing Algorithm",
+                "Free Buffer",
+                "Bandwidth Increases",
+                "Local Output",
+                "Output Buffer",
+                "Virtual Channel",
+                "Quadratic Growth",
+                "Credit Information",
+                "Baseline Architecture",
+                "Output Switching",
+                "Hop Count",
+                "Multiple Chips",
+                "Total Bandwidth",
+                "Buffer Size",
+                "Time-of-flight",
+                "Low Cost",
+                "Single Chip",
+                "Network Cost",
+                "Channel Network",
+                "Narrow Channel"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -301,7 +607,54 @@
                 "firstName": "J.A.",
                 "lastName": "Rivers"
             }
-        ]
+        ],
+        "abstract": "Increased power densities (and resultant temperatures) and other effects of device scaling are predicted to cause significant lifetime reliability problems in the near future. In this paper, we study two techniques that leverage microarchitectural structural redundancy for lifetime reliability enhancement. First, in structural duplication (SD), redundant microarchitectural structures are added to the processor and designated as spares. Spare structures can be turned on when the original structure fails, increasing the processor's lifetime. Second, graceful performance degradation (GPD) is a technique which exploits existing microarchitectural redundancy for reliability. Redundant structures that fail are shut down while still maintaining functionality, thereby increasing the processor's lifetime, but at a lower performance. Our analysis shows that exploiting structural redundancy can provide significant reliability benefits, and we present guidelines for efficient usage of these techniques by identifying situations where each is more beneficial. We show that GPD is the superior technique when only limited performance or cost resources can be sacrificed for reliability. Specifically, on average for our systems and applications, GPD increased processor reliability to 1.42 times the base value for less than a 5% loss in performance. On the other hand, for systems where reliability is more important than performance or cost, SD is more beneficial. SD increases reliability to 3.17 times the base value for 2.25 times the base cost, for our applications. Finally, a combination of the two techniques (SD+GPD) provides the highest reliability benefit.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Redundancy",
+                "Microarchitecture",
+                "Costs",
+                "Temperature",
+                "Process design",
+                "Rivers",
+                "Computer science",
+                "Degradation",
+                "Maintenance",
+                "Guidelines"
+            ],
+            "Index Terms": [
+                "National Science Foundation",
+                "Reliability Enhancement",
+                "Lifetime Reliability",
+                "Performance Degradation",
+                "Fault-tolerant",
+                "Performance Loss",
+                "Microarchitecture",
+                "Structural Redundancy",
+                "Superior Technique",
+                "Monte Carlo Simulation",
+                "Lognormal",
+                "Exponential Distribution",
+                "Failure Mechanism",
+                "Heat Sink",
+                "Error Tolerance",
+                "Large Benefits",
+                "Array Structure",
+                "Overhead Costs",
+                "Lower Failure Rate",
+                "Gate Oxide",
+                "Mean Time To Failure",
+                "Area Overhead",
+                "Single Processor",
+                "Amount Of Degradation",
+                "Electromigration",
+                "Extra Structure",
+                "Cost Trade-off",
+                "L2 Cache",
+                "Monte Carlo Simulation Method",
+                "Level Of Performance"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -330,7 +683,43 @@
                 "firstName": "P.",
                 "lastName": "Stenstrom"
             }
-        ]
+        ],
+        "abstract": "Lossless data compression techniques can potentially free up more than 50% of the memory resources. However, previously proposed schemes suffer from high access costs. The proposed main-memory compression scheme practically eliminates performance losses of previous schemes by exploiting a simple and yet effective compression scheme, a highly-efficient structure for locating a compressed block in memory, and a hierarchical memory layout that allows compressibility of blocks to vary with a low fragmentation overhead. We have evaluated an embodiment of the proposed scheme in detail using 14 integer and floating point applications from the SPEC2000 suite along with two server applications and we show that the scheme robustly frees up 30% of the memory resources, on average, with a negligible impact on the performance of only 0.2% on average.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory architecture",
+                "Data compression",
+                "Floating point arithmetic"
+            ],
+            "Index Terms": [
+                "Compression Scheme",
+                "Source Code",
+                "Performance Loss",
+                "Memory Resources",
+                "Low Overhead",
+                "Lossless Compression",
+                "Memory Block",
+                "Block Size",
+                "Levels Of Hierarchy",
+                "Memory System",
+                "Under Flow",
+                "Individual Threshold",
+                "Compression Ratio",
+                "Amount Of Memory",
+                "Uncompressed",
+                "Instruction Set Architecture",
+                "Critical Path",
+                "Individual Blocks",
+                "Compression Algorithm",
+                "Fast Simulation",
+                "Processor Chip",
+                "Cache Misses",
+                "Average Bandwidth",
+                "Performance Overhead",
+                "Called Blocks",
+                "Baseline System"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -371,7 +760,54 @@
                 "firstName": "K.",
                 "lastName": "Lai"
             }
-        ]
+        ],
+        "abstract": "Performance asymmetry in multicore architectures arises when individual cores have different performance. Building such multicore processors is desirable because many simple cores together provide high parallel performance while a few complex cores ensure high serial performance. However, application developers typically assume computational cores provide equal performance, and performance asymmetry breaks this assumption. This paper is concerned with the behavior of commercial applications running on performance asymmetric systems. We present the first study investigating the impact of performance asymmetry on a wide range of commercial applications using a hardware prototype. We quantify the impact of asymmetry on an application's performance variance when run multiple times, and the impact on the application's scalability. Performance asymmetry adversely affects behavior of many workloads. We study ways to eliminate these effects. In addition to asymmetry-aware operating system kernels, the application often itself needs to be aware of performance asymmetry for stable and scalable performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multicore processing",
+                "Application software",
+                "Computer architecture",
+                "Scalability",
+                "Hardware",
+                "Frequency",
+                "Microarchitecture",
+                "Prototypes",
+                "Operating systems",
+                "Concurrent computing"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Impact Of Asymmetry",
+                "High Performance",
+                "Operating System",
+                "Performance In Applications",
+                "Core Complex",
+                "Individual Core",
+                "Asymmetric System",
+                "Kernel Images",
+                "Application Behavior",
+                "Benchmark",
+                "Running",
+                "Throughput",
+                "Power Calculation",
+                "Parallelization",
+                "Fast Process",
+                "Duty Cycle",
+                "Heavy Load",
+                "Virtual Machines",
+                "Load Balancing",
+                "Light Load",
+                "Symmetric Configuration",
+                "Presence Of Asymmetry",
+                "Scheduling Decisions",
+                "Chunk Size",
+                "Linux Kernel",
+                "Effect Of Asymmetry",
+                "Injection Rate",
+                "Database Server",
+                "Symmetric System"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -424,7 +860,54 @@
                 "firstName": "D.I.",
                 "lastName": "August"
             }
-        ]
+        ],
+        "abstract": "As chip densities and clock rates increase, processors are becoming more susceptible to transient faults that can affect program correctness. Up to now, system designers have primarily considered hardware-only and software-only fault-detection mechanisms to identify and mitigate the deleterious effects of transient faults. These two fault-detection systems, however, are extremes in the design space, representing sharp trade-offs between hardware cost, reliability, and performance. In this paper, we identify hybrid hardware/software fault-detection mechanisms as promising alternatives to hardware-only and software-only systems. These hybrid systems offer designers more options to fit their reliability needs within their hardware and performance budgets. We propose and evaluate CRAFT, a suite of three such hybrid techniques, to illustrate the potential of the hybrid approach. For fair, quantitative comparisons among hardware, software, and hybrid systems, we introduce a new metric, mean work to failure, which is able to compare systems for which machine instructions do not represent a constant unit of work. Additionally, we present a new simulation framework which rapidly assesses reliability and does not depend on manual identification of failure modes. Our evaluation illustrates that CRAFT, and hybrid techniques in general, offer attractive options in the fault-detection design space.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Costs",
+                "Fault diagnosis",
+                "Space technology",
+                "Error correction codes",
+                "Protection",
+                "Fault tolerance",
+                "Clocks",
+                "Software systems",
+                "Microprocessors"
+            ],
+            "Index Terms": [
+                "Evaluation System",
+                "Fault Detection System",
+                "Quantitative Comparison",
+                "Hybrid System",
+                "Design Space",
+                "Work Unit",
+                "Hybrid Technique",
+                "Hardware System",
+                "Hardware Cost",
+                "Transient Faults",
+                "Benchmark",
+                "Performance Degradation",
+                "Flow Control",
+                "Fault-tolerant",
+                "Loading Values",
+                "Detailed Simulation",
+                "Evaluation Framework",
+                "Microarchitecture",
+                "Forward Error Correction",
+                "Security Vulnerabilities",
+                "Mean Time To Failure",
+                "Hardware Structure",
+                "Run To Completion",
+                "Parity-check",
+                "Reliability Metrics",
+                "Cache Misses",
+                "Clone Detection",
+                "Corner Cases",
+                "Reliability Cost",
+                "Corrupted Data"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -459,7 +942,52 @@
                 "firstName": "J.",
                 "lastName": "Shen"
             }
-        ]
+        ],
+        "abstract": "This paper is motivated by three recent trends in computer design. First, chip multi-processors (CMPs) with increasing numbers of CPU cores per chip are becoming common. Second, multi-threaded software that can take advantage of CMPs will soon become prevalent. Due to the nature of the algorithms, these multi-threaded programs inherently will have phases of sequential execution; Amdahl's law dictates that the speedup of such parallel programs will be limited by the sequential portion of the computation. Finally, increasing levels of on-chip integration coupled with a slowing rate of reduction in supply voltage make power consumption a first order design constraint. Given this environment, our goal is to minimize the execution times of multi-threaded programs containing nontrivial parallel and sequential phases, while keeping the CMP's total power consumption within a fixed budget. In order to mitigate the effects of Amdahl's law, in this paper we make a compelling case for varying the amount of energy expended to process instructions according to the amount of available parallelism. Using the equation, Power-Energy per instruction (EPI) * Instructions per second (IPS), we propose that during phases of limited parallelism (low IPS) the chip multi-processor will spend more EPI; similarly, during phases of higher parallelism (high IPS) the chip multi-processor will spend less EPI; in both scenarios power is fixed. We evaluate the performance benefits of an EPI throttle on an asymmetric multiprocessor (AMP) prototyped from a physical 4-way Xeon SMP server. Using a wide range of multi-threaded programs, we show a 38% wall clock speedup on an AMP compared to a standard SMP that uses the same power. We also measure the supply current on a 4-way SMP server while running the multi-threaded programs and use the measured data as input to a software simulator that implements a more flexible EPI throttle. The results from the measurement-driven simulation show performance benefits comparable to the AMP prototype. We analyze the results from both techniques, explain why and when an EPI throttle works well, and conclude with a discussion of the challenges in building practical EPI throttles.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Parallel processing",
+                "Energy consumption",
+                "Current measurement",
+                "Software measurement",
+                "Concurrent computing",
+                "Power supplies",
+                "Voltage",
+                "Equations",
+                "Prototypes",
+                "Clocks"
+            ],
+            "Index Terms": [
+                "Amdahl’s Law",
+                "Power Consumption",
+                "Parallelization",
+                "Total Power",
+                "Multi-core",
+                "Performance Benefits",
+                "Supply Voltage",
+                "Phase Sequence",
+                "Single Thread",
+                "Range Of Programs",
+                "Total Power Consumption",
+                "Wall-clock",
+                "Nature Of The Algorithm",
+                "Sequential Execution",
+                "Wide Range Of Programs",
+                "Parallel Phase",
+                "Physical System",
+                "Duty Cycle",
+                "Static Configuration",
+                "CPU Power",
+                "Parallel Execution",
+                "Current Traces",
+                "CPU Utilization",
+                "Pentium IV",
+                "Throughput Performance",
+                "Xeon Processor",
+                "Parallel Components",
+                "GHz Processor"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -506,7 +1034,53 @@
                 "firstName": null,
                 "lastName": "Zhenghong Wang"
             }
-        ]
+        ],
+        "abstract": "We propose \"secret-protected (SP)\" architecture to enable secure and convenient protection of critical secrets for a given user in an on-line environment. Keys are examples of critical secrets, and key protection and management is a fundamental problem - often assumed but not solved /sup n/derlying the use of cryptographic protection of sensitive files, messages, data and programs. SP-processors contain a minimalist set of architectural features that can be built into a general-purpose microprocessor to provide protection of critical secrets and their computations, without expensive or inconvenient auxiliary hardware. SP-architecture also requires a trusted software module, a few modifications to the operating system, a secure I/O path to the user, and a secure installation process. Unique aspects of our architecture include: decoupling of user secrets from the devices, enabling users to securely access their keys from different networked computing devices; the use of symmetric master keys rather than more costly public-private key pairs; and the avoidance of any permanent or factory-installed device secrets.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protection",
+                "Microprocessors",
+                "Cryptography",
+                "Hardware",
+                "Operating systems",
+                "Data security",
+                "Computer architecture",
+                "Computer networks",
+                "Military computing",
+                "IP networks"
+            ],
+            "Index Terms": [
+                "Privacy",
+                "Sensitive Data",
+                "Computing Devices",
+                "Public Key",
+                "Hierarchical Structure",
+                "Secret Key",
+                "Software Components",
+                "Denial Of Service",
+                "Single Thread",
+                "Malware",
+                "Key Types",
+                "Physical Attacks",
+                "Threat Model",
+                "Replay Attacks",
+                "Trust Model",
+                "Data Cache",
+                "Secure Storage",
+                "Public Key Infrastructure",
+                "L2 Cache",
+                "Key Chain",
+                "Physical Unclonable Functions",
+                "Off-chip Memory",
+                "Integrity Checking",
+                "Smart Card",
+                "Hardware Components",
+                "Hash Function",
+                "Non-volatile Memory",
+                "Spoofing Attacks",
+                "Separate Regions"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -547,7 +1121,54 @@
                 "firstName": null,
                 "lastName": "Srinivas Devadas"
             }
-        ]
+        ],
+        "abstract": "Secure processors enable new applications by ensuring private and authentic program execution even in the face of physical attack. In this paper, we present the AEGIS secure processor architecture, and evaluate its RTL implementation on FPGAs. By using physical random functions, we propose a new way of reliably protecting and sharing secrets that is more secure than existing solutions based on non-volatile memory. Our architecture gives applications the flexibility of trusting and protecting only a portion of a given process, unlike prior proposals which require a process to be protected in entirety. We also put forward a specific model of how secure applications can be programmed in a high-level language and compiled to run on our system. Finally, we evaluate a fully functional FPGA implementation of our processor, assess the implementation tradeoffs, compare performance, and demonstrate the benefits of partially protecting a program.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protection",
+                "Application software",
+                "Data security",
+                "Computer architecture",
+                "Field programmable gate arrays",
+                "Pervasive computing",
+                "Hardware",
+                "Cryptography",
+                "Computer science",
+                "Artificial intelligence"
+            ],
+            "Index Terms": [
+                "Non-volatile Memory",
+                "Physical Attacks",
+                "Processing Architecture",
+                "Protective Mechanism",
+                "Virtual World",
+                "Debugging",
+                "Security Environment",
+                "Caching",
+                "Usage In Applications",
+                "Multi-party Computation",
+                "Physical Memory",
+                "Execution Environment",
+                "System Calls",
+                "Memory Regions",
+                "Performance Overhead",
+                "On-chip Memory",
+                "Cache Misses",
+                "Static Regions",
+                "Virtual Memory",
+                "Message Authentication Code",
+                "Off-chip Memory",
+                "Integrity Verification",
+                "Execution Mode",
+                "Mode Transition",
+                "Pseudo-random Number Generator",
+                "Decryption Key",
+                "Secret Key",
+                "Memory Space",
+                "Sensor Networks",
+                "Secret Sharing"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -576,7 +1197,42 @@
                 "firstName": "T.N.",
                 "lastName": "Vijaykumar"
             }
-        ]
+        ],
+        "abstract": "CMOS scaling increases susceptibility of microprocessors to transient faults. Most current proposals for transient-fault detection use full redundancy to achieve perfect coverage while incurring significant performance degradation. However, most commodity systems do not need or provide perfect coverage. A recent paper explores this leniency to reduce the soft-error rate of the issue queue during L2 misses while incurring minimal performance degradation. Whereas the previous paper reduces soft-error rate without using any redundancy, we target better coverage while incurring similarly-minimal performance degradation by opportunistically using redundancy. We propose two semi-complementary techniques, called partial explicit redundancy (PER) and implicit redundancy through reuse (IRTR), to explore the trade-off between soft-error rate and performance. PER opportunistically exploits low-ILP phases and L2 misses to introduce explicit redundancy with minimal performance degradation. Because PER covers the entire pipeline and exploits not only L2 misses but all low-ILP phases, PER achieves better coverage than the previous work. To achieve coverage in high-ILP phases as well, we propose implicit redundancy through reuse (IRTR). Previous work exploits the phenomenon of instruction reuse to avoid redundant execution while falling back on redundant execution when there is no reuse. IRTR takes reuse to the extreme of performance-coverage trade-off and completely avoids explicit redundancy by exploiting reuse's implicit redundancy within the main thread for fault detection with virtually no performance degradation. Using simulations with SPEC2000, we show that PER and IRTR achieve better tradeoff between soft-error rate and performance degradation than the previous schemes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Redundancy",
+                "Degradation",
+                "Microprocessors",
+                "Proposals",
+                "Pipelines",
+                "Yarn",
+                "Fault detection",
+                "Voltage",
+                "Packaging",
+                "Power system reliability"
+            ],
+            "Index Terms": [
+                "Performance Degradation",
+                "Previous Strategies",
+                "Minimal Degradation",
+                "Partial Redundancy",
+                "Transient Faults",
+                "Input Values",
+                "Functional Unit",
+                "Multi-core",
+                "Fault-tolerant",
+                "Performance Loss",
+                "Loading Values",
+                "Store Of Value",
+                "Lack Of Need",
+                "Loss Of Coverage",
+                "Executive Resources",
+                "Reusability Test",
+                "Cache Misses",
+                "Memory Hierarchy"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -629,7 +1285,43 @@
                 "firstName": "K.",
                 "lastName": "Flautner"
             }
-        ]
+        ],
+        "abstract": "Instruction set customization is an effective way to improve processor performance. Critical portions of application data-flow graphs are collapsed for accelerated execution on specialized hardware. Collapsing dataflow subgraphs will compress the latency along critical paths and reduces the number of intermediate results stored in the register file. While custom instructions can be effective, the time and cost of designing a new processor for each application is immense. To overcome this roadblock, this paper proposes a flexible architectural framework to transparently integrate custom instructions into a general-purpose processor. Hardware accelerators are added to the processor to execute the collapsed subgraphs. A simple microarchitectural interface is provided to support a plug-and-play model for integrating a wide range of accelerators into a pre-designed and verified processor core. The accelerators are exploited using an approach of static identification and dynamic realization. The compiler is responsible for identifying profitable subgraphs, while the hardware handles discovery, mapping, and execution of compatible subgraphs. This paper presents the design of a plug-and-play transparent accelerator system arid evaluates the cost/performance implications of the design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Application specific processors",
+                "Hardware",
+                "Costs",
+                "Application software",
+                "Acceleration",
+                "Computer architecture",
+                "Process design",
+                "Laboratories",
+                "Delay",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Educational Settings",
+                "Architectural Framework",
+                "Specific Hardware",
+                "Hardware Accelerators",
+                "Benchmark",
+                "Functional Unit",
+                "General Purpose",
+                "Applicability Domain",
+                "Performance Gain",
+                "Boolean Logic",
+                "Single Operation",
+                "Atomic Units",
+                "Code Generation",
+                "Adjacent Rows",
+                "Decoding Stage",
+                "Single Instruction",
+                "Target Block",
+                "ARM Processor",
+                "Additional Piece Of Information"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -682,7 +1374,46 @@
                 "firstName": null,
                 "lastName": "Babak Falsafi"
             }
-        ]
+        ],
+        "abstract": "Coherent read misses in shared-memory multiprocessors account for a substantial fraction of execution time in many important scientific and commercial workloads. We propose temporal streaming, to eliminate coherent read misses by streaming data to a processor in advance of the corresponding memory accesses. Temporal streaming dynamically identifies address sequences to be streamed by exploiting two common phenomena in shared-memory access patterns: (1) temporal address correlation-groups of shared addresses tend to be accessed together and in the same order; and (2) temporal stream locality-recently-accessed address streams are likely to recur. We present a practical design for temporal streaming. We evaluate our design using a combination of trace-driven and cycle-accurate full-system simulation of a cache-coherent distributed shared-memory system. We show that temporal streaming can eliminate 98% of coherent read misses in scientific applications, and between 43% and 60% in database and Web server workloads. Our design yields speedups of 1.07 to 3.29 in scientific applications, and 1.06 to 1.21 in commercial workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delay",
+                "Proposals",
+                "Web server",
+                "Prefetching",
+                "Hardware",
+                "Computer architecture",
+                "Laboratories",
+                "Databases",
+                "Fabrication",
+                "Microarchitecture"
+            ],
+            "Index Terms": [
+                "Web Server",
+                "Scientific Applications",
+                "Data Streams",
+                "Access Patterns",
+                "Data Structure",
+                "Repetitive Sequences",
+                "Appended",
+                "Commercial Applications",
+                "Temporal Correlation",
+                "Data Sharing",
+                "Perfect Correlation",
+                "Trace Analysis",
+                "Temporal Localization",
+                "Multiple Streams",
+                "Critical Path",
+                "Nodes In Order",
+                "Subsequent Blocks",
+                "Single Stream",
+                "Baseline System",
+                "Misprediction",
+                "Cache Size",
+                "Cache Misses"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -705,7 +1436,44 @@
                 "firstName": "A.",
                 "lastName": "Moshovos"
             }
-        ]
+        ],
+        "abstract": "It has been shown that many requests miss in all remote nodes in shared memory multiprocessors. We are motivated by the observation that this behavior extends to much coarser grain areas of memory. We define a region to be a continuous, aligned memory area whose size is a power of two and observe that many requests find that no other node caches a block in the same region even for regions as large as 16K bytes. We propose RegionScout, a family of simple filter mechanisms that dynamically detect most non-shared regions. A node with a RegionScout filter can determine in advance that a request will miss in all remote nodes. RegionScout filters are implemented as a layered extension over existing snoop-based coherence systems. They require no changes to existing coherence protocols or caches and impose no constraints on what can be cached simultaneously. Their operation is completely transparent to software and the operating system. RegionScout filters require little additional storage and a single additional global signal. These characteristics are made possible by utilizing imprecise information about the regions cached in each node. Since they rely on dynamically collected information RegionScout filters can adapt to changing sharing patterns. We present two applications of RegionScout: In the first RegionScout is used to avoid broadcasts for non-shared regions thus reducing bandwidth. In the second RegionScout is used to avoid snoop induced tag lookups thus reducing energy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Information filtering",
+                "Information filters",
+                "Broadcasting",
+                "Bandwidth",
+                "Multimedia databases",
+                "Protocols",
+                "Operating systems",
+                "Electronic mail",
+                "File servers"
+            ],
+            "Index Terms": [
+                "Coarse-grained",
+                "Shared Memory",
+                "Remote Nodes",
+                "Small Region",
+                "Size Of Region",
+                "Precise Information",
+                "Energy Reduction",
+                "Ray Tracing",
+                "Average Response Time",
+                "Technological Trends",
+                "Space Of Interest",
+                "Reduction In Response Time",
+                "Node Formation",
+                "Physical Address",
+                "Bloom Filter",
+                "Trends In Costs",
+                "Cache Size",
+                "Block Matching",
+                "Bandwidth Reduction",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -740,7 +1508,47 @@
                 "firstName": "S.",
                 "lastName": "Tetrick"
             }
-        ]
+        ],
+        "abstract": "Recent I/O technologies such as PCI-Express and 10 Gb Ethernet enable unprecedented levels of I/O bandwidths in mainstream platforms. However, in traditional architectures, memory latency alone can limit processors from matching 10 Gb inbound network I/O traffic. We propose a platform-wide method called direct cache access (DCA) to deliver inbound I/O data directly into processor caches. We demonstrate that DCA provides a significant reduction in memory latency and memory bandwidth for receive intensive network I/O applications. Analysis of benchmarks such as SPECWeb9, TPC-W and TPC-C shows that overall benefit depends on the relative volume of I/O to memory traffic as well as the spatial and temporal relationship between processor and I/O memory accesses. A system level perspective for the efficient implementation of DCA is presented.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Ethernet networks",
+                "TCPIP",
+                "Telecommunication traffic",
+                "Protocols",
+                "Delay",
+                "Internet",
+                "Throughput",
+                "Computer architecture",
+                "Application software"
+            ],
+            "Index Terms": [
+                "Memory Bandwidth",
+                "Use Of Data",
+                "Data Structure",
+                "Data Reduction",
+                "Work Settings",
+                "Load Data",
+                "Interconnected Systems",
+                "Receiver Side",
+                "Arrival Date",
+                "Packet Size",
+                "Monoatomic",
+                "Data Cache",
+                "Cache Size",
+                "Memory Reading",
+                "Payload Data",
+                "Cache Misses",
+                "Packet Header",
+                "Processing Overhead",
+                "Packet Processing",
+                "HTTP Requests",
+                "Memory Space",
+                "Data Sources",
+                "Web Server"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -775,7 +1583,35 @@
                 "firstName": "J.E.",
                 "lastName": "Smith"
             }
-        ]
+        ],
+        "abstract": "To maintain coherence in conventional shared-memory multiprocessor systems, processors first check other processors' caches before obtaining data from memory. This coherence checking adds latency to memory requests and leads to large amounts of interconnect traffic in broadcast-based systems. Our results for a set of commercial, scientific and multiprogrammed workloads show that on average 67% (and up to 94%) of broadcasts are unnecessary. Coarse-grain coherence tracking is a new technique that supplements a conventional coherence mechanism and optimizes the performance of coherence enforcement. The coarse-grain coherence mechanism monitors the coherence status of large regions of memory, and uses that information to avoid unnecessary broadcasts. Coarse-grain coherence tracking is shown to eliminate 55-97% of the unnecessary broadcasts, and improve performance by 8.8% on average (and up to 21.7%).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Network interfaces"
+            ],
+            "Index Terms": [
+                "Regional State",
+                "Memory Regions",
+                "Transition State",
+                "Regional Data",
+                "Local Processes",
+                "Data Transfer",
+                "Clear Statement",
+                "Memory System",
+                "Memory Control",
+                "Coherent State",
+                "Bandwidth Requirements",
+                "State Diagram",
+                "Data Cache",
+                "Direct Request",
+                "Physical Address",
+                "Additional Bits",
+                "L2 Cache",
+                "Cache Misses",
+                "Processor Chip"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -822,7 +1658,54 @@
                 "firstName": "D.",
                 "lastName": "Brooks"
             }
-        ]
+        ],
+        "abstract": "Recent years have seen a burgeoning interest in embedded wireless sensor networks with applications ranging from habitat monitoring to medical applications. Wireless sensor networks have several important attributes that require special attention to device design. These include the need for inexpensive, long-lasting, highly reliable devices coupled with very low performance requirements. Ultimately, the \"holy grail\" of this design space is a truly untethered device that operates off of energy scavenged from the ambient environment. In this paper, we describe an application-driven approach to the architectural design and implementation of a wireless sensor device that recognizes the event-driven nature of many sensor-network workloads. We have developed a full-system simulator for our sensor node design to verify and explore our architecture. Our simulation results suggest one to two orders of magnitude reduction in power dissipation over existing commodity-based systems for an important class of sensor network applications. We are currently in the implementation stage of design, and plan to tape out the first version of our system within the next year.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Power systems",
+                "Sensor systems and applications",
+                "Wireless sensor networks",
+                "Biomedical monitoring",
+                "Sensor phenomena and characterization",
+                "Energy consumption",
+                "Computer architecture",
+                "Sensor systems",
+                "Microcontrollers",
+                "Central Processing Unit"
+            ],
+            "Index Terms": [
+                "System Architecture",
+                "Sensor Networks",
+                "Sensor Network Applications",
+                "Ultralow Power System",
+                "Wireless Networks",
+                "Architectural Design",
+                "Wireless Sensor",
+                "Wireless Sensor Networks",
+                "Sensor Devices",
+                "Classification Applications",
+                "Order Of Magnitude Reduction",
+                "Technological Advances",
+                "Power Consumption",
+                "Processing Technology",
+                "Total Power",
+                "General Purpose",
+                "Duty Cycle",
+                "Power Control",
+                "State Machine",
+                "Reduction In Power",
+                "Regular Events",
+                "Idle Mode",
+                "Hardware Accelerators",
+                "Power Estimation",
+                "Data Bus",
+                "Cycle Count",
+                "System C",
+                "CPU Power",
+                "Incoming Messages",
+                "Supply Voltage"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -857,7 +1740,42 @@
                 "firstName": "Y.N.",
                 "lastName": "Patt"
             }
-        ]
+        ],
+        "abstract": "As processor speeds increase and memory latency becomes more critical, intelligent design and management of secondary caches becomes increasingly important. The efficiency of current set-associative caches is reduced because programs exhibit a non-uniform distribution of memory accesses across different cache sets. We propose a technique to vary the associativity of a cache on a per-set basis in response to the demands of the program. By increasing the number of tag-store entries relative to the number of data lines, we achieve the performance benefit of global replacement while maintaining the constant hit latency of a set-associative cache. The proposed variable-way, or V-Way, set-associative cache achieves an average miss rate reduction of 13% on sixteen benchmarks from the SPEC CPU2000 suite. This translates into an average IPC improvement of 8%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delay",
+                "Optimized production technology",
+                "Memory management",
+                "History",
+                "Costs",
+                "Engineering management",
+                "Microprocessors",
+                "Hardware",
+                "Upper bound",
+                "Energy consumption"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Upper Bound",
+                "Hash Function",
+                "Global Policy",
+                "Probability Of Finding",
+                "Demand Variability",
+                "Serialized",
+                "Replacement Strategy",
+                "Tag Data",
+                "Data Cache",
+                "Additional Entry",
+                "Cache Size",
+                "Access Latency",
+                "L2 Cache",
+                "Cache Misses",
+                "Memory Hierarchy",
+                "NOR Gate",
+                "Replacement Policy"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -898,7 +1816,53 @@
                 "firstName": "S.",
                 "lastName": "Singh"
             }
-        ]
+        ],
+        "abstract": "Pipelined forwarding engines are used in core router to meet speed demands. Tree-based searches are pipelined across a number of stages to achieve high throughput, but this results in unevenly distributed memory. To address this imbalance, conventional approaches use either complex dynamic memory allocation schemes or over-provision each of the pipeline stages. This paper describes the microarchitecture of a novel network search processor which provides both high execution throughput and balanced memory distributor by dividing the tree into subtrees and allocating each subtree separately, allowing searches to begin at any pipeline stage. The architecture is validated by implementing and simulating state of the art solutions for IPv4 lookup, VPN forwarding and packet classification. The new pipeline scheme and memory allocator can provide searches with a memory allocation, efficiency that is within 1% of non-pipelined schemes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Search engines",
+                "Computer architecture",
+                "Pipelines",
+                "Computer science",
+                "Throughput",
+                "Virtual private networks",
+                "High-speed networks",
+                "Costs",
+                "Databases",
+                "Microarchitecture"
+            ],
+            "Index Terms": [
+                "Search Engine",
+                "Single Memory",
+                "Allocation Scheme",
+                "Pipeline Stages",
+                "Memory Allocation",
+                "Network Search",
+                "Stage 2",
+                "Task Execution",
+                "Root Node",
+                "Processing Elements",
+                "Hash Function",
+                "Regular Structure",
+                "Tree Height",
+                "Child Nodes",
+                "Binary Tree",
+                "Amount Of Memory",
+                "Allocation Algorithm",
+                "Search Operations",
+                "Set Of Tables",
+                "Total Memory",
+                "Routing Table",
+                "Datapath",
+                "NP-complete Problem",
+                "Packet Header",
+                "Update Operation",
+                "Network Throughput",
+                "Disjoint Sets",
+                "Complex Communication",
+                "Memory Space"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -921,7 +1885,53 @@
                 "firstName": "A.",
                 "lastName": "Seznec"
             }
-        ]
+        ],
+        "abstract": "In this paper, we introduce and analyze the Optimized GEometric History Length (O-GEHL) branch Predictor that efficiently exploits very long global histories in the 100-200 bits range. The GEHL predictor features several predictor tables T(i) (e.g. 8) indexed through independent functions of the global branch history and branch address. The set of used global history lengths forms a geometric series, i.e., L(j) = /spl alpha//sup j-1/L(1). This allows the GEHL predictor to efficiently capture correlation on recent branch outcomes as well as on very old branches. As on perceptron predictors, the prediction is computed through the addition of the predictions read on the predictor tables. The O-GEHL predictor further improves the ability of the GEHL predictor to exploit very long histories through the addition of dynamic history fitting and dynamic threshold fitting. The O-GEHL predictor can be ahead pipelined to provide in time predictions on every cycle.",
+        "keywords": {
+            "IEEE Keywords": [
+                "History",
+                "Counting circuits",
+                "Accuracy",
+                "Space exploration",
+                "Pipelines",
+                "Performance gain",
+                "Best practices",
+                "Fitting",
+                "Application software",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Misprediction",
+                "History Length",
+                "Predictive Features",
+                "Dynamic Threshold",
+                "Geometric Length",
+                "Degrees Of Freedom",
+                "Maximum Length",
+                "Computational Prediction",
+                "Vector Of Values",
+                "Interval Values",
+                "Prediction Time",
+                "Correct Predictions",
+                "Number Table",
+                "Hash Function",
+                "High Level Of Accuracy",
+                "Length Of Series",
+                "Short History",
+                "Local History",
+                "Information Bits",
+                "Good Trade-off",
+                "Global Prediction",
+                "Number Of Updates",
+                "Computational Logic",
+                "Binary Index",
+                "Pipelining",
+                "Simulation Results",
+                "Accuracy Loss",
+                "Policy Update",
+                "Benchmark Set"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -950,7 +1960,47 @@
                 "firstName": "T.",
                 "lastName": "Sherwood"
             }
-        ]
+        ],
+        "abstract": "Network intrusion detection and prevention systems have emerged as one of the most effective ways of providing security to those connected to the network, and at the heart of almost every modern intrusion detection system is a string matching algorithm. String matching is one of the most critical elements because it allows for the system to make decisions based not just on the headers, but the actual content flowing through the network. Unfortunately, checking every byte of every packet to see if it matches one of a set of ten thousand strings becomes a computationally intensive task as network speeds grow into the tens, and eventually hundreds, of gigabits/second. To keep up with these speeds a specialized device is required, one that can maintain tight bounds on worst case performance, that can be updated with new rules without interrupting operation, and one that is efficient enough that it could be included on chip with existing network chips or even into wireless devices. We have developed an approach that relies on a special purpose architecture that executes novel string matching algorithms specially optimized for implementation in our design. We show how the problem can be solved by converting the large database of strings into many tiny state machines, each of which searches for a portion of the rules and a portion of the bits of each rule. Through the careful co-design and optimization of our architecture with a new string matching algorithm we show that it is possible to build a system that is 10 times more efficient than the currently best known approaches.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Intrusion detection",
+                "Computer architecture",
+                "Databases",
+                "Protection",
+                "Computer science",
+                "Computer security",
+                "Heart",
+                "Computer networks",
+                "Network-on-a-chip"
+            ],
+            "Index Terms": [
+                "High Throughput",
+                "Search String",
+                "Intrusion Detection",
+                "State Machine",
+                "Wireless Devices",
+                "Intrusion Detection System",
+                "Worst-case Performance",
+                "Group Size",
+                "Transition State",
+                "Work In This Area",
+                "Line In Fig",
+                "Set Of Rules",
+                "Computer System",
+                "Root Node",
+                "Small States",
+                "Denial Of Service",
+                "Amount Of Memory",
+                "Starting State",
+                "String Length",
+                "Partial Match",
+                "Input Stream",
+                "Man-in-the-middle",
+                "Number Of Strings"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -985,7 +2035,48 @@
                 "firstName": "Y.N.",
                 "lastName": "Patt"
             }
-        ]
+        ],
+        "abstract": "Runahead execution is a technique that improves processor performance by pre-executing the running application instead of stalling the processor when a long-latency cache miss occurs. Previous research has shown that this technique significantly improves processor performance. However, the efficiency of runahead execution, which directly affects the dynamic energy consumed by a runahead processor, has not been explored. A runahead processor executes significantly more instructions than a traditional out-of-order processor, sometimes without providing any performance benefit, which makes it inefficient. In this paper, we describe the causes of inefficiency in runahead execution and propose techniques to make a runahead processor more efficient, thereby reducing its energy consumption and possibly increasing its performance. Our analyses and results provide two major insights: (1) the efficiency of runahead execution can be greatly improved with simple techniques that reduce the number of short, overlapping, and useless runahead periods, which we identify as the three major causes of inefficiency; (2) simple optimizations targeting the increase of useful prefetches generated in runahead mode can increase both the performance and efficiency of a runahead processor. The techniques we propose reduce the increase in the number of instructions executed due to runahead execution from 26.5% to 6.2%, on average, without significantly affecting the performance improvement provided by runahead execution.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Engines",
+                "Prefetching",
+                "Energy consumption",
+                "Delay",
+                "Process design",
+                "Application software",
+                "Performance analysis",
+                "Clocks",
+                "Out of order",
+                "Terminology"
+            ],
+            "Index Terms": [
+                "Increase In The Number",
+                "Performance Benefits",
+                "Dynamic Energy",
+                "Execution Efficiency",
+                "Execution Of Operations",
+                "Simple Optimization",
+                "Cache Misses",
+                "Benchmark",
+                "Use Of Information",
+                "Loading Conditions",
+                "Optimal Efficiency",
+                "Previous Period",
+                "Memory System",
+                "Period 1",
+                "Period 2",
+                "Left Graph",
+                "Number Of Loads",
+                "Dynamic Threshold",
+                "Training Policy",
+                "L2 Cache",
+                "Static Threshold",
+                "Counter Value",
+                "Misprediction",
+                "Policy Update"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1008,7 +2099,37 @@
                 "firstName": "A.",
                 "lastName": "Roth"
             }
-        ]
+        ],
+        "abstract": "The load-store unit is a performance critical component of a dynamically-scheduled processor. It is also a complex and non-scalable component. Several recently proposed techniques use some form of speculation to simplify the load-store unit and check this speculation by re-executing some of the loads prior to commit. We call such techniques load optimizations. One recent load optimization improves load queue (LQ) scalability by using re-execution rather than associative search to check speculative intra- and inter- thread memory ordering. A second technique improves store queue (SQ) scalability by speculatively filtering some load accesses and some store entries from it and re-executing loads to check that speculation. A third technique speculatively removes redundant loads from the execution engine; re-execution detects false eliminations. Unfortunately, the benefits of a load optimization are often mitigated by re-execution itself Re-execution contends for cache bandwidth with store commit, and serializes load re-execution with subsequent store com-mit. If a given load optimization requires a sufficient number of load re-executions, the aggregate re-execution cost may overwhelm the benefits of the technique entirely and even cause drastic slowdowns. Store vulnerability window (SVW) is a new mechanism that significantly reduces the re-execution requirements of a given load optimization. SVW is based on monotonic store sequence numbering and an adaptation of Bloom filtering. The cost of a typical SVW implementation is a 1KB buffer and a 16-bit field per LQ entry. Across the three optimizations we study, SVW reduces re-executions by an average of 85%. This reduction relieves cache port contention and removes many of the dynamic serialization events that contribute the bulk of re-execution's cost, allows these load optimizations to perform up to their full potential. For the speculative SQ, this means the chance to perform at all, as without SVW it posts significant slowdowns.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pipelines",
+                "Buffer storage",
+                "Information filtering",
+                "Information filters",
+                "Information science",
+                "Computer architecture",
+                "Engines",
+                "Retirement",
+                "Costs",
+                "Yarn"
+            ],
+            "Index Terms": [
+                "Security Vulnerabilities",
+                "Serialized",
+                "Cost Aggregation",
+                "Bloom Filter",
+                "Retirement",
+                "Average Performance",
+                "Per Cycle",
+                "Dynamic Loading",
+                "Critical Path",
+                "Number Of Loads",
+                "Data Cache",
+                "Misprediction",
+                "Baseline Configuration"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1031,7 +2152,41 @@
                 "firstName": "D.A.",
                 "lastName": "Jimenez"
             }
-        ]
+        ],
+        "abstract": "Improved branch prediction accuracy is essential to sustaining instruction throughput with today's deep pipelines. We introduce piecewise linear branch prediction, an idealized branch predictor that develops a set of linear functions, one for each program path to the branch to be predicted, that separate predicted taken from predicted not taken branches. Taken together, all of these linear functions form a piecewise linear decision surface. We present a limit study of this predictor showing its potential to greatly improve predictor accuracy. We then introduce a practical implementable branch predictor based on piecewise linear branch prediction. In making our predictor practical, we show how a parameterized version of it unifies the previously distinct concepts of perceptron prediction and path-based neural prediction. Our new branch predictor has implementation costs comparable to current prominent predictors in the literature while significantly improving accuracy. For a deeply pipelined simulated microarchitecture our predictor with a 256 KB hardware budget improves the harmonic mean normalized instructions-per-cycle rate by 8% over both the original path-based neural predictor and 2Bc-gskew. The average misprediction rate is decreased by 16% over the path-based neural predictor and by 22% over 2Bc-gskew.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Piecewise linear techniques",
+                "Microarchitecture",
+                "Hardware",
+                "Delay",
+                "Accuracy",
+                "Pipelines",
+                "Predictive models",
+                "Computer science",
+                "Throughput",
+                "Costs"
+            ],
+            "Index Terms": [
+                "Linear Prediction",
+                "Prediction Accuracy",
+                "Linear Function",
+                "Limited Studies",
+                "Harmonic Mean",
+                "Microarchitecture",
+                "Decision Boundary",
+                "Misprediction",
+                "Neural Predictors",
+                "Benchmark",
+                "Weight Vector",
+                "Local History",
+                "Partial Sums",
+                "Power-of-two",
+                "History Length",
+                "Memory Address",
+                "Pentium IV"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1102,7 +2257,53 @@
                 "firstName": "D.",
                 "lastName": "Blaauw"
             }
-        ]
+        ],
+        "abstract": "Sensor network processors and their applications are a growing area of focus in computer system research and design. Inherent to this design space is a reduced processing performance requirement and extremely high energy constraints, such that sensor network processors must execute low-performance tasks for long durations on small energy supplies. In this paper, we demonstrate that subthreshold-voltage circuit design (400 mV and below) lends itself well to the performance and energy demands of sensor network processors. Moreover, we show that the landscape for microarchitectural energy optimization dramatically changes in the subthreshold domain. The dominance of leakage power in the subthreshold regime demands architectures that i) reduce overall area; ii) increase the utility of transistors; while iii) maintaining acceptable CPI efficiency. We confirm these observations by performing SPICE-level analysis of 21 sensor network processors and memory architectures. Our best sensor platform, implemented in 130nm CMOS and operating at 235 mV, only consumes 1.38 pJ/instruction, nearly an order of magnitude less energy than previously published sensor network processor results. This design, accompanied by bulk-silicon solar cells for energy scavenging, has been manufactured by IBM and is currently being tested.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sensor systems and applications",
+                "Application software",
+                "Computer networks",
+                "Circuit synthesis",
+                "Microarchitecture",
+                "Performance analysis",
+                "Memory architecture",
+                "CMOS process",
+                "Photovoltaic cells",
+                "Manufacturing"
+            ],
+            "Index Terms": [
+                "Sensor Networks",
+                "Optimal Energy",
+                "Energy Demand",
+                "Solar Cells",
+                "Microarchitecture",
+                "Performance Demands",
+                "Sensor Platform",
+                "Memory Architecture",
+                "Energy Efficiency",
+                "Educational Settings",
+                "Cycle Time",
+                "Per Cycle",
+                "Sensor Applications",
+                "Threshold Voltage",
+                "Supply Voltage",
+                "Processing Demands",
+                "Control Logic",
+                "Dynamic Energy",
+                "Small Form Factor",
+                "Energy-efficient Design",
+                "Code Size",
+                "Energy Leakage",
+                "Test Chip",
+                "Voltage Scaling",
+                "Maximum Energy Efficiency",
+                "Coding Density",
+                "Memory Address",
+                "Pipelining",
+                "Demand For Applications"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1149,7 +2350,43 @@
                 "firstName": "K.",
                 "lastName": "Lai"
             }
-        ]
+        ],
+        "abstract": "Memory latency tolerant architectures support thousands of in-flight instructions without scaling cycle-critical processor resources, and thousands of useful instructions can complete in parallel with a miss to memory. These architectures however require large queues to track all loads and stores executed while a miss is pending. Hierarchical designs alleviate cycle time impact of these structures but the CAM and search functions required to enforce memory ordering and provide data forwarding place high demand on area and power. We present new load-store processing algorithms for latency tolerant architectures. We augment primary load and store queues with secondary buffers. The secondary load buffer is a set associative structure, similar to a cache. The secondary store buffer, the Store Redo Log, is a first-in first-out structure recording the program order of all stores completed in parallel with a miss, and has no CAM and search functions. Instead of the secondary store queue, a cache provides temporary forwarding. The SRL enforces memory ordering by ensuring memory updates occur in program order once the miss returns. The new algorithms eliminate the CAM and search functions in the secondary load and store buffers, and remove fundamental sources of complexity, power, and area inefficiency in load/store processing. The new organization, while being area and power efficient, is competitive in performance compared to hierarchical designs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delay",
+                "Buffer storage",
+                "Computer aided manufacturing",
+                "CADCAM",
+                "Computer architecture",
+                "Processor scheduling",
+                "Pipelines",
+                "Memory architecture",
+                "Proposals",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Loading Process",
+                "Loading Buffer",
+                "First-in-first-out",
+                "Hierarchical Design",
+                "Primary Loading",
+                "Secondary Loadings",
+                "Benchmark",
+                "Hash Function",
+                "Large Load",
+                "Correct Order",
+                "Dynamic Power",
+                "Load Operation",
+                "Data Cache",
+                "Benchmark Suite",
+                "Bloom Filter",
+                "Subsequent Education",
+                "Cache Misses",
+                "Cache Hit",
+                "Queue Size"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1184,7 +2421,38 @@
                 "firstName": "A.",
                 "lastName": "Roth"
             }
-        ]
+        ],
+        "abstract": "RENO is a modified MIPS R10000 register renamer that uses map-table \"short-circuiting\" to implement dynamic versions of several well-known static optimizations: move elimination, common subexpression elimination, register allocation, and constant folding. Because it implements these optimizations dynamically, RENO can apply optimizations in certain situations where static compilers cannot. Cycle-level simulation shows that RENO dynamically eliminates (i.e. optimizes away) 22% of the dynamic instructions in both SPECint2000 and MediaBench. RENO/sub CF/ is responsible for 12% and 17% of the eliminations, respectively. Because dataflow dependences are collapsed around eliminated instructions, performance improves by 8% and 13%, respectively. Alternatively, because eliminated instructions do not consume issue queue entries, physical registers, or issue, bypass, register file, and execution bandwidth, RENO can be used to absorb the performance impact of a significantly scaled-down execution core.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimizing compilers",
+                "Computer instructions",
+                "Optimization methods",
+                "Data flow computing"
+            ],
+            "Index Terms": [
+                "Optimal State",
+                "Mapping Table",
+                "Fusion Formation",
+                "Dynamic Fusion",
+                "Division Of Labour",
+                "Sum Of Values",
+                "Functional Unit",
+                "Per Cycle",
+                "Excretion Rate",
+                "Boolean Logic",
+                "Rollback",
+                "Critical Path",
+                "Latency Reduction",
+                "Function Calls",
+                "Data Cache",
+                "Sequence Of Instructions",
+                "Reference Count",
+                "Cache Misses",
+                "Half Of The Figure",
+                "Free Listing"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1225,7 +2493,46 @@
                 "firstName": "R.",
                 "lastName": "Rajamony"
             }
-        ]
+        ],
+        "abstract": "With the ability to place large numbers of transistors on a single silicon chip, manufacturers have begun developing chip multiprocessors (CMPs) containing multiple processor cores, varying amounts of level 1 and level 2 caching, and on-chip directory structures for level 3 caches and memory. The level 3 cache may be used as a victim cache for both modified and clean lines evicted from on-chip level 2 caches. Efficient area and performance management of this cache hierarchy is paramount given the projected increase in access latency to off-chip memory. This paper proposes simple architectural extensions and adaptive policies for managing the L2 and L3 cache hierarchy in a CMP system. In particular, we evaluate two mechanisms that improve cache effectiveness. First, we propose the use of a small history table to provide hints to the L2 caches as to which lines are resident in the L3 cache. We employ this table to eliminate some unnecessary clean write backs to the L3 cache, reducing pressure on the L3 cache and utilization of the on-chip bus. Second, we exam-ine the performance benefits of allowing write backs from L2 caches to be placed in neighboring, on-chip L2 caches rather than forcing them to be absorbed by the L3 cache. This not only reduces the capacity pressure on the L3 cache but also makes subsequent accesses faster since L2-W-L2 cache transfers have typically lower latencies than accesses to a large L3 cache array. We evaluate the performance improvement of these two designs, and their combined effect, on four commercial workloads and observe a reduction in the overall execution time of up to 13%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Silicon",
+                "Hardware",
+                "Yarn",
+                "Surface-mount technology",
+                "Manufacturing processes",
+                "Delay",
+                "System-on-a-chip",
+                "Project management",
+                "Memory management",
+                "History"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Clear Line",
+                "Caching",
+                "Written Back",
+                "Access Latency",
+                "L2 Cache",
+                "Future Design",
+                "Lookup Table",
+                "Memory Control",
+                "Size Table",
+                "Table Entries",
+                "Transaction Processing",
+                "Remote Memory",
+                "Real Machine",
+                "Data Cache",
+                "Baseline System",
+                "CPU Utilization",
+                "Cache Misses",
+                "Cache Hit",
+                "Percentage Of Lines",
+                "Memory Hierarchy",
+                "Baseline Configuration"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1260,7 +2567,50 @@
                 "firstName": "M.",
                 "lastName": "Oskin"
             }
-        ]
+        ],
+        "abstract": "The theoretical study of quantum computation has yielded efficient algorithms for some traditionally hard problems. Correspondingly, experimental work on the underlying physical implementation technology has progressed steadily. However, almost no work has yet been done which explores the architecture design space of large scale quantum computing systems. In this paper, we present a set of tools that enable the quantitative evaluation of architectures for quantum computers. The infrastructure we created comprises a complete compilation and simulation system for computers containing thousands of quantum bits. We begin by compiling complete algorithms into a quantum instruction set. This ISA enables the simple manipulation of quantum state. Another tool we developed automatically transforms quantum software into an equivalent, fault-tolerant version required to operate on real quantum devices. Next, our infrastructure transforms the ISA into a set of low-level micro architecture specific control operations. In the future, these operations can be used to directly control a quantum computer. For now, our simulation framework quickly uses them to determine the reliability of the application for the target micro architecture. Finally, we propose a simple, regular architecture for ion-trap based quantum computers. Using our software infrastructure, we evaluate the design trade offs of this micro architecture.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Quantum computing",
+                "Computer architecture",
+                "Space technology",
+                "Computational modeling",
+                "Instruction sets",
+                "Automatic control",
+                "Quantum mechanics",
+                "Large-scale systems",
+                "Computer simulation",
+                "Software tools"
+            ],
+            "Index Terms": [
+                "Educational Settings",
+                "Ion Trap",
+                "Instruction Set Architecture",
+                "Fault-tolerant",
+                "Architectural Design",
+                "Set Of Operations",
+                "Quantum State",
+                "Quantum Computing",
+                "Software Infrastructure",
+                "Time Step",
+                "Error Rate",
+                "Monte Carlo Simulation",
+                "Critical Threshold",
+                "Codeword",
+                "Source Text",
+                "Scheduling Algorithm",
+                "Classical Computer",
+                "Model Execution",
+                "Pseudo-random Number Generator",
+                "Quantum Operations",
+                "Resource Contention",
+                "Quantum Error Correction",
+                "Phenomenon In Question",
+                "Quantum Algorithms",
+                "Single Qubit",
+                "Classical Analogue"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1295,7 +2645,54 @@
                 "firstName": "V.K.",
                 "lastName": "Natarajan"
             }
-        ]
+        ],
+        "abstract": "The importance of pushing the performance envelope of disk drives continues to grow, not just in the server market but also in numerous consumer electronics products. One of the most fundamental factors impacting disk drive design is the heat dissipation and its effect on drive reliability, since high temperatures can cause off-track errors, or even head crashes. Until now, drive manufacturers have continued to meet the 40% annual growth target of the internal data rates (IDR) by increasing RPMs, and shrinking platter sizes, both of which have counter-acting effects on the heat dissipation within a drive. As this paper shows, we are getting to a point where it is becoming very difficult to stay on this roadmap. This paper presents an integrated disk drive model that captures the close relationships between capacity, performance and thermal characteristics over time. Using this model, we quantify the drop off in IDR growth rates over the next decade if we are to adhere to the thermal envelope of drive design. We present two mechanisms for buying back some of this IDR loss with dynamic thermal management (DTM). The first DTM technique exploits any available thermal slack, between what the drive was intended to support and the currently lower operating temperature, to ramp up the RPM. The second DTM technique assumes that the drive is only designed for average case behavior, thus allowing higher RPMs than the thermal envelope, and employs dynamic throttling of disk drive activities to remain within this envelope.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Thermal management",
+                "Disk drives",
+                "Computer aided software engineering",
+                "Temperature",
+                "Computer crashes",
+                "Storage area networks",
+                "Thermal engineering",
+                "Thermal management of electronics",
+                "Engineering management",
+                "Computer science"
+            ],
+            "Index Terms": [
+                "Disk Drive",
+                "Dynamic Thermal Management",
+                "Growth Rate",
+                "Data Rate",
+                "Heat Dissipation",
+                "Thermal Characteristics",
+                "Low Operating Temperature",
+                "Air Temperature",
+                "Maximum Temperature",
+                "Surface Density",
+                "Heat Transfer Coefficient",
+                "Safety Factor",
+                "Thermal Model",
+                "Forward Error Correction",
+                "Caching",
+                "Linear Density",
+                "External Temperature",
+                "Compound Annual Growth Rate",
+                "Viscous Dissipation",
+                "Thermal Limits",
+                "Maximum Data Rate",
+                "Maximum Operating Temperature",
+                "Improved Response Time",
+                "Number Of Tracks",
+                "External Air",
+                "Small Discs",
+                "Market Today",
+                "Semiconductor Devices",
+                "Thermal Conductivity",
+                "Idle Period"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1324,7 +2721,54 @@
                 "firstName": "T.N.",
                 "lastName": "Vijaykumar"
             }
-        ]
+        ],
+        "abstract": "Scaling feature size improves processor performance but increases each device's susceptibility to defects (i.e., hard errors). As a result, fabrication technology must improve significantly to maintain yields. Redundancy techniques in memory have been successful at improving yield in the presence of defects. Apart from core sparing which disables faulty cores in a chip multiprocessor, little has been done to target the core logic. While previous work has proposed that either inherent or added redundancy in the core logic can be used to tolerate defects, the key issues of realistic testing and fault isolation have been ignored. This paper is the first to consider testability and fault isolation in designing modern high-performance, defect-tolerant microarchitectures. We define intra-cycle logic independence (ICI) as the condition needed for conventional scan test to isolate faults quickly to the microarchitectural-block granularity. We propose logic transformations to redesign conventional superscalar microarchitecture to comply with ICI. We call our novel, testable, and defect-tolerant microarchitecture Rescue.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microarchitecture",
+                "Circuit faults",
+                "Redundancy",
+                "Logic testing",
+                "Fabrication",
+                "Technological innovation",
+                "Power generation economics",
+                "Throughput",
+                "CMOS technology",
+                "Isolation technology"
+            ],
+            "Index Terms": [
+                "Microarchitecture",
+                "Defect Tolerance",
+                "Throughput",
+                "Feature Size",
+                "Multi-core",
+                "Conventional Scanning",
+                "Technology Node",
+                "Fault Isolation",
+                "Functional Unit",
+                "Binomial Model",
+                "Per Cycle",
+                "Root Node",
+                "Cycling Performance",
+                "Negative Binomial Model",
+                "Head And Tail",
+                "Defect Density",
+                "Test Pattern",
+                "Testing Techniques",
+                "Multiple Defects",
+                "Tree Search",
+                "Free Listing",
+                "Scalable Technology",
+                "Pipeline Stages",
+                "Logic Blocks",
+                "Beginning Of Cycle",
+                "Written Back",
+                "Single Fault",
+                "Faulty Data",
+                "Fault Simulation",
+                "Core Area"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1353,7 +2797,54 @@
                 "firstName": "D.J.",
                 "lastName": "Sorin"
             }
-        ]
+        ],
+        "abstract": "In this paper, we develop the first feasibly implemental scheme for end-to-end dynamic verification of multithreaded memory systems. For multithreaded (including multiprocessor) memory systems, end-to-end correctness is defined by its memory consistency model. One such consistency model is sequential consistency (SC), which specifies that all loads and stores appear to execute in a total order that respects program order for each thread. Our design, DVSC-Indirect, performs dynamic verification of SC (DVSC) by dynamically verifying a set of sub-invariants that, when taken together, have been proven equivalent to SC. We evaluate DVSC-Indirect with full-system simulation and commercial workloads. Our results for multiprocessor systems with both directory and snooping cache coherence show that DVSC-Indirect detects all injected errors that affect system correctness (i.e., SC). We show that it uses only a small amount more bandwidth (less than 25%) than an unprotected system and thus can achieve comparable performance when provided with only modest additional link bandwidth.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multiprocessor interconnection networks",
+                "Bandwidth",
+                "Coherence",
+                "Bit error rate",
+                "Hardware",
+                "Control systems",
+                "Computer science",
+                "Computer architecture",
+                "Protocols",
+                "System recovery"
+            ],
+            "Index Terms": [
+                "Dynamic Verification",
+                "Sequential Consistency",
+                "Linear Order",
+                "Memory System",
+                "Multi-threaded",
+                "Link Bandwidth",
+                "Error Model",
+                "End Time",
+                "Safety Net",
+                "Interconnected Network",
+                "Error Detection",
+                "State Machine",
+                "Hash Function",
+                "Core Processes",
+                "Memory Control",
+                "Operator Of Order",
+                "Forward Error Correction",
+                "Data Block",
+                "Basic Logic",
+                "Memory Operations",
+                "End Of Epoch",
+                "Bandwidth Usage",
+                "Number Of Processors",
+                "Priority Queue",
+                "Dynamic Scheduling",
+                "Storage Structures",
+                "Loss Of Generality",
+                "Start Time",
+                "Checkers",
+                "Commercial Applications"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1388,7 +2879,54 @@
                 "firstName": "T.",
                 "lastName": "Arai"
             }
-        ]
+        ],
+        "abstract": "Embedded processors for video image recognition require to address both the cost (die size and power) versus real-time performance issue, and also to achieve high flexibility due to the immense diversity of recognition targets, situations, and applications. This paper describes IMAP, a highly parallel SIMD linear processor and memory array architecture that addresses these trading-off requirements. By using parallel and systolic algorithmic techniques, despite of its simple architecture IMAP achieves to exploit not only the straightforward per image row data level parallelism (DLP), but also the inherent DLP of other memory access patterns frequently found in various image recognition tasks, under the use of an explicit parallel C language (IDC). We describe and evaluate IMAP-CE, a latest IMAP processor, which integrates 128 of 100MHz 8 bit 4-way VLIW PEs, 128 of 2KByte RAMs, and one 16 bit RISC control processor, into a single chip. The PE instruction set is enhanced for supporting IDC codes. IMAP-CE is evaluated mainly by comparing its performance running IDC codes with that of a 2.4GHz Intel P4 running optimized C codes. Based on the use of parallelizing techniques, benchmark results show a speedup of up to 20 for image filter kernels, and of 4 for a full image recognition application.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory architecture",
+                "Image recognition",
+                "Costs",
+                "Target recognition",
+                "Random access memory",
+                "VLIW",
+                "Reduced instruction set computing",
+                "Process control",
+                "Filters",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Image Recognition",
+                "Memory Array",
+                "Running",
+                "Educational Settings",
+                "Parallelization",
+                "Linear Array",
+                "Video Images",
+                "Parallel Data",
+                "Benchmark Results",
+                "Parallel Technique",
+                "Parallel Use",
+                "Image Recognition Tasks",
+                "Processing Time",
+                "Programming Language",
+                "Per Cycle",
+                "Source Images",
+                "Pixel Location",
+                "Local Memory",
+                "Future Choices",
+                "Destination Image",
+                "Number Pe",
+                "Single Instruction",
+                "Pixel Data",
+                "Special Register",
+                "Edge Segmentation",
+                "Potential Vehicle",
+                "Vehicle Detection",
+                "Memory Address",
+                "Datapath",
+                "Multimedia Applications"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1429,7 +2967,54 @@
                 "firstName": "N.",
                 "lastName": "Rafique"
             }
-        ]
+        ],
+        "abstract": "Minimizing latency and maximizing throughput are important goals in the design of routing algorithms for interconnection networks. Ideally, we would like a routing algorithm to (a) route packets using the minimal number of hops to reduce latency and preserve communication locality, (b) deliver good worst-case and average-case throughput and (c) enable low-complexity (and hence, low latency) router implementation. In this paper, we focus on routing algorithms for an important class of interconnection networks: two dimensional (2D) mesh networks. Existing routing algorithms for mesh networks fail to satisfy one or more of design goals mentioned above. Variously, the routing algorithms suffer from poor worst case throughput (ROMM by Nesson, and Johnsson (1995), DOR by Sullivan and Bashkow, 1977), poor latency due to increased packet hops (VALIANT by Valiant and Brebner (1981)) or increased latency due to hardware complexity (minimal-adaptive by Duato, (1993), Upadhyay, Varavithya and Mohapatra, (1997)). The major contribution of this paper is the design of an oblivious routing algorithm-O1TURN-with provable near-optimal worst-case throughput, good average-case through-put, low design complexity and minimal number of network hops for 2D-mesh networks, thus satisfying all the stated design goals.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Routing",
+                "Mesh networks",
+                "Delay",
+                "Algorithm design and analysis",
+                "Multiprocessor interconnection networks",
+                "Telecommunication traffic",
+                "Network topology",
+                "Switches",
+                "Computer networks"
+            ],
+            "Index Terms": [
+                "Mesh Network",
+                "Worst-case Throughput",
+                "Low Complexity",
+                "Classification Network",
+                "Interconnected Network",
+                "Design Goals",
+                "Traffic Patterns",
+                "Delay Increases",
+                "Routing Algorithm",
+                "Dimensional Network",
+                "Adaptive Algorithm",
+                "Critical Stage",
+                "Rest Of This Section",
+                "Bisection",
+                "Network Capacity",
+                "Load Cases",
+                "Load Balancing",
+                "Source Node",
+                "Throughput Analysis",
+                "Critical Path",
+                "Virtual Channel",
+                "Destination Node",
+                "Physical Channel",
+                "Network-on-chip",
+                "Clock Cycles",
+                "Nodes In Set",
+                "Packet Size",
+                "Pipeline Stages",
+                "Routing Flexibility",
+                "Routing Decisions"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1470,7 +3055,44 @@
                 "firstName": "S.S.",
                 "lastName": "Lumetta"
             }
-        ]
+        ],
+        "abstract": "This paper presents a hardware-based dynamic optimizer that continuously optimizes an application's instruction stream. In continuous optimization, dataflow optimizations are performed using simple, table-based hardware placed in the rename stage of the processor pipeline. The continuous optimizer reduces dataflow height by performing constant propagation, reassociation, redundant load elimination, store forwarding, and silent store removal. To enhance the impact of the optimizations, the optimizer integrates values generated by the execution units back into the optimization process. Continuous optimization allows instructions with input values known at optimization time to be executed in the optimizer, leaving less work for the out-of-order portion of the pipeline. Continuous optimization can detect branch mispredictions earlier and thus reduce the misprediction penalty. In this paper, we present a detailed description of a hardware optimizer and evaluate it in the context of a contemporary microarchitecture running current workloads. Our analysis of SPECint, SPECfp, and mediabench workloads reveals that a hardware optimizer can directly execute 33% of instructions, resolve 29% of mispredicted branches, and generate addresses for 76% of memory operations. These positive effects combine to provide speed ups in the range 0.99 to 1.27.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Pipelines",
+                "Optimizing compilers",
+                "Registers",
+                "High performance computing",
+                "Out of order",
+                "Microarchitecture",
+                "Uninterruptible power systems",
+                "Program processors",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Propagation Constant",
+                "Memory Operations",
+                "Pipeline Stages",
+                "Optimal Impact",
+                "Benchmark",
+                "Level Of Reliability",
+                "Average Speed",
+                "Flow Data",
+                "Symbolic Value",
+                "Single Thread",
+                "Optimization Stage",
+                "Dynamic Optimization",
+                "Symbolic Forms",
+                "Execution Of Operations",
+                "Data Cache",
+                "Symbolic Expression",
+                "Memory Address",
+                "Subsequent Education",
+                "Cache Misses",
+                "Pentium IV"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1511,7 +3133,44 @@
                 "firstName": "J.M.",
                 "lastName": "Llaberia"
             }
-        ]
+        ],
+        "abstract": "This paper focuses on how to design a store buffer (STB) well suited to first-level multibanked data caches. Our goal is to forward data from in-flight stores to dependent loads with the latency of a cache bank. For that we propose a particular two-level STB design in which forwarding is done speculatively from a distributed first-level STB made of extremely small banks, while a centralized, second-level STB enforces correct store-load ordering a few cycles later. To that end we have identified several important design decisions: i) delaying allocation of first-level STB entries until stores execute; ii) deallocating first-level STB entries before stores commit; and iii) selecting a recovery policy well-matched to data forwarding misspeculations. Moreover, the two-level STB admits two enhancements that simplify the design leaving performance almost unchanged: i) removing the data forwarding capability from the second-level STB; and ii) not checking instruction age in first-level STB prior to forwarding data to loads. Following our guidelines and running SPECint-2K over an 8-way out-of-order processor, a two-level STB (first level with four STB banks of 8 entries each) performs similarly to an ideal, single-level STB with 128-entry banks working at the first-level cache latency.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Buffer storage",
+                "US Department of Transportation",
+                "Delay",
+                "Out of order",
+                "Pipelines",
+                "Writing",
+                "Computer aided manufacturing",
+                "CADCAM",
+                "Logic",
+                "Circuits"
+            ],
+            "Index Terms": [
+                "Data Cache",
+                "Forward Data",
+                "Small Banks",
+                "Two-level Design",
+                "Per Cycle",
+                "Simple Design",
+                "Single Entry",
+                "High Penalty",
+                "Two-level System",
+                "Datapath",
+                "Bank Size",
+                "Number Of Stores",
+                "Misprediction",
+                "Single Port",
+                "L2 Cache",
+                "Cache Misses",
+                "Cache Hit",
+                "Single Bank",
+                "Freeport",
+                "Banks In Order"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1558,7 +3217,54 @@
                 "firstName": "A.",
                 "lastName": "Boldyreva"
             }
-        ]
+        ],
+        "abstract": "Encrypting data in unprotected memory has gained much interest lately for digital rights protection and security reasons. Counter mode is a well-known encryption scheme. It is a symmetric-key encryption scheme based on any block cipher, e.g. AES. The scheme's encryption algorithm uses a block cipher, a secret key and a counter (or a sequence number) to generate an encryption pad which is XORed with the data stored in memory. Like other memory encryption schemes, this method suffers from the inherent latency of decrypting encrypted data when loading them into the on-chip cache. In this paper, we present a novel technique to hide the latency overhead of decrypting counter mode encrypted memory by predicting the sequence number and pre-computing the encryption pad that we call one-time-pad or OTP. In contrast to the prior techniques of sequence number caching, our mechanism solves the latency issue by using idle decryption engine cycles to speculatively predict and pre-compute OTPs before the corresponding sequence number is loaded. This technique incurs very little area overhead. In addition, a novel adaptive OTP prediction technique is also presented to further improve our regular OTP prediction and precomputation mechanism. This adaptive scheme is not only able to predict encryption pads associated with static and infrequently updated cache lines but also those frequently updated ones as well. Experimental results using SPEC2000 benchmark show an 82% prediction rate. Moreover, we also explore several optimization techniques for improving the prediction accuracy. Two specific techniques, two-level prediction and context-based prediction are presented and evaluated.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Counting circuits",
+                "Cryptography",
+                "Data security",
+                "Delay",
+                "Protection",
+                "Information security",
+                "Coprocessors",
+                "Data privacy",
+                "Computer architecture",
+                "Data engineering"
+            ],
+            "Index Terms": [
+                "Security Architecture",
+                "Benchmark",
+                "Prediction Rate",
+                "Large Sequence",
+                "Secret Key",
+                "Prediction Techniques",
+                "Encrypted Data",
+                "Update Frequency",
+                "Encryption Scheme",
+                "Data Cache",
+                "Area Overhead",
+                "Block Cipher",
+                "Random Number",
+                "Data Privacy",
+                "Random Generation",
+                "Cybersecurity",
+                "Work Settings",
+                "Plaintext",
+                "Current Number",
+                "Prediction Set",
+                "Memory Block",
+                "L2 Cache",
+                "Counter Value",
+                "Decryption Process",
+                "Misprediction",
+                "Message Authentication Code",
+                "Caching Scheme",
+                "Chosen-plaintext",
+                "Minimum Area",
+                "Benchmark Test"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1605,7 +3311,45 @@
                 "firstName": "R.H.",
                 "lastName": "Arpaci-Dusseau"
             }
-        ]
+        ],
+        "abstract": "The traditional approach for characterizing complex systems is to run standard workloads and measure the resulting performance as seen by the end user. However, unique opportunities exist when characterizing a system that is itself constructed from standardized components: one can also look inside the system itself by instrumenting each of the components. In this paper, we show how intra-box instrumentation can help one understand the behavior of a large-scale storage cluster, the EMC Centera. In our analysis, we leverage standard tools for tracing both the disk and network traffic emanating from each node of the cluster. By correlating this traffic with the running workload, we are able to infer the structure of the software system (e.g., its write update protocol) as well as its policies (e.g., how it performs caching, replication, and load-balancing). Further, by imposing variable intra-box delays on network and disk traffic, we can confirm the causal relationships between network and disk events. Thus, we are able to infer the semantics of the messages between nodes without examining a single line of source code.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Electromagnetic compatibility",
+                "Telecommunication traffic",
+                "Protocols",
+                "Instruments",
+                "Measurement standards",
+                "Large-scale systems",
+                "Software systems",
+                "Microprocessors",
+                "Instruction sets",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Caching",
+                "Network Events",
+                "Storage Systems",
+                "Power Distribution",
+                "Objective Data",
+                "Data Transfer",
+                "International Network",
+                "Pair Of Nodes",
+                "Debugging",
+                "File System",
+                "Load Balancing",
+                "Primary Node",
+                "Storage Services",
+                "Passive Observation",
+                "Network Delay",
+                "Read Operation",
+                "Standard Interface",
+                "Storage Nodes",
+                "Primary Storage",
+                "Secondary Nodes",
+                "Incoming Links"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1646,7 +3390,46 @@
                 "firstName": "D.",
                 "lastName": "Whalley"
             }
-        ]
+        ],
+        "abstract": "New processors, both embedded and general purpose, often have conflicting design requirements involving space, power, and performance. Architectural features and compiler optimizations often target one or more design goals at the expense of the others. This paper presents a novel architectural and compiler approach to simultaneously reduce power requirements, decrease code size, and improve performance by integrating an instruction register file (IRF) into the architecture. Frequently occurring instructions are placed in the IRF. Multiple entries in the IRF can be referenced by a single packed instruction in ROM or LI instruction cache. Unlike conventional code compression, our approach allows the frequent instructions to be referenced in arbitrary combinations. The experimental results show significant improvements in space and power, as well as some improvement in execution time when using only 32 entries. These advantages make packing instructions into registers an effective approach for improving overall efficiency.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Read only memory",
+                "Registers",
+                "Encoding",
+                "Design optimization",
+                "Optimizing compilers",
+                "Energy consumption",
+                "Costs",
+                "Process design",
+                "Logic",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Code Size",
+                "Benchmark",
+                "Savings",
+                "Formal Education",
+                "Power Consumption",
+                "Educational Settings",
+                "Original Form",
+                "Education Standards",
+                "Common Values",
+                "Head And Tail",
+                "Codeword",
+                "Pufferfish",
+                "Transfer Control",
+                "Increased Power Consumption",
+                "Bit-width",
+                "Performance Penalty",
+                "Loose Packing",
+                "Coding Density",
+                "Compile Time",
+                "Increase In Execution Time",
+                "Context Switching",
+                "Execution Of Operations"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1675,7 +3458,54 @@
                 "firstName": "D.",
                 "lastName": "Marculescu"
             }
-        ]
+        ],
+        "abstract": "One of the most important problems faced by microarchitecture designers is the poor scalability of some of the current solutions with increased clock frequencies and wider pipelines. As several studies show, internal processor structures scale differently with decreasing device sizes. While in some cases the access latency is determined by the speed of the logic circuitry, for others it is dominated by the interconnect delay. Furthermore, while some stages can be super-pipelined with relatively small performance loss, others must be kept atomic. This paper proposes a possible solution to this problem, avoiding the traditional trade-off between parallelism and clock speed. First, allowing instructions to enter and leave the Issue Window in an asynchronously manner enables faster speeds in the front-end at the expense of small synchronization latencies. Second, using an Execution Cache for storing instructions that are already scheduled allows for bypassing the issue circuitry and thus clocking the execution core at higher frequencies. Combined, these two mechanisms result in a 50% to 60% performance increase for our test microarchitecture, without requiring a completely new scheduling mechanism. Furthermore, the proposed microarchitecture requires significantly less energy, with 30% reduction in a 0.1 Sum or 20% in a 0.06um process technology over the original baseline.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Scalability",
+                "Pipelines",
+                "Microarchitecture",
+                "Clocks",
+                "Delay",
+                "Frequency",
+                "Logic devices",
+                "Logic circuits",
+                "Integrated circuit interconnections",
+                "Performance loss"
+            ],
+            "Index Terms": [
+                "Power Efficiency",
+                "Synchronization",
+                "Circuitry",
+                "Processing Technology",
+                "Microarchitecture",
+                "Clock Rate",
+                "Clock Frequency",
+                "Scheduling Mechanism",
+                "Retirement",
+                "Power Consumption",
+                "Functional Unit",
+                "Increase In Power",
+                "Increase In Performance",
+                "Future Technologies",
+                "Future Growth",
+                "Alternative Paths",
+                "Dynamic Power",
+                "Clock Cycles",
+                "Clock Signal",
+                "Flywheel",
+                "Pentium IV",
+                "Actual Order",
+                "Circular Buffer",
+                "Logical Order",
+                "Pipeline Stages",
+                "L2 Cache",
+                "Execution Path",
+                "Physical Address",
+                "Execution Stage",
+                "Written Back"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1704,7 +3534,47 @@
                 "firstName": "A.",
                 "lastName": "Roth"
             }
-        ]
+        ],
+        "abstract": "Pre-execution removes the microarchitectural latency of \"problem\" loads from a program's critical path by redundantly executing copies of their computations in parallel with the main program. There have been several proposed pre-execution systems, a quantitative framework (PTHSEL) for analytical pre-execution thread (p-thread) selection, and even a research prototype. To date, however, the energy aspects of pre-execution have not been studied. Cycle-level performance and energy simulations on SPEC2000 integer benchmarks that suffer from L2 misses show that energy-blind pre-execution naturally has a linear latency/energy trade-off, improving performance by 13.8% while increasing energy consumption by 11.9%. To improve this trade-off, we propose two extensions to PTHSEL. First, we replace the flat cycle-for-cycle load cost model with a model based on a critical-path estimation. This extension increases p-thread efficiency in an energy-independent way. Second, we add a parameterized energy model to PTHSEL (forming PTHSEL/sub +E/) that allows it to actively select p-threads that reduce energy rather than (or in combination with) execution latency. Experiments show that PTHSEL/sub +E/ manipulates pre-execution's latency/energy more effectively. Latency targeted selection benefits from the improved load cost model: its performance improvements grow to an average of 16.4% while energy costs drop to 8.7%. ED targeted selection produces p-threads that improve performance by only 12.9%, but ED by 8.8%. Targeting p-thread selection for energy reduction, results in \"energy-free\" pre-execution, with average speedup of 5.4%, and a small decrease in total energy consumption (0.7%).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delay",
+                "Yarn",
+                "Energy consumption",
+                "Computer aided instruction",
+                "Pareto optimization",
+                "Information science",
+                "Computer architecture",
+                "Prefetching",
+                "Hardware",
+                "Multithreading"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Energy Consumption",
+                "Energy Cost",
+                "Increased Energy Expenditure",
+                "Energy Model",
+                "Energy Reduction",
+                "Cost Model",
+                "Critical Path",
+                "Savings",
+                "Loading Conditions",
+                "External Parameters",
+                "Number Of Loads",
+                "Latency Reduction",
+                "Multi-threaded",
+                "Mapping Table",
+                "Data Cache",
+                "Number Of Misses",
+                "Misprediction",
+                "Energy Benefits",
+                "Reduction In Execution Time",
+                "L2 Cache",
+                "Cache Misses",
+                "Aggregate Energy"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1720,7 +3590,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "32nd International Symposium on Computer Architecture (ISCA'05)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9793",
@@ -1736,7 +3608,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "32nd International Symposium on Computer Architecture (ISCA'05)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9793",
@@ -1752,7 +3626,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "32nd International Symposium on Computer Architecture (ISCA'05)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9793",
@@ -1768,7 +3644,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "32nd International Symposium on Computer Architecture (ISCA'05)",
-        "authors": []
+        "authors": [],
+        "abstract": "The author index contains an entry for each author and coauthor included in the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9793",
@@ -1784,7 +3662,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "32nd International Symposium on Computer Architecture (ISCA'05)",
-        "authors": []
+        "authors": [],
+        "abstract": "Conference proceedings title page.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9793",
@@ -1800,7 +3680,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "32nd International Symposium on Computer Architecture (ISCA'05)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9793",
@@ -1816,7 +3698,13 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "32nd International Symposium on Computer Architecture (ISCA'05)",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference offers a note of thanks and lists its reviewers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "IEEE"
+            ]
+        }
     },
     {
         "publicationNumber": "9793",
@@ -1832,7 +3720,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "32nd International Symposium on Computer Architecture (ISCA'05)",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: security; interacting with disks and networks; memory compression and renamer optimizations; specialized processors; detecting faults; quantum computing and very low power; coherence; applying compilers and debugging support; power; chip multiprocessor memory hierarchies; runahead and branch prediction; interconnection networks; load and store queues; multiprocessor issues; reliability and a cache organization.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9793",
@@ -1848,6 +3738,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "32nd International Symposium on Computer Architecture (ISCA'05)",
-        "authors": []
+        "authors": [],
+        "abstract": "Copyright and Reprint Permissions: Abstracting is permitted with credit to the source. Libraries may photocopy beyond the limits of US copyright law, for private use of patrons, those articles in this volume that carry a code at the bottom of the first page, provided that the per-copy fee indicated in the code is paid through the Copyright Clearance Center. The papers in this book comprise the proceedings of the meeting mentioned on the cover and title page. They reflect the authors' opinions and, in the interests of timely dissemination, are published as presented and without change. Their inclusion in this publication does not necessarily constitute endorsement by the editors or the Institute of Electrical and Electronics Engineers, Inc.",
+        "keywords": {}
     }
 ]

@@ -38,7 +38,44 @@
                 "firstName": "Bronis R. de",
                 "lastName": "Supinski"
             }
-        ]
+        ],
+        "abstract": "High-performance computing (HPC) systems are growing more powerful by utilizing more hardware components. As the system mean-time-before-failure correspondingly drops, applications must checkpoint more frequently to make progress. However, as the system memory sizes grow faster than the bandwidth to the parallel file system, the cost of checkpointing begins to dominate application run times. Multi-level checkpointing potentially solves this problem through multiple types of checkpoints with different costs and different levels of resiliency in a single run. This solution employs lightweight checkpoints to handle the most common failure modes and relies on more expensive checkpoints for less common, but more severe failures. This theoretically promising approach has not been fully evaluated in a large- scale, production system context. We have designed the Scalable Checkpoint/Restart (SCR) library, a multi-level checkpoint system that writes checkpoints to RAM, Flash, or disk on the compute nodes in addition to the parallel file system. We present the performance and reliability properties of SCR as well as a probabilistic Markov model that predicts its performance on current and future systems. We show that multi-level checkpointing improves efficiency on existing large-scale systems and that this benefit increases as the system size grows. In particular, we developed low-cost checkpoint schemes that are 100x-1000x faster than the parallel file system and effective against 85% of our system failures. This leads to a gain in machine efficiency of up to 35%, and it reduces the the load on the parallel file system by a factor of two on current and future systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Thyristors",
+                "Checkpointing",
+                "Random access memory",
+                "Computational modeling",
+                "Markov processes",
+                "Bandwidth",
+                "Redundancy"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Multi-level System",
+                "Running Time",
+                "Probabilistic Model",
+                "Computer System",
+                "System Failure",
+                "Single Run",
+                "Parallel System",
+                "File System",
+                "Levels Of Resilience",
+                "Gain Efficiency",
+                "Application Running",
+                "High-performance Computing Systems",
+                "Hierarchical Regression",
+                "Large Systems",
+                "System Architecture",
+                "High Failure Rate",
+                "Recovery Status",
+                "Additional Nodes",
+                "Cost Recovery",
+                "Solid-state Drives",
+                "Increasing Failure Rate",
+                "Fewer Nodes"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -85,7 +122,50 @@
                 "firstName": "Pradeep",
                 "lastName": "Dubey"
             }
-        ]
+        ],
+        "abstract": "Stencil computation sweeps over a spatial grid over multiple time steps to perform nearest-neighbor computations. The bandwidth-to-compute requirement for a large class of stencil kernels is very high, and their performance is bound by the available memory bandwidth. Since memory bandwidth grows slower than compute, the performance of stencil kernels will not scale with increasing compute density. We present a novel 3.5D-blocking algorithm that performs 2.5D-spatial and temporal blocking of the input grid into on-chip memory for both CPUs and GPUs. The resultant algorithm is amenable to both thread- level and data-level parallelism, and scales near-linearly with the SIMD width and multiple-cores. Our performance numbers are faster or comparable to state-of-the-art-stencil implementations on CPUs and GPUs. Our implementation of 7-point-stencil is 1.5X-faster on CPUs, and 1.8X faster on GPUs for single- precision floating point inputs than previously reported numbers. For Lattice Boltzmann methods, the corresponding speedup number on CPUs is 2.1X.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Graphics processing unit",
+                "Kernel",
+                "Memory management",
+                "System-on-a-chip",
+                "Three dimensional displays"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Modern Graphics Processing Units",
+                "Stencil Computations",
+                "Time Step",
+                "Parallel Data",
+                "Single Precision",
+                "Memory Bandwidth",
+                "Lattice Boltzmann Method",
+                "On-chip Memory",
+                "Multiple Time Steps",
+                "Computational Resources",
+                "Parallelization",
+                "Spatial Dimensions",
+                "Grid Points",
+                "Block Size",
+                "Time Instants",
+                "Core I7",
+                "Modern Architecture",
+                "Data Reuse",
+                "Double Precision",
+                "Spatial Block",
+                "Grid Elements",
+                "External Memory",
+                "Shared Memory",
+                "Bandwidth Requirements",
+                "Cache Size",
+                "Edge Points",
+                "Data Cache",
+                "Effective Bandwidth",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -126,7 +206,42 @@
                 "firstName": "David A.",
                 "lastName": "Bader"
             }
-        ]
+        ],
+        "abstract": "Many important problems in computational sciences, social network analysis, security, and business analytics, are data-intensive and lend themselves to graph-theoretical analyses. In this paper we investigate the challenges involved in exploring very large graphs by designing a breadth-first search (BFS) algorithm for advanced multi-core processors that are likely to become the building blocks of future exascale systems. Our new methodology for large-scale graph analytics combines a highlevel algorithmic design that captures the machine-independent aspects, to guarantee portability with performance to future processors, with an implementation that embeds processorspecific optimizations. We present an experimental study that uses state-of-the-art Intel Nehalem EP and EX processors and up to 64 threads in a single system. Our performance on several benchmark problems representative of the power-law graphs found in real-world problems reaches processing rates that are competitive with supercomputing results in the recent literature. In the experimental evaluation we prove that our graph exploration algorithm running on a 4-socket Nehalem EX is (1) 2.4 times faster than a Cray XMT with 128 processors when exploring a random graph with 64 million vertices and 512 millions edges, (2) capable of processing 550 million edges per second with an R-MAT graph with 200 million vertices and 1 billion edges, comparable to the performance of a similar graph on a Cray MTA-2 with 40 processors and (3) 5 times faster than 256 BlueGene/L processors on a graph with average degree 50.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sockets",
+                "Algorithm design and analysis",
+                "Instruction sets",
+                "Synchronization",
+                "Multicore processing"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Multi-core",
+                "Graph Exploration",
+                "Building Blocks",
+                "Search Algorithm",
+                "Experimental Evaluation",
+                "Algorithm Design",
+                "Social Network Analysis",
+                "Random Graph",
+                "Breadth-first Search",
+                "Rest Of The Paper",
+                "Parallelization",
+                "Vertices",
+                "Access Patterns",
+                "Parallel Algorithm",
+                "Graph Size",
+                "Fast Forward",
+                "Processing Nodes",
+                "Linearizable",
+                "Class Of Graphs",
+                "L2 Cache",
+                "Memory Hierarchy",
+                "Cache Size"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -155,7 +270,48 @@
                 "firstName": "Rudolf",
                 "lastName": "Eigenmann"
             }
-        ]
+        ],
+        "abstract": "General-Purpose Graphics Processing Units (GPGPUs) are promising parallel platforms for high performance computing. The CUDA (Compute Unified Device Architecture) programming model provides improved programmability for general computing on GPGPUs. However, its unique execution model and memory model still pose significant challenges for developers of efficient GPGPU code. This paper proposes a new programming interface, called OpenMPC, which builds on OpenMP to provide an abstraction of the complex CUDA programming model and offers high-level controls of the involved parameters and optimizations. We have developed a fully automatic compilation and user-assisted tuning system supporting OpenMPC. In addition to a range of compiler transformations and optimizations, the system includes tuning capabilities for generating, pruning, and navigating the search space of compilation variants. Our results demonstrate that OpenMPC offers both programmability and tunability. Our system achieves 88% of the performance of the hand-coded CUDA programs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing unit",
+                "Kernel",
+                "Optimization",
+                "Instruction sets",
+                "Tuning",
+                "Programming",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Search Space",
+                "Processing Unit",
+                "Programming Model",
+                "Application Programming Interface",
+                "Memory Model",
+                "Systematic Tuning",
+                "Environmental Variables",
+                "Points In Space",
+                "Kernel Function",
+                "Exhaustive Search",
+                "Basic Scheme",
+                "Load Data",
+                "Data Sharing",
+                "Declarative Memory",
+                "Caching",
+                "GPU Memory",
+                "Set Of Directions",
+                "Memory Efficiency",
+                "Shared Memory",
+                "Automatic Translation",
+                "Manual Version",
+                "Memory Transfer",
+                "On-chip Memory",
+                "Code Section",
+                "Critical Section",
+                "Translation Framework",
+                "Sparse Matrix"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -244,7 +400,38 @@
                 "firstName": "Saurabh",
                 "lastName": "Dighe"
             }
-        ]
+        ],
+        "abstract": "The number of cores integrated onto a single die is expected to climb steadily in the foreseeable future. This move to many-core chips is driven by a need to optimize performance per watt. How best to connect these cores and how to program the resulting many-core processor, however, is an open research question. Designs vary from GPUs to cache-coherent shared memory multiprocessors to pure distributed memory chips. The 48-core SCC processor reported in this paper is an intermediate case, sharing traits of message passing and shared memory architectures. The hardware has been described elsewhere. In this paper, we describe the programmer's view of this chip. In particular we describe RCCE: the native message passing model created for the SCC processor.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Message passing",
+                "Tiles",
+                "Table lookup",
+                "Coherence",
+                "Software",
+                "Linux",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Message Passing",
+                "Memory Architecture",
+                "Shared Memory",
+                "Synchronization",
+                "Operating System",
+                "Direct Access",
+                "Programming Model",
+                "GB Memory",
+                "Lookup Table",
+                "Communication Patterns",
+                "Power Management",
+                "Caching",
+                "Resonance Shift",
+                "Intensive Phase",
+                "Clock Frequency",
+                "Address Space",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -279,7 +466,45 @@
                 "firstName": "Andrew",
                 "lastName": "Lumsdaine"
             }
-        ]
+        ],
+        "abstract": "This paper presents an in-depth analysis of the impact of system noise on large-scale parallel application performance in realistic settings. Our analytical model shows that not only collective operations but also point-to-point communications influence the application's sensitivity to noise. We present a simulation toolchain that injects noise delays from traces gathered on common large-scale architectures into a LogGPS simulation and allows new insights into the scaling of applications in noisy environments. We investigate collective operations with up to 1 million processes and three applications (Sweep3D, AMG, and POP) with up to 32,000 processes.We show that the scale at which noise becomes a bottleneck is system-specific and depends on the structure of the noise. Simulations with different network speeds show that a 10x faster network does not improve application scalability. We quantify noise and conclude that our tools can be utilized to tune the noise signatures of a specific system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Noise",
+                "Synchronization",
+                "Receivers",
+                "Benchmark testing",
+                "Delay",
+                "Analytical models",
+                "Noise measurement"
+            ],
+            "Index Terms": [
+                "Large-scale Applications",
+                "Influence Of Noise",
+                "System Noise",
+                "Scale Applications",
+                "Impact Of Noise",
+                "Network Speed",
+                "Fast Network",
+                "Noise Structure",
+                "Parallel Applications",
+                "Point-to-point Communication",
+                "Benchmark",
+                "Effect Of Noise",
+                "Inflection Point",
+                "Network Parameters",
+                "Noise Sources",
+                "Low Noise",
+                "Hyperacusis",
+                "Noise Patterns",
+                "Discrete Event Simulation",
+                "Artificial Noise",
+                "Message Passing Interface",
+                "Cache Misses",
+                "Schedule Generation",
+                "Real Machine"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -344,7 +569,43 @@
                 "firstName": "Matthew",
                 "lastName": "Wolf"
             }
-        ]
+        ],
+        "abstract": "Significant challenges exist for achieving peak or even consistent levels of performance when using IO systems at scale. They stem from sharing IO system resources across the processes of single largescale applications and/or multiple simultaneous programs causing internal and external interference, which in turn, causes substantial reductions in IO performance. This paper presents interference effects measurements for two different file systems at multiple supercomputing sites. These measurements motivate developing a 'managed' IO approach using adaptive algorithms varying the IO system workload based on current levels and use areas. An implementation of these methods deployed for the shared, general scratch storage system on Oak Ridge National Laboratory machines achieves higher overall performance and less variability in both a typical usage environment and with artificially introduced levels of 'noise'. The latter serving to clearly delineate and illustrate potential problems arising from shared system usage and the advantages derived from actively managing it.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interference",
+                "Bandwidth",
+                "Aggregates",
+                "Laboratories",
+                "Organizations",
+                "Writing",
+                "Limiting"
+            ],
+            "Index Terms": [
+                "Storage Systems",
+                "IO Performance",
+                "Performance Variables",
+                "Interference Effect",
+                "Single Application",
+                "File System",
+                "External Interference",
+                "Output Data",
+                "Adaptive Method",
+                "Adaptive Approach",
+                "Multiple Applications",
+                "Parallel System",
+                "Role In Coordination",
+                "Reading Performance",
+                "Multiple Machine",
+                "Software Architecture",
+                "Substantial Performance",
+                "Job Scheduling",
+                "Storage Location",
+                "Interference Test",
+                "Number Of Writers",
+                "Buffer Space"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -385,7 +646,46 @@
                 "firstName": "Norman P.",
                 "lastName": "Jouppi"
             }
-        ]
+        ],
+        "abstract": "System-in-Package (SiP) and 3D integration are promising technologies to bring more memory onto a microprocessor package to mitigate the \"memory wall\" problem. In this paper, instead of using them to build caches, we study a heterogenous main memory using both on- and off-package memories providing both fast and high-bandwidth on-package accesses and expandable and low-cost commodity off-package memory capacity. We introduce another layer of address translation coupled with an on-chip memory controller that can dynamically migrate data between off-package and off-package memory either in hardware or with operating system assistance depending on the migration granularity. Our experimental results demonstrate that such design can achieve the average effectiveness of 83% of the ideal case where all memory can be placed in high-speed on-package memory for our simulated benchmarks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Delay",
+                "Memory management",
+                "System-on-a-chip",
+                "Microprocessors",
+                "Aerospace electronics",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Memory Control",
+                "On-chip Memory",
+                "Heterogeneous Memory",
+                "Operating System",
+                "Fast Access",
+                "3D Integration",
+                "Memory Wall",
+                "Left Column",
+                "Load Data",
+                "Row Of Table",
+                "Granular Data",
+                "Average Latency",
+                "Static Function",
+                "Memory Space",
+                "Memory Footprint",
+                "Migration Dynamics",
+                "Memory Regions",
+                "Memory Address",
+                "Physical Address",
+                "Translation Table",
+                "Access Latency",
+                "Cache Hit",
+                "L2 Cache",
+                "Cache Misses",
+                "Additional Bits"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -462,7 +762,50 @@
                 "firstName": "Steven",
                 "lastName": "Swanson"
             }
-        ]
+        ],
+        "abstract": "Emerging storage technologies such as flash memories, phase-change memories, and spin-transfer torque memories are poised to close the enormous performance gap between disk-based storage and main memory. We evaluate several approaches to integrating these memories into computer systems by measuring their impact on IO-intensive, database, and memory-intensive applications. We explore several options for connecting solid-state storage to the host system and find that the memories deliver large gains in sequential and random access performance, but that different system organizations lead to different performance trade-offs. The memories provide substantial application-level gains as well, but overheads in the OS, file system, and application can limit performance. As a result, fully exploiting these memories' potential will require substantial changes to application and system software. Finally, paging to fast non-volatile memories is a viable option for some applications, providing an alternative to expensive, powerhungry DRAM for supporting scientific applications with large memory footprints.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Nonvolatile memory",
+                "Phase change materials",
+                "Field programmable gate arrays",
+                "Ash",
+                "Databases",
+                "Performance evaluation"
+            ],
+            "Index Terms": [
+                "Volatile Memory",
+                "Sequence Accession",
+                "Scientific Applications",
+                "Random Access",
+                "File System",
+                "Large Memory",
+                "Non-volatile Memory",
+                "Flash Memory",
+                "Database Application",
+                "Running",
+                "Operating System",
+                "Storage Systems",
+                "Normal Operation",
+                "System Architecture",
+                "Work Settings",
+                "High-performance Computing",
+                "Storage Devices",
+                "Hash Function",
+                "Memory Control",
+                "Solid-state Devices",
+                "File Access",
+                "Slow Down",
+                "Caching",
+                "Memory Technologies",
+                "Context Switching",
+                "Virtual Memory",
+                "Ring Topology",
+                "Total Latency",
+                "Carbon Nanotubes"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -533,7 +876,40 @@
                 "firstName": "Satoshi",
                 "lastName": "Matsuoka"
             }
-        ]
+        ],
+        "abstract": "Regional weather forecasting demands fast simulation over fine-grained grids, resulting in extremely memory- bottlenecked computation, a difficult problem on conventional supercomputers. Early work on accelerating mainstream weather code WRF using GPUs with their high memory performance, however, resulted in only minor speedup due to partial GPU porting of the huge code. Our full CUDA porting of the high- resolution weather prediction model ASUCA is the first such one we know to date; ASUCA is a next-generation, production weather code developed by the Japan Meteorological Agency, similar to WRF in the underlying physics (non-hydrostatic model). Benchmark on the 528 (NVIDIA GT200 Tesla) GPU TSUBAME Supercomputer at the Tokyo Institute of Technology demonstrated over 80-fold speedup and good weak scaling achieving 15.0 TFlops in single precision for 6956 x 6052 x 48 mesh. Further benchmarks on TSUBAME 2.0, which will embody over 4000 NVIDIA Fermi GPUs and deployed in October 2010, will be presented.",
+        "keywords": {
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Numerical Weather Prediction",
+                "High Performance",
+                "High-performance Computing",
+                "October 2010",
+                "Japan Meteorological Agency",
+                "Single Precision",
+                "Computation Time",
+                "Boundary Value",
+                "Communication Time",
+                "Directions In Space",
+                "Potential Temperature",
+                "Integration Time Step",
+                "Floating-point Operations",
+                "Short Step",
+                "Double Precision",
+                "Coriolis Force",
+                "Boundary Data",
+                "Single Kernel",
+                "Graphics Processing Unit Memory",
+                "Device Memory",
+                "Shared Memory",
+                "Short Time Step",
+                "Memory Bandwidth",
+                "Domain Decomposition",
+                "Pressure Gradient Force",
+                "GB Memory",
+                "Time Step"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -628,7 +1004,51 @@
                 "firstName": "Philip",
                 "lastName": "Maechling"
             }
-        ]
+        ],
+        "abstract": "Petascale simulations are needed to understand the rupture and wave dynamics of the largest earthquakes at shaking frequencies required to engineer safe structures (> 1 Hz). Toward this goal, we have developed a highly scalable, parallel application (AWP-ODC) that has achieved “M8”: a full dynamical simulation of a magnitude-8 earthquake on the southern San Andreas fault up to 2 Hz. M8 was calculated using a uniform mesh of 436 billion 40-m<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">3</sup> cubes to represent the three-dimensional crustal structure of Southern California, in a 800 km by 400 km area, home to over 20 million people. This production run producing 360 sec of wave propagation sustained 220 Tflop/s for 24 hours on NCCS Jaguar using 223,074 cores. As the largest-ever earthquake simulation, M8 opens new territory for earthquake science and engineering - the physics-based modeling of the largest seismic hazards with the goal of reducing their potential for loss of life and property.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mathematical model",
+                "Computational modeling",
+                "Equations",
+                "Earthquakes",
+                "Stress",
+                "Propagation",
+                "Numerical models"
+            ],
+            "Index Terms": [
+                "Earthquake Simulation",
+                "Dynamical",
+                "Dynamics Simulations",
+                "Southern California",
+                "Production Run",
+                "High Scalability",
+                "Parallel Applications",
+                "Parallelization",
+                "Fault Zone",
+                "Velocity Components",
+                "Stress Components",
+                "File System",
+                "Wavefield",
+                "Communication Overhead",
+                "Ground Motion",
+                "Exceedance Probability",
+                "Perfectly Matched Layer",
+                "Total Execution Time",
+                "Parallel Efficiency",
+                "Fault Rupture",
+                "Message Passing Interface",
+                "L2 Cache",
+                "Peak Ground Velocity",
+                "Checkpointing",
+                "Strong Ground Motion",
+                "Absorbing Boundary Conditions",
+                "Components Of The Velocity Vector",
+                "Wall-clock Time",
+                "Great Earthquakes",
+                "Waveguide"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -663,7 +1083,51 @@
                 "firstName": "Nancy M.",
                 "lastName": "Amato"
             }
-        ]
+        ],
+        "abstract": "Processing large graphs is becoming increasingly important for many domains such as social networks, bioinformatics, etc. Unfortunately, many algorithms and implementations do not scale with increasing graph sizes. As a result, researchers have attempted to meet the growing data demands using parallel and external memory techniques. We present a novel asynchronous approach to compute Breadth-First-Search (BFS), Single-Source-Shortest-Paths, and Connected Components for large graphs in shared memory. Our highly parallel asynchronous approach hides data latency due to both poor locality and delays in the underlying graph data storage. We present an experimental study applying our technique to both In-Memory and Semi-External Memory graphs utilizing multi-core processors and solid-state memory devices. Our experiments using synthetic and real-world datasets show that our asynchronous approach is able to overcome data latencies and provide significant speedup over alternative approaches. For example, on billion vertex graphs our asynchronous BFS scales up to 14 x on 16-cores.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Arrays",
+                "Random access memory",
+                "Algorithm design and analysis",
+                "Instruction sets",
+                "Synchronization",
+                "Flash memory",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Graph Traversal",
+                "Social Networks",
+                "Large Graphs",
+                "Solid-state Devices",
+                "Connected Components",
+                "External Memory",
+                "Path Length",
+                "Power-law",
+                "Efficient Algorithm",
+                "Undirected",
+                "Shortest Path",
+                "GB Memory",
+                "Directed Graph",
+                "First Search",
+                "Hash Function",
+                "Load Balancing",
+                "Node Level",
+                "Serialized",
+                "Homeland Security",
+                "Multi-threaded",
+                "Load Imbalance",
+                "Adjacent Vertices",
+                "Flash Memory",
+                "External Storage",
+                "Random Read",
+                "Asynchronous Manner",
+                "Computer Cluster",
+                "Storage Devices",
+                "Multiple Threads",
+                "Graph Generation"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -752,7 +1216,50 @@
                 "firstName": "George",
                 "lastName": "Biros"
             }
-        ]
+        ],
+        "abstract": "We present a fast, petaflop-scalable algorithm for Stokesian particulate flows. Our goal is the direct simulation of blood, which we model as a mixture of a Stokesian fluid (plasma) and red blood cells (RBCs). Directly simulating blood is a challenging multiscale, multiphysics problem. We report simulations with up to 200 million deformable RBCs. The largest simulation amounts to 90 billion unknowns in space. In terms of the number of cells, we improve the state-of-the art by several orders of magnitude: the previous largest simulation, at the same physical fidelity as ours, resolved the flow of O(1,000-10,000) RBCs. Our approach has three distinct characteristics: (1) we faithfully represent the physics of RBCs by using nonlinear solid mechanics to capture the deformations of each cell; (2) we accurately resolve the long-range, N-body, hydrodynamic interactions between RBCs (which are caused by the surrounding plasma); and (3) we allow for the highly non-uniform distribution of RBCs in space. The new method has been implemented in the software library MOBO (for “Moving Boundaries”). We designed MOBO to support parallelism at all levels, including inter-node distributed memory parallelism, intra-node shared memory parallelism, data parallelism (vectorization), and fine-grained multithreading for GPUs. We have implemented and optimized the majority of the computation kernels on both Intel/AMD x86 and NVidia's Tesla/Fermi platforms for single and double floating point precision. Overall, the code has scaled on 256 CPU-GPUs on the Teragrid's Lincoln cluster and on 200,000 AMD cores of the Oak Ridge national Laboratory's Jaguar PF system. In our largest simulation, we have achieved 0.7 Petaflops/s of sustained performance on Jaguar.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mathematical model",
+                "Blood",
+                "Kernel",
+                "Biomembranes",
+                "Numerical models",
+                "Equations",
+                "Plasmas"
+            ],
+            "Index Terms": [
+                "Blood Flow",
+                "Flow Simulation",
+                "Direct Simulation",
+                "Numerical Simulation Of Flow",
+                "Blood Flow Simulations",
+                "Red Blood Cells",
+                "Parallel Data",
+                "Oak Ridge National Laboratory",
+                "Red Blood Cell Deformability",
+                "Kernel Computation",
+                "Parallelization",
+                "Matrix Multiplication",
+                "Point Source",
+                "Local Interactions",
+                "Integral Equation",
+                "Single Node",
+                "Evaluation Phase",
+                "Spherical Harmonics",
+                "Red Blood Cell Membrane",
+                "Poiseuille Flow",
+                "Lattice Boltzmann Method",
+                "Legendre Transform",
+                "Single Precision",
+                "Parallel Differences",
+                "Floating-point Numbers",
+                "Global Interaction",
+                "Background Flow",
+                "Strong Scaling",
+                "Double Precision"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -811,7 +1318,48 @@
                 "firstName": "Phil",
                 "lastName": "Maechling"
             }
-        ]
+        ],
+        "abstract": "Efficient data management is a key component in achieving good performance for scientific workflows in distributed environments. Workflow applications typically communicate data between tasks using files. When tasks are distributed, these files are either transferred from one computational node to another, or accessed through a shared storage system. In grids and clusters, workflow data is often stored on network and parallel file systems. In this paper we investigate some of the ways in which data can be managed for workflows in the cloud. We ran experiments using three typical workflow applications on Amazon's EC2. We discuss the various storage and file systems we used, describe the issues and problems we encountered deploying them on EC2, and analyze the resulting performance and cost of the workflows.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clouds",
+                "File systems",
+                "Broadband communication",
+                "Virtual machining",
+                "Runtime",
+                "Workflow management software"
+            ],
+            "Index Terms": [
+                "Amazon EC2",
+                "Storage Systems",
+                "File System",
+                "Computing Nodes",
+                "Network File",
+                "Broadband",
+                "Performance Metrics",
+                "Epigenome",
+                "Output Data",
+                "Cloud Computing",
+                "Input Files",
+                "Cloud Data",
+                "Single Node",
+                "Lowest Cost",
+                "Virtual Machines",
+                "Storage Cost",
+                "Cloud Platform",
+                "Instances Of Type",
+                "Local Storage",
+                "Small Files",
+                "Workflow Management System",
+                "Worker Nodes",
+                "Parallel Applications",
+                "Execution Environment",
+                "Seismograms",
+                "File Access",
+                "Storage Options",
+                "Choice Of System"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -846,7 +1394,50 @@
                 "firstName": "Gagan",
                 "lastName": "Agrawal"
             }
-        ]
+        ],
+        "abstract": "The recent emergence of clouds with large, virtualized pools of compute and storage resources raises the possibility of a new compute paradigm for scientific research. With virtualization technologies, consolidation of scientific workflows presents a promising opportunity for energy and resource cost optimization, while achieving high performance. We have developed pSciMapper, a power-aware consolidation framework for scientific workflows. We view consolidation as a hierarchical clustering problem, and introduce a distance metric that is based on interference between resource requirements. A dimensionality reduction method (KCCA) is used to relate the resource requirements to performance and power consumption. We have evaluated pSciMapper with both real-world and synthetic scientific workflows, and demonstrated that it is able to reduce power consumption by up to 56%, with less than 15% slowdown. Our experiments also show that scheduling overheads of pSciMapper are low, and the algorithm can scale well for workflows with hundreds of tasks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Power demand",
+                "Time series analysis",
+                "Clustering algorithms",
+                "Correlation",
+                "Measurement",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Virtually",
+                "Hierarchical Clustering",
+                "Power Consumption",
+                "Energy Cost",
+                "Resource Costs",
+                "Resource Requirements",
+                "Dimensionality Reduction Methods",
+                "Optimal Opportunity",
+                "Virtualization Technology",
+                "Time Series",
+                "Hidden Markov Model",
+                "Total Power",
+                "Scientific Applications",
+                "Hidden State",
+                "Resource Usage",
+                "Memory Usage",
+                "Directed Acyclic Graph",
+                "Virtual Machines",
+                "Power Management",
+                "CPU Utilization",
+                "Total Power Consumption",
+                "CPU Usage",
+                "Temporal Signatures",
+                "Power Cost",
+                "Single Server",
+                "Types Of Hardware",
+                "L2 Cache",
+                "Resource Contention",
+                "Scheduling Algorithm"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -899,7 +1490,50 @@
                 "firstName": "James",
                 "lastName": "Browne"
             }
-        ]
+        ],
+        "abstract": "HPC systems are notorious for operating at a small fraction of their peak performance, and the ongoing migration to multi-core and multi-socket compute nodes further complicates performance optimization. The readily available performance evaluation tools require considerable effort to learn and utilize. Hence, most HPC application writers do not use them. As remedy, we have developed PerfExpert, a tool that combines a simple user interface with a sophisticated analysis engine to detect probable core, socket, and node-level performance bottlenecks in each important procedure and loop of an application. For each bottle-neck, PerfExpert provides a concise performance assessment and suggests steps that can be taken by the programmer to improve performance. These steps include compiler switches and optimization strategies with code examples. We have applied PerfExpert to several HPC production codes on the Ranger supercomputer. In all cases, it correctly identified the critical code sections and provided accurate assessments of their performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Radiation detectors",
+                "Runtime",
+                "Upper bound",
+                "Semiconductor device measurement",
+                "Supercomputers"
+            ],
+            "Index Terms": [
+                "HPC Applications",
+                "Optimal Performance",
+                "Performance Assessment",
+                "High-performance Computing",
+                "Product Code",
+                "Code Examples",
+                "Performance Bottleneck",
+                "Code Section",
+                "Data Availability",
+                "Poor Performance",
+                "Upper Bound",
+                "Performance Metrics",
+                "Parallelization",
+                "Nonlinear Systems",
+                "Load Balancing",
+                "Expert System",
+                "Multiple Codes",
+                "Optimal Code",
+                "Data Cache",
+                "Potential Bottlenecks",
+                "L2 Cache",
+                "Cache Hit",
+                "Parallel Applications",
+                "Cache Misses",
+                "Earth’s Mantle",
+                "Memory Bandwidth",
+                "Loop Level",
+                "Atmospheric General Circulation Model",
+                "Development Of Applications",
+                "Application Code"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -952,7 +1586,36 @@
                 "firstName": "Greg",
                 "lastName": "Bronevetsky"
             }
-        ]
+        ],
+        "abstract": "Standard testing methods of MPI programs do not guarantee coverage of all non-deterministic interactions (e.g., wildcard-receives). Programs tested by these methods can have untested paths (bugs) that may become manifest unexpectedly. Previous formal dynamic verifiers cover the space of non-determinism but do not scale, even for small applications. We present DAMPI, the first dynamic analyzer for MPI programs that guarantees scalable coverage of the space of non-determinism through a decentralized algorithm based on Lamport-clocks. DAMPI computes alternative non-deterministic matches and enforces them in subsequent program replays. To avoid interleaving explosion, DAMPI employs heuristics to focus coverage to regions of interest. We show that DAMPI can detect deadlocks and resource-leaks in real applications. Our results on a wide range of applications using over a thousand processes, which is an order of magnitude larger than any previously reported results for MPI dynamic verification tools, demonstrate that DAMPI provides scalable, user-configurable testing coverage.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Testing",
+                "Probes",
+                "Neodymium",
+                "Runtime",
+                "Heuristic algorithms",
+                "Semantics"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Heuristic",
+                "Deterministic",
+                "State Space",
+                "Local Processes",
+                "Debugging",
+                "Fortran",
+                "Scheduling Algorithm",
+                "Low Overhead",
+                "Model Checking",
+                "Concurrent Effects",
+                "Time Vector",
+                "Potential Matches",
+                "Run Mode",
+                "Synchronous Communication"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -993,7 +1656,49 @@
                 "firstName": "Robert W.",
                 "lastName": "Wisniewski"
             }
-        ]
+        ],
+        "abstract": "The Petascale era has recently been ushered in and many researchers have already turned their attention to the challenges of exascale computing. To achieve petascale computing two broad approaches for kernels were taken, a lightweight approach embodied by IBM Blue Gene's CNK, and a more fullweight approach embodied by Cray's CNL. There are strengths and weaknesses to each approach. Examining the current generation can provide insight as to what mechanisms may be needed for the exascale generation. The contributions of this paper are the experiences we had with CNK on Blue Gene/P. We demonstrate it is possible to implement a small lightweight kernel that scales well but still provides a Linux environment and functionality desired by HPC programmers. Such an approach provides the values of reproducibility, low noise, high and stable performance, reliability, and ease of effectively exploiting unique hardware features. We describe the strengths and weaknesses of this approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linux",
+                "Kernel",
+                "Hardware",
+                "Noise",
+                "Libraries",
+                "Supercomputers",
+                "Cloning"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "High Performance",
+                "Stable Performance",
+                "Low Noise",
+                "Running",
+                "Operating System",
+                "Communication Protocol",
+                "Debugging",
+                "Static Function",
+                "Space Usage",
+                "Dynamic Link",
+                "Persistent Memory",
+                "Chip Design",
+                "Design Philosophy",
+                "Computing Nodes",
+                "Physical Memory",
+                "Memory Management",
+                "System Calls",
+                "File System",
+                "Virtual Memory",
+                "Dynamic Library",
+                "Thousands Of Nodes",
+                "L2 Cache",
+                "Address Space",
+                "Coded Based",
+                "Multiple Chips",
+                "Network Hardware",
+                "Kernel Approach"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1052,7 +1757,50 @@
                 "firstName": "Lucas",
                 "lastName": "Wilcox"
             }
-        ]
+        ],
+        "abstract": "Many problems are characterized by dynamics occurring on a wide range of length and time scales. One approach to overcoming the tyranny of scales is adaptive mesh refinement/coarsening (AMR), which dynamically adapts the mesh to resolve features of interest. However, the benefits of AMR are difficult to achieve in practice, particularly on the petascale computers that are essential for difficult problems. Due to the complex dynamic data structures and frequent load balancing, scaling dynamic AMR to hundreds of thousands of cores has long been considered a challenge. Another difficulty is extending parallel AMR techniques to high-order-accurate, complex-geometry-respecting methods that are favored for many classes of problems. Here we present new parallel algorithms for parallel dynamic AMR on forest-ofoctrees geometries with arbitrary-order continuous and discontinuous finite/spectral element discretizations. The implementations of these algorithms exhibit excellent weak and strong scaling to over 224,000 Cray XT5 cores for multiscale geophysics problems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Octrees",
+                "Geometry",
+                "Scalability",
+                "Heuristic algorithms",
+                "Partitioning algorithms",
+                "Joining processes",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Class Of Problems",
+                "Load Balancing",
+                "Parallel Algorithm",
+                "Wide Range Of Scales",
+                "Range Of Time Scales",
+                "Adaptive Mesh",
+                "Strong Scaling",
+                "Range Of Length Scales",
+                "Multiscale Problems",
+                "Flow Velocity",
+                "Cycle Time",
+                "Partial Differential Equations",
+                "Coordination Geometry",
+                "Dynamic Adaptation",
+                "Plate Boundary",
+                "Spherical Shell",
+                "Local Refinement",
+                "Oak Ridge National Laboratory",
+                "Global Simulations",
+                "Parallel Efficiency",
+                "Seismic Wave Propagation",
+                "Solving Time",
+                "General Geometry",
+                "Earth’s Mantle",
+                "Parallel Scalability",
+                "Advection Equation",
+                "Discontinuous Galerkin",
+                "Refinement Level",
+                "High Strain Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1087,7 +1835,44 @@
                 "firstName": "John M.",
                 "lastName": "Mellor-Crummey"
             }
-        ]
+        ],
+        "abstract": "Applications must scale well to make efficient use of today's class of petascale computers, which contain hundreds of thousands of processor cores. Inefficiencies that do not even appear in modest-scale executions can become major bottlenecks in large-scale executions. Because scaling problems are often difficult to diagnose, there is a critical need for scalable tools that guide scientists to the root causes of scaling problems. Load imbalance is one of the most common scaling problems. To provide actionable insight into load imbalance, we present post-mortem parallel analysis techniques for pinpointing and quantifying load imbalance in the context of call path profiles of parallel programs. We show how to identify load imbalance in its static and dynamic context by using only low-overhead asynchronous call path profiling to locate regions of code responsible for communication wait time in SPMD executions. We describe the implementation of these techniques within HPCTOOLKIT.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Context",
+                "Equations",
+                "Synchronization",
+                "Instruments",
+                "Databases"
+            ],
+            "Index Terms": [
+                "Parallel Execution",
+                "Load Imbalance",
+                "Postmortem",
+                "Actual Knowledge",
+                "Scale Of The Problem",
+                "Waiting Time",
+                "Scatter Plot",
+                "Arithmetic Mean",
+                "Final Value",
+                "State Structures",
+                "Accuracy And Precision",
+                "Input Values",
+                "Temporal Information",
+                "Per Cycle",
+                "Root Node",
+                "Action Execution",
+                "Parallel Data",
+                "Floating-point Operations",
+                "Performance Bottleneck",
+                "Balance Point",
+                "Scalable Analysis",
+                "Summary Metrics",
+                "Point-to-point Communication",
+                "Trace Files"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1128,7 +1913,51 @@
                 "firstName": "Chita R.",
                 "lastName": "Das"
             }
-        ]
+        ],
+        "abstract": "Multiple clock domain architectures have recently been proposed to alleviate the power problem in CMPs by having different frequency/voltage values assigned to each domain based on workload requirements. However, accurate allocation of power to these voltage/frequency islands based on time varying workload characteristics as well as controlling the power consumption at the provisioned power level is quite non-trivial. Toward this end, we propose a two-tier feedback-based control theoretic solution. Our first-tier consists of a global power manager that allocates power targets to individual islands based on the workload dynamics. The power consumptions of these islands are in turn controlled by a second-tier, consisting of local controllers that regulate island power using dynamic voltage and frequency scaling in response to workload requirements.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Power demand",
+                "Mathematical model",
+                "Measurement",
+                "Equations",
+                "Feedback control",
+                "Frequency control",
+                "Voltage control"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Power Management",
+                "Power Consumption",
+                "Local Control",
+                "Great Power",
+                "Dynamic Voltage",
+                "Voltage Scaling",
+                "Individual Islands",
+                "Presence Of Variants",
+                "Transfer Function",
+                "Maximum Power",
+                "Performance Degradation",
+                "Feedback Control",
+                "Total Power",
+                "Consumption Activity",
+                "Power Control",
+                "Provisioning",
+                "Settling Time",
+                "Thermal Management",
+                "Open Loop",
+                "Maximum Overshoot",
+                "Steady-state Error",
+                "Unit Circle",
+                "Open-loop Control",
+                "Proportional Control",
+                "Dynamic Power",
+                "Closed-loop Poles",
+                "CPU Utilization",
+                "Power Reference",
+                "Successive Intervals"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1165,9 +1994,9 @@
             },
             {
                 "id": 37274120800,
-                "preferredName": "Laxmikant V. Kal\u00e9",
+                "preferredName": "Laxmikant V. Kalé",
                 "firstName": "Laxmikant V.",
-                "lastName": "Kal\u00e9"
+                "lastName": "Kalé"
             },
             {
                 "id": 37590876000,
@@ -1175,7 +2004,49 @@
                 "firstName": "Thomas R.",
                 "lastName": "Quinn"
             }
-        ]
+        ],
+        "abstract": "This paper focuses on the use of GPGPU-based clusters for hierarchical N-body simulations. Whereas the behavior of these hierarchical methods has been studied in the past on CPU-based architectures, we investigate key performance issues in the context of clusters of GPUs. These include kernel organization and efficiency, the balance between tree traversal and force computation work, grain size selection through the tuning of offloaded work request sizes, and the reduction of sequential bottlenecks. The effects of various application parameters are studied and experiments done to quantify gains in performance. Our studies are carried out in the context of a production-quality parallel cosmological simulator called ChaNGa. We highlight the re-engineering of the application to make it more suitable for GPU-based environments. Finally, we present performance results from experiments on the NCSA Lincoln GPU cluster, including a note on GPU use in multistepped simulations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing unit",
+                "Kernel",
+                "Computational modeling",
+                "Force",
+                "Instruction sets",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "GPU Cluster",
+                "Effect Of Parameters",
+                "Grain Size",
+                "Computation Time",
+                "Data Transfer",
+                "Green Curve",
+                "Particle Mesh Ewald",
+                "Dark Matter",
+                "Force Estimation",
+                "Local Particle",
+                "Serialized",
+                "GPU Memory",
+                "Dark Energy",
+                "Division Of Work",
+                "Strong Scaling",
+                "List Of Interactions",
+                "Shared Memory",
+                "Individual Requests",
+                "Smoothed Particle Hydrodynamics",
+                "Particle-particle Interaction",
+                "Intel Core 2",
+                "Performance Of Version",
+                "Multipole Moments",
+                "Telework",
+                "Memory Transfer",
+                "Gravitational Force",
+                "Multi-core",
+                "Number Of Processors",
+                "Time Step"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1210,7 +2081,51 @@
                 "firstName": "Song",
                 "lastName": "Jiang"
             }
-        ]
+        ],
+        "abstract": "A cluster of data servers and a parallel file system are often used to provide high-throughput I/O service to parallel programs running on a compute cluster. To exploit I/O parallelism parallel file systems stripe file data across the data servers. While this practice is effective in serving asynchronous requests, it may break individual program's spatial locality, which can seriously degrade I/O performance when the data servers concurrently serve synchronous requests from multiple I/O-intensive programs. In this paper we propose a scheme, IOrchestrator, to improve I/O performance of multi-node storage systems by orchestrating I/O services among programs when such inter-data-server coordination is dynamically determined to be cost effective. We have implemented IOrchestrator in the PVFS2 parallel file system. Our experiments with representative parallel benchmarks show that IOrchestrator can significantly improve I/O performance-- by up to a factor of 2.5--delivered by a cluster of data servers servicing concurrently-running parallel programs. Notably, we have not observed any scenarios in which the use of IOrchestrator causes substantial performance degradation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Synchronization",
+                "Hard disks",
+                "Layout",
+                "USA Councils",
+                "Kernel",
+                "Electronic mail"
+            ],
+            "Index Terms": [
+                "Synchronization",
+                "Parallelization",
+                "Storage Systems",
+                "Service Data",
+                "Parallel System",
+                "File System",
+                "Running Program",
+                "Window Size",
+                "Small Time",
+                "Sequence Accession",
+                "High-performance Computing",
+                "Data Requests",
+                "Strong Position",
+                "Service Time",
+                "Systematic Program",
+                "Random Access",
+                "Processing Program",
+                "Time Slice",
+                "Access Patterns",
+                "System Throughput",
+                "Weak Localization",
+                "Local File",
+                "File Access",
+                "Scheduling Plan",
+                "Disc Region",
+                "Column Array",
+                "Client-side",
+                "Individual Processes",
+                "Multiple Servers",
+                "Vanilla"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1275,7 +2190,44 @@
                 "firstName": "Galen",
                 "lastName": "Shipman"
             }
-        ]
+        ],
+        "abstract": "Scaling computations on emerging massive-core supercomputers is a daunting task, which coupled with the significantly lagging system I/O capabilities exacerbates applications' end-to-end performance. The I/O bottleneck often negates potential performance benefits of assigning additional compute cores to an application. In this paper, we address this issue via a novel functional partitioning (FP) runtime environment that allocates cores to specific application tasks - checkpointing, de-duplication, and scientific data format transformation - so that the deluge of cores can be brought to bear on the entire gamut of application activities. The focus is on utilizing the extra cores to support HPC application I/O activities and also leverage solid-state disks in this context. For example, our evaluation shows that dedicating 1 core on an oct-core machine for checkpointing and its assist tasks using FP can improve overall execution time of a FLASH benchmark on 80 and 160 cores by 43.95% and 41.34%, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Checkpointing",
+                "Multicore processing",
+                "Peer to peer computing",
+                "Supercomputers",
+                "Bandwidth",
+                "Runtime environment"
+            ],
+            "Index Terms": [
+                "Partition Function",
+                "Many-core Architecture",
+                "High-performance Computing",
+                "Solid-state Drives",
+                "Computational Core",
+                "Runtime Environment",
+                "Checkpointing",
+                "Throughput",
+                "Support Services",
+                "Parallelization",
+                "Storage Systems",
+                "Multi-core",
+                "Low Power Consumption",
+                "Main Applications",
+                "File System",
+                "Non-volatile Memory",
+                "Format Conversion",
+                "Computing Nodes",
+                "Strong Scaling",
+                "Resource Contention",
+                "High-performance Computing Systems",
+                "Services Core",
+                "Synthetic Benchmark",
+                "Separate Thread"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1316,7 +2268,51 @@
                 "firstName": "Alex",
                 "lastName": "Sim"
             }
-        ]
+        ],
+        "abstract": "Many scientific applications need support from a communication infrastructure that provides predictable performance, which requires effective algorithms for bandwidth reservations. Network reservation systems such as ESnet's OSCARS, establish guaranteed bandwidth of secure virtual circuits for a certain bandwidth and length of time. However, users currently cannot inquire about bandwidth availability, nor have alternative suggestions when reservation requests fail. In general, the number of reservation options is exponential with the number of nodes n, and current reservation commitments. We present a novel approach for path finding in time-dependent networks taking advantage of user-provided parameters of total volume and time constraints, which produces options for earliest completion and shortest duration. The theoretical complexity is only O(n2r2) in the worst-case, where r is the number of reservations in the desired time interval. We have implemented our algorithm and developed efficient methodologies for incorporation into network reservation frameworks. Performance measurements confirm the theoretical predictions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Resource management",
+                "Heuristic algorithms",
+                "Network topology",
+                "Measurement",
+                "Quality of service",
+                "Channel allocation"
+            ],
+            "Index Terms": [
+                "Time Interval",
+                "Shortest Duration",
+                "Reserve System",
+                "Time Step",
+                "Time Window",
+                "End Time",
+                "Start Time",
+                "Time Slot",
+                "Earliest Time",
+                "Source Node",
+                "Topological Information",
+                "Number Of Time Steps",
+                "Large Graphs",
+                "Bandwidth Requirements",
+                "Large Hadron Collider",
+                "Maximum Bandwidth",
+                "Static Graph",
+                "Bandwidth Allocation",
+                "Bandwidth Values",
+                "Reachable Set",
+                "Search Interval",
+                "Hop Count",
+                "Path Computation",
+                "Network Topology",
+                "Path Weights",
+                "Graph Algorithms",
+                "Data Transfer",
+                "Graph Topology",
+                "Latest Time",
+                "Storage Resources"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1347,11 +2343,54 @@
             },
             {
                 "id": 37605723200,
-                "preferredName": "Balint Jo\u00f3",
+                "preferredName": "Balint Joó",
                 "firstName": "Balint",
-                "lastName": "Jo\u00f3"
+                "lastName": "Joó"
             }
-        ]
+        ],
+        "abstract": "Graphics Processing Units (GPUs) are having a transformational effect on numerical lattice quantum chromo- dynamics (LQCD) calculations of importance in nuclear and particle physics. The QUDA library provides a package of mixed precision sparse matrix linear solvers for LQCD applications, supporting single GPUs based on NVIDIA's Compute Unified Device Architecture (CUDA). This library, interfaced to the QDP++/Chroma framework for LQCD calculations, is currently in production use on the \"9g\" cluster at the Jefferson Laboratory, enabling unprecedented price/performance for a range of problems in LQCD. Nevertheless, memory constraints on current GPU devices limit the problem sizes that can be tackled. In this contribution we describe the parallelization of the QUDA library onto multiple GPUs using MPI, including strategies for the overlapping of communication and computation. We report on both weak and strong scaling for up to 32 GPUs interconnected by InfiniBand, on which we sustain in excess of 4 Tflops.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Graphics processing unit",
+                "Lattices",
+                "Kernel",
+                "Libraries",
+                "Bandwidth",
+                "Image color analysis"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Quantum Chromodynamics",
+                "Lattice QCD",
+                "Graphics Processing Unit",
+                "Sparse Matrix",
+                "Linear Solver",
+                "Problem Size",
+                "Nuclear Physics",
+                "Particle Physics",
+                "Strong Scaling",
+                "Color Space",
+                "Local Intensity",
+                "Gauge Field",
+                "Boundary Position",
+                "Lattice Sites",
+                "Backward Direction",
+                "Spatial Intensity",
+                "Linear Index",
+                "Double Precision",
+                "Single Precision",
+                "Message Passing",
+                "Device Memory",
+                "Spin Space",
+                "Matrix-vector Product",
+                "Large Hadron Collider",
+                "Single Kernel",
+                "Iterative Solver",
+                "Shared Memory",
+                "Temporal Direction"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1370,8 +2409,8 @@
         "authors": [
             {
                 "id": 37297752800,
-                "preferredName": "Louis-No\u00ebl Pouchet",
-                "firstName": "Louis-No\u00ebl",
+                "preferredName": "Louis-Noël Pouchet",
+                "firstName": "Louis-Noël",
                 "lastName": "Pouchet"
             },
             {
@@ -1404,7 +2443,48 @@
                 "firstName": "P.",
                 "lastName": "Sadayappan"
             }
-        ]
+        ],
+        "abstract": "Today's multi-core era places significant demands on an optimizing compiler, which must parallelize programs, exploit memory hierarchy, and leverage the ever-increasing SIMD capabilities of modern processors. Existing model-based heuristics for performance optimization used in compilers are limited in their ability to identify profitable parallelism/locality trade-offs and usually lead to sub-optimal performance. To address this problem, we distinguish optimizations for which effective model-based heuristics and profitability estimates exist, from optimizations that require empirical search to achieve good performance in a portable fashion. We have developed a completely automatic framework in which we focus the empirical search on the set of valid possibilities to perform fusion/code motion, and rely on model-based mechanisms to perform tiling, vectorization and parallelization on the transformed program. We demonstrate the effectiveness of this approach in terms of strong performance improvements on a single target as well as performance portability across different target architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Schedules",
+                "Parallel processing",
+                "Arrays",
+                "Hardware",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Iterative Optimization",
+                "Automatic Parallelization",
+                "Model-driven Optimization",
+                "Heuristic",
+                "Memory Hierarchy",
+                "Benchmark",
+                "Single Step",
+                "Search Space",
+                "Hyperplane",
+                "GB Memory",
+                "Legality",
+                "Cost Model",
+                "Outer Loop",
+                "Hardware Resources",
+                "Loop Iteration",
+                "Number Of Loops",
+                "Set Of Statements",
+                "Static Control",
+                "Remote Memory",
+                "Nonnegative Constants",
+                "Loop Level",
+                "Parallel Loops",
+                "Tile Size",
+                "Input Code",
+                "Statement In The Text",
+                "Permutation",
+                "Program Version",
+                "Microarchitecture"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1463,7 +2543,49 @@
                 "firstName": "Keren",
                 "lastName": "Bergman"
             }
-        ]
+        ],
+        "abstract": "As advancements in CMOS technology trend toward ever increasing core counts in chip multiprocessors for high-performance embedded computing, the discrepancy between on- and off-chip communication bandwidth continues to widen due to the power and spatial constraints of electronic off-chip signaling. Silicon photonics-based communication offers many advantages over electronics for network-on-chip design, namely power consumption that is effectively agnostic to distance traveled at the chip- and board-scale, even across chip boundaries. In this work we develop a design for a photonic network-on-chip with integrated DRAM I/O interfaces and compare its performance to similar electronic solutions using a detailed network-on-chip simulation. When used in a circuit-switched network, silicon nanophotonic switches offer higher bandwidth density and low power transmission, adding up to over 10x better performance and 3-5x lower power over the baseline for projective transform, matrix multiply, and Fast Fourier Transform (FFT), all key algorithms in embedded real-time signal and image processing.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Photonics",
+                "Optical waveguides",
+                "Random access memory",
+                "Optical switches",
+                "Bandwidth",
+                "Integrated circuit modeling"
+            ],
+            "Index Terms": [
+                "Image Processing",
+                "Signal Processing",
+                "Fast Fourier Transform",
+                "Multi-core",
+                "Matrix Multiplication",
+                "Projective Transformation",
+                "Simulation Environment",
+                "Transformation Matrix",
+                "Unmanned Aerial Vehicles",
+                "Arbitration",
+                "Performance Requirements",
+                "Data Streams",
+                "Power Efficiency",
+                "Insertion Loss",
+                "Memory Control",
+                "Photonic Devices",
+                "Clock Rate",
+                "Device Model",
+                "Optical Loss",
+                "Memory Module",
+                "Image Processing Applications",
+                "Wavelength Division Multiplexing",
+                "Network Packets",
+                "Optical Switching",
+                "Bitrate",
+                "Control Plane",
+                "Parallel Data",
+                "Communication Patterns",
+                "Network Resources"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1488,9 +2610,9 @@
             },
             {
                 "id": 37392930300,
-                "preferredName": "David Ekl\u00f6v",
+                "preferredName": "David Eklöv",
                 "firstName": "David",
-                "lastName": "Ekl\u00f6v"
+                "lastName": "Eklöv"
             },
             {
                 "id": 37281897200,
@@ -1498,7 +2620,34 @@
                 "firstName": "Erik",
                 "lastName": "Hagersten"
             }
-        ]
+        ],
+        "abstract": "Contention for shared cache resources has been recognized as a major bottleneck for multicores--especially for mixed workloads of independent applications. While most modern processors implement instructions to manage caches, these instructions are largely unused due to a lack of understanding of how to best leverage them. This paper introduces a classification of applications into four cache usage categories. We discuss how applications from different categories affect each other's performance indirectly through cache sharing and devise a scheme to optimize such sharing. We also propose a low-overhead method to automatically find the best per-instruction cache management policy. We demonstrate how the indirect cache-sharing effects of mixed workloads can be tamed by automatically altering some instructions to better manage cache resources. Practical experiments demonstrate that our software-only method can improve application performance up to 35% on x86 multicore hardware.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Multicore processing",
+                "Prefetching",
+                "Data structures",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Data Cache",
+                "Benchmark",
+                "Large Amount Of Data",
+                "Work Settings",
+                "Data Streams",
+                "Caching",
+                "Bandwidth Requirements",
+                "Optimal Code",
+                "Cache Size",
+                "Application Running",
+                "L2 Cache",
+                "Cache Misses",
+                "Cache Hit",
+                "Replacement Policy"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1539,7 +2688,37 @@
                 "firstName": "Dongyan",
                 "lastName": "Xu"
             }
-        ]
+        ],
+        "abstract": "Virtual machine (VM) consolidation has become a common practice in clouds, Grids, and datacenters. While this practice leads to higher CPU utilization, we observe its negative impact on the TCP throughput of the consolidated VMs: As more VMs share the same core/CPU, the CPU scheduling latency for each VM increases significantly. Such increase leads to slower progress of TCP transmissions to the VMs. To address this problem, we propose an approach called vSnoop, where the driver domain of a host acknowledges TCP packets on behalf of the guest VMs - whenever it is safe to do so. Our evaluation of a Xen-based prototype indicates that vSnoop constantly achieves TCP throughput improvement for VMs (of orders of magnitude in some scenarios). We further show that the higher TCP throughput leads to improvement in application- level performance, via experiments with a two-tier online auction application and two suites of MPI benchmarks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Driver circuits",
+                "Throughput",
+                "Receivers",
+                "Bridges",
+                "Scheduling",
+                "Semantics",
+                "Clouds"
+            ],
+            "Index Terms": [
+                "TCP Throughput",
+                "Virtual Machines",
+                "Online Auction",
+                "Advertising",
+                "High-performance Computing",
+                "State Machine",
+                "Hash Function",
+                "Communication Patterns",
+                "Cumulative Density Function",
+                "Physical Devices",
+                "Local Area Network",
+                "Amazon EC2",
+                "Payload Data",
+                "Packet Arrival",
+                "Control Flag",
+                "Separate Core"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1586,7 +2765,51 @@
                 "firstName": "Allan",
                 "lastName": "Snavely"
             }
-        ]
+        ],
+        "abstract": "Data intensive computing can be defined as computation involving large datasets and complicated I/O patterns. Data intensive computing is challenging because there is a five-orders-of-magnitude latency gap between main memory DRAM and spinning hard disks; the result is that an inordinate amount of time in data intensive computing is spent accessing data on disk. To address this problem we designed and built a prototype data intensive supercomputer named DASH that exploits flash-based Solid State Drive (SSD) technology and also virtually aggregated DRAM to fill the latency gap . DASH uses commodity parts including Intel® X25-E flash drives and distributed shared memory (DSM) software from ScaleMP®. The system is highly competitive with several commercial offerings by several metrics including achieved IOPS (input output operations per second), IOPS per dollar of system acquisition cost, IOPS per watt during operation, and IOPS per gigabyte (GB) of available storage. We present here an overview of the design of DASH, an analysis of its cost efficiency, then a detailed recipe for how we designed and tuned it for high data-performance, lastly show that running data-intensive scientific applications from graph theory, biology, and astronomy, we achieved as much as two orders-of- magnitude speedup compared to the same applications run on traditional architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Tuning",
+                "Spinning",
+                "Drives",
+                "Software",
+                "Measurement",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Cost Efficiency",
+                "Solid-state Drives",
+                "Shared Memory",
+                "Operating System",
+                "System Performance",
+                "Storage Systems",
+                "Spinning Disk",
+                "Bit Error Rate",
+                "Random Access",
+                "Current Survey",
+                "Bit Error",
+                "Software Components",
+                "Forward Error Correction",
+                "Caching",
+                "Large Memory",
+                "Access Patterns",
+                "Storage Media",
+                "Datapath",
+                "Biological Pathway Analysis",
+                "Remote Memory",
+                "Random Read",
+                "Mean Time To Failure",
+                "Chunk Size",
+                "Heterogeneous Data",
+                "External Memory",
+                "Dramatic Performance",
+                "Protein-protein Interaction Network",
+                "Levels Of Hierarchy",
+                "Commercial Products"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1621,7 +2844,50 @@
                 "firstName": "Vijay",
                 "lastName": "Saraswat"
             }
-        ]
+        ],
+        "abstract": "Due to the memory intensive workload and the erratic access pattern, irregular graph algorithms are notoriously hard to implement and optimize for high performance on distributed-memory systems. Although the PGAS paradigm proposed recently improves ease of programming, no high performance PGAS implementation of large-scale graph analysis is known. We present the first fast PGAS implementation of graph algorithms for the connected components and minimum spanning tree problems. By improving memory access locality, compared with the naive implementation, our implementation exhibits much better communication efficiency and cache performance on a cluster of SMPs. With additional algorithmic and PGASspecific optimizations, our implementation achieves significant speedups over both the best sequential implementation and the best single-node SMP implementation for large, sparse graphs with more than a billion edges.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clustering algorithms",
+                "Electronics packaging",
+                "Algorithm design and analysis",
+                "Phase change random access memory",
+                "Instruction sets",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Fast Implementation",
+                "Graph Algorithms",
+                "High Performance",
+                "Optimization Algorithm",
+                "Efficient Communication",
+                "Access Patterns",
+                "Sparse Graph",
+                "Connected Components",
+                "Naive Implementation",
+                "Grafting",
+                "Efficient Algorithm",
+                "Single Node",
+                "Input Size",
+                "Cluster Nodes",
+                "Communication Time",
+                "Random Graph",
+                "Single Thread",
+                "Parallel Algorithm",
+                "Remote Access",
+                "Breadth-first Search",
+                "Communication Rounds",
+                "Number Of Processors",
+                "Edge List",
+                "Remote Memory",
+                "Remote Nodes",
+                "Parallel Implementation",
+                "P Matrix",
+                "Solid Horizontal Line",
+                "Target Platform",
+                "Cache Size"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1656,7 +2922,40 @@
                 "firstName": "Gagan",
                 "lastName": "Agrawal"
             }
-        ]
+        ],
+        "abstract": "Computing as a utility, that is, on-demand access to computing and storage infrastructure, has emerged in the form of the Cloud. In this model of computing, elastic resource allocation, i.e., the ability to scale resource allocation for specific applications, should be optimized to manage cost versus performance. Meanwhile, the wake of the information sharing/mining age is invoking a pervasive sharing of Web services and data sets in the Cloud, and at the same time, many data-intensive scientific applications are being expressed as these services. In this paper, we explore an approach to accelerate service processing in a Cloud setting. We have developed a cooperative scheme for caching data output from services for reuse. We propose algorithms for scaling our cache system up during peak querying times, and back down to save costs. Using the Amazon EC<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sub> public Cloud, a detailed evaluation of our system has been performed, considering speed up and elastic scalability in terms resource allocation and relaxation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clouds",
+                "Indexes",
+                "Resource management",
+                "Servers",
+                "Algorithm design and analysis",
+                "Spatiotemporal phenomena",
+                "Elasticity"
+            ],
+            "Index Terms": [
+                "Resource Allocation",
+                "Scientific Applications",
+                "Caching",
+                "Data Cache",
+                "Amazon EC2",
+                "Storage Infrastructure",
+                "Time Step",
+                "Window Size",
+                "Provision Of Resources",
+                "Hash Function",
+                "Leaf Node",
+                "Cooperative Control",
+                "Tree Search",
+                "Time Slice",
+                "Data Reuse",
+                "Service Requests",
+                "Input Pair",
+                "Sliding Window Size",
+                "Tree Index"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1685,7 +2984,36 @@
                 "firstName": "Keigo",
                 "lastName": "Nitadori"
             }
-        ]
+        ],
+        "abstract": "We present the results of a hierarchical N-body simulation on DEGIMA, a cluster of PCs with 576 graphic processing units (GPUs) and using an InfiniBand interconnect. DEGIMA stands for DEstination for GPU Intensive MAchine, and is located at Nagasaki Advanced Computing Center (NACC), Nagasaki University. In this work, we have upgraded DEGIMA_s interconnect using InfiniBand. DEGIMA is composed by 144 nodes with 576 GT200 GPUs. An astrophysical N-body simulation with 3,278,982,596 particles using a treecode algorithm shows a sustained performance of 190.5 Tflops on DEGIMA. The overall cost of the hardware was $411,921 dollars. The maximum corrected performance is 104.8 Tflops for the simulation, resulting in a cost performance of 254.4 MFlops/$. This corrections is performed by counting the FLOPS based on the most efficient CPU algorithm. Any extra FLOPS that arise from the GPU implementation and parameter differences are not included in the 254.4 MFLOPS/$.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing unit",
+                "Computational modeling",
+                "Force",
+                "Pipelines",
+                "Kernel",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Hardware Cost",
+                "Square Root",
+                "Parallelization",
+                "Implementation Of Algorithm",
+                "Data Transfer",
+                "Accurate Parameters",
+                "Single Node",
+                "Computer Cluster",
+                "Random Access Memory",
+                "Particle-in-cell",
+                "Floating-point Operations",
+                "Open Reduction",
+                "Computing Nodes",
+                "Number Of Processors",
+                "Particle Sorting"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1750,7 +3078,44 @@
                 "firstName": "Kazutomo",
                 "lastName": "Yoshii"
             }
-        ]
+        ],
+        "abstract": "Current leadership-class machines suffer from a significant imbalance between their computational power and their I/O bandwidth. I/O forwarding is a paradigm that attempts to bridge the increasing performance and scalability gap between the compute and I/O components of leadership-class machines to meet the requirements of data-intensive applications by shipping I/O calls from compute nodes to dedicated I/O nodes. I/O forwarding is a critical component of the I/O subsystem of the IBM Blue Gene/P supercomputer currently deployed at several leadership computing facilities. In this paper, we evaluate the performance of the existing I/O forwarding mechanisms for BG/P and identify the performance bottlenecks in the current design. We augment the I/O forwarding with two approaches: I/O scheduling using a work-queue model and asynchronous data staging. We evaluate the efficacy of our approaches using microbenchmarks and application-level benchmarks on leadership class systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Instruction sets",
+                "Switches",
+                "Benchmark testing",
+                "Lead",
+                "Servers",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Benchmark Test",
+                "Performance Bottleneck",
+                "Computing Nodes",
+                "Operating System",
+                "Data Visualization",
+                "National Laboratory",
+                "Data Transfer",
+                "Large-scale Systems",
+                "Load Data",
+                "File System",
+                "Network Throughput",
+                "Caching",
+                "Single Thread",
+                "Argonne National Laboratory",
+                "Scheduled Date",
+                "Multi-threaded",
+                "Function Calls",
+                "First-in-first-out",
+                "Message Size",
+                "Achievable Throughput",
+                "Scheduling Mechanism",
+                "Resource Contention"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1787,9 +3152,9 @@
             },
             {
                 "id": 37591119800,
-                "preferredName": "Jonas L\u00e4tt",
+                "preferredName": "Jonas Lätt",
                 "firstName": "Jonas",
-                "lastName": "L\u00e4tt"
+                "lastName": "Lätt"
             },
             {
                 "id": 37591119900,
@@ -1815,7 +3180,50 @@
                 "firstName": "Sauro",
                 "lastName": "Succi"
             }
-        ]
+        ],
+        "abstract": "We present the first large-scale simulation of blood flow in the coronary artieries and other vessels supplying blood to the heart muscle, with a realistic description of human arterial geometry at spatial resolutions from centimeters down to 10 microns (near the size of red blood cells). This multiscale simulation resolves the fluid into a billion volume units, embedded in a bounding space of 300 billion voxels, coupled with the concurrent motion of 300 million red blood cells, which interact with one another and with the surrounding fluid. The level of detail is sufficient to describe phenomena of potential physiological and clinical significance, such as the development of atherosclerotic plaques. The simulation achieves excellent scalability on up to 294, 912 Blue Gene/P computational cores.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Geometry",
+                "Computational modeling",
+                "Blood",
+                "Lattice Boltzmann methods",
+                "Couplings",
+                "Stress",
+                "Biological system modeling"
+            ],
+            "Index Terms": [
+                "Large-scale Simulations",
+                "Atherosclerotic Plaque Development",
+                "Computational Core",
+                "Molecular Dynamics",
+                "Parallelization",
+                "Rigid Body",
+                "Computed Tomography Angiography",
+                "Entire Domain",
+                "Random Orientation",
+                "Load Balancing",
+                "Mesh Network",
+                "Fluid Particles",
+                "Wall Shear Stress",
+                "Argonne National Laboratory",
+                "Force Term",
+                "Mesh Points",
+                "Lattice Boltzmann",
+                "Parallel Efficiency",
+                "Non-local Operation",
+                "Lattice Boltzmann Method",
+                "Point-to-point Communication",
+                "Domain Decomposition",
+                "Polytechnique",
+                "Global Geometry",
+                "Shear Stress",
+                "Flow Velocity",
+                "Ellipsoid",
+                "Angular Velocity",
+                "Graphics Processing Unit"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1856,7 +3264,46 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "As tile linear algebra algorithms continue achieving high performance on shared-memory multicore architectures, it is a challenging task to make them scalable on distributed-memory multicore cluster machines. The main contribution of this paper is the extension to the distributed-memory environment of the previous work done by Hadri et al. on Communication- Avoiding QR (CA-QR) factorizations for tall and skinny matrices (initially done on shared-memory multicore systems). The fine granularity of tile algorithms associated with communicationavoiding techniques for the QR factorization presents a high degree of parallelism where multiple tasks can be concurrently executed, computation and communication largely overlapped, and computation steps fully pipelined. A decentralized dynamic scheduler has then been integrated as a runtime system to efficiently schedule tasks across the distributed resources. Our experimental results performed on two clusters (with dual-core and 8-core nodes, respectively) and a Cray XT5 system with 12-core nodes show that the tile CA-QR factorization is able to outperform the de facto ScaLAPACK library by up to 4 times for tall and skinny matrices, and has good scalability on up to 3,072 cores.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tiles",
+                "Multicore processing",
+                "Kernel",
+                "Algorithm design and analysis",
+                "Libraries",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "QR Decomposition",
+                "Multi-core Clusters",
+                "Linear Algebra",
+                "Good Scalability",
+                "Dynamic Scheduling",
+                "Degree Of Parallelism",
+                "Right-hand",
+                "Right-hand Side",
+                "Analysis Algorithm",
+                "Number Of Domains",
+                "Submatrix",
+                "Binary Tree",
+                "Floating-point Operations",
+                "Upper Triangular",
+                "Idle Time",
+                "R-factor",
+                "Parallel Algorithm",
+                "Critical Path",
+                "Parallel Efficiency",
+                "Tile Size",
+                "Communication Volume",
+                "Task Queue",
+                "Row Block",
+                "Strong Scaling",
+                "Column Of Panel",
+                "Triangular Matrix"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1885,7 +3332,41 @@
                 "firstName": "Yasushi",
                 "lastName": "Negishi"
             }
-        ]
+        ],
+        "abstract": "Torus networks are commonly used for massively parallel computers, its performance often becomes the constraint on total application performance. Especially in an asymmetric torus network, network traffic along the longest axis is the performance bottleneck for all-to-all communication, so that it is important to schedule the longest-axis traffic smoothly. In this paper, we propose a new algorithm based on an indirect method for pipelining the all-to-all procedures using shared memory parallel threads, which (1) isolates the longest-axis traffic from other traffic, (2) schedules it smoothly and (3) overlaps all of the other traffic and overhead for the all-to-all communication behind the longest-axis traffic. The proposed method achieves up to 95% of the theoretical peak. We integrated the overlapped all-to-all method with parallel FFT algorithms. And local FFT calculations are also overlapped behind the longest-axis traffic. The FFT performance achieves up to 90% of the theoretical peak for the parallel 1D FFT.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Arrays",
+                "Bandwidth",
+                "Message systems",
+                "Instruction sets",
+                "Three dimensional displays",
+                "Pipeline processing",
+                "Equations"
+            ],
+            "Index Terms": [
+                "Fast Fourier Transform",
+                "All-to-all Communication",
+                "Parallelization",
+                "Indirect Method",
+                "Parallel Algorithm",
+                "Longest Axis",
+                "Asymmetric Network",
+                "Theoretical Peak",
+                "Multi-core",
+                "3D Network",
+                "Maximum Performance",
+                "Discrete Fourier Transform",
+                "Communication Time",
+                "Remote Memory",
+                "Pipelining",
+                "Symmetric Network",
+                "L2 Cache",
+                "Point-to-point Communication",
+                "Cache Misses",
+                "Global Array"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1926,7 +3407,51 @@
                 "firstName": "Feng",
                 "lastName": "Qin"
             }
-        ]
+        ],
+        "abstract": "Many MPI libraries have suffered from software bugs, which severely impact the productivity of a large number of users. This paper presents a new method called FlowChecker for detecting communication-related bugs inMPI libraries. The main idea is to extract program intentions of message passing (MPintentions), and to check whether theseMP-intentions are fulfilled correctly by the underlying MPI libraries, i.e., whether messages are delivered correctly from specified sources to specified destinations. If not, FlowChecker reports the bugs and provides diagnostic information. We have built a FlowChecker prototype on Linux and evaluated it with five real-world bug cases in three widely-used MPI libraries, including Open MPI, MPICH2, and MVAPICH2. Our experimental results show that FlowChecker effectively detects all five evaluated bug cases and provides useful diagnostic information. Additionally, our experiments with HPL and NPB show that FlowChecker incurs low runtime overhead (0.9-9.7% on three MPI libraries).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Libraries",
+                "Computer bugs",
+                "Tracking",
+                "Software",
+                "Buffer storage",
+                "Semantics",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Message Passing Interface",
+                "Message Flow",
+                "Diagnostic Information",
+                "Software Defect",
+                "Real-world Case",
+                "Low Overhead",
+                "Runtime Overhead",
+                "Data Sources",
+                "Parallelization",
+                "Load Data",
+                "Production Run",
+                "Communication Protocol",
+                "Actual Flow",
+                "Disc Space",
+                "Subsequent Operations",
+                "Assignment Of Values",
+                "Model Checking",
+                "Subsequent Movement",
+                "Formal Verification",
+                "Trace Files",
+                "Data Chunks",
+                "Bug Reports",
+                "L2 Cache",
+                "Application Code",
+                "Online Profiles",
+                "Point-to-point Communication",
+                "State-based Approach",
+                "Function Calls",
+                "High-performance Computing Systems",
+                "Relevant Operators"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1955,7 +3480,50 @@
                 "firstName": "Matei",
                 "lastName": "Ripeanu"
             }
-        ]
+        ],
+        "abstract": "GPUs offer drastically different performance characteristics compared to traditional multicore architectures. To explore the tradeoffs exposed by this difference, we refactor MUMmer, a widely-used, highly-engineered bioinformatics application which has both CPU- and GPU-based implementations. We synthesize our experience as three high-level guidelines to design efficient GPU-based applications. First, minimizing the communication overheads is as important as optimizing the computation. Second, trading-off higher computational complexity for a more compact in-memory representation is a valuable technique to increase overall performance (by enabling higher parallelism levels and reducing transfer overheads). Finally, ensuring that the chosen solution entails low pre- and post-processing overheads is essential to maximize the overall performance gains. Based on these insights, MUMmerGPU++, our GPU-based design of the MUMmer sequence alignment tool, achieves, on realistic workloads, up to 4× speedup compared to a previous, highly optimized GPU port.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing unit",
+                "Arrays",
+                "Bioinformatics",
+                "Genomics",
+                "Complexity theory",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Performance Gain",
+                "Alignment Tool",
+                "Traditional Architecture",
+                "Data Structure",
+                "Time Complexity",
+                "Aligned Reads",
+                "Data Transfer",
+                "Search String",
+                "GB Memory",
+                "Space Complexity",
+                "Computational Overhead",
+                "Advantage Of The Fact",
+                "Query Set",
+                "String Length",
+                "Binary Search",
+                "Match Length",
+                "Hybrid Architecture",
+                "Total Execution Time",
+                "Space Efficiency",
+                "Graphics Processing Unit Memory",
+                "Matching Stage",
+                "Post-processing Stage",
+                "Cache Hit",
+                "Reference Segmentation",
+                "Hybrid Platform",
+                "Search Procedure",
+                "Reference Genome",
+                "Depth-first",
+                "High-performance Computing"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -1984,7 +3552,43 @@
                 "firstName": "Kevin",
                 "lastName": "Skadron"
             }
-        ]
+        ],
+        "abstract": "Graphics Processing Units (GPUs) have recently emerged as a new platform for high performance, general-purpose computing. Because current GPUs employ deep multithreading to hide latency, they only have small, per-core caches to capture reuse and eliminate unnecessary off-chip accesses. This paper shows that for general-purpose workloads, the ability to copy cache lines between private caches captures inter-core temporal locality and provides substantial reductions in off-chip bandwidth requirements. Unlike hardware cache coherence, a sharing tracker only needs to track cache lines in the private caches imprecisely, because it is only a performance hint. This simplifies the implementation and is so effective at capturing inter-core reuse that the L2 can be eliminated entirely. The sharing tracker is motivated by but not specific to the GPU and could be used in other manycore organizations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Coherence",
+                "Hardware",
+                "Graphics processing unit",
+                "Bandwidth",
+                "Organizations",
+                "Computer architecture",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Cache Coherence",
+                "Graphics Processing Unit",
+                "Temporal Localization",
+                "Centroid",
+                "Parallelization",
+                "Work Settings",
+                "Lennard-Jones Potential",
+                "Parallel Data",
+                "Access Patterns",
+                "Chip Area",
+                "Datapath",
+                "Data Cache",
+                "Small Array",
+                "Neighbor List",
+                "Core Work",
+                "Memory Bandwidth",
+                "Shared Memory",
+                "Access Latency",
+                "L2 Cache",
+                "Cache Misses",
+                "Graphics Processing Unit Memory",
+                "Bandwidth Improvement"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2085,7 +3689,51 @@
                 "firstName": "David E.",
                 "lastName": "Shaw"
             }
-        ]
+        ],
+        "abstract": "Strong scaling of scientific applications on parallel architectures is increasingly limited by communication latency. This paper describes the techniques used to mitigate latency in Anton, a massively parallel special-purpose machine that accelerates molecular dynamics (MD) simulations by orders of magnitude compared with the previous state of the art. Achieving this speedup required a combination of hardware mechanisms and software constructs to reduce network latency, sender and receiver overhead, and synchronization costs. Key elements of Anton's approach, in addition to tightly integrated communication hardware, include formulating data transfer in terms of counted remote writes, leveraging fine-grained communication, and establishing fixed, optimized communication patterns. Anton delivers software-to-software inter-node latency significantly lower than any other large-scale parallel machine, and the total critical-path communication time for an Anton MD simulation is less than 4% that of the next fastest MD platform.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Synchronization",
+                "Radiation detectors",
+                "Hardware",
+                "Software",
+                "Force",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Communication Latency",
+                "Molecular Dynamics",
+                "Molecular Dynamics Simulations",
+                "Parallelization",
+                "Communication Patterns",
+                "Communication Time",
+                "Parallel Machines",
+                "Total Communication",
+                "Time Step",
+                "Fast Fourier Transform",
+                "Homeobox",
+                "Grid Points",
+                "Long-range Interactions",
+                "Atomic Positions",
+                "Specific Network",
+                "Local Memory",
+                "Critical Path",
+                "Global Operations",
+                "Destination Node",
+                "Hardware Architecture",
+                "Network-on-chip",
+                "Remote Memory",
+                "Atomic Velocities",
+                "Delay Reduction",
+                "Additional Communication",
+                "Communication Architecture",
+                "Parallel Applications",
+                "High Parallelism",
+                "Communication Rounds",
+                "Logical Analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2120,7 +3768,34 @@
                 "firstName": "Richard",
                 "lastName": "Vuduc"
             }
-        ]
+        ],
+        "abstract": "Given a program and a multisocket, multicore system, what is the process by which one understands and improves its performance and scalability? We describe an approach in the context of improving within-node scalability of the fast multipole method (FMM). Our process consists of a systematic sequence of modeling, analysis, and tuning steps, beginning with simple models, and gradually increasing their complexity in the quest for deeper performance understanding and better scalability. For the FMM, we significantly improve within-node scalability; for example, on a quad-socket Intel Nehalem-EX system, we show speedups of 1.7× over the previous best multithreaded implementation, 19.3× over a sequential but highly tuned (e.g., SIMD-vectorized) code, and match or outperform a state-of- the-art GPGPU implementation. Our study sheds new light on the form of a more general performance analysis and tuning process that other multicore/manycore tuning practitioners (end- user programmers) and automated performance analysis and tuning tools could themselves apply.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Scalability",
+                "Multicore processing",
+                "Tuning",
+                "Instruction sets",
+                "Optimization",
+                "Sockets"
+            ],
+            "Index Terms": [
+                "Fast Multipole Method",
+                "Multi-core Performance",
+                "Parallelization",
+                "Functional Unit",
+                "Computational Intensity",
+                "Fourier Space",
+                "Number Of Boxes",
+                "Data Placement",
+                "Translation Vector",
+                "Prior Section",
+                "Understanding Of Applications",
+                "Cache Size",
+                "L2 Cache",
+                "Load Imbalance"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2139,9 +3814,9 @@
         "authors": [
             {
                 "id": 38243157700,
-                "preferredName": "Jan G\u00f6tz",
+                "preferredName": "Jan Götz",
                 "firstName": "Jan",
-                "lastName": "G\u00f6tz"
+                "lastName": "Götz"
             },
             {
                 "id": 37590965500,
@@ -2151,17 +3826,60 @@
             },
             {
                 "id": 37595771800,
-                "preferredName": "Markus St\u00fcrmer",
+                "preferredName": "Markus Stürmer",
                 "firstName": "Markus",
-                "lastName": "St\u00fcrmer"
+                "lastName": "Stürmer"
             },
             {
                 "id": 37321180500,
-                "preferredName": "Ulrich R\u00fcde",
+                "preferredName": "Ulrich Rüde",
                 "firstName": "Ulrich",
-                "lastName": "R\u00fcde"
+                "lastName": "Rüde"
             }
-        ]
+        ],
+        "abstract": "This paper describes computational models for particle-laden flows based on a fully resolved fluid-structure interaction. The flow simulation uses the Lattice Boltzmann method, while the particles are handled by a rigid body dynamics algorithm. The particles can have individual non-spherical shapes, creating the need for a non-trivial collision detection and special contact models. An explicit coupling algorithm transfers momenta from the fluid to the particles in each time step, while the particles impose moving boundaries for the flow solver. All algorithms and their interaction are fully parallelized. Scaling experiments and a careful performance analysis are presented for up to 294912 processor cores of the Blue Gene at the Jülich Supercomputing center. The largest simulations involve 264 million particles that are coupled to a fluid which is simultaneously resolved by 150 billion cells for the Lattice Boltzmann method. The paper will conclude with a computational experiment for the segregation of suspensions of particles of different density, as an example of the many industrial applications that are enabled by this new methodology.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Heuristic algorithms",
+                "Lattice Boltzmann methods",
+                "Atmospheric modeling",
+                "Dynamics",
+                "Shape",
+                "Couplings"
+            ],
+            "Index Terms": [
+                "Flow Simulation",
+                "Core Processes",
+                "Time Step",
+                "Parallelization",
+                "Rigid Body",
+                "Collision Detection",
+                "Fluid-structure Interaction",
+                "Lattice Boltzmann",
+                "Lattice Boltzmann Method",
+                "Supercomputing Center",
+                "Rigid Body Dynamics",
+                "Cell Size",
+                "Center Of Mass",
+                "Steps Of Algorithm",
+                "Domain Size",
+                "Number Of Objects",
+                "Simulated Fluid",
+                "Fluid Cells",
+                "No-slip Condition",
+                "Object Velocity",
+                "Lattice Cell",
+                "Coupling Simulation",
+                "Core Range",
+                "Position Update",
+                "Cartesian Directions",
+                "Frictional Contact",
+                "Physics Engine",
+                "Memory Bandwidth",
+                "Filling Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2196,7 +3914,51 @@
                 "firstName": "Sathish S.",
                 "lastName": "Vadhiyar"
             }
-        ]
+        ],
+        "abstract": "Critical climate applications like cyclone tracking and earthquake modeling require high-performance simulations and online visualization simultaneously performed with the simulations for timely analysis. Remote visualization of critical climate events enables joint analysis by geographically distributed climate science community. However, resource constraints including limited storage and slow networks can limit the effectiveness of such online visualization. In this work, we have developed an adaptive framework that simultaneously performs numerical simulations and online remote visualization of critical climate applications in resource-constrained environments. Our framework considers both application and resource dynamics to adapt various application and resource parameters including simulation resolutions, resource configurations and amount of data for visualization. We have developed two algorithms for processor allocation for simulations and the frequency of data for visualization. We show that our optimization method is able to provide about 30% higher simulation rate and consumes about 25-50% lesser storage space than the greedy approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Meteorology",
+                "Data visualization",
+                "Data models",
+                "Adaptation model",
+                "Bandwidth",
+                "Numerical models",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Environmental Applications",
+                "Adaptive Framework",
+                "Critical Applications",
+                "Resource-constrained Environments",
+                "Remote Visualization",
+                "Optimization Method",
+                "Seismic",
+                "Resource Constraints",
+                "Climatological",
+                "Climatic Events",
+                "Storage Space",
+                "Dynamic Resource",
+                "Greedy Approach",
+                "Resource Configuration",
+                "Online Visualization",
+                "Time Step",
+                "Simulation Time",
+                "Free Space",
+                "Climate Models",
+                "Simulation Process",
+                "Weather Research And Forecasting",
+                "Output Frequency",
+                "Number Of Processors",
+                "Disc Space",
+                "Decision Algorithm",
+                "Network Bandwidth",
+                "Parent Domain",
+                "Simulation Time Step",
+                "Simultaneous Visualization",
+                "Yield Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2237,7 +3999,50 @@
                 "firstName": "Pratul K.",
                 "lastName": "Agarwal"
             }
-        ]
+        ],
+        "abstract": "Biomolecular simulations have traditionally benefited from increases in the processor clock speed and coarse-grain inter-node parallelism on large-scale clusters. With stagnating clock frequencies, the evolutionary path for performance of microprocessors is maintained by virtue of core multiplication. Graphical processing units (GPUs) offer revolutionary performance potential at the cost of increased programming complexity. Furthermore, it has been extremely challenging to effectively utilize heterogeneous resources (host processor and GPU cores) for scientific simulations, as underlying systems, programming models and tools are continually evolving. In this paper, we present a parametric study demonstrating approaches to exploit resources of heterogeneous systems to reduce time-to-solution of a production-level application for biological simulations. By overlapping and pipelining computation and communication, we observe up to 10-fold application acceleration in multi-core and multi-GPU environments illustrating significant performance improvements over code acceleration approaches, where the host-to-accelerator ratio is static, and is constrained by a given algorithmic implementation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing unit",
+                "Biological system modeling",
+                "Computational modeling",
+                "Programming",
+                "Performance evaluation",
+                "Kernel",
+                "Acceleration"
+            ],
+            "Index Terms": [
+                "Resource Utilization",
+                "Heterogeneous Resources",
+                "Biomolecular Simulations",
+                "Graphics Processing Unit",
+                "Programming Model",
+                "Heterogeneous Systems",
+                "Core Processes",
+                "Clock Frequency",
+                "Scientific Community",
+                "End-users",
+                "Fast Fourier Transform",
+                "Recent Efforts",
+                "Wider Community",
+                "Long-term Goals",
+                "High-performance Computing",
+                "Hybrid System",
+                "Particle Mesh Ewald",
+                "Particle Mesh Ewald Method",
+                "Computational Expense",
+                "Message Passing Interface",
+                "Cut-off Method",
+                "Computation Offloading",
+                "Graphics Processing Unit Memory",
+                "Wall-clock Time",
+                "First-in-first-out",
+                "Pipelining",
+                "Double-precision Floating-point",
+                "Large Systems",
+                "Biomolecular Systems"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2290,7 +4095,41 @@
                 "firstName": "Toshiaki",
                 "lastName": "Hisada"
             }
-        ]
+        ],
+        "abstract": "To understand the macroscopic function of the human heart based on sub-cellular microscopic events, multiscale analysis is indispensable. Our heart simulator uses the so-called homogenization method, where both the human heart and the myocardial cells are modeled and solved simultaneously by the finite element method. Because the contraction and deformation of each finite element in the heart model are governed by their respective cell model, the NDOF of all the cells becomes prohibitively large. Furthermore, the phenomena are highly nonlinear and transient. This challenging problem has been tackled by our group for many years, and a novel algorithm to accelerate the computation was implemented in the code. We have recently tested its performance using the T2K Open Supercomputer (Tokyo). A pulsation of the heart with a total NDOF of 160 million was successfully simulated using 6144 CPU cores in ten hours. Scalability and other computational performances were measured and are discussed.",
+        "keywords": {
+            "Index Terms": [
+                "Parallelization",
+                "Myocardial",
+                "Cell Model",
+                "Finite Element",
+                "Finite Element Method",
+                "Human Heart",
+                "Myocardial Cells",
+                "Multiscale Analysis",
+                "Homogenization Method",
+                "Heart Pulse",
+                "Time Step",
+                "Left Ventricular",
+                "PROCESS Macro",
+                "Displacement Vector",
+                "Communication Time",
+                "Implantable Cardioverter Defibrillator",
+                "Macroelements",
+                "Virtual Work",
+                "Fluid-structure Interaction",
+                "Microscopy Unit",
+                "Diastolic Phase",
+                "Newton Raphson Iteration",
+                "Case Of Nodes",
+                "LU Factorization",
+                "Load Imbalance",
+                "Systolic Phase",
+                "Schur Complement",
+                "Piola Kirchhoff Stress",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2337,7 +4176,47 @@
                 "firstName": "Mark",
                 "lastName": "Ponton"
             }
-        ]
+        ],
+        "abstract": "Important classes of problems in computational chemistry, notably coupled cluster methods, consist of solutions to complicated expressions defined in terms of tensors. Tensors are represented by multidimensional arrays that are typically extremely large, thus requiring distribution or in some cases backing on disk. We describe a parallel programming environment, the Super Instruction Architecture (SIA) comprising a domain specific programming language SIAL and its runtime system SIP that are specialized for this class of problems. A novel feature of the programming language is that SIAL programmers express algorithms in terms of operations on blocks rather than individual floating point numbers. Efficient implementations of the block operations as well as management of memory, communication, and I/O are provided by the runtime system. The system has been successfully used to develop ACES III, a software package for computational chemistry.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Indexes",
+                "Arrays",
+                "Runtime",
+                "Tensile stress",
+                "Chemistry",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "Large Array",
+                "Runtime System",
+                "Tensor Algebra",
+                "Very Large Array",
+                "Programming Language",
+                "Parallelization",
+                "Chemical Calculations",
+                "Floating-point Numbers",
+                "Domain-specific Languages",
+                "Memory Management",
+                "Multidimensional Array",
+                "Coupled Cluster Method",
+                "Level Of Abstraction",
+                "Index Variables",
+                "High-performance Computing",
+                "Waiting Time",
+                "Array Size",
+                "Segment Size",
+                "Data Block",
+                "Global Array",
+                "Number Of Processors",
+                "Strong Scaling",
+                "Tiling Array",
+                "Double Excitations",
+                "Dimensional Tensor",
+                "Block Elements",
+                "Data Placement"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2372,7 +4251,51 @@
                 "firstName": "Shravan K.",
                 "lastName": "Veerapaneni"
             }
-        ]
+        ],
+        "abstract": "We present fast adaptive parallel algorithms to compute the sum of N Gaussians at N points. Direct sequential computation of this sum would take $O(N^2)$ time. The parallel time complexity estimates for our algorithms are $O(N/np)$ for uniform point distributions and $O(N/np log N/np + nplognp)$ for nonuniform distributions using np CPUs. We incorporate a planewave representation of the Gaussian kernel which permits “diagonal translation”. We use parallel octrees and a new scheme for translating the plane-waves to efficiently handle nonuniform distributions. Computing the transform to six-digit accuracy at 120 billion points took approximately 140 seconds using 4096 cores on the Jaguar supercomputer at the Oak Ridge National Laboratory. Our implementation is kernel-independent and can handle other “Gaussian-type” kernels even when an explicit analytic expression for the kernel is not known. These algorithms form a new class of core computational machinery for solving parabolic PDEs on massively parallel architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Program processors",
+                "Complexity theory",
+                "Transforms",
+                "Octrees",
+                "Partitioning algorithms",
+                "Heuristic algorithms"
+            ],
+            "Index Terms": [
+                "Frobenius Matrix",
+                "Uniform Distribution",
+                "Parallelization",
+                "Distribution Of Points",
+                "Non-uniform Distribution",
+                "Fast Algorithm",
+                "Direct Computation",
+                "Parallel Algorithm",
+                "Parabolic Equation",
+                "Oak Ridge National Laboratory",
+                "Scalable",
+                "Computational Cost",
+                "Radial Basis Function",
+                "Regular Grid",
+                "Steps Of Algorithm",
+                "Box Size",
+                "Discrete Fourier Transform",
+                "Target Distribution",
+                "Storage Cost",
+                "Sequential Algorithm",
+                "Local Expansion",
+                "Number Of Boxes",
+                "Cost Of Algorithm",
+                "Plane Wave Expansion",
+                "Unit Cube",
+                "Parallel Implementation",
+                "Empty Box",
+                "Fourier Domain",
+                "Surface Distribution",
+                "GNU General Public License"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2419,7 +4342,51 @@
                 "firstName": "John",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "With the number of cores on a chip continuing to increase, proper evaluation of on-chip network is critical for not only network performance but also overall system performance. In this paper, we show how a network-only simulation can be limited as it does not provide an accurate representation of system performance. We evaluate traditionally used openloop simulations and compare them to closed-loop simulations. Although they use different methodologies, measurements, and metrics, we identify how they can provide very similar results. However, we show how the results of closed-loop simulations do not correlate well with execution-driven simulations. We then add simple extensions to the closed-loop simulation to model the impact of the processor and the memory system and show how the correlation with execution-driven simulations can be improved. The proposed framework/methodology provides a fast simulation time while providing better insights into the impact of network parameters on overall system performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Throughput",
+                "Load modeling",
+                "System-on-a-chip",
+                "Delay",
+                "Topology",
+                "Correlation"
+            ],
+            "Index Terms": [
+                "Network-on-chip",
+                "Simulation Results",
+                "System Performance",
+                "Network Parameters",
+                "Network Performance",
+                "Impact Of Parameters",
+                "Memory System",
+                "Rate Of Network",
+                "Simple Extension",
+                "Accuracy Of Model",
+                "Batch Size",
+                "Average Performance",
+                "Multi-core",
+                "Large-scale Networks",
+                "Detailed Simulation",
+                "Simulated Networks",
+                "Injection Rate",
+                "Mesh Network",
+                "Network Throughput",
+                "Average Latency",
+                "Closed-loop Model",
+                "Remote Memory",
+                "Traffic Patterns",
+                "Routing Algorithm",
+                "Impact Of Networks",
+                "System Calls",
+                "Access Latency",
+                "Clock Frequency",
+                "Memory Hierarchy",
+                "Packet Size"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2462,9 +4429,9 @@
             },
             {
                 "id": 37591317700,
-                "preferredName": "Tamas Budav\u00e1ri",
+                "preferredName": "Tamas Budavári",
                 "firstName": "Tamas",
-                "lastName": "Budav\u00e1ri"
+                "lastName": "Budavári"
             },
             {
                 "id": 37591319300,
@@ -2478,7 +4445,49 @@
                 "firstName": "Alexander",
                 "lastName": "Szalay"
             }
-        ]
+        ],
+        "abstract": "We present JAWS, a job-aware, data-driven batch scheduler that improves query throughput for data-intensive scientific database clusters. As datasets reach petabyte-scale, workloads that scan through vast amounts of data to extract features are gaining importance in the sciences. However, acute performance bottlenecks result when multiple queries execute simultaneously and compete for I/O resources. Our solution, JAWS, divides queries into I/O-friendly sub-queries for scheduling. It then identifies overlapping data requirements within the workload and executes sub-queries in batches to maximize data sharing and reduce redundant I/O. JAWS extends our previous work by supporting workflows in which queries exhibit data dependencies, exploiting workload knowledge to coordinate caching decisions, and combating starvation through adaptive and incremental trade-offs between query throughput and response time. Instrumenting JAWS in the Turbulence Database Cluster yields nearly three-fold improvement in query throughput when contention in the workload is high.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Databases",
+                "Time factors",
+                "Heuristic algorithms",
+                "Astronomy",
+                "Instruments",
+                "Measurement"
+            ],
+            "Index Terms": [
+                "Response Time",
+                "Caching",
+                "Throughput Improvement",
+                "Throughput Time",
+                "Multiple Queries",
+                "Time Step",
+                "Batch Size",
+                "Batch Mode",
+                "Dynamic Programming",
+                "Query Sequence",
+                "Particle Position",
+                "Low Saturation",
+                "Executive Order",
+                "Arrival Rate",
+                "State Preparation",
+                "Access Patterns",
+                "Query Results",
+                "Age Bias",
+                "Throughput Performance",
+                "Starvation Resistance",
+                "Order Of Arrival",
+                "Improved Response Time",
+                "Cache Hit",
+                "SQL Server",
+                "Precedence Constraints",
+                "Adaptive Resistance",
+                "Running",
+                "Job Execution"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2519,7 +4528,51 @@
                 "firstName": "Kanat",
                 "lastName": "Tangwongsan"
             }
-        ]
+        ],
+        "abstract": "Memory bandwidth is a major limiting factor in the scalability of parallel iterative algorithms that rely on sparse matrix-vector multiplication (SpMV). This paper introduces Hierarchical Diagonal Blocking (HDB), an approach which we believe captures many of the existing optimization techniques for SpMV in a common representation. Using this representation in conjuction with precision-reduction techniques, we develop and evaluate high-performance SpMV kernels. We also study the implications of using our SpMV kernels in a complete iterative solver. Our method of choice is a Combinatorial Multigrid solver that can fully utilize our fastest reduced-precision SpMV kernel without sacrificing the quality of the solution. We provide extensive empirical evaluation of the effectiveness of the approach on a variety of benchmark matrices, demonstrating substantial speedups on all matrices considered.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Particle separators",
+                "Sparse matrices",
+                "Symmetric matrices",
+                "Bandwidth",
+                "Algorithm design and analysis",
+                "Complexity theory",
+                "Iterative methods"
+            ],
+            "Index Terms": [
+                "National Science Foundation",
+                "Iterative Algorithm",
+                "Common Representation",
+                "Parallel Algorithm",
+                "Variety Of Matrices",
+                "Memory Bandwidth",
+                "Parallelization",
+                "Symmetric Matrix",
+                "Sparse Matrix",
+                "Tree Nodes",
+                "Block Diagonal",
+                "Subtree",
+                "Vision Applications",
+                "Binary Tree",
+                "Recursive Algorithm",
+                "Parallel Implementation",
+                "Double Precision",
+                "Bandwidth Requirements",
+                "Column Index",
+                "Parallel Machines",
+                "Single Precision",
+                "Preconditioned Conjugate Gradient",
+                "Cache Misses",
+                "Data Cache",
+                "Number Of Misses",
+                "Lower Order Terms",
+                "Large Matrix",
+                "Precision Matrix",
+                "Diagonally Dominant",
+                "Nonzero Entries"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2542,7 +4595,51 @@
                 "firstName": "Mathieu",
                 "lastName": "Luisier"
             }
-        ]
+        ],
+        "abstract": "A quantum transport approach based on the Non-equilibrium Green's Function formalism and the tight-binding method has been developed to investigate the performances of atomistically resolved nanoelectronic devices in the presence of electron-phonon scattering. The model is integrated into a quad-level parallel environment (bias, momentum, energy, and spatial domain decomposition) that scales almost perfectly up to 220k cores in the ballistic limit of electron transport. In this case, the momentum and energy points form a quasi-embarrassingly parallel problem. The novelty in this paper is the inclusion of scattering self-energies that couple all the momenta and several energies together, requiring substantial inter-processor communication. An efficient parallel implementation of electron-phonon scattering is therefore proposed and applied to a realistically extended transistor structure. A good scaling of the simulation walltime up to 95,256 cores and a sustained performance of 142 TFlop/s are reported on the Cray-XT5 Jaguar.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Phonons",
+                "Scattering",
+                "Green products",
+                "Transistors",
+                "Computational modeling",
+                "Nanoscale devices",
+                "Performance evaluation"
+            ],
+            "Index Terms": [
+                "Nanoelectronic Devices",
+                "Novelty Of This Paper",
+                "Presence Of Devices",
+                "Parallel Efficiency",
+                "Energy Domain",
+                "Quantum Transport",
+                "Spatial Decomposition",
+                "Tight-binding Method",
+                "Non-equilibrium Green’s Function",
+                "Charge Density",
+                "Electrostatic Potential",
+                "Parallelization",
+                "Form Factor",
+                "Periodic Boundary Conditions",
+                "Power Grid",
+                "Communication Time",
+                "Poisson Equation",
+                "Function In Eq",
+                "Phonon Frequency",
+                "Device Simulation",
+                "Phonon Energy",
+                "Ballistic Transport",
+                "Bias Point",
+                "High Electron Mobility Transistors",
+                "Electron Momentum",
+                "Virtual Source",
+                "Number Of CPUs",
+                "Current Conservation",
+                "Energy Vector",
+                "Nanowires"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2577,7 +4674,51 @@
                 "firstName": "Thomas C.",
                 "lastName": "Schulthess"
             }
-        ]
+        ],
+        "abstract": "Methods based on the many-body Green's function are generally accepted as the path forward beyond Kohn-Sham based density functional theory, in order to compute from first principles electronic structure of materials with strong correlations and excited-state properties in nano- and materials science. Here we present an efficient method to compute the screened Coulomb interactionW, the crucial and computationally most demanding ingredient in the GW method, within the framework of the all-electron Linearized Augmented Plane Wave method. We use the method to compute from first principles, within the constrained random phase approximation (c-RPA), the frequency-dependent screened Hubbard U-matrix defined for a Wannier basis in which we downfold the many-body Hamiltonian for La2CuO4, the canonical parent compound of several cuprate high-temperature superconductors. These results were computed at scale on the Cray XT5 at ORNL, sustaining 1.30 petaflop. We discuss the details of the algorithm and its implementation that allowed us to reach high efficiency and short time to solution on today's petaflop supercomputers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Materials",
+                "Correlation",
+                "Program processors",
+                "Approximation methods",
+                "Discrete Fourier transforms",
+                "Equations",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Electronic Structure",
+                "First-principles",
+                "First-principles Electronic Structure",
+                "Electrostatic Interactions",
+                "Density Functional Theory",
+                "Plane Wave",
+                "High-performance Computing",
+                "Superconductivity",
+                "Wave Method",
+                "Augmented Wave Method",
+                "High-temperature Superconductors",
+                "Cuprates",
+                "Random Phase Approximation",
+                "Matrix Elements",
+                "Electronic System",
+                "Hilbert Space",
+                "Brillouin Zone",
+                "Generalized Gradient Approximation",
+                "Time-dependent Density Functional Theory",
+                "Transition Metal Oxides",
+                "Localized Orbitals",
+                "Wannier Functions",
+                "Interband Transitions",
+                "Magnetic Properties Of Materials",
+                "Semiconductor Band Gap",
+                "Plane Wave Expansion",
+                "Bloch Wave",
+                "Electronic Structure Methods",
+                "Frequency Points",
+                "Exchange-correlation Potential"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2612,7 +4753,41 @@
                 "firstName": "Jan Christian",
                 "lastName": "Meyer"
             }
-        ]
+        ],
+        "abstract": "As the size of computational clusters grows, one can expect that I/O will consume an increasing portion of wall-clock time as the problem and node sizes are scaled up, unless parallel I/O is introduced. Unfortunately, using parallel I/O is non-trivial, so few applications developed by individual researchers enjoy its benefits. In this paper, we describe our novel method for analyzing I/O and communication operations at run-time. When nodes perform I/O or communication operations, our technique protects the memory associated with the requests from the application. Subsequent operations are analyzed for overlap between communication and I/O operations. When found, the I/O operation is automatically transformed, by our injected library, from an individual operation to a collective and shared MPI I/O operation. This allows users to benefit from parallel file systems without redesigning or recompiling their applications, and we demonstrate speedup for common usage patterns.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Resource management",
+                "Context",
+                "Scalability",
+                "Benchmark testing",
+                "Libraries",
+                "Materials"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Automatic Transformation",
+                "Problem Size",
+                "Subsequent Operations",
+                "Wall-clock Time",
+                "Data Distribution",
+                "Performance Measures",
+                "Patterns Of Spread",
+                "Caching",
+                "Read Files",
+                "Read Operation",
+                "Asynchronous Communication",
+                "Protective Memory",
+                "Manually Optimized",
+                "Large Machines",
+                "Physical Memory",
+                "Memory Allocation",
+                "Multiple Requests",
+                "Automatic Optimization",
+                "Reading Patterns"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2641,7 +4816,50 @@
                 "firstName": "Dimitrios S.",
                 "lastName": "Nikolopoulos"
             }
-        ]
+        ],
+        "abstract": "Multi-core processors with explicitly-managed local memories provide advanced capabilities to optimize data caching and prefetching in software. Unfortunately, these capabilities are neither easily accessible to programmers, nor exploited to their maximum potential by current language, compiler, or runtime frameworks. We present Strider, a runtime framework for optimizing compilers on multi-core processors with software- managed memories. Strider transparently optimizes grouping, decomposition, and scheduling of explicit software-managed accesses to multi-dimensional arrays in nested loops, given a high- level specification of loops and their data access patterns. In particular, Strider contributes new methods to improve temporal locality, optimize the critical path of scheduling data transfers for multi-stride accesses in regular nested parallel loops, and distribute accesses between cores. The prototype of Strider on the IBM Cell processor performs competitively to hand-optimized code and better than contemporary language frameworks, in both non-trivial parallel applications and important application kernels.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Arrays",
+                "Runtime",
+                "Kernel",
+                "Optimization",
+                "Prefetching",
+                "Buffer storage"
+            ],
+            "Index Terms": [
+                "Data Availability",
+                "Multi-core",
+                "Data Transfer",
+                "Temporal Localization",
+                "Local Memory",
+                "Access Patterns",
+                "Critical Path",
+                "Data Cache",
+                "Parallel Loops",
+                "Data Structure",
+                "Parallelization",
+                "Graphics Processing Unit",
+                "Block Size",
+                "Array Elements",
+                "Local Store",
+                "Load Balancing",
+                "Optimal Data",
+                "Data Block",
+                "Adjacent Elements",
+                "Loop Iteration",
+                "Dimensional Array",
+                "Kernel Computation",
+                "Description Of Space",
+                "Input Array",
+                "Task Offloading",
+                "Array Output",
+                "Modulo Operation",
+                "Block Elements",
+                "Maximum Bandwidth",
+                "Programming Model"
+            ]
+        }
     },
     {
         "publicationNumber": "5644813",
@@ -2666,16 +4884,54 @@
             },
             {
                 "id": 38272292100,
-                "preferredName": "Ra\u00fal de la Cruz",
-                "firstName": "Ra\u00fal",
+                "preferredName": "Raúl de la Cruz",
+                "firstName": "Raúl",
                 "lastName": "de la Cruz"
             },
             {
                 "id": 38347789200,
-                "preferredName": "Jos\u00e9 M. Cela",
-                "firstName": "Jos\u00e9 M.",
+                "preferredName": "José M. Cela",
+                "firstName": "José M.",
                 "lastName": "Cela"
             }
-        ]
+        ],
+        "abstract": "Indirect addressing is known for being slow on conventional architectures, due to the extra step of gathering data before computations can be done. There have been proposed many methods for optimizing indirect addressing. However, these almost exclusively, merely try to change the order in which data is accessed, so as to better utilize the cache. Furthermore, vector instructions can not be used, since data is not accessed continuously, and therefore valuable processing power can not be exploited. The Cell/B.E. architecture has multiple powerful DMA engines, suitable for gathering scattered data. Unfortunately, at fine data granularity, they have several constraints which make them inefficient. In this paper, a novel solution called DMA list Interlacing (DLI) is explored, which overcomes the DMA constraints and enables the usage of vector instructions, without any extra effort. It is shown that DLI can achieve speedups of several orders of magnitude, compared to conventional processors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Finite element methods",
+                "Microprocessors",
+                "Arrays",
+                "Iron",
+                "Program processors",
+                "Engines"
+            ],
+            "Index Terms": [
+                "Finite Element",
+                "Conventional Architecture",
+                "Computation Time",
+                "Parallelization",
+                "Real Applications",
+                "Finite Element Method",
+                "Data Elements",
+                "Local Store",
+                "Temporal Localization",
+                "Computational Intensity",
+                "Graph Partitioning",
+                "Breadth-first Search",
+                "Partitioning Algorithm",
+                "Processing Architecture",
+                "Double Precision",
+                "General Computer",
+                "Element Nodes",
+                "Neighboring Elements",
+                "Brain Dataset",
+                "Traditional Core",
+                "Memory Transfer",
+                "Partial Differential Equations",
+                "Coded Based",
+                "Similar Constraints",
+                "Parallel Data"
+            ]
+        }
     }
 ]

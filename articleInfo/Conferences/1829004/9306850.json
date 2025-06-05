@@ -26,7 +26,46 @@
                 "firstName": "Samuel",
                 "lastName": "Thibault"
             }
-        ]
+        ],
+        "abstract": "The ever-increasing number of computation units assembled in current HPC platforms leads to a concerning increase in fault probability. Traditional checkpoint/restart strategies avoid wasting large amounts of computation time when such fault occurs. With the increasing amount of data dealt with by current applications, these strategies however suffer from their data transfer demand becoming unreasonable, or the entailed global synchronizations. Meanwhile, the current trend towards task-based programming is an opportunity to revisit the principles of the checkpoint/restart strategies. We here propose a checkpointing scheme which is closely tied to the execution of task graphs. We describe how it allows for completely asynchronous and distributed checkpointing, as well as localized node restart, thus opening up for very large scalability. We also show how a synergy between the application data transfers and the checkpointing transfers can lead to a reasonable additional network load, measured to be lower than +10 % on a dense linear algebra example.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Checkpointing",
+                "Runtime",
+                "Programming",
+                "Data transfer",
+                "Distributed databases",
+                "Proposals"
+            ],
+            "Index Terms": [
+                "Data Transfer",
+                "Linear Algebra",
+                "Global Synchronization",
+                "Source Code",
+                "Task Execution",
+                "Conjugate Gradient",
+                "Regular Time",
+                "Rollback",
+                "Transfer Activity",
+                "Network Bandwidth",
+                "Cholesky Decomposition",
+                "Loop Iteration",
+                "End Of Each Iteration",
+                "End Of Loop",
+                "Node Failure",
+                "Iterative Application",
+                "Programming Paradigm",
+                "Task Output",
+                "External Storage"
+            ],
+            "Author Keywords": [
+                "Fault tolerance",
+                "task-based programming",
+                "checkpoint-restart",
+                "buddy in-memory"
+            ]
+        }
     },
     {
         "publicationNumber": "9306850",
@@ -67,7 +106,45 @@
                 "firstName": "Robert C.",
                 "lastName": "Armstrong"
             }
-        ]
+        ],
+        "abstract": "Benefits of local recovery (restarting only a failed process or task) have been previously demonstrated in parallel solvers. Local recovery has a reduced impact on application performance due to masking of failure delays (for message-passing codes) or dynamic load balancing (for asynchronous many-task codes). In this paper, we implement MPI-process-local checkpointing and recovery of data (as an extension of the Fenix library) in combination with an existing method for local detection of silent errors in partial-differential-equation solvers, to show a path for incorporating lightweight silent-error resilience. In addition, we demonstrate how asynchrony introduced by maximizing computation-communication overlap can halt the propagation of delays. For a prototype stencil solver (including an iterative-solver-like variant) with injected memory bit flips, results show greatly reduced overhead under weak scaling compared to global recovery, and high failure-masking efficiency. The approach is expected to be generalizable to other MPI-based solvers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delays",
+                "Resilience",
+                "Programming",
+                "Synchronization",
+                "Sparse matrices",
+                "Mathematical model",
+                "Fault tolerant systems"
+            ],
+            "Index Terms": [
+                "Partial Differential Equations",
+                "Error Detection",
+                "Propagation Delay",
+                "Data Recovery",
+                "Global Recovery",
+                "Time Step",
+                "Error Rate",
+                "Objective Data",
+                "Programming Model",
+                "Fault-tolerant",
+                "Rollback",
+                "Linear Algebra",
+                "Physical Simulation",
+                "Good Scalability",
+                "Delay In Recovery",
+                "Absence Of Errors",
+                "Iterative Solver",
+                "Memory Errors",
+                "Random Bits",
+                "Memory Bandwidth",
+                "Linear Partial Differential Equations",
+                "Global Synchronization",
+                "Memory Regions",
+                "Global Version"
+            ]
+        }
     },
     {
         "publicationNumber": "9306850",
@@ -108,7 +185,47 @@
                 "firstName": "Hartmut",
                 "lastName": "Kaiser"
             }
-        ]
+        ],
+        "abstract": "Exceptions and errors occurring within mission critical applications due to hardware failures have a high cost. With the emerging Next Generation Platforms (NGPs), the rate of hardware failures will likely increase. Therefore, designing our applications to be resilient is a critical concern in order to retain the reliability of results while meeting the constraints on power budgets. In this paper, we discuss software resilience in AMTs at both local and distributed scale. We choose HPX to prototype our resiliency designs. We implement two resiliency APIs that we expose to the application developers, namely task replication and task replay. Task replication repeats a task n-times and executes them asynchronously. Task replay reschedules a task up to n-times until a valid output is returned. Furthermore, we expose algorithm based fault tolerance (ABFT) using user provided predicates (e.g., checksums) to validate the returned results. We benchmark the resiliency scheme for both synthetic and real world applications at local and distributed scale and show that most of the added execution time arises from the replay, replication or data movement of the tasks and not the boilerplate code added to achieve resilience.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Resilience",
+                "Runtime",
+                "Software",
+                "Fault tolerant systems",
+                "Fault tolerance",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Real-world Applications",
+                "Hardware Failure",
+                "Operating System",
+                "Grain Size",
+                "Parallelization",
+                "Single Node",
+                "Probability Of Failure",
+                "Directed Acyclic Graph",
+                "Load Balancing",
+                "Communication Overhead",
+                "Program Execution",
+                "Software Defect",
+                "Parallel Algorithm",
+                "Additional Argument",
+                "Large Grid",
+                "Model Execution",
+                "Counting Error",
+                "Network Latency",
+                "Local Resilience",
+                "Synthetic Benchmark"
+            ],
+            "Author Keywords": [
+                "software resilience",
+                "parallel and distributed computing",
+                "asynchronous many-task systems",
+                "HPX"
+            ]
+        }
     },
     {
         "publicationNumber": "9306850",
@@ -143,7 +260,54 @@
                 "firstName": "Wilfried N.",
                 "lastName": "Gansterer"
             }
-        ]
+        ],
+        "abstract": "Resilience is an important research topic in HPC. As computer clusters go to extreme scales, work in this area is necessary to keep these machines reliable. In this work, we introduce a generic method to endow iterative algorithms in linear algebra based on sparse matrix-vector products, such as linear system solvers, eigensolvers and similar, with resilience to node failures. This generic method traverses the dependency graph of the variables of the iterative algorithm. If the iterative method exhibits certain properties, it is possible to produce an exact state reconstruction (ESR) algorithm, enabling the recovery of the state of the iterative method in the event of a node failure. This reconstruction is exact, except for small perturbations caused by floating point arithmetic. The generic method exploits redundancy in the matrix-vector product to protect the vector that is the argument of the product. We illustrate the use of this generic approach on three iterative methods: the conjugate gradient method, the BiCGStab method and the Lanczos algorithm. The resulting ESR algorithms enable the reconstruction of their state after a node failure from a few redundantly stored vectors. Unlike previous work in preconditioned conjugate gradient, this generic method produces ESR algorithms that work with general matrices. Consequently, we can no longer assume that local diagonal submatrices used to reconstruct vectors are nonsingular. Thus, we also propose an approach for deriving nonsingular local linear systems for the reconstruction process with reduced condition numbers, based on a communication-avoiding rank-revealing QR factorization with column pivoting.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linear algebra",
+                "Iterative algorithms",
+                "Sparse matrices",
+                "Clustering algorithms",
+                "Resilience",
+                "Linear systems",
+                "Indexes"
+            ],
+            "Index Terms": [
+                "Linear Algebra",
+                "Iterative Linear Algebra",
+                "General Method",
+                "Linear System",
+                "Iterative Algorithm",
+                "Failure Events",
+                "Conjugate Gradient",
+                "Gradient Method",
+                "Reconstruction Algorithm",
+                "Submatrix",
+                "Generator Matrix",
+                "Computer Cluster",
+                "Node Failure",
+                "QR Decomposition",
+                "Dependency Graph",
+                "Matrix-vector Product",
+                "Preconditioned Conjugate Gradient",
+                "Eigensolver",
+                "Eigenvalues",
+                "Row Vector",
+                "Entry Of Vector",
+                "Linear Solver",
+                "Cluster Nodes",
+                "Iterative Solver",
+                "Input Vector",
+                "Checkpointing",
+                "Residual Norm",
+                "Runtime Overhead",
+                "Single Node",
+                "Symmetric Matrix"
+            ],
+            "Author Keywords": [
+                "Node failures, Fail stop failures, Iterative algorithms, Numerical linear algebra, Resilience, Fault tolerance"
+            ]
+        }
     },
     {
         "publicationNumber": "9306850",
@@ -172,7 +336,52 @@
                 "firstName": "Christian",
                 "lastName": "Engelmann"
             }
-        ]
+        ],
+        "abstract": "Resilience plays an important role in supercomputers by providing correct and efficient operation in case of faults, errors, and failures. Resilience design patterns offer blueprints for effectively applying resilience technologies. Prior work focused on developing initial efficiency and performance models for resilience design patterns. This paper extends it by (1) describing performance, reliability, and availability models for all structural resilience design patterns, (2) providing more detailed models that include flowcharts and state diagrams, and (3) introducing the Resilience Design Pattern Modeling (RDPM) tool that calculates and plots the performance, reliability, and availability metrics of individual patterns and pattern combinations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monitoring",
+                "Resilience",
+                "Reliability",
+                "Reliability engineering",
+                "Analytical models",
+                "Redundancy",
+                "Task analysis"
+            ],
+            "Index Terms": [
+                "Design Patterns",
+                "Reliable Model",
+                "High-performance Computing",
+                "State Diagram",
+                "System State",
+                "Computer System",
+                "Effect Of Error",
+                "Rejuvenation",
+                "Redundant Information",
+                "System Version",
+                "State-space Model",
+                "Rollback",
+                "Failure Time",
+                "Forward Error Correction",
+                "Resilience Strategies",
+                "Total Execution Time",
+                "Message Passing Interface",
+                "Natural Tolerance",
+                "Mean Time To Failure",
+                "High-performance Computing Systems",
+                "Design Space Exploration",
+                "Additional Mitigation",
+                "Scope Of This Paper",
+                "Probability Density Function",
+                "Waiting Time"
+            ],
+            "Author Keywords": [
+                "high-performance computing",
+                "resilience",
+                "design patterns",
+                "models"
+            ]
+        }
     },
     {
         "publicationNumber": "9306850",
@@ -219,7 +428,50 @@
                 "firstName": "Barbara",
                 "lastName": "Chapman"
             }
-        ]
+        ],
+        "abstract": "The importance of fault tolerance continues to increase for HPC applications. The continued growth in size and complexity of HPC systems, and of the applications themselves, is leading to an increased likelihood of failures during execution. However, most HPC programming models do not have a built-in fault tolerance mechanism. Instead, application developers usually rely on external support such as application-level checkpoint-restart (C/R) libraries to make their codes fault tolerant. However, this increases the burden on the application developer, who must use the libraries carefully to ensure correct behavior and to minimize the overheads. The C/R routines will be employed to save the values of all needed program variables at the places in the code where they are invoked. It is important for correctness that the program data is in a consistent state at these places. It is non-trivial to determine such points in OpenSHMEM, which relies upon single-sided communications to provide high performance. The amount of data to be collected, and the frequency with which this is performed, must also be carefully tuned, as the overheads introduced by C/R calls can be extremely high. There is very little prior work on checkpoint-restart support in the context of the OpenSHMEM programming interface. In this paper, we introduce OpenSHMEM and describe the challenges it poses for checkpointing. We identify the safest places for inserting C/R calls in an OpenSHMEM program and describe a straightforward approach for identifying the data that needs to be checkpointed at these positions in the code. We provide these two functionalities in a tool that exploits compiler analyses to propose checkpoints and the sets of data for saving at them, to the application developer.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Checkpointing",
+                "Programming",
+                "Libraries",
+                "Synchronization",
+                "Electronics packaging",
+                "Program processors",
+                "Fault tolerant systems"
+            ],
+            "Index Terms": [
+                "Complex Systems",
+                "Development Of Applications",
+                "Programming Model",
+                "High-performance Computing",
+                "Fault-tolerant",
+                "Application Programming Interface",
+                "High-performance Computing Systems",
+                "Open-source",
+                "Transposable",
+                "Fast Fourier Transform",
+                "Memory Processes",
+                "Part Of Function",
+                "Matrix Multiplication",
+                "Communication Patterns",
+                "Remote Access",
+                "Domino Effect",
+                "Remote Memory",
+                "Life Variables",
+                "Global Synchronization",
+                "Global Consistency",
+                "Mean Time To Failure",
+                "Symmetric Objects",
+                "Resilience Perspective"
+            ],
+            "Author Keywords": [
+                "Fault Tolerance",
+                "Check-pointing",
+                "Compiler Assisted Check-pointing",
+                "Compiler Analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "9306850",
@@ -235,7 +487,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306850",
@@ -258,7 +512,9 @@
                 "firstName": "Scott",
                 "lastName": "Levy"
             }
-        ]
+        ],
+        "abstract": "Welcome to the 10th Workshop on Fault-Tolerance for HPC at eXtreme Scale (FTXS 2020), organized in conjunction with SC20. Addressing failures in extreme-scale systems remains a significant challenge to reaching exascale. Current projections suggest that at the scale necessary to sustain exaflops of computation, systems could experience failures as frequently as once per hour. As a result, robust and efficient fault tolerance techniques are critical to obtaining acceptable application performance. Additionally, it is imperative that we develop an understanding of trends in hardware devices that may affect the reliability of future systems. The emergence of high-bandwidth memory devices, the continued deployment of burst buffers, and the development of near-threshold devices to address power concerns will all impact fault tolerance on new systems. These design trends coupled with increases in the number, variety, and complexity of components required to compose next-generation extreme-scale systems mean that these systems will experience significant increases in aggregate fault rate, fault diversity, and the complexity of isolating root causes.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306850",
@@ -274,7 +530,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306850",
@@ -290,7 +548,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306850",
@@ -306,7 +566,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9306850",
@@ -322,6 +584,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     }
 ]

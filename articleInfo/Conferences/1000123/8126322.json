@@ -470,7 +470,64 @@
                 "firstName": "Doe Hyun",
                 "lastName": "Yoon"
             }
-        ]
+        ],
+        "abstract": "Many architects believe that major improvements in cost-energy-performance must now come from domain-specific hardware. This paper evaluates a custom ASIC-called a Tensor Processing Unit (TPU)-deployed in datacenters since 2015 that accelerates the inference phase of neural networks (NN). The heart of the TPU is a 65,536 8-bit MAC matrix multiply unit that offers a peak throughput of 92 TeraOps/second (TOPS) and a large (28 MiB) software-managed on-chip memory. The TPU's deterministic execution model is a better match to the 99th-percentile response-time requirement of our NN applications than are the time-varying optimizations of CPUs and GPUs that help average throughput more than guaranteed latency. The lack of such features helps explain why, despite having myriad MACs and a big memory, the TPU is relatively small and low power. We compare the TPU to a server-class Intel Haswell CPU and an Nvidia K80 GPU, which are contemporaries deployed in the same datacenters. Our workload, written in the high-level TensorFlow framework, uses production NN applications (MLPs, CNNs, and LSTMs) that represent 95% of our datacenters' NN inference demand. Despite low utilization for some applications, the TPU is on average about 15X–30X faster than its contemporary GPU or CPU, with TOPS/Watt about 30X–80X higher. Moreover, using the GPU's GDDR5 memory in the TPU would triple achieved TOPS and raise TOPS/Watt to nearly 70X the GPU and 200X the CPU.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Transmission line matrix methods",
+                "Graphics processing units",
+                "Artificial neural networks",
+                "Central Processing Unit",
+                "Tensile stress",
+                "Training",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Tensor Processing Units",
+                "Neural Network",
+                "Throughput",
+                "Convolutional Neural Network",
+                "Long Short-term Memory",
+                "Multilayer Perceptron",
+                "TensorFlow",
+                "Matrix Multiplication",
+                "Application Of Neural Networks",
+                "On-chip Memory",
+                "Neural Network Inference",
+                "Benchmark",
+                "Response Time",
+                "Average Weight",
+                "Deep Neural Network",
+                "Geometric Mean",
+                "Recurrent Neural Network",
+                "Speech Recognition",
+                "Fallacy",
+                "Memory Bandwidth",
+                "Clock Rate",
+                "Clock Cycles",
+                "Proportion Of Energy",
+                "Catapult",
+                "Coprocessor",
+                "Datapath",
+                "Users Face",
+                "Floating-point Operations",
+                "Internal Memory"
+            ],
+            "Author Keywords": [
+                "DNN",
+                "MLP",
+                "CNN",
+                "RNN",
+                "LSTM",
+                "neural network",
+                "deep learning",
+                "domain-specific architecture",
+                "accelerator",
+                "TensorFlow",
+                "TPU",
+                "GPU"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -541,7 +598,52 @@
                 "firstName": "William J.",
                 "lastName": "Dally"
             }
-        ]
+        ],
+        "abstract": "Convolutional Neural Networks (CNNs) have emerged as a fundamental technology for machine learning. High performance and extreme energy efficiency are critical for deployments of CNNs, especially in mobile platforms such as autonomous vehicles, cameras, and electronic personal assistants. This paper introduces the Sparse CNN (SCNN) accelerator architecture, which improves performance and energy efficiency by exploiting the zero-valued weights that stem from network pruning during training and zero-valued activations that arise from the common ReLU operator. Specifically, SCNN employs a novel dataflow that enables maintaining the sparse weights and activations in a compressed encoding, which eliminates unnecessary data transfers and reduces storage requirements. Furthermore, the SCNN dataflow facilitates efficient delivery of those weights and activations to a multiplier array, where they are extensively reused; product accumulation is performed in a novel accumulator array. On contemporary neural networks, SCNN can improve both performance and energy by a factor of 2.7× and 2.3×, respectively, over a comparably provisioned dense CNN accelerator.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Arrays",
+                "Random access memory",
+                "Accelerator architectures",
+                "Encoding"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Convolutional Neural Network",
+                "Sparse Convolutional Neural Networks",
+                "Energy Efficiency",
+                "Data Transfer",
+                "Autonomous Vehicles",
+                "Sparse Activity",
+                "Sparse Weight",
+                "Convolutional Layers",
+                "Weight Matrix",
+                "Fully-connected Layer",
+                "Computational Requirements",
+                "Nonzero Elements",
+                "Output Channels",
+                "AlexNet",
+                "Convolutional Neural Network Layers",
+                "Active Vectors",
+                "Active Output",
+                "Partial Sums",
+                "Non-zero Weights",
+                "Computational Layers",
+                "Compressed Representation",
+                "Rectified Linear Unit Function",
+                "Cartesian Product",
+                "Compressed Format",
+                "Memory Hierarchy",
+                "Input Weights",
+                "High-level Synthesis",
+                "Network Layer"
+            ],
+            "Author Keywords": [
+                "Convolutional neural networks",
+                "accelerator architecture"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -576,7 +678,55 @@
                 "firstName": "Peter",
                 "lastName": "Milder"
             }
-        ]
+        ],
+        "abstract": "Convolutional neural networks (CNNs) are revolutionizing machine learning, but they present significant computational challenges. Recently, many FPGA-based accelerators have been proposed to improve the performance and efficiency of CNNs. Current approaches construct a single processor that computes the CNN layers one at a time; the processor is optimized to maximize the throughput at which the collection of layers is computed. However, this approach leads to inefficient designs because the same processor structure is used to compute CNN layers of radically varying dimensions. We present a new CNN accelerator paradigm and an accompanying automated design methodology that partitions the available FPGA resources into multiple processors, each of which is tailored for a different subset of the CNN convolutional layers. Using the same FPGA resources as a single large processor, multiple smaller specialized processors increase computational efficiency and lead to a higher overall throughput. Our design methodology achieves 3.8x higher throughput than the state-of-the-art approach on evaluating the popular AlexNet CNN on a Xilinx Virtex-7 FPGA. For the more recent SqueezeNet and GoogLeNet, the speedups are 2.2x and 2.0x.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Hardware",
+                "Convolutional codes",
+                "Throughput",
+                "Design methodology",
+                "Arrays"
+            ],
+            "Index Terms": [
+                "Convolutional Neural Network",
+                "Convolutional Neural Network Accelerator",
+                "High Throughput",
+                "Convolutional Layers",
+                "Convolutional Neural Network Layers",
+                "Single Processor",
+                "SqueezeNet",
+                "Popular Convolutional Neural Networks",
+                "Optimization Algorithm",
+                "Feature Maps",
+                "Resource Utilization",
+                "Multiple Layers",
+                "Data Transfer",
+                "Weight Data",
+                "Joint Optimization",
+                "Control Logic",
+                "Output Feature Map",
+                "Computational Grid",
+                "Convolutional Neural Network Structure",
+                "Set Of Layers",
+                "Cycle Count",
+                "High-level Synthesis",
+                "Memory Bandwidth",
+                "Output Buffer",
+                "Bandwidth Requirements",
+                "32-bit Floating-point",
+                "Single Precision",
+                "Off-chip Memory",
+                "Output Data",
+                "Dimension Of Layer"
+            ],
+            "Author Keywords": [
+                "Convolutional Neural Network",
+                "FPGA",
+                "Accelerator"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -647,7 +797,57 @@
                 "firstName": "Kunle",
                 "lastName": "Olukotun"
             }
-        ]
+        ],
+        "abstract": "Reconfigurable architectures have gained popularity in recent years as they allow the design of energy-efficient accelerators. Fine-grain fabrics (e.g. FPGAs) have traditionally suffered from performance and power inefficiencies due to bit-level reconfigurable abstractions. Both fine-grain and coarse-grain architectures (e.g. CGRAs) traditionally require low level programming and suffer from long compilation times. We address both challenges with Plasticine, a new spatially reconfigurable architecture designed to efficiently execute applications composed of parallel patterns. Parallel patterns have emerged from recent research on parallel programming as powerful, high-level abstractions that can elegantly capture data locality, memory access patterns, and parallelism across a wide range of dense and sparse applications. We motivate Plasticine by first observing key application characteristics captured by parallel patterns that are amenable to hardware acceleration, such as hierarchical parallelism, data locality, memory access patterns, and control flow. Based on these observations, we architect Plasticine as a collection of Pattern Compute Units and Pattern Memory Units. Pattern Compute Units are multi-stage pipelines of reconfigurable SIMD functional units that can efficiently execute nested patterns. Data locality is exploited in Pattern Memory Units using banked scratchpad memories and configurable address decoders. Multiple on-chip address generators and scatter-gather engines make efficient use of DRAM bandwidth by supporting a large number of outstanding memory requests, memory coalescing, and burst mode for dense accesses. Plasticine has an area footprint of 113 mm<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> in a 28 nm process, and consumes a maximum power of 49 W at a 1 GHz clock. Using a cycle-accurate simulator, we demonstrate that Plasticine provides an improvement of up to 76.9× in performance-per-Watt over a conventional FPGA over a wide range of dense and sparse applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Field programmable gate arrays",
+                "Hardware",
+                "Programming",
+                "Indexes",
+                "System-on-chip",
+                "Fabrics"
+            ],
+            "Index Terms": [
+                "Parallel Patterns",
+                "Reconfigurable Architecture",
+                "Parallelization",
+                "Functional Unit",
+                "Flow Control",
+                "Computing Units",
+                "Access Patterns",
+                "Hardware Accelerators",
+                "Execution Efficiency",
+                "Compile Time",
+                "Convolutional Neural Network",
+                "Input Vector",
+                "Stochastic Gradient Descent",
+                "Power Efficiency",
+                "Output Vector",
+                "Outer Loop",
+                "Memory Control",
+                "Control Logic",
+                "Local Memory",
+                "Clock Frequency",
+                "Pipelining",
+                "Area Overhead",
+                "Scalar Output",
+                "Datapath",
+                "On-chip Memory",
+                "Breadth-first Search",
+                "Outer Control",
+                "Memory Address",
+                "Synopsys",
+                "Global Interconnectedness"
+            ],
+            "Author Keywords": [
+                "parallel patterns",
+                "reconfigurable architectures",
+                "hardware accelerators",
+                "CGRAs"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -718,7 +918,57 @@
                 "firstName": "David",
                 "lastName": "Nellans"
             }
-        ]
+        ],
+        "abstract": "Historically, improvements in GPU-based high performance computing have been tightly coupled to transistor scaling. As Moore's law slows down, and the number of transistors per die no longer grows at historical rates, the performance curve of single monolithic GPUs will ultimately plateau. However, the need for higher performing GPUs continues to exist in many domains. To address this need, in this paper we demonstrate that package-level integration of multiple GPU modules to build larger logical GPUs can enable continuous performance scaling beyond Moore's law. Specifically, we propose partitioning GPUs into easily manufacturable basic GPU Modules (GPMs), and integrating them on package using high bandwidth and power efficient signaling technologies. We lay out the details and evaluate the feasibility of a basic Multi-Chip-Module GPU (MCM-GPU) design. We then propose three architectural optimizations that significantly improve GPM data locality and minimize the sensitivity on inter-GPM bandwidth. Our evaluation shows that the optimized MCM-GPU achieves 22.8% speedup and 5x inter-GPM bandwidth reduction when compared to the basic MCM-GPU architecture. Most importantly, the optimized MCM-GPU design is 45.5% faster than the largest implementable monolithic GPU, and performs within 10% of a hypothetical (and unbuildable) monolithic GPU. Lastly we show that our optimized MCM-GPU is 26.8% faster than an equally equipped Multi-GPU system with the same total number of SMs and DRAM bandwidth.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Bandwidth",
+                "Transistors",
+                "Computer architecture",
+                "Random access memory",
+                "Parallel processing",
+                "Scalability"
+            ],
+            "Index Terms": [
+                "Continuous Performance",
+                "Heterogeneous Integration",
+                "High-performance Computing",
+                "Performance Scale",
+                "Moore’s Law",
+                "Multiple GPUs",
+                "Deep Neural Network",
+                "Energy Efficiency",
+                "Performance Degradation",
+                "Load Data",
+                "Memory System",
+                "Caching",
+                "Local Memory",
+                "Remote Access",
+                "Single GPU",
+                "Allocation Policy",
+                "Single Package",
+                "Remote Memory",
+                "Parallel Efficiency",
+                "Packaging Technology",
+                "L2 Cache",
+                "Cache Hit",
+                "Link Bandwidth",
+                "Memory Bandwidth",
+                "Benchmark Suite",
+                "Bandwidth Utilization",
+                "Total Bandwidth",
+                "Multiple Kernel",
+                "High Parallelism",
+                "Load Balancing"
+            ],
+            "Author Keywords": [
+                "Graphics Processing Units",
+                "Multi-Chip-Modules",
+                "NUMA Systems",
+                "Moore's Law"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -771,7 +1021,57 @@
                 "firstName": "Scott",
                 "lastName": "Mahlke"
             }
-        ]
+        ],
+        "abstract": "As the size of Deep Neural Networks (DNNs) continues to grow to increase accuracy and solve more complex problems, their energy footprint also scales. Weight pruning reduces DNN model size and the computation by removing redundant weights. However, we implemented weight pruning for several popular networks on a variety of hardware platforms and observed surprising results. For many networks, the network sparsity caused by weight pruning will actually hurt the overall performance despite large reductions in the model size and required multiply-accumulate operations. Also, encoding the sparse format of pruned networks incurs additional storage space overhead. To overcome these challenges, we propose Scalpel that customizes DNN pruning to the underlying hardware by matching the pruned network structure to the data-parallel hardware organization. Scalpel consists of two techniques: SIMD-aware weight pruning and node pruning. For low-parallelism hardware (e.g., microcontroller), SIMD-aware weight pruning maintains weights in aligned fixed-size groups to fully utilize the SIMD units. For high-parallelism hardware (e.g., GPU), node pruning removes redundant nodes, not redundant weights, thereby reducing computation without sacrificing the dense matrix format. For hardware with moderate parallelism (e.g., desktop CPU), SIMD-aware weight pruning and node pruning are synergistically applied together. Across the microcontroller, CPU and GPU, Scalpel achieves mean speedups of 3.54x, 2.61x, and 1.25x while reducing the model sizes by 88%, 82%, and 53%. In comparison, traditional weight pruning achieves mean speedups of 1.90x, 1.06x, 0.41x across the three platforms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sparse matrices",
+                "Hardware",
+                "Computational modeling",
+                "Parallel processing",
+                "Graphics processing units",
+                "Matrix converters",
+                "Microcontrollers"
+            ],
+            "Index Terms": [
+                "Deep Neural Network",
+                "Scalpel",
+                "Sparsity",
+                "Weight Group",
+                "Model Size",
+                "Sparse Matrix",
+                "Deep Neural Network Model",
+                "Hardware Platform",
+                "Popular Network",
+                "Sparse Format",
+                "Convolutional Neural Network",
+                "Convolutional Layers",
+                "Batch Size",
+                "Feature Maps",
+                "Weight Matrix",
+                "Relative Size",
+                "Input Values",
+                "Matrix Multiplication",
+                "Fully-connected Layer",
+                "Regular Structure",
+                "Pruning Techniques",
+                "AlexNet",
+                "High Parallelism",
+                "Column Index",
+                "Non-zero Weights",
+                "Nodes In Layer",
+                "Deep Neural Network Layers",
+                "Performance Of Layers",
+                "Element In Row",
+                "Small Batch Size"
+            ],
+            "Author Keywords": [
+                "neural network pruning",
+                "hardware parallelism",
+                "single instruction",
+                "multiple data"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -812,7 +1112,60 @@
                 "firstName": "Karthikeyan",
                 "lastName": "Sankaralingam"
             }
-        ]
+        ],
+        "abstract": "Demand for low-power data processing hardware continues to rise inexorably. Existing programmable and “general purpose” solutions (eg. SIMD, GPGPUs) are insufficient, as evidenced by the order-of-magnitude improvements and industry adoption of application and domain-specific accelerators in important areas like machine learning, computer vision and big data. The stark tradeoffs between efficiency and generality at these two extremes poses a difficult question: how could domain-specific hardware efficiency be achieved without domain-specific hardware solutions? In this work, we rely on the insight that “acceleratable” algorithms have broad common properties: high computational intensity with long phases, simple control patterns and dependences, and simple streaming memory access and reuse patterns. We define a general architecture (a hardware-software interface) which can more efficiently expresses programs with these properties called stream-dataflow. The dataflow component of this architecture enables high concurrency, and the stream component enables communication and coordination at very-low power and area overhead. This paper explores the hardware and software implications, describes its detailed microarchitecture, and evaluates an implementation. Compared to a state-of-the-art domain specific accelerator (DianNao), and fixed-function accelerators for MachSuite, Softbrain can match their performance with only 2× power overhead on average.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Hardware",
+                "Registers",
+                "Acceleration",
+                "Microarchitecture",
+                "Spatial databases",
+                "Ports (Computers)"
+            ],
+            "Index Terms": [
+                "General Purpose",
+                "Microarchitecture",
+                "Access Patterns",
+                "Area Overhead",
+                "Power Overhead",
+                "High Use",
+                "Deep Neural Network",
+                "Internet Of Things",
+                "Functional Unit",
+                "Load Data",
+                "Memory System",
+                "Coarse-grained",
+                "Hardware Implementation",
+                "Deadlock",
+                "Input Port",
+                "Parallel Data",
+                "Comparison Of Power",
+                "System-on-chip",
+                "Model Execution",
+                "Datapath",
+                "Memory Address",
+                "Address Space",
+                "Indirect Access",
+                "Software Stack",
+                "Destination Port",
+                "Power Efficiency",
+                "Efficient Implementation",
+                "Virtual Memory",
+                "Input Vector"
+            ],
+            "Author Keywords": [
+                "Streaming",
+                "Dataflow",
+                "Architecture",
+                "Accelerator",
+                "Reconfigurable",
+                "CGRA",
+                "Programmable",
+                "Domain-Specific"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -859,7 +1212,56 @@
                 "firstName": "Milos",
                 "lastName": "Prvulovic"
             }
-        ]
+        ],
+        "abstract": "This paper describes EM-Based Detection of Deviations in Program Execution (EDDIE), a new method for detecting anomalies in program execution, such as malware and other code injections, without introducing any overheads, adding any hardware support, changing any software, or using any resources on the monitored system itself. Monitoring with EDDIE involves receiving electromagnetic (EM) emanations that are emitted as a side effect of execution on the monitored system, and it relies on spikes in the EM spectrum that are produced as a result of periodic (e.g. loop) activity in the monitored execution. During training, EDDIE characterizes normal execution behavior in terms of peaks in the EM spectrum that are observed at various points in the program execution, but it does not need any characterization of the malware or other code that might later be injected. During monitoring, EDDIE identifies peaks in the observed EM spectrum, and compares these peaks to those learned during training. Since EDDIE requires no resources on the monitored machine and no changes to the monitored software, it is especially well suited for security monitoring of embedded and IoT devices. We evaluate EDDIE on a real IoT system and in a cycle-accurate simulator, and find that even relatively brief injected bursts of activity (a few milliseconds) are detected by EDDIE with high accuracy, and that it also accurately detects when even a few instructions are injected into an existing loop within the application.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monitoring",
+                "Training",
+                "Anomaly detection",
+                "Detectors",
+                "Frequency modulation",
+                "Malware"
+            ],
+            "Index Terms": [
+                "Program Execution",
+                "Internet Of Things",
+                "Normal Behavior",
+                "Internet Of Things Devices",
+                "Internet Of Things Systems",
+                "Injection Attacks",
+                "False Positive",
+                "Kolmogorov-Smirnov Test",
+                "False Positive Rate",
+                "Detection Accuracy",
+                "Frequency Spectrum",
+                "Flow Control",
+                "Loop Region",
+                "Carrier Frequency",
+                "Anomaly Detection",
+                "Longer Latency",
+                "Spectral Profiles",
+                "Short-time Fourier Transform",
+                "Side-channel",
+                "Contamination Rate",
+                "Electromagnetic Signals",
+                "Control Flow Graph",
+                "False Rejection",
+                "Cache Misses",
+                "Clock Signal",
+                "Malware Detection",
+                "L2 Cache",
+                "Block A",
+                "Detection Performance",
+                "Behavioral Variables"
+            ],
+            "Author Keywords": [
+                "Hardware Security",
+                "EM Emanation",
+                "Malware Detection",
+                "Internet-of-Things"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -900,7 +1302,54 @@
                 "firstName": "Josep",
                 "lastName": "Torrellas"
             }
-        ]
+        ],
+        "abstract": "In cache-based side channel attacks, a spy that shares a cache with a victim probes cache locations to extract information on the victim's access patterns. For example, in evict+reload, the spy repeatedly evicts and then reloads a probe address, checking if the victim has accessed the address in between the two operations. While there are many proposals to combat these cache attacks, they all have limitations: they either hurt performance, require programmer intervention, or can only defend against some types of attacks. This paper makes the following observation for an environment with an inclusive cache hierarchy: when the spy evicts the probe address from the shared cache, the address will also be evicted from the private cache of the victim process, creating an inclusion victim. Consequently, to disable cache attacks, this paper proposes to alter the line replacement algorithm of the shared cache, to prevent a process from creating inclusion victims in the caches of cores running other processes. By enforcing this rule, the spy cannot evict the probe address from the shared cache and, hence, cannot glimpse any information on the victim's access patterns. We call our proposal SHARP (Secure Hierarchy-Aware cache Replacement Policy). SHARP efficiently defends against all existing cross-core shared-cache attacks, needs only minimal hardware modifications, and requires no code modifications. We implement SHARP in a cycle-level full-system simulator. We show that it protects against real-world attacks, and that it introduces negligible average performance degradation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Probes",
+                "Side-channel attacks",
+                "Proposals",
+                "Degradation",
+                "Hardware",
+                "Time measurement"
+            ],
+            "Index Terms": [
+                "Side-channel",
+                "Replacement Policy",
+                "Cache Replacement",
+                "Cache-based Side-channel Attacks",
+                "Performance Degradation",
+                "Types Of Attacks",
+                "Access Patterns",
+                "Data Cache",
+                "Negligible Degradation",
+                "Analysis Steps",
+                "Time Slot",
+                "Input Size",
+                "Set Of Lines",
+                "Negligible Impact",
+                "Reference Line",
+                "Function In Lines",
+                "Attack Success",
+                "Average Impact",
+                "Remote Memory",
+                "Shared Object",
+                "Cache Misses",
+                "Cache Hit",
+                "Value Of Bit",
+                "Intel Processor",
+                "PDF Files",
+                "L2 Cache",
+                "Online Phase",
+                "Partitioning Technique"
+            ],
+            "Author Keywords": [
+                "Security",
+                "Side channel",
+                "Cache",
+                "Cache replacement"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -941,7 +1390,56 @@
                 "firstName": "Yan",
                 "lastName": "Solihin"
             }
-        ]
+        ],
+        "abstract": "Trustworthy software requires strong privacy and security guarantees from a secure trust base in hardware. While chipmakers provide hardware support for basic security and privacy primitives such as enclaves and memory encryption. these primitives do not address hiding of the memory access pattern, information about which may enable attacks on the system or reveal characteristics of sensitive user data. State-of-the-art approaches to protecting the access pattern are largely based on Oblivious RAM (ORAM). Unfortunately, current ORAM implementations suffer from very significant practicality and overhead concerns, including roughly an order of magnitude slowdown, more than 100% memory capacity overheads, and the potential for system deadlock. Memory technology trends are moving towards 3D and 2.5D integration, enabling significant logic capabilities and sophisticated memory interfaces. Leveraging the trends, we propose a new approach to access pattern obfuscation, called ObfusMem. ObfusMem adds the memory to the trusted computing base and incorporates cryptographic engines within the memory. ObfusMem encrypts commands and addresses on the memory bus, hence the access pattern is cryptographically obfuscated from external observers. Our evaluation shows that ObfusMem incurs an overhead of 10.9% on average, which is about an order of magnitude faster than ORAM implementations. Furthermore, ObfusMem does not incur capacity overheads and does not amplify writes. We analyze and compare the security protections provided by ObfusMem and ORAM, and highlight their differences.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory management",
+                "Cryptography",
+                "Random access memory",
+                "Hardware",
+                "Nonvolatile memory",
+                "Privacy"
+            ],
+            "Index Terms": [
+                "Deadlock",
+                "Access Patterns",
+                "Security Guarantees",
+                "Memory Technologies",
+                "Privacy Guarantee",
+                "Spatial Patterns",
+                "Decoding",
+                "Multiple Channels",
+                "Memory Control",
+                "Public Key",
+                "Symmetric Encryption",
+                "Side-channel",
+                "Non-volatile Memory",
+                "Low Overhead",
+                "Memory Module",
+                "Memory Integration",
+                "Performance Overhead",
+                "Types Of Requests",
+                "Session Key",
+                "Path Tree",
+                "Processor Chip",
+                "Message Authentication Code",
+                "Integrity Verification",
+                "Counter Value",
+                "Merkle Tree",
+                "Secret Key",
+                "Threat Model",
+                "Denial Of Service",
+                "Secret Sharing",
+                "Memory Footprint"
+            ],
+            "Author Keywords": [
+                "Access Pattern Ofuscation",
+                "Hardware Security",
+                "ORAM",
+                "Emerging Memory Technologies"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -964,7 +1462,24 @@
                 "firstName": "Matthew",
                 "lastName": "Hicks"
             }
-        ]
+        ],
+        "abstract": "The processors that drive embedded systems are getting smaller; meanwhile, the batteries used to provide power to those systems have stagnated. If we are to realize the dream of ubiquitous computing promised by the Internet of Things, processors must shed large, heavy, expensive, and high maintenance batteries and, instead, harvest energy from their environment. One challenge with this transition is that harvested energy is insufficient for continuous operation. Unfortunately, existing programs fail miserably when executed intermittently. This paper presents Clank: lightweight architectural support for correct and efficient execution of long-running applications on harvested energy-without programmer intervention or extreme hardware modifications. Clank is a set of hardware buffers and memory-access monitors that dynamically maintain idempotency. Essentially, Clank dynamically decomposes program execution into a stream of restartable sub-executions connected via lightweight checkpoints. To validate Clank's ability to correctly stretch program execution across frequent, random power cycles, and to explore the associated hardware and software overheads, we implement Clank in Verilog, formally verify it, and then add it to an ARM Cortex M0+ processor which we use to run a set of 23 embedded systems benchmarks. Experiments show run-time overheads as low as 2.5%, with run-time overheads of 6% for a version of Clank that adds 1.7% hardware. Clank minimizes checkpoints so much that re-execution time becomes the dominate contributor to run-time overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Program processors",
+                "Nonvolatile memory",
+                "Batteries",
+                "Energy harvesting",
+                "Checkpointing"
+            ],
+            "Author Keywords": [
+                "Energy Harvesting",
+                "Intermittent Computation",
+                "Batteryless Devices",
+                "Idempotence"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1029,7 +1544,55 @@
                 "firstName": "Dionisios",
                 "lastName": "Pnevmatikatos"
             }
-        ]
+        ],
+        "abstract": "The increasing demand for extracting value out of ever-growing data poses an ongoing challenge to system designers, a task only made trickier by the end of Dennard scaling. As the performance density of traditional CPU-centric architectures stagnates, advancing compute capabilities necessitates novel architectural approaches. Near-memory processing (NMP) architectures are reemerging as promising candidates to improve computing efficiency through tight coupling of logic and memory. NMP architectures are especially fitting for data analytics, as they provide immense bandwidth to memory-resident data and dramatically reduce data movement, the main source of energy consumption. Modern data analytics operators are optimized for CPU execution and hence rely on large caches and employ random memory accesses. In the context of NMP, such random accesses result in wasteful DRAM row buffer activations that account for a significant fraction of the total memory access energy. In addition, utilizing NMP's ample bandwidth with fine-grained random accesses requires complex hardware that cannot be accommodated under NMP's tight area and power constraints. Our thesis is that efficient NMP calls for an algorithm-hardware co-design that favors algorithms with sequential accesses to enable simple hardware that accesses memory in streams. We introduce an instance of such a co-designed NMP architecture for data analytics, the Mondrian Data Engine. Compared to a CPU-centric and a baseline NMP system, the Mondrian Data Engine improves the performance of basic data analytics operators by up to 49× and 5×, and efficiency by up to 28× and 5×, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data analysis",
+                "Bandwidth",
+                "Hardware",
+                "Engines",
+                "Memory management",
+                "Random access memory"
+            ],
+            "Index Terms": [
+                "Energy Source",
+                "Sequence Accession",
+                "Load Data",
+                "Random Access",
+                "Power Constraint",
+                "Random Access Memory",
+                "Simple Hardware",
+                "Area Constraints",
+                "Permutation",
+                "Objective Data",
+                "Data Streams",
+                "Hash Function",
+                "Data Partitioning",
+                "Memory Control",
+                "Computing Units",
+                "Buffer Size",
+                "Access Patterns",
+                "Phase Step",
+                "Most Significant Bit",
+                "Effective Bandwidth",
+                "Memory Bandwidth",
+                "Phase Partitioning",
+                "Bandwidth Utilization",
+                "Physical Address",
+                "Address Space",
+                "Multiple Memory",
+                "Joining Algorithm",
+                "Cache Hit",
+                "Single Object",
+                "Parallel Data"
+            ],
+            "Author Keywords": [
+                "Near-memory processing",
+                "sequential memory access",
+                "algorithm-hardware co-design"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1058,7 +1621,55 @@
                 "firstName": "Satish",
                 "lastName": "Narayanasamy"
             }
-        ]
+        ],
+        "abstract": "A practically feasible low-overhead hardware design that provides strong defenses against memory bus side channel remains elusive. This paper observes that smart memory, memory with compute capability and a packetized interface, can dramatically simplify this problem. InvisiMem expands the trust base to include the logic layer in the smart memory to implement cryptographic primitives, which aid in addressing several memory bus side channel vulnerabilities efficiently. This allows the secure host processor to send encrypted addresses over the untrusted memory bus, and thereby eliminates the need for expensive address obfuscation techniques based on Oblivious RAM (ORAM). In addition, smart memory enables efficient solutions for ensuring freshness without using expensive Merkle trees, and mitigates memory bus timing channel using constant heart-beat packets. We demonstrate that InvisiMem designs have one to two orders of magnitude of lower overheads for performance, space, energy, and memory bandwidth, compared to prior solutions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Hardware",
+                "Memory management",
+                "Timing",
+                "Encryption",
+                "Three-dimensional displays"
+            ],
+            "Index Terms": [
+                "Side-channel",
+                "Computational Capabilities",
+                "Low Overhead",
+                "Memory Bandwidth",
+                "Cryptographic Primitives",
+                "Merkle Tree",
+                "Data Integration",
+                "Data Storage",
+                "Access Time",
+                "Secret Key",
+                "Memory Control",
+                "Public Key",
+                "Encrypted Data",
+                "Data Block",
+                "Memory Data",
+                "Security Guarantees",
+                "Replay Attacks",
+                "Memory Module",
+                "Protective Memory",
+                "Secure Channel",
+                "Performance Overhead",
+                "Message Authentication Code",
+                "Thermal Budget",
+                "Certificate Authority",
+                "Memory Layer",
+                "Public Key Infrastructure",
+                "3D Stacks",
+                "Decoding",
+                "Expensive Solution",
+                "Key Exchange"
+            ],
+            "Author Keywords": [
+                "Security",
+                "die stacking",
+                "memory"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1117,7 +1728,48 @@
                 "firstName": "Thomas F.",
                 "lastName": "Wenisch"
             }
-        ]
+        ],
+        "abstract": "The commercial release of byte-addressable persistent memories, such as Intel/Micron 3D XPoint memory, is imminent. Ongoing research has sought mechanisms to allow programmers to implement recoverable data structures in these new main memories. Ensuring recoverability requires programmer control of the order of persistent stores; recent work proposes persistency models as an extension to memory consistency to specify such ordering. Prior work has considered persistency models at the abstraction of the instruction set architecture. Instead, we argue for extending the language-level memory model to provide guarantees on the order of persistent writes. We explore a taxonomy of guarantees a language-level persistency model might provide, considering both atomicity and ordering constraints on groups of persistent stores. Then, we propose and evaluate Acquire-Release Persistency (ARP), a language-level persistency model for C++11. We describe how to compile code written for ARP to a state-of-the-art ISA-level persistency model. We then consider enhancements to the ISA-level persistency model that can distinguish memory consistency constraints required for proper synchronization but unnecessary for correct recovery. With these optimizations, we show that ARP increases performance by up to 33.2% (19.8% avg.) over coding directly to the baseline ISA-level persistency model for a suite of persistent-write-intensive workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data structures",
+                "Software",
+                "Hardware",
+                "Semantics",
+                "Optimization",
+                "Taxonomy",
+                "Synchronization"
+            ],
+            "Index Terms": [
+                "Data Structure",
+                "Memory Model",
+                "Instruction Set Architecture",
+                "Recoverability",
+                "Persistent Memory",
+                "Persistence Model",
+                "Constraints In Order",
+                "Semantic",
+                "Logistics",
+                "Memory Effect",
+                "Failure Events",
+                "Current Number",
+                "Memory Control",
+                "Power Outages",
+                "Caching",
+                "Load Operation",
+                "Scheduling Decisions",
+                "System Calls",
+                "Persistent Data",
+                "Critical Section",
+                "Checkpointing",
+                "Outer Section"
+            ],
+            "Author Keywords": [
+                "Persistent memories",
+                "memory persistency",
+                "language-level models"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1158,7 +1810,54 @@
                 "firstName": "Jaehyuk",
                 "lastName": "Huh"
             }
-        ]
+        ],
+        "abstract": "To mitigate excessive TLB misses in large memory applications, techniques such as large pages, variable length segments, and HW coalescing, increase the coverage of limited hardware translation entries by exploiting the contiguous memory allocation. However, recent studies show that in non-uniform memory systems, using large pages often leads to performance degradation, or allocating large chunks of memory becomes more difficult due to memory fragmentation. Although each of the prior techniques favors its own best chunk size, diverse contiguity of memory allocation in real systems cannot always provide the optimal chunk of each technique. Under such fragmented and diverse memory allocations, this paper proposes a novel HW-SW hybrid translation architecture, which can adapt to different memory mappings efficiently. In the proposed hybrid coalescing technique, the operating system encodes memory contiguity information in a subset of page table entries, called anchor entries. During address translation through TLBs, an anchor entry provides translation for contiguous pages following the anchor entry. As a smaller number of anchor entries can cover a large portion of virtual address space, the efficiency of TLB can be significantly improved. The most important benefit of hybrid coalescing is its ability to change the coverage of the anchor entry dynamically, reflecting the current allocation contiguity status. By using the contiguity information directly set by the operating system, the technique can provide scalable translation coverage improvements with minor hardware changes, while allowing the flexibility of memory allocation. Our experimental results show that across diverse allocation scenarios with different distributions of contiguous memory chunks, the proposed scheme can effectively reap the potential translation coverage improvement from the existing contiguity.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resource management",
+                "Memory management",
+                "Scalability",
+                "Operating systems",
+                "Flexible printed circuits",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Memory Allocation",
+                "Large Memory",
+                "Large Chunks",
+                "Chunk Size",
+                "Operating System",
+                "Selection Algorithm",
+                "Variety Of Scenarios",
+                "Dynamic Algorithm",
+                "Caching",
+                "Non-volatile Memory",
+                "Optimal Distance",
+                "Contiguous Regions",
+                "Improvements In Coverage",
+                "Dynamic Selection",
+                "Subset Of Information",
+                "Memory Regions",
+                "Memory Architecture",
+                "Physical Address",
+                "Flexible Allocation",
+                "High Contiguity",
+                "Multiple Pages",
+                "Address Space",
+                "Virtual Memory",
+                "Physical Memory",
+                "Real Map",
+                "Single Entry",
+                "Scalable",
+                "Multiple Entries",
+                "Linux Kernel"
+            ],
+            "Author Keywords": [
+                "Virtual memory",
+                "address translation",
+                "TLB coalescing"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1193,7 +1892,53 @@
                 "firstName": "Todd",
                 "lastName": "Austin"
             }
-        ]
+        ],
+        "abstract": "Intel's SGX secure execution technology allows running computations on secret data using untrusted servers. While recent work showed how to port applications and large-scale computations to run under SGX, the performance implications of using the technology remains an open question. We present the first comprehensive quantitative study to evaluate the performance of SGX. We show that straightforward use of SGX library primitives for calling functions add between 8,200-17,000 cycles overhead, compared to 150 cycles of a typical system call. We quantify the performance impact of these library calls and show that in applications with high system calls frequency, such as memcached, openVPN, and lighttpd, which all have high bandwidth network requirements, the performance degradation may be as high as 79%. We investigate the sources of this performance degradation by leveraging a new set of microbenchmarks for SGX-specific operations such as enclave entry-calls and out-calls, and encrypted memory I/O accesses. We leverage the insights we gain from these analyses to design a new SGX interface framework HotCalls. HotCalls are based on a synchronization spin-lock mechanism and provide a 13-27x speedup over the default interface. It can easily be integrated into existing code, making it a practical solution. Compared to a baseline SGX implementation of memcached, openVPN, and lighttpd - we show that using the new interface boosts the throughput by 2.6-3.7x, and reduces application latency by 62-74%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cryptography",
+                "Hardware",
+                "Cloud computing",
+                "Servers",
+                "Virtual machine monitors"
+            ],
+            "Index Terms": [
+                "Software Guard Extensions",
+                "Benchmark Test",
+                "System Calls",
+                "Operating System",
+                "Cycle Time",
+                "Response Latency",
+                "Secret Key",
+                "Denial Of Service",
+                "Average Latency",
+                "Single Thread",
+                "Buffer Size",
+                "Evaluation Of Applications",
+                "Round-trip Time",
+                "Decrease In Latency",
+                "Increase In Throughput",
+                "Protective Memory",
+                "Cloud Providers",
+                "Shared Memory",
+                "Security Checks",
+                "Context Switching",
+                "Frequent Calls",
+                "API Calls",
+                "Cache Misses",
+                "Benchmark",
+                "External Resources",
+                "Cycle Count",
+                "GHz Core",
+                "Memory Reading",
+                "Side-channel"
+            ],
+            "Author Keywords": [
+                "SGX",
+                "Hardware security",
+                "Performance optimization"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1234,7 +1979,51 @@
                 "firstName": "Antonio",
                 "lastName": "Gonzalez"
             }
-        ]
+        ],
+        "abstract": "Early reliability assessment of hardware structures using microarchitecture level simulators can effectively guide major error protection decisions in microprocessor design. Statistical fault injection on microarchitectural structures modeled in performance simulators is an accurate method to measure their Architectural Vulnerability Factor (AVF) but requires excessively long campaigns to obtain high statistical significance. We propose MeRLiN, a methodology to boost microarchitecture level injection-based reliability assessment by several orders of magnitude and keep the accuracy of the assessment unaffected even for large injection campaigns with very high statistical significance. The core of MeRLiN is the grouping of faults of an initial list in equivalent classes. All faults in the same group target equivalent vulnerable intervals of program execution ending up to the same static instruction that reads the faulty entries. Faults in the same group occur in different times and entries of a structure and it is extremely likely that they all have the same effect in program execution; thus, fault injection is performed only on a few representatives from each group. We evaluate MeRLiN for different sizes of the physical register file, the store queue and the first level data cache of a contemporary microarchitecture running MiBench and SPEC CPU2006 benchmarks. For all our experiments, MeRLiN is from 2 to 3 orders of magnitude faster than an extremely high statistical significant injection campaign, reporting the same reliability measurements with negligible loss of accuracy. Finally, we theoretically analyze MeRLiN's statistical behavior to further justify its accuracy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microarchitecture",
+                "Registers",
+                "Hardware",
+                "Circuit faults",
+                "Benchmark testing",
+                "Reliability engineering"
+            ],
+            "Index Terms": [
+                "Microarchitecture Level",
+                "Accurate Assessment Of Reliability",
+                "Statistical Significance",
+                "Benchmark",
+                "Program Execution",
+                "High Statistical Significance",
+                "Data Cache",
+                "Hardware Structure",
+                "Running",
+                "Heuristic",
+                "Confidence Level",
+                "Group Size",
+                "Probabilistic Model",
+                "Margin Of Error",
+                "Reliability Study",
+                "Steps Of Algorithm",
+                "Exhaustive List",
+                "End Of Step",
+                "Injection Method",
+                "Comprehensive Campaign",
+                "First Step Of The Algorithm",
+                "Number Of Injections",
+                "Comprehensive Baseline",
+                "Structural Vulnerability",
+                "Example Of Step"
+            ],
+            "Author Keywords": [
+                "Microarchitecture level reliability estimation",
+                "architectural vulnerability factor",
+                "fault injection",
+                "transient faults"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1269,7 +2058,54 @@
                 "firstName": "Yan",
                 "lastName": "Solihin"
             }
-        ]
+        ],
+        "abstract": "Byte-addressable non-volatile memory technology is emerging as an alternative for DRAM for main memory. This new Non-Volatile Main Memory (NVMM) allows programmers to store important data in data structures in memory instead of serializing it to the file system, thereby providing a substantial performance boost. However, modern systems reorder memory operations and utilize volatile caches for better performance, making it difficult to ensure a consistent state in NVMM. Intel recently announced a new set of persistence instructions, clflushopt, clwb, and pcommit. These new instructions make it possible to implement fail-safe code on NVMM, but few workloads have been written or characterized using these new instructions. In this work, we describe how these instructions work and how they can be used to implement write-ahead logging based transactions. We implement several common data structures and kernels and evaluate the performance overhead incurred over traditional non-persistent implementations. In particular, we find that persistence instructions occur in clusters along with expensive fence operations, they have long latency, and they add a significant execution time overhead, on average by 20.3% over code with logging but without fence instructions to order persists. To deal with this overhead and alleviate the performance bottleneck, we propose to speculate past long latency persistency operations using checkpoint-based processing. Our speculative persistence architecture reduces the execution time overheads to only 3.6%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Nonvolatile memory",
+                "Safety",
+                "Data structures",
+                "Force",
+                "Random access memory",
+                "Software"
+            ],
+            "Index Terms": [
+                "Speculative Execution",
+                "Data Structure",
+                "File System",
+                "Non-volatile Memory",
+                "Serialized",
+                "Memory Structure",
+                "Performance Bottleneck",
+                "Memory Operations",
+                "Benchmark",
+                "Retirement",
+                "False Positive Rate",
+                "Advantage Of This Approach",
+                "Hash Function",
+                "Leaf Node",
+                "Rollback",
+                "Memory Control",
+                "Written Back",
+                "Persistence Model",
+                "Sequence Of Instructions",
+                "Bloom Filter",
+                "End Of Epoch",
+                "Access Latency",
+                "System Crashes",
+                "Number Of Stores",
+                "Update Operation",
+                "Persistent Data",
+                "Memory Updating",
+                "Balanced Tree",
+                "Free Entry"
+            ],
+            "Author Keywords": [
+                "Non-Volatile Main Memory",
+                "Speculative Persistence",
+                "Failure Safety"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1316,7 +2152,57 @@
                 "firstName": "John",
                 "lastName": "Sartori"
             }
-        ]
+        ],
+        "abstract": "A large number of emerging applications such as implantables, wearables, printed electronics, and IoT have ultra-low area and power constraints. These applications rely on ultra-low-power general purpose microcontrollers and microprocessors, making them the most abundant type of processor produced and used today. While general purpose processors have several advantages, such as amortized development cost across many applications, they are significantly over-provisioned for many area- and power-constrained systems, which tend to run only one or a small number of applications over their lifetime. In this paper, we make a case for bespoke processor design, an automated approach that tailors a general purpose processor IP to a target application by removing all gates from the design that can never be used by the application. Since removed gates are never used by an application, bespoke processors can achieve significantly lower area and power than their general purpose counterparts without any performance degradation. Also, gate removal can expose additional timing slack that can be exploited to increase area and power savings or performance of a bespoke design. Bespoke processor design reduces area and power by 62% and 50%, on average, while exploiting exposed timing slack improves average power savings to 65%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Logic gates",
+                "IP networks",
+                "Microcontrollers",
+                "Hardware",
+                "Timing"
+            ],
+            "Index Terms": [
+                "Power Constraint",
+                "Ultra-low Power",
+                "Area Constraints",
+                "Low Power",
+                "Energy Conservation",
+                "Wearable",
+                "General Purpose",
+                "Development Costs",
+                "Target Application",
+                "Benchmark",
+                "Constant Value",
+                "Reduction In Area",
+                "Flow Control",
+                "Original Design",
+                "Conservation Status",
+                "Multiple Applications",
+                "Reduction In Power",
+                "Static Analysis",
+                "Simple Application",
+                "Design Efforts",
+                "Gate Set",
+                "Application Execution",
+                "Application Running",
+                "High-level Synthesis",
+                "Execution Path",
+                "Control Flow Graph",
+                "Bug Fixes",
+                "Sequence Of Instructions",
+                "Baseline Design",
+                "Inverter"
+            ],
+            "Author Keywords": [
+                "ultra-low-power processors",
+                "application-specific processors",
+                "bespoke processors",
+                "hardware-software co-analysis",
+                "Internet of Things"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1399,7 +2285,56 @@
                 "firstName": "Anand",
                 "lastName": "Raghunathan"
             }
-        ]
+        ],
+        "abstract": "Deep Neural Networks (DNNs) have demonstrated state-of-the-art performance on a broad range of tasks involving natural language, speech, image, and video processing, and are deployed in many real world applications. However, DNNs impose significant computational challenges owing to the complexity of the networks and the amount of data they process, both of which are projected to grow in the future. To improve the efficiency of DNNs, we propose SCALEDEEP, a dense, scalable server architecture, whose processing, memory and interconnect subsystems are specialized to leverage the compute and communication characteristics of DNNs. While several DNN accelerator designs have been proposed in recent years, the key difference is that SCALEDEEP primarily targets DNN training, as opposed to only inference or evaluation. The key architectural features from which SCALEDEEP derives its efficiency are: (i) heterogeneous processing tiles and chips to match the wide diversity in computational characteristics (FLOPs and Bytes/FLOP ratio) that manifest at different levels of granularity in DNNs, (ii) a memory hierarchy and 3-tiered interconnect topology that is suited to the memory access and communication patterns in DNNs, (iii) a low-overhead synchronization mechanism based on hardware data-flow trackers, and (iv) methods to map DNNs to the proposed architecture that minimize data movement and improve core utilization through nested pipelining. We have developed a compiler to allow any DNN topology to be programmed onto SCALEDEEP, and a detailed architectural simulator to estimate performance and energy. The simulator incorporates timing and power models of SCALEDEEP's components based on synthesis to Intel's 14nm technology. We evaluate an embodiment of SCALEDEEP with 7032 processing tiles that operates at 600 MHz and has a peak performance of 680 TFLOPs (single precision) and 1.35 PFLOPs (half-precision) at 1.4KW. Across 11 state-of-the-art DNNs containing 0.65M-14.9M neurons and 6.8M-145.9M weights, including winners from 5 years of the ImageNet competition, SCALEDEEP demonstrates 6×-28× speedup at iso-power over the state-of-the-art performance on GPUs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Neurons",
+                "Computer architecture",
+                "Topology",
+                "Hardware",
+                "Parallel processing",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Deep Network",
+                "Deep Neural Network",
+                "Communication Patterns",
+                "Computational Challenges",
+                "Pipelining",
+                "ImageNet Large Scale Visual Recognition Challenge",
+                "Scalable Architecture",
+                "Memory Hierarchy",
+                "Convolutional Layers",
+                "Parallelization",
+                "Input Features",
+                "Feature Size",
+                "Long Short-term Memory",
+                "Flow Data",
+                "Neurons In Layer",
+                "Output Feature",
+                "Network State",
+                "Memory Capacity",
+                "Fully-connected Layer",
+                "Single Chip",
+                "Multiple Chips",
+                "Set Of Columns",
+                "Prior Efforts",
+                "Weight Gradient",
+                "External Memory",
+                "2D Array",
+                "Related Efforts",
+                "Feature Counts",
+                "Matrix Multiplication",
+                "Data Transfer"
+            ],
+            "Author Keywords": [
+                "Deep Neural Networks",
+                "Hardware Accelerators",
+                "System Architecture"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1452,7 +2387,55 @@
                 "firstName": "Minyi",
                 "lastName": "Guo"
             }
-        ]
+        ],
+        "abstract": "GPUs have been widely adopted in data centers to provide acceleration services to many applications. Sharing a GPU is increasingly important for better processing throughput and energy efficiency. However, quality of service (QoS) among concurrent applications is minimally supported. Previous efforts are too coarse-grained and not scalable with increasing QoS requirements. We propose QoS mechanisms for a fine-grained form of GPU sharing. Our QoS support can provide control over the progress of kernels on a per cycle basis and the amount of thread-level parallelism of each kernel. Due to accurate resource management, our QoS support has significantly better scalability compared with previous best efforts. Evaluations show that, when the GPU is shared by three kernels, two of which have QoS goals, the proposed techniques achieve QoS goals 43.8% more often than previous techniques and have 20.5% higher throughput.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Graphics processing units",
+                "Quality of service",
+                "Context",
+                "Resource management",
+                "Throughput",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Service Quality",
+                "Scalable",
+                "High Throughput",
+                "Resource Management",
+                "Energy Efficiency",
+                "Previous Efforts",
+                "Quality Of Service Requirements",
+                "Basic Cycle",
+                "Resource Allocation",
+                "Resource Utilization",
+                "Power Efficiency",
+                "Allocation Scheme",
+                "Performance Goals",
+                "Spatial Partitioning",
+                "Kinds Of Resources",
+                "Multiple Kernel",
+                "Dynamic Resource",
+                "Epoch Length",
+                "Dynamic Management",
+                "Hill-climbing",
+                "End Of Epoch",
+                "Total Throughput",
+                "Shared Memory",
+                "Memory Bandwidth",
+                "L2 Cache",
+                "Context Switching",
+                "Previous Epoch",
+                "Single Kernel",
+                "Running Time",
+                "Model Execution"
+            ],
+            "Author Keywords": [
+                "GPU",
+                "Quality of Service"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1499,7 +2482,56 @@
                 "firstName": "Eun Jung",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "The trend of unsustainable power consumption and large memory bandwidth demands in massively parallel multicore systems, with the advent of the big data era, has brought upon the onset of alternate computation paradigms utilizing heterogeneity, specialization, processor-in-memory and approximation. Approximate Computing is being touted as a viable solution for high performance computation by relaxing the accuracy constraints of applications. This trend has been accentuated by emerging data intensive applications in domains like image/video processing, machine learning and big data analytics that allow inaccurate outputs within an acceptable variance. Leveraging relaxed accuracy for high throughput in Networks-on-Chip (NoCs), which have rapidly become the accepted method for connecting a large number of on-chip components, has not yet been explored. We propose APPROX-NoC, a hardware data approximation framework with an online data error control mechanism for high performance NoCs. APPROX-NoC facilitates approximate matching of data patterns, within a controllable value range, to compress them thereby reducing the volume of data movement across the chip. Our evaluation shows that APPROX-NoC achieves on average up to 9% latency reduction and 60% throughput improvement compared with state-of-the-art NoC data compression mechanisms, while maintaining low application error. Additionally, with a data intensive graph processing application we achieve a 36.7% latency reduction compared to state-of-the-art compression mechanisms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Nickel",
+                "Memory management",
+                "Multicore processing",
+                "Data compression",
+                "Hardware",
+                "Throughput",
+                "Error correction"
+            ],
+            "Index Terms": [
+                "High Throughput",
+                "Big Data",
+                "Source Code",
+                "Power Consumption",
+                "Patterns In Data",
+                "Load Data",
+                "Big Data Analytics",
+                "Error Control",
+                "Approximate Computation",
+                "Latency Reduction",
+                "Approximate Matching",
+                "Exact Match",
+                "Frequent Pattern",
+                "Low Latency",
+                "Statistical Patterns",
+                "Microarchitecture",
+                "Betweenness Centrality",
+                "Data Packets",
+                "Compression Ratio",
+                "Average Latency",
+                "Error Threshold",
+                "Area Overhead",
+                "Dynamic Compression",
+                "Floating-point Values",
+                "Original Pattern",
+                "Control Packets",
+                "Pre-determined Threshold",
+                "Data Block",
+                "Bit-shift",
+                "Static Compression"
+            ],
+            "Author Keywords": [
+                "Networks-On-Chip",
+                "Approximate Computing",
+                "Data Compression"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1507,7 +2539,7 @@
         "publicationYear": "2017",
         "publicationDate": "24-28 June 2017",
         "articleNumber": "8192498",
-        "articleTitle": "HeteroOS \u2014 OS design for heterogeneous memory management in datacenter",
+        "articleTitle": "HeteroOS — OS design for heterogeneous memory management in datacenter",
         "volume": null,
         "issue": null,
         "startPage": "521",
@@ -1540,7 +2572,59 @@
                 "firstName": "Karsten",
                 "lastName": "Schwan"
             }
-        ]
+        ],
+        "abstract": "Heterogeneous memory management combined with server virtualization in datacenters is expected to increase the software and OS management complexity. State-of-the-art solutions rely exclusively on the hypervisor (VMM) for expensive page hotness tracking and migrations, limiting the benefits from heterogeneity. To address this, we design HeteroOS, a novel application-transparent OS-level solution for managing memory heterogeneity in virtualized system. The HeteroOS design first makes the guest-OSes heterogeneity-aware and then extracts rich OS-level information about applications' memory usage to place data in the `right' memory avoiding page migrations. When such pro-active placements are not possible, HeteroOS combines the power of the guest-OSes' information about applications with the VMM's hardware control to track for hotness and migrate only performance-critical pages. Finally, HeteroOS also designs an efficient heterogeneous memory sharing across multiple guest-VMs. Evaluation of HeteroOS with memory, storage, and network-intensive datacenter applications shows up to 2x performance improvement compared to the state-of-the-art VMM-exclusive approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Memory management",
+                "Random access memory",
+                "Nonvolatile memory",
+                "Virtual machine monitors",
+                "Sensitivity",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Memory Management",
+                "Heterogeneous Memory",
+                "Storage Applications",
+                "Data Structure",
+                "Prior Research",
+                "Balloon",
+                "Memory System",
+                "Pareto Optimal",
+                "Memory Control",
+                "Types Of Memory",
+                "High Latency",
+                "Benchmark Test",
+                "Non-volatile Memory",
+                "Naive Approach",
+                "Data Placement",
+                "Migration Cost",
+                "Memory Bandwidth",
+                "Memory Technologies",
+                "Cache Misses",
+                "Actual Migration",
+                "Cache Hit",
+                "Hardware Changes",
+                "Virtual Memory",
+                "Heterogeneous Systems",
+                "Data Cache",
+                "High Bandwidth",
+                "Total Allocation",
+                "Resource Contention",
+                "Memory Allocation"
+            ],
+            "Author Keywords": [
+                "Heterogeneous Memory",
+                "Operating Systems",
+                "Virtual Memory",
+                "Virtualization",
+                "Hypervisor",
+                "3D-stacked DRAM",
+                "Non-volatile memory"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1581,7 +2665,46 @@
                 "firstName": "Lizy K.",
                 "lastName": "John"
             }
-        ]
+        ],
+        "abstract": "With increasing deployment of virtual machines for cloud services and server applications, memory address translation overheads in virtualized environments have received great attention. In the radix-4 type of page tables used in x86 architectures, a TLB-miss necessitates up to 24 memory references for one guest to host translation. While dedicated page walk caches and such recent enhancements eliminate many of these memory references, our measurements on the Intel Skylake processors indicate that many programs in virtualized mode of execution still spend hundreds of cycles for translations that do not hit in the TLBs. This paper presents an innovative scheme to reduce the cost of address translations by using a very large Translation Lookaside Buffer that is part of memory, the POM-TLB. In the POM-TLB, only one access is required instead of up to 24 accesses required in commonly used 2D walks with radix-4 type of page tables. Even if many of the 24 accesses may hit in the page walk caches, the aggregated cost of the many hits plus the overhead of occasional misses from page walk caches still exceeds the cost of one access to the POM-TLB. Since the POM-TLB is part of the memory space, TLB entries (as opposed to multiple page table entries) can be cached in large L2 and L3 data caches, yielding significant benefits. Through detailed evaluation running SPEC, PARSEC and graph workloads, we demonstrate that the proposed POM-TLB improves performance by approximately 10% on average. The improvement is more than 16% for 5 of the benchmarks. It is further seen that a POM-TLB of 16MB size can eliminate nearly all TLB misses in 8-core systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Virtualization",
+                "Program processors",
+                "Benchmark testing",
+                "Organizations",
+                "Virtual machining",
+                "Two dimensional displays"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Virtual Machines",
+                "Data Cache",
+                "Part Of Memory",
+                "Memory Address",
+                "L2 Cache",
+                "Large Capacity",
+                "Combination Of Measures",
+                "Detailed Simulation",
+                "Host System",
+                "PageRank",
+                "Caching",
+                "Physical Memory",
+                "High Hit Rate",
+                "Amazon EC2",
+                "Physical Address",
+                "Access Latency",
+                "Considerable Performance Improvement",
+                "Cache Hit"
+            ],
+            "Author Keywords": [
+                "Address Translation",
+                "Very Large TLB",
+                "Virtualization",
+                "Die-Stacked DRAM"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1634,7 +2757,56 @@
                 "firstName": "Jason",
                 "lastName": "Mars"
             }
-        ]
+        ],
+        "abstract": "Modern user facing applications consist of multiple processing stages with a number of service instances in each stage. The latency profile of these multi-stage applications is intrinsically variable, making it challenging to provide satisfactory responsiveness. Given a limited power budget, improving the end-to-end latency requires intelligently boosting the bottleneck service across stages using multiple boosting techniques. However, prior work fail to acknowledge the multi-stage nature of user-facing applications and perform poorly in improving responsiveness on power constrained CMP, as they are unable to accurately identify bottleneck service and apply the boosting techniques adaptively. In this paper, we present PowerChief, a runtime framework that 1) provides joint design of service and query to monitor the latency statistics across service stages and accurately identifies the bottleneck service during runtime; 2) adaptively chooses the boosting technique to accelerate the bottleneck service with improved responsiveness; 3) dynamically reallocates the constrained power budget across service stages to accommodate the chosen boosting technique. Evaluated with real world multi-stage applications, PowerChief improves the average latency by 20.3× and 32.4× (99% tail latency by 13.3× and 19.4×) for Sirius and Natural Language Processing applications respectively compared to stage-agnostic power allocation. In addition, for the given QoS target, PowerChief reduces the power consumption of Sirius and Web Search applications by 23% and 33% respectively over prior work.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Boosting",
+                "Resource management",
+                "Runtime",
+                "Acceleration",
+                "Computer science",
+                "Monitoring",
+                "Natural language processing"
+            ],
+            "Index Terms": [
+                "Stages Of Process",
+                "Power Consumption",
+                "Limited Budget",
+                "Average Latency",
+                "Joint Design",
+                "Natural Language Processing Applications",
+                "Recycling",
+                "Low Load",
+                "Processing Speed",
+                "Accurate Identification",
+                "Response Latency",
+                "Processing Pipeline",
+                "Single Stage",
+                "Power Constraint",
+                "Improve Energy Efficiency",
+                "Power Management",
+                "Processing Delay",
+                "Central Command",
+                "Latency Reduction",
+                "Individual Core",
+                "Improvement In Latency",
+                "Adaptive Boosting",
+                "Medium Load",
+                "Queue Length",
+                "Queuing Time",
+                "Optimal Power Allocation",
+                "Processing Latency",
+                "High Load",
+                "Data Center",
+                "Minimal Overhead"
+            ],
+            "Author Keywords": [
+                "Multi-Stage Application",
+                "Power Constrained CMP",
+                "Intelligent Service Boosting"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1665,9 +2837,9 @@
             },
             {
                 "id": 37085647844,
-                "preferredName": "Christopher R\u00e9",
+                "preferredName": "Christopher Ré",
                 "firstName": "Christopher",
-                "lastName": "R\u00e9"
+                "lastName": "Ré"
             },
             {
                 "id": 37282353900,
@@ -1675,7 +2847,53 @@
                 "firstName": "Kunle",
                 "lastName": "Olukotun"
             }
-        ]
+        ],
+        "abstract": "Stochastic gradient descent (SGD) is one of the most popular numerical algorithms used in machine learning and other domains. Since this is likely to continue for the foreseeable future, it is important to study techniques that can make it run fast on parallel hardware. In this paper, we provide the first analysis of a technique called BUCKWILD! that uses both asynchronous execution and low-precision computation. We introduce the DMGC model, the first conceptualization of the parameter space that exists when implementing low-precision SGD, and show that it provides a way to both classify these algorithms and model their performance. We leverage this insight to propose and analyze techniques to improve the speed of low-precision SGD. First, we propose software optimizations that can increase throughput on existing CPUs by up to 11×. Second, we propose architectural changes, including a new cache technique we call an obstinate cache, that increase throughput beyond the limits of current-generation hardware. We also implement and analyze low-precision SGD on the FPGA, which is a promising alternative to the CPU for future SGD systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Algorithm design and analysis",
+                "Computational modeling",
+                "Stochastic processes",
+                "Logistics",
+                "Optimization",
+                "Throughput"
+            ],
+            "Index Terms": [
+                "Stochastic Gradient Descent",
+                "Logistic Regression",
+                "Deep Learning",
+                "High Throughput",
+                "Support Vector Machine",
+                "Model Size",
+                "Learning System",
+                "Dot Product",
+                "Recommender Systems",
+                "Multiple Examples",
+                "Parallel Algorithm",
+                "Deep Learning System",
+                "Floating-point Numbers",
+                "Pseudo-random Number Generator",
+                "Sparse Datasets",
+                "Xeon Processor",
+                "Race Conditions",
+                "Mini-batch Stochastic Gradient Descent",
+                "L2 Cache",
+                "Hardware Changes",
+                "Mersenne Twister",
+                "Matrix Multiplication",
+                "Principled Way",
+                "Update Rule",
+                "Nonzero Entries"
+            ],
+            "Author Keywords": [
+                "Stochastic gradient descent",
+                "low precision",
+                "asynchrony",
+                "multicore",
+                "FPGA"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1710,7 +2928,53 @@
                 "firstName": "Daniel",
                 "lastName": "Sanchez"
             }
-        ]
+        ],
+        "abstract": "Caches are traditionally organized as a rigid hierarchy, with multiple levels of progressively larger and slower memories. Hierarchy allows a simple, fixed design to benefit a wide range of applications, since working sets settle at the smallest (i.e., fastest and most energy-efficient) level they fit in. However, rigid hierarchies also add overheads, because each level adds latency and energy even when it does not fit the working set. These overheads are expensive on emerging systems with heterogeneous memories, where the differences in latency and energy across levels are small. Significant gains are possible by specializing the hierarchy to applications. We propose Jenga, a reconfigurable cache hierarchy that dynamically and transparently specializes itself to applications. Jenga builds virtual cache hierarchies out of heterogeneous, distributed cache banks using simple hardware mechanisms and an OS runtime. In contrast to prior techniques that trade energy and bandwidth for performance (e.g., dynamic bypassing or prefetching), Jenga eliminates accesses to unwanted cache levels. Jenga thus improves both performance and energy efficiency. On a 36-core chip with a 1 GB DRAM cache, Jenga improves energy-delay product over a combination of state-of-the-art techniques by 23% on average and by up to 85%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Multicore processing",
+                "Software",
+                "Hardware",
+                "Bandwidth",
+                "Organizations",
+                "System-on-chip"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "Work Settings",
+                "Difference In Latency",
+                "Rigid Hierarchy",
+                "Total Size",
+                "Data Privacy",
+                "Opportunity Cost",
+                "Load Data",
+                "Size Level",
+                "Limited Bandwidth",
+                "Single Pool",
+                "Local Banks",
+                "Data Placement",
+                "Remote Memory",
+                "Data Cache",
+                "Model Of Latency",
+                "Minimum Latency",
+                "Misprediction",
+                "Extra Capacity",
+                "Access Latency",
+                "Cache Size",
+                "Cache Misses",
+                "Marginal Curve",
+                "Memory System",
+                "Memory Technologies"
+            ],
+            "Author Keywords": [
+                "Cache",
+                "Hierarchy",
+                "Heterogeneous memories",
+                "NUCA",
+                "Partitioning"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1745,7 +3009,57 @@
                 "firstName": "Sarita V.",
                 "lastName": "Adve"
             }
-        ]
+        ],
+        "abstract": "An unambiguous and easy-to-understand memory consistency model is crucial for ensuring correct synchronization and guiding future design of heterogeneous systems. In a widely adopted approach, the memory model guarantees sequential consistency (SC) as long as programmers obey certain rules. The popular data-race-free-0 (DRF0) model exemplifies this SC-centric approach by requiring programmers to avoid data races. Recent industry models, however, have extended such SC-centric models to incorporate relaxed atomics. These extensions can improve performance, but are difficult to specify formally and use correctly. This work addresses the impact of relaxed atomics on consistency models for heterogeneous systems in two ways. First, we introduce a new model, Data-Race-Free-Relaxed (DRFrlx), that extends DRF0 to provide SC-centric semantics for the common use cases of relaxed atomics. Second, we evaluate the performance of relaxed atomics in CPU-GPU systems for these use cases. We find mixed results - for most cases, relaxed atomics provide only a small benefit in execution time, but for some cases, they help significantly (e.g., up to 51% for DRFrlx over DRF0).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Semantics",
+                "Optimization",
+                "Graphics processing units",
+                "C++ languages",
+                "Benchmark testing",
+                "Synchronization",
+                "Java"
+            ],
+            "Index Terms": [
+                "Semantic",
+                "Heterogeneous Systems",
+                "Memory Model",
+                "Common Case",
+                "Common Use Cases",
+                "Benchmark",
+                "Quantum",
+                "Multi-core",
+                "PageRank",
+                "Memory System",
+                "Data Sharing",
+                "Model Definition",
+                "Benchmark Test",
+                "Local Memory",
+                "Program Execution",
+                "Event Counts",
+                "Data Reuse",
+                "Multiple Threads",
+                "Memory Operations",
+                "Data Cache",
+                "Reduction In Execution Time",
+                "Reference Count",
+                "Linearizable",
+                "L2 Cache",
+                "Valid Path",
+                "Read Pairs",
+                "Race Conditions",
+                "Leisure",
+                "Return Value",
+                "Memory State"
+            ],
+            "Author Keywords": [
+                "memory consistency",
+                "data-race-free models",
+                "relaxed atomics",
+                "GPGPU"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1770,9 +3084,9 @@
             },
             {
                 "id": 37085777554,
-                "preferredName": "J\u00e1n Vesel\u00fd",
-                "firstName": "J\u00e1n",
-                "lastName": "Vesel\u00fd"
+                "preferredName": "Ján Veselý",
+                "firstName": "Ján",
+                "lastName": "Veselý"
             },
             {
                 "id": 37085779521,
@@ -1786,7 +3100,33 @@
                 "firstName": "Abhishek",
                 "lastName": "Bhattacharjee"
             }
-        ]
+        ],
+        "abstract": "To improve system performance, operating systems (OSes) often undertake activities that require modification of virtual-to-physical address translations. For example, the OS may migrate data between physical pages to manage heterogeneous memory devices. We refer to such activities as page remappings. Unfortunately, page remappings are expensive. We show that a big part of this cost arises from address translation coherence, particularly on systems employing virtualization. In response, we propose hardware translation invalidation and coherence or HATRIC, a readily implementable hardware mechanism to piggyback translation coherence atop existing cache coherence protocols. We perform detailed studies using KVM-based virtualization, showing that HATRIC achieves up to 30% performance and 10% energy benefits, for per-CPU area overheads of 0.2%. We also quantify HATRIC's benefits on systems running Xen and find up to 33% performance improvements.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Coherence",
+                "Hardware",
+                "Virtualization",
+                "Protocols",
+                "Virtual machine monitors",
+                "Software",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "Memory Devices",
+                "Energy Efficiency",
+                "Past Work",
+                "Data Cache",
+                "Additional Entry",
+                "Physical Address",
+                "L2 Cache"
+            ],
+            "Author Keywords": [
+                "Virtualization",
+                "translation coherence",
+                "heterogeneous memory"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1827,7 +3167,56 @@
                 "firstName": "Yoav",
                 "lastName": "Etsion"
             }
-        ]
+        ],
+        "abstract": "In this paper, we introduce the Do-It-Yourself virtual memory translation (DVMT) architecture as a flexible complement for current hardware-fixed translation flows. DVMT decouples the virtual-to-physical mapping process from the access permissions, giving applications freedom in choosing mapping schemes, while maintaining security within the operating system. Furthermore, DVMT is designed to support virtualized environments, as a means to collapse the costly, hardware-assisted two-dimensional translations. We describe the architecture in detail and demonstrate its effectiveness by evaluating several different DVMT schemes on a range of virtualized applications with a model based on measurements from a commercial system. We show that different DVMT configurations preserve the native performance, while achieving speedups of 1.2× to 2.0× in virtualized environments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory management",
+                "Virtual machining",
+                "Virtual machine monitors",
+                "Benchmark testing",
+                "Operating systems",
+                "Memory architecture"
+            ],
+            "Index Terms": [
+                "Virtual Memory",
+                "Virtually",
+                "Access Permissions",
+                "Running Time",
+                "Tree Nodes",
+                "Hash Function",
+                "Root Of The Tree",
+                "Two-dimensional Gel Electrophoresis",
+                "Virtual Machines",
+                "Flexible Strategy",
+                "Multiple Frames",
+                "Caching",
+                "Data Cache",
+                "Protective Memory",
+                "Physical Memory",
+                "Memory Management",
+                "Memory Regions",
+                "Physical Address",
+                "Contiguous Segments",
+                "Address Space",
+                "Cache Hit",
+                "Cache Misses",
+                "Context Switching",
+                "Virtual World",
+                "Memory Address",
+                "Running",
+                "Application Code",
+                "Agility",
+                "Physical Resources",
+                "Benchmark"
+            ],
+            "Author Keywords": [
+                "TLB",
+                "virtual memory",
+                "virtual machines",
+                "address translation"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1856,7 +3245,47 @@
                 "firstName": "Masoud",
                 "lastName": "Daneshtalab"
             }
-        ]
+        ],
+        "abstract": "Freedom from deadlock is one of the most important issues when designing routing algorithms in on-chip/off-chip networks. Many works have been developed upon Dally's theory proving that a network is deadlock-free if there is no cyclic dependency on the channel dependency graph. However, finding such acyclic graph has been very challenging, which limits Dally's theory to networks with a low number of channels. In this paper, we introduce three theorems that directly lead to routing algorithms with an acyclic channel dependency graph. We also propose the partitioning methodology, enabling a design to reach the maximum adaptiveness for the n-dimensional mesh and k-ary n-cube topologies with any given number of channels. In addition, deadlock-free routing algorithms can be derived ranging from maximally fully adaptive routing down to deterministic routing. The proposed theorems can drastically remove the difficulties of designing deadlock-free routing algorithms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Routing",
+                "System recovery",
+                "Algorithm design and analysis",
+                "Partitioning algorithms",
+                "Switches",
+                "Multiprocessor interconnection",
+                "Network topology"
+            ],
+            "Index Terms": [
+                "Interconnected Network",
+                "Acyclic Graph",
+                "Mesh Network",
+                "Deadlock",
+                "Routing Algorithm",
+                "Adaptive Algorithm",
+                "Base Case",
+                "3D Network",
+                "Negative Direction",
+                "Partitioning Scheme",
+                "Degree Of Adaptation",
+                "Even And Odd",
+                "Arbitrary Dimension",
+                "Network Dimension",
+                "Wormhole",
+                "Consecutive Order",
+                "2nd Row",
+                "3rd Row",
+                "Virtual Channel",
+                "Network-on-chip",
+                "Multiple Packets"
+            ],
+            "Author Keywords": [
+                "Cyclic Dependencies",
+                "Deadlock-free Routing Algorithms",
+                "Interconnection Networks"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1897,7 +3326,56 @@
                 "firstName": "Saibal",
                 "lastName": "Mukhopadhyay"
             }
-        ]
+        ],
+        "abstract": "The fast and energy-efficient simulation of dynamical systems defined by coupled ordinary/partial differential equations has emerged as an important problem. The accelerated simulation of coupled ODE/PDE is critical for analysis of physical systems as well as computing with dynamical systems. This paper presents a fast and programmable accelerator for simulating dynamical systems. The computing model of the proposed platform is based on multilayer cellular nonlinear network (CeNN) augmented with nonlinear function evaluation engines. The platform can be programmed to accelerate wide classes of ODEs/PDEs by modulating the connectivity within the multilayer CeNN engine. An innovative hardware architecture including data reuse, memory hierarchy, and near-memory processing is designed to accelerate the augmented multilayer CeNN. A dataflow model is presented which is supported by optimized memory hierarchy for efficient function evaluation. The proposed solver is designed and synthesized in 15nm technology for the hardware analysis. The performance is evaluated and compared to GPU nodes when solving wide classes of differential equations and the power consumption is analyzed to show orders of magnitude improvement in energy efficiency.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mathematical model",
+                "Computational modeling",
+                "Hardware",
+                "Nonhomogeneous media",
+                "Differential equations",
+                "Acceleration",
+                "Nonlinear dynamical systems"
+            ],
+            "Index Terms": [
+                "System Dynamics",
+                "Hardware Accelerators",
+                "Computational Model",
+                "Differential Equations",
+                "Nonlinear Function",
+                "Power Consumption",
+                "Graphics Processing Unit",
+                "Cell State",
+                "Ordinary Differential Equations",
+                "Convolution Operation",
+                "Taylor Series",
+                "Lookup Table",
+                "State Machine",
+                "Navier Stokes Equations",
+                "Memory System",
+                "Missing Rate",
+                "First-order Differential Equations",
+                "Power-of-two",
+                "Reaction-diffusion Model",
+                "Differential Equation Solver",
+                "Linear Template",
+                "Off-chip Memory",
+                "Hodgkin-Huxley Model",
+                "Clock Cycles",
+                "Network Oscillations",
+                "Equation In Space",
+                "Hash Function",
+                "Direct Matching",
+                "Processing Technology"
+            ],
+            "Author Keywords": [
+                "Cellular nonlinear network",
+                "Dynamical systems",
+                "Hardware accelerator",
+                "Scientific simulation"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1926,7 +3404,54 @@
                 "firstName": "Reetuparna",
                 "lastName": "Das"
             }
-        ]
+        ],
+        "abstract": "Finite State Machines (FSM) are widely used computation models for many application domains. These embarrassingly sequential applications with irregular memory access patterns perform poorly on conventional von-Neumann architectures. The Micron Automata Processor (AP) is an in-situ memory-based computational architecture that accelerates non-deterministic finite automata (NFA) processing in hardware. However, each FSM on the AP is processed sequentially, limiting potential speedups. In this paper, we explore the FSM parallelization problem in the context of the AP. Extending classical parallelization techniques to NFAs executing on AP is non-trivial because of high state-transition tracking overheads and exponential computation complexity. We present the associated challenges and propose solutions that leverage both the unique properties of the NFAs (connected components, input symbol ranges, convergence, common parent states) and unique features in the AP (support for simultaneous transitions, low-overhead flow switching, state vector cache) to realize parallel NFA execution on the AP. We evaluate our techniques against several important benchmarks including NFAs used for network intrusion detection, malware detection, text processing, protein motif searching, DNA sequencing, and data analytics. Our proposed parallelization scheme demonstrates significant speedup (25.5× on average) compared to sequential execution on AP. Prior work has already shown that sequential execution on AP is at least an order of magnitude better than GPUs, multi-core processors and Xeon Phi accelerator.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Automata",
+                "Computer architecture",
+                "Computational complexity",
+                "Convergence",
+                "Random access memory",
+                "Routing",
+                "Impedance matching"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Computational Complexity",
+                "Transition State",
+                "Parallelization",
+                "Multi-core",
+                "Protein Motifs",
+                "Applicability Domain",
+                "State Machine",
+                "Intrusion Detection",
+                "Sequential Execution",
+                "Input Symbols",
+                "Exact Match",
+                "Large Segments",
+                "Pattern Matching",
+                "Range Of States",
+                "Transition Function",
+                "Regular Expressions",
+                "Minimum Range",
+                "Starting State",
+                "Input Segment",
+                "True Path",
+                "Context Switching",
+                "Input Stream",
+                "Symbolic Processing",
+                "Time-division Multiplexing",
+                "Unique Architecture",
+                "Biological Sequences",
+                "Benchmark Suite",
+                "Memory Bandwidth"
+            ],
+            "Author Keywords": [
+                "Emerging technologies (memory and computing)",
+                "accelerators"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -1985,7 +3510,52 @@
                 "firstName": "Daniel",
                 "lastName": "Sanchez"
             }
-        ]
+        ],
+        "abstract": "The following topics are dealt with: microprocessor chips; cache storage; multiprocessing systems; DRAM chips; storage management; graphics processing units; power aware computing; parallel architectures; memory architecture; and integrated circuit design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fractals",
+                "Databases",
+                "Hardware",
+                "Parallel algorithms",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Model Execution",
+                "Parallelization",
+                "Parallel Algorithm",
+                "Benchmark",
+                "Active Task",
+                "Linear Order",
+                "Labyrinth",
+                "Work Unit",
+                "Benchmark Test",
+                "Single Thread",
+                "Task Level",
+                "Serialized",
+                "Breadth-first Search",
+                "Task Domain",
+                "Flow Algorithm",
+                "Constraints In Order",
+                "System Task",
+                "Excess Flow",
+                "Fractal Characteristics",
+                "Running Tasks",
+                "Bloom Filter",
+                "Task Queue",
+                "Concurrent Levels",
+                "Conflict Detection",
+                "Hardware Support"
+            ],
+            "Author Keywords": [
+                "Multicore",
+                "Speculative parallelization",
+                "Nested parallelism",
+                "Fine-grain parallelism",
+                "Transactional memory",
+                "Thread-level speculation"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2014,7 +3584,52 @@
                 "firstName": "John",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "Routing algorithms can improve network performance by maximizing routing adaptiveness but can be problematic in the presence of endpoint congestion. Tree-saturation is a well-known behavior caused by endpoint congestion. Adaptive routing can, however, spread the congestion and result in thick branches of the congestion tree - creating Head-of-Line (HoL) blocking and degrading performance. In this work, we identify how ignoring virtual channels (VCs) and their occupancy during adaptive routing results in congestion trees with thick branches as congestion is spread to all VCs. To address this limitation, we propose Footprint routing algorithm - a new adaptive routing algorithm that minimizes the size of the congestion tree, both in terms of the number of nodes in the congestion tree as well as branch thickness. Footprint achieves this by regulating adaptiveness by requiring packets to follow the path of prior packets to the same destination if the network is congested instead of forking a new path or VC. Thus, the congestion tree is dynamically kept as slim as possible and reduces HoL blocking or congestion spreading while maintaining high adaptivity and maximizing VC buffer utilization. We evaluate the proposed Footprint routing algorithm against other adaptive routing algorithms and our simulation results show that the network saturation throughput can be improved by up to 43% (58%) compared with the fully adaptive routing (partially adaptive routing) algorithms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Routing",
+                "Ports (Computers)",
+                "Convergence",
+                "Adaptive systems",
+                "Computer architecture",
+                "Network topology",
+                "Topology"
+            ],
+            "Index Terms": [
+                "Footprint",
+                "Network Performance",
+                "Adaptive Algorithm",
+                "High Adaptability",
+                "Congested",
+                "Routing Algorithm",
+                "Improve Network Performance",
+                "Virtual Channel",
+                "Network Size",
+                "Detailed Algorithm",
+                "Interconnected Network",
+                "Injection Rate",
+                "Output Ports",
+                "Deadlock",
+                "Source Node",
+                "Network Throughput",
+                "Input Port",
+                "Traffic Patterns",
+                "Minimum Path",
+                "Network Congestion",
+                "Network-on-chip",
+                "Physical Channel",
+                "Packet Size",
+                "Impact Of Block",
+                "Routing Decisions",
+                "Local Convergence"
+            ],
+            "Author Keywords": [
+                "Congestion",
+                "routing algorithm",
+                "network-on-chip"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2055,7 +3670,41 @@
                 "firstName": "Stefanos",
                 "lastName": "Kaxiras"
             }
-        ]
+        ],
+        "abstract": "In Total Store Order memory consistency (TSO), loads can be speculatively reordered to improve performance. If a load-load reordering is seen by other cores, speculative loads must be squashed and re-executed. In architectures with an unordered interconnection network and directory coherence, this has been the established view for decades. We show, for the first time, that it is not necessary to squash and re-execute speculatively reordered loads in TSO when their reordering is seen. Instead, the reordering can be hidden form other cores by the coherence protocol. The implication is that we can irrevocably bind speculative loads. This allows us to commit reordered loads out-of-order without having to wait (for the loads to become non-speculative) or without having to checkpoint committed state (and rollback if needed), just to ensure correctness in the rare case of some core seeing the reordering. We show that by exposing a reordering to the coherence layer and by appropriately modifying a typical directory protocol we can successfully hide load-load reordering without perceptible performance cost and without deadlock. Our solution is cost-effective and increases the performance of out-of-order commit by a sizable margin, compared to the base case where memory operations are not allowed to commit if the consistency model could be violated.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Out of order",
+                "Coherence",
+                "Load modeling",
+                "Protocols",
+                "Computer architecture",
+                "Delays",
+                "Law"
+            ],
+            "Index Terms": [
+                "Rollback",
+                "Deadlock",
+                "Memory Operations",
+                "Memory System",
+                "Data Version",
+                "Copies Of The Data",
+                "Number Of Loads",
+                "Bottom Graph",
+                "Top Graph",
+                "Safe Passage",
+                "Checkpointing",
+                "Cache Misses",
+                "Left Diagram"
+            ],
+            "Author Keywords": [
+                "Cache coherence",
+                "memory consistency",
+                "TSO",
+                "load reordering",
+                "out-of-order commit"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2096,7 +3745,55 @@
                 "firstName": "Murali",
                 "lastName": "Annavaram"
             }
-        ]
+        ],
+        "abstract": "Long latency of memory operation is a prominent performance bottleneck in graphics processing units (GPUs). The small data cache that must be shared across dozens of warps (a collection of threads) creates significant cache contention and premature data eviction. Prior works have recognized this problem and proposed warp throttling which reduces the number of active warps contending for cache space. In this paper we discover that individual load instructions in a warp exhibit four different types of data locality behavior: (1) data brought by a warp load instruction is used only once, which is classified as streaming data (2) data brought by a warp load is reused multiple times within the same warp, called intra-warp locality (3) data brought by a warp is reused multiple times but across different warps, called inter-warp locality (4) and some data exhibit both a mix of intra- and inter-warp locality. Furthermore, each load instruction exhibits consistently the same locality type across all warps within a GPU kernel. Based on this discovery we argue that cache management must be done using per-load locality type information, rather than applying warp-wide cache management policies. We propose Access Pattern-aware Cache Management (APCM), which dynamically detects the locality type of each load instruction by monitoring the accesses from one exemplary warp. APCM then uses the detected locality type to selectively apply cache bypassing and cache pinning of data based on load locality characterization. Using an extensive set of simulations we show that APCM improves performance of GPUs by 34% for cache sensitive applications while saving 27% of energy consumption over baseline GPU.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Instruction sets",
+                "Benchmark testing",
+                "Hardware",
+                "Computer architecture",
+                "Kernel",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Cache Management",
+                "Energy Consumption",
+                "Local Data",
+                "Data Streams",
+                "Memory Operations",
+                "Data Cache",
+                "Content Caching",
+                "Benchmark",
+                "Management Methods",
+                "Performance In Applications",
+                "Interconnected Network",
+                "Strong Position",
+                "Temporal Localization",
+                "Access Patterns",
+                "Hardware Architecture",
+                "Number Of Loads",
+                "Technology Node",
+                "Stacked Bar",
+                "Fine-grained Control",
+                "L2 Cache",
+                "Global Load",
+                "Cache Size",
+                "Simple Policy",
+                "Baseline Configuration",
+                "Cache Hit",
+                "Cache Misses",
+                "Memory Hierarchy",
+                "Data Requests"
+            ],
+            "Author Keywords": [
+                "GPGPU",
+                "cache management",
+                "memory access patterns"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2143,7 +3840,50 @@
                 "firstName": "Greg",
                 "lastName": "Ganger"
             }
-        ]
+        ],
+        "abstract": "Non-Volatile Memories (NVMs) can significantly improve the performance of data-intensive applications. A popular form of NVM is Battery-backed DRAM, which is available and in use today with DRAMs latency and without the endurance problems of emerging NVM technologies. Modern servers can be provisioned with up-to 4 TB of DRAM, and provisioning battery backup to write out such large memories is hard because of the large battery sizes and the added hardware and cooling costs. We present Viyojit, a system that exploits the skew in write working sets of applications to provision substantially smaller batteries while still ensuring durability for the entire DRAM capacity. Viyojit achieves this by bounding the number of dirty pages in DRAM based on the provisioned battery capacity and proactively writing out infrequently written pages to an SSD. Even for write-heavy workloads with less skew than we observe in analysis of real data center traces, Viyojit reduces the required battery capacity to 11% of the original size, with a performance overhead of 7-25%. Thus, Viyojit frees battery-backed DRAM from stunted growth of battery capacities and enables servers with terabytes of battery-backed DRAM.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Batteries",
+                "Random access memory",
+                "Nonvolatile memory",
+                "Servers",
+                "Hardware",
+                "Cooling"
+            ],
+            "Index Terms": [
+                "Battery Capacity",
+                "Data Center",
+                "Trace Analysis",
+                "Non-volatile Memory",
+                "Performance Overhead",
+                "Battery Size",
+                "Real Traces",
+                "Conservative Estimate",
+                "Electrochemical Cell",
+                "Heavy Workload",
+                "Memory System",
+                "File System",
+                "Power Outages",
+                "Design Goals",
+                "Fraction Of Data",
+                "Average Latency",
+                "System Throughput",
+                "Memory Data",
+                "Shared Object",
+                "Virtual Memory",
+                "Cloud Providers",
+                "Memory Management",
+                "Depth Of Discharge",
+                "Alternative Implementation",
+                "Zipf Distribution",
+                "Baseline System"
+            ],
+            "Author Keywords": [
+                "NVM",
+                "Battery-backed DRAM"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2202,7 +3942,57 @@
                 "firstName": "Hun-Seok",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "This paper investigates the feasibility of a unified processor architecture to enable error coding flexibility and secure communication in low power Internet of Things (IoT) wireless networks. Error coding flexibility for wireless communication allows IoT applications to exploit the large tradeoff space in data rate, link distance and energy-efficiency. As a solution, we present a light-weight Galois Field (GF) processor to enable energy-efficient block coding and symmetric/asymmetric cryptography kernel processing for a wide range of GF sizes (2<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">m</sup>, m = 2, 3, ..., 233) and arbitrary irreducible polynomials. Program directed connections among primitive GF arithmetic units enable dynamically configured parallelism to efficiently perform either four-way SIMD 5- to 8-bit GF operations, including multiplicative inverse, or a wide bit-width (e.g., 32-bit) GF product in a single cycle. To illustrate our ideas, we synthesized our GF processor in a 28nm technology. Compared to a baseline software implementation optimized for a general purpose ARM M0+ processor, our processor exhibits a 5-20 × speedup for a range of error correction codes and symmetric/asymmetric cryptography applications. Additionally, our proposed GF processor consumes 431μW at 0.9V and 100MHz, and achieves 35.5pJ/b energy efficiency while executing AES operations at 12.2Mbps. We achieve this within an area of 0.01mm<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup>.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encoding",
+                "Cryptography",
+                "Error correction codes",
+                "Internet of Things",
+                "Wireless communication",
+                "Computer architecture",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Internet Of Things",
+                "Finite Field",
+                "Data Rate",
+                "Energy Efficiency",
+                "Secure Communication",
+                "Primitive Cells",
+                "Internet Of Things Applications",
+                "Forward Error Correction",
+                "Code Blocks",
+                "Processing Architecture",
+                "Link Distance",
+                "Unified Architecture",
+                "Internet Of Things Communication",
+                "Partial Products",
+                "Internet Of Things Devices",
+                "Multiple Units",
+                "Bit Error",
+                "Arithmetic Operations",
+                "Public Key",
+                "Symmetric Encryption",
+                "Reed-Solomon Codes",
+                "Reed-Solomon",
+                "Datapath",
+                "Elliptic Curve",
+                "Inverse Operation",
+                "Memory Operations",
+                "Most Significant Bit",
+                "Encryption And Decryption",
+                "Voltage Scaling",
+                "Bit Length"
+            ],
+            "Author Keywords": [
+                "Domain Specific Hardware Acceleration",
+                "Internet of Things",
+                "Galois field",
+                "security and information coding"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2239,9 +4029,9 @@
             },
             {
                 "id": 37543079700,
-                "preferredName": "Sel\u00e7uk K\u00f6se",
-                "firstName": "Sel\u00e7uk",
-                "lastName": "K\u00f6se"
+                "preferredName": "Selçuk Köse",
+                "firstName": "Selçuk",
+                "lastName": "Köse"
             },
             {
                 "id": 37402942500,
@@ -2249,7 +4039,56 @@
                 "firstName": "Ulya R.",
                 "lastName": "Karpuzcu"
             }
-        ]
+        ],
+        "abstract": "Tailoring the operating voltage to fine-grain temporal changes in the power and performance needs of the workload can effectively enhance power efficiency. Therefore, power-limited computing platforms of today widely deploy integrated (i.e., on-chip) voltage regulation which enables fast fine-grain voltage control. Voltage regulators convert and distribute power from an external energy source to the processor. Unfortunately, power conversion loss is inevitable and projected integrated regulator designs are unlikely to eliminate this loss even asymptotically. Reconfigurable power delivery by selective shut-down, i.e., gating, of distributed on-chip regulators in response to spatio-temporal changes in power demand can sustain operation at the minimum conversion loss. However, even the minimum conversion loss is sizable, and as conversion loss gets dissipated as heat, on-chip regulators can easily cause thermal emergencies due to their small footprint. Although reconfigurable distributed on-chip power delivery is emerging as a new design paradigm to enforce sustained operation at minimum possible power conversion loss, thermal implications have been overlooked at the architectural level. This paper hence provides a thermal characterization. We introduce ThermoGater, an architectural governor for a collection of practical, thermally-aware regulator gating policies to mitigate (if not prevent) regulator-induced thermal emergencies, which also consider potential implications for voltage noise. Practical ThermoGater policies can not only sustain minimum power conversion loss throughout execution effectively, but also keep the maximum temperature (thermal gradient) across chip within 0.6°C (0.3°C) on average in comparison to thermally-optimal oracular regulator gating, while the maximum voltage noise stays within 1.0% of the best case voltage noise profile.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Regulators",
+                "Voltage control",
+                "System-on-chip",
+                "Power conversion",
+                "Microarchitecture",
+                "Heating systems",
+                "Thermal noise"
+            ],
+            "Index Terms": [
+                "Voltage Regulation",
+                "Maximum Temperature",
+                "Temporal Changes",
+                "Temperature Gradient",
+                "Power Distribution",
+                "Changes In Demand",
+                "Power Conversion",
+                "Changes In Power",
+                "Policy Practice",
+                "Power Demand",
+                "Sustainability Performance",
+                "Small Footprint",
+                "Spatiotemporal Changes",
+                "Power Delivery",
+                "Conversion Loss",
+                "Voltage Noise",
+                "Maximum Noise",
+                "Regulation Of Activity",
+                "Loss Of Generality",
+                "Conversion Efficiency",
+                "Peak Efficiency",
+                "Number Of Regulators",
+                "Power Conversion Efficiency",
+                "Thermal Sensors",
+                "Memory Block",
+                "Logic Unit",
+                "Load Current",
+                "Local Temperature",
+                "Design Space Exploration",
+                "Type Of Regulation"
+            ],
+            "Author Keywords": [
+                "Power distribution",
+                "on-chip voltage regulation",
+                "thermal emergencies"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2302,7 +4141,55 @@
                 "firstName": "Shaojun",
                 "lastName": "Wei"
             }
-        ]
+        ],
+        "abstract": "CPU-FPGA heterogeneous platforms offer a promising solution for high-performance and energy-efficient computing systems by providing specialized accelerators with post-silicon reconfigurability. To unleash the power of FPGA, however, the programmability gap has to be filled so that applications specified in high-level programming languages can be efficiently mapped and scheduled on FPGA. The above problem is even more challenging for irregular applications, in which the execution dependency can only be determined at run time. Thus over-serialized accelerators are generated from existing works that rely on compile time analysis to schedule the computation. In this work, we propose a comprehensive software-hardware co-design framework, which captures parallelism in irregular applications and aggressively schedules pipelined execution on reconfigurable platform. Based on an inherently parallel abstraction packaging parallelism for runtime schedule, our framework significantly differs from existing works that tend to schedule executions at compile time. An irregular application is formulated as a set of tasks with their dependencies specified as rules describing the conditions under which a subset of tasks can be executed concurrently. Then datapaths on FPGA will be generated by transforming applications in the formulation into task pipelines orchestrated by evaluating rules at runtime, which could exploit fine-grained pipeline parallelism as handcrafted accelerators do. An evaluation shows that this framework is able to produce datapath with its quality close to handcrafted designs. Experiments show that generated accelerators are dramatically more efficient than those created by current high-level synthesis tools. Meanwhile, accelerators generated for a set of irregular applications attain 0.5x∼1.9x performance compared to equivalent software implementations we selected on a server-grade 10-core processor, with the memory subsystem remaining as the bottleneck.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Hardware",
+                "Parallel processing",
+                "Kernel",
+                "Schedules",
+                "Programming"
+            ],
+            "Index Terms": [
+                "Pipelining",
+                "Irregular Applications",
+                "Software Implementation",
+                "Datapath",
+                "High-level Synthesis",
+                "High-level Programming",
+                "Compile Time",
+                "Subset Of Tasks",
+                "Collision",
+                "Computational Model",
+                "Parallelization",
+                "Sequence Of Actions",
+                "Model Architecture",
+                "Task Execution",
+                "Active Task",
+                "Coordinative",
+                "Memory System",
+                "Outer Loop",
+                "Hardware Implementation",
+                "Single Thread",
+                "Breadth-first Search",
+                "Task Queue",
+                "Parallel Execution",
+                "Higher Level Of Abstraction",
+                "Neighboring Vertices",
+                "Sequential Execution",
+                "Synchronization Process",
+                "Cache Misses",
+                "Memory Bandwidth",
+                "Programming Paradigm"
+            ],
+            "Author Keywords": [
+                "FPGA",
+                "Hardware Accelerator",
+                "Parallel Programming"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2337,7 +4224,54 @@
                 "firstName": "Wenyao",
                 "lastName": "Xu"
             }
-        ]
+        ],
+        "abstract": "Wearable computing systems have spurred many opportunities to continuously monitor human bodies with sensors worn on or implanted in the body. These emerging platforms have started to revolutionize many fields, including healthcare and wellness applications, particularly when integrated with intelligent analytic capabilities. However, a significant challenge that computer architects are facing is how to embed sophisticated analytic capabilities in wearable computers in an energy-efficient way while not compromising system performance. In this paper, we present XPro, a novel cross-end analytic engine architecture for wearable computing systems. The proposed cross-end architecture is able to realize a generic classification design across wearable sensors and a data aggregator with high energy-efficiency. To facilitate the practical use of XPro, we also develop an Automatic XPro Generator that formally generates XPro instances according to specific design constraints. As a proof of concept, we study the design and implementation of XPro with six different health applications. Evaluation results show that, compared with state-of-the-art methods, XPro can increase the battery life of the sensor node by 1.6-2.4X while at the same time reducing system delay by 15.6-60.8% for wearable computing systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Wearable computers",
+                "Wearable sensors",
+                "Discrete wavelet transforms",
+                "Engines",
+                "Generators"
+            ],
+            "Index Terms": [
+                "Aggregate Data",
+                "General Class",
+                "Wearable Sensors",
+                "Analytical Capabilities",
+                "System Delay",
+                "Automatic Generation",
+                "Energy Consumption",
+                "Convolutional Neural Network",
+                "Energy Efficiency",
+                "Binary Classification",
+                "Base Classifiers",
+                "Design Space",
+                "Energy Model",
+                "Improve Energy Efficiency",
+                "Wearable System",
+                "Parallel Mode",
+                "Battery Lifetime",
+                "Ultra-low Power",
+                "Delay Constraint",
+                "Biosignatures",
+                "Body Area Networks",
+                "Bluetooth Low Energy",
+                "Random Subspace",
+                "Design Space Exploration",
+                "Reuse Of Resources",
+                "Computation Energy",
+                "Electromyography",
+                "Power Consumption"
+            ],
+            "Author Keywords": [
+                "Cross-End Architecture",
+                "Low Power",
+                "Data Analytics",
+                "Wearable Devices"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2390,7 +4324,54 @@
                 "firstName": "Gabriel H.",
                 "lastName": "Loh"
             }
-        ]
+        ],
+        "abstract": "High-performance computing, enterprise, and datacenter servers are driving demands for higher total memory capacity as well as memory performance. Memory “cubes” with high per-package capacity (from 3D integration) along with high-speed point-to-point interconnects provide a scalable memory system architecture with the potential to deliver both capacity and performance. Multiple such cubes connected together can form a “Memory Network” (MN), but the design space for such MNs is quite vast, including multiple topology types and multiple memory technologies per memory cube. In this work, we first analyze several MN topologies with different mixes of memory package technologies to understand the key tradeoffs and bottlenecks for such systems. We find that most of a MN's performance challenges arise from the interconnection network that binds the memory cubes together. In particular, arbitration schemes used to route through MNs, ratio of NVM to DRAM, and specific topologies used have dramatic impact on performance and energy results. Our initial analysis indicates that introducing non-volatile memory to the MN presents a unique tradeoff between memory array latency and network latency. We observe that placing NVM cubes in a specific order in the MN improves performance by reducing the network size/diameter up to a certain NVM to DRAM ratio. Novel MN topologies and arbitration schemes also provide performance and energy deltas by reducing the hop count of requests and response in the MN. Based on our analyses, we introduce three techniques to address MN latency issues: (1) Distance-based arbitration scheme to improve queuing latencies throughout the network, (2) skip-list topology, derived from the classic data structure, to improve network latency and link usage, and (3) the MetaCube, a denser memory cube that leverages advanced packaging technologies to improve latency by reducing MN size.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Manganese",
+                "Memory management",
+                "Servers",
+                "Topology",
+                "Random access memory",
+                "Pins",
+                "Network topology"
+            ],
+            "Index Terms": [
+                "Memory Capacity",
+                "Memory Network",
+                "Memory System",
+                "Non-volatile Memory",
+                "Network Latency",
+                "Multiple Memory",
+                "Memory Array",
+                "Memory Technologies",
+                "Hop Count",
+                "Performance Degradation",
+                "Increase In Performance",
+                "Average Count",
+                "Memory Control",
+                "Input Port",
+                "Increase In Latency",
+                "Electrical Load",
+                "Network Energy",
+                "External Links",
+                "Third Power",
+                "Memory Bandwidth",
+                "Chain Topology",
+                "Ring Topology",
+                "Point-to-point Links",
+                "Access Latency",
+                "Address Space",
+                "High-speed Links",
+                "Physical Address"
+            ],
+            "Author Keywords": [
+                "high-performance computing",
+                "memory cube",
+                "memory network",
+                "non-volatile memory"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2425,7 +4406,56 @@
                 "firstName": "Mikko H.",
                 "lastName": "Lipasti"
             }
-        ]
+        ],
+        "abstract": "PHP is the dominant server-side scripting language used to implement dynamic web content. Just-in-time compilation, as implemented in Facebook's state-of-the-art HipHopVM, helps mitigate the poor performance of PHP, but substantial overheads remain, especially for realistic, large-scale PHP applications. This paper analyzes such applications and shows that there is little opportunity for conventional microarchitectural enhancements. Furthermore, prior approaches for function-level hardware acceleration present many challenges due to the extremely flat distribution of execution time across a large number of functions in these complex applications. In-depth analysis reveals a more promising alternative: targeted acceleration of four fine-grained PHP activities: hash table accesses, heap management, string manipulation, and regular expression handling. We highlight a set of guiding principles and then propose and evaluate inexpensive hardware accelerators for these activities that accrue substantial performance and energy gains across dozens of functions. Our results reflect an average 17.93% improvement in performance and 21.01% reduction in energy while executing these complex PHP workloads on a state-of-the-art software and hardware platform.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Microarchitecture",
+                "Servers",
+                "Acceleration",
+                "Software",
+                "Optimization",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Hash Function",
+                "Binary String",
+                "Hardware Accelerators",
+                "Scripting Language",
+                "Confusion Matrix",
+                "Real-world Applications",
+                "Search String",
+                "Web Application",
+                "Performance Benefits",
+                "Caching",
+                "Memory Data",
+                "Specific Hardware",
+                "Memory Structure",
+                "Performance Bottleneck",
+                "Data Cache",
+                "Memory Block",
+                "Memory Allocation",
+                "Key-value Pairs",
+                "Misprediction",
+                "Leaf Function",
+                "Free Listing",
+                "Context Switching",
+                "Reference Count",
+                "L2 Cache",
+                "Memory Usage",
+                "Per Cycle",
+                "Start Of The Program",
+                "Size Classes",
+                "Characteristics For Applications",
+                "Execution Efficiency"
+            ],
+            "Author Keywords": [
+                "PHP",
+                "dynamic languages",
+                "domain-specific accelerators"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2460,7 +4490,58 @@
                 "firstName": "Onur",
                 "lastName": "Mutlu"
             }
-        ]
+        ],
+        "abstract": "Modern DRAM-based systems suffer from significant energy and latency penalties due to conservative DRAM refresh standards. Volatile DRAM cells can retain information across a wide distribution of times ranging from milliseconds to many minutes, but each cell is currently refreshed every 64ms to account for the extreme tail end of the retention time distribution, leading to a high refresh overhead. Due to poor DRAM technology scaling, this problem is expected to get worse in future device generations. Hence, the current approach of refreshing all cells with the worst-case refresh rate must be replaced with a more intelligent design. Many prior works propose reducing the refresh overhead by extending the default refresh interval to a higher value, which we refer to as the target refresh interval, across parts or all of a DRAM chip. These proposals handle the small set of failing cells that cannot retain data throughout the entire extended refresh interval via retention failure mitigation mechanisms (e.g., error correcting codes or bit-repair mechanisms). This set of failing cells is discovered via retention failure profiling, which is currently a brute-force process that writes a set of known data to DRAM, disables refresh and waits for the duration of the target refresh interval, and then checks for retention failures across the DRAM chip. We show that this brute-force approach is too slow and is detrimental to system execution, especially with frequent online profiling. This paper presents reach profiling, a new methodology for retention failure profiling based on the key observation that an overwhelming majority of failing DRAM cells at a target refresh interval fail more reliably at both longer refresh intervals and higher temperatures. Using 368 state-of-the-art LPDDR4 DRAM chips from three major vendors, we conduct a thorough experimental characterization of the complex set of tradeoffs inherent in the profiling process. We identify three key metrics to guide design choices for retention failure profiling and mitigation mechanisms: coverage, false positive rate, and runtime. We propose reach profiling, a new retention failure profiling mechanism whose key idea is to profile failing cells at a longer refresh interval and/or higher temperature relative to the target conditions in order to maximize failure coverage while minimizing the false positive rate and profiling runtime. We thoroughly explore the tradeoffs associated with reach profiling and show that there is significant room for improvement in DRAM retention failure profiling beyond the brute-force approach. We show with experimental data that on average, by profiling at 250ms above the target refresh interval, our first implementation of reach profiling (called REAPER) can attain greater than 99% coverage of failing DRAM cells with less than a 50% false positive rate while running 2.5x faster than the brute-force approach. In addition, our end-to-end evaluations show that REAPER enables significant system performance improvement and DRAM power reduction, outperforming the brute-force approach and enabling high-performance operation at longer refresh intervals that were previously unreasonable to employ due to the high associated profiling overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "DRAM chips",
+                "Reliability",
+                "Runtime",
+                "Capacitors",
+                "Force",
+                "Measurement"
+            ],
+            "Index Terms": [
+                "Retention Failure",
+                "Chromatography",
+                "High Temperature",
+                "False Positive",
+                "System Performance",
+                "False Positive Rate",
+                "Refresh Rate",
+                "High Profile",
+                "Target Condition",
+                "Forward Error Correction",
+                "Key Metrics",
+                "High Overhead",
+                "Improve System Performance",
+                "Brute-force Approach",
+                "Online Profiles",
+                "Error Rate",
+                "High Coverage",
+                "Power Consumption",
+                "Lognormal",
+                "Patterns In Data",
+                "Bit Error Rate",
+                "Sense Amplifier",
+                "Setting Of Failure",
+                "Retention Behavior",
+                "Probability Of Failure",
+                "Set Of Cells",
+                "Bit Error",
+                "Data Retention",
+                "Memory Control",
+                "Low False Positive Rate"
+            ],
+            "Author Keywords": [
+                "DRAM",
+                "refresh",
+                "retention failures",
+                "reliability",
+                "testing",
+                "memory"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2489,7 +4570,53 @@
                 "firstName": "Valeria",
                 "lastName": "Bertacco"
             }
-        ]
+        ],
+        "abstract": "This work presents a minimally-intrusive, high-performance, post-silicon validation framework for validating memory consistency in multi-core systems. Our framework generates constrained-random tests that are instrumented with observability-enhancing code for memory consistency verification. For each test, we generate a set of compact signatures reflecting the memory-ordering patterns observed over many executions of the test, with each of the signatures corresponding to a unique memory-ordering pattern. We then leverage an efficient and novel analysis to quickly determine if the observed execution patterns represented by each unique signature abide by the memory consistency model. Our analysis derives its efficiency by exploiting the structural similarities among the patterns observed. We evaluated our framework, MTraceCheck, on two platforms: an x86-based desktop and an ARM-based SoC platform, both running multi-threaded test programs in a bare-metal environment. We show that MTraceCheck reduces the perturbation introduced by the memory-ordering monitoring activity by 93% on average, compared to a baseline register flushing approach that saves the register's state after each load operation. We also reduce the computation requirements of our consistency checking analysis by 81% on average, compared to a conventional topological sorting solution. We finally demonstrate the effectiveness of MTraceCheck on buggy designs, by evaluating multiple case studies where it successfully exposes subtle bugs in a full-system simulation environment.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Memory management",
+                "Computer bugs",
+                "Load modeling",
+                "Instruments",
+                "Computational modeling",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Non-deterministic Behavior",
+                "Post-silicon Validation",
+                "Testing Program",
+                "Topological States",
+                "Load Operation",
+                "Limited Studies",
+                "Static Analysis",
+                "Run Test",
+                "Original Test",
+                "Beginning Of The Test",
+                "Executive Tests",
+                "Test Configuration",
+                "Simple Program",
+                "Litmus Test",
+                "Iteration Count",
+                "Memory Operations",
+                "Multiple Words",
+                "Misprediction",
+                "Code Size",
+                "Memory Address",
+                "Storage Operations",
+                "Primary Core",
+                "Shared Memory",
+                "Balanced Tree",
+                "Light Blue Bars",
+                "Linux Environment",
+                "Depth-first",
+                "Subsequent Loading"
+            ],
+            "Author Keywords": [
+                "memory consistency model",
+                "post-silicon validation"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2530,7 +4657,40 @@
                 "firstName": "Josep",
                 "lastName": "Torrellas"
             }
-        ]
+        ],
+        "abstract": "The same flexibility that makes dynamic scripting languages appealing to programmers is also the primary cause of their low performance. To access objects of potentially different types, the compiler creates a dispatcher with a series of if statements, each performing a comparison to a type and a jump to a handler. This induces major overhead in instructions executed and branches mispredicted. This paper proposes architectural support to significantly improve the efficiency of accesses to objects. The idea is to modify the instruction that calls the dispatcher so that, under most conditions, it skips most of the branches and instructions needed to reach the correct handler, and sometimes even the execution of the handler itself. Our novel architecture, called ShortCut, performs two levels of optimization. Its Plain design transforms the call to the dispatcher into a call to the correct handler - bypassing the whole dispatcher execution. Its Aggressive design transforms the call to the dispatcher into a simple load or store - bypassing the execution of both dispatcher and handler. We implement the ShortCut software in the state-of-the-art Google V8 JIT compiler, and the ShortCut hardware in a simulator. We evaluate ShortCut with the Octane and SunSpider JavaScript application suites. Plain ShortCut reduces the average execution time of the applications by 30% running under the baseline compiler, and by 11% running under the maximum level of compiler optimization. Aggressive ShortCut performs only slightly better.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Integrated circuits",
+                "Runtime",
+                "Optimization",
+                "Transforms",
+                "Software",
+                "Google",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Scripting Language",
+                "Average Execution Time",
+                "Simple Loading",
+                "Flow Control",
+                "Accessible Sites",
+                "Object Properties",
+                "Caching",
+                "Code Generation",
+                "Table Entries",
+                "Memory Address",
+                "Storage Operations",
+                "Bloom Filter",
+                "Baseline Configuration"
+            ],
+            "Author Keywords": [
+                "Microarchitecture",
+                "Inline Caching",
+                "Scripting Language",
+                "JavaScript"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2565,7 +4725,54 @@
                 "firstName": "Moinuddin K.",
                 "lastName": "Qureshi"
             }
-        ]
+        ],
+        "abstract": "This paper investigates compression for DRAM caches. As the capacity of DRAM cache is typically large, prior techniques on cache compression, which solely focus on improving cache capacity, provide only a marginal benefit. We show that more performance benefit can be obtained if the compression of the DRAM cache is tailored to provide higher bandwidth. If a DRAM cache can provide two compressed lines in a single access, and both lines are useful, the effective bandwidth of the DRAM cache would double. Unfortunately, it is not straight-forward to compress DRAM caches for bandwidth. The typically used Traditional Set Indexing (TSI) maps consecutive lines to consecutive sets, so the multiple compressed lines obtained from the set are from spatially distant locations and unlikely to be used within a short period of each other. We can change the indexing of the cache to place consecutive lines in the same set to improve bandwidth; however, when the data is incompressible, such spatial indexing reduces effective capacity and causes significant slowdown. Ideally, we would like to have spatial indexing when the data is compressible and TSI otherwise. To this end, we propose Dynamic-Indexing Cache comprEssion (DICE), a dynamic design that can adapt between spatial indexing and TSI, depending on the compressibility of the data. We also propose low-cost Cache Index Predictors (CIP) that can accurately predict the cache indexing scheme on access in order to avoid probing both indices for retrieving a given cache line. Our studies with a 1GB DRAM cache, on a wide range of workloads (including SPEC and Graph), show that DICE improves performance by 19.0% and reduces energy-delay-product by 36% on average. DICE is within 3% of a design that has double the capacity and double the bandwidth. DICE incurs a storage overhead of less than 1KB and does not rely on any OS support.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Bandwidth",
+                "Indexing",
+                "Organizations",
+                "Proposals",
+                "System-on-chip"
+            ],
+            "Index Terms": [
+                "Multiple Lines",
+                "Key Pathways",
+                "Incompressible",
+                "Performance Benefits",
+                "High Bandwidth",
+                "Marginal Utility",
+                "Traditional Indicators",
+                "Spatial Index",
+                "Effective Bandwidth",
+                "Indexing Scheme",
+                "Part Of System",
+                "Source Code",
+                "Physical Space",
+                "Strategies In Order",
+                "Set Of Lines",
+                "Memory System",
+                "Uncompressed",
+                "Local Line",
+                "Compression Algorithm",
+                "Written Back",
+                "L2 Cache",
+                "Data Cache",
+                "Cache Misses",
+                "Adjacent Lines",
+                "Physical Memory",
+                "Misprediction",
+                "Tag Information",
+                "Compression Scheme"
+            ],
+            "Author Keywords": [
+                "Stacked DRAM",
+                "compression",
+                "bandwidth",
+                "memory"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2600,7 +4807,50 @@
                 "firstName": "Samuel",
                 "lastName": "Irving"
             }
-        ]
+        ],
+        "abstract": "Snapshot Isolation (SI) is an established model in the database community, which permits write-read conflicts to pass and aborts transactions only on write-write conflicts. With the Write Skew anomaly correctly eliminated, SI can reduce the occurrence of aborts, save the work done by transactions, and greatly benefit long transactions involving complex data structures. GPUs are evolving towards a general-purpose computing device with growing support for irregular workloads, including transactional memory. The usage of snapshot isolation on transactional memory has proven to be greatly beneficial for performance. In this paper, we propose a multi-versioned memory subsystem for hardware-based transactional memory on the GPU, with a method for eliminating the Write Skew anomaly on the fly, and finally incorporate Snapshot Isolation with this system. The results show that snapshot isolation can effectively boost the performance of dynamically sized data structures such as linked lists, binary trees and red-black trees, sometimes by as much as 4.5x, which results in improved overall performance of benchmarks utilizing these data structures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Silicon",
+                "Data structures",
+                "Random access memory",
+                "Hardware",
+                "Databases",
+                "Acceleration"
+            ],
+            "Index Terms": [
+                "Hardware Transactional Memory",
+                "Snapshot Isolation",
+                "Benchmark",
+                "Data Structure",
+                "Binary Tree",
+                "Multiple Regions",
+                "Vacation",
+                "Conflict Resolution",
+                "Memory System",
+                "Tree Search",
+                "Memory Space",
+                "Access Patterns",
+                "Serialized",
+                "Atomic Units",
+                "Dynamic Graph",
+                "Written Back",
+                "Read Operation",
+                "Creation Time",
+                "Dependency Graph",
+                "Conflict Detection",
+                "Loop Detection",
+                "L2 Cache",
+                "Reference Count",
+                "Transactive Systems"
+            ],
+            "Author Keywords": [
+                "GPU",
+                "Transactional Memory",
+                "Snapshot Isolation"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2629,7 +4879,51 @@
                 "firstName": "David A.",
                 "lastName": "Wood"
             }
-        ]
+        ],
+        "abstract": "With the end of Dennard scaling, architects have increasingly turned to special-purpose hardware accelerators to improve the performance and energy efficiency for some applications. Unfortunately, accelerators don't always live up to their expectations and may under-perform in some situations. Understanding the factors which effect the performance of an accelerator is crucial for both architects and programmers early in the design stage. Detailed models can be highly accurate, but often require low-level details which are not available until late in the design cycle. In contrast, simple analytical models can provide useful insights by abstracting away low-level system details. In this paper, we propose LogCA-a high-level performance model for hardware accelerators. LogCA helps both programmers and architects identify performance bounds and design bottlenecks early in the design cycle, and provide insight into which optimizations may alleviate these bottlenecks. We validate our model across a variety of kernels, ranging from sub-linear to super-linear complexities on both on-chip and off-chip accelerators. We also describe the utility of LogCA using two retrospective case studies. First, we discuss the evolution of interface design in SUN/Oracle's encryption accelerators. Second, we discuss the evolution of memory interface design in three different GPU architectures. In both cases, we show that the adopted design optimizations for these machines are similar to LogCA's suggested optimizations. We argue that architects and programmers can use insights from these retrospective studies for improving future designs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Acceleration",
+                "Hardware",
+                "Optimization",
+                "Graphics processing units",
+                "Kernel",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Hardware Accelerators",
+                "Retrospective Study",
+                "Design Stage",
+                "Design Cycle",
+                "Retrospective Case Study",
+                "Computation Time",
+                "Performance Metrics",
+                "Block Size",
+                "Matrix Multiplication",
+                "Considerable Improvement",
+                "Newton Method",
+                "Square Matrix",
+                "Computational Intensity",
+                "High Overhead",
+                "Binary Search",
+                "Setup Cost",
+                "Peak Acceleration",
+                "Optimal Region",
+                "Early Design Stages",
+                "Optimal Opportunity",
+                "Interface Development",
+                "Heterogeneous Architecture",
+                "Break-even Point",
+                "Acceleration Performance"
+            ],
+            "Author Keywords": [
+                "Analytical modeling",
+                "Performance",
+                "Accelerators",
+                "Heterogenous architectures"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2658,7 +4952,54 @@
                 "firstName": "Michael C.",
                 "lastName": "Huang"
             }
-        ]
+        ],
+        "abstract": "Memory hardware errors may result from transient particle-induced faults as well as device defects due to aging. These errors are an important threat to computer system reliability as VLSI technologies continue to scale. Managing memory hardware errors is a critical component in developing an overall system dependability strategy. Memory error detection and correction are supported in a range of available hardware mechanisms. However, memory protections (particularly the more advanced ones) come at substantial costs in performance and energy usage. Moreover, the protection mechanisms are often a fixed, system-wide choice and can not easily adapt to different protection demand of different applications or memory regions. In this paper, we present a new RAIM (redundant array of independent memory) design that compared to the state-of-the-art implementation can easily provide high protection capability and the ability to selectively protect a subset of the memory. A straightforward implementation of the design can incur a substantial memory traffic overhead. We propose a few practical optimizations to mitigate this overhead. With these optimizations the proposed RAIM design offers significant advantages over existing RAIM design at lower or comparable costs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Error correction codes",
+                "Hardware",
+                "Memory architecture",
+                "Proposals",
+                "Optimization",
+                "Software"
+            ],
+            "Index Terms": [
+                "Error Detection",
+                "Memory Errors",
+                "Physical Space",
+                "Entire Group",
+                "Multiple Channels",
+                "Physical Map",
+                "Protective Group",
+                "Forward Error Correction",
+                "Separate Channels",
+                "Groups Of Lines",
+                "Frame Size",
+                "Default Configuration",
+                "Written Back",
+                "Protective Memory",
+                "Baseline System",
+                "Error Categories",
+                "Naive Implementation",
+                "Address Space",
+                "Virtual Memory",
+                "Cyclic Redundancy Check",
+                "Cache Hit",
+                "Baseline Configuration",
+                "Parity-check",
+                "Variety Of Ways",
+                "Single Channel",
+                "Memory Control",
+                "Software Applications",
+                "Strong Protection",
+                "Physical Memory",
+                "Critical Path"
+            ],
+            "Author Keywords": [
+                "RAIM",
+                "Memory Protection"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2687,7 +5028,56 @@
                 "firstName": "Mikko H.",
                 "lastName": "Lipasti"
             }
-        ]
+        ],
+        "abstract": "High-performance architectures are over-provisioned with resources to extract the maximum achievable performance out of applications. Two sources of avoidable power dissipation are the leakage power from underutilized resources, along with clock power from the clock hierarchy that feeds these resources. Most reconfiguration mechanisms either focus solely on power gating execution resources alone or in addition, simply turn off the immediate clock tree segment which supplied the clock to those resources. These proposals neither attempt to gate further up the clock hierarchy nor do they involve the clock hierarchy in influencing the reconfiguration decisions. The primary contribution of CHARSTAR is optimizing reconfiguration mechanisms to become clock hierarchy aware. Resource gating decisions are cognizant of the power consumed by each node in the clock hierarchy and additionally, entire branches of the clock tree are greedily shut down whenever possible. The CHARSTAR design is further optimized for balanced spatio-temporal reconfiguration and also enables efficient joint control of resource and frequency scaling. The proposal is implemented by leveraging the inherent advantages of spatial architectures, utilizing a control mechanism driven by a lightweight offline trained neural predictor. CHARSTAR, when deployed on the CRIB tiled microarchitecture, improves processor energy efficiency by 20-25%, with efficiency improvements of roughly 2x in comparison to a naive power gating mechanism. Alternatively, it improves performance by 10-20% under varying power and energy constraints.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Logic gates",
+                "Binary trees",
+                "Proposals",
+                "Parallel processing",
+                "Wires"
+            ],
+            "Index Terms": [
+                "Control Mechanisms",
+                "Energy Efficiency",
+                "Microarchitecture",
+                "Maximum Performance",
+                "Power Constraint",
+                "Gating Mechanism",
+                "Underutilized Resource",
+                "Energy Conservation",
+                "Multilayer Perceptron",
+                "Dynamic Control",
+                "Tree Nodes",
+                "Design Space",
+                "Complex Control",
+                "Leaf Node",
+                "Improve Energy Efficiency",
+                "Binary Tree",
+                "Clock Rate",
+                "Finer Granularity",
+                "Area Overhead",
+                "Computation Latency",
+                "Temporal Granularity",
+                "Spatial Granularity",
+                "Ideal Configuration",
+                "L2 Cache",
+                "Resource Configuration",
+                "Duplication Nodes",
+                "Cache Misses",
+                "Communication Latency",
+                "Multiple Configurations",
+                "Quantum"
+            ],
+            "Author Keywords": [
+                "Dynamic reconfiguration",
+                "Spatial architectures",
+                "Clock gating",
+                "Power gating"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2716,7 +5106,48 @@
                 "firstName": "Calvin",
                 "lastName": "Lin"
             }
-        ]
+        ],
+        "abstract": "This paper introduces a method of decoupling affine computations-a class of expressions that produces extremely regular values across SIMT threads-from the main execution stream, so that the affine computations can be performed with greater efficiency and with greater independence from the main execution stream. This decoupling has two benefits: (1) For compute-bound programs, it significantly reduces the dynamic warp instruction count; (2) for memory-bound workloads, it significantly reduces memory latency, since it acts as a non-speculative prefetcher for the data specified by the many memory address calculations that are affine computations. We evaluate our solution, known as Decoupled Affine Computation (DAC), using GPGPU-sim and a set of 29 GPGPU programs. We find that on average, DAC improves performance by 40% and reduces energy consumption by 20%. For the 11 compute-bound benchmarks, DAC improves performance by 34%, compared with 11% for the previous state-of-the-art. For the 18 memory-bound programs, DAC improves performance by an average of 44%, compared with 16% for state-of-the-art GPU prefetcher.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Prefetching",
+                "Kernel",
+                "Benchmark testing",
+                "Computational modeling",
+                "Concrete"
+            ],
+            "Index Terms": [
+                "Energy Consumption",
+                "Memory Address",
+                "Divergence",
+                "Energy Efficiency",
+                "Functional Unit",
+                "Flow Control",
+                "Performance Benefits",
+                "Subsequent Calculations",
+                "Total Energy Consumption",
+                "Scalar Value",
+                "Divisor",
+                "Previous Solution",
+                "Masked Images",
+                "Kernel Parameters",
+                "Code Examples",
+                "Divergence Analysis",
+                "Execution Of Operations",
+                "Datapath",
+                "Concrete Values",
+                "Global Load",
+                "Control Flow Graph",
+                "L2 Cache",
+                "General Types"
+            ],
+            "Author Keywords": [
+                "GPU",
+                "decoupling",
+                "affine computation"
+            ]
+        }
     },
     {
         "publicationNumber": "8126322",
@@ -2757,6 +5188,53 @@
                 "firstName": "Frederic T.",
                 "lastName": "Chong"
             }
-        ]
+        ],
+        "abstract": "Most architectures are designed to mitigate the usually undesirable phenomenon of device wearout. We take a contrarian view and harness this phenomenon to create hardware security mechanisms that resist attacks by statistically enforcing an upper bound on hardware uses, and consequently attacks. For example, let us assume that a user may log into a smartphone a maximum of 50 times a day for 5 years, resulting in approximately 91,250 legitimate uses. If we assume at least 8-character passwords and we require login (and retrieval of the storage decryption key) to traverse hardware that wears out in 91,250 uses, then an adversary has a negligible chance of successful brute-force attack before the hardware wears out, even assuming real-world password cracking by professionals. M-way replication of our hardware and periodic re-encryption of storage can increase the daily usage bound by a factor of M. The key challenge is to achieve practical statistical bounds on both minimum and maximum uses for an architecture, given that individual devices can vary widely in wearout characteristics. We introduce techniques for architecturally controlling these bounds and perform a design space exploration for three use cases: a limited-use connection, a limited-use targeting system and one-time pads. These techniques include decision trees, parallel structures, Shamir's secret-sharing mechanism, Reed-Solomon codes, and module replication. We explore the cost in area, energy and latency of using these techniques to achieve system-level usage targets given device-level wearout distributions. With redundant encoding, for example, we can improve exponential sensitivity to device lifetime variation to linear sensitivity, reducing the total number of NEMS devices by 4 orders of magnitude to about 0.8 million for limited-use connections (compared with 4 billion if without redundant encoding).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Security",
+                "Nanoelectromechanical systems",
+                "Hardware",
+                "Computer architecture",
+                "Reliability",
+                "Electrodes",
+                "Encoding"
+            ],
+            "Index Terms": [
+                "Security Architecture",
+                "Decision Tree",
+                "Energy Cost",
+                "Target System",
+                "Secret Sharing",
+                "Brute-force Attacks",
+                "Decryption Key",
+                "Reed-Solomon Codes",
+                "Hardware Security",
+                "Probabilistic Model",
+                "Tree Height",
+                "Secret Key",
+                "Fast Degradation",
+                "Fabrication Cost",
+                "Forward Error Correction",
+                "Number Of Switches",
+                "Design Options",
+                "Kinds Of Devices",
+                "Mean Time To Failure",
+                "Random String",
+                "Physical Unclonable Functions",
+                "Short Strings",
+                "Device Variation",
+                "Shift Register",
+                "Classical Scenario",
+                "Message Transmission",
+                "Path Information",
+                "Threat Model"
+            ],
+            "Author Keywords": [
+                "Degradation-based security measures",
+                "hardware security architectures",
+                "NEMS"
+            ]
+        }
     }
 ]

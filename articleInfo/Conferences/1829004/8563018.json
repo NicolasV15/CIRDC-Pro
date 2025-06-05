@@ -32,7 +32,53 @@
                 "firstName": "Wilfried N.",
                 "lastName": "Gansterer"
             }
-        ]
+        ],
+        "abstract": "We compare and refine exact and heuristic fault-tolerance extensions for the preconditioned conjugate gradient (PCG) and the split preconditioner conjugate gradient (SPCG) methods for recovering from failures of compute nodes of large-scale parallel computers. In the exact state reconstruction (ESR) approach, which is based on a method proposed by Chen (2011), the solver keeps extra information from previous search directions of the (S)PCG solver, so that its state can be fully reconstructed if a node fails unexpectedly. ESR does not make use of checkpointing or external storage for saving dynamic solver data and has only negligible computation and communication overhead compared to the failure-free situation. In exact arithmetic, the reconstruction is exact, but in finite-precision computations, the number of iterations until convergence can differ slightly from the failure-free case due to rounding effects. We perform experiments to investigate the behavior of ESR in floating-point arithmetic and compare it to the heuristic linear interpolation (LI) approach by Langou et al. (2007) and Agullo et al. (2016), which does not have to keep extra information and thus has lower memory requirements. Our experiments illustrate that ESR, on average, has essentially zero overhead in terms of additional iterations until convergence, whereas the LI approach incurs much larger overheads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Resilience",
+                "Indexes",
+                "Linear systems",
+                "Checkpointing"
+            ],
+            "Index Terms": [
+                "Conjugate Gradient",
+                "Fault-tolerant",
+                "Gradient Method",
+                "Preconditioned Conjugate Gradient",
+                "Preconditioned Conjugate Gradient Method",
+                "Parallelization",
+                "Kinetic Data",
+                "Search Direction",
+                "Computing Nodes",
+                "Checkpointing",
+                "Low Memory Requirements",
+                "External Storage",
+                "Linear System",
+                "Row Vector",
+                "Matrix Multiplication",
+                "Multiple Failure",
+                "Linear Solver",
+                "Reconstruction Process",
+                "Least Squares Problem",
+                "Node Failure",
+                "Message Passing Interface",
+                "Iterative Solver",
+                "Phase Reconstruction",
+                "Redundant Copies",
+                "Hypothetical Case",
+                "State Reconstruction",
+                "Additional Communication",
+                "Matrix-vector Product",
+                "Row Block"
+            ],
+            "Author Keywords": [
+                "preconditioned-conjugate-gradient-method,-split-preconditioner-conjugate-gradient-method,-extreme-scale-parallel-computing,-node-failures,-resilience,-algorithmic-fault-tolerance"
+            ]
+        }
     },
     {
         "publicationNumber": "8563018",
@@ -97,7 +143,54 @@
                 "firstName": "Nathan",
                 "lastName": "DeBardeleben"
             }
-        ]
+        ],
+        "abstract": "Extreme-scale systems are growing in scope and complexity as we approach exascale. Uncorrectable faults in such systems are also increasing, so resilience efforts addressing these are of great importance. In this paper, we extend a method that augments hardware error detection and correction (EDAC) contextually, and show an application-based approach that takes detectable uncorrectable (DUE) data errors and corrects them. We applied this application-based method successfully to data errors found using common EDAC, and discuss operating system changes that will make this possible on existing systems. We show that even when there are many acceptable correction choices (which may be seen in floating point), a large percentage of DUEs are corrected, and even the miscorrected data are very close to correct. We developed two different contextual criteria for this application: local averaging and global conservation of mass. Both did well in terms of closeness, but conservation of mass outperformed averaging in terms of actual correctness. The contributions of this paper are: 1) the idea of application- specific EDAC-based contextual correction, 2) its demonstration with great success on a real application, 3) the development of two different contextual criteria, and 4) a discussion of attainable changes to the OS kernel that make this possible on a real system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Error correction codes",
+                "Computer crashes",
+                "Hardware",
+                "Resilience"
+            ],
+            "Index Terms": [
+                "Contextual Information",
+                "Operating System",
+                "Contributions Of This Paper",
+                "Error Data",
+                "Error Detection",
+                "Mass Conservation",
+                "Kernel Images",
+                "Use Of Information",
+                "Original Value",
+                "Types Of Errors",
+                "High-performance Computing",
+                "Vector Of Length",
+                "Fault-tolerant",
+                "Lookup Table",
+                "Correct Value",
+                "Candidate List",
+                "Generator Matrix",
+                "Bit Error",
+                "Wave Height",
+                "Forward Error Correction",
+                "Parity-check Matrix",
+                "Candidate Distributions",
+                "Helper Function",
+                "Parity-check",
+                "Corrupted Data",
+                "Distribution Of Members",
+                "Linear Code",
+                "Adaptive Mesh Refinement",
+                "Codeword Length",
+                "Correct Solution"
+            ],
+            "Author Keywords": [
+                "fault-tolerance",
+                "high-performance-computing",
+                "error-correction-codes"
+            ]
+        }
     },
     {
         "publicationNumber": "8563018",
@@ -126,7 +219,59 @@
                 "firstName": "Christian",
                 "lastName": "Engelmann"
             }
-        ]
+        ],
+        "abstract": "Extreme-scale computing systems employ Reliability, Availability and Serviceability (RAS) mechanisms and infrastructure to log events from multiple system components. In this paper, we analyze RAS logs in conjunction with the application placement and scheduling database, in order to understand the impact of common RAS events on application performance. This study conducted on the records of about 2 million applications executed on Titan supercomputer provides important insights for system users, operators and computer science researchers. Specifically, we investigate the impact of RAS events on application performance and its variability by comparing cases where events are recorded with corresponding cases where no events are recorded. Such a statistical investigation is possible since we observed that system users tend to execute their applications multiple times. Our analysis reveals that most RAS events do impact application performance, although not always. We also find that different system components affect application performance differently. In particular, our investigation includes the following components: parallel file system processor, memory, graphics processing units, system and user software issues. Our work establishes the importance of providing feedback to system users for increasing operational efficiency of extreme-scale systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Hardware",
+                "Supercomputers",
+                "Computer architecture",
+                "Error correction codes",
+                "Resource management"
+            ],
+            "Index Terms": [
+                "Impact Of Events",
+                "High-performance Computing",
+                "Titan Supercomputer",
+                "Operating System",
+                "Components Of System",
+                "System Software",
+                "Graphics Processing Unit",
+                "System Usability",
+                "Parallel System",
+                "File System",
+                "Event Log",
+                "Application Execution",
+                "End Of The Spectrum",
+                "Failure Mechanism",
+                "Large-scale Applications",
+                "Wide Variety Of Applications",
+                "Random Events",
+                "Low P-values",
+                "Forward Error Correction",
+                "Usage In Applications",
+                "High-performance Computing Systems",
+                "Memory Errors",
+                "Application Running",
+                "Majority Of Applications",
+                "Blue Water",
+                "Performance In Most Cases",
+                "Resilience Mechanisms",
+                "Oak Ridge National Laboratory",
+                "Proportion Of Nodes",
+                "Server Node"
+            ],
+            "Author Keywords": [
+                "HPC-Applications",
+                "Performance",
+                "Supercomputers",
+                "Log-Data-Analytics",
+                "Reliability-Availability-Serviceability-(RAS)-log",
+                "Application-log",
+                "Field-Study"
+            ]
+        }
     },
     {
         "publicationNumber": "8563018",
@@ -167,7 +312,48 @@
                 "firstName": "Noel",
                 "lastName": "De Palma"
             }
-        ]
+        ],
+        "abstract": "With the increase in size of supercomputers, also increases the number of abnormal events. Some of these events might lead to an application failure. Others might simply impact the system efficiency. CPU overheating is one such event that decreases the system efficiency: when a CPU overheats, it reduces its frequency. This paper studies the problem of CPU overheating in supercomputers. In a first part, we analyze data collected over one year on a supercomputer of the top500 list to understand under which conditions CPU overheating occurs. Our analysis show that overheating events are due to some specific applications. In a second part, we evaluate the impact of such overheating events on the performance of MPI applications. Using 6 representative HPC benchmarks, we show that for a majority of the applications, a frequency drop on one CPU impacts the execution time of distributed runs proportionally to the duration and to the extent of the frequency drop.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Supercomputers",
+                "Temperature sensors",
+                "Linux",
+                "Time-frequency analysis",
+                "Correlation",
+                "Program processors"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "High-performance Computing Systems",
+                "Performance In Applications",
+                "Abnormal Events",
+                "Frequency Drop",
+                "Running",
+                "Intel Xeon",
+                "Minimum Frequency",
+                "Years Of Operation",
+                "Characteristics For Applications",
+                "System Load",
+                "Failure Analysis",
+                "Impact Of Frequency",
+                "Maximum Bandwidth",
+                "Job Scheduling",
+                "System Logs",
+                "Intel Processor",
+                "Exceptional Events",
+                "Global Load",
+                "CPU Frequency",
+                "Linux Kernel",
+                "Distinct Applications",
+                "Application Execution"
+            ],
+            "Author Keywords": [
+                "HPC",
+                "CPU-overheating"
+            ]
+        }
     },
     {
         "publicationNumber": "8563018",
@@ -202,7 +388,56 @@
                 "firstName": "Christian",
                 "lastName": "Engelmann"
             }
-        ]
+        ],
+        "abstract": "Log processing by Spark and Cassandra-based ANalytics (LogSCAN) is a newly developed analytical platform that provides flexible and scalable data gathering, transformation and computation. One major challenge is to effectively summarize the status of a complex computer system, such as the Titan supercomputer at the Oak Ridge Leadership Computing Facility (OLCF). Although there is plenty of operational and maintenance information collected and stored in real time, which may yield insights about short- and long-term system status, it is difficult to present this information in a comprehensive form. In this work, we present system information entropy (SIE), a newly developed metric that leverages the powers of traditional machine learning techniques and information theory. By compressing the multivariant multi-dimensional event information recorded during the operation of the targeted system into a single time series of SIE, we demonstrate that the historical system status can be sensitively represented concisely and comprehensively. Given a sharp indicator as SIE, we argue that follow-up analytics based on SIE will reveal in-depth knowledge about system status using other sophisticated approaches, such as pattern recognition in the temporal domain or causality analysis incorporating extra independent metrics of the system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Sparks",
+                "History",
+                "Supercomputers",
+                "Information entropy",
+                "Machine learning",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Systemic Conditions",
+                "High-performance Computing",
+                "Time Series",
+                "Pattern Recognition",
+                "Information Theory",
+                "Sophisticated Approaches",
+                "Information Entropy",
+                "Temporal Domain",
+                "Independent Metrics",
+                "Time Interval",
+                "Heatmap",
+                "Time Window",
+                "Total Count",
+                "Closer Look",
+                "Hot Spots",
+                "Bottom Panel",
+                "Middle Panel",
+                "Singular Value Decomposition",
+                "Comprehensive Management",
+                "Probability Vector",
+                "Log Information",
+                "Log Files",
+                "Historical Systems",
+                "Variance Of Principal Component",
+                "3D Datasets",
+                "System Logs",
+                "Event Counts",
+                "2D Data",
+                "2D Datasets",
+                "Sharp Drop"
+            ],
+            "Author Keywords": [
+                "Metrics",
+                "Cloud-computing",
+                "Visual-analytics"
+            ]
+        }
     },
     {
         "publicationNumber": "8563018",
@@ -237,7 +472,54 @@
                 "firstName": "Michael",
                 "lastName": "Bader"
             }
-        ]
+        ],
+        "abstract": "Soft error rates are increasing as modern architectures require increasingly small features at low voltages. Due to the large number of components used in HPC architectures, these are particularly vulnerable to soft errors. Hence, when designing applications that run for long time periods on large machines, algorithmic resilience must be taken into account. In this paper we analyse the inherent resiliency of a-posteriori limiting procedures in the context of the explicit ADER DG hyperbolic PDE solver ExaHyPE. The a-posteriori limiter checks element-local high-order DG solutions for physical admissibility, and can thus be expected to also detect hardware-induced errors. Algorithmically, it can be interpreted as element-local checkpointing and restarting of the solver with a more robust finite volume scheme on a fine subgrid. We show that the limiter indeed increases the resilience of the DG algorithm, detecting and correcting particularly those faults which would otherwise lead to a fatal failure.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mathematical model",
+                "Resilience",
+                "Limiting",
+                "Error analysis",
+                "Engines",
+                "Informatics",
+                "Neutrons"
+            ],
+            "Index Terms": [
+                "Discontinuous Galerkin",
+                "Discontinuous Galerkin Scheme",
+                "Robust Strategy",
+                "Finite Volume",
+                "Explicit Method",
+                "Hyperbolic Equation",
+                "Checkpointing",
+                "Discretion",
+                "Time Step",
+                "Seismic",
+                "Physical Constraints",
+                "Black Hole",
+                "Limited Cases",
+                "General Relativity",
+                "Einstein Equations",
+                "Failure Time",
+                "Reference Solution",
+                "Candidate Solutions",
+                "Maximum Principle",
+                "Euler Equations",
+                "Direct Elements",
+                "Adaptive Mesh Refinement",
+                "Static Black Hole",
+                "Shock Tube",
+                "Gravitational Waves",
+                "Einstein Tensor",
+                "Sine Wave",
+                "Numerical Instability"
+            ],
+            "Author Keywords": [
+                "numerical-methods",
+                "reliability",
+                "soft-errors"
+            ]
+        }
     },
     {
         "publicationNumber": "8563018",
@@ -272,7 +554,51 @@
                 "firstName": "Parameswaran",
                 "lastName": "Ramanathan"
             }
-        ]
+        ],
+        "abstract": "Direct Cholesky-based solvers are typically used to solve large linear systems where the coefficient matrix is symmetric positive definite. These solvers offer faster performance in solving such linear systems, compared to other more general solvers such as LU and QR solvers. In recent days, graphics processing units (GPUs) have become a popular platform for scientific computing applications, and are increasingly being used as major computational units in supercomputers. However, GPUs are susceptible to transient faults caused by events such as alpha particle strikes and power fluctuations. As a result, the possibility of an error increases as more and more GPU computing nodes are used. In this paper, we introduce two efficient fault tolerance schemes for the Cholesky factorization method, and study their performance using a direct Cholesky solver in the presence of faults. We utilize a transient fault injection mechanism for NVIDIA GPUs and compare our schemes with a traditional checksum fault tolerance technique, and show that our proposed schemes have superior performance, good error coverage and low overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sparse matrices",
+                "Graphics processing units",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Symmetric matrices",
+                "Linear systems",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Fault-tolerant",
+                "Cholesky Decomposition",
+                "Linear System",
+                "High-performance Computing",
+                "Positive Definite Matrix",
+                "Power Fluctuations",
+                "Low Overhead",
+                "Direct Solver",
+                "Transient Faults",
+                "Matrix Factorization",
+                "Diagonal Elements",
+                "Scientific Applications",
+                "Sparse Matrix",
+                "Definite Matrix",
+                "Nonzero Elements",
+                "Input Matrix",
+                "Current Iteration",
+                "Error Control",
+                "Upper Triangular",
+                "End Of Each Iteration",
+                "Lower Triangular",
+                "Column Element",
+                "Invariance Property",
+                "Sparse Factorization",
+                "Off-chip Memory",
+                "Absence Of Defects",
+                "Iterative Solver",
+                "Leftmost Column",
+                "Preconditioned Conjugate Gradient"
+            ]
+        }
     },
     {
         "publicationNumber": "8563018",
@@ -313,7 +639,52 @@
                 "firstName": "Nathan",
                 "lastName": "DeBardeleben"
             }
-        ]
+        ],
+        "abstract": "In this work we present SaNSA, the Supercomputer and Node State Architecture, a software infrastructure for historical analysis and anomaly detection. SaNSA consumes data from multiple sources including system logs, the resource manager, scheduler, and job logs. Furthermore, additional context such as scheduled maintenance events or dedicated application run times for specific science teams can be overlaid. We discuss how this contextual information allows for more nuanced analysis. SaNSA allows the user to apply arbitrary attributes, for instance, positional information where nodes are located in a data center. We show how using this information we identify anomalous behavior of one rack of a 1,500 node cluster. We explain the design of SaNSA and then test it on four open compute clusters at LANL. We ingest over 1.1 billion lines of system logs in our study of 190 days in 2018. Using SaNSA, we perform a number of different anomaly detection methods and explain their findings in the context of a production supercomputing data center. For example, we report on instances of misconfigured nodes which receive no scheduled jobs for a period of time as well as examples of correlated rack failures which cause jobs to crash.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Booting",
+                "Supercomputers",
+                "Computer architecture",
+                "Maintenance engineering",
+                "Data centers",
+                "Distributed databases"
+            ],
+            "Index Terms": [
+                "Node Status",
+                "Supercomputer Architecture",
+                "Data Center",
+                "Anomaly Detection",
+                "Cluster Nodes",
+                "Los Alamos National Laboratory",
+                "System Logs",
+                "Data Sources",
+                "Running",
+                "Logistics",
+                "Amount Of Time",
+                "System State",
+                "Transition State",
+                "Percentage Of Time",
+                "Shared Resource",
+                "Work In Progress",
+                "Loss Of Connectivity",
+                "Log Files",
+                "Software Architecture",
+                "State Transition Probability",
+                "Grizzly",
+                "Mean Time To Failure",
+                "Node Placement",
+                "Discrete-time Markov Chain",
+                "Woodchuck"
+            ],
+            "Author Keywords": [
+                "system-state",
+                "node-state",
+                "health-monitoring",
+                "anomaly-detection",
+                "software-architecture"
+            ]
+        }
     },
     {
         "publicationNumber": "8563018",
@@ -354,7 +725,54 @@
                 "firstName": "Osman",
                 "lastName": "Unsal"
             }
-        ]
+        ],
+        "abstract": "The coming exascale era is a great opportunity for high performance computing (HPC) applications. However, high failure rates on these systems will hazard the successful completion of their execution. Bit-flip errors in dynamic random access memory (DRAM) account for a noticeable share of the failures in supercomputers. Hardware mechanisms, such as error correcting code (ECC), can detect and correct single-bit errors and can detect some multi-bit errors while others can go undiscovered. Unfortunately, detected multi-bit errors will most of the time force the termination of the application and lead to a global restart. Thus, other strategies at the software level are needed to tolerate these type of faults more efficiently and to avoid a global restart. In this work, we extend the FTI checkpointing library to facilitate the implementation of custom recovery strategies for MPI applications, minimizing the overhead introduced when coping with soft errors. The new functionalities are evaluated by implementing local forward recovery on three HPC benchmarks with different reliability requirements. Our results demonstrate a reduction on the recovery times by up to 14%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Software",
+                "Checkpointing",
+                "Hardware",
+                "Libraries",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Soft Errors",
+                "Benchmark",
+                "High-performance Computing",
+                "Forward Error Correction",
+                "Recovery Strategies",
+                "Running Time",
+                "Types Of Errors",
+                "Partial Data",
+                "Intel Xeon",
+                "Fault-tolerant",
+                "Performance Benefits",
+                "Projection Matrix",
+                "Rollback",
+                "Subset Of Variables",
+                "Characteristics For Applications",
+                "Optimal Frequency",
+                "Tea Leaves",
+                "Corrupted Data",
+                "Mean Time To Failure",
+                "Application Code",
+                "Protective Cover",
+                "Recovery Protocol",
+                "Performance Penalty",
+                "Forward Scheme",
+                "Global Recovery",
+                "Experimental Evaluation",
+                "Table Reports",
+                "Local Strategies"
+            ],
+            "Author Keywords": [
+                "Fault-Tolerance",
+                "Checkpoint/Restart",
+                "ABFT"
+            ]
+        }
     },
     {
         "publicationNumber": "8563018",
@@ -370,7 +788,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 8th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8563018",
@@ -386,7 +806,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 8th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8563018",
@@ -402,7 +824,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 8th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8563018",
@@ -418,6 +842,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 8th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     }
 ]

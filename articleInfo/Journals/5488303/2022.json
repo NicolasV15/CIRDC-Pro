@@ -56,7 +56,23 @@
                 "firstName": "Behçet",
                 "lastName": "Açıkmeşe"
             }
-        ]
+        ],
+        "abstract": "Reliable and efficient trajectory generation methods are a fundamental need for autonomous dynamical systems. The goal of this article is to provide a comprehensive tutorial of three major convex optimization-based trajectory generation methods: lossless convexification (LCvx) and two sequential convex programming algorithms, successive convexification (SCvx) and guaranteed sequential trajectory optimization (GuSTO). Trajectory generation is defined as the computation of a dynamically feasible state and control signal that satisfies a set of constraints while optimizing key mission objectives. The trajectory generation problem is almost always nonconvex, which typically means that it is difficult to solve efficiently and reliably onboard an autonomous vehicle. The three algorithms that we discuss use problem reformulation and a systematic algorithmic strategy to nonetheless solve nonconvex trajectory generation tasks using a convex optimizer. The theoretical guarantees and computational speed offered by convex optimization have made the algorithms popular in both research and industry circles. The growing list of applications includes rocket landing, spacecraft hypersonic reentry, spacecraft rendezvous and docking, aerial motion planning for fixed-wing and quadrotor vehicles, robot motion planning, and more. Among these applications are high-profile rocket flights conducted by organizations such as NASA, Masten Space Systems, SpaceX, and Blue Origin. This article equips the reader with the tools and understanding necessary to work with each algorithm and know their advantages and limitations. An open source tool called the SCP Toolbox accompanies the article and provides a practical implementation of every numerical example. By the end of the article, the reader will not only be ready to use the lossless convexification and sequential convex programming algorithms, but also to extend them and to contribute to their many exciting modern applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Urban areas",
+                "Optimal control",
+                "Tutorials",
+                "Transforms",
+                "Convex functions",
+                "Real-time systems",
+                "Autonomous vehicles",
+                "Autonomous aerial vehicles",
+                "Drones",
+                "Trajectory tracking"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -97,7 +113,54 @@
                 "firstName": "Jan",
                 "lastName": "Wendel"
             }
-        ]
+        ],
+        "abstract": "Autonomous vehicle technology is rapidly advancing (see “Summary”). A key enabling factor is the advancing capabilities and declining cost of computing and sensing systems that enable sensor fusion for awareness of the vehicle’s state and surroundings (see “Nontechnical Article Summary”). For control purposes, the vehicle’s state must be estimated accurately, reliably, at a sufficiently high sample rate, and with a sufficiently high bandwidth. For systems with a high bandwidth, these requirements are often achieved by an aided inertial navigation system (INS) (see “Aided Inertial Navigation System History”) <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref>, <xref ref-type=\"bibr\" rid=\"ref2\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[2]</xref>, <xref ref-type=\"bibr\" rid=\"ref3\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[3]</xref>, <xref ref-type=\"bibr\" rid=\"ref4\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[4]</xref>, <xref ref-type=\"bibr\" rid=\"ref5\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[5]</xref>, <xref ref-type=\"bibr\" rid=\"ref6\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[6]</xref>. An INS integrates data from an inertial measurement unit (IMU) through a kinematic model at the high sampling rate of the IMU to compute the state estimate. An aided INS corrects this state estimate using data from aiding sensors [for example, vision, lidar, radar, and global navigation satellite systems (GNSS)]. State estimation by sensor fusion may be accomplished using a variety of methods: Kalman filter (KF) <xref ref-type=\"bibr\" rid=\"ref7\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[7]</xref>, <xref ref-type=\"bibr\" rid=\"ref8\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[8]</xref>, <xref ref-type=\"bibr\" rid=\"ref9\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[9]</xref>, <xref ref-type=\"bibr\" rid=\"ref10\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[10]</xref>, <xref ref-type=\"bibr\" rid=\"ref11\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[11]</xref>, extended KF (EKF) <xref ref-type=\"bibr\" rid=\"ref12\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[12]</xref>, <xref ref-type=\"bibr\" rid=\"ref13\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[13]</xref>, <xref ref-type=\"bibr\" rid=\"ref14\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[14]</xref>, <xref ref-type=\"bibr\" rid=\"ref15\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[15]</xref>, unscented KF (UKF) <xref ref-type=\"bibr\" rid=\"ref16\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[16]</xref>, <xref ref-type=\"bibr\" rid=\"ref17\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[17]</xref>, <xref ref-type=\"bibr\" rid=\"ref18\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[18]</xref>, particle filter (PF) <xref ref-type=\"bibr\" rid=\"ref19\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[19]</xref>, <xref ref-type=\"bibr\" rid=\"ref20\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[20]</xref>, <xref ref-type=\"bibr\" rid=\"ref21\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[21]</xref>, and maximum a posteriori (MAP) optimization <xref ref-type=\"bibr\" rid=\"ref22\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[22]</xref>, <xref ref-type=\"bibr\" rid=\"ref23\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[23]</xref>, <xref ref-type=\"bibr\" rid=\"ref24\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[24]</xref>, <xref ref-type=\"bibr\" rid=\"ref25\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[25]</xref>, <xref ref-type=\"bibr\" rid=\"ref26\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[26]</xref>, <xref ref-type=\"bibr\" rid=\"ref27\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[27]</xref>.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Global navigation satellite system",
+                "Measurement units",
+                "Inertial navigation",
+                "Tutorials",
+                "Sensor fusion",
+                "Real-time systems",
+                "State estimation",
+                "Inertial navigation",
+                "Autonomous vehicles",
+                "Calibration",
+                "Real-time systems"
+            ],
+            "Index Terms": [
+                "Error Model",
+                "Inertial Measurement Unit",
+                "Navigation System",
+                "Inertial Navigation",
+                "Real-time Calibration",
+                "Kalman Filter",
+                "Data Sheet",
+                "State-space Model",
+                "Global Navigation Satellite System",
+                "Particle Filter",
+                "Maximum A Posteriori",
+                "Vehicle State",
+                "Extended Kalman Filter",
+                "State-space Form",
+                "Unscented Kalman Filter",
+                "White Noise",
+                "Accelerometer",
+                "Linear System",
+                "Random Noise",
+                "Discrete-time Model",
+                "Continuous-time Model",
+                "Power Spectral Density",
+                "Random Walk",
+                "Angular Speed",
+                "Stochastic Model",
+                "Tangent Line",
+                "Parameters For Example",
+                "Body Frame",
+                "Choice Of Structure"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -138,7 +201,20 @@
                 "firstName": "Tamer",
                 "lastName": "Başar"
             }
-        ]
+        ],
+        "abstract": "Multiagent decision making over networks has recently attracted an exponentially growing number of researchers from the systems and control community. The area has gained increasing momentum in engineering, social sciences, economics, urban science, and artificial intelligence as it serves as a prevalent framework for studying large and complex systems and has been widely applied to many problems, such as social networks analysis <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref>, <xref ref-type=\"bibr\" rid=\"ref2\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[2]</xref>, smart grid management <xref ref-type=\"bibr\" rid=\"ref3\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[3]</xref>, <xref ref-type=\"bibr\" rid=\"ref4\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[4]</xref>, wireless and communication networks <xref ref-type=\"bibr\" rid=\"ref5\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[5]</xref>–<xref ref-type=\"bibr\" rid=\"ref6\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"/><xref ref-type=\"bibr\" rid=\"ref7\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[7]</xref>, cybersecurity <xref ref-type=\"bibr\" rid=\"ref8\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[8]</xref>–<xref ref-type=\"bibr\" rid=\"ref9\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"/><xref ref-type=\"bibr\" rid=\"ref10\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[10]</xref>, critical infrastructures <xref ref-type=\"bibr\" rid=\"ref11\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[11]</xref>–<xref ref-type=\"bibr\" rid=\"ref12\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"/><xref ref-type=\"bibr\" rid=\"ref13\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[13]</xref>, and cyberphysical systems <xref ref-type=\"bibr\" rid=\"ref14\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[14]</xref>–<xref ref-type=\"bibr\" rid=\"ref15\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"/><xref ref-type=\"bibr\" rid=\"ref16\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[16]</xref>.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Uncertainty",
+                "Systematics",
+                "Social networking (online)",
+                "Wireless networks",
+                "Game theory",
+                "Cyber-physical systems",
+                "Routing",
+                "Multi-agent systems"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -161,7 +237,23 @@
                 "firstName": "Carsten W.",
                 "lastName": "Scherer"
             }
-        ]
+        ],
+        "abstract": "A central notion in systems theory is dissipativity, which was introduced by Jan Willems with the explicit goal of arriving at a fundamental understanding of the stability properties of feedback interconnections. In robust control, the framework of integral quadratic constraints (IQCs) builds on the seminal contributions of Yakubovich and Zames in the 1960s. It provides a technique for analyzing the stability of an interconnection of some linear system in feedback with a whole class of systems, also referred to as uncertainty. This article surveys the key ideas of exploiting dissipativity and IQCs to systematically construct computational tests for robust stability and performance of uncertain interconnections in terms of linear matrix inequalities. The article focuses on the recently introduced notion of finite-horizon IQCs with a terminal cost, which is shown to provide a seamless link between dissipativity theory and absolute stability theory based on dynamic IQCs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cyber-physical systems",
+                "Systematics",
+                "Costs",
+                "Robust stability",
+                "Design methodology",
+                "Stability criteria",
+                "Cyber-physical systems",
+                "Feedback loop",
+                "Linear matrix inequalities",
+                "Uncertainty",
+                "Quadratic programming"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -202,7 +294,18 @@
                 "firstName": "Lacra",
                 "lastName": "Pavel"
             }
-        ]
+        ],
+        "abstract": "Generalized games model interactions between a set of selfish decision makers, called <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">players</i> or <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">agents</i>, where both the objective function <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">and</i> the feasible decision set of each player may depend on strategies of the competitors. Such games arise, for example, when agents compete for a share of some common but limited resources. For instance, consider a set of vehicles sharing the road, set of radio channels competing for bandwidth, or set of companies servicing an economic market. They can each be modeled as players/agents in a game, competing for a portion of available resources, that is, road capacity, total bandwidth, or market share. As resources are limited, player choices are bound together by a coupling-capacity constraint. Essentially, in a generalized game, or one with coupling constraints, the <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">set of available</i> choices an agent has depends on the choices of other agents. Thus, a player cannot simply optimize their own objective function without considering the decisions of the others, even though this objective might not depend on him or her. The relevant equilibrium (namely, the solution concept) for noncooperative decision making with coupling constraints is called a <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">generalized</i> Nash equilibrium (GNE).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Economics",
+                "Privacy",
+                "Nash equilibrium",
+                "Decision making",
+                "Game theory",
+                "Bandwidth"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -249,7 +352,51 @@
                 "firstName": "Andreas A.",
                 "lastName": "Malikopoulos"
             }
-        ]
+        ],
+        "abstract": "Emerging mobility systems, for example, connected and automated vehicles (CAVs), shared mobility, and electric vehicles, mark a paradigm shift in which myriad opportunities exist for users to better monitor transportation network conditions and make optimal operating decisions to improve safety and reduce pollution, energy consumption, and travel delays <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref>. As we move to increasingly complex emerging mobility systems, new control approaches are needed to optimize the impact on the system behavior <xref ref-type=\"bibr\" rid=\"ref2\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[2]</xref> of the interplay among vehicles in different traffic scenarios <xref ref-type=\"bibr\" rid=\"ref3\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[3]</xref>. Several studies have shown the benefits of CAVs to reduce energy consumption and alleviate traffic congestion in specific transportation scenarios <xref ref-type=\"bibr\" rid=\"ref4\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[4]</xref>, <xref ref-type=\"bibr\" rid=\"ref5\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[5]</xref>, <xref ref-type=\"bibr\" rid=\"ref6\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[6]</xref>. There have been two major approaches to utilizing CAVs, namely, platooning and traffic smoothing. A platoon is defined as a group of closely coupled vehicles traveling to reduce their aerodynamic drag, especially at high cruising speeds. The concept of platoon formation is a popular system-level approach to address traffic congestion, which gained momentum in the 1980s and 1990s <xref ref-type=\"bibr\" rid=\"ref7\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[7]</xref>, <xref ref-type=\"bibr\" rid=\"ref8\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[8]</xref>, <xref ref-type=\"bibr\" rid=\"ref9\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[9]</xref>. There has been a rich body of research exploring various methods of forming and/or utilizing platoons to improve transportation efficiency <xref ref-type=\"bibr\" rid=\"ref10\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[10]</xref>, <xref ref-type=\"bibr\" rid=\"ref11\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[11]</xref>, <xref ref-type=\"bibr\" rid=\"ref12\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[12]</xref>, <xref ref-type=\"bibr\" rid=\"ref13\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[13]</xref>, <xref ref-type=\"bibr\" rid=\"ref14\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[14]</xref>, <xref ref-type=\"bibr\" rid=\"ref15\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[15]</xref>, <xref ref-type=\"bibr\" rid=\"ref16\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[16]</xref>, <xref ref-type=\"bibr\" rid=\"ref17\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[17]</xref>, <xref ref-type=\"bibr\" rid=\"ref18\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[18]</xref>, <xref ref-type=\"bibr\" rid=\"ref19\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[19]</xref>, <xref ref-type=\"bibr\" rid=\"ref20\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[20]</xref>, <xref ref-type=\"bibr\" rid=\"ref21\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[21]</xref>, <xref ref-type=\"bibr\" rid=\"ref22\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[22]</xref>.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Energy consumption",
+                "Smoothing methods",
+                "Pollution",
+                "Transportation",
+                "Control systems",
+                "Real-time systems",
+                "Safety"
+            ],
+            "Index Terms": [
+                "Energy Consumption",
+                "Electric Vehicles",
+                "Traffic Congestion",
+                "Transportation Network",
+                "Specific Scenarios",
+                "Energy Usage",
+                "Self-driving",
+                "Direct Efforts",
+                "Roundabout",
+                "Automated Vehicles",
+                "Trajectory Planning",
+                "Digital Twin",
+                "Traffic Scenarios",
+                "Mobile Vehicles",
+                "Coordination Framework",
+                "Transport Corridors",
+                "Hardware Description",
+                "Optimal Control",
+                "Control Input",
+                "Travel Time",
+                "Control Zone",
+                "Control Constraints",
+                "Minimum Speed",
+                "Safety Constraints",
+                "Return Time",
+                "Time Trajectories",
+                "Effect Of Error",
+                "Line Segment",
+                "Speed Limit",
+                "Average Speed"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -290,7 +437,20 @@
                 "firstName": "Harry L.",
                 "lastName": "Trentelman"
             }
-        ]
+        ],
+        "abstract": "The concept of dissipativity, as introduced by Jan Willems, is one of the cornerstones of systems and control theory. Typically, dissipativity properties are verified by resorting to a mathematical model of the system under consideration. This article aims to assess dissipativity using computing storage functions for linear systems directly from measured data. As our main contributions, we provide conditions under which dissipativity can be ascertained from a finite collection of noisy data samples. Three different noise models are considered that can capture a variety of situations, including the cases where the data samples are noise-free, the energy of the noise is bounded, or the individual noise samples are bounded. All conditions are phrased in terms of data-based linear matrix inequalities, which can be readily solved using existing software packages.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linear systems",
+                "Robust control",
+                "Riccati equations",
+                "Optimal control",
+                "Stochastic processes",
+                "Stability analysis",
+                "Network synthesis",
+                "Data models"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -313,7 +473,19 @@
                 "firstName": "Lars",
                 "lastName": "Grüne"
             }
-        ]
+        ],
+        "abstract": "This article describes the manifold relationships dissipativity and optimal control, with a focus on recent developments. In the early days of dissipativity theory, the questions “how can optimal control be used to establish dissipativity?” and vice versa, “how can dissipativity can be used to establish (inverse) optimality?” were extensively investigated. Recently, the question “what does dissipativity tell us about the qualitative behavior of optimally controlled systems?” came into focus. This development was triggered by the observation that dissipativity is extremely useful for the understanding of (economic) model predictive control schemes, and opened a new view on the relationship between dissipativity and optimal control. ",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimal control",
+                "Nonlinear systems",
+                "Manifolds",
+                "Cost function",
+                "Predictive control",
+                "Stability analysis",
+                "Lyapunov methods"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -336,7 +508,19 @@
                 "firstName": "Laurent",
                 "lastName": "Lessard"
             }
-        ]
+        ],
+        "abstract": "Optimization problems in engineering and applied mathematics are typically solved in an iterative fashion, by systematically adjusting the variables of interest until an adequate solution is found. The iterative algorithms that govern these systematic adjustments can be viewed as a control system. In control systems, the output is measured and the input is adjusted using feedback to drive the error to zero. Similarly, in iterative algorithms, the optimization objective is evaluated and the candidate solution is adjusted to drive it toward the optimal point. Choosing an algorithm that works well for a variety of optimization problems is akin to robust controller design. Just as dissipativity theory can be used to analyze the stability properties of control systems, it can also be used to analyze the convergence properties of iterative algorithms. By defining an appropriate notion of “energy” that dissipates with every iteration of the algorithm, the convergence properties of the algorithm can be characterized. This article formalizes the connection between iterative algorithms and control systems and shows through examples how dissipativity theory can be used to analyze the performance of many classes of optimization algorithms. This control-theoretic viewpoint enables the selection and tuning of optimization algorithms to be performed in an automated and systematic way.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer science",
+                "Approximation algorithms",
+                "Iterative algorithms",
+                "Optimization",
+                "Iterative methods",
+                "Systematics",
+                "Stability analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -377,7 +561,19 @@
                 "firstName": "Yiguang",
                 "lastName": "Hong"
             }
-        ]
+        ],
+        "abstract": "Game theory, which studies the cooperation and conflict among multiple rational decision makers, called players, can be utilized to analyze a large class of engineering systems (for example, wireless communication networks and smart grids). A game usually consists of three components: the players; the players’ actions; and their objective functions, which the players try to either maximize (in which case the objective function is known as a utility or payoff function) or minimize (in which case the objective function is referred to as a cost or loss function). In general, the players’ objective functions are dependent on other players’ actions, which lead to the coupling between the players’ actions in the decision-making process. This article is concerned with static games, where the order of the players’ decisions is not important (see “Summary”).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wireless communication",
+                "Memory management",
+                "Estimation",
+                "Game theory",
+                "Programming",
+                "Linear programming",
+                "Nash equilibrium"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -424,7 +620,17 @@
                 "firstName": "Thomas B.",
                 "lastName": "Schön"
             }
-        ]
+        ],
+        "abstract": "The identification of nonlinear systems is a challenging problem. Physical knowledge of a system can be used in the identification process to significantly improve the predictive performance by restricting the space of possible mappings from the input to the output. Typically, the physical models contain unknown parameters that must be learned from data. Classical methods often restrict the possible models or have to resort to approximations of the models that introduce biases. Sequential Monte Carlo methods enable learning without introducing any bias for a more general class of models. In addition, they can also be used to approximate a posterior distribution of the model parameters in a Bayesian setting. This article provides a general introduction to sequential Monte Carlo and shows how it naturally fits in system identification by giving examples of specific algorithms. The methods are illustrated on two systems: one consisting of two cascaded water tanks with possible overflow in both tanks, and one describing the spread of a mosquito-borne disease. ",
+        "keywords": {
+            "IEEE Keywords": [
+                "Behavioral sciences",
+                "Monte Carlo methods",
+                "Object recognition",
+                "Predictive models",
+                "Nonlinear systems"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -447,7 +653,21 @@
                 "firstName": "Lacra",
                 "lastName": "Pavel"
             }
-        ]
+        ],
+        "abstract": "I n this article, we show how dissipativity and passivity theory impacts game theory, in particular, learning in multiplayer games. Over the years, a plethora of algorithms/dynamics have been proposed in the game theoretic literature for learning (or seeking) a Nash equilibrium. From the best-response play, proximal dynamics and (projected) gradient-play to fictitious-play, payoff-based play or Q-learning (reinforcement-learning), the list is long. Herein, we consider some these popular game-theoretic algorithms and show how the principle of balancing passivity can explain their operation, as well as the trade-off between game properties and learning dynamics properties. We discuss how passivity and basic properties of interconnected systems lead to simplified proofs of convergence of such algorithms, and furthermore, how by leveraging them, novel algorithms and game dynamics with better properties can be generated.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Couplings",
+                "Instruments",
+                "Game theory",
+                "Cyber-physical systems",
+                "Nash equilibrium",
+                "Linear programming",
+                "Heuristic algorithms",
+                "Interconnected systems",
+                "Q-learning"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -482,7 +702,19 @@
                 "firstName": "Bruno O.S.",
                 "lastName": "Teixeira"
             }
-        ]
+        ],
+        "abstract": "This tutorial provides a comprehensive perspective on the study of zonotopic filtering for nonlinear uncertain dynamical systems. Unlike stochastic methods that characterize the states by means of random vectors, set-based observers estimate deterministic sets that are guaranteed to contain the system states. Among many classes of sets, the focus here is on zonotopes due to their appealing properties that pursue a good tradeoff between precision and computational cost. We start by reviewing the fundamentals of zonotopic filtering together with illustrative examples. As nonlinear systems bring up many challenges for this topic, we choose one of the first nonlinear zonotopic observers proposed in the literature to guide a series of discussions. After presenting this algorithm and understanding its limitations, we extend it by incorporating state inequality constraints. In addition, we motivate the use of linear programs when solving minimum-volume intersections. Additionally, we give a practical discussion on the implementation of discrete-time zonotopic algorithms for sampled-data nonlinear dynamical systems. To better introduce the zonotopic approaches, we briefly review unscented Kalman filtering to trace parallels between the stochastic and set-theoretic frameworks. Then the presented algorithms are experimented and compared in a case study involving a quadrotor unmanned aerial vehicle. ",
+        "keywords": {
+            "IEEE Keywords": [
+                "Filtering",
+                "Control systems",
+                "State estimation",
+                "Nonlinear systems",
+                "Ellipsoids",
+                "Arithmetic",
+                "Tutorials"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -523,7 +755,21 @@
                 "firstName": "Mark W.",
                 "lastName": "Spong"
             }
-        ]
+        ],
+        "abstract": "The use of passivity in control theory was motivated by the earlier use of passivity in circuit theory and passive network synthesis, beginning in the 1950s. With the well known analogy between electrical and mechanical systems, it is natural that passivity should play an important role in the control of mechanical systems and, in particular, in the control of robots. Beginning in the 1980s, the passivity property and passivity-based control began to play an increasingly important role in a host of robotics applications, including robust and adaptive control of manipulators, and time-delayed teleoperation. This article provides a historical overview of passivity-based robot control from the authors’ perspective and their contributions in control of Lagrangian and Hamiltonian systems, networked control, teleoperation, and vision-based control.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kinematics",
+                "History",
+                "Adaptive control",
+                "Manipulator dynamics",
+                "Control theory",
+                "Passive networks",
+                "Robots",
+                "Circuit theory",
+                "Networked control systems"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -546,7 +792,24 @@
                 "firstName": "Murat",
                 "lastName": "Arcak"
             }
-        ]
+        ],
+        "abstract": "A major problem for safety-critical engineering systems is to certify the required stability and performance properties using analytical and computational models of a physical system. The methods for such certification are severely limited in their scalability, that is, their ability to cope with a large number of physical components and the complexity of their interactions. Rather than tackling the system model as a whole, this article advocates a compositional approach that derives system-level guarantees from dissipativity properties of the subsystems and their interconnection structure. This method is particularly suitable when the subsystems are amenable to standard analytical and computational methods. However, a monolithic model of the interconnection is beyond the reach of these techniques. The results reviewed here were motivated by several application problems, such as resource allocation in communication networks, motion coordination in multiagent systems, and dynamical analysis of biochemical reaction networks. Several examples are drawn from these applications to illustrate the results.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Open systems",
+                "Control theory",
+                "Large-scale systems",
+                "Lyapunov methods",
+                "Design methodology",
+                "Safety",
+                "Stability criteria",
+                "Computational modeling",
+                "Resource management",
+                "Biological system modeling",
+                "Complexity theory",
+                "Multi-agent systems"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -575,7 +838,19 @@
                 "firstName": "Uday V.",
                 "lastName": "Shanbhag"
             }
-        ]
+        ],
+        "abstract": "Decision making under uncertainty has been studied extensively over the last 70 years, if not earlier. In the field of optimization, models for two-stage, stochastic, linear programming, presented by Dantzig <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref> and Beale <xref ref-type=\"bibr\" rid=\"ref2\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[2]</xref>, are often viewed as the basis for the subsequent development of the field of stochastic optimization. This subfield of optimization now encompasses a breadth of models that can accommodate both convexity and nonconvexity, probabilistic constraints, risk-aversion, discreteness, and multistage decision-making (compare <xref ref-type=\"bibr\" rid=\"ref3\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[3]</xref>, <xref ref-type=\"bibr\" rid=\"ref4\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[4]</xref>). Similarly, stochastic control <xref ref-type=\"bibr\" rid=\"ref5\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[5]</xref> has proven to be an enormously impactful subarea of control theory. When one extends the decision-making paradigm to multiple self-interested decision makers, then the resulting problem can be viewed as a noncooperative game that is rooted in the groundbreaking text by Von Neumann and Morgenstern <xref ref-type=\"bibr\" rid=\"ref6\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[6]</xref>.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Analytical models",
+                "Uncertainty",
+                "Decision making",
+                "Stochastic processes",
+                "Game theory",
+                "Probabilistic logic",
+                "Nash equilibrium"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -598,7 +873,19 @@
                 "firstName": "Kim",
                 "lastName": "Batselier"
             }
-        ]
+        ],
+        "abstract": "Tensor decompositions can be a powerful tool when faced with the curse of dimensionality and have been applied in myriad applications. Their application to problems in the control community remains largely unexplored. This article aims at filling this gap by introducing tensor decompositions, where the key idea is always to exploit structure in the problem to lift the curse of dimensionality. This structure leads to the notion of low rank, which can be intuitively understood as parameters in the problem being correlated. The potential of low-rank tensor decompositions is illustrated by means of three applications, specifically in nonlinear system identification. The parametric identifiation of both Volterra systems and state-space models with polynomial inputs is discussed.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tensors",
+                "Data models",
+                "Computational modeling",
+                "Nonlinear systems",
+                "Dynamical systems",
+                "System identification",
+                "Tutorials"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -621,7 +908,25 @@
                 "firstName": "Richard",
                 "lastName": "Pates"
             }
-        ]
+        ],
+        "abstract": "Can simple systems be regulated by simple controllers? Engineering experience indicates that this is often the case. Certainly, the overwhelming majority of industrially deployed controllers are proportional-integral-derivative (PID) controllers, many of which are tuned without detailed models. This is often in disappointing contrast with the controllers produced using model-based approaches. This article takes a slightly different approach. (For a nontechnical summary of the approach taken in this article, see “Nontechnical Summary.”) Rather than imposing structural constraints on the controller (which is difficult and diminishes the level of achievable performance), we instead look for structural features in system models that naturally yield simpler optimal controllers. This is similar in philosophy to the work of [7], in which the property of spatial invariance is shown to simplify the realization and synthesis of optimal controllers for a class of optimal control problems. However, rather than using spatial invariance to define the notion of a “simple system,” we instead turn to passivity and reciprocity. ",
+        "keywords": {
+            "IEEE Keywords": [
+                "Passive networks",
+                "Power systems",
+                "PD control",
+                "Behavioral sciences",
+                "Capacitors",
+                "Mathematical models",
+                "Optimal control",
+                "State-space methods",
+                "Renewable energy resources",
+                "Riccati equations",
+                "Resistors",
+                "Inductors",
+                "Scalability"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -650,7 +955,19 @@
                 "firstName": "Tao",
                 "lastName": "Liu"
             }
-        ]
+        ],
+        "abstract": "This article reviews the development of dissipativity theory, with application to stability analysis from the seminal 1972 articles by Jan Willems toward both basic generalizations and specific results for classes of complex systems. After a brief historical background for stability analysis, a theory by Hill and Moylan is reviewed, which includes a very general input–output-to-state–space dissipativity connection, a framework for abstract stability results, and aspects not often addressed (that is, nonquadratic supply rates and multiple equilibria). Then, some extensions for testing dissipativity and stability for other forms of complexity in switching, impulsive dynamics, and network systems are presented, including connections to the input-to-state stability approach, with some suggestions for further work.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Stability analysis",
+                "Mathematical models",
+                "Complexity theory",
+                "Nonlinear systems",
+                "Dynamical systems",
+                "Energy storage"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -679,7 +996,21 @@
                 "firstName": "Panos J.",
                 "lastName": "Antsaklis"
             }
-        ]
+        ],
+        "abstract": "Dissipativity theory is an important energy-based framework for the analysis and design of control systems using an input–output approach. Quadratic supply rate functions in particular have been of great interest since their introduction by Jan Willems. Quadratic supply rate dissipativity exhibits many interesting properties, including a tighter relation to stability. Q-dissipativity and its most prominent special case, passivity, are classical tools. However, their relevance to cyberphysical system (CPS) design stems from the fact that these concepts can be extended to more general hybrid/ switched and networked systems. Dissipative and passive systems exhibit a compositional property for parallel and negative feedback interconnections. Thus, by ensuring that each subsystem is passive, a complex system can be constructed to satisfy specific properties by design and avoid undesirable emergent behaviors. Passivity indices also stem from Q-dissipativity. They are measures of passivity margins and further extend the applicability of passivity-based tools to nonpassive systems as well. The indices have been used in designing secure and stable interconnected systems, hybrid systems, and data-driven analysis and control design. Because of these facts, measures of passivity have been further developed for systems with significant cybercomponents. This short article provides a brief overview of of these new findings in the context of CPSs and presents directions for future work.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cyber-physical systems",
+                "Control systems",
+                "Stability criteria",
+                "Switches",
+                "Negative feedback",
+                "Interconnected systems",
+                "Cyber-physical systems",
+                "Control design",
+                "Complex systems"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -714,7 +1045,19 @@
                 "firstName": "Derek A.",
                 "lastName": "Paley"
             }
-        ]
+        ],
+        "abstract": "Since the early modern age, the development of various means of transit has contributed to a dramatic improvement in quality of life. However, in past decades (particularly in urban environments), the simultaneous utilization of mobility options has resulted in poor air quality, traffic congestion, and a lack of parking. To solve these problems without imposing severe restrictions on personal mobility, alternatives to cars powered by internal combustion engines are necessary (see “Summary”).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Automotive engineering",
+                "Urban areas",
+                "Time series analysis",
+                "Social factors",
+                "Neural networks",
+                "Motorcycles",
+                "Internal combustion engines"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -755,7 +1098,19 @@
                 "firstName": "Dennis S.",
                 "lastName": "Bernstein"
             }
-        ]
+        ],
+        "abstract": "It often occurs in practice that the response to a step input or setpoint command moves initially in a direction that is opposite to the direction of the asymptotic response. In many real-world applications, this phenomenon—called initial undershoot—presents a fundamental limitation on control system performance. Although the basic mechanism responsible for initial undershoot, namely, an odd number of real, positive zeros, is well understood, it is surprising that, as the setpoint changes, initial undershoot may appear or disappear for the same plant dynamics. The goal of this tutorial note is to investigate the causes of this puzzling phenomenon. In particular, for setpoint command following with a changing setpoint, this article shows (spoiler alert) that the internal state when the setpoint changes determines the presence or absence of initial undershoot. Complete proofs for both initial and delayed undershoot in both continuous time and discrete-time systems are given to make the article self-contained and useful for students and instructors of systems and control theory",
+        "keywords": {
+            "IEEE Keywords": [
+                "Visualization",
+                "Cyber-physical systems",
+                "Control systems",
+                "Feedback control",
+                "Control theory",
+                "Collision avoidance",
+                "Robots"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -784,7 +1139,24 @@
                 "firstName": "Vojin",
                 "lastName": "Jovanovic"
             }
-        ]
+        ],
+        "abstract": "Models of a playground swing have been studied since the 1960s. However, in most of them, the position of the swinger is controlled directly. This simplifies the problem but hides the mechanics of torques applied to keep the swing moving in a regular pattern. This article studies these mechanics. Two models of a swing with torques as controls that we consider are identical to popular models of modern robotics: the Acrobot and reaction wheel pendulum. However, the control task of sustaining the swing’s regular oscillations by a static feedback control is new and challenging, especially when damping in the joint connecting the swing to the frame is considered. We develop two types of controls to accomplish this task. One works for small damping and is based on linearizing the undamped system by a suitable preliminary feedback control. The other works for large damping. In the steady state, the resulting closed-loop system describes a harmonically driven damped pendulum (a simple system known for its complex behavior), including chaotic motion for some parameter values. To address such complexities, we build free parameters into the controls, then adjust them based on simulations to avoid chaos and achieve regular oscillations that are seen on playgrounds.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Damping",
+                "State feedback",
+                "Torque control",
+                "Limit-cycles",
+                "Wheels",
+                "Mathematical models",
+                "Oscillators",
+                "Feedback control",
+                "Steady-state",
+                "Closed loop systems",
+                "Complexity theory",
+                "Mobile robots"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -813,7 +1185,19 @@
                 "firstName": "Edward H.",
                 "lastName": "Branford"
             }
-        ]
+        ],
+        "abstract": "The dissipativity concept sits at the intersection of physics, systems theory, and control engineering as a natural generalization of passive systems that dissipate energy. It relates the external behavior of systems to their internal state and connects the subjects of optimal control, algebraic Riccati equations, linear matrix inequalities, complex functions, and spectral factorization. Within control, its applications include the analysis and design of interconnected systems (such as cyberphysical systems), robustness, and the absolute stability problem as well as network synthesis (of electrical, mechanical, and multiphysics systems). Dissipativity emerged as a stand-alone concept following the seminal “Dissipative Dynamical Systems” articles of Jan Willems, which drew on the work of Kalman, Youla, Anderson, Yakubovich, Popov, and others. This article details recent developments in the treatment of dissipativity and the related concept of reciprocity for systems that are not necessarily controllable and need not lend themselves naturally to an input–state–output perspective, as is the case for many physical and passive systems. We illustrate these concepts using simple electric circuit and mechanical network examples. We also draw inspiration from the behavioral theory developed by Jan Willems and collaborators, a natural formalism for analyzing physical systems that need not be controllable and characterized in terms of inputs and outputs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Passive networks",
+                "Sufficient conditions",
+                "Optimal control",
+                "Transfer functions",
+                "Controllability",
+                "Stability analysis",
+                "Network synthesis"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -836,7 +1220,20 @@
                 "firstName": "Bernard",
                 "lastName": "Brogliato"
             }
-        ]
+        ],
+        "abstract": "Passivity and dissipativity, in Jan Willems’s sense, are known to be powerful tools for stability analysis and feedback control design. For instance, passive systems in negative feedback interconnection with slope-restricted, static, single-valued, smooth nonlinearities, known as Lur’e systems, have been thoroughly studied in automatic control, yielding the so-called absolute stability problem (with the famous Popov and circle criteria). On the other hand, large classes of nonsmooth systems (complementarity dynamical systems, relay systems, projected dynamical systems, evolution and differential variational inequalities, Moreau’s sweeping processes, and maximal monotone differential inclusions), with applications in circuits, mechanics, and economics, are interpreted as set-valued Lur’e systems, in which the feedback nonlinearity is a multivalued mapping. Therefore, the closed-loop system is a differential inclusion of a certain type, the well posedness of which must be analyzed as a prerequisite for stability and control. This introductory article focuses on the well posedness of such set-valued feedback systems. It is shown how the existence and uniqueness of solutions to these specific differential inclusions benefit a lot from the passivity of the system and the maximal monotonicity (which is a form of incremental passivity) of the feedback set-valued mapping. Available results are reviewed, many illustrative examples are given, and some open issues are highlighted.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feedback loop",
+                "Stochastic systems",
+                "Ordinary differential equations",
+                "Stability analysis",
+                "Closed loop systems",
+                "Dynamical systems",
+                "Nonlinear systems",
+                "Passive networks"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -865,7 +1262,23 @@
                 "firstName": "Xiaodong",
                 "lastName": "Cheng"
             }
-        ]
+        ],
+        "abstract": "Half a century ago, and a few years after receiving his Ph.D. degree in electrical engineering at the Massachusetts Institute of Technology, Jan Willems published articles on dissipative dynamical systems <xref ref-type=\"bibr\" rid=\"ref30\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[30]</xref>, <xref ref-type=\"bibr\" rid=\"ref31\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[31]</xref>. In retrospect, the conceptual thinking and elegant generalization of the basic physical properties behind the notion of dissipation can be viewed as a distinctive stage in the field of systems and control. These articles have sparked an impressive number of scientific and technological contributions in the field of systems theory, mathematical modeling, and control systems synthesis. Especially with the introduction of powerful numerical tools to solve matrix inequalities, the classical theory of dissipative systems has proved a strong, rich, and (above all) elegant conceptual and theoretical framework to solve a plethora of relevant problems in robust control, stabilization, and estimation. It is a pleasure to contribute to a volume on dissipative dynamical systems, 50 years after the publication of these seminal articles.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Couplings",
+                "Robust control",
+                "Protocols",
+                "Robust stability",
+                "Mathematical models",
+                "Numerical models",
+                "Synchronization",
+                "Network systems",
+                "Dynamical systems",
+                "Interconnected systems",
+                "Finite element analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -881,7 +1294,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the Technical Committee on System Identification and Adaptive Control.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -897,7 +1312,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -913,7 +1330,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Present information on the Technical Committee on Security and Privacy.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -929,7 +1348,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the  2021 SIAM Conference on Control and Its Applications.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -945,7 +1366,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Reports on CS Society day which will take place on October 19, 2022.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -961,7 +1384,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Reports on the activities of the CS Technical Committee on Process Control.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -977,7 +1402,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -993,7 +1420,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the 2021 European Control Conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1009,7 +1438,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents a listing of the editorial board, board of governors, current staff, committee members, and/or society editors for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1025,7 +1456,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the CSS Technical Committee on Robust and Complex Systems.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1041,7 +1474,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the 2021 American Control Conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1057,7 +1492,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the  2023 American Control Conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1073,7 +1510,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the 29th Mediterranean Conference on Control and Automation.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1089,7 +1528,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Reports on the activities of the CS Technical Committee on Smart Cities.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1105,7 +1546,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Reports on the CS society CSS Day,",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1121,7 +1564,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the CSS Technical Committee on Hybrid Systems.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1137,7 +1582,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the IEEE Conference on Decision and Control 2021.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1153,7 +1600,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Reports on voting online voting procedures for CSS members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1169,7 +1618,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Pressents information on the 2021 Women in Control Webinar at the American Control Conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1192,7 +1643,9 @@
                 "firstName": "Alf",
                 "lastName": "Isaksson"
             }
-        ]
+        ],
+        "abstract": "Reports on news of interest to CSS members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1208,7 +1661,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Reports on the CS society Technical Committee Outstanding Student Paper Prize.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1231,7 +1686,9 @@
                 "firstName": "Alexander",
                 "lastName": "Medvedev"
             }
-        ]
+        ],
+        "abstract": "Presents information on the CSS Technical Committee on Healthcare and Medical Systems.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1247,7 +1704,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents a listing of the editorial board, board of governors, current staff, committee members, and/or society editors for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1263,7 +1722,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the CSS Technical Committee on Power Generation.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1279,7 +1740,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on the 60th IEEE Conference on Decision and Control.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1302,7 +1765,9 @@
                 "firstName": "Mara",
                 "lastName": "Tanelli"
             }
-        ]
+        ],
+        "abstract": "Presents information on the CSS Technical Committee on Automotive Controls.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1331,7 +1796,19 @@
                 "firstName": "Yiguang",
                 "lastName": "Hong"
             }
-        ]
+        ],
+        "abstract": "This special issue provides an introduction to game-theoretic decision making in multiagents over networks—a research area that has exploded in the systems and control community over the past few years. There has been an almost exponentially growing interest in the application of game-theoretic concepts and tools in control, multiagent systems, and networks. This is partly due to their wide application: from smart grids, road traffic control, communication networks, and network congestion control, to social networks and sensor networks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Special issues and sections",
+                "Social networking (online)",
+                "Decision making",
+                "Game theory",
+                "Multi-agent systems",
+                "Nash equilibrium",
+                "Smart grids"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1354,7 +1831,9 @@
                 "firstName": "Thomas",
                 "lastName": "Parisini"
             }
-        ]
+        ],
+        "abstract": "Welcome to my third column of 2022. It follows the great “President’s Message” invited column by Giovanni Cherubini (IBM Research Zurich, Switzerland) that focused on the impact on big data storage systems of advanced control techniques for magnetic tape drives (see the August 2022 issue of our magazine <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref>). Here, I would like to build a virtuous future connection between the Outreach Program of the IEEE Control Systems Society (CSS) and the “new normal” of our conferences I alluded to in my June 2021 “President’s Message” column <xref ref-type=\"bibr\" rid=\"ref2\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[2]</xref>.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1370,7 +1849,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "It is an honor and a challenge to be asked by Thomas Parisini to write a president’s invited column for <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i>. It represents a big responsibility as well, especially as I am going to give an overview of a technology that might be perceived as controversial (mainly because it has been around for many years but continues to have a significant impact on our society).",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1393,7 +1874,9 @@
                 "firstName": "Thomas",
                 "lastName": "Parisini"
             }
-        ]
+        ],
+        "abstract": "Welcome to my second column of 2022, following the exciting “President’s Message” invited column by Bob Shorten (Imperial College, United Kingdom) that dealt with the potential impact of control theory on society, highlighting the challenges in front of us (see the April 2022 issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i>).",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1422,7 +1905,9 @@
                 "firstName": "Michael K.",
                 "lastName": "Sain"
             }
-        ]
+        ],
+        "abstract": "In this issue, “25 Years Ago” revisits the article “Controlling Buildings: A New Frontier in Feedback,” by B.F. Spencer Jr. and Michael K. Sain in <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems Magazine</i>, vol. 17, no. 6, pp. 19–35, 1997. Below is an excerpt from the article.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1438,7 +1923,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "This <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i> issue celebrates the 50th anniversary of the publication of Jan Willems’ two publications laying the foundations of dissipativity theory. “From the Editor” elaborates on reasons to celebrate this event. Guest Editor Arjan van der Schaft has assembled six articles for the first special issue devoted to the first part of the dissipativity article: “Compositional Design and Verification of Large-Scale Systems Using Dissipativity Theory,” by Murat Arcak; “Passivity-Based Control of Robots,” by Nikhil Chopra, Masayuki Fujita, Romeo Ortega, and Mark Spong; “Dissipativity and Optimal Control,” by Lars Grüne; “Dissipativity, Stability, and Connections: Progress in Complexity,” by David Hill and Tao Liu; “Interconnection and Approximation in Networks of Dissipative Systems,” by Siep Weiland and Xiaodong Cheng; and “Passivity Measures in Cyberphysical Systems Design,” by Hasan Zakeri and Panos Antsaklis. The six articles are described in the introductory article by Guest Editor Arjan van der Schaft.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1454,7 +1941,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1470,7 +1963,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. What are your research interests?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1493,7 +1992,9 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "This <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i> issue continues to celebrate the 50th anniversary of dissipativity theory with a focus on the second part of Jan Willems’ 1972 article. “From the Editor” elaborates on the significance of that article, in particular the relevance of the relaxation property for today’s control theory. Guest editor Arjan van der Schaft has assembled seven articles for this special issue: “Dissipativity, Reciprocity, and Passive Network Synthesis: From the Seminal Dissipative Dynamical Systems Articles of Jan Willems to the Present Day,” by Timothy Hughes and Edward Branford; “Dissipative Dynamical Systems With Set-Valued Feedback Loops: Well-Posed Set-Valued Lur’e Dynamical Systems,” by Bernard Brogliato; “The Analysis of Optimization Algorithms: A Dissipativity Approach,” by Laurent Lessard; “Passive and Reciprocal Networks: From Simple Models to Simple Optimal Controllers,” by Richard Pates; “Dissipativity Theory in Game Theory: On the Role of Dissipativity and Passivity in Nash Equilibrium Seeking,” by Lacra Pavel; “Dissipativity and Integral Quadratic Constraints: Tailored Computational Robustness Tests for Complex Interconnections,” by Carsten Scherer; and “Data-Driven Dissipativity Analysis: Application of the Matrix S-Lemma,” by Henk Van Waarde, Kanat Camlibel, Paolo Rapisarda, and Harry Trentelman. The seven articles are described in the introductory article by guest editor Arjan van der Schaft.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1516,7 +2017,21 @@
                 "firstName": "Arjan",
                 "lastName": "van der Schaft"
             }
-        ]
+        ],
+        "abstract": "The introduction to this article could be very simple; read it yourself! Indeed, the article is clearly written and basically self-contained. After so many years, it still provides stimulating reading, not only from a historical, but also a contemporary research point of view. Thus, the aim of this introduction is to let the article speak for itself, while providing some extra context for its origins and pointers to later developments. This special issue is devoted to Part I of the article, leaving the introduction to Part II to the next special issue (see “The Articles of This Special Issue”).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Special issues and sections",
+                "Dynamical systems",
+                "Optimal control",
+                "Stability criteria",
+                "Thermodynamics",
+                "Lyapunov methods",
+                "Energy storage",
+                "Control theory",
+                "Willems, Jan C."
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1532,7 +2047,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "I love control theory. I love the concept of feedback. I love applications of control theory. I especially love the mathematical rigor that comes with formulating problems in control, the odor of a freshly cooked proof, and the thrill of implementing an algorithm in a real device or application. I have also been extremely fortunate to have spent my entire life putting into practice the things that I love and working on problems that involve the use of feedback to design engineering systems. Many of these could be described as conventional problems of the type found in a traditional control course, such as my work on automotive control systems <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref>. Some of the problems that I have worked on are less conventional, such as my work on the transmission control protocol <xref ref-type=\"bibr\" rid=\"ref2\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[2]</xref>, the COVID-19 pandemic <xref ref-type=\"bibr\" rid=\"ref3\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[3]</xref>, or the area of smart cities <xref ref-type=\"bibr\" rid=\"ref4\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[4]</xref>. Despite all of this, my deep affection and love of the discipline, and the great fortune to have worked on a vast portfolio of projects (both theoretical and applied), one question returns to me over and over again: Why do we do what we do?",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1555,7 +2072,17 @@
                 "firstName": "Arjan",
                 "lastName": "van der Schaft"
             }
-        ]
+        ],
+        "abstract": "The two-part article, “Dissipative Dynamical Systems,” by Jan C. Willems, was submitted in January 1972 to the <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Archive for Rational Mechanics and Analysis</i> and published in the same year (vol. 45, Part I, pp. 321–351, Part II: pp. 352–393). While Part I develops the theory of dissipative systems for general input–state–output systems, Part II confines itself to <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">linear systems</i>. Moreover, most of Part II is about dissipativity with respect to the supply rate <inline-formula xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><tex-math notation=\"LaTeX\">$y{\\hspace{0.06em}}^{\\top}u,$</tex-math></inline-formula> that is, linear <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">passive</i> systems. The main questions addressed in Part II concern the analysis of the set of storage functions of linear passive systems (with the existence of a minimal and maximal element already established in Part I) and the compatibility of storage functions with other external and internal symmetry properties of the system, such as reciprocity and reversibility. (See “The Articles of This Special Issue.”) This links the article closely to the realization theory of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">physical</i> linear systems, in particular, the network synthesis of electrical circuits, the Onsager–Casimir relation of linear thermodynamics, and the input–output analysis of linear viscoelastic systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Special issues and sections",
+                "Thermodynamics",
+                "Network synthesis",
+                "Dynamical systems",
+                "Linear systems"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1571,7 +2098,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1587,7 +2120,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Successful industrial applications and favorable comparisons with conventional alternatives have motivated the development of a large number of schemes for neural-network-based control. Each scheme is usually composed of several independent functional features, which makes it difficult to identify precisely what is new in the scheme. Help from available overviews is therefore often inadequate, since they usually discuss only the most important overall schemes. This work breaks the available schemes down to their essential functional features and organizes the latter into a multi-level classification. The classification reveals that similar schemes often get placed in different categories, fundamentally different features often get lumped into a single category, and proposed new schemes are often merely permutations and combinations of the well-established fundamental features.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1603,7 +2138,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides society information that may include news, reviews or technical notes that should be of interest to practitioners and researchers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1626,7 +2163,9 @@
                 "firstName": "John",
                 "lastName": "Hedengren"
             }
-        ]
+        ],
+        "abstract": "Provides society information that may include news, reviews or technical notes that should be of interest to practitioners and researchers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1642,7 +2181,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1658,7 +2203,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "In this issue, “25 Years Ago” revisits the article “Modeling Piezoelectric Stack Actuators for Control of Micromanipulation,” by Michael Goldfarb and Nikola Celanovic, <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems Magazine</i>, vol. 17, no. 3, pp. 69Ð79, 1997. Below is an excerpt from the article.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1674,7 +2221,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. As a biologist, how did you find your way into control engineering?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1690,7 +2243,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1706,7 +2265,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1729,7 +2294,9 @@
                 "firstName": "Thomas",
                 "lastName": "Parisini"
             }
-        ]
+        ],
+        "abstract": "“An exciting journey has started for me!” In this way, I began my inaugural “President’s Message” column <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref>.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1745,7 +2312,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1768,7 +2341,9 @@
                 "firstName": "Kai",
                 "lastName": "Cai"
             }
-        ]
+        ],
+        "abstract": "Provides society information that may include news, reviews or technical notes that should be of interest to practitioners and researchers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1784,7 +2359,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1800,7 +2381,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1823,7 +2410,13 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "In this issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i>, we speak with Solmaz Kia, an associate professor of mechanical and aerospace engineering at the University of California, Irvine (UCI) and Tiago Roux Oliveira, an associate professor at the State University of Rio de Janeiro (UERJ), Brazil.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1846,7 +2439,13 @@
                 "firstName": "Solmaz S.",
                 "lastName": "Kia"
             }
-        ]
+        ],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1869,7 +2468,9 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "Kalman–Yakubovich–Popov (KYP). The very historical heritage of our field is at war. Do we need a new proof?",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1892,7 +2493,13 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "In this issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i>, we speak with Necmiye Ozay, associate professor of electrical engineering and computer science at the University of Michigan, Ann Arbor; Giuseppe Notarstefano, professor and director of automation engineering at the Alma Mater Studiorum Università di Bologna; and Sergio Grammatico, an associate professor at the Delft University of Technology.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1915,7 +2522,13 @@
                 "firstName": "Hong",
                 "lastName": "Chen"
             }
-        ]
+        ],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -1944,7 +2557,9 @@
                 "firstName": "Don",
                 "lastName": "Soloway"
             }
-        ]
+        ],
+        "abstract": "This article presents experimental results of a transonic wind-tunnel test that demonstrates the use of generalized predictive control for flutter suppression for a subsonic wind-tunnel wing model. The generalized predictive control algorithm is based on the minimization of a suitable cost function over finite costing and control horizons. The cost function minimizes not only the sum of the mean square output of the plant predictions, but also the weighted square rate of change of the control input with its input constraints. An additional term was added to the cost function to compensate for dynamics of the wing model that cause it to be invariant to low input frequencies. This characteristic results in a control surface that drifts within the specified input constraints. The augmentation to the cost function that penalizes this low frequency drift is derived and demonstrated. The initial validation of the controller uses a linear plant predictor model for the computation of the control inputs. Simulation results of the closed-loop system that were used to determine nominal ranges for the tuning parameters are presented. The generalized predictive controller based on the linear predictor model successfully suppressed the flutter for all testable Mach numbers and dynamic pressures in the transonic region in both simulation and wind- tunnel testing. The results confirm that the generalized predictive controller is robust to modeling errors.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1967,7 +2582,9 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "This <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i> issue includes one feature and one application for control. The feature “Convex Optimization for Trajectory Generation,” by Danylo Malyuta, Taylor P. Reynolds, Michael Szmuk, Thomas Lew, Riccardo Bonalli, Marco Pavone, and Behçet Açikmes¸e, provides a tutorial on the optimization methods that have proven themselves in both theory and practice to be fast and reliable at producing dynamically feasible trajectories for nonlinear systems subject to nonconvex constraints. The authors and their colleagues are original developers of the methods discussed: lossless convexification and two sequential convex programming algorithms called <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">SCvx</i> and <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">GuSTO</i>. At their core, all three methods leverage a reliable, low-level convex optimizer that solves nonconvex control problems through problem reformulation, linearization, or both. Over the past decade, these methods have generated growing interest across academia and industry, including from organizations such as NASA, Masten Space Systems, SpaceX, and Blue Origin. The article provides the reader with an intimate understanding of what it takes to use—or even extend—each of the methods to generate nontrivial trajectories. Open source code written in the Julia language accompanies the article and can serve as a ready-to-use toolbox for the reader’s further work on sequential convex programming.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -1990,7 +2607,9 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "Autonomous vehicle technology is advancing rapidly. Their control capabilities often rely on high-bandwidth state estimation incorporating inertial measurements. High-performance state estimation incorporates inertial measurement error models through the process of state augmentation to enable on-the-fly instrument calibration. The feature article “Inertial Measurement Unit Error Modeling Tutorial” by Jay A. Farrell, Felipe O. Silva, Farzana Rahman, and J. Wendel provides a tutorial describing the process and issues related to developing a state-space model for the stochastic errors affecting an inertial measurement unit (IMU). The starting point is the instrument error characterization data sheet provided by the manufacturer, which is typically either an Allan standard deviation graph or the Allan variance parameters extracted from that graph. The desired output of the modeling process is a linear, discrete-time, state-space model of the IMU stochastic errors suitable for augmentation to the INS error-state model. Along with this tutorial, supplementary open source software is available. One software component does the following: 1) Given a continuous-time state-space IMU stochastic error model selected by the designer to match the Allan variance, the software computes a discrete-time equivalent state-space model. 2) Given that discrete-time model, it produces a stochastic error sequence suitable for Allan variance computations. 3) Given a sequence of stochastic errors, it computes and plots the Allan variance. Given Allan variance data and a specific continuous-time state-space IMU stochastic error model structure, a second software component implements an optimization-based approach for selecting the model parameters to match the Allan variance data.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2013,7 +2632,13 @@
                 "firstName": "Randy A.",
                 "lastName": "Freeman"
             }
-        ]
+        ],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -2029,7 +2654,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides society information that may include news, reviews or technical notes that should be of interest to practitioners and researchers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2052,7 +2679,9 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "Deep learning is impacting control in many ways, if not all deep. For more than a decade, it has reinstated the state-space concept as a central and unifying modeling principle. The magical equation <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">x+ = f</i>(<italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">x, u</i>) currently dominates IEEE Control Systems Society publications, workshops, and conferences. Once confined to specialized circles of dynamic programming and nonlinear control, it has emerged over the last decade as a lingua franca shared by roboticists, optimizers, machine learners, computer programmers, and pretty much every scientist upgraded with the adjective “computational.” It celebrates the definite victory of computation over modeling in science and engineering.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2068,7 +2697,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "This <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i> issue on nonlinear system identification presents two features, a “Focus on Education” article, and an “Applications of Control” article. The first feature, “Nonlinear System Identification,” is about the use of sequential Monte Carlo methods in system identification. The authors are Anna Wigren, Johan Wågberg, Fredrik Lindsten, Adrian G. Wills, and Thomas B. Schön. When making use of physical knowledge about a system, classical methods often restrict or approximate the possible models. Sequential Monte Carlo methods, on the other hand, enable learning while respecting physical constraints without introducing any bias. The article shows how these methods naturally fit in system identification by giving examples of specific algorithms.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2084,7 +2715,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "This issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i> celebrates the 50th anniversary of the two-part dissipativity article published by Jan Willems in 1972. To celebrate this event, Arjan van der Schaft assembled six articles for this issue, celebrating the first part of the dissipativity article <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref>. Another set of seven articles will be published in the next issue to celebrate more, particularly, the second part of the dissipativity article <xref ref-type=\"bibr\" rid=\"ref2\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[2]</xref>.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2100,7 +2733,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "In this issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i>, we speak with Timothy O’Leary, a neurophysiologist and associate professor of information engineering and neuroscience in the Department of Engineering, University of Cambridge; Colin Jones, an associate professor at the École Polytechnique Fédérale de Lausanne (EPFL) in Switzerland; Enoch Yeung, an assistant professor at the University of California, Santa Barbara (UCSB); and Richard Pates, a senior lecturer at Lund University, Sweden.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -2135,7 +2774,9 @@
                 "firstName": "Kimon",
                 "lastName": "Valavanis"
             }
-        ]
+        ],
+        "abstract": "Provides society information that may include news, reviews or technical notes that should be of interest to practitioners and researchers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2151,7 +2792,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "I am pleased to welcome you to my first column of 2022, following the very intriguing “President’s Message” invited column, “The Theory–Practice–Entrepreneurship Gap,” by Steven Low (Caltech, United States) that dealt with the gap between theory and entrepreneurship in the December 2021 issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i>.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2167,7 +2810,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "No, this is not an editorial about ordinary differential equations. I borrowed my title from the latest essay of Belgian writer David Van Reybrouck <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref>. The book was written in Flemish and has now been translated into French. I wish it was written in Esperanto. Odes are amazingly universal. The word is the same in Greek (its etymological origin), Latin, English, Spanish, Italian, French, Dutch, and probably many other languages. The dictionary definition is “a <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">lyric</i> poem, typically one in the form of an address to a <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">particular</i> subject, written in varied or irregular meter.”",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2183,7 +2828,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "In this issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i>, we speak with Travis E. Gibson, an instructor of pathology at Brigham and Women’s Hospital and Harvard Medical School; Andrew Lamperski, an assistant professor of electrical and computer engineering at the University of Minnesota; Rifat Sipahi, a professor at Northeastern University in Boston; and Tansel Yucelen, an associate professor of mechanical engineering at the University of South Florida.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -2206,7 +2857,9 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "<italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">“La musique est le silence entre les notes.” (Claude Debussy)</i>",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2222,7 +2875,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides society information that may include news, reviews or technical notes that should be of interest to practitioners and researchers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2238,7 +2893,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -2267,7 +2928,9 @@
                 "firstName": "Yangsheng",
                 "lastName": "Xu"
             }
-        ]
+        ],
+        "abstract": "In this issue, “25 Years Ago” revisits the article “Human Control Strategy: Abstraction, Verification, and Replication,” by Michael C. Nechyba and Yangsheng Xu in <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems Magazine</i>, vol. 17, no. 5, pp. 48Ð61, 1997. Below is an excerpt from the article.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2283,7 +2946,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "In this issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i>, we speak with Jie Chen, who is the president of Tongji University, China. He is also director of the State Key Laboratory of Intelligent Control and Decision of Complex Systems, China, vice president of the Chinese Association of Automation (since 2013), and vice president of the Chinese Association for Artificial Intelligence (since 2019). He received the B.Sc., M.Sc., and Ph.D. degrees in control theory and control engineering from the Beijing Institute of Technology, Beijing, China in 1986, 1996, and 2001, respectively. From 1989 to 1990, he was a visiting scholar at California State University, Northridge, California, United States. From 1996 to 1997, he was a research fellow with the School of Electrical Engineering, University of Birmingham, Birmingham, United Kingdom. He is currently a professor of control science and engineering at Tongji University, China. He is an academician of the Chinese Academy of Engineering and a Fellow of IEEE and the International Federation of Automatic Control. His research interests include multiobjective optimization and decision in complex systems, multiagent systems, autonomous unmanned systems, intelligent control, nonlinear control, and optimization methods. He has authored/coauthored five monographs and more than 200 journal and conference papers. He serves as editor-in-chief of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Unmanned Systems</i> and <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Journal of Systems Science and Complexity</i> and is an editorial board member or associate editor for many international journals, such as <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Transactions on Cybernetics</i>, <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">International Journal of Robust and Nonlinear Control</i>, and <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Science China Information Sciences</i>.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -2306,7 +2975,9 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "How often have you read the second part of a two-part article? For 25 years, I contended myself to read and reread Part I of the dissipativity article, thinking that this was the noble part of the theory <xref ref-type=\"bibr\" rid=\"ref1\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[1]</xref>. Part II was just there to connect the new concept to the existing body of linear-quadratic theory <xref ref-type=\"bibr\" rid=\"ref2\" xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">[2]</xref>. My interest was in the nonlinear theory and in the future anyway, so why bother?",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2322,7 +2993,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "This article describes two methods for controlling the surface of a liquid in an open container as it is being carried by a robot arm. Both methods make use of the fundamental mode of oscillation and damping of the liquid in the container as predicted from a boundary element model of the fluid. The first method uses an infinite impulse response filter to alter the acceleration profile so that the liquid remains level except for a single wave at the beginning and end of the motion. The motion of the liquid is similar to that of a simple pendulum. The second method removes the remaining two surface oscillations by tilting the container parallel to the beginning and ending wave. A double pendulum model is used to determine the trajectory for this motion. Experimental results of a FANUC S-800 robot moving a 230 mm diameter hemispherical container of water are presented.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2338,7 +3011,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "<bold xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Q. How did your education and early career lead to your initial and continuing interest in the control field?</b>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -2361,7 +3040,9 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "This issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i> includes a special issue on distributed games over networks. Guest Editors Lacra Pavel and Yiguang Hong have assembled four articles for this special issue. The first article, by Tao Li, Guanze Peng, Quanyan Zhu, and Tamer Bas¸ar, provides a systematic treatment of game-theoretic learning methods and their application in network problems, which is key for understanding multiagents.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2384,7 +3065,13 @@
                 "firstName": "Rodolphe",
                 "lastName": "Sepulchre"
             }
-        ]
+        ],
+        "abstract": "In this issue of <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">IEEE Control Systems</i>, we speak with Hong Chen, a distinguished professor and the dean of the College of Electronic and Information Engineering at Tongji University in Shanghai, and Randy Freeman, a professor of electrical and computer engineering at Northwestern University in Evanston, IL, USA.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Interviews"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -2400,7 +3087,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides society information that may include news, reviews or technical notes that should be of interest to practitioners and researchers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2416,7 +3105,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2432,7 +3123,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2448,7 +3141,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Prospective authors are requested to submit new, unpublished manuscripts for inclusion in the upcoming event described in this call for papers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2464,7 +3159,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the CSS calendar of upcoming events and meetings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2480,7 +3177,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2496,7 +3195,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2512,7 +3213,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the recipients of IEEE Control Systems Society awards in 2021.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Awards"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -2528,7 +3235,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2544,7 +3253,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents a listing of the editorial board, board of governors, current staff, committee members, and/or society editors for this issue of the publication. ",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2560,7 +3271,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2576,7 +3289,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2592,7 +3307,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2608,7 +3325,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2624,7 +3343,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2640,7 +3361,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2656,7 +3379,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2672,7 +3397,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Prospective authors are requested to submit new, unpublished manuscripts for inclusion in the upcoming event described in this call for papers. ",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2688,7 +3415,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Prospective authors are requested to submit new, unpublished manuscripts for inclusion in the upcoming event described in this call for papers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2704,7 +3433,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the CSS calendar of upcoming events and meetings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2720,7 +3451,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents a listing of the editorial board, board of governors, current staff, committee members, and/or society editors for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2736,7 +3469,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2752,7 +3487,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents for this issue of this publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2768,7 +3505,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents a listing of the editorial board, board of governors, current staff, committee members, and/or society editors for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2784,7 +3523,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2800,7 +3541,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents a listing of the editorial board, board of governors, current staff, committee members, and/or society editors for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2816,7 +3559,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2832,7 +3577,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2848,7 +3595,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2864,7 +3613,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2880,7 +3631,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2896,7 +3649,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of upcoming conference events of interest to practitioners and researchers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2912,7 +3667,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2928,7 +3685,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2944,7 +3703,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Prospective authors are requested to submit new, unpublished manuscripts for inclusion in the upcoming event described in this call for papers. ",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2960,7 +3721,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2976,7 +3739,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Prospective authors are requested to submit new, unpublished manuscripts for inclusion in the upcoming event described in this call for papers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -2992,7 +3757,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3008,7 +3775,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the CSS calendar of events and meetings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3024,7 +3793,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3040,7 +3811,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the 2022 author/subject index for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3056,7 +3829,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3072,7 +3847,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3088,7 +3865,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the CS soceity calendar of upcoming events and meetings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3104,7 +3883,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the CS society calendar of upcoming events and meetings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3120,7 +3901,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3136,7 +3919,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3152,7 +3937,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3168,7 +3955,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3184,7 +3973,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Prospective authors are requested to submit new, unpublished manuscripts for inclusion in the upcoming event described in this call for papers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3200,7 +3991,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3216,7 +4009,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Advertisement.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3239,7 +4034,24 @@
                 "firstName": "Adilson E.",
                 "lastName": "Motter"
             }
-        ]
+        ],
+        "abstract": "The author of this book is a physicist with ample experience in experimental implementations of control. His research concerns fundamental and cross-disciplinary aspects of nonlinear dynamics, biophysics, thermodynamics, statistical mechanics, information theory, and control theory. The book builds on his experience as the author of an influential review on control theory for physical scientists. The text is geared toward physicists. Aside from notation and language, how different is it from textbooks for control theorists and engineers? The key differences are threefold. First, the book places emphasis on foundational aspects of control, including physical limitations of control such as causal and information-theoretic limitations. Second, it offers a balanced coverage of topics that takes advantage of concepts familiar to this audience, such as measurement, while elaborating further on concepts that might be less familiar, such as control objectives. Third, the book offers new insights into physical phenomena from a control theory perspective and covers material not usually treated in control theory books, which should nevertheless be of interest to engineers and control theorists. Owing to this structure, the book does well with its promise to “make the strange familiar, and the familiar strange.” This is not the first control book written for physicists. The treatment throughout prioritizes first-principles descriptions, with an emphasis on not only when control works but also when it fails. It includes well-contextualized examples and well-formulated problems. It is ready for classroom use, with additional resources for instructors—such as a solution manual and associated Mathematica notebooks—available from the publisher. A 100-page supplement on background mathematics is also available on the publisher’s website, which provides a comprehensive review of key mathematical topics. As already noted, this book may indeed lead more departments to include control theory in their curriculum.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Book reviews",
+                "Control theory",
+                "Nonlinear dynamical systems",
+                "System identification",
+                "Thermodynamics",
+                "Stochastic systems",
+                "Book reviews",
+                "Control theory",
+                "Nonlinear dynamical systems",
+                "System identification",
+                "Thermodynamics",
+                "Stochastic systems"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -3255,7 +4067,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents summaries of recent books released on the topic of control systems and planning.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3271,7 +4085,21 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems",
-        "authors": []
+        "authors": [],
+        "abstract": "The first edition of this book inspired many researchers and educators working at the intersections of robotics, control theory, and computer vision from the early days of its publication. This second edition, published 14 years after its predecessor, maintains the central perspective that robots are machines that transform sensing into action through feedback control, with the goal of manipulation of objects or locomoting in their ambient environment. Given its central focus on feedback control, along with its comprehensive treatment of linear, nonlinear, and geometric control algorithms for robotic manipulators and mobile robots, this book holds a special place among other robotics textbooks [1]–[5]. In addition to updating the material on motion planning, vision, and vision-based control to reflect state-ofthe- art changes in the field, the current edition contains two new chapters dedicated to the emerging topic of underactuated robotic mechanisms, including a significant extension of the coverage of mobile robots. This edition also contains two new appendices dedicated to the topics of optimization and camera calibration. ",
+        "keywords": {
+            "IEEE Keywords": [
+                "Book reviews",
+                "Robots",
+                "Modeling",
+                "Educational robots",
+                "Mobile robots",
+                "Control systems",
+                "Motion planning",
+                "Robot vision systems",
+                "Robot kinematics"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -3287,7 +4115,9 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Summary form only given. Presents short summaries of recent books in the electromagnetic industry.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5488303",
@@ -3303,7 +4133,13 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the recipients of IEEE CSS TC Outstanding Student Paper Prize Winners awards for 2021.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Awards"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -3319,7 +4155,19 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "This book, organized into 17 chapters, is a unique and effectively organized blend of thermodynamics and the theory of dynamical systems. It provides the reader a significant and scholarly contribution of the subject matter that scans several fields, including control theory, mathematics, physics, and chemistry. The author of the book is a respected educator and leader in the area of feedback control, and his previous contributions have set trends in both education and control theoretical research. This book provides a mathematically rigorous framework of thermodynamics based on dynamical systems theory. The treatment is original and fills a gap in the current literature. This book is intended for university researchers (graduate and postgraduate level) in automatic control systems, mathematics, physics, chemistry, and several fields of engineering. It can also be used as a supplementary text in an advanced graduate course in thermodynamics, a special topics course, or as an independent study resource. Practically all industrial processes involve the conversion of energy from one form to another. Thus, it can also be useful in industrial circles to engineers, physicists, and chemists working with chemical processes, industrial control, and nuclear engineering. Several connections also exist to the area of reinforcement learning. The geometry of the optimal frontier suggests a wide array of identities involving functionals and their partial derivatives. The framework developed in this book can potentially lead to the development of new quantitative measures and relationships among properties of cyberphysical models that result in a novel theoretical foundation of reinforcement learning.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Book reviews",
+                "Thermodynamics",
+                "Reinforcement learning",
+                "Dynamical systems",
+                "Market research",
+                "Industrial control",
+                "Feedback control"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -3366,7 +4214,19 @@
                 "firstName": "S.",
                 "lastName": "Gugercin"
             }
-        ]
+        ],
+        "abstract": "The surge of interest in machine learning has led to increased emphasis on the value of accurate, efficient surrogate models. The book is divided into four parts. Part 1, consisting of Chapters 1 and 2, introduces the reader to the basic ideas underlying general model reduction and provides the relevant system-theoretic background needed for the remainder of the book. Part 2, consisting of Chapters 3–5, covers core concepts of interpolatory model reduction where wellknown results and state-of-the-art implementations are presented in a compact yet deep way. Part 3, consisting of Chapters 6 and 7, provides the first comprehensive textbook exposition of recent developments in parameter dependent dynamical systems and nonlinear interpolatory model reduction. This book is a timely reminder that before we reach for black-box approximation functions (which often require prohibitive amounts of data to train), there is a long and rigorous history (and many recent advances) in system-theoretic model-reduction methods that can deliver structured, reduced-order models in a broad range of scientific and engineering settings.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Book reviews",
+                "Machine learning",
+                "Closed box",
+                "Dynamical systems",
+                "Data models",
+                "Reduced order systems",
+                "Interpolation"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -3395,7 +4255,15 @@
                 "firstName": "Iven",
                 "lastName": "Mareels"
             }
-        ]
+        ],
+        "abstract": "Norbert Wiener, one of the heroes in the field of modeling and data analysis portrayed in the book, once said, <italic xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">“To live effectively, is to live with adequate information.”</i> This book provides insight on how that adequate information may be gathered through data and modeling.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Book reviews",
+                "Data analysis",
+                "Modeling"
+            ]
+        }
     },
     {
         "publicationNumber": "5488303",
@@ -3411,6 +4279,8 @@
         "publisher": "IEEE",
         "articleContentType": "Magazines",
         "publicationTitle": "IEEE Control Systems Magazine",
-        "authors": []
+        "authors": [],
+        "abstract": "Summary form only given. Presents short summaries of recent books in the electromagnetic industry.",
+        "keywords": {}
     }
 ]

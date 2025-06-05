@@ -68,7 +68,47 @@
                 "firstName": "Takeshi",
                 "lastName": "Sakamoto"
             }
-        ]
+        ],
+        "abstract": "Distributed deep learning has an inevitable bottleneck in communication between GPUs. This bottleneck is due to the difference in the data transfer latency of internode and intra-node communication. Here, we propose a GPU-FPGA (field programmable gate array) heterogeneous computing system and a hardware-specific communication module with parameter-based computation/communication overlap. In our system, we configure a network interface card (NIC) with a data aggregation function. To reduce the load on CPUs, we developed a device driver for remote direct memory access between GPUs and FPGAs. The hardware and software can be run with TensorFlow and Horovod. For comparison, we compared our system with the conventional GPUDirect RDMA system. Results of the measurement show Allreduce latency is reduced to 1/4 by offloading Allreduce to FPGA NICs. Our hardware/software co-design can also conceal about 90% of the communication overhead and improve scalability by 20%. The end-to-end time consumed for training in distributed deep learning with ResNet-50 and ImageNet is reduced to 87.3% without any degradation in validation accuracy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Training",
+                "Graphics processing units",
+                "Random access memory",
+                "Scalability",
+                "Heterogeneous networks"
+            ],
+            "Index Terms": [
+                "Heterogeneous Computing",
+                "Distributed Deep Learning",
+                "Computer System",
+                "ImageNet",
+                "Data Transfer",
+                "TensorFlow",
+                "Validation Accuracy",
+                "Communication Overhead",
+                "Remote Memory",
+                "Network Interface",
+                "Deep Neural Network",
+                "Processing Pipeline",
+                "Heterogeneous Systems",
+                "Training Efficiency",
+                "Ethernet",
+                "Cumulative Density Function",
+                "Scale Efficiency",
+                "Master Node",
+                "Ring Topology",
+                "Static Random Access Memory"
+            ],
+            "Author Keywords": [
+                "Distributed Deep Learning",
+                "Data Parallel",
+                "Heterogeneous Computing",
+                "FPGA",
+                "Hardware/Software Co-design"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -84,7 +124,14 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides an abstract for each of the two keynote presentations and may include a brief professional biography of each presenter. The complete presentations were not made available for publication as part of the conference proceedings. They are \"TeraPHY: An O-band WDM Electro-optic Chiplet for Low Power, Terabit/s Optical I/O\" by Marc Wade (Ayar Labs) and \"Constructing a Computationally Efficient Distributed GPU appliance in a PCI Express Based Network\" by Scott Taylor (GigaIO).",
+        "keywords": {
+            "Index Terms": [
+                "Wavelength Division Multiplexing",
+                "High-performance Computing"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -100,7 +147,28 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides an abstract for each of the two tutorial presentations and may include a brief professional biography of each presenter. The complete presentations were not made available for publication as part of the conference proceedings. ",
+        "keywords": {
+            "Index Terms": [
+                "Deep Learning",
+                "Usability",
+                "Deep Neural Network",
+                "Big Data",
+                "Cloud Computing",
+                "International Conference",
+                "Conference Papers",
+                "International Journal",
+                "Fault-tolerant",
+                "Deep Learning Framework",
+                "Market Trends",
+                "Journal Papers",
+                "Advances In Deep Learning",
+                "Deep Neural Network Architecture",
+                "Deep Learning Community",
+                "Computer Technology"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -116,7 +184,18 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides an abstract for each of the two keynote presentations and may include a brief professional biography of each presenter. The complete presentations were not made available for publication as part of the conference proceedings. The presentations are: \"The Data Center is a Computer\" by Michael Kagan (Chief Technology Officer, NVIDIA) and \"Scalable Reliable Datagrams: Combining High Performance Computing and Cloud-Scale Networks\" by Brian Barrett, Principal Engineer (Networking, AWS).",
+        "keywords": {
+            "Index Terms": [
+                "Data Center",
+                "Number Of Challenges",
+                "High-performance Computing",
+                "Increase In Complexity",
+                "Amazon Web Services",
+                "Cloud Providers"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -124,7 +203,7 @@
         "publicationYear": "2020",
         "publicationDate": "19-21 Aug. 2020",
         "articleNumber": "9188289",
-        "articleTitle": "PCI Express\u00ae 6.0 Specification at 64.0 GT/s with PAM-4 signaling: a low latency, high bandwidth, high reliability and cost-effective interconnect",
+        "articleTitle": "PCI Express® 6.0 Specification at 64.0 GT/s with PAM-4 signaling: a low latency, high bandwidth, high reliability and cost-effective interconnect",
         "volume": null,
         "issue": null,
         "startPage": "1",
@@ -139,7 +218,52 @@
                 "firstName": "Debendra Das",
                 "lastName": "Sharma"
             }
-        ]
+        ],
+        "abstract": "PCI Express® (PCIe®) specification doubles the data rate every generation in a backwards compatible manner every three years. With PCIe 6.0 specification at 64.0 GT/s, we will be adopting PAM-4 signaling to ensure the channel reach remains the same as PCIe 5.0 specification at 32.0 GT/s. PAM-4 requires a Forward Error Correction (FEC) mechanism due to the high BER. However, since PCIe technology is a Load-Store architecture, the latency adder due to FEC must be less than 10ns and ideally 0. We present the new flit-based approach with a light-weight low-latency FEC coupled with a low-latency link level retry mechanism. We demonstrate that PCIe 6.0 architecture improves the bandwidth efficiency in the range of 0.95 to 1.4, resulting in a net bandwidth increase of 1.9X to 2.8X, depending on the payload size of the packets, in spite of the FEC and CRC overheads. The latency also decreases in most cases. The reliability (FIT) of our approach is demonstrated to less than 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">-9</sup>. We also present a new power savings strategy that results in power consumption proportional to bandwidth usage without impacting the traffic flow.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Forward error correction",
+                "Bandwidth",
+                "Bit error rate",
+                "Measurement",
+                "Encoding",
+                "Correlation",
+                "Reliability"
+            ],
+            "Index Terms": [
+                "Low Latency",
+                "High Bandwidth",
+                "PCI Express",
+                "Data Rate",
+                "Traffic Flow",
+                "Bit Error Rate",
+                "Forward Error Correction",
+                "Efficiency Range",
+                "Bandwidth Efficiency",
+                "Error Correction Mechanism",
+                "Cyclic Redundancy Check",
+                "Payload Size",
+                "Order Set",
+                "Changes In Width",
+                "Bit Error",
+                "Error Correlation",
+                "Most Significant Bit",
+                "Payload Data",
+                "Link Layer"
+            ],
+            "Author Keywords": [
+                "PCI-Express",
+                "Reliability",
+                "Availability",
+                "FIT",
+                "SDC",
+                "DUE",
+                "Replay",
+                "Retrain",
+                "BER",
+                "Power-Efficiency"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -174,7 +298,38 @@
                 "firstName": "Michael",
                 "lastName": "Blocksome"
             }
-        ]
+        ],
+        "abstract": "Modern FPGAs are more than just “gate arrays” – they offer hardware acceleration capabilities and advanced features that include High Bandwidth Memory (HBM), Cache/Memory coherent/IO interconnect (CXL/PCIe), high speed transceivers, and embedded processors. Unfortunately, lack of a standardized hardware/software infrastructure has relegated FPGAs to being second-class citizens under the control of a host platform rather than being compute/network accelerator nodes with SmartNIC capabilities. This stands in the way of broader deployment of FPGAs in a wide variety of distributed/heterogenous platforms.Intel’s COnfigurable Network Protocol Accelerator (COPA) addresses this challenge and provides a customizable framework that integrates communication with computation on an FPGA platform. The FPGA incorporates SmartNIC capabilities and functions as an “autonomous” node that attaches to the network. In this paper, we provide an overview of COPA architecture and the acceleration modes that it supports. The hardware component provides the necessary networking/accelerator infrastructure while the software component of COPA abstracts the underlying FPGA from the application or middleware. The API is based on an open standard network API (OFI) that has been extended for COPA to expose the various acceleration modes to software. Given the lack of a standard API for SmartNICs, the extended OFI can also potentially serve that purpose and efforts are underway to upstream the changes.COPA has been implemented on different variants of Stratix10 FPGAs. Multiple COPA FPGAs can autonomously connect to a standard 100GigE switching network with the ability to mix-and-match FPGA variants to this network. Both inline and lookaside accelerator functions are also supported. The framework has been validated by microbenchmarks as well as proxy benchmarks that mimic the behavior of client/server flows – and achieves bandwidths close to 100Gbps when acceleration is enabled.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Program processors",
+                "Bandwidth",
+                "Switches",
+                "Computer architecture",
+                "Transceivers",
+                "Middleware"
+            ],
+            "Index Terms": [
+                "Gate Array",
+                "Benchmark Test",
+                "Hardware Accelerators",
+                "Open Standards",
+                "Semantic",
+                "Advertising",
+                "Data Transfer",
+                "Load Data",
+                "Data Packets",
+                "Corrupted Data",
+                "Remote Memory",
+                "Read Operation",
+                "Memory Bandwidth",
+                "Update Operation",
+                "Software Stack",
+                "Acceleration Parameter",
+                "Remote Nodes"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -233,7 +388,47 @@
                 "firstName": "Bapiraju",
                 "lastName": "Vinnakota"
             }
-        ]
+        ],
+        "abstract": "Bunch of Wires (BoW) is a new open die-to-die (D2D) interface. BoW's objective is to allow designers to gracefully trade-off performance for design and packaging complexity across a wide range of process nodes. BoW bandwidth can range from 80 Gbps per 16-bit BoW slice with a simple design to 512 Gbps with complex design and packaging. With this flexibility, BoW directly enables heterogeneous integration, a primary advantage of chiplets. In turn, this will enable economies of scale for services and technologies for BoW. In this paper, we discuss progress on the BoW specification based on extensive design and performance studies by engineers from multiple companies. These studies aim to specify BoW so as to make it easy to use in a system. This open innovation project will deliver a low-complexity D2D interface with competitive power-performance metrics with the economies of scale associated with an open ecosystem.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wires",
+                "Packaging",
+                "Clocks",
+                "Protocols",
+                "Device-to-device communication",
+                "Complexity theory",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Economies Of Scale",
+                "Open Innovation",
+                "Processing Nodes",
+                "Heterogeneous Integration",
+                "Range Of Nodes",
+                "Throughput",
+                "Data Rate",
+                "Organic Substances",
+                "Interoperability",
+                "Circuit Design",
+                "Test Pattern",
+                "Advanced Software",
+                "Clock Rate",
+                "Signaling Routes",
+                "Packaging Technology",
+                "Wide Range Of Cases",
+                "Link Layer"
+            ],
+            "Author Keywords": [
+                "BoW",
+                "Bunch of Wires",
+                "Die-to-Die",
+                "interface",
+                "chip-to-chip",
+                "chiplet",
+                "MCM"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -298,7 +493,56 @@
                 "firstName": "Tushar",
                 "lastName": "Krishna"
             }
-        ]
+        ],
+        "abstract": "Recommendation model DNNs have gained significant attention due to their vital role in recommending the best content to the user. However, in order to further increase accuracy, DNNs are becoming more complex with more data to be trained, making them infeasible for training on a single node. Distributed training is a solution to tackle this problem by employing multiple nodes for training. The importance of recommendation models necessitates to design customized HW/SW platforms for training such networks in order to minimize the communication overheads among different nodes. However, exploring this design space is difficult due to the presence of many HW/SW parameters and the limitations to change the HW parameters in real systems. In this paper, we port the previously proposed ASTRA-SIM simulation platform on top of the versatile NS3 network simulator by introducing a portable network interface for ASTRA-SIM. Using NS3 enables modeling a wide variety of networks with much better accuracy. Furthermore, we enhance NS3 with detailed modeling of TCP/IP. Finally, we study various HW/SW platforms for the DLRM recommendation model with TCP/IP as the network protocol and analyze the communication overheads in the presence of various interconnect configurations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Topology",
+                "Parallel processing",
+                "Network topology",
+                "Data models",
+                "Analytical models",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Recommendation Model",
+                "Communication Protocol",
+                "Simulated Networks",
+                "Network Interface",
+                "Parallelization",
+                "Backpropagation",
+                "Network Topology",
+                "Multilayer Perceptron",
+                "Local Properties",
+                "Global Properties",
+                "Training Iterations",
+                "Forward Pass",
+                "Buffer Size",
+                "Topology Optimization",
+                "Round-trip Time",
+                "Simulation Methodology",
+                "Single Switch",
+                "Communication Latency",
+                "Training Platform",
+                "Click-through",
+                "Multilayer Perceptron Layer",
+                "Packet Drop",
+                "Concurrent Levels",
+                "Pipelining",
+                "Chunk Size",
+                "Computation Time",
+                "Parallel Data",
+                "Weight Gradient",
+                "Transport Protocol",
+                "Model Analysis"
+            ],
+            "Author Keywords": [
+                "distributed training",
+                "collective communication",
+                "recommendation models"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -339,7 +583,34 @@
                 "firstName": "Jun",
                 "lastName": "Li"
             }
-        ]
+        ],
+        "abstract": "Container technology is a light weight back-end virtualization solution which copes with the growing demand for internet service concurrency. For security and availability, network isolation is essential in container network. Label based network access control policies are employed as a network isolation solution by the famous container orchestrator, Kubernetes. The large scale and flexibility of container networks implies a prohibitive complexity, whereas the constant changes of policies and containers demand a short response time, thus the policy verification needs to be efficient. However, there is no existing tool that solves the verification problem of label based network access control policies. Kano is proposed as the first system to cover container network policy verification, including incremental verification. It leverages on a prefiltration algorithm to reduce the time complexity of reachability matrix calculation from O(n<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup>) to O(n). With predefined and user-defined constraints which can be verified quickly with the reachability matrix, Kano removes potential risk from the container network. Based on the verification result, Kano provides advices to reinforce the security and availability of the container network.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Containers",
+                "Access control",
+                "Protocols",
+                "Cloud computing",
+                "Servers",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Time Complexity",
+                "Linear Solver",
+                "Data Structure",
+                "Update Frequency",
+                "Constraint Violation",
+                "Network Constraints",
+                "Space Cost",
+                "Bitwise Operations",
+                "Policy Conflict"
+            ],
+            "Author Keywords": [
+                "Container Networks",
+                "Network Verification",
+                "Attribute-Based Access Control"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -374,7 +645,37 @@
                 "firstName": "Lion",
                 "lastName": "Levi"
             }
-        ]
+        ],
+        "abstract": "Modern datacenter applications do not only require computational power but also a high amount of communication between computation nodes. In order to improve the running time of these applications, the network community has been seeking for offloading common computation patterns to the network devices, an emerging field known as In-Network Compute. Artificial intelligence (AI) constitutes an important application obtaining a major performance improvement from in-network compute due to its distributive inherent properties. Most of existing in-network compute schemes are based on the employment of aggregation trees providing a logical tree topology on top of the physical infrastructure for the different aggregation nodes. In this work, we study the fundamental question of implementing such logical trees in an efficient manner. In order to avoid interference among tenants, trees serving various tenants should be edge-disjoint. We study designing such trees in common datacenter topologies such as fat trees. We show that the availability of the trees is highly affected by the mapping of the tenants to hosts of the topology. We describe algorithms for computing mapping that allows the existence of such trees as well as for finding such trees for a given tenant mapping. We conduct experiments using real workloads to examine trees availability based on network utilization and particular mappings.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fats",
+                "Topology",
+                "Resource management",
+                "Interference",
+                "Network topology",
+                "Performance evaluation",
+                "Employment"
+            ],
+            "Index Terms": [
+                "Multi-tenant",
+                "Fat-tree",
+                "In-network Computing",
+                "Network Topology",
+                "Common Topology",
+                "Simple Function",
+                "Multiple Trees",
+                "Treemap",
+                "Number Of Spines",
+                "Types Of Trees",
+                "Single Edge",
+                "Breadth-first Search",
+                "Single Leaf",
+                "Los Alamos National Laboratory",
+                "Tree Selection",
+                "Single Spine"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -433,7 +734,45 @@
                 "firstName": "Bapiraju",
                 "lastName": "Vinnakota"
             }
-        ]
+        ],
+        "abstract": "Chiplet technology can significantly reduce the cost and time needed to develop custom high performance silicon products. In order to realize a Chiplet-based product, a die-to-die (D2D) network to interconnect the chiplets is required. Almost all of today's chiplet-based products use proprietary D2D interfaces. Industry has primarily paid attention to PHY connectivity between chiplets in a package. A design also requires logical information flow between chiplets. Current designs use proprietary logic protocols between components. This approach makes it challenging to integrate chiplets from multiple vendors. The Open Domain-Specific Architecture (ODSA) is a project within the Open Compute Project (OCP) community that aims to establish open physical and logical D2D interfaces for chiplets. Ultimately, ODSA aims to create a marketplace of interoperable chiplets from multiple vendors based on open interfaces. This will allow product designers to develop best in class chiplets and System-In -a-Package (SIP) from multiple vendors. This paper reviews technical developments within the ODSA.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Device-to-device communication",
+                "IP networks",
+                "Protocols",
+                "Optical switches",
+                "Packaging",
+                "Computer architecture",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Domain-specific Architectures",
+                "Interoperability",
+                "Open Interface",
+                "Multiple Vendors",
+                "Product Development",
+                "Modular Design",
+                "Higher Level Of Abstraction",
+                "Processing Nodes",
+                "Wide Range Of Technologies",
+                "Packaging Technology",
+                "Common Interface",
+                "Heterogeneous Integration",
+                "Flip-chip",
+                "Physical Interface",
+                "Link Layer",
+                "Facebook"
+            ],
+            "Author Keywords": [
+                "chiplets",
+                "open source",
+                "die-to-die interface",
+                "accelerators",
+                "domain-specific accelerators",
+                "open interface"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -462,7 +801,47 @@
                 "firstName": "Ori",
                 "lastName": "Rottenstreich"
             }
-        ]
+        ],
+        "abstract": "Reliability and time-efficiency are two key elements to consider in network design. Commonly, each is measured per service - availability probability of a specific service, the latency of a specific service, and overall - system average reliability and system average latency, considering the demand for every service. Intuitively, minimizing latency requires minimizing the number of network elements a service makes use of. In a non-redundant environment, this would also guarantee the maximal reliability of a service, as reliability degrades when the number of elements required to implement the service increases. However, reliability is often guaranteed by allocating redundant, backup resources. We explain that such redundancy or the joint support for multiple services can impose a trade-off between reliability and time-efficiency criteria. We design solutions that jointly take care of both design goals. Our analytical model considers networks following a virtualized paradigm - network functions are implemented on commodity servers and a network service is implemented by chaining functions. We examine how different assignment strategies impact reliability and time-efficiency.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Redundancy",
+                "Measurement",
+                "Resource management",
+                "Erbium",
+                "Reliability engineering"
+            ],
+            "Index Terms": [
+                "Function Placement",
+                "Functional Networks",
+                "Average Latency",
+                "Average Reliability",
+                "Maximum Reliability",
+                "Hardness",
+                "Chain Length",
+                "General Case",
+                "System Reliability",
+                "Estimation Algorithm",
+                "Edge Weights",
+                "Time Efficiency",
+                "Case Of Problem",
+                "Load Balancing",
+                "Assignment Problem",
+                "Multiple Chains",
+                "Mobile Edge Computing",
+                "Optimal Assignment",
+                "Reliability Problems",
+                "Single Server",
+                "Virtual Network Functions",
+                "Placement Problem",
+                "Set Of Servers",
+                "Service Chain",
+                "System Latency",
+                "Number Of Chains",
+                "Middlebox"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -493,15 +872,15 @@
             },
             {
                 "id": 37711736100,
-                "preferredName": "Pedro Javier Garc\u00eda",
+                "preferredName": "Pedro Javier García",
                 "firstName": "Pedro Javier",
-                "lastName": "Garc\u00eda"
+                "lastName": "García"
             },
             {
                 "id": 38277889200,
-                "preferredName": "Francisco Alfaro-Cort\u00e9s",
+                "preferredName": "Francisco Alfaro-Cortés",
                 "firstName": "Francisco",
-                "lastName": "Alfaro-Cort\u00e9s"
+                "lastName": "Alfaro-Cortés"
             },
             {
                 "id": 37270459000,
@@ -511,9 +890,9 @@
             },
             {
                 "id": 37273867700,
-                "preferredName": "Jos\u00e9 L. S\u00e1nchez",
-                "firstName": "Jos\u00e9 L.",
-                "lastName": "S\u00e1nchez"
+                "preferredName": "José L. Sánchez",
+                "firstName": "José L.",
+                "lastName": "Sánchez"
             },
             {
                 "id": 37088497505,
@@ -539,7 +918,43 @@
                 "firstName": "Jose",
                 "lastName": "Duato"
             }
-        ]
+        ],
+        "abstract": "One of the most serious threats to the performance of data-center systems (DCs) is network congestion, that increases latency and reduces throughput dramatically. The Dynamic Virtual Lanes (DVL) technique has been proposed to deal with congestion in Ethernet-based lossless data-center networks (DCNs). DVL is based on isolating congesting flows in special queues, so that they do not share queues with non-congesting ones. In this way, Head-of-Line blocking is prevented and the probability of standard queues becoming congested is drastically reduced. This paper explains how a DVL-like approach can be used also in lossy DCNs, with several benefits. Specifically and mainly, packet dropping is reduced for non-congesting flows. In addition, latency and throughput degradations are smaller. The results shown in the paper confirm that these benefits are achieved just by adding a single additional, special queue per switch port.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Packet loss",
+                "Delays",
+                "TCPIP",
+                "Protocols",
+                "Propagation losses"
+            ],
+            "Index Terms": [
+                "Packet Drop",
+                "Data Center Networks",
+                "Lossy Networks",
+                "Lossless",
+                "Congested",
+                "Network Congestion",
+                "Poisson Distribution",
+                "Network Performance",
+                "Flow Control",
+                "Traffic Flow",
+                "Network Resources",
+                "Information Propagation",
+                "Injection Rate",
+                "Output Ports",
+                "Arrival Rate",
+                "Packet Loss",
+                "Traffic Patterns",
+                "Round-trip Time",
+                "Network Latency",
+                "Packet Delivery",
+                "Destination Port",
+                "Network Interface",
+                "Packet Header"
+            ]
+        }
     },
     {
         "publicationNumber": "9186549",
@@ -555,7 +970,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference organizers greatly appreciate the support of the various corporate sponsors listed.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -571,7 +988,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -587,7 +1006,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference organizers greatly appreciate the support of the various corporate sponsors listed.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -603,7 +1024,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference organizers greatly appreciate the support of the various corporate sponsors listed.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -619,7 +1042,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -648,7 +1073,9 @@
                 "firstName": "Khaled",
                 "lastName": "Hamidouche"
             }
-        ]
+        ],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -677,7 +1104,9 @@
                 "firstName": "Manjunath Gorentla",
                 "lastName": "Venkata"
             }
-        ]
+        ],
+        "abstract": "This conference brings together designers and architects of high-performance networks, with presentations from universities and industrial research laboratories that focus on the latest developments in leading-edge technologies. This year's conference is entirely virtual due to the COVID-19 pandemic, representing unique challenges and opportunities for the conference program. Our world-class team of 19 Technical Program Committee members returned insightful reviews for 29 submissions. Each paper received between three and four reviews, thus providing ample and valuable feedback to the authors, and ensuring high confidence on the outcome of the review process. Out of the 29 submissions, 10 were accepted. The technical program comprises five technical sessions that cover a number of hot topics in high-performance interconnection networks. The paper sessions open with hardware related papers, and are followed by a session on frameworks and architectures. Our second day has three sessions: one session is dedicated to advances in machine learning for networks; a second session centers on topologies and routing; and our last session concentrates on containers and virtualization. In addition to the technical papers sessions we have two distinguished keynote speakers, Michael Kagan (NVIDIA) and Brian Barrett (AWS EC2), in addition to two invited talks on cutting-edge network design.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -693,7 +1122,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -709,7 +1140,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -725,7 +1158,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -741,7 +1176,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -757,7 +1194,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE Symposium on High-Performance Interconnects (HOTI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9186549",
@@ -780,6 +1219,18 @@
                 "firstName": "Scott",
                 "lastName": "Schweitzer"
             }
-        ]
+        ],
+        "abstract": " Summary form only given, as follows. The complete presentation was not made available for publication as part of the conference proceedings. SmartNICs and DPUs are surging in popularity to meet the new urgent requirements for media processing; neural networks, ML, and AI; and real-time automation, especially at the Network Edge. Yet they represent divergent visions of how to achieve the right combination of processing and throughput. In this discussion, we’ll highlight the fundamental differences between SmartNICs and DPUs and drill down into the hardware architectures that enable these massive compute engines, calling out the advantages and weaknesses of each approach. This panel brings together technology leaders from the six most relevant SmartNIC and DPU companies today to discuss their architecture and vision of the future. We have industry bedrocks AWS, Broadcom, NVIDIA, and Xilinx, as well as the newest kids on the block Fungible and Pensando. Eventually, it all comes down to software; we’ll touch on the underlying language and model each company chose, their path to providing solutions on their platforms, and their plan to enable thirdparty developers and perhaps even App stores. We'll close with 60 seconds from each company on the three things we should expect to see in the next 24 months.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Companies",
+                "Computer architecture",
+                "Throughput",
+                "Software",
+                "Real-time systems",
+                "Neural networks",
+                "Media"
+            ]
+        }
     }
 ]

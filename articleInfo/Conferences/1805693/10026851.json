@@ -56,7 +56,55 @@
                 "firstName": "Martin",
                 "lastName": "Herbordt"
             }
-        ]
+        ],
+        "abstract": "High Level Synthesis (HLS) offers a possible programmability solution for FPGAs by automatically compiling CPU codes to custom hardware configurations, but currently delivers far lower hardware quality than circuits written using Hardware Description Languages (HDLs). One reason is because the standard set of code optimizations used by CPU compilers, such as LLVM, are not well suited for a FPGA back end. Code performance is impacted largely by the order in which passes are applied. Similarly, it is also imperative to find a reasonable number of passes to apply and the optimum pass parameter values. In order to bridge the gap between hand tuned and automatically generated hardware, it is thus important to determine the optimal sequence of passes for HLS compilations, which could vary substantially across different workloads. Machine learning (ML) offers one popular approach to automate finding optimal compiler passes but requires selecting the right method. Supervised ML is not ideal since it requires labeled data mapping workload to optimal (or close to optimal) sequence of passes, which is computationally prohibitive. Unsupervised ML techniques don’t take into account the requirement that a quantity representing performance needs to be maximized. Reinforcement learning, which represents the problem of maximizing longterm rewards without requiring labeled data has been used for such planning problems before. While much work has been done along these lines for compilers in general, that directed towards HLS has been limited and conservative. In this paper, we address these limitations by expanding both the number of learning strategies for HLS compiler tuning and the metrics used to evaluate their impact. Our results show improvements over state-of-art for each standard benchmark evaluated and learning quality metric investigated. Choosing just the right strategy can give an improvement of $23 \\times$ in learning speed, $4 \\times$ in performance potential, $3 \\times$ in speedup over -O3, and has the potential to largely eliminate the fluctuation band from the final results. This work provides basis for an efficient recommender system enabling developers to choose the best possible reinforcement learning training options based on their target goals.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Codes",
+                "Fluctuations",
+                "Reinforcement learning",
+                "Hardware",
+                "High level synthesis",
+                "Central Processing Unit"
+            ],
+            "Index Terms": [
+                "Learning Strategies",
+                "High-level Synthesis",
+                "Compiler Optimization",
+                "Benchmark",
+                "Machine Learning",
+                "Unsupervised Learning",
+                "Number Of Passes",
+                "Number Of Strategies",
+                "Quality Of Learning",
+                "Learning Speed",
+                "Back End",
+                "Optimal Code",
+                "Tuning Strategy",
+                "Unsupervised Machine Learning Techniques",
+                "Optimal Strategy",
+                "Matrix Multiplication",
+                "Quality Metrics",
+                "Training Step",
+                "Status Updates",
+                "Proximal Policy Optimization",
+                "Cycle Count",
+                "Observation Space",
+                "Game Of Chess",
+                "Control Flow Graph",
+                "Maximum Reward",
+                "Reinforcement Learning Framework",
+                "Abstract Syntax Tree",
+                "Additional Metrics",
+                "Intermediate Representation"
+            ],
+            "Author Keywords": [
+                "HLS",
+                "Compiler optimization",
+                "Reinforcement Learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10026851",
@@ -103,7 +151,50 @@
                 "firstName": "Johannes",
                 "lastName": "Doerfert"
             }
-        ]
+        ],
+        "abstract": "Currently, offloading to accelerators requires users to identify which regions are to be executed on the device, what memory needs to be transferred, and how synchronization is to be resolved. On top of these manual tasks, many standard (C/ C++ library) functions, such as file I/O or memory manipulation, cannot be directly executed on the device and need to be worked around by the user explicitly. This makes it challenging to port programs in the first place and hinders developers from testing features on the GPU and within the GPU compilation pipeline. Existing tests and test suites for the host are effectively unusable for accelerators and need to be manually ported to provide the same benefits for the devices as they do on the host. In this paper, we propose a direct GPU compilation scheme that leverages the portable target offloading interface provided by LLVM/OpenMP. Utilizing this infrastructure allows us to compile an existing host application for the GPU and execute it there with only a minimal wrapper layer for the user code, command line arguments, and a compiler provided GPU implementation of C/ C++ standard library functions. The C/ C++ library functions are partially implemented for direct device execution and otherwise fallback to remote procedure call (RPC) to call host functions transparently. Our proposed prototype will allow users to quickly compile for, and test on, the GPU without explicitly handling kernel launches, data mapping, or host-device synchronization. We evaluate our implementation using three proxy applications with host OpenMP parallelism and three microbenchmarks to test the correctness of our prototype GPU compilation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pipelines",
+                "Graphics processing units",
+                "Prototypes",
+                "C++ languages",
+                "Parallel processing",
+                "Libraries",
+                "Synchronization"
+            ],
+            "Index Terms": [
+                "GPU Execution",
+                "Software Libraries",
+                "Benchmark Test",
+                "Benchmark",
+                "Source Code",
+                "Target Region",
+                "Educational Settings",
+                "Parallelization",
+                "Functional Support",
+                "File System",
+                "Targeting Construct",
+                "Dynamic Allocation",
+                "Function Calls",
+                "Model Execution",
+                "Multiple Teams",
+                "Prototype Implementation",
+                "Linearizable",
+                "Dynamic Memory",
+                "Memory Allocation",
+                "System Calls",
+                "Command Line Options",
+                "NVIDIA GPU",
+                "Code Modifications"
+            ],
+            "Author Keywords": [
+                "GPU",
+                "OpenMP",
+                "compilation",
+                "portability"
+            ]
+        }
     },
     {
         "publicationNumber": "10026851",
@@ -132,7 +223,46 @@
                 "firstName": "Dan",
                 "lastName": "Bonachea"
             }
-        ]
+        ],
+        "abstract": "This paper provides an introduction to the CoArray Fortran Framework of Efficient Interfaces to Network Environments (Caffeine), a parallel runtime library built atop the GASNet-EX exascale networking library. Caffeine leverages several non-parallel Fortran features to write type- and rankagnostic interfaces and corresponding procedure definitions that support parallel Fortran 2018 features, including communication, collective operations, and related services. One major goal is to develop a runtime library that can eventually be considered for adoption by LLVM Flang, enabling that compiler to support the parallel features of Fortran. The paper describes the motivations behind Caffeine’s design and implementation decisions, details the current state of Caffeine’s development, and previews future work. We explain how the design and implementation offer benefits related to software sustainability by lowering the barrier to user contributions, reducing complexity through the use of Fortran 2018 C-interoperability features, and high performance through the use of a lightweight communication substrate.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime library",
+                "Writing",
+                "Parallel processing",
+                "Data structures",
+                "Software",
+                "Libraries",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Co-Array Fortran",
+                "Communication Services",
+                "Parallel Feature",
+                "Key Insights",
+                "Programming Model",
+                "High-performance Computing",
+                "Feature Subset",
+                "Complexity Reduction",
+                "Submodule",
+                "Front End",
+                "Test Suite",
+                "GNU Compiler Collection",
+                "Remote Memory",
+                "Unit Tests",
+                "Lawrence Berkeley National Laboratory",
+                "Message Passing Interface"
+            ],
+            "Author Keywords": [
+                "HPC",
+                "PGAS",
+                "RMA",
+                "LLVM Flang",
+                "Exascale Computing",
+                "Runtime Libraries",
+                "GASNet-EX"
+            ]
+        }
     },
     {
         "publicationNumber": "10026851",
@@ -185,7 +315,56 @@
                 "firstName": "Ramakrishna",
                 "lastName": "Upadrasta"
             }
-        ]
+        ],
+        "abstract": "Loop distribution (loop fission) is a well known compiler optimization that splits the loop into multiple loops. Loop distribution can be seen as an enabler of various other optimizations with different goals, like, the parallelizability of the loop, the vectorizability of the loop, its locality characteristics. In this work, we present a Reinforcement Learning (RL) based approach to efficiently perform loop-distribution with the twin goals of optimizing for both vectorization as well as locality. Broadly, we generate the SCC Dependence Graph (SDG) for each loop of the program. Our RL model learns to predict the distribution order of the loop by performing topological walk of the graph. The reward to our model is computed using the instruction cost and number of cache misses of the loop. As the RL models need data for training purposes, we also propose a novel strategy to extend the training set by generating new loops. We show our results on x86 architecture on various benchmarks: from TSVC, LLVM-Test-Suite, PolyBench and PolyBench-NN. Our framework achieves an average improvement of 3.63% on TSVC, 4.61% on LLVM-Test-Suite Microbenchmarks, 1.78% on PolyBench and 1.95% on PolyBench-NN benchmark suites for execution time. The baseline is O3 compiler option of LLVM. We also show the improvements of our method on other performance metrics like Instruction Per Cycle (IPC), Number of loops distributed & vectorized, and L1 cache performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Measurement",
+                "Costs",
+                "Computational modeling",
+                "Pipelines",
+                "Reinforcement learning",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Learning Models",
+                "Local Features",
+                "Parallelization",
+                "Per Cycle",
+                "Number Of Loops",
+                "Reinforcement Learning Model",
+                "Number Of Misses",
+                "Dependency Graph",
+                "L2 Cache",
+                "Cache Misses",
+                "Machine Learning",
+                "Machine Learning Models",
+                "Previous Step",
+                "Filtered Based",
+                "Node Status",
+                "Deep Reinforcement Learning",
+                "Markov Decision Process",
+                "Topological States",
+                "Graph Neural Networks",
+                "Cache Hit",
+                "Reinforcement Learning Approach",
+                "Mutations In Loop",
+                "Execution Of Operations",
+                "Gated Recurrent Unit",
+                "Node Representations",
+                "Calculations In Order",
+                "ML Models",
+                "Previous Node"
+            ],
+            "Author Keywords": [
+                "Loop Distribution",
+                "Vectorization",
+                "Locality",
+                "Reinforcement Learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10026851",
@@ -232,7 +411,50 @@
                 "firstName": "Johannes",
                 "lastName": "Doerfert"
             }
-        ]
+        ],
+        "abstract": "Use of heterogeneous architectures has steadily increased during the past decade. However, non-homogeneous systems present a challenge to the programming model as the execution models between CPU and accelerator might differ considerably. OpenMP, since version 4.0, has been trying to bridge this gap by allowing to offload a code block to a target device. Among the additions to the OpenMP offloading API since, the most notably probably is asynchronous execution between device and host. By default, offloaded regions are executed synchronously, thus the host thread blocks until their completion. The nowait clause allows work to overlap between the host and target device. However, nowait must be manually added by the user, along with the tasks data dependencies and appropriate synchronization to avoid race conditions, increasing the program complexity and developer burden. In this work, we present automatic asynchronous execution for OpenMP offloaded regions. By taking advantage of the distinct host and target data environments, we discover opportunities that allow them to overlap execution without any need for user intervention. We also describe the necessary changes in the LLVM/OpenMP runtime. We evaluate our implementation through multiple HPC proxy applications and well known parallel benchmarks executed on GPUs. The measured performance can double for an ideal test case while real application exhibit speedups between 5% and 34%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Codes",
+                "Runtime",
+                "Prototypes",
+                "Benchmark testing",
+                "Programming",
+                "Software"
+            ],
+            "Index Terms": [
+                "Target Region",
+                "Asynchronous Execution",
+                "Programming Model",
+                "Target Data",
+                "User Intervention",
+                "Working Time",
+                "Mapping Data",
+                "Data Transfer",
+                "Task Execution",
+                "Load Data",
+                "Front End",
+                "Target Task",
+                "Code Examples",
+                "Synchronization Process",
+                "Array Of Devices",
+                "Total Execution Time",
+                "Code Execution",
+                "Memory Transfer",
+                "Reference Count",
+                "Synthetic Benchmark",
+                "Compile Time",
+                "Performance Of Version"
+            ],
+            "Author Keywords": [
+                "LLVM",
+                "OpenMP",
+                "accelerator offloading",
+                "GPU",
+                "Asynchronicity"
+            ]
+        }
     },
     {
         "publicationNumber": "10026851",
@@ -248,7 +470,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Eighth Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026851",
@@ -264,7 +488,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Eighth Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026851",
@@ -280,7 +506,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Eighth Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026851",
@@ -296,7 +524,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Eighth Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026851",
@@ -312,7 +542,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Eighth Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026851",
@@ -328,6 +560,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Eighth Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

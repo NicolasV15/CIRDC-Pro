@@ -32,7 +32,47 @@
                 "firstName": "Mattan",
                 "lastName": "Erez"
             }
-        ]
+        ],
+        "abstract": "Hardware faults (i.e., soft errors) are projected to increase in modern HPC systems. The faults often lead to error propagation in programs and result in silent data corruptions (SDCs), seriously compromising system reliability. Selective instruction duplication, a widely used software-based error detector, has been shown to be effective in detecting SDCs with low performance overhead. In the past, researchers have relied on compiler intermediate representation (IR) for program reliability analysis and code transformation in selective instruction duplication. However, they assumed that the IR-based analysis and protection are representative under realistic fault models (i.e., faults originated at lower hardware layers). Unfortunately, the assumptions have not been fully validated, leading to questions about the accuracy and efficiency of the protection since IR is a higher level of abstraction and far away from hardware layers. In this paper, we verify the assumption by injecting realistic hardware faults to programs that are guided and protected by IR-based selective instruction duplication. We find that the protection yields high SDC coverage with low performance overhead even under realistic fault models, albeit a small amount of such faults escaping the detector. Our observations confirm that IR-based selective instruction duplication is a cost-effective method to protect programs from soft errors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Circuit faults",
+                "Hardware",
+                "Integrated circuit modeling",
+                "Detectors",
+                "Software",
+                "Reliability",
+                "Logic gates"
+            ],
+            "Index Terms": [
+                "Real Error",
+                "Real Hardware",
+                "Hardware Errors",
+                "Realistic Model",
+                "Lower Layer",
+                "High-performance Computing",
+                "Defect Model",
+                "Low Overhead",
+                "Corrupted Data",
+                "Performance Overhead",
+                "High-performance Computing Systems",
+                "Level Of Protection",
+                "Distribution Of Outcomes",
+                "Impact Of Errors",
+                "Red Triangles",
+                "Amount Of Education",
+                "Combinational Logic",
+                "Reasonable Trade-off",
+                "Knapsack Problem",
+                "Output Buffer"
+            ],
+            "Author Keywords": [
+                "Fault-tolerance",
+                "fault-injection",
+                "resilience",
+                "instruction-duplication"
+            ]
+        }
     },
     {
         "publicationNumber": "8943072",
@@ -67,7 +107,56 @@
                 "firstName": "Wilfried N.",
                 "lastName": "Gansterer"
             }
-        ]
+        ],
+        "abstract": "As HPC systems grow in scale to meet increased computational demands, the incidence of faults in a given window of time is expected to grow. This issue is addressed by the scientific community with research on solutions in every computational layer. In this paper, we explore strategies for fault tolerance at the algorithmic level. We propose a node-failure-tolerant preconditioned conjugate gradient method, which is able to efficiently recover from node failures without the use of extra spare nodes, i. e., without any overhead in terms of available hardware. For purposes of load balancing, we redistribute the surviving and reconstructed solver data. The objective is to reconstruct the system either as it was before the node failure, or an equivalent, permuted version, and then continue the execution of the solver only on the surviving nodes. In our experimental evaluations, the recovery stage of the solver typically takes around 10% or less of the solver runtime, including the time to retrieve the problem-defining static data from the hard disk, and, when using a suitable preconditioner, an average solver runtime overhead of 3.5% over that of a resilient solver that uses a replacement node. We investigate the influence of the preconditioner on a trade-off between load-balancing and communication cost in the recovery phase. The obtained solutions are correct, and our method is thus a feasible way to recover from a node failure and continue the execution of the solver only on the surviving nodes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sparse matrices",
+                "Jacobian matrices",
+                "Hardware",
+                "Linear systems",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Task analysis"
+            ],
+            "Index Terms": [
+                "Preconditioned Conjugate Gradient Method",
+                "Replacement Nodes",
+                "Experimental Evaluation",
+                "Recovery Phase",
+                "Fault-tolerant",
+                "Load Balancing",
+                "Node Failure",
+                "Linear System",
+                "Recovery Time",
+                "Row Vector",
+                "Positive Definite Matrix",
+                "System Matrix",
+                "Matrix M",
+                "Vector Of Size",
+                "Search Direction",
+                "Linear Algebra",
+                "Binary Files",
+                "Original Order",
+                "Sparsity Pattern",
+                "Permutation Matrix",
+                "Iterative Solver",
+                "Reconstruction Stage",
+                "Matrix-vector Product",
+                "Phase Reconstruction",
+                "Solving Time",
+                "Large Machines",
+                "Solution Of The Linear System",
+                "Entry Of Vector",
+                "Symmetric Positive Definite Matrix"
+            ],
+            "Author Keywords": [
+                "preconditioned-conjugate-gradient-method",
+                "fault-tolerant-conjugate-gradient-algorithm",
+                "node-failures",
+                "algorithmic-fault-tolerance"
+            ]
+        }
     },
     {
         "publicationNumber": "8943072",
@@ -102,7 +191,51 @@
                 "firstName": "George",
                 "lastName": "Bosilca"
             }
-        ]
+        ],
+        "abstract": "With the increase in scale and architectural complexity of supercomputers, the management of failures has become integral to successfully executing a long-running high-performance computing application. In many instances, failures have a localized scope, usually impacting a subset of the resources being used, yet widely used failure recovery strategies (like checkpoint/restart) fail to take advantage and rely on global, synchronous recovery actions. Even with local rollback recovery, in which only the fault impacted processes are restarted from a checkpoint, the consistency of further progress in the execution is achieved through the replay of communication from a message log. This theoretically sound approach encounters some practical limitations: the presence of collective operations forces a synchronous recovery that prevents survivor processes from continuing their execution, removing any possibility for overlapping further computation with the recovery; and the amount of resources required at recovering peers can be untenable. In this work, we solved both problems by implementing an asynchronous, receiver-driven replay of point-to-point and collective communications, and by exploiting remote-memory access capabilities to access the message logs. This new protocol is evaluated in an implementation of local rollback over the User Level Failure Mitigation fault tolerant Message Passing Interface (MPI). It reduces the recovery times of the failed processes by an average of 59%, while the time spent in the recovery by the survivor processes is reduced by 95% when compared to an equivalent global rollback protocol, thus living to the promise of a truly localized impact of recovery actions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Payloads",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Hardware",
+                "Checkpointing",
+                "Supercomputers"
+            ],
+            "Index Terms": [
+                "Rollback",
+                "Message Passing Interface",
+                "Synchronization",
+                "Recovery Time",
+                "High-performance Computing",
+                "Fault-tolerant",
+                "Remote Memory",
+                "Metadata",
+                "Communication Channels",
+                "Experimental Evaluation",
+                "Communication Patterns",
+                "Finite Resources",
+                "Tea Leaves",
+                "Blue Water",
+                "Root Process",
+                "Recovery Procedure",
+                "Strong Scaling",
+                "Memory Regions",
+                "Mean Time To Failure",
+                "Point-to-point Communication",
+                "Checkpointing",
+                "High-performance Computing Systems"
+            ],
+            "Author Keywords": [
+                "fault-tolerance",
+                "MPI",
+                "User-Level-Fault-Mitigation",
+                "ULFM",
+                "message-logging",
+                "checkpoint/restart"
+            ]
+        }
     },
     {
         "publicationNumber": "8943072",
@@ -143,7 +276,53 @@
                 "firstName": "Luke",
                 "lastName": "Olson"
             }
-        ]
+        ],
+        "abstract": "System reliability is expected to be a significant challenge for future extreme-scale systems. Poor reliability results in a higher frequency of interruptions in high-performance computer (HPC) applications due to system/application crashes or data corruption due to soft errors. In response, application level error detection and recovery schemes are devised to mitigate the impact of these interruptions. Evaluating these schemes and the reliability of an application re- quires the analysis of thousands of fault injection trials, resulting in tedious and time-consuming process. Furthermore, there is no one data analysis tool that can work with all of the fault injection frameworks currently in use. In this paper, we present FaultSight, a fault injection analysis tool capable of efficiently assisting in the analysis of HPC application reliability as well as the effectiveness of resiliency schemes. FaultSight is designed to be flexible and work with data coming from a variety of fault injection frameworks. The effectiveness of FaultSight is demonstrated by exploring the reliability of different versions of the Matrix-Matrix Multiplication kernel using two different fault injection tools. In addition, the detection and recovery schemes are highlighted for the HPCCG mini-app.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Databases",
+                "Tools",
+                "Reliability",
+                "Data visualization",
+                "Statistical analysis",
+                "Resilience",
+                "Measurement"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Detection Scheme",
+                "Recovery Strategies",
+                "Corrupted Data",
+                "Analysis Of Thousands",
+                "Recovery Error",
+                "Matrix Elements",
+                "Detection Analysis",
+                "Error Propagation",
+                "Web Application",
+                "Linear Solver",
+                "Type Of Education",
+                "Vulnerable Regions",
+                "Most Significant Bit",
+                "End Of Each Iteration",
+                "Parity-check",
+                "Wall-clock Time",
+                "Random Bits",
+                "Injection Location",
+                "Memory Allocation",
+                "High-performance Computing Systems",
+                "Sign Bit",
+                "API Calls",
+                "Application Running"
+            ],
+            "Author Keywords": [
+                "soft-error-analysis",
+                "fault-analysis-tool",
+                "fault-tolerance",
+                "resiliency",
+                "fault-injection",
+                "fault-analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "8943072",
@@ -172,7 +351,54 @@
                 "firstName": "Xuechen",
                 "lastName": "Zhang"
             }
-        ]
+        ],
+        "abstract": "To fully leverage the emerging non-volatile main memory (NVMM) for high-performance computing, programmers need efficient data structures that are aware of NVMM memory models and provide crash consistency. Manual creation of NVMM-aware persistent data structures requires a deep understanding of how to create persistent snapshots of memory objects corresponding to the data structures and substantial code modification, which makes it very difficult to use in its manual form even for experienced programmers. To simplify the process, we design a compiler-assistant technique, NVPath. With the aid of compilers, it automatically generates NVMM-aware persistent data structures that provide the same level of guarantee of crash consistency compared to the baseline code. Compiler-assistant code annotation and transformation are general and can be applied to applications using various data structures. Furthermore, it is a gray-box technique which requires minimum users’ input. Finally, it keeps the baseline code structure for good readability and maintenance. Our experimental results with real-world scientific applications (e.g., matrix multiplication, LU decomposition, adaptive-mesh refinement, and page ranking) show that the performance of annotated programs is commensurate with the version using the manual code transformation on the Titan supercomputer.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Nonvolatile memory",
+                "Computer crashes",
+                "Annotations",
+                "Arrays",
+                "Static analysis"
+            ],
+            "Index Terms": [
+                "Scientific Applications",
+                "Non-volatile Memory",
+                "Crash Consistency",
+                "Data Structure",
+                "Matrix Multiplication",
+                "PageRank",
+                "Persistent Data",
+                "Adaptive Mesh Refinement",
+                "Source Code",
+                "Correlated Variables",
+                "Static Analysis",
+                "Inconsistent Data",
+                "Data Version",
+                "File System",
+                "Checkers",
+                "Upper Triangular",
+                "Newer Version",
+                "End Of Each Iteration",
+                "Persistent Memory",
+                "Head Structures",
+                "Checkpointing",
+                "Domain-specific Languages",
+                "Data Cache",
+                "Number Pe",
+                "Strong Scaling",
+                "Quadtree",
+                "STRUCTURE Version",
+                "Execution Path",
+                "Triangular Matrix",
+                "Memory State"
+            ],
+            "Author Keywords": [
+                "Crash Consistency",
+                "Non-Volatile Main Memory",
+                "Compiler-Assistant Transformation"
+            ]
+        }
     },
     {
         "publicationNumber": "8943072",
@@ -219,7 +445,49 @@
                 "firstName": "Richard",
                 "lastName": "Vuduc"
             }
-        ]
+        ],
+        "abstract": "For the problem of computing the connected components of a graph, this paper considers the design of algorithms that are resilient to transient hardware faults, like bit Hips. More specifically, it applies the technique of self-stabilization. A system is self-stabilizing if, when starting from a valid or invalid state, it is guaranteed to reach a valid state after a finite number of steps. Therefore on a machine subject to a transient fault, a self-stabilizing algorithm could recover if that fault caused the system to enter an invalid state. We give a comprehensive analysis of the valid and invalid states during label propagation and derive algorithms to verify and correct the invalid state. The self-stabilizing label-propagation algorithm performs O (V log V) additional computation and requires O (V) additional storage over its conventional counterpart (and, as such, does not increase asymptotic complexity over conventional label propagation). When run against a battery of simulated fault injection tests, the self-stabilizing label propagation algorithm exhibits more resilient behavior than a triple modular redundancy (TMR) based fault-tolerant algorithm in 80% of cases. From a performance perspective, it also outperforms TMR as it requires fewer iterations in total. Beyond the fault tolerance properties of self-stabilizing label-propagation, we believe, they are useful from the theoretical perspective; and may have other use-cases.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Transient analysis",
+                "Iterative methods",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Label Propagation",
+                "Fault Simulation",
+                "Label Propagation Algorithm",
+                "Transient Faults",
+                "Iterative Algorithm",
+                "Set Of Conditions",
+                "Computational Overhead",
+                "Vertices",
+                "Defect Model",
+                "Correction Step",
+                "Depth-first",
+                "Breadth-first Search",
+                "Baseline Algorithms",
+                "Arbitrary State",
+                "Defect Rate",
+                "Cost Of Algorithm",
+                "Graph Algorithms",
+                "Memory Operations",
+                "Static Algorithm",
+                "Vertex Labels",
+                "Types Of Corruption",
+                "Online Correction"
+            ],
+            "Author Keywords": [
+                "self-stabilization",
+                "connected-components",
+                "fault-tolerance",
+                "Algorithm-based-Fault-Tolerance",
+                "Label-propagation"
+            ]
+        }
     },
     {
         "publicationNumber": "8943072",
@@ -235,7 +503,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8943072",
@@ -251,7 +521,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8943072",
@@ -267,7 +539,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8943072",
@@ -283,7 +557,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8943072",
@@ -299,7 +575,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8943072",
@@ -315,6 +593,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     }
 ]

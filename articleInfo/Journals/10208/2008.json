@@ -26,7 +26,43 @@
                 "firstName": "Jose",
                 "lastName": "Duato"
             }
-        ]
+        ],
+        "abstract": "The design of scalable and reliable interconnection networks for multicore chips (NoCs) introduces new design constraints like power consumption, area, and ultra low latencies. Although 2D meshes are usually proposed for NoCs, heterogeneous cores, manufacturing defects, hard failures, and chip virtualization may lead to irregular topologies. In this context, efficient routing becomes a challenge. Although switches can be easily configured to support most routing algorithms and topologies by using routing tables, this solution does not scale in terms of latency and area. We propose a new circuit that removes the need for using routing tables. The new mechanism, referred to as logic-based distributed routing (LBDR), enables the implementation in NoCs of many routing algorithms for most of the practical topologies we might find in the near future in a multicore chip. From an initial topology and routing algorithm, a set of three bits per switch output port is computed. By using a small logic block, LHDR mimics (demonstrated by evaluation) the behavior of routing algorithms implemented with routing tables. This result is achieved both in regular and irregular topologies. Therefore, LBDR removes the need for using routing tables for distributed routing, thus enabling flexible, fast and power-efficient routing in NoCs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Routing",
+                "Network-on-a-chip",
+                "Circuit topology",
+                "Switches",
+                "Multicore processing",
+                "Delay",
+                "Multiprocessor interconnection networks",
+                "Energy consumption",
+                "Manufacturing",
+                "Network topology"
+            ],
+            "Index Terms": [
+                "Distribution Routes",
+                "Power Consumption",
+                "Small Blocks",
+                "Output Ports",
+                "Routing Algorithm",
+                "Ultra-low Latency",
+                "Routing Table",
+                "Manufacturing Defects",
+                "Mesh Network",
+                "Wormhole",
+                "Packet Header"
+            ],
+            "Author Keywords": [
+                "Multi-core/single-chip multiprocessors",
+                "On-chip interconnection networks"
+            ],
+            "Author Free Keywords": [
+                "Multi-core/single-chip multiprocessors",
+                "On-chip interconnection networks"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -55,7 +91,56 @@
                 "firstName": "Rami",
                 "lastName": "Melhem"
             }
-        ]
+        ],
+        "abstract": "This paper studies the important interaction between parallelization and energy consumption in a parallelizable application. Given the ratio of serial and parallel portion in an application and the number of processors, we first derive the optimal frequencies allocated to the serial and parallel regions in the application to minimize the total energy consumption, while the execution time is preserved (i.e., speedup = 1). We show that dynamic energy improvement due to parallelization has a function rising faster with the increasing number of processors than the speed improvement function given by the well-known Amdahl's Law. Furthermore, we determine the conditions under which one can obtain both energy and speed improvement, as well as the amount of improvement. The formulas we obtain capture the fundamental relationship between parallelization, speedup, and energy consumption and can be directly utilized in energy aware processor resource management. Our results form a basis for several interesting research directions in the area of power and energy aware parallel processing.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Energy consumption",
+                "Application software",
+                "Radio spectrum management",
+                "Equations",
+                "Computer science",
+                "Energy capture",
+                "Resource management",
+                "Parallel processing",
+                "Energy management",
+                "Concurrent computing"
+            ],
+            "Index Terms": [
+                "Amdahl’s Law",
+                "Energy Consumption",
+                "Parallelization",
+                "Total Energy Consumption",
+                "Dynamic Energy",
+                "Interesting Research Direction",
+                "Amount Of Improvement",
+                "Direct Area",
+                "Number Of Processors",
+                "Energy Minimization",
+                "Power Consumption",
+                "Serial Sections",
+                "Maximum Speed",
+                "Clock Rate",
+                "Clock Frequency",
+                "Task Scheduling",
+                "Minimum Energy Consumption",
+                "Parallel Sections",
+                "Minimum Total Energy",
+                "Code Section",
+                "Static Power Consumption",
+                "Dynamic Power Consumption"
+            ],
+            "Author Keywords": [
+                "Power Management",
+                "Hardware",
+                "Parallel Architectures"
+            ],
+            "Author Free Keywords": [
+                "Power Management",
+                "Hardware",
+                "Parallel Architectures"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -102,7 +187,43 @@
                 "firstName": "JongSoo",
                 "lastName": "Park"
             }
-        ]
+        ],
+        "abstract": "We present an efficient programmable architecture for compute-intensive embedded applications. The processor architecture uses instruction registers to reduce the cost of delivering instructions, and a hierarchical and distributed data register organization to deliver data. Instruction registers capture instruction reuse and locality in inexpensive storage structures that arc located near to the functional units. The data register organization captures reuse and locality in different levels of the hierarchy to reduce the cost of delivering data. Exposed communication resources eliminate pipeline registers and control logic, and allow the compiler to schedule efficient instruction and data movement. The architecture keeps a significant fraction of instruction and data bandwidth local to the functional units, which reduces the cost of supplying instructions and data to large numbers of functional units. This architecture achieves an energy efficiency that is 23x greater than an embedded RISC processor.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Energy efficiency",
+                "Embedded system",
+                "Registers",
+                "Computer architecture",
+                "Costs",
+                "Computer applications",
+                "Embedded computing",
+                "Pipelines",
+                "Communication system control",
+                "Logic"
+            ],
+            "Index Terms": [
+                "Functional Unit",
+                "Efficient Data",
+                "Levels Of Hierarchy",
+                "Load Data",
+                "Control Logic",
+                "Performance Requirements",
+                "Arithmetic Operations",
+                "Data Block",
+                "Design Flow",
+                "Semiconductor Technology",
+                "Small Files",
+                "Address Space",
+                "Automatic Update"
+            ],
+            "Author Keywords": [
+                "Mobile processors"
+            ],
+            "Author Free Keywords": [
+                "Mobile processors"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -161,7 +282,49 @@
                 "firstName": "Yookun",
                 "lastName": "Cho"
             }
-        ]
+        ],
+        "abstract": "Flash memory solid state disk (SSD) is gaining popularity and replacing hard disk drive (HDD) in mobile computing systems such as ultra mobile PCs (UMPCs) and notebook PCs because of lower power consumption, faster random access, and higher shock resistance. One of the key challenges in designing a high-performance flash memory SSD is an efficient handling of small random writes to non-volatile data whose performance suffers from the inherent limitation of flash memory that prohibits in-placc update. In this paper, we propose a high performance Flash/FRAM hybrid SSD architecture called Chameleon. In Chameleon, metadata used by the flash translation layer (FTL), a software layer in the flash memory SSD, is maintained in a small FRAM since this metadata is a target of intensive small random writes, whereas the bulk data is kept in the flash memory. Performance evaluation based on an FPGA implementation of the Chameleon architecture shows that the use of FRAM in Chameleon improves the performance by 21.3 %. The results also show that even for bulk data that cannot be maintained in FRAM because of the size limitation, the use of fine-grained write buffering is critically important because of the inability of flash memory to perform in-placc update of data.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Ferroelectric films",
+                "Nonvolatile memory",
+                "Solid state circuits",
+                "Flash memory",
+                "Computer architecture",
+                "Mobile computing",
+                "Personal communication networks",
+                "Hard disks",
+                "Energy consumption"
+            ],
+            "Index Terms": [
+                "Chameleon",
+                "Solid-state Drives",
+                "Solid Disk",
+                "Toughness",
+                "Flash Memory",
+                "Disk Drive",
+                "Ferroelectric Memory",
+                "Application Programming",
+                "Scale Of The Problem",
+                "Physical Size",
+                "Map Information",
+                "Benchmark Test",
+                "Various Types Of Data",
+                "Data Block",
+                "Reading Program",
+                "MS Word",
+                "Logic Blocks"
+            ],
+            "Author Keywords": [
+                "Mass storage",
+                "Design studies"
+            ],
+            "Author Free Keywords": [
+                "Mass storage",
+                "Design studies"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -202,7 +365,47 @@
                 "firstName": "Shubhendu",
                 "lastName": "Mukherjee"
             }
-        ]
+        ],
+        "abstract": "ACE (architecturally correct execution) analysis computes AVFs (architectural vulnerability factors) of hardware structures. AVF expresses the fraction of radiation-induced transient faults that result in user-visible errors. Architects usually perform this analysis on a high-level performance model to quickly compute per-structure AVFs. If, however, low-level details of a microarchitecture are not modeled appropriately, then their effects may not be reflected in the per-structure AVFs. In this paper we refute Wang, et al.'s (2007) claim that this detail is difficult to model and imposes a practical threshold on ACE analysis that forces its estimates to have a high error margin. We show that carefully choosing a small amount of additional detail can result in a much tighter AVF bound than Wang, et al. were able to achieve in their refined ACE analysis. Even the inclusion of small details, such as read/write pointers and appropriate inter-structure dependencies, can increase the accuracy of the AVF computation by 40% or more. We argue that this is no different than modeling the IPC (instructions per cycle) of a microprocessor pipeline. A less detailed performance model will provide less accurate IPCs. AVFs are no different.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance analysis",
+                "Hardware",
+                "Microarchitecture",
+                "High performance computing",
+                "Microprocessors",
+                "Pipelines",
+                "Computational modeling",
+                "Protection",
+                "Target tracking"
+            ],
+            "Index Terms": [
+                "Computational Accuracy",
+                "Per Cycle",
+                "Correct Execution",
+                "High-level Model",
+                "Hardware Structure",
+                "Transient Faults",
+                "Flow Control",
+                "Masking Effect",
+                "Lack Of Detail",
+                "Advantages Of Speed",
+                "Written Back",
+                "Physical Source",
+                "Knowledge Of Architecture"
+            ],
+            "Author Keywords": [
+                "Performance and Reliability",
+                "Reliability",
+                "Testing and Fault-Tolerance"
+            ],
+            "Author Free Keywords": [
+                "Performance and Reliability",
+                "Reliability",
+                "Testing",
+                "and Fault-Tolerance"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -237,7 +440,56 @@
                 "firstName": "Bin",
                 "lastName": "Liu"
             }
-        ]
+        ],
+        "abstract": "This letter presents a new oblivious routing algorithm for 3D mesh networks called randomized partially-minimal (RPM) routing that provably achieves optimal worst- case throughput for 3D meshes when the network radix fc is even and within a factor of 1/k<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> of optimal when k is odd. Although this optimality result has been achieved with the minimal routing algorithm OITURN for the 2D case, the worst-case throughput of OITURN degrades tremendously in higher dimensions. Other existing routing algorithms suffer from either poor worst-case throughput (DOR, ROMM) or poor latency (VAL). RPM on the other hand achieves near optimal worst-case and good average-case throughput as well as good latency performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Pipelines",
+                "Automata",
+                "Computer architecture",
+                "Costs",
+                "Throughput",
+                "Intrusion detection",
+                "Computer science",
+                "Partial response channels",
+                "Table lookup"
+            ],
+            "Index Terms": [
+                "Pipeline Architecture",
+                "Search String",
+                "Lookup Table",
+                "System Throughput",
+                "Memory Cost",
+                "Set Of Tables",
+                "Static Graph",
+                "Back Edge",
+                "State Value",
+                "Root Node",
+                "State Machine",
+                "Stage Status",
+                "Lowercase Letters",
+                "Control Logic",
+                "Clock Rate",
+                "Single Entry",
+                "Start Of Cycle",
+                "Table Entries",
+                "Input Stream",
+                "Input Symbols"
+            ],
+            "Author Keywords": [
+                "string matching",
+                "deterministic finite automaton",
+                "pipelined processing",
+                "network intrusion detection"
+            ],
+            "Author Free Keywords": [
+                "string matching",
+                "deterministic finite automaton",
+                "pipelined processing",
+                "network intrusion detection"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -266,7 +518,56 @@
                 "firstName": "Bill",
                 "lastName": "Lin"
             }
-        ]
+        ],
+        "abstract": "This letter presents a new oblivious routing algorithm for 3D mesh networks called Randomized Partially- Minimal (RPM) routing that provably achieves optimal worstcase throughput for 3D meshes when the network radix k is even and within a factor of 1/k2 of optimal when k is odd. Although this optimality result has been achieved with the minimal routing algorithm O1TURN [9] for the 2D case, the worst-case throughput of O1TURN degrades tremendously in higher dimensions. Other existing routing algorithms suffer from either poor worst-case throughput (DOR [10], ROMM [8]) or poor latency (VAL [14]). RPM on the other hand achieves near optimal worst-case and good average-case throughput as well as good latency performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Routing",
+                "Mesh networks",
+                "Throughput",
+                "Delay",
+                "Degradation",
+                "Telecommunication traffic",
+                "Silicon",
+                "Technological innovation",
+                "Network topology",
+                "Fabrics"
+            ],
+            "Index Terms": [
+                "Mesh Network",
+                "3D Mesh",
+                "Routing Algorithm",
+                "Performance Metrics",
+                "Average Count",
+                "Network Capacity",
+                "Final Destination",
+                "Load Balancing",
+                "Vertical Dimension",
+                "Average Latency",
+                "Device Layer",
+                "Throughput Analysis",
+                "Penalty Factor",
+                "Traffic Patterns",
+                "Vertical Layers",
+                "Routing Path",
+                "Virtual Channel",
+                "Hop Count"
+            ],
+            "Author Keywords": [
+                "On-chip interconnection networks",
+                "Interconnection architectures",
+                "Emerging technologies",
+                "Network communications",
+                "Packet-switching networks"
+            ],
+            "Author Free Keywords": [
+                "On-chip interconnection networks",
+                "Interconnection architectures",
+                "Emerging technologies",
+                "Network communications",
+                "Packet-switching networks"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -289,7 +590,38 @@
                 "firstName": "Amir",
                 "lastName": "Roth"
             }
-        ]
+        ],
+        "abstract": "Several proposed techniques including CPR (checkpoint processing and recovery) and NoSQ (no store queue) rely on reference counting to manage physical registers. However, the register reference counting mechanism itself has received surprisingly little attention. This paper fills this gap by describing potential register reference counting schemes for NoSQ, CPR, and a hypothetical NoSQ/CPR hybrid. Although previously described in terms of binary counters, we find that reference counts are actually more naturally represented as matrices. Binary representations can be used as an optimization in specific situations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Counting circuits",
+                "Physics computing",
+                "Information science",
+                "Proposals",
+                "Microarchitecture",
+                "Engines"
+            ],
+            "Index Terms": [
+                "Reference Count",
+                "Per Cycle",
+                "Masked Images",
+                "OR Gate",
+                "Arbitrary Amount",
+                "Free Listing"
+            ],
+            "Author Keywords": [
+                "Micro-architecture implementation considerations",
+                "Superscalar",
+                "dynamically-scheduled and statically-scheduled implementation"
+            ],
+            "Author Free Keywords": [
+                "Micro-architecture implementation considerations",
+                "Superscalar",
+                "dynamically-scheduled",
+                "and statically-scheduled implementation"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -324,7 +656,48 @@
                 "firstName": "Ronny",
                 "lastName": "Ronen"
             }
-        ]
+        ],
+        "abstract": "DMR (dual modular redundancy) was suggested for increasing reliability. Classical DMR consists of pairs of cores that check each other and are pre-connected during manufacturing by dedicated links. In this paper we introduce the dynamic dual modular redundancy (DDMR) architecture. DDMR supports run-time scheduling of redundant threads, which has significant benefits relative to static binding. To allow dynamic pairing, DDMR replaces the special links with a novel ring architecture. DDMR uses short instruction sequences for validation, smaller than the processor reorder buffer. Such short sequences reduce latencies in parallel programs and save resources needed to buffer uncommitted data. DDMR scales with the number of cores and may be used in large multicore architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Joining processes",
+                "Delay",
+                "Redundancy",
+                "Manufacturing",
+                "Job shop scheduling",
+                "Multicore processing",
+                "Transistors",
+                "Proposals",
+                "Processor scheduling"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Dual Modular Redundancy",
+                "Parallelization",
+                "Multi-core",
+                "Error Detection",
+                "Recovery Error",
+                "Error Rate",
+                "Coding Sequence",
+                "Operating System",
+                "Loading Values",
+                "Interval Length",
+                "Rollback",
+                "Valid Point",
+                "Beginning Of Sequence",
+                "Shared Memory",
+                "Time-division Multiplexing",
+                "Cyclic Redundancy Check"
+            ],
+            "Author Keywords": [
+                "Multi-core/single-chip multiprocessors",
+                "Redundant design"
+            ],
+            "Author Free Keywords": [
+                "Multi-core/single-chip multiprocessors",
+                "Redundant design"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -371,7 +744,66 @@
                 "firstName": "Jose",
                 "lastName": "Duato"
             }
-        ]
+        ],
+        "abstract": "The fat-tree is one of the most widely-used topologies by interconnection network manufacturers. Recently, it has been demonstrated that a deterministic routing algorithm that optimally balances the network traffic can not only achieve almost the same performance than an adaptive routing algorithm but also outperforms it. On the other hand, fat-trees require a high number of switches with a non-negligible wiring complexity. In this paper, we propose replacing the fat--tree by a unidirectional multistage interconnection network (UMIN) that uses a traffic balancing deterministic routing algorithm. As a consequence, switch hardware is almost reduced to the half, decreasing, in this way, the power consumption, the arbitration complexity, the switch size itself, and the network cost. Preliminary evaluation results show that the UMIN with the load balancing scheme obtains lower latency than fat--tree for low and medium traffic loads. Furthermore, in networks with a high number of stages or with high radix switches, it obtains the same, or even higher, throughput than fat-tree.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multiprocessor interconnection networks",
+                "Switches",
+                "Routing",
+                "Telecommunication traffic",
+                "Network topology",
+                "Manufacturing",
+                "Wiring",
+                "Hardware",
+                "Energy consumption",
+                "Costs"
+            ],
+            "Index Terms": [
+                "Interconnected Network",
+                "Load Balancing",
+                "Fat-tree",
+                "Low Load",
+                "Power Consumption",
+                "Arbitration",
+                "Routing Algorithm",
+                "Medium Load",
+                "Butterfly",
+                "Heat Dissipation",
+                "Network Resources",
+                "Output Ports",
+                "Network Throughput",
+                "Average Latency",
+                "Physical Issues",
+                "Input Port",
+                "Least Significant Bit",
+                "Clock Cycles",
+                "Destination Node",
+                "Lowest Common Ancestor",
+                "Stage Of Network",
+                "Routing Decisions"
+            ],
+            "Author Keywords": [
+                "Network topology",
+                "Network Architecture and Design",
+                "Fat-trees",
+                "Deterministic Routing",
+                "Multistage Interconnection Networks",
+                "Traffic Balancing",
+                "Butterfly Network",
+                "Cost-efficiency"
+            ],
+            "Author Free Keywords": [
+                "Network topology",
+                "Network Architecture and Design",
+                "Fat-trees",
+                "Deterministic Routing",
+                "Multistage Interconnection Networks",
+                "Traffic Balancing",
+                "Butterfly Network",
+                "Cost-efficiency"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -406,7 +838,51 @@
                 "firstName": "Avinoam",
                 "lastName": "Kolodny"
             }
-        ]
+        ],
+        "abstract": "Network-on-chips (NoCs) outperform buses in terms of scalability, parallelism and system modularity and therefore are considered as the main interconnect infrastructure in future chip multi-processor (CMP). However, while NoCs are very efficient for delivering high throughput point-to-point data from sources to destinations, their multi-hop operation is too slow for latency sensitive signals. In addition, current NoCS are inefficient for broadcast operations and centralized control of CMP resources. Consequently, state-of-the-art NoCs may not facilitate the needs of future CMP systems. In this paper, the benefit of adding a low latency, customized shared bus as an internal part of the NoC architecture is explored. BENoC (bus-enhanced network on-chip) possesses two main advantages: First, the bus is inherently capable of performing broadcast transmission in an efficient manner. Second, the bus has lower and more predictable propagation latency. In order to demonstrate the potential benefit of the proposed architecture, an analytical comparison of the power saving in BENoC versus a standard NoC providing similar services is presented. Then, simulation is used to evaluate BENoC in a dynamic non-uniform cache access (DNUCA) multiprocessor system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Network-on-a-chip",
+                "Delay",
+                "System-on-a-chip",
+                "Power system interconnection",
+                "Broadcasting",
+                "Scalability",
+                "Throughput",
+                "Centralized control",
+                "Multiprocessing systems",
+                "Multiprocessor interconnection networks"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Network-on-chip",
+                "Energy Consumption",
+                "System Size",
+                "Arbitration",
+                "Core Processes",
+                "System Modulation",
+                "Line Search",
+                "System-on-chip",
+                "Bus Drivers",
+                "Input Capacitance",
+                "Multiple Messages",
+                "Tile Size",
+                "Multi-hop Networks",
+                "Broadcast Messages",
+                "Transaction Time",
+                "L2 Cache",
+                "Application Execution",
+                "Extra Bits"
+            ],
+            "Author Keywords": [
+                "Interconnection architectures",
+                "On-chip interconnection networks"
+            ],
+            "Author Free Keywords": [
+                "Interconnection architectures",
+                "On-chip interconnection networks"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -453,7 +929,50 @@
                 "firstName": "JongSoo",
                 "lastName": "Park"
             }
-        ]
+        ],
+        "abstract": "This paper analyzes a range of architectures for efficient delivery of VLIW instructions for embedded media kernels. The analysis takes an efficient filter cache as a baseline and examines the benefits from 1) removing the tag overhead, 2) distributing the storage, 3) adding indirection, 4) adding efficient NOP generation, and 5) sharing instruction memory. The result is a hierarchical instruction register organization that provides a 56% energy and 40% area savings over an already efficient filter cache.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "VLIW",
+                "Computer integrated manufacturing",
+                "Kernel",
+                "Filters",
+                "Computer aided instruction",
+                "Embedded computing",
+                "Laboratories",
+                "Computer architecture",
+                "Cache storage"
+            ],
+            "Index Terms": [
+                "Efficient Generation",
+                "Evidential",
+                "Delivery Of Education",
+                "Energy Conservation",
+                "Functional Unit",
+                "Reduction In Area",
+                "Flow Control",
+                "Large Memory",
+                "Memory Size",
+                "Code Blocks",
+                "Small Memory",
+                "Binary Index",
+                "Communication Unit",
+                "Full Instructions"
+            ],
+            "Author Keywords": [
+                "Low-power design",
+                "Instruction fetch",
+                "RISC/CISC",
+                "VLIW architectures"
+            ],
+            "Author Free Keywords": [
+                "Low-power design",
+                "Instruction fetch",
+                "RISC/CISC",
+                "VLIW architectures"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -482,7 +1001,47 @@
                 "firstName": "Stephen",
                 "lastName": "Jenks"
             }
-        ]
+        ],
+        "abstract": "The software and hardware techniques to exploit the potential of multi-core processors are falling behind, even though the number of cores and cache levels per chip is increasing rapidly. There is no explicit communications support available, and hence inter-core communications depend on cache coherence protocols, resulting in demand-based cache line transfers with their inherent latency and overhead. In this paper, we present software controlled eviction (SCE) to improve the performance of multithreaded applications running on multi-core processors by moving shared data to shared cache levels before it is demanded from remote private caches. Simulation results show that SCE offers significant performance improvement (8-28%) and reduces L3 cache misses by 88-98%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multicore processing",
+                "Hardware",
+                "Delay",
+                "Parallel processing",
+                "Concurrent computing",
+                "Degradation",
+                "Control systems",
+                "Protocols",
+                "Software performance"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "L2 Cache",
+                "Data Sharing",
+                "Data Cache",
+                "Cache Misses",
+                "Simulation System",
+                "Grid Size",
+                "Memory System",
+                "Data Block",
+                "Close Location",
+                "End Of Each Iteration",
+                "Remote Memory",
+                "Written Back",
+                "Off-chip Memory",
+                "Cache Hit",
+                "Memory Hierarchy"
+            ],
+            "Author Keywords": [
+                "Multi-core/single-chip multiprocessors",
+                "Support for multi-threaded execution"
+            ],
+            "Author Free Keywords": [
+                "Multi-core/single-chip multiprocessors",
+                "Support for multi-threaded execution"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -529,7 +1088,47 @@
                 "firstName": "Alok",
                 "lastName": "Choudhary"
             }
-        ]
+        ],
+        "abstract": "As transistor feature sizes continue to shrink intothe sub-90nm range and beyond, the effects of process variationson critical path delay and chip yields have amplified. A commonconcept to remedy the effects of variation is speed-binning, bywhich chips from a single batch are rated by a discrete range offrequencies and sold at different prices. In this paper, we discussstrategies to modify the number of chips in different bins andhence enhance the profits obtained from them. Particularly, wepropose a scheme that introduces a small Substitute Cacheassociated with each cache way to replicate the data elementsthat will be stored in the high latency lines. Assuming a fixedpricing model, this method increases the revenue by as much as13.8% without any impact on the performance of the chips.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microarchitecture",
+                "Frequency",
+                "Manufacturing",
+                "Design optimization",
+                "Cost function",
+                "Fabrication",
+                "Transistors",
+                "Delay effects",
+                "Pricing",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Critical Path",
+                "Number Of Chips",
+                "Random Variables",
+                "Power Consumption",
+                "Supply And Demand",
+                "Array Data",
+                "Base Case",
+                "Speed Rate",
+                "Texas Instruments",
+                "Delay Values",
+                "Performance Overhead",
+                "Critical Word",
+                "Binary Index",
+                "Change In Revenue",
+                "Access Latency",
+                "L2 Cache",
+                "Power Overhead"
+            ],
+            "Author Keywords": [
+                "Computer Architecture",
+                "Cache Memories",
+                "Process Variations",
+                "Fault-tolerant Computing."
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -576,7 +1175,65 @@
                 "firstName": "Yihe",
                 "lastName": "Sun"
             }
-        ]
+        ],
+        "abstract": "Performance and scalability are critically-important for on-chip interconnect in many-core chip-multiprocessor systems. Packet-switched interconnect fabric, widely viewed as the de facto on-chip data communication backplane in the many-core era, offers high throughput and excellent scalability. However, these benefits come at the price of router latency due to run-time multi-hop data buffering and resource arbitration. The network accounts for a majority of on-chip data transaction latency. In this work, we propose dynamic in-network resource reservation techniques to optimize run-time on-chip data transactions. This idea is motivated by the need to preserve existing abstraction and general-purpose network performance while optimizing for frequently-occurring network events such as data transactions. Experimental studies using multithreaded benchmarks demonstrate that the proposed techniques can reduce on-chip data access latency by 28.4% on average in a 16-node system and 29.2% on average in a 36-node system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Network-on-a-chip",
+                "Delay",
+                "Scalability",
+                "System-on-a-chip",
+                "Runtime",
+                "Fabrics",
+                "Data communication",
+                "Backplanes",
+                "Throughput",
+                "Computer buffers"
+            ],
+            "Index Terms": [
+                "Resource Reservation",
+                "Network-on-chip",
+                "Arbitration",
+                "Network Design",
+                "Data Packets",
+                "Transaction Data",
+                "Transaction Information",
+                "Access Latency",
+                "Random Assignment",
+                "Core Processes",
+                "Network Resources",
+                "Output Ports",
+                "Input Port",
+                "Clock Frequency",
+                "Latency Reduction",
+                "Network Latency",
+                "Written Back",
+                "Data Cache",
+                "Routing Path",
+                "Pipeline Stages",
+                "L2 Cache",
+                "Request Message",
+                "Input-output Pairs",
+                "Virtual Channel",
+                "Switching Circuit",
+                "Cache Misses",
+                "Misprediction",
+                "Network Packets",
+                "Return Path"
+            ],
+            "Author Keywords": [
+                "On-chip interconnection networks",
+                "Interconnections (Subsystems)",
+                "Interconnection architectures",
+                "Parallel Architectures"
+            ],
+            "Author Free Keywords": [
+                "On-chip interconnection networks",
+                "Interconnections (Subsystems)",
+                "Interconnection architectures",
+                "Parallel Architectures"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -595,8 +1252,8 @@
         "authors": [
             {
                 "id": 37297735500,
-                "preferredName": "Jos\u00e9 A. Joao",
-                "firstName": "Jos\u00e9 A.",
+                "preferredName": "José A. Joao",
+                "firstName": "José A.",
                 "lastName": "Joao"
             },
             {
@@ -617,7 +1274,45 @@
                 "firstName": "Yale N.",
                 "lastName": "Patt"
             }
-        ]
+        ],
+        "abstract": "Indirect jumps are used to implement increasingly common programming language constructs such as virtual function calls, switch-case statements, jump tables, and interface calls. Unfortunately, the prediction accuracy of indirect jumps has remained low because many indirect jumps have multiple targets that are difficult to predict even with specialized hardware. This paper proposes a new way of handling hard-to-predict indirect jumps: dynamically predicating them. The compiler identifies indirect jumps that are suitable for predication along with their control-flow merge (CFM) points. The microarchitecture predicates the instructions between different targets of the jump and its CFM point if the jump turns out to be hardto-predict at run time. We describe the new indirect jump predication architecture, provide code examples showing why it could reduce the performance impact of jumps, derive an analytical cost-benefit model for deciding which jumps and targets to predicate, and present preliminary evaluation results.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Microarchitecture",
+                "Pipelines",
+                "Computer languages",
+                "Instruction sets",
+                "Switches",
+                "Accuracy",
+                "Performance analysis",
+                "Object oriented modeling",
+                "Analytical models"
+            ],
+            "Index Terms": [
+                "Indirect Jumps",
+                "Code Examples",
+                "Benchmark",
+                "Correct Target",
+                "Confidence Estimation",
+                "Instruction Set Architecture",
+                "Traditional Language",
+                "Misprediction",
+                "Conditional Branches",
+                "Control Flow Graph",
+                "Target Path"
+            ],
+            "Author Keywords": [
+                "Cache memories",
+                "Design Styles",
+                "B.3 Memory Structures",
+                "B Hardware",
+                "Multi-core/single-chip multiprocessors",
+                "Parallel Architectures",
+                "Processor Architectures",
+                "Computer Systems Organization"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -646,7 +1341,54 @@
                 "firstName": "Xiang",
                 "lastName": "Xiao"
             }
-        ]
+        ],
+        "abstract": "This article proposes a novel parallel, hardware-oriented deadlock detection algorithm for multiprocessor system-on-chips. The proposed algorithm takes full advantage of hardware parallelism in computation and maintains information needed by deadlock detection through classifying all resource allocation events and performing class specific operations, which together make the overall run-time complexity of the new method O(1). We implement the proposed algorithm in Verilog HDL and demonstrate in the simulation that each algorithm invocation takes at most four clock cycles in hardware.",
+        "keywords": {
+            "IEEE Keywords": [
+                "System recovery",
+                "Detection algorithms",
+                "Runtime",
+                "Hardware design languages",
+                "Multiprocessing systems",
+                "Parallel processing",
+                "Concurrent computing",
+                "Event detection",
+                "Resource management",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Runtime Complexity",
+                "Deadlock Detection",
+                "Resource Allocation",
+                "Active Process",
+                "Parallelization",
+                "Reachable",
+                "State Lines",
+                "Target System",
+                "Matrix Representation",
+                "Requests For Resources",
+                "Event Classification",
+                "Element In Row",
+                "Parallel Algorithm",
+                "Types Of Edges",
+                "OR Operation",
+                "Processing Nodes",
+                "Incoming Edges",
+                "Outgoing Edges",
+                "Sink Node",
+                "Resources Of Nodes"
+            ],
+            "Author Keywords": [
+                "Deadlocks",
+                "Algorithms implemented in hardware",
+                "Real-time and embedded systems"
+            ],
+            "Author Free Keywords": [
+                "Deadlocks",
+                "Algorithms implemented in hardware",
+                "Real-time and embedded systems"
+            ]
+        }
     },
     {
         "publicationNumber": "10208",
@@ -662,7 +1404,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -678,7 +1422,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -694,7 +1440,9 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover for this issue of the publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10208",
@@ -710,6 +1458,8 @@
         "publisher": "IEEE",
         "articleContentType": "Journals",
         "publicationTitle": "IEEE Computer Architecture Letters",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides instructions and guidelines to prospective authors who wish to submit manuscripts.",
+        "keywords": {}
     }
 ]

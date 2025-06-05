@@ -62,7 +62,46 @@
                 "firstName": "Sunita",
                 "lastName": "Chandrasekaran"
             }
-        ]
+        ],
+        "abstract": "OpenACC is a high-level directive-based parallel programming model that can manage the sophistication of heterogeneity in architectures and abstract it from the users. The portability of the model across CPUs and accelerators has gained the model a wide variety of users. This means it is also crucial to analyze the reliability of the compilers’ implementations. To address this challenge, the OpenACC Validation and Verification team has proposed a validation testsuite to verify the OpenACC implementations across various compilers with an infrastructure for a more streamlined execution. This paper will cover the following aspects: (a) the new developments since the last publication on the testsuite, (b) outline the use of the infrastructure, (c) discuss tests that highlight our workflow process, (d) analyze the results from executing the testsuite on various systems, and (e) outline future developments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Analytical models",
+                "Program processors",
+                "Parallel programming",
+                "Conferences",
+                "Reliability"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Programming Model",
+                "Verification And Validation",
+                "Use Of Infrastructure",
+                "Running",
+                "Source Code",
+                "Number Of Tests",
+                "Development Of Applications",
+                "Types Of Devices",
+                "Object Classification",
+                "Large-scale Applications",
+                "Test Suite",
+                "GNU Compiler Collection",
+                "Hardware Architecture",
+                "Sentence Condition",
+                "Race Conditions",
+                "Reference Count",
+                "Parallel Loops",
+                "University Of Delaware",
+                "JSON Format"
+            ],
+            "Author Keywords": [
+                "Performance",
+                "Programming Model",
+                "Testsuite",
+                "Validation",
+                "Conformance"
+            ]
+        }
     },
     {
         "publicationNumber": "10029346",
@@ -91,7 +130,42 @@
                 "firstName": "Stanimire",
                 "lastName": "Tomov"
             }
-        ]
+        ],
+        "abstract": "As the architectures of super-computing systems are continually changing, it is important to maintain efficient code portability in order to continue to take advantage of the computing capabilities of the diverse and evolving hardware in these systems. Intel has adopted an open standard programming interface for heterogeneous systems called oneAPI, designed to allow code portability across different processor architectures. This paper evaluates Intel’s oneAPI by migrating a general matrix-matrix multiplication (GEMM) CUDA algorithm from the dense linear algebra library Matrix Algebra on GPU and Multicore Architectures (MAGMA) to Data Parallel C++ (DPC++), the direct programming language of oneAPI. The DPC++ Compatibility Tool (DPCT) in Intel’s oneAPI was used successfully for an initial port of MAGMA to DPC++. The performance of the migrated code is evaluated and compared to OpenMP GEMMs and state-of-the-art Intel MKL implementations on AMD EPYC 7742 multicore CPUs and Intel Xeon CPU E5-2698 V4 multicore CPUs, to the original native-CUDA code in MAGMA on NVIDIA GeForce RTX 3060 discrete GPUs, and to oneMKL on Intel UHD Graphics P630 [0x3e96] integrated GPUs. The initial migrated code demonstrates impressive performance on multicore CPUs as it significantly outperforms reference OpenMP implementations, and even MKL on AMD CPUs. Performance on Nvidia GPUs is also very surprising as the DPC++ code matches in performance the native CUDA code. The initial migrated code performed poorly on the Intel GPU, as expected, because the Intel GPU architecture used is quite different than the Nvidia GPU architecture for which the original code was designed. However, using the MAGMA’s parameterized implementations to tune the GEMM algorithm to better match the Intel GPU architecture, improved the performance significantly. Intel’s oneAPI allowed for a successful extension of MAGMA’s functional and performance portability to multicore CPUs and Intel GPUs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics",
+                "Codes",
+                "Multicore processing",
+                "Graphics processing units",
+                "Computer architecture",
+                "Programming",
+                "Matrices"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "High-performance Computing",
+                "Linear Algebra",
+                "Parallel Data",
+                "Matrix Algebra",
+                "Parallelization",
+                "Programming Model",
+                "Algorithm Parameters",
+                "Quantum Information",
+                "Hardware Architecture",
+                "Single Precision",
+                "Heterogeneous Architecture",
+                "Header File",
+                "Matrix Architecture",
+                "NVIDIA Tesla"
+            ],
+            "Author Keywords": [
+                "oneAPI",
+                "DPC++",
+                "portability",
+                "MAGMA"
+            ]
+        }
     },
     {
         "publicationNumber": "10029346",
@@ -138,7 +212,49 @@
                 "firstName": "Jeffrey S.",
                 "lastName": "Vetter"
             }
-        ]
+        ],
+        "abstract": "Template metaprogramming is gaining popularity as a high-level solution for achieving performance portability on heterogeneous computing resources. Kokkos is a representative approach that offers programmers high-level abstractions for generic programming while most of the device-specific code generation and optimizations are delegated to the compiler through template specializations. For this, Kokkos provides a set of device-specific code specializations in multiple back ends, such as CUDA and HIP. Unlike CUDA or HIP, OpenACC is a high-level and directive-based programming model. This descriptive model allows developers to insert hints (pragmas) into their code that help the compiler to parallelize the code. The compiler is responsible for the transformation of the code, which is completely transparent to the programmer. This paper presents an OpenACC back end for Kokkos: KokkACC. As an alternative to Kokkos’s existing device-specific back ends, KokkACC is a multi-architecture back end providing a high-productivity programming environment enabled by OpenACC’s high-level and descriptive programming model. Moreover, we have observed competitive performance; in some cases, KokkACC is faster (up to 9×) than NVIDIA’s CUDA back end and much faster than OpenMP’s GPU offloading back end. This work also includes implementation details and a detailed performance study conducted with a set of mini-benchmarks (AXPY and DOT product) and three mini-apps (LULESH, miniFE and SNAP, a LAMMPS proxy mini-app).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Codes",
+                "Parallel programming",
+                "Conferences",
+                "Graphics processing units",
+                "US Department of Transportation",
+                "Heterogeneous networks"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Model Description",
+                "Programming Model",
+                "Competitive Performance",
+                "Dot Product",
+                "Back End",
+                "High-level Programming",
+                "High-performance Computing",
+                "Input Size",
+                "Vector Of Size",
+                "Memory Model",
+                "Memory Space",
+                "Hardware Architecture",
+                "Functor",
+                "Memory Operations",
+                "Parallel Execution",
+                "Linearizable",
+                "Memory Management",
+                "Memory Transfer",
+                "Device Memory"
+            ],
+            "Author Keywords": [
+                "OpenACC",
+                "C++ Metaprogramming",
+                "Kokkos",
+                "CUDA",
+                "OpenMP Target",
+                "Parallel Programming Models"
+            ]
+        }
     },
     {
         "publicationNumber": "10029346",
@@ -179,7 +295,56 @@
                 "firstName": "Peter",
                 "lastName": "Thornton"
             }
-        ]
+        ],
+        "abstract": "Most high-end computers adopt hybrid architecture, porting a large-scale scientific code onto accelerators is necessary. The paper presents a generic method for porting large-scale scientific code onto accelerators using compiler directives within a modularized function unit test platform. We have implemented the method and designed a software tool (SPEL) to port the E3SM Land Model (ELM) onto the GPUs in the Summit computer. SPEL automatically generates GPU-ready test modules for all ELM functions, such as CanopyFlux, SoilTemperature, and EcosystemDynamics. SPEL breaks the ELM into a collection of standalone unit test programs for easy code verification and further performance improvement. We further optimize several ELM test modules with advanced techniques, including memory reduction, reconstructed parallel loops, and asynchronous GPU kernel launch. We hope our study will inspire new toolkit developments that expedite large-scale scientific code porting with compiler directives.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computers",
+                "Earth",
+                "Codes",
+                "Conferences",
+                "Graphics processing units",
+                "Computer architecture",
+                "Programming"
+            ],
+            "Index Terms": [
+                "Software Tools",
+                "Testing Framework",
+                "Unit Tests",
+                "Unit Test Framework",
+                "Ecosystem Dynamics",
+                "Automatic Generation",
+                "Hybrid Architecture",
+                "Parallel Loops",
+                "Verification Code",
+                "Function Parameters",
+                "Input Parameters",
+                "Parallelization",
+                "Grid Cells",
+                "GB Memory",
+                "Application Programming Interface",
+                "Output Parameters",
+                "Melting Enthalpy",
+                "Global Variables",
+                "Flux Variability",
+                "Reference Simulation",
+                "Single Time Step",
+                "Advanced Optimization",
+                "Part Of Code",
+                "Message Passing Interface",
+                "Internal Loop",
+                "Thermal Inertia",
+                "Open Reduction",
+                "Earth System Models",
+                "GPU Memory"
+            ],
+            "Author Keywords": [
+                "Compiler Directive",
+                "Function Unit Testing",
+                "Earth System Model",
+                "OpenACC"
+            ]
+        }
     },
     {
         "publicationNumber": "10029346",
@@ -216,23 +381,63 @@
             },
             {
                 "id": 37085838626,
-                "preferredName": "Jo\u00e3o Barreto",
-                "firstName": "Jo\u00e3o",
+                "preferredName": "João Barreto",
+                "firstName": "João",
                 "lastName": "Barreto"
             },
             {
                 "id": 37089709901,
-                "preferredName": "Jos\u00e9 Monteiro",
-                "firstName": "Jos\u00e9",
+                "preferredName": "José Monteiro",
+                "firstName": "José",
                 "lastName": "Monteiro"
             },
             {
                 "id": 37085345973,
-                "preferredName": "Antonio J. Pe\u00f1a",
+                "preferredName": "Antonio J. Peña",
                 "firstName": "Antonio J.",
-                "lastName": "Pe\u00f1a"
+                "lastName": "Peña"
             }
-        ]
+        ],
+        "abstract": "We propose an interoperation mechanism to enable novel composability across pragma-based programming models. We study and propose a clear separation of duties and implement our approach by augmenting the OmpSs-2 programming model, compiler and runtime system to support OmpSs-2 + OpenACC programming. To validate our proposal we port ZPIC, a kinetic plasma simulator, to leverage our hybrid OmpSs-2 + OpenACC implementation. We compare our approach against OpenACC versions of ZPIC on a multi-GPU HPC system. We show that our approach manages to provide automatic asynchronous and multi-GPU execution, removing significant burden from the application’s developer, while also being able to outperform manually programmed versions, thanks to a better utilization of the hardware.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Program processors",
+                "Conferences",
+                "Programming",
+                "Hardware",
+                "Plasmas",
+                "Kinetic theory"
+            ],
+            "Index Terms": [
+                "Programming Model",
+                "Benchmark",
+                "Source Code",
+                "Development Of Applications",
+                "Interoperability",
+                "Hybrid Approach",
+                "Load Data",
+                "Specific Implementation",
+                "Multiple Devices",
+                "Device-to-device",
+                "Task Scheduling",
+                "Physical Devices",
+                "Simulated Particle",
+                "Address Space",
+                "Weak Efficiency",
+                "API Calls",
+                "Multiple GPUs"
+            ],
+            "Author Keywords": [
+                "Programming Productivity",
+                "Data Flow Paradigm",
+                "Task based",
+                "Parallelism",
+                "Runtime Scheduling",
+                "Code Transformation",
+                "GPU"
+            ]
+        }
     },
     {
         "publicationNumber": "10029346",
@@ -279,7 +484,57 @@
                 "firstName": "Maddegedara",
                 "lastName": "Lalith"
             }
-        ]
+        ],
+        "abstract": "The development of directive based parallel programming models such as OpenACC has significantly reduced the cost in using accelerators such as GPUs. In this study, the sparse matrix vector product (SpMV), which was often the most computationally expensive part in physics-based simulations, was accelerated by GPU porting using OpenACC. Further speed-up was achieved by introducing the element-by-element (EBE) method in SpMV, an algorithm that is suitable for GPU architecture because it requires large amount of operations but small amount of memory access. In a comparison on one compute node of the supercomputer ABCI, using GPUs resulted in a 22- fold speedup over the CPU-only case, even when using the typical SpMV algorithm, and an additional 3.4-fold speedup when using the EBE method. The results on such analysis was applied to a seismic response analysis considering soil liquefaction, and using GPUs resulted in a 42-fold speedup compared to using only CPUs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Parallel programming",
+                "Computational modeling",
+                "Conferences",
+                "Memory management",
+                "Graphics processing units",
+                "Soil"
+            ],
+            "Index Terms": [
+                "Finite Element Method",
+                "Sparse Matrix",
+                "Matrix-vector Product",
+                "Parallelization",
+                "Seismic Performance",
+                "Sparse Vector",
+                "Computing Nodes",
+                "Amount Of Access",
+                "Physics-based Simulation",
+                "Amount Of Operations",
+                "High Performance",
+                "Performance Measures",
+                "Computation Time",
+                "Coefficient Matrix",
+                "Intel Xeon",
+                "Gradient Method",
+                "Memory Usage",
+                "Random Access",
+                "Random Access Memory",
+                "Reduce Computation Time",
+                "Memory Bandwidth",
+                "Memory Transfer",
+                "Linearizable",
+                "Global Vector",
+                "L2 Cache",
+                "Arithmetic Performance",
+                "Peak Performance",
+                "Element-wise Product",
+                "NVIDIA GPU",
+                "Intel Xeon CPU"
+            ],
+            "Author Keywords": [
+                "GPU",
+                "OpenACC",
+                "element-by-element method",
+                "sparse matrix vector product"
+            ]
+        }
     },
     {
         "publicationNumber": "10029346",
@@ -295,7 +550,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 Workshop on Accelerator Programming Using Directives (WACCPD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10029346",
@@ -311,7 +568,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 Workshop on Accelerator Programming Using Directives (WACCPD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10029346",
@@ -327,7 +586,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 Workshop on Accelerator Programming Using Directives (WACCPD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10029346",
@@ -343,7 +604,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 Workshop on Accelerator Programming Using Directives (WACCPD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10029346",
@@ -359,7 +622,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 Workshop on Accelerator Programming Using Directives (WACCPD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10029346",
@@ -375,6 +640,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 Workshop on Accelerator Programming Using Directives (WACCPD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

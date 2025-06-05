@@ -74,7 +74,36 @@
                 "firstName": "K.",
                 "lastName": "Olukotun"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose a new shared memory model: transactional memory coherence and consistency (TCC). TCC provides a model in which atomic transactions are always the basic unit of parallel work, communication, memory coherence, and memory reference consistency. TCC greatly simplifies parallel software by eliminating the need for synchronization using conventional locks and semaphores, along with their complexities. TCC hardware must combine all writes from each transaction region in a program into a single packet and broadcast this packet to the permanent shared memory state atomically as a large block. This simplifies the coherence hardware because it reduces the need for small, low-latency messages and completely eliminates the need for conventional snoopy cache coherence protocols, as multiple speculatively written versions of a cache line may safely coexist within the system. Meanwhile, automatic, hardware-controlled rollback of speculative transactions resolves any correctness violations that may occur when several processors attempt to read and write the same data simultaneously. The cost of this simplified scheme is higher interprocessor bandwidth. To explore the costs and benefits of TCC, we study the characteristics of an optimal transaction-based memory system, and examine how different design parameters could affect the performance of real systems. Across a spectrum of applications, the TCC model itself did not limit available parallelism. Most applications are easily divided into transactions requiring only small write buffers, on the order of 4-8 KB. The broadcast requirements of TCC are high, but are well within the capabilities of CMPs and small-scale SMPs with high-speed interconnects.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Memory Coherence",
+                "Multi-core",
+                "Rollback",
+                "Work Unit",
+                "Shared Memory",
+                "Parallelization",
+                "Programming Model",
+                "Arbitration",
+                "Per Cycle",
+                "Core Processes",
+                "Part Of Line",
+                "Atomic Units",
+                "Application Of Selection",
+                "Processing Nodes",
+                "Bandwidth Requirements",
+                "Number Of Processors",
+                "Parallel Applications",
+                "Load Imbalance",
+                "Cache Misses",
+                "Local Hierarchies",
+                "Transaction Size"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -109,7 +138,43 @@
                 "firstName": "S.",
                 "lastName": "Moore"
             }
-        ]
+        ],
+        "abstract": "The on-chip communication requirements of many systems are best served through the deployment of a regular chip-wide network. This paper presents the design of a low-latency on-chip network router for such applications. We remove control overheads (routing and arbitration logic) from the critical path in order to minimise cycle-time and latency. Simulations illustrate that dramatic cycle time improvements are possible without compromising router efficiency. Furthermore, these reductions permit flits to be routed in a single cycle, maximising the effectiveness of the router's limited buffering resources.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Network-on-a-chip",
+                "Delay",
+                "Computer architecture",
+                "Communication system control",
+                "Routing",
+                "Wiring",
+                "Wires",
+                "Tiles",
+                "Computational modeling",
+                "Circuit simulation"
+            ],
+            "Index Terms": [
+                "Network-on-chip",
+                "Cycle Time",
+                "Critical Path",
+                "Simulation Results",
+                "Control Signal",
+                "Flow Control",
+                "Per Cycle",
+                "End Of Cycle",
+                "Output Channels",
+                "Output Ports",
+                "Input Port",
+                "Clock Cycles",
+                "P Group",
+                "Physical Channel",
+                "Multiple Requests",
+                "Single Port",
+                "Virtual Channel",
+                "Buffer Space",
+                "Buffer State"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -156,7 +221,54 @@
                 "firstName": "K.I.",
                 "lastName": "Farkas"
             }
-        ]
+        ],
+        "abstract": "A single-ISA heterogeneous multi-core architecture is a chip multiprocessor composed of cores of varying size, performance, and complexity. This paper demonstrates that this architecture can provide significantly higher performance in the same area than a conventional chip multiprocessor. It does so by matching the various jobs of a diverse workload to the various cores. This type of architecture covers a spectrum of workloads particularly well, providing high single-thread performance when thread parallelism is low, and high throughput when thread parallelism is high. This paper examines two such architectures in detail, demonstrating dynamic core assignment policies that provide significant performance gains over naive assignment, and even outperform the best static assignment. It examines policies for heterogeneous architectures both with and without multithreading cores. One heterogeneous architecture we examine outperforms the comparable-area homogeneous architecture by up to 63%, and our best core assignment strategy achieves up to 31% speedup over a naive policy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Throughput",
+                "Yarn",
+                "Parallel processing",
+                "Performance gain",
+                "Multithreading",
+                "Delay",
+                "Computer science",
+                "Milling machines",
+                "Microprocessors"
+            ],
+            "Index Terms": [
+                "Heterogeneous Architecture",
+                "Multi-core Architecture",
+                "Single Thread",
+                "Dynamic Assignment",
+                "Behavior Change",
+                "Core Processes",
+                "Core Complex",
+                "Heterogeneity In Design",
+                "Large Core",
+                "Heterogeneous Process",
+                "Arrival Rate",
+                "Multiple Cores",
+                "Average Response Time",
+                "Task Scheduling",
+                "Core Type",
+                "Homogeneous Case",
+                "Data Cache",
+                "Simple Heuristics",
+                "Minimal Overhead",
+                "Throughput Improvement",
+                "L2 Cache",
+                "Steady Phase",
+                "Low Response Time",
+                "Transistor Size",
+                "Chip Area",
+                "Network Throughput",
+                "Queue Length",
+                "Benchmark",
+                "Single Application",
+                "Randomization Schedule"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -197,7 +309,54 @@
                 "firstName": "J.A.",
                 "lastName": "Rivers"
             }
-        ]
+        ],
+        "abstract": "Ensuring long processor lifetimes by limiting failures due to wear-out related hard errors is a critical requirement for all microprocessor manufacturers. We observe that continuous device scaling and increasing temperatures are making lifetime reliability targets even harder to meet. However, current methodologies for qualifying lifetime reliability are overly conservative since they assume worst-case operating conditions. This paper makes the case that the continued use of such methodologies will significantly and unnecessarily constrain performance. Instead, lifetime reliability awareness at the microarchitectural design stage can mitigate this problem, by designing processors that dynamically adapt in response to the observed usage to meet a reliability target. We make two specific contributions. First, we describe an architecture-level model and its implementation, called RAMP, that can dynamically track lifetime reliability, responding to changes in application behavior. RAMP is based on state-of-the-art device models for different wear-out mechanisms. Second, we propose dynamic reliability management (DRM) - a technique where the processor can respond to changing application behavior to maintain its lifetime reliability target. In contrast to current worst-case behavior based reliability qualification methodologies, DRM allows processors to be qualified for reliability at lower (but more likely) operating points than the worst case. Using RAMP, we show that this can save cost and/or improve performance, that dynamic voltage scaling is an effective response technique for DRM, and that dynamic thermal management neither subsumes nor is subsumed by DRM.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microprocessors",
+                "Thermal management",
+                "Manufacturing processes",
+                "Temperature",
+                "Microarchitecture",
+                "Process design",
+                "Target tracking",
+                "Maintenance",
+                "Qualifications",
+                "Costs"
+            ],
+            "Index Terms": [
+                "National Science Foundation",
+                "Operating Conditions",
+                "Microarchitecture",
+                "Target Reliability",
+                "Dynamic Management",
+                "Voltage Scaling",
+                "Thermal Cycler",
+                "Adaptive Control",
+                "Failure Mechanism",
+                "Proportionality Constant",
+                "Performance Gain",
+                "Supply Voltage",
+                "Heat Sink",
+                "Base Frequencies",
+                "Failure Time",
+                "Cycle Frequency",
+                "Dielectric Breakdown",
+                "Fast Forward",
+                "Lower Failure Rate",
+                "Reliable Design",
+                "Electromigration",
+                "Gate Oxide",
+                "Multimedia Applications",
+                "Mean Time To Failure",
+                "L2 Cache",
+                "Worst-case Value",
+                "Functional Unit",
+                "Design Points",
+                "Application Running",
+                "Transistor Size"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -226,7 +385,45 @@
                 "firstName": "D.A.",
                 "lastName": "Wood"
             }
-        ]
+        ],
+        "abstract": "Modern processors use two or more levels of cache memories to bridge the rising disparity between processor and memory speeds. Compression can improve cache performance by increasing effective cache capacity and eliminating misses. However, decompressing cache lines also increases cache access latency, potentially degrading performance. In this paper, we develop an adaptive policy that dynamically adapts to the costs and benefits of cache compression. We propose a two-level cache hierarchy where the L1 cache holds uncompressed data and the L2 cache dynamically selects between compressed and uncompressed storage. The L2 cache is 8-way set-associative with LRU replacement, where each set can store up to eight compressed lines but has space for only four uncompressed lines. On each L2 reference, the LRU stack depth and compressed size determine whether compression (could have) eliminated a miss or incurs an unnecessary decompression overhead. Based on this outcome, the adaptive policy updates a single global saturating counter, which predicts whether to allocate lines in compressed or uncompressed form. We evaluate adaptive cache compression using full-system simulation and a range of benchmarks. We show that compression can improve performance for memory-intensive commercial workloads by up to 17%. However, always using compression hurts performance for low-miss-rate benchmarks - due to unnecessary decompression overhead - degrading performance by up to 18%. By dynamically monitoring workload behavior, the adaptive policy achieves comparable benefits from compression, while never degrading performance by more than 0.4%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delay",
+                "Cache memory",
+                "Degradation",
+                "Cache storage",
+                "Counting circuits",
+                "Bridges",
+                "Monitoring",
+                "Microarchitecture",
+                "Technological innovation",
+                "Moore's Law"
+            ],
+            "Index Terms": [
+                "Remote Memory",
+                "Access Latency",
+                "L2 Cache",
+                "Phase Change",
+                "Work Settings",
+                "Per Cycle",
+                "Phase Behavior",
+                "Memory System",
+                "Adaptive Scheme",
+                "Effect Of Compression",
+                "Compression Ratio",
+                "Missing Rate",
+                "Global Prediction",
+                "Compression Algorithm",
+                "Compressed Format",
+                "Written Back",
+                "Compression Scheme",
+                "Data Cache",
+                "Cache Size",
+                "Virtual Memory",
+                "Line L2"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -267,7 +464,53 @@
                 "firstName": "S.K.",
                 "lastName": "Reinhardt"
             }
-        ]
+        ],
+        "abstract": "Transient faults due to neutron and alpha particle strikes pose a significant obstacle to increasing processor transistor counts in future technologies. Although fault rates of individual transistors may not rise significantly, incorporating more transistors into a device makes that device more likely to encounter a fault. Hence, maintaining processor error rates at acceptable levels will require increasing design effort. This paper proposes two simple approaches to reduce error rates and evaluates their application to a microprocessor instruction queue. The first technique reduces the time instructions sit in vulnerable storage structures by selectively squashing instructions when long delays are encountered. A fault is less likely to cause an error if the structure it affects does not contain valid instructions. We introduce a new metric, MITF (Mean Instructions To Failure), to capture the trade-off between performance and reliability introduced by this approach. The second technique addresses false detected errors. In the absence of a fault detection mechanism, such errors would not have affected the final outcome of a program. For example, a fault affecting the result of a dynamically dead instruction would not change the final program output, but could still be flagged by the hardware as an error. To avoid signalling such false errors, we modify a pipeline's error detection logic to mark affected instructions and data as possibly incorrect rather than immediately signaling an error. Then, we signal an error only if we determine later that the possibly incorrect value could have affected the program's output.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Error analysis",
+                "Microprocessors",
+                "Circuit faults",
+                "Computer errors",
+                "Error correction",
+                "Computer architecture",
+                "Protection",
+                "Delay",
+                "Performance loss",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Error Rate",
+                "Soft Errors",
+                "Soft Error Rate",
+                "Final Output",
+                "Error Detection",
+                "Future Technologies",
+                "Program Output",
+                "Transient Faults",
+                "Benchmark",
+                "Decoding",
+                "Detection Scheme",
+                "Memory System",
+                "Reduction In Exposure",
+                "Failure Time",
+                "Correction Mechanism",
+                "Raw Rate",
+                "False Events",
+                "Parity-check",
+                "True Error",
+                "Protective Memory",
+                "Mean Time To Failure",
+                "Cache Misses",
+                "L2 Cache",
+                "Neutron Flux",
+                "Misprediction",
+                "Hardware Structure",
+                "Correct Path",
+                "Conditional Branches",
+                "Cosmic Rays"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -296,7 +539,38 @@
                 "firstName": "J.E.",
                 "lastName": "Smith"
             }
-        ]
+        ],
+        "abstract": "A proposed performance model for superscalar processors consists of: 1) a component that models the relationship between instructions issued per cycle and the size of the instruction window under ideal conditions; and 2) methods for calculating transient performance penalties due to branch mispredictions, instruction cache misses, and data cache misses. Using trace-derived data dependence information, data and instruction cache miss rates, and branch miss-prediction rates as inputs, the model can arrive at performance estimates for a typical superscalar processor that are within 5.8% of detailed simulation on average and within 13% in the worst case. The model also provides insights into the workings of superscalar processors and long-term microarchitecture trends such as pipeline depths and issue widths.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "First-order Model",
+                "Processor Model",
+                "Window Size",
+                "Per Cycle",
+                "Detailed Simulation",
+                "Microarchitecture",
+                "Data Cache",
+                "Performance Penalty",
+                "Cache Misses",
+                "Benchmark",
+                "Partial Model",
+                "Average Error",
+                "Functional Unit",
+                "Performance Loss",
+                "Educational Issues",
+                "Fraction Of Time",
+                "Sustainability Performance",
+                "Average Latency",
+                "Equivalent Expression",
+                "Highest Error",
+                "L2 Cache",
+                "Clock Cycles",
+                "Optimal Depth"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -355,7 +629,54 @@
                 "firstName": "K.",
                 "lastName": "Asanovic"
             }
-        ]
+        ],
+        "abstract": "The vector-thread (VT) architectural paradigm unifies the vector and multithreaded compute models. The VT abstraction provides the programmer with a control processor and a vector of virtual processors (VPs). The control processor can use vector-fetch commands to broadcast instructions to all the VPs or each VP can use thread-fetches to direct its own control flow. A seamless intermixing of the vector and threaded control mechanisms allows a VT architecture to flexibly and compactly encode application parallelism and locality, and a VT machine exploits these to improve performance and efficiency. We present SCALE, an instantiation of the VT architecture designed for low-power and high-performance embedded systems. We evaluate the SCALE prototype design using detailed simulation of a broad range of embedded applications and show that its performance is competitive with larger and more complex processors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Parallel processing",
+                "Process control",
+                "Systolic arrays",
+                "Computer architecture",
+                "Broadcasting",
+                "Embedded system",
+                "Application software",
+                "Encoding",
+                "Microarchitecture",
+                "Communication system control"
+            ],
+            "Index Terms": [
+                "Flow Control",
+                "Prototype Design",
+                "Multi-threaded",
+                "Benchmark",
+                "Data Storage",
+                "Parallelization",
+                "Functional Unit",
+                "Simple Example",
+                "Per Cycle",
+                "Vector Of Length",
+                "Load Data",
+                "Microarchitecture",
+                "Loop Iteration",
+                "Types Of Codes",
+                "Code Examples",
+                "Parallel Forms",
+                "Datapath",
+                "Data Cache",
+                "Scale Implementation",
+                "Parallel Type",
+                "Data Hierarchy",
+                "L2 Cache",
+                "Virtual Vector",
+                "Dependency Graph",
+                "Written Back",
+                "Memory System",
+                "Substring",
+                "Clock Frequency",
+                "Transport Operators",
+                "Data Transfer"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -468,7 +789,53 @@
                 "firstName": "J.",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "This paper evaluates the Raw microprocessor. Raw addresses the challenge of building a general-purpose architecture that performs well on a larger class of stream and embedded computing applications than existing microprocessors, while still running existing ILP-based sequential programs with reasonable performance in the face of increasing wire delays. Raw approaches this challenge by implementing plenty of on-chip resources - including logic, wires, and pins - in a tiled arrangement, and exposing them through a new ISA, so that the software can take advantage of these resources for parallel applications. Raw supports both ILP and streams by routing operands between architecturally-exposed functional units over a point-to-point scalar operand network. This network offers low latency for scalar data transport. Raw manages the effect of wire delays by exposing the interconnect and using software to orchestrate both scalar and stream data transport. We have implemented a prototype Raw microprocessor in IBM's 180 nm, 6-layer copper, CMOS 7SF standard-cell ASIC process. We have also implemented ILP and stream compilers. Our evaluation attempts to determine the extent to which Raw succeeds in meeting its goal of serving as a more versatile, general-purpose processor. Central to achieving this goal is Raw's ability to exploit all forms of parallelism, including ILP, DLP, TLP, and Stream parallelism. Specifically, we evaluate the performance of Raw on a diverse set of codes including traditional sequential programs, streaming applications, server workloads and bit-level embedded computation. Our experimental methodology makes use of a cycle-accurate simulator validated against our real hardware. Compared to a 180nm Pentium-III, using commodity PC memory system components, Raw performs within a factor of 2/spl times/ for sequential applications with a very low degree of ILP, about 2/spl times/ to 9/spl times/ better for higher levels of ILP, and 10/spl times/-100/spl times/ better when highly parallel applications are coded in a stream language or optimized by hand. The paper also proposes a new versatility metric and uses it to discuss the generality of Raw.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microprocessors",
+                "Computer architecture",
+                "Embedded computing",
+                "Wire",
+                "Delay",
+                "Parallel processing",
+                "Buildings",
+                "Logic",
+                "Pins",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Functional Unit",
+                "Data Streams",
+                "Low Latency",
+                "Memory System",
+                "Parallel Forms",
+                "Performance In The Face",
+                "Parallel Applications",
+                "Benchmark",
+                "Parallelization",
+                "Dynamic Network",
+                "Points In Space",
+                "General Purpose",
+                "Per Cycle",
+                "Beamforming",
+                "Physical Resources",
+                "High Bandwidth",
+                "Communication Patterns",
+                "Caching",
+                "Static Network",
+                "Single Tile",
+                "Network-on-chip",
+                "Data Cache",
+                "Pentium IV",
+                "Critical Path",
+                "L2 Cache",
+                "Context Switching",
+                "Tarantula",
+                "Mesh Network",
+                "Clock Cycles"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -515,7 +882,53 @@
                 "firstName": "L.K.",
                 "lastName": "John"
             }
-        ]
+        ],
+        "abstract": "Designing a new microprocessor is extremely time-consuming. One of the contributing reasons is that computer designers rely heavily on detailed architectural simulations, which are very time-consuming. Recent work has focused on statistical simulation to address this issue. The basic idea of statistical simulation is to measure characteristics during program execution, generate a synthetic trace with those characteristics and then simulate the synthetic trace. The statistically generated synthetic trace is orders of magnitude smaller than the original program sequence and hence results in significantly faster simulation. This paper makes the following contributions to the statistical simulation methodology. First, we propose the use of a statistical flow graph to characterize the control flow of a program execution. Second, we model delayed update of branch predictors while profiling program execution characteristics. Experimental results show that statistical simulation using this improved control flow modeling attains significantly better accuracy than the previously proposed HLS system. We evaluate both the absolute and the relative accuracy of our approach for power/performance modeling of superscalar microarchitectures. The results show that our statistical simulation framework can be used to efficiently explore processor design spaces.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Process design",
+                "Computational modeling",
+                "Power system modeling",
+                "Microprocessors",
+                "Computer simulation",
+                "Character generation",
+                "Flow graphs",
+                "Predictive models",
+                "Delay",
+                "High level synthesis"
+            ],
+            "Index Terms": [
+                "Flow Control",
+                "Detailed Simulation",
+                "Design Space",
+                "Microarchitecture",
+                "Relative Accuracy",
+                "Statistical Graphs",
+                "Program Execution",
+                "Misprediction",
+                "Use Of Graphs",
+                "Benchmark",
+                "Prediction Error",
+                "Average Error",
+                "Transition Probabilities",
+                "Per Cycle",
+                "Type Of Education",
+                "Design Points",
+                "Largest Error",
+                "Absolute Accuracy",
+                "Architecture Parameters",
+                "Feature Branch",
+                "Design Space Exploration",
+                "L2 Cache",
+                "Outgoing Edges",
+                "Relative Prediction Error",
+                "Synthetic Generation",
+                "Cache Misses",
+                "Conditional Branches",
+                "Baseline Configuration",
+                "Sequence Of Instructions"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -550,7 +963,47 @@
                 "firstName": "E.",
                 "lastName": "Gunadi"
             }
-        ]
+        ],
+        "abstract": "Physical register access time increases the delay between scheduling and execution in modern out-of-order processors. As the number of physical registers increases, this delay grows, forcing designers to employ register files with multicycle access. This paper advocates more efficient utilization of a fewer number of physical registers in order to reduce the access time of the physical register file. Register values with few significant bits are stored in the rename map using physical register inlining, a scheme analogous to inlining of operand fields in data structures. Specifically, whenever a register value can be expressed with fewer bits than the register map would need to specify a physical register number, the value is stored directly in the map, avoiding the indirection, and saving space in the physical register file. Not surprisingly, we find that a significant portion of all register operands can be stored in the map in this fashion, and describe straightforward microarchitectural extensions that correctly implement physical register inlining. We find that physical register inlining performs well, particularly in processors that are register-constrained.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Delay",
+                "Pipelines",
+                "Processor scheduling",
+                "Out of order",
+                "Frequency",
+                "Yarn",
+                "Throughput",
+                "Instruction sets",
+                "Microelectronics"
+            ],
+            "Index Terms": [
+                "Microarchitecture",
+                "Evidential",
+                "Register In Order",
+                "Benchmark",
+                "Educational Settings",
+                "Flow Control",
+                "Machine Model",
+                "Early Discharge",
+                "Control Logic",
+                "Types Of Maps",
+                "Table Entries",
+                "Average Occupancy",
+                "Mapping Table",
+                "Slight Increase In Size",
+                "Misprediction",
+                "Execution Stage",
+                "Subsequent Education",
+                "Reference Count",
+                "Cache Misses",
+                "Infinite Case",
+                "Free Listing",
+                "Machine Configuration",
+                "Virtual Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -585,7 +1038,44 @@
                 "firstName": "A.",
                 "lastName": "Sivasubramaniam"
             }
-        ]
+        ],
+        "abstract": "Previous proposals for implementing instruction-level temporal redundancy in out-of-order cores have reported a performance degradation of up to 45% in certain applications compared to an execution which does not have any temporal redundancy. An important contributor to this problem is the insufficient number of ALUs for handling the amplified load injected into the core. At the same time, increasing the number of ALUs can increase the complexity of the issue logic, which has been pointed out to be one of the most timing critical components of the processor. This paper proposes a novel extension of a prior idea on instruction reuse to ease ALU bandwidth requirements in a complexity-effective way by exploiting certain interesting properties of a dual (temporally redundant) instruction stream. We present microarchitectural extensions necessary for implementing an instruction reuse buffer (IRB) and integrating this with the issue logic of a dual instruction stream superscalar core, and conduct extensive evaluations to demonstrate how well it can alleviate the ALU bandwidth problem. We show that on the average we can gain back nearly 50% of the IPC loss that occurred due to ALU bandwidth limitations for an instruction-level temporally redundant superscalar execution, and 23% of the overall IPC loss.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Redundancy",
+                "Hardware",
+                "Out of order",
+                "Proposals",
+                "Logic",
+                "Computer science",
+                "Degradation",
+                "Application software",
+                "Timing"
+            ],
+            "Index Terms": [
+                "Rest Of The Paper",
+                "Functional Unit",
+                "Performance Gap",
+                "Hardware Resources",
+                "Clock Frequency",
+                "Temporal Separation",
+                "Critical Path",
+                "Additional Hardware",
+                "Reduction Of Gap",
+                "Execution Of Operations",
+                "Datapath",
+                "Single Stream",
+                "Performance Penalty",
+                "Evaluation Papers",
+                "Hardware Support",
+                "Percentage Gap",
+                "Reusability Test",
+                "Counter Value",
+                "Single Execution",
+                "Spatial Redundancy"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -632,7 +1122,45 @@
                 "firstName": "M.",
                 "lastName": "Valero"
             }
-        ]
+        ],
+        "abstract": "A register file is a critical component of a modern superscalar processor. It has a large number of entries and read/write ports in order to enable high levels of instruction parallelism. As a result, the register file's area, access time, and energy consumption increase dramatically, significantly affecting the overall superscalar processor's performance and energy consumption. This is especially true in 64-bit processors. This paper presents a new integer register file organization, which reduces energy consumption, area, and access time of the register file with a minimal effect on overall IPC. This is accomplished by exploiting a new concept, partial value locality, which is defined as occurrence of multiple live value instances identical in a subset of their bits. A possible implementation of the new register file is described and shown to obtain proposed optimized register file designs. Overall, an energy reduction of over 50%, a 18% decrease in area, and a 15% reduction in the access time are achieved in the new register file. The energy and area savings are achieved with a 1.7% reduction in IPC for integer applications and a negligible 0.3% in numerical applications, assuming the same clock frequency. A performance increase of up to 13% is possible if the clock frequency can be increases due to a reduction in the register file access time. This approach enables other, very promising optimizations, three of which are outlined in the paper.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Register File",
+                "Energy Consumption",
+                "Energy Conservation",
+                "Access Time",
+                "Reduce Energy Consumption",
+                "Clock Frequency",
+                "File Access",
+                "Number Of Reads",
+                "Types Of Values",
+                "File Size",
+                "Separate Files",
+                "Least Significant Bit",
+                "Type Of Access",
+                "Most Significant Bit",
+                "Word Size",
+                "Critical Path",
+                "Frequent Access",
+                "Pipeline Stages",
+                "Bit-width",
+                "Memory Address",
+                "Unlimited Resources",
+                "Baseline Architecture",
+                "Deep Pipeline",
+                "L2 Cache",
+                "Memory Hierarchy",
+                "Baseline Configuration",
+                "Field Called",
+                "Cycle Time",
+                "Functional Unit"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -667,7 +1195,42 @@
                 "firstName": "S.",
                 "lastName": "Abraham"
             }
-        ]
+        ],
+        "abstract": "The performance of memory-bound commercial applications such as databases is limited by increasing memory latencies. In this paper, we show that exploiting memory-level parallelism (MLP) is an effective approach for improving the performance of these applications and that microarchitecture has a profound impact on achievable MLP. Using the epoch model of MLP, we reason how traditional microarchitecture features such as out-of-order issue and state-of-the-art microarchitecture techniques such as runahead execution affect MLP. Simulation results show that a moderately aggressive out-of-order issue processor improves MLP over an in-order issue processor by 12-30%, and that aggressive handling of loads, branches and serializing instructions is needed to attain the full benefits of large out-of-order instruction windows. The results also show that a processor's issue window and reorder buffer should be decoupled to exploit MLP more efficiently. In addition, we demonstrate that runahead execution is highly effective in enhancing MLP, potentially improving the MLP of the database workload by 82% and its overall performance by 60%. Finally, our limit study shows that there is considerable headroom in improving MLP and overall performance by implementing effective instruction prefetching, more accurate branch prediction and better value prediction in addition to runahead execution.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microarchitecture",
+                "Parallel processing",
+                "Delay",
+                "Out of order",
+                "Databases",
+                "Prefetching",
+                "Pipeline processing",
+                "Microprocessors",
+                "Frequency",
+                "Application software"
+            ],
+            "Index Terms": [
+                "Memory-level Parallelism",
+                "Commercial Applications",
+                "Serialized",
+                "Window Size",
+                "Scientific Applications",
+                "Educational Issues",
+                "Qualifier",
+                "Perfect Prediction",
+                "Instruction Set Architecture",
+                "Data Cache",
+                "Subsequent Loading",
+                "End Of Epoch",
+                "Correct Path",
+                "Cache Size",
+                "Subsequent Education",
+                "L2 Cache",
+                "Cache Misses",
+                "Hardware Structure"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -696,7 +1259,53 @@
                 "firstName": "M.H.",
                 "lastName": "Lipasti"
             }
-        ]
+        ],
+        "abstract": "Conventional out-of-order processors employ a multi-ported, fully-associative load queue to guarantee correct memory reference order both within a single thread of execution and across threads in a multiprocessor system. As improvements in process technology and pipelining lead to higher clock frequencies, scaling this complex structure to accommodate a larger number of in-flight loads becomes difficult if not impossible. Furthermore, each access to this complex structure consumes excessive amounts of energy. In this paper, we solve the associative load queue scalability problem by completely eliminating the associative load queue. Instead, data dependences and memory consistency constraints are enforced by simply reexecuting load instructions in program order prior to retirement. Using heuristics to filter the set of loads that must be re-executed, we show that our replay-based mechanism enables a simple, scalable, and energy-efficient FIFO load queue design with no associative lookup functionality, while sacrificing only a negligible amount of performance and cache bandwidth.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Yarn",
+                "Out of order",
+                "Multiprocessing systems",
+                "Pipeline processing",
+                "Clocks",
+                "Frequency",
+                "Scalability",
+                "Memory management",
+                "Retirement",
+                "Filters"
+            ],
+            "Index Terms": [
+                "Correct Order",
+                "Clock Frequency",
+                "Number Of Loads",
+                "Consistency Constraint",
+                "Pipelining",
+                "Benchmark",
+                "Per Cycle",
+                "Loading Values",
+                "Conventional Design",
+                "Local Memory",
+                "Filtering Mechanism",
+                "Clock Cycles",
+                "Physical Design",
+                "Memory Operations",
+                "Correct Execution",
+                "Data Cache",
+                "Outgoing Edges",
+                "Logic Design",
+                "Weak Order",
+                "Bloom Filter",
+                "Machine Configuration",
+                "Cache Hit",
+                "Cache Misses",
+                "Filter Configuration",
+                "Resource Occupation",
+                "Performance Degradation",
+                "Simple Prediction",
+                "Microarchitecture",
+                "Dynamic Loading"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -725,7 +1334,54 @@
                 "firstName": "T.N.",
                 "lastName": "Vijaykumar"
             }
-        ]
+        ],
+        "abstract": "Inductive noise in high-performance microprocessors is a reliability issue caused by variations in processor current (di/dt) which are converted to supply-voltage glitches by impedances in the power-supply network. Inductive noise has been addressed by using decoupling capacitors to maintain low impedance in the power supply over a wide range of frequencies. However, even well-designed power supplies exhibit (a few) peaks of high impedance at resonant frequencies caused by RLC resonant loops. Previous architectural proposals adjust current variations by controlling instruction fetch and issue, trading off performance and energy for noise reduction. However, the proposals do not consider some conceptual issues and have implementation challenges. The issues include requiring fast response, responding to variations that do not threaten the noise margins, or responding to variations only at the resonant frequency while the range of high impedance extends to a resonance band around the resonant frequency. While previous schemes reduce the magnitude of variations, our proposal, called resonance tuning, changes the frequency of current variations away from the resonance band to a non-resonant frequency to be absorbed by the power supply. Because inductive noise is a resonance problem, resonance tuning reacts only to repeated variations in the resonance band, and not to isolated variations. Reacting after a few repetitions allows more time for the response and reduces unnecessary responses, decreasing performance and energy loss.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resonance",
+                "Noise reduction",
+                "Impedance",
+                "Power supplies",
+                "Resonant frequency",
+                "Proposals",
+                "Tuning",
+                "Microprocessors",
+                "Capacitors",
+                "Maintenance"
+            ],
+            "Index Terms": [
+                "Resonant Behavior",
+                "Impedance",
+                "Response Time",
+                "Variant Frequency",
+                "Resonance Frequency",
+                "Energy Loss",
+                "Magnitude Of Variation",
+                "Performance Loss",
+                "Educational Issues",
+                "Resonance Band",
+                "Tunable Resonance",
+                "Effective Response",
+                "Frequency Band",
+                "Performance Degradation",
+                "Functional Unit",
+                "Supply Voltage",
+                "Voltage Variation",
+                "Half Of Period",
+                "Current Sensor",
+                "Resonance Effect",
+                "Entire Band",
+                "Maximum Tolerance",
+                "Power Distribution Network",
+                "Current Threshold",
+                "Low-frequency Peak",
+                "Sensor Accuracy",
+                "Top Graph",
+                "Clock Frequency",
+                "Bottom Graph",
+                "Voltage Sensor"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -772,7 +1428,43 @@
                 "firstName": "A.",
                 "lastName": "Mendelson"
             }
-        ]
+        ],
+        "abstract": "We present the PARROT concept that seeks to achieve higher performance with reduced energy consumption through gradual optimization of frequently executed code traces. The PARROT microarchitectural framework integrates trace caching, dynamic optimizations and pipeline decoupling. We employ a selective approach for applying complex mechanisms only upon the most frequently used traces to maximize the performance gain at any given power constraint, thus attaining finer control of tradeoffs between performance and power awareness. We show that the PARROT based microarchitecture can improve the performance of aggressively designed processors by providing the means to improve the utilization of their more elaborate resources. At the same time, rigorous selection of traces prior to storage and optimization provides the key to attenuating increases in the power budget. For resource-constrained designs, PARROT based architectures deliver better performance (up to an average 16% increase in IPC) at a comparable energy level, whereas the conventional path to a similar performance improvement consumes an average 70% more energy. Meanwhile, for those designs which can tolerate a higher power budget, PARROT gracefully scales up to use additional execution resources in a uniformly efficient manner. In particular, a PARROT-style doubly-wide machine delivers an average 45% IPC improvement while actually improving the cubic-MIPS-per-WATT power awareness metric by over 50%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microarchitecture",
+                "Energy consumption",
+                "Decoding",
+                "Dynamic scheduling",
+                "Transistors",
+                "Bandwidth",
+                "Processor scheduling",
+                "Microprocessors",
+                "Technological innovation",
+                "Frequency"
+            ],
+            "Index Terms": [
+                "Dynamic Optimization",
+                "Energy Consumption",
+                "Caching",
+                "Decoding",
+                "Energy Conservation",
+                "Power Consumption",
+                "Processing Technology",
+                "Front End",
+                "Filtering Mechanism",
+                "Program Code",
+                "Critical Path",
+                "Execution Efficiency",
+                "Execution Of Operations",
+                "Written Back",
+                "Dynamic Scheduling",
+                "Pipeline Stages",
+                "Misprediction",
+                "Multimedia Applications",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -801,7 +1493,41 @@
                 "firstName": "G.S.",
                 "lastName": "Sohi"
             }
-        ]
+        ],
+        "abstract": "Wide, deep pipelines need many physical registers to hold the results of in-flight instructions. Simultaneously, high clock frequencies prohibit using large register files and bypass networks without a significant performance penalty. Previously proposed techniques using register caching to reduce this penalty suffer from several problems including poor insertion and replacement decisions and the need for a fully-associative cache for good performance. We present novel mechanisms for managing and indexing register caches that address these problems using knowledge of the number of consumers of each register value. The insertion policy reduces pollution by not caching a register value when all of its predicted consumers are satisfied by the bypass network. The replacement policy selects register cache entries with the fewest remaining uses (often zero), lowering the miss rate. We also introduce a new, general method of mapping physical registers to register cache sets that improves the performance of set-associative cache organizations by reducing conflicts. Our results indicate that a 64-entry, two-way set associative cache using these techniques outperforms multi-cycle monolithic register files and previously proposed hierarchical register files.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Indexing",
+                "Registers",
+                "Delay",
+                "Frequency",
+                "Clocks",
+                "Pollution",
+                "Computer aided instruction",
+                "Physics computing",
+                "Pipelines",
+                "Knowledge management"
+            ],
+            "Index Terms": [
+                "Clock Frequency",
+                "Deep Pipeline",
+                "Replacement Policy",
+                "Number Of Values",
+                "Life Time",
+                "Per Cycle",
+                "Dead Time",
+                "Degree Of Use",
+                "Incorrect Use",
+                "Execution Of Operations",
+                "Storage Location",
+                "Data Cache",
+                "Emptying Time",
+                "Number Of Misses",
+                "Cache Size",
+                "Caching Scheme",
+                "Cache Misses"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -848,7 +1574,54 @@
                 "firstName": "A.",
                 "lastName": "Das"
             }
-        ]
+        ],
+        "abstract": "This paper describes an experimental evaluation of the prototype Imagine stream processor. Imagine (Kapasi et al., 2002) is a stream processor that employs a two-level register hierarchy with 9.7 Kbytes of local register file capacity and 128 Kbytes of stream register file (SRF) capacity to capture producer-consumer locality in stream applications. Parallelism is exploited using an array of 48 floating-point arithmetic units organized as eight SIMD clusters with a 6-wide VLIW per cluster. We evaluate the performance of each aspect of the Imagine architecture using a set of synthetic micro-benchmarks, key media processing kernels, and full applications. These micro-benchmarks show that the prototype hardware can attain 7.96 GFLOPS or 25.4 GOPS of arithmetic performance, 12.7 Gbytes/s of SRF bandwidth, 1.58 Gbytes/s of memory system bandwidth, and accept up to 2 million stream processor instructions per second from a host processor. On a set of media processing kernels, Imagine sustained an average of 43% of peak arithmetic performance. An evaluation of full applications provides a breakdown of where execution time is spent. Over full applications, Imagine achieves 39.4% of peak performance, of the remainder on average 36.4% of time is lost due to load imbalance between arithmetic units in the VLIW clusters and limited instruction-level parallelism within kernel inner loops, 10.6% is due to kernel startup and shutdown overhead because of short stream lengths, 7.6% is due to memory stalls, and the rest is due to insufficient host processor bandwidth. Further analysis included in the paper presents the impact of host instruction bandwidth on application performance, particularly on smaller datasets. In summary, the experimental measurements described in this paper demonstrate the high performance and efficiency of stream processing: operating at 200 MHz, Imagine sustains 4.81 GFLOPS on QR decomposition while dissipating 7.42 Watts.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Streaming media",
+                "Kernel",
+                "Bandwidth",
+                "Registers",
+                "Prototypes",
+                "VLIW",
+                "Floating-point arithmetic",
+                "Hardware",
+                "Electric breakdown",
+                "Performance analysis"
+            ],
+            "Index Terms": [
+                "Memory System",
+                "Stream Processing",
+                "Peak Performance",
+                "Unit Clustering",
+                "QR Decomposition",
+                "Set Of Kernels",
+                "Stream Length",
+                "Load Imbalance",
+                "Arithmetic Performance",
+                "Percentage Of Time",
+                "Per Cycle",
+                "Convolution Kernel",
+                "Power Efficiency",
+                "Sustainability Performance",
+                "Memory Control",
+                "Arithmetic Operations",
+                "Performance Of Components",
+                "Parallel Data",
+                "Floating-point Operations",
+                "Loop Iteration",
+                "Media Applications",
+                "Input Stream",
+                "Memory Bandwidth",
+                "Output Stream",
+                "Memory Operations",
+                "Theoretical Peak",
+                "Average Bandwidth",
+                "Actual Hardware",
+                "Application Execution",
+                "External Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -895,7 +1668,54 @@
                 "firstName": "S.",
                 "lastName": "Narayanan"
             }
-        ]
+        ],
+        "abstract": "In this paper, we describe TSOtool, a program to check the behavior of the memory subsystem in a shared memory multiprocessor. TSOtool runs pseudo-randomly generated programs with data races on a system compliant with the total store order (TSO) memory consistency model; it then checks the results of the program against the formal TSO specification. Such analysis can expose subtle memory errors like data corruption, atomicity violation and illegal instruction ordering. While verifying TSO compliance completely is an NP-complete problem, we describe a new polynomial time algorithm which is incorporated in TSOtool. In spite of being incomplete, it has been successful in detecting several bugs in the design of commercial microprocessors and systems, during both pre-silicon and post-silicon phases of validation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer bugs",
+                "Protocols",
+                "Programming profession",
+                "Hardware",
+                "Sun",
+                "Polynomials",
+                "Phase detection",
+                "Microprocessors",
+                "Multithreading",
+                "Surface-mount technology"
+            ],
+            "Index Terms": [
+                "Memory System",
+                "Verifying",
+                "Program Outcomes",
+                "Linear Order",
+                "Polynomial-time Algorithm",
+                "Corrupted Data",
+                "NP-complete Problem",
+                "Model System",
+                "Operating System",
+                "Analysis Algorithm",
+                "Random Generation",
+                "Physical System",
+                "Simulation Environment",
+                "Nodes In The Graph",
+                "Testing Program",
+                "Microarchitecture",
+                "Memory Model",
+                "Memory Control",
+                "Checkers",
+                "Global Order",
+                "Simple Cycle",
+                "Memory Operations",
+                "Nodes In Set",
+                "Single Thread",
+                "Relaxed Model",
+                "Local Memory",
+                "Code Generation",
+                "Store Of Value",
+                "Gibbons",
+                "Number Of Processors"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -924,7 +1744,54 @@
                 "firstName": "S.V.",
                 "lastName": "Adve"
             }
-        ]
+        ],
+        "abstract": "Much research has recently been done on adapting architectural resources of general-purpose processors to save energy at the cost of increased execution time. This work examines adaptation control algorithms for such processors running real-time multimedia applications. The best previous algorithms are mostly heuristics-based and ad hoc, requiring an impractically large amount of application-specific tuning and resource-specific tuning. We take a more formal approach that does not require the large tuning effort of previous approaches, and yet obtains average energy savings comparable to the best previous approach. We pose control algorithm design as a constrained optimization problem: what configuration should be used at each point in the program to minimize energy for a targeted performance given that each configuration has a different energy-performance tradeoff at each point? We solve this with the method of Lagrange multipliers, which assumes knowledge of the energy-performance tradeoffs. We develop a technique to estimate these tradeoffs using properties of multimedia applications. Our technique is likely extendible to other application domains. We compare our algorithm to the best previous algorithm for real-time multimedia applications, which is heuristics-based. We demonstrate the practical difficulty of the tuning process for the previous algorithm. Compared to a painstakingly hand-tuned version of that algorithm, our new algorithm provides similar energy savings through a more formal approach that does not need such heroic tuning, making it practical to implement.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Application software",
+                "Energy consumption",
+                "Computer architecture",
+                "Computer science",
+                "Costs",
+                "Heuristic algorithms",
+                "Algorithm design and analysis",
+                "Constraint optimization",
+                "Design optimization",
+                "Lagrangian functions"
+            ],
+            "Index Terms": [
+                "National Science Foundation",
+                "Formal Approach",
+                "Multimedia Applications",
+                "Energy Conservation",
+                "Average Energy",
+                "Application Of Algorithm",
+                "Applicability Domain",
+                "Constrained Optimization Problem",
+                "Lagrangian Method",
+                "Previous Algorithms",
+                "Tuning Process",
+                "Energy Consumption",
+                "Lack Of Resources",
+                "Functional Unit",
+                "Block Size",
+                "Local Adaptation",
+                "Exhaustive Search",
+                "Design Space",
+                "Design Points",
+                "Interval Size",
+                "Architecture Configuration",
+                "Temporal Granularity",
+                "Adaptive Resource",
+                "Low Overhead",
+                "Impact Of Adaptation",
+                "Installation Time",
+                "Manual Tuning",
+                "Tight Deadlines",
+                "Hardware Configuration",
+                "Spatial Sense"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -971,7 +1838,51 @@
                 "firstName": "J.",
                 "lastName": "Torrellas"
             }
-        ]
+        ],
+        "abstract": "Recent impressive performance improvements in computer architecture have not led to significant gains in ease of debugging. Software debugging often relies on inserting run-time software checks. In many cases, however, it is hard to find the root cause of a bug. Moreover, program execution typically slows down significantly, often by 10-100 times. To address this problem, this paper introduces the Intelligent Watcher (iWatcher), novel architectural support to monitor dynamic execution with minimal overhead, automatically, and flexibly. iWatcher associates program-specified monitoring functions with memory locations. When any such location is accessed, the monitoring function is automatically triggered with low overhead. To further reduce overhead and support rollback, iWatcher can leverage Thread-Level Speculation (TLS). To test iWatcher, we use applications with various bugs. Our results show that iWatcher detects many more software bugs than Valgrind, a well-known open-source bug detector. Moreover, iWatcher only induces a 4-80% execution overhead, which is orders of magnitude less than Valgrind. Even with 20% of the dynamic loads monitored in a program, iWatcher adds only 66-174% overhead. Finally, TLS is effective at reducing overheads for programs with substantial monitoring.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Software debugging",
+                "Computerized monitoring",
+                "Computer bugs",
+                "Open source software",
+                "Computer architecture",
+                "Performance gain",
+                "Runtime",
+                "Testing",
+                "Application software",
+                "Detectors"
+            ],
+            "Index Terms": [
+                "Software Debugging",
+                "Dynamic Loading",
+                "Rollback",
+                "Local Memory",
+                "Program Execution",
+                "Software Defect",
+                "Low Overhead",
+                "Minimal Overhead",
+                "Triggering",
+                "Parallelization",
+                "Spawning",
+                "Production Run",
+                "Memory System",
+                "Fraction Of Time",
+                "Dynamic Monitoring",
+                "OR Operation",
+                "Mechanistic Reasoning",
+                "Multi-threaded",
+                "Real Machine",
+                "Error Handling",
+                "L2 Cache",
+                "Memory Regions",
+                "Buffer Overflow",
+                "Cache Misses",
+                "Hardware Support",
+                "Instrumental Tools",
+                "Dereference"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1012,7 +1923,53 @@
                 "firstName": "R.",
                 "lastName": "Beivide"
             }
-        ]
+        ],
+        "abstract": "A new and efficient mechanism to tolerate failures in interconnection networks for parallel and distributed computers, denoted as Immunet, is presented in this work. In the presence of failures, Immunet automatically reacts with a hardware reconfiguration of the surviving network resources. Immunet has four important advantages over previous fault-tolerant switching mechanisms. Its low hardware costs minimize the overhead that the network must support in absence of faults. As long as the network remains connected, Immunet can tolerate any number of failures regardless of their spatial and temporal combinations. The resulting communication infrastructure provides optimized adaptive minimal routing over the surviving topology. The system behavior under successive failures exhibits graceful performance degradation. Immunet reconfiguration can be totally transparent to the applications running on the parallel system as they will only be affected by the loss of those data packets circulating through the broken components. The rest of the packets will suffer only a tolerable delay induced by the time employed to perform the automatic network reconfiguration. Descriptions of the hardware network architecture and detailed synthetic and execution-driven simulations will demonstrate the benefits of Immunet.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Robustness",
+                "Fault tolerance",
+                "Routing",
+                "Hardware",
+                "Multiprocessor interconnection networks",
+                "Computer networks",
+                "Concurrent computing",
+                "Distributed computing",
+                "Communication switching",
+                "Costs"
+            ],
+            "Index Terms": [
+                "Packet Routing",
+                "Low Cost",
+                "Performance Degradation",
+                "Interconnected Network",
+                "Hardware Cost",
+                "Presence Of Failure",
+                "Application Running",
+                "Parallelization",
+                "End Of Process",
+                "State Of Emergency",
+                "Output Ports",
+                "Network Throughput",
+                "Distributed Algorithm",
+                "Output Of Block",
+                "Single Ring",
+                "Routing Algorithm",
+                "Network Fault",
+                "Network Interface",
+                "Link Failure",
+                "Routing Table",
+                "Control Packets",
+                "Reconfiguration Process",
+                "Input Block",
+                "Mean Time To Failure",
+                "Virtual Channel",
+                "Parallel Applications",
+                "Deadlock",
+                "Loss Of Resources",
+                "Arbitrary Topology"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1053,7 +2010,51 @@
                 "firstName": "R.H.",
                 "lastName": "Arpaci-Dusseau"
             }
-        ]
+        ],
+        "abstract": "RAID storage arrays often possess gigabytes of RAM for caching disk blocks. Currently, most RAID systems use LRU or LRU-like policies to manage these caches. Since these array caches do not recognize the presence of file system buffer caches, they redundantly retain many of the same blocks as those cached by the file system, thereby wasting precious cache space. In this paper, we introduce X-RAY, an exclusive RAID array caching mechanism. X-RAY achieves a high degree of (but not perfect) exclusivity through gray-box methods: by observing which files have been accessed through updates to file system meta-data, X-RAY constructs an approximate image of the contents of the file system cache and uses that information to determine the exclusive set of blocks that should be cached by the array. We use microbenchmarks to demonstrate that X-RAY's prediction of the file system buffer cache contents is highly accurate, and trace-based simulation to show that X-RAY considerably outperforms LRU and performs as well as other more invasive approaches. The main strength of the X-RAY approach is that it is easy to deploy - all performance gains are achieved without changes to the SCSI protocol or the file system above.",
+        "keywords": {
+            "IEEE Keywords": [
+                "File systems",
+                "X-ray imaging",
+                "Cache storage",
+                "Memory management",
+                "Read-write memory",
+                "Predictive models",
+                "Performance gain",
+                "Protocols",
+                "Operating systems",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Caching Mechanism",
+                "Performance Gain",
+                "File System",
+                "Set Of Blocks",
+                "Content Caching",
+                "Prediction Error",
+                "Average Error",
+                "Semantic Information",
+                "Access Time",
+                "Semantic Knowledge",
+                "File Size",
+                "Data Block",
+                "Idle Time",
+                "Interface Changes",
+                "Warm-up Phase",
+                "Exclusive Regions",
+                "Cache Size",
+                "Caching Scheme",
+                "Inclusion Problem",
+                "Fraction Of False Positives",
+                "Cache Hit",
+                "File Access",
+                "Replacement Policy",
+                "Virtual Memory",
+                "Partial Access",
+                "Average Latency",
+                "Storage Systems"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1100,7 +2101,45 @@
                 "firstName": "M.",
                 "lastName": "Valero"
             }
-        ]
+        ],
+        "abstract": "This paper introduces the prophet/critic hybrid conditional branch predictor, which has two component predictors that play the role of either prophet or critic. The prophet is a conventional predictor that uses branch history to predict the direction of the current branch. Further accesses of the prophet yield predictions for the branches following the current one. Predictions for the current branch and the ones that follow are collectively known as the branch's future. They are actually a prophecy, or predicted branch future. The critic uses both the branch's history and future to give a critique of the prophet's prediction fo the current branch. The critique, either agree or disagree, is used to generate the final prediction for the branch. Our results show an 8K + 8K byte prophet/critic hybrid has 39% fewer mispredicts than a 16K byte 2Bc - gskew predictor-a predictor similar to that of the proposed Compaq* Alpha* EV8 processor - across a wide range of applications. The distance between pipeline flushes due to mispredicts increases from one flush per 418 micro-operations (uops) to one per 680 uops. For gcc, the percentage of mispredicted branches drops from 3.11% to 1.23%. On a machine based on the Intel/spl reg/ Pentium/spl reg/ 4 processor, this improves uPC (Uops Per Cycle) by 7.8% (18% for gcc) and reduces the number of uops fetched (along both correct and incorrect paths) by 8.6%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "History",
+                "Pipelines",
+                "Roads",
+                "Microarchitecture",
+                "Trademarks",
+                "Computer architecture",
+                "Process design",
+                "Frequency",
+                "Voltage",
+                "Energy consumption"
+            ],
+            "Index Terms": [
+                "Final Prediction",
+                "Per Cycle",
+                "Prophet",
+                "Predictive Component",
+                "Conventional Prediction",
+                "Misprediction",
+                "Correct Path",
+                "Branch Current",
+                "Conditional Branches",
+                "Benchmark",
+                "Prediction Accuracy",
+                "Perceptron",
+                "Historical Information",
+                "Selection Mechanism",
+                "Correct Predictions",
+                "Hash Function",
+                "Microarchitecture",
+                "Table Entries",
+                "History Length",
+                "Conventional Hybrid",
+                "Pentium IV"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1129,7 +2168,53 @@
                 "firstName": "Z.",
                 "lastName": "Chishti"
             }
-        ]
+        ],
+        "abstract": "Previous papers have shown that the slow scaling of wire delays compared to logic delays will prevent superscalar performance from scaling with technology. In this paper, we show that the optimal pipeline for superscalar becomes shallower with technology, when wire delays are considered, tightening previous results that deeper pipelines perform only as well as shallower pipelines. The key reason for the lack of performance scaling is that superscalar does not have sufficient parallelism to hide the relatively-increased wire delays. However, Simultaneous Multithreading (SMT) provides the much-needed parallelism. We show that an SMT running a multiprogrammed workload with just 4-way issue not only retains the optimal pipeline depth over technology generations, enabling at least 43% increase in clock speed every generation, but also achieves the remainder of the expected speedup of two per generation through IPC. As wire delays become more dominant in future technologies, the number of programs needs to be scaled modestly to maintain the scaling trends, at least till the near-future 50nm technology. While this result ignores bandwidth constraints, using SMT to tolerate latency due to wire delays is not that simple because SMT causes bandwidth problems. Most of the stages of a modern out-of-order-issue pipeline employ RAM and CAM structures. Wire delays in conventional, latency-optimized RAM/CAM structures prevent them from being pipelined in a scaled manner. We show that this limitation prevents scaling of SMT throughput. We use bitline scaling to allow RAM/CAM bandwidth to scale with technology. Bitline scaling enables SMT throughput to scale at the rate of two per technology generation in the near future.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wire",
+                "Delay",
+                "Surface-mount technology",
+                "Pipelines",
+                "Bandwidth",
+                "Computer aided manufacturing",
+                "CADCAM",
+                "Throughput",
+                "Logic",
+                "Paper technology"
+            ],
+            "Index Terms": [
+                "Near Future",
+                "Previous Paper",
+                "Increase In Speed",
+                "Future Technologies",
+                "Number Of Programs",
+                "Clock Rate",
+                "Optimal Depth",
+                "Pipeline Optimization",
+                "Scaling Trend",
+                "Functional Unit",
+                "Base Case",
+                "Inverter",
+                "Delayed Effects",
+                "Access Time",
+                "Consecutive Cycles",
+                "Limited Bandwidth",
+                "Partitioning Scheme",
+                "Increase In Latency",
+                "Optimal Period",
+                "Clock Period",
+                "Latency Effects",
+                "Sense Amplifier",
+                "Clock Cycles",
+                "Pipeline Stages",
+                "Bandwidth Demand",
+                "Space Of Interest",
+                "Deep Pipeline",
+                "Impact Of Delay",
+                "Dominant Properties"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1182,7 +2267,43 @@
                 "firstName": "W.-M.W.",
                 "lastName": "Hwu"
             }
-        ]
+        ],
+        "abstract": "Explicitly-Parallel Instruction Computing (EPIC) provides architectural features, including predication and explicit control speculation, intended to enhance the compiler's ability to expose instruction-level parallelism (ILP) in control-intensive programs. Aggressive structural transformations using these features, though described in the literature, have not yet been fully characterized in complete systems. Using the Intel Itanium 2 microprocessor, the SPECint2000 benchmarks and the IMPACT Compiler for IA-64, a research compiler competitive with the best commercial compilers on the platform, we provide an in situ evaluation of code generated using aggressive, EPIC-enabled techniques in a reality-constrained microarchitecture. Our work shows a 1.13 average speedup (up to 1.50) due to these compilation techniques, relative to traditionally-optimized code at the same inlining and pointer analysis levels, and a 1.55 speedup (up to 2.30) relative to GNU GCC, a solid traditional compiler. Detailed results show that the structural compilation approach provides benefits far beyond a decrease in branch misprediction penalties and that it both positively and negatively impacts instruction cache performance. We also demonstrate the increasing significance of runtime effects, such as data cache and TLB, in determining end performance and the interaction of these effects with control speculation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Parallel processing",
+                "Microarchitecture",
+                "Computer aided instruction",
+                "Concurrent computing",
+                "Program processors",
+                "Clocks",
+                "Pipelines",
+                "Microprocessors",
+                "Solids",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Structural Transformation",
+                "Microarchitecture",
+                "Data Cache",
+                "Footprint",
+                "Scope Of This Paper",
+                "Flow Control",
+                "Use Of Features",
+                "Transformation Events",
+                "Performance Monitoring",
+                "Profile Information",
+                "Original Program",
+                "Execution Of Operations",
+                "Classical Optimization",
+                "Error Handling",
+                "Code Size",
+                "Real Hardware",
+                "Cache Misses",
+                "Control Flow Graph"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1253,7 +2374,53 @@
                 "firstName": "F.T.",
                 "lastName": "Chong"
             }
-        ]
+        ],
+        "abstract": "We present Synchroscalar, a tile-based architecture for embedded processing that is designed to provide the flexibility of DSPs while approaching the power efficiency of ASICs. We achieve this goal by providing high parallelism and voltage scaling while minimizing control and communication costs. Specifically, Synchroscalar uses columns of processor tiles organized into statically-assigned frequency-voltage domains to minimize power consumption. Furthermore, while columns use SIMD control to minimize overhead, data-dependent computations can be supported by extremely flexible statically-scheduled communication between columns. We provide a detailed evaluation of Synchroscalar including SPICE simulation, wire and device models, synthesis of key components, cycle-level simulation, and compiler- and hand-optimized signal processing applications. We find that the goal of meeting, not exceeding, performance targets with data-parallel applications leads to designs that depart significantly from our intuitions derived from general-purpose microprocessor design. In particular, synchronous design and substantial global interconnect are desirable in the low-frequency, low-power domain. This global interconnect supports parallelization and reduces processor idle time, which are critical to energy efficient implementations of high bandwidth signal processing. Overall, Synchroscalar provides programmability while achieving power efficiencies within 8-30/spl times/ of known ASIC implementations, which is 10-60/spl times/ better than conventional DSPs. In addition, frequency-voltage scaling in Synchroscalar provides between 3-32% power savings in our application suite.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Digital signal processing",
+                "Communication system control",
+                "Computational modeling",
+                "Signal processing",
+                "Process design",
+                "Parallel processing",
+                "Voltage control",
+                "Costs",
+                "Tiles"
+            ],
+            "Index Terms": [
+                "Clock Domain",
+                "Energy Efficiency",
+                "Energy Conservation",
+                "Power Consumption",
+                "Parallelization",
+                "Power Efficiency",
+                "Digital Signal Processing",
+                "Idle Time",
+                "High Parallelism",
+                "Voltage Scaling",
+                "Global Interconnectedness",
+                "SPICE Simulations",
+                "Computational Model",
+                "Data Rate",
+                "Unit Length",
+                "Feature Points",
+                "State Machine",
+                "Supply Voltage",
+                "Orthogonal Frequency Division Multiplexing",
+                "Interconnected Model",
+                "Gate Capacitance",
+                "Multiple Voltage",
+                "Low Overhead",
+                "Clock Frequency",
+                "Data Bus",
+                "Stereopsis",
+                "Communication Overhead",
+                "UC Berkeley",
+                "Communication Requirements"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1282,7 +2449,51 @@
                 "firstName": "M.",
                 "lastName": "Heinrich"
             }
-        ]
+        ],
+        "abstract": "We introduce the SMTp architecture - an SMT processor augmented with a coherence protocol thread context, that together with a standard integrated memory controller can enable the design of (among other possibilities) scalable cache-coherent hardware distributed shared memory (DSM) machines from commodity nodes. We describe the minor changes needed to a conventional out-of-order multi-threaded core to realize SMTp, discussing issues related to both deadlock avoidance and performance. We then compare SMTp performance to that of various conventional DSM machines with normal SMT processors both with and without integrated memory controllers. On configurations from 1 to 32 nodes, with 1 to 4 application threads per node, we find that SMTp delivers performance comparable to, and sometimes better than, machines with more complex integrated DSM-specific memory controllers. Our results also show that the protocol thread has extremely low pipeline overhead. Given the simplicity and the flexibility of the SMTp mechanism, we argue that next-generation multi-threaded processors with integrated memory controllers should adopt this mechanism as a way of building less complex high-performance DSM multiprocessors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Surface-mount technology",
+                "Yarn",
+                "Control systems",
+                "Fabrics",
+                "Hardware",
+                "Costs",
+                "Coherence",
+                "Large-scale systems",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Memory Control",
+                "Low Overhead",
+                "Shared Memory",
+                "Relative Performance",
+                "Fault-tolerant",
+                "Head And Tail",
+                "Memory System",
+                "Machine Model",
+                "Performance In Cases",
+                "Single Thread",
+                "Data Cache",
+                "Round Robin",
+                "Small Amount Of Time",
+                "Misprediction",
+                "Network Interface",
+                "Protocol Instructions",
+                "L2 Cache",
+                "Application Execution",
+                "Cache Misses",
+                "Separate Heading",
+                "Pentium IV",
+                "Cache Hit",
+                "Changes In Microarchitecture",
+                "Memory Operations",
+                "Separate Protocols",
+                "Clock Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1311,7 +2522,41 @@
                 "firstName": "O.",
                 "lastName": "Temam"
             }
-        ]
+        ],
+        "abstract": "In this article, we present an approach for improving the performance of sequences of dependent instructions. We observe that many sequences of instructions can be interpreted as functions. Unlike sequences of instructions, functions can be translated into very fast but exponentially costly two-level combinational circuits. We present an approach that exploits this principle, speeds up programs thanks to circuit-level parallelism/redundancy, but avoids the exponential costs. We analyze the potential of this approach, and then we propose an implementation that consists of a superscalar processor with a large specific functional unit associated with specific back-end transformations. The performance of the SpecInt2000 benchmarks and selected programs from the Olden and MiBench benchmark suites improves on average from 2.4% to 12% depending on the latency of the functional units, and up to 39.6%; more precisely, the performance of optimized code sections improves on average from 3.5% to 19%, and up to 49%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Hardware",
+                "Combinational circuits",
+                "Parallel processing",
+                "Throughput",
+                "Pipeline processing",
+                "Delay",
+                "Space stations",
+                "Computer aided instruction",
+                "Prefetching"
+            ],
+            "Index Terms": [
+                "Sequence Of Instructions",
+                "Benchmark",
+                "Potential Approach",
+                "Functional Unit",
+                "Functional Mechanisms",
+                "Functional Identification",
+                "Engineering Optimization",
+                "Most Significant Bit",
+                "Chimaera",
+                "Processing Architecture",
+                "Combinational Logic",
+                "Truth Table",
+                "Physical Inputs",
+                "Logic Blocks",
+                "Conditional Branches",
+                "Baseline Configuration",
+                "Half Adder"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1346,7 +2591,47 @@
                 "firstName": "B.",
                 "lastName": "Jacob"
             }
-        ]
+        ],
+        "abstract": "VLIW architecture based DSPs have become widespread due to the combined benefits of simple hardware and compiler-extracted instruction-level parallelism. However, the VLIW instruction set architecture and its hardware implementation are tightly coupled, especially so for Non-Unit Assumed Latency (NUAL) VLIWs. The problem of object code compatibility across processors having different numbers of functional units or hardware latencies has been the Achilles' heel of this otherwise powerful architecture. In this paper, we propose eXtended Split-Issue (XSI), a novel mechanism that breaks the instruction packet syntax of an NUAL VLIW compiler without violating the dataflow dependences. XSI provides a designer the freedom of disassociating the hardware implementation of the NUAL VLIW processor from the instruction set architecture. Further, we investigate fairly radical (in the context of VLIW) changes to the hardware-like removing an adder, adding a multiplier, and incorporating simultaneous multithreading (SMT) - to show that our technique works for a variety of hardware configurations without compromising on performance. The technique can be used in both single-threaded and multi-threaded architectures to achieve a level of flexibility heretofore unavailable in the VLIW arena.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "VLIW",
+                "Digital signal processing",
+                "Delay",
+                "Instruction sets",
+                "Program processors",
+                "Programming profession",
+                "Computer architecture",
+                "Costs",
+                "Jacobian matrices"
+            ],
+            "Index Terms": [
+                "Hardware Implementation",
+                "Functional Unit",
+                "Level Of Flexibility",
+                "Instruction Set Architecture",
+                "Hardware Configuration",
+                "Benchmark",
+                "Throughput",
+                "Nitrogen Metabolism",
+                "End Of Cycle",
+                "Proportion Of Time",
+                "Set Of Operations",
+                "Basic Architecture",
+                "Texas Instruments",
+                "Parallel Operation",
+                "Clock Cycles",
+                "Datapath",
+                "Load Operation",
+                "Multiple Threads",
+                "Dynamic Scheduling",
+                "Circular Buffer",
+                "S Units",
+                "Decoding Stage",
+                "Availability Of Units"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1362,7 +2647,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "Proceedings. 31st Annual International Symposium on Computer Architecture, 2004.",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9170",
@@ -1378,7 +2665,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "Proceedings. 31st Annual International Symposium on Computer Architecture, 2004.",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9170",
@@ -1394,7 +2683,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "Proceedings. 31st Annual International Symposium on Computer Architecture, 2004.",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9170",
@@ -1410,7 +2701,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "Proceedings. 31st Annual International Symposium on Computer Architecture, 2004.",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: computer architecture; architecture evaluations; microarchitecture parallelism; memory consistency; power and energy; interconnect and I/O; compression and debugging; superscalars; reliability support; register file; performance methodologies; and microarchitectural concepts.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9170",
@@ -1426,7 +2719,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "Proceedings. 31st Annual International Symposium on Computer Architecture, 2004.",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9170",
@@ -1442,7 +2737,13 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "Proceedings. 31st Annual International Symposium on Computer Architecture, 2004.",
-        "authors": []
+        "authors": [],
+        "abstract": "The publication offers a note of thanks and lists its reviewers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "IEEE"
+            ]
+        }
     },
     {
         "publicationNumber": "9170",
@@ -1458,7 +2759,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "Proceedings. 31st Annual International Symposium on Computer Architecture, 2004.",
-        "authors": []
+        "authors": [],
+        "abstract": "Copyright and Reprint Permissions: Abstracting is permitted with credit to the source. Libraries may photocopy beyond the limits of US copyright law, for private use of patrons, those articles in this volume that carry a code at the bottom of the first page, provided that the per-copy fee indicated in the code is paid through the Copyright Clearance Center. The papers in this book comprise the proceedings of the meeting mentioned on the cover and title page. They reflect the authors' opinions and, in the interests of timely dissemination, are published as presented and without change. Their inclusion in this publication does not necessarily constitute endorsement by the editors or the Institute of Electrical and Electronics Engineers, Inc.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9170",
@@ -1474,7 +2777,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "Proceedings. 31st Annual International Symposium on Computer Architecture, 2004.",
-        "authors": []
+        "authors": [],
+        "abstract": "The author index contains an entry for each author and coauthor included in the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9170",
@@ -1490,6 +2795,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "Proceedings. 31st Annual International Symposium on Computer Architecture, 2004.",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover of the proceedings.",
+        "keywords": {}
     }
 ]

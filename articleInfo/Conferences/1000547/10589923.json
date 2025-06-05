@@ -44,7 +44,39 @@
                 "firstName": "Vivienne",
                 "lastName": "Sze"
             }
-        ]
+        ],
+        "abstract": "Photonics is a promising technology to accelerate Deep Neural Networks as it can use optical interconnects to reduce data movement energy and it enables low-energy, high-throughput optical-analog computations. To realize these benefits in a full system (accelerator + DRAM), designers must ensure that the benefits of using the electrical, optical, analog, and digital domains exceed the costs of converting data between domains. Designers must also consider system-level energy costs such as data fetch from DRAM. Converting data and accessing DRAM can consume significant energy, so to evaluate and explore the photonic system space, there is a need for a tool that can model these full-system considerations. In this work, we show that similarities between Compute-in-Memory (CiM) and photonics let us use CiM system modeling tools to accurately model photonics systems. Bringing modeling tools to photonics enables evaluation of photonic research in a full-system context, rapid design space exploration, co-design, and comparison between systems. Using our open-source model, we show that cross-domain conversion and DRAM can consume a significant portion of photonic system energy. We then demonstrate optimizations that reduce conversions and DRAM accesses to improve photonic system energy efficiency by up to 3 x.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical interconnections",
+                "Costs",
+                "Optical design",
+                "Computational modeling",
+                "Random access memory",
+                "Optical computing",
+                "Optical fiber networks"
+            ],
+            "Index Terms": [
+                "Deep Neural Network",
+                "Load Data",
+                "Source Model",
+                "Photonic Systems",
+                "Design Space Exploration",
+                "Optical Interconnects",
+                "Rapid Exploration",
+                "Computing Units",
+                "Data Reuse",
+                "Number Of Conversations"
+            ],
+            "Author Keywords": [
+                "photonics",
+                "optical computing",
+                "photonic computing",
+                "compute-in-memory",
+                "modeling",
+                "accelerator"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -79,7 +111,34 @@
                 "firstName": "Vivek",
                 "lastName": "Sarkar"
             }
-        ]
+        ],
+        "abstract": "On massively parallel computing systems, applications involving many small message transfers suffer from degradation in performance and scalability. Typically, applications built on OpenSHMEM, Chapel, and Unified Parallel C (UPC) suffer due to poor network message rates, causing under-utilization of network bandwidth. In past work, a memory-efficient aggregation library called Conveyors was developed to address this issue in the PGAS (Partitioned Global Address Space) based SPMD (Single Program Multiple Data) model offering flexible APIs and contracts. The Conveyors library has been used by multiple HPC frameworks, including Chapel, HABU, and HClib. We scope this paper as an investigative study of Conveyors at a time where none of the profilers, such as score-p, Intel Vtune, and CrayPat, measure asynchronous OpenSHMEM calls. Specifically, we conduct a series of experiments and identify cases where certain one-to-one/all-to-all communication patterns can lead to bottlenecks due to specific design choices made by Conveyors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Scalability",
+                "Parallel processing",
+                "Libraries",
+                "Time measurement",
+                "Software",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Use Of Libraries",
+                "Bottleneck Scenario",
+                "Past Work",
+                "Network Bandwidth",
+                "Buffer Size",
+                "Number Of Processors",
+                "Ring Topology"
+            ],
+            "Author Keywords": [
+                "SPMD",
+                "Conveyors",
+                "OpenSHMEM",
+                "PGAS"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -138,7 +197,48 @@
                 "firstName": "Nandita",
                 "lastName": "Vijaykumar"
             }
-        ]
+        ],
+        "abstract": "Implicit neural representation is an emerging method that leverages deep neural networks and learned parameters to represent 3D scenes efficiently and accurately. Neural radiance field (NeRF) is a state-of-art implicit representation that achieves photorealistic 3D reconstruction with compact neural network models. However, as the complexity and scale of the scene increase, training NeRF models with a single GPU proves insufficient for achieving fast training and high-quality reconstruction. To address this challenge, prior works proposed distributed NeRF training methods. This is the first work to conduct a detailed evaluation of two major distributed NeRF training methods and their tradeoffs: distributed data parallel (DDP) and spatial segmentation (SS). We find that DDP training requires cross-device synchronization during training, while SS training incurs additional fusion overhead during inference. Our analysis also reveals that sampling input images is a common key bottleneck in distributed NeRF training. At the beginning of each training iteration, the CPU generates input batches for all GPUs in the cluster by sampling all images in the dataset, causing significant stalls that constitute up to 43.3% of the total training time. To alleviate this bottleneck, we propose a pipelined input sampling strategy that precomputes input samples on the CPU concurrently with model training on the GPUs. Our evaluation demonstrates an average speedup in training time by <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$1.95\\times($</tex> up to <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$2.24\\times)$</tex>.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Solid modeling",
+                "Three-dimensional displays",
+                "Graphics processing units",
+                "Distributed databases",
+                "Parallel processing",
+                "Neural radiance field"
+            ],
+            "Index Terms": [
+                "Neural Radiance Fields",
+                "Neural Network",
+                "Artificial Neural Network",
+                "Deep Neural Network",
+                "Training Time",
+                "3D Reconstruction",
+                "Training Methods",
+                "3D Scene",
+                "Implicit Representation",
+                "High-quality Reconstruction",
+                "Neural Field",
+                "Spatial Segmentation",
+                "High Capacity",
+                "Batch Size",
+                "Key Observation",
+                "Peak Signal-to-noise Ratio",
+                "Reconstruction Quality",
+                "GPU Memory",
+                "Sample Pixels",
+                "Large Batch Size"
+            ],
+            "Author Keywords": [
+                "NeRF",
+                "Neural Radiance Field",
+                "machine learning",
+                "performance characterization",
+                "distributed training"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -203,7 +303,35 @@
                 "firstName": "Timothy",
                 "lastName": "Stavenger"
             }
-        ]
+        ],
+        "abstract": "In this work, we propose a framework to auto-tune the multiple network models' simulation configurations within SST/macro using Tree-structured Parzen Estimator-based Bayesian optimization to observe the effect on simulation accuracy across different message regimes. These regimes consist of small to large message sizes and latency to bandwidth-bound messages. We provide a detailed analysis of the simulation error for four representative HPC systems. Our Bayesian optimization-based autotuning framework for network models achieves a maximum of 5x improvement in accuracy over best-effort manual configurations based on available hardware specifications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Accuracy",
+                "Manuals",
+                "Software",
+                "Hardware",
+                "Bayes methods",
+                "Performance analysis",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Improvement In Accuracy",
+                "Simulation Accuracy",
+                "Bayesian Optimization",
+                "Simulation Configuration",
+                "Hardware Specifications",
+                "Message Size",
+                "Benchmark",
+                "Simulation Environment",
+                "Single Switch"
+            ],
+            "Author Keywords": [
+                "network characterization",
+                "topology design",
+                "architectural simulation"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -262,7 +390,37 @@
                 "firstName": "Amro",
                 "lastName": "Awad"
             }
-        ]
+        ],
+        "abstract": "In academia and industry, computer architects rely heavily on performance models for design space exploration. However, performance models are now experiencing longer simulation times due to the increasing design complexity of modern computing systems. DDR memory, a critical component in a computing system, requires an accurate performance model to properly evaluate the instructions per cycle (IPC). However, a detailed DRAM simulator models each DDR event and, therefore, contributes a considerable simulation time. This paper proposes Satistically-guided Epoch-evolving Fixed-latency Simulator (SEFsim), an approximate and fast DRAM simulation model, to significantly improve the simulation speed. The key design principle of SEFsim is to statistically capture the performance model of DRAM using a large number of patterns, enabling the model to accurately predict the latency and behavior of new workloads. Based on our evaluation using a detailed memory model and 10 workloads, SEFsim captures the original model with 96.16% accuracy while speeding up the simulation by 10.3X and 8.25 % in the standalone and full system evaluations, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Accuracy",
+                "Computational modeling",
+                "System performance",
+                "Instruments",
+                "Memory management",
+                "Random access memory",
+                "Predictive models"
+            ],
+            "Index Terms": [
+                "DRAM Simulator",
+                "Simulation Model",
+                "Model Estimates",
+                "Simulation Time",
+                "Computer System",
+                "Per Cycle",
+                "Design Space Exploration",
+                "Prediction Model",
+                "Training Data",
+                "Multi-core",
+                "Average Prediction",
+                "Mean Absolute Percentage Error",
+                "Memory Trace",
+                "Average Latency",
+                "End Of Epoch",
+                "Average Workload"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -309,7 +467,35 @@
                 "firstName": "Darryl",
                 "lastName": "Gove"
             }
-        ]
+        ],
+        "abstract": "Benchmarking warehouse-scale compute (WSC) systems poses unique challenges due to their scale, workload diversity, and focus on data-intensive computation. Traditional benchmarks often fall short in capturing the nuances of WSC behavior. Creating a public benchmark suite that is representative of the workloads used by actual warehouse-scale computers is challenging, as they typically run proprietary, non-public software that operates on confidential data. In this paper, we present Fleetbench, a benchmark suite that is representative of the workloads used at Google. Fleetbench does not benchmark entire applications; rather, it focuses on common building blocks, known as the “datacenter tax”, that are at the core of a wide range of different data center applications, and many of which are open source. The relevant building blocks are selected based on fleet-wide profiling data. Representative input data is collected using a fleet-wide value profiler, ensuring that no confidential information is revealed. Fleetbench is available as open source on Github<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup><sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup>https://github.com/google/fieetbench.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computers",
+                "Data centers",
+                "Benchmark testing",
+                "Software",
+                "Hardware",
+                "Performance analysis",
+                "Internet"
+            ],
+            "Index Terms": [
+                "Benchmark Suite",
+                "Open-source",
+                "Profiling Data",
+                "Confidential Information",
+                "Representation Of The Input Data",
+                "Large-scale Systems",
+                "Compression Ratio",
+                "Memory Allocation",
+                "Compression Parameters"
+            ],
+            "Author Keywords": [
+                "Benchmarks",
+                "workload characterization",
+                "performance analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -362,7 +548,46 @@
                 "firstName": "Alexandros",
                 "lastName": "Daglis"
             }
-        ]
+        ],
+        "abstract": "Modern Deep Learning (DL) models require massive clusters of specialized, high-end nodes to train. Designing such clusters to maximize both performance and utilization is a challenging task requiring careful balance of compute, memory, and network resources. Moreover, a plethora of each model's tuning knobs drastically affect a cluster's performance, with optimal values often depending on the underlying hardware characteristics, thus necessitating a complex cluster-workload co-design process. To facilitate design space exploration, we develop Come T,a holistic cluster design methodology and workflow to jointly study the impact of parallelization strategies and key cluster resource provisioning on the performance of distributed DL training. In this short paper, we use Comet to focus on studying the impact of each compute node's memory system on overall cluster performance. We show that per-node memory expansion using technologies like CXL is a promising technique to boost a cluster's DL training performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Comets",
+                "Design methodology",
+                "Computational modeling",
+                "Memory management",
+                "Bandwidth",
+                "Software"
+            ],
+            "Index Terms": [
+                "Large-scale Training",
+                "Deep Learning Training",
+                "Key Resources",
+                "Training Performance",
+                "Cluster Assignment",
+                "Memory System",
+                "Clustering Performance",
+                "Parallel Strategy",
+                "Design Space Exploration",
+                "Modern Deep Learning",
+                "Training Strategy",
+                "Memory Capacity",
+                "Computational Requirements",
+                "Provisioning",
+                "Training Efficiency",
+                "Cluster Configuration",
+                "Memory Bandwidth",
+                "CPU Memory",
+                "Rapid Exploration"
+            ],
+            "Author Keywords": [
+                "Distributed Training",
+                "Memory System",
+                "CXL",
+                "DL Training"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -421,7 +646,39 @@
                 "firstName": "Michael",
                 "lastName": "Ferdman"
             }
-        ]
+        ],
+        "abstract": "Single-Instruction Multiple-Thread (SIMT) computing has enabled a revolution in graphics, high-performance computing, and artificial intelligence. However, despite its benefits in these domains, SIMT processing has been relegated to accelerators rather than becoming a feature of general-purpose computing. Although a number of recent works have explored the potential benefits of “G PSIMT,“ current research infrastructures to study high performance general-purpose CPUs provide no support for the SIMT architecture and its programming model. This work presents our initial efforts toward developing a full-system GPSIMT research infrastructure. We first describe how we extend the QEMU emulator with SIMT features, enabling ISA pathfinding for GPSIMT hardware and providing a platform for the rapid development of system software for GPSIMT. We then present our approach to leveraging the Chip yard hardware gen-eration framework to develop a full-system GPSIMT exploration platform on an FPGA by extending the RISC- V Rocket Core.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics",
+                "Rockets",
+                "Program processors",
+                "Multicore processing",
+                "High performance computing",
+                "Prototypes",
+                "Computer architecture",
+                "Hardware",
+                "Performance analysis",
+                "Field programmable gate arrays"
+            ],
+            "Index Terms": [
+                "General Purpose Processor",
+                "Single Instruction Multiple Thread",
+                "High-performance Computing",
+                "Prototype",
+                "Memory System",
+                "Remote Memory",
+                "System Calls",
+                "Virtual Memory",
+                "Traditional Core",
+                "Linux Kernel"
+            ],
+            "Author Keywords": [
+                "parallel processing",
+                "multithreaded architecture",
+                "simulation techniques"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -456,7 +713,25 @@
                 "firstName": "Jeremy",
                 "lastName": "Singer"
             }
-        ]
+        ],
+        "abstract": "In this early-stage study, we empirically characterize the runtime behavior of meaningful WebAssembly (Wasm) workloads with respect to memory allocation. We consider a variety of benchmarks and allocators, written in C and compiled to standalone Wasm, to give a broad spectrum of behavior.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Memory management",
+                "Benchmark testing",
+                "Software",
+                "Performance analysis",
+                "Resource management"
+            ],
+            "Index Terms": [
+                "Dynamic Memory",
+                "Benchmark",
+                "Memory Allocation",
+                "Dynamic Allocation",
+                "Memory Management"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -491,7 +766,29 @@
                 "firstName": "Shanzay",
                 "lastName": "Wasim"
             }
-        ]
+        ],
+        "abstract": "Hardware design is both resource and time in-tensive. Hardware modelling and simulation are essential to cut down on these costs. This paper introduces a technique that addresses architectural disparities between System-on-Chips (SoCs) and gem5, a widely-used architectural simulator. The approach presents a solution for modeling application-class SoCs, exemplified by the construction and evaluation of CVA6 SoC on the gem5 platform. The model's performance was assessed using MiBench and RISC- V micro-benchmarks, showcasing less than 5 % error in RISC- V microbenchmark test suite and less than 10% error in both SE and FS mode for the MiBench suite on the tuned CVA6 model. The aim of this research is to contribute to the understanding of the CVA6 performance, uncover any potential bottlenecks at the micro-architecture level, and to standardize the auto tuning and modeling techniques of SoCs by leveraging machine learning algorithms, with the goal of identifying areas for further improvement in the CVA6 SoC model.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Analytical models",
+                "Machine learning algorithms",
+                "Costs",
+                "Design methodology",
+                "Benchmark testing",
+                "Hardware",
+                "Software"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Isothermal",
+                "System Calls"
+            ],
+            "Author Keywords": [
+                "RISC- V SoC",
+                "Performance Model",
+                "gem5"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -532,7 +829,37 @@
                 "firstName": "Hung-Wei",
                 "lastName": "Tseng"
             }
-        ]
+        ],
+        "abstract": "This paper presents Accel-Bench, a benchmark suite that aims to capture the performance of accelerator-intensive programming. To the best of our knowledge, Accel-Bench is the first benchmark suite that utilizes applications that can invoke different domain kernels in their algorithm and quantifies the potential performance gain of using hardware-accelerated functions to compose programs agnostic to their domain.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Technological innovation",
+                "Analytical models",
+                "Computer architecture",
+                "Programming",
+                "Benchmark testing",
+                "Performance gain",
+                "Software"
+            ],
+            "Index Terms": [
+                "Hardware Accelerators",
+                "Benchmark Suite",
+                "Programming Model",
+                "Matrix Multiplication",
+                "GPU Implementation",
+                "Programming Paradigm"
+            ],
+            "Author Keywords": [
+                "Tuning",
+                "Optimization",
+                "Performance",
+                "Analysis",
+                "GPU",
+                "GPUs",
+                "Tool",
+                "Benchmark"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -585,7 +912,35 @@
                 "firstName": "Dimitris",
                 "lastName": "Gizopoulos"
             }
-        ]
+        ],
+        "abstract": "Due to extensive deployment and heavy usage of GPUs, ensuring the reliability of such devices is crucial. Current software-based reliability evaluation methodologies, albeit fast, often neglect the intricate hardware complexities of modern GPU designs. This oversight could result in misleading measurements and misguided decisions regarding protection strategies. This work breaks new ground by examining well-established vulnerability assessment methods for modern GPU architectures, from the microarchitecture all the way to the software layers. It highlights divergences between popular software-based vulnerability evaluation methods and the ground truth cross-layer evaluation (which, as we show, holds even when strong protection like triple modular redundancy is employed); accurate evaluation requires considering fault distribution from hardware to software. Our comprehensive measurements offer valuable insights into accurately assessing GPU reliability.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cross layer design",
+                "Microarchitecture",
+                "Graphics processing units",
+                "Termination of employment",
+                "Reliability engineering",
+                "Software",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Cross-layer Approach",
+                "Reliable Evaluation",
+                "Microarchitecture",
+                "Strong Protection",
+                "New Ground",
+                "Distribution Of Defects",
+                "Instruction Set Architecture",
+                "Corrupted Data"
+            ],
+            "Author Keywords": [
+                "reliability assessment",
+                "GPUs",
+                "cross-layer"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -620,7 +975,30 @@
                 "firstName": "Abhilash",
                 "lastName": "Jindal"
             }
-        ]
+        ],
+        "abstract": "The rise of machine learning workload on smart-phones has propelled GPUs into one of the most power hungry components of modern smartphones. Optimizing the power consumption of mobile GPUs in turn requires accurate estimation of their power draw during app execution. We observe that the prior-art, utilization-frequency based GPU models cannot capture the diverse micro-architectural usage of modern mobile GPUs, and study whether performance monitoring counter (PMC)-based models recently proposed for desktop/server GPUs can be applied to accurately model mobile GPU power. Our study shows that the PMCs that come with dominating mobile GPUs used in modern smartphones are sufficient to model mobile GPU power, but exhibit multicollinearity if used altogether. We present APGPM, the first mobile GPU power modeling methodology that automatically selects an optimal set of PMCs that maximizes the GPU power model accuracy. Evaluation on the two representative mobile GPUs shows that APGPM-generated GPU power models reduce the MAPE modeling error of prior-art by 11.3% to 15.4% while using only 4.66% to 20.41 % of the total number of available PMCs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Accuracy",
+                "Power demand",
+                "Graphics processing units",
+                "Estimation",
+                "Machine learning",
+                "Propulsion",
+                "Software"
+            ],
+            "Index Terms": [
+                "Mobile GPU",
+                "Power Mobility",
+                "Powerful GPU",
+                "Deep Neural Network"
+            ],
+            "Author Keywords": [
+                "Power Modeling",
+                "Mobile GPU Power Modeling",
+                "PMC-Based Power Modeling"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -655,7 +1033,28 @@
                 "firstName": "David",
                 "lastName": "Wentzlaff"
             }
-        ]
+        ],
+        "abstract": "The increasing popularity of Function-as-a-Service (FaaS) applications has created new challenges for current microarchitecture designs due to their complex middleware and significant Operating System (OS) overhead, prohibiting the detailed study of new hardware designs. This work introduces MindPalace, an open-source full-system framework that developed to study the architectural behavior of large middleware serverless systems. MindPalace contains a simulation infrastructure and a pre-configured virtual machine (VM) to assist FaaS architecture research. The simulation tool leverages QEMU and ChampSim, combining a featureful full-system emulator with a rich microarchitecture simulator. The VM contains a full Ubuntu image with preinstalled Open Whisk, together with checkpoints for ready-to-run serverless applications. Combining them enables full-system FaaS architectural study of the memory hierarchy, branch predictors, prefetchers, and other microarchitectural components.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microarchitecture",
+                "Prefetching",
+                "Operating systems",
+                "Computer architecture",
+                "Hardware",
+                "Virtual machining",
+                "Service-oriented architecture"
+            ],
+            "Index Terms": [
+                "Microarchitecture Design",
+                "Misprediction",
+                "Benchmark",
+                "Model Verification",
+                "Average Error Rate",
+                "Trace Files",
+                "Real Hardware"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -744,7 +1143,50 @@
                 "firstName": "Arijit",
                 "lastName": "Raychowdhury"
             }
-        ]
+        ],
+        "abstract": "The remarkable advancements in artificial intel-ligence (AI), primarily driven by deep neural networks, are facing challenges surrounding unsustainable computational tra-jectories, limited robustness, and a lack of explainability. To develop next-generation cognitive AI systems, neuro-symbolic AI emerges as a promising paradigm, fusing neural and symbolic approaches to enhance interpretability, robustness, and trustwor-thiness, while facilitating learning from much less data. Recent neuro-symbolic systems have demonstrated great potential in collaborative human-AI scenarios with reasoning and cognitive capabilities. In this paper, we aim to understand the workload characteristics and potential architectures for neuro-symbolic AI. We first systematically categorize neuro-symbolic AI algorithms, and then experimentally evaluate and analyze them in terms of runtime, memory, computational operators, sparsity, and system characteristics on CPUs, GPUs, and edge SoCs. Our studies reveal that neuro-symbolic models suffer from inefficiencies on off-the-shelf hardware, due to the memory-bound nature of vector-symbolic and logical operations, complex flow control, data dependencies, sparsity variations, and limited scalability. Based on profiling insights, we suggest cross-layer optimization solutions to improve the performance, efficiency, and scalability of neuro-symbolic computing. Finally, we discuss the challenges and potential future directions of neuro-symbolic AI from both system and architectural perspectives.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Scalability",
+                "System performance",
+                "Robustness",
+                "Software",
+                "Hardware",
+                "Performance analysis"
+            ],
+            "Index Terms": [
+                "Cognitive System",
+                "Artificial Intelligence Systems",
+                "Neural Network",
+                "Inefficient",
+                "Scalable",
+                "Deep Neural Network",
+                "Boolean Logic",
+                "Remarkable Advances",
+                "Computational Operations",
+                "Architectural Perspective",
+                "Neural Model",
+                "Fuzzy Logic",
+                "Load Data",
+                "Logic Model",
+                "Probable Reason",
+                "Description Of Algorithm",
+                "Graph Neural Networks",
+                "Logical Reasoning",
+                "Fluid Intelligence",
+                "Cache Hit",
+                "Tensor Operations",
+                "Probabilistic Representation",
+                "First-order Logic",
+                "Energy-based Model",
+                "Monte Carlo Tree Search",
+                "Kernel Computation",
+                "System Bottlenecks",
+                "Program Logic",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -827,7 +1269,58 @@
                 "firstName": "Carole-Jean",
                 "lastName": "Wu"
             }
-        ]
+        ],
+        "abstract": "As the development of large-scale Generative AI models evolve beyond text (1D) generation to include image (2D) and video (3D) generation, processing spatial and temporal information presents unique challenges to quality, performance, and efficiency. We present the first work towards understanding this new system design space for multi-modal text-to-image (TTI) and text-to-video (TTV) generation models. Current model architecture designs are bifurcated into 2 categories: Diffusion-and Transformer-based models. Our systematic performance characterization on a suite of eight representative TTI/TTV models shows that after state-of-the-art optimization techniques such as Flash Attention are applied, Convolution accounts for up to 44% of execution time for Diffusion-based TTI models, while Linear layers consume up to 49 % of execution time for Transformer-based models. We additionally observe that Diffusion-based TTI models resemble the Prefill stage of LLM inference, and benefit from 1.1-2.5x greater speedup from Flash Attention than Transformer-based TTI models that resemble the Decode phase. Since optimizations designed for LLMs do not map directly onto TTI/TTV models, we must conduct a thorough characterization of these workloads to gain insights for new optimization opportunities. In doing so, we define sequence length in the context of TTI/TTV models and observe sequence length can vary up to 4x in Diffusion model inference. We additionally observe temporal aspects of TTV workloads pose unique system bottlenecks, with Temporal Attention accounting for over 60 % of total Attention time. Overall, our in-depth system performance characterization is a critical first step towards designing efficient and deployable systems for emerging TTI/TTV workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Three-dimensional displays",
+                "Systematics",
+                "Generative AI",
+                "Convolution",
+                "System performance",
+                "Text to image",
+                "Transformers"
+            ],
+            "Index Terms": [
+                "Large Language Models",
+                "Convolution",
+                "System Design",
+                "Sequence Length",
+                "Time Model",
+                "Model Architecture",
+                "Diffusion Model",
+                "Image Generation",
+                "Text Generation",
+                "Temporal Attention",
+                "System Bottlenecks",
+                "Suitable Model",
+                "Image Size",
+                "Temporal Dimension",
+                "Similarity Matrix",
+                "Latent Space",
+                "Attention Module",
+                "Systems Perspective",
+                "Language Model",
+                "Spatial Attention",
+                "Attention Layer",
+                "Cache Hit",
+                "Transformer Model",
+                "Super-resolution Network",
+                "Input Text",
+                "U-Net Architecture",
+                "Embedding Representation",
+                "Computational Intensity",
+                "Inference Time"
+            ],
+            "Author Keywords": [
+                "Generative AI",
+                "Multi-Modal",
+                "Diffusion Model",
+                "Transformer",
+                "Sequence Length",
+                "Attention"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -868,7 +1361,61 @@
                 "firstName": "David",
                 "lastName": "Wentzlaff"
             }
-        ]
+        ],
+        "abstract": "The design space exploration of scaled-out manycores for communication-intensive applications (e.g., graph analytics and sparse linear algebra) is hampered due to either lack of scalability or accuracy of existing frameworks at simulating data-dependent execution patterns. This paper presents MuchiSim, a novel parallel simulator designed to address these challenges when exploring the design space of distributed multi-chiplet manycore architectures. We evaluate MuchiSim at simulating systems with up to a million interconnected processing units (PUs) while modeling data movement and communication cycle by cycle. In addition to performance, MuchiSim reports the energy, area, and cost of the simulated system. It also comes with a benchmark application suite and two data visualization tools. MuchiSim supports various parallelization strategies and communication primitives such as task-based parallelization and message passing, making it highly relevant for architectures with software-managed coherence and distributed memory. Via a case study, we show that MuchiSim helps users explore the balance between memory and computation units and the constraints related to chiplet integration and inter-chip communication. MuchiSim enables evaluating new techniques or design parameters for systems at scales that are more realistic for modern parallel systems, opening the gate for further research in this area.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Scalability",
+                "Linear algebra",
+                "Tutorials",
+                "Throughput",
+                "Data models",
+                "Software"
+            ],
+            "Index Terms": [
+                "Many-core Systems",
+                "Scalable",
+                "Processing Unit",
+                "Visualization Tool",
+                "Graphical Analysis",
+                "Load Data",
+                "Computing Units",
+                "Parallel Strategy",
+                "Parallel Simulator",
+                "Data Visualization Tools",
+                "Design Space Exploration",
+                "Fast Fourier Transform",
+                "Network Topology",
+                "Sparse Matrix",
+                "Operating Frequency",
+                "Energy Model",
+                "Cost Model",
+                "Memory System",
+                "Memory Control",
+                "Single Thread",
+                "Cache Hit",
+                "Benchmark Suite",
+                "Network Routing",
+                "Breadth-first Search",
+                "Memory Integration",
+                "Address Space",
+                "Application Execution",
+                "Heterogeneous Integration",
+                "Written Back",
+                "Data Cache"
+            ],
+            "Author Keywords": [
+                "graph",
+                "sparse",
+                "communication-intensive kernels",
+                "simulator",
+                "design-exploration",
+                "multi-chip",
+                "scale-out",
+                "manycore"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -939,7 +1486,58 @@
                 "firstName": "Guru",
                 "lastName": "Venkataramani"
             }
-        ]
+        ],
+        "abstract": "Reinforcement Learning (RL) is the process by which an agent learns optimal behavior through interactions with experience datasets, all of which aim to maximize the reward signal. RL algorithms often face performance challenges in real-world applications, especially when training with extensive and diverse datasets. For instance, applications like autonomous vehicles include sensory data, dy-namic traffic information (including movements of other vehicles and pedestrians), critical risk assessments, and varied agent actions. Consequently, RL training is significantly memory-bound due to sampling large experience datasets that may not fit entirely into the hardware caches and frequent data transfers needed between memory and the computation units (e.g., CPU, GPU), especially during batch updates. This bottleneck results in significant execution latencies and impacts the overall training time. To alleviate such is-sues, recently proposed memory-centric computing paradigms, like Processing-In-Memory (PIM), can address memory latency-related bottlenecks by performing the computations inside the memory devices. In this paper, we present SwiftRL, which explores the potential of real-world PIM architectures to accelerate popular RL workloads and their training phases. We adapt RL algorithms, namely Tab-ular Q-learning and SARSA, on UPMEM PIM systems and first observe their performance using two different environments and three sampling strategies. We then implement performance opti-mization strategies during RL adaptation to PIM by approximating the Q-value update function (which avoids high performance costs due to runtime instruction emulation used by runtime libraries) and incorporating certain PIM-specific routines specifically needed by the underlying algorithms. Moreover, we develop and assess a multi-agent version of Q-learning optimized for hardware and illustrate how PIM can be leveraged for algorithmic scaling with multiple agents. We experimentally evaluate RL workloads on OpenAI GYM environments using UPMEM hardware. Our results demonstrate a near-linear scaling of 15x in performance when the number of PIM cores increases by 16x (125 to 2000). We also compare our PIM implementation against Intel(R) Xeon(R) Silver 4110 CPU and NVIDIA RTX 3090 GPU and observe superior performance on the UPMEM PIM System for different implementations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Performance evaluation",
+                "Silver",
+                "Q-learning",
+                "Software algorithms",
+                "Graphics processing units",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Efficient Reinforcement Learning",
+                "Training Phase",
+                "Data Transfer",
+                "Reinforcement Learning Algorithm",
+                "Learning Agent",
+                "Learning Algorithms",
+                "Sequencing Of Samples",
+                "Random Selection",
+                "Performance Benefits",
+                "Recommender Systems",
+                "Integer Multiple",
+                "Local Memory",
+                "Floating-point Operations",
+                "Average Reward",
+                "State-action Pair",
+                "Total Execution Time",
+                "Types Of Input Data",
+                "Behavior Policy",
+                "Data Chunks",
+                "Strong Scaling",
+                "Deep Learning Training",
+                "Multi-agent Reinforcement Learning",
+                "Total Number Of Episodes",
+                "Constant Scaling Factor",
+                "Lake Environment",
+                "Memory Bandwidth",
+                "Communication Time",
+                "Neural Network",
+                "Deep Learning",
+                "Non-volatile Memory"
+            ],
+            "Author Keywords": [
+                "Reinforcement learning",
+                "Processing-in-memory",
+                "Multi-agent sys-tems",
+                "Memory bottleneck",
+                "Performance analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -980,7 +1578,57 @@
                 "firstName": "Tushar",
                 "lastName": "Krishna"
             }
-        ]
+        ],
+        "abstract": "As model sizes in machine learning continue to scale, distributed training is necessary to accommodate model weights within each device and to reduce training time. However, this comes with the expense of increased communication overhead due to the exchange of gradients and activations, which become the critical bottleneck of the end-to-end training process. In this work, we motivate the design of multi-dimensional networks within machine learning systems as a cost-efficient mechanism to enhance overall network bandwidth. We also identify that optimal bandwidth allocation is pivotal for multi-dimensional networks to ensure efficient resource utilization. We introduce Libra, a framework specifically focused on optimizing multi-dimensional fabric architectures. Through case studies, we demonstrate the value of Libra, both in architecting optimized fabrics under diverse constraints and in enabling co-optimization opportunities.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Knowledge engineering",
+                "Network topology",
+                "Machine learning",
+                "Computer architecture",
+                "Fabrics",
+                "Software"
+            ],
+            "Index Terms": [
+                "Network Topology",
+                "Artificial Intelligence Models",
+                "Multidimensional Network",
+                "Multidimensional Optimization",
+                "Training Time",
+                "Network Design",
+                "Network Bandwidth",
+                "Deep Neural Network",
+                "Machine Learning Models",
+                "High-performance Computing",
+                "Training Performance",
+                "3D Network",
+                "Physical Constraints",
+                "Optimal Network",
+                "Cost Model",
+                "Training Iterations",
+                "Design Points",
+                "Distinct Networks",
+                "Artificial Intelligence Systems",
+                "Parallel Strategy",
+                "Network Dimension",
+                "Dimensional Network",
+                "Network Cost",
+                "Fully-connected Network",
+                "T Model",
+                "Server Node",
+                "Heterogeneous Integration",
+                "Network Resources",
+                "High Bandwidth",
+                "Backward Pass"
+            ],
+            "Author Keywords": [
+                "multi-dimensional networks",
+                "distributed training",
+                "large language models",
+                "quadratic programming"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1015,7 +1663,61 @@
                 "firstName": "Vivienne",
                 "lastName": "Sze"
             }
-        ]
+        ],
+        "abstract": "Compute-In-Memory (CiM) is a promising solution to accelerate Deep Neural Networks (DNNs) as it can avoid energy-intensive DNN weight movement and use memory arrays to perform low-energy, high-density computations. These benefits have inspired research across the CiM stack, but CiM research often focuses on only one level of the stack (i.e., devices, circuits, architecture, workload, or mapping) or only one design point (e.g., one fabricated chip). There is a need for a full-stack modeling tool to evaluate design decisions in the context of full systems (e.g., see how a circuit impacts system energy) and to perform rapid early -stage exploration of the CiM co-design space. To address this need, we propose CiMLoop: an open-source tool to model diverse CiM systems and explore decisions across the CiM stack. CiMLoop introduces (1) a flexible specification that lets users describe, model, and map workloads to both circuits and architecture, (2) an accurate energy model that captures the interaction between DNN operand values, hardware data representations, and analog/digital values propagated by circuits, and (3) a fast statistical model that can explore the design space orders-of-magnitude more quickly than other high-accuracy models. Using CiMLoop, researchers can evaluate design choices at different levels of the CiM stack, co-design across all levels, fairly compare different implementations, and rapidly explore the design space.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Accuracy",
+                "Computational modeling",
+                "Computer architecture",
+                "Artificial neural networks",
+                "In-memory computing",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Statistical Models",
+                "Accuracy Of Model",
+                "Deep Neural Network",
+                "Design Space",
+                "Energy Model",
+                "Design Decisions",
+                "Memory Array",
+                "Flexible Specification",
+                "Components Of System",
+                "Distribution Of Values",
+                "Energy Efficiency",
+                "Data Storage",
+                "Memory Cells",
+                "Average Energy",
+                "Analog-to-digital Converter",
+                "Large Array",
+                "Types Of Components",
+                "Load Data",
+                "Array Size",
+                "Data Reuse",
+                "Adjacent Columns",
+                "Input Bits",
+                "Column Array",
+                "Different Types Of Components",
+                "Design Space Exploration",
+                "Memory Hierarchy",
+                "Deep Neural Network Layers",
+                "Sense Amplifier",
+                "Tensor Operations",
+                "Sparsity"
+            ],
+            "Author Keywords": [
+                "Compute-In-Memory",
+                "Processing-In-Memory",
+                "Analog",
+                "Deep Neural Networks",
+                "Systems",
+                "Hardware",
+                "Modeling",
+                "Open-Source"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1062,7 +1764,56 @@
                 "firstName": "Ivy",
                 "lastName": "Peng"
             }
-        ]
+        ],
+        "abstract": "Matrix multiplication is a core computational part of deep learning and scientific workloads. The emergence of Matrix Cores in high-end AMD GPUs, a building block of Exascale computers, opens new opportunities for optimizing the performance and power efficiency of compute-intensive applications. This work provides a timely, comprehensive characterization of the novel Matrix Cores in AMD GPUs. We develop low-level micro-benchmarks for leveraging Matrix Cores at different levels of parallelism, achieving up to 350, 88, and 69 TFLOPS for mixed, float, and double precision on one GPU. Using results obtained from the micro-benchmarks, we provide a performance model of Matrix Cores that can guide application developers in performance tuning. We also provide the first quantitative study and modeling of the power efficiency of Matrix Cores at different floating-point data types. Finally, we evaluate the high- level programmability of Matrix Cores through the rocBLAS library in a wide range of matrix sizes from 16 to 64K. Our results indicate that application developers can transparently leverage Matrix Cores to deliver more than 92% peak computing throughput by properly selecting data types and interfaces.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Deep learning",
+                "Computers",
+                "Graphics processing units",
+                "Parallel processing",
+                "Throughput",
+                "Software",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Power Efficiency",
+                "Deep Learning",
+                "Development Of Applications",
+                "Matrix Multiplication",
+                "Benchmark",
+                "Power Consumption",
+                "Supercapacitors",
+                "High-performance Computing",
+                "Application Programming Interface",
+                "Projection Matrix",
+                "Power Measurements",
+                "Application Of Deep Learning",
+                "Computing Units",
+                "Linear Algebra",
+                "Floating-point Operations",
+                "Core Teaching",
+                "Double-precision Floating-point",
+                "Adoption Of Applications",
+                "NVIDIA GPU",
+                "Theoretical Peak",
+                "Dynamic Power Consumption",
+                "Matrix Multiplication Operation",
+                "Tensor Matrix",
+                "Clock Frequency",
+                "Per Cycle",
+                "High Throughput",
+                "Peak Performance",
+                "Clock Rate"
+            ],
+            "Author Keywords": [
+                "AMD GPU",
+                "Matrix Core",
+                "Tensor Core",
+                "AMD MI250",
+                "AI00"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1109,7 +1860,57 @@
                 "firstName": "Mark",
                 "lastName": "Horowitz"
             }
-        ]
+        ],
+        "abstract": "State-of-the-art deep learning models for computer vision tasks are based on the transformer architecture and often deployed in real-time applications. In this scenario, the resources available for every inference can vary, so it is useful to be able to dynamically adapt execution to trade accuracy for efficiency. To create dynamic models, we leverage the resilience of vision transformers to pruning and switch between different scaled versions of a model. Surprisingly, we find that most FLOPs are generated by convolutions, not attention. These relative FLOP counts are not a good predictor of GPU performance since GPUs have special optimizations for convolutions. Some models are fairly resilient and their model execution can be adapted without retraining, while all models achieve better accuracy with retraining alternative execution paths. These insights mean that we can leverage CNN accelerators and these alternative execution paths to enable efficient and dynamic vision transformer inference. Our analysis shows that leveraging this type of dynamic execution can lead to saving 28 % of energy with a 1.4 % accuracy drop for SegFormer (63 GFLOPs), with no additional training, and 53% of energy for ResNet-50 (4 GFLOPs) with a 3.3% accuracy drop by switching between pretrained Once-For-All models.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Adaptation models",
+                "Analytical models",
+                "Accuracy",
+                "Computational modeling",
+                "Switches",
+                "Transformers"
+            ],
+            "Index Terms": [
+                "Vision Transformer",
+                "Dynamic Inference",
+                "Convolutional Neural Network",
+                "Additional Training",
+                "Task Model",
+                "Vision Tasks",
+                "Alternative Paths",
+                "Floating-point Operations",
+                "Accuracy Drop",
+                "Efficient Inference",
+                "Model Execution",
+                "Transformer Architecture",
+                "Execution Path",
+                "Accuracy Of Model",
+                "Convolutional Layers",
+                "Parallelization",
+                "Image Size",
+                "Model Weights",
+                "Segmentation Model",
+                "Layer Model",
+                "Input Channels",
+                "Encoder Block",
+                "Path Model",
+                "Critical Layer",
+                "Encoding Stage",
+                "ResNet-50 Backbone",
+                "Convolutional Neural Networks Backbone",
+                "Larger Image Size",
+                "Model Configuration",
+                "Accuracy Loss"
+            ],
+            "Author Keywords": [
+                "vision transformers",
+                "dynamic inference",
+                "model resilience",
+                "pruning"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1150,7 +1951,53 @@
                 "firstName": "Brandon",
                 "lastName": "Reagen"
             }
-        ]
+        ],
+        "abstract": "Homomorphic encryption (HE) is a privacy-preserving computation technique that enables computation on encrypted data. Today, the potential of HE remains largely unrealized as it is impractically slow, preventing it from being used in real applications. A major computational bottleneck in HE is the key-switching operation, accounting for approximately 70 % of the overall HE execution time and involving a large amount of data for inputs, intermediates, and keys. Prior research has focused on hardware accelerators to improve HE performance, typically featuring large on-chip SRAMs and high off-chip bandwidth to deal with large scale data. In this paper, we present a novel approach to improve key-switching performance by rigorously analyzing its dataflow. Our primary goal is to optimize data reuse with limited on-chip memory to minimize off-chip data movement. We introduce three distinct dataflows: Max-Parallel (MP), Digit-Centric (DC), and Output-Centric (OC), each with unique scheduling approaches for key-switching computations. Through our analysis, we show how our proposed Output-Centric technique can effectively reuse data by significantly lowering the intermediate key-switching working set and alleviating the need for massive off-chip band-width. We thoroughly evaluate the three dataflows using the RPU, a recently published vector processor tailored for ring processing algorithms, which includes HE. This evaluation considers sweeps of bandwidth and computational throughput, and whether keys are buffered on-chip or streamed. With OC, we demonstrate up to 4.16 x speedup over the MP dataflow and show how OC can save 12.25 x on-chip SRAM by streaming keys for minimal performance penalty.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Processor scheduling",
+                "Random access memory",
+                "Bandwidth",
+                "Switches",
+                "Throughput",
+                "Software",
+                "System-on-chip"
+            ],
+            "Index Terms": [
+                "Encryption",
+                "Data-flow Analysis",
+                "Load Data",
+                "High Bandwidth",
+                "Encrypted Data",
+                "Data Reuse",
+                "Hardware Accelerators",
+                "Intermediate Data",
+                "Vector Process",
+                "On-chip Memory",
+                "Neural Network",
+                "Deep Neural Network",
+                "Memory Task",
+                "Plaintext",
+                "Saturation Point",
+                "Secret Key",
+                "Computing Units",
+                "Single Digit",
+                "Instruction Set Architecture",
+                "Off-chip Memory",
+                "Sequence Of Instructions",
+                "Crater Lake",
+                "Cheetah",
+                "Software Framework",
+                "Naive Implementation",
+                "Large Chip",
+                "Large Modulus"
+            ],
+            "Author Keywords": [
+                "Fully Homomorphic Encryption",
+                "Key-switching",
+                "Accelerator"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1221,7 +2068,50 @@
                 "firstName": "Jason",
                 "lastName": "Mars"
             }
-        ]
+        ],
+        "abstract": "Many companies use large language models (LLMs) offered as a service, like OpenAl's GPT-4, to create AI-enabled product experiences. Along with the benefits of ease-of-use and shortened time-to-solution, this reliance on proprietary services has downsides in model control, performance reliability, uptime predictability, and cost. At the same time, a flurry of open-source small language models (SLMs) has been made avail-able for commercial use. However, their readiness to replace existing capabilities remains unclear, and a systematic approach to holistically evaluate these SLMs is not readily available. This paper presents a systematic evaluation methodology and a characterization of modern open-source SLMs and their trade-offs when replacing proprietary LLMs for a real-world product feature. We have designed SLaM, an open-source automated analysis tool that enables the quantitative and qualitative testing of product features utilizing arbitrary SLMs. Using SLaM, we examine the quality and performance characteristics of modern SLMs relative to an existing customer-facing implementation using the OpenAI GPT-4 API. Across 9 SLMs and their 29 variants, we observe that SLMs provide competitive results, significant performance consistency improvements, and a cost reduction of 5x<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">rv</sup>29x when compared to GPT-4.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Analytical models",
+                "Systematics",
+                "Production",
+                "Predictive models",
+                "Software",
+                "Performance analysis",
+                "Cost benefit analysis"
+            ],
+            "Index Terms": [
+                "Large Language Models",
+                "Product Characteristics",
+                "Commercial Use",
+                "Language Model",
+                "Source Model",
+                "Systematic Methodology",
+                "Similarity Measure",
+                "Process Evaluation",
+                "Natural Language",
+                "Similarity Score",
+                "Intersection Over Union",
+                "Score Model",
+                "Semantic Similarity",
+                "Best Response",
+                "Model Inference",
+                "Key Observation",
+                "Top Model",
+                "Quantification Techniques",
+                "Range Of Metrics",
+                "Latency Performance",
+                "Chatbot",
+                "Virtual Assistant",
+                "Input Tokens",
+                "Text Generation"
+            ],
+            "Author Keywords": [
+                "Language Models",
+                "Open Source",
+                "Characterization"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1268,7 +2158,44 @@
                 "firstName": "Fuxin",
                 "lastName": "Zhang"
             }
-        ]
+        ],
+        "abstract": "Binary translation serves as a fundamental technol-ogy for instruction set emulation, system virtualization, runtime instrumentation, and numerous other applications. Many techniques have been proposed to enhance the efficiency of binary translation systems. However, imprecise performance evaluation leads to potential performance shortcomings of binary translators in real-world applications. Previous studies primarily employ CPU benchmarks, which may overlook performance issues spe-cific to binary translators and fail to guide for optimizing binary translation. To address this issue, we propose a new benchmark suite named BTBench(Binary Translation Benchmark), which provides a convenient, portable, and comprehensive solution. BT-Bench takes into account the inherent attributes of binary trans-lators, such as translation and code-cache lookup overhead. We carefully select benchmarks that offer comprehensive coverage and align with real-world application scenarios. To validate the effectiveness of BTBench, we conducted rigorous experimentation on four widely-used binary translators. The analysis of the results reveals that, compared to existing CPU benchmarks, BTBench is better suited for identifying potential performance shortcomings, providing invaluable insights for future optimization efforts. The BTBench benchmark suite is publicly available <sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup> •",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Codes",
+                "Runtime",
+                "Instruments",
+                "Benchmark testing",
+                "Software",
+                "Pins"
+            ],
+            "Index Terms": [
+                "Comprehensive Evaluation",
+                "Binary Translation",
+                "Real-world Applications",
+                "Real-world Scenarios",
+                "Benchmark Test",
+                "Benchmark Suite",
+                "Comprehensive Assessment",
+                "Source Code",
+                "Programming Language",
+                "JavaScript",
+                "Binary Code",
+                "Reverse Engineering",
+                "Program Execution",
+                "Software Quality",
+                "Footprint Size",
+                "Instrumental Tools",
+                "Just-in-time",
+                "ARM Processor"
+            ],
+            "Author Keywords": [
+                "Binary Translation",
+                "Performance Evaluation",
+                "Benchmark"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1303,7 +2230,56 @@
                 "firstName": "Daniel",
                 "lastName": "Wong"
             }
-        ]
+        ],
+        "abstract": "This paper explores a novel server observability approach using eBPF (extended Berkeley Packet Filter) for detailed request-level performance metrics of data center latency-sensitive applications. Utilizing eBPF system call tracing, we evaluate if syscall activity can reconstruct high-level application behaviors and bypass the need for direct userspace reporting of performance metrics. Through careful selection of eBPF events, we demonstrate that certain syscall statistics can provide robust insight into request-level metrics. In addition, we demonstrate that these metrics can also be robust to networking effects, such as packet loss. By demonstrating the ability for eBPF to provide request-level observability, we can potentially enable many non-intrusive, low-overhead use cases for feedback in system management runtime frameworks, such as resource allocation, scheduling, and power management.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Runtime",
+                "Power system management",
+                "Packet loss",
+                "Software",
+                "Performance analysis",
+                "Resource management"
+            ],
+            "Index Terms": [
+                "Resource Allocation",
+                "Data Center",
+                "Performance Metrics",
+                "Power Management",
+                "Packet Loss",
+                "System Calls",
+                "Search Engine",
+                "Service Quality",
+                "Increase In Variability",
+                "Performance In Applications",
+                "Saturation Point",
+                "Service Time",
+                "Point Of Failure",
+                "Network Loss",
+                "Low Overhead",
+                "Network Delay",
+                "Data Cache",
+                "Search Index",
+                "Critical Metrics",
+                "Microservices",
+                "Application Behavior",
+                "Incoming Requests",
+                "Request Process",
+                "Setup Phase",
+                "Linux Kernel",
+                "Benchmark Suite",
+                "Docker Container",
+                "Server For Processing",
+                "Resource Management",
+                "Throughput"
+            ],
+            "Author Keywords": [
+                "eBPF",
+                "performance",
+                "latency-sensitive"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1338,7 +2314,58 @@
                 "firstName": "Lizy K.",
                 "lastName": "John"
             }
-        ]
+        ],
+        "abstract": "The exponential growth of the training dataset and the size of the large language model (LLM) significantly outpaces the incremental memory capacity increase in the graphics pro-cessing units (GPUs). Thousands of GPUs are needed to handle state-of-the-art models, which require building an expensive AI GPU cluster that is out of reach for most researchers. This not only makes the cost to train the model more costly but also signifies the environmental impact. To improve the efficiency and scalability of existing infrastructure to handle increasingly demanding training tasks, Microsoft released DeepSpeed, an open-source optimization library for PyTorch that can easily be integrated into existing training flow with minimal code changes. This paper presents a comprehensive third-party evaluation of DeepSpeed for training GPT-2-like LLM on mainstream GPU clusters that are more accessible to everyone. The evaluation includes memory usage analysis and bandwidth characterization in addition to the achieved model size and the attained compute throughput to help compare horizontal and vertical scaling. First, we examine the DeepSpeed ZeRO in single- and dual-node training against the popular distributed training libraries: PyTorch Distributed Data-Parallel (DDP) with data parallelism and Megatron-LM with data and model parallelism. While DDP achieves higher throughput due to less communication, the model size is limited to a single GPU memory capacity. In single-node training, Megatron-LM can fit a 4x larger model than the DDP, while ZeRO can handle a model with 0.8x-l.2x size of the Megatron-LM. Both Megatron-LM and ZeRO are reasonably competitive in terms of throughput. However, in dual-node training, Megatron- Lmsees a significant drop in throughput due to the excessive inter-node communication, achieving only 25 %-30 % of the throughput offered by ZeRO. Secondly, we evaluate ZeRO-Offload to consolidate multi-node training into single-node. With CPU offloading, ZeRO-Offload allows single node to fit the largest model that can be handled on dual nodes with Megatron-LM while maintaining 57.8 % higher throughput. Thirdly, we demonstrate that by using NVME offload on ZeRO-Infinity, we can fit model six times larger than previously possible in single node. Finally, we highlight the importance of NVME aggregate bandwidth as it significantly affects achieved throughput.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Analytical models",
+                "Nonvolatile memory",
+                "Computational modeling",
+                "Graphics processing units",
+                "Distributed databases",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Large Language Models",
+                "High Throughput",
+                "Graphics Processing Unit",
+                "Model Size",
+                "PyTorch",
+                "Large Model",
+                "Memory Capacity",
+                "Single Node",
+                "Memory Usage",
+                "Parallel Data",
+                "Vertical Scale",
+                "Single Memory",
+                "Graphics Processing Unit Memory",
+                "Model Parameters",
+                "Small Clusters",
+                "GB Memory",
+                "Traffic Flow",
+                "Load Data",
+                "Average Use",
+                "Utilization Patterns",
+                "CPU Memory",
+                "Average Bandwidth",
+                "Bandwidth Utilization",
+                "Composite Memory",
+                "Multiple Processors",
+                "Forward Phase",
+                "Data Placement",
+                "Latency Test",
+                "Communication Overhead",
+                "Ethernet"
+            ],
+            "Author Keywords": [
+                "Bandwidth Characterization",
+                "Distributed Training",
+                "Large Language Model",
+                "Microsoft DeepSpeed",
+                "Megatron-LM"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1385,7 +2412,47 @@
                 "firstName": "Yuhao",
                 "lastName": "Zhu"
             }
-        ]
+        ],
+        "abstract": "As Neural Processing Units (NPU) or accelerators are increasingly deployed in a variety of applications including safety critical applications such as autonomous vehicle, and medical imaging, it is critical to understand the fault-tolerance nature of the NPUs. We present a reliability study of Arm's Ethos-U55, an important industrial-scale NPU being utilised in embedded and IoT applications. We perform large scale RTL-level fault injections to characterize Ethos-U55 against the Automotive Safety Integrity Level D (ASIL-D) resiliency standard commonly used for safety-critical applications such as autonomous vehicles. We show that, under soft errors, all four configurations of the NPU fall short of the required level of resiliency for a variety of neural networks running on the NPU. We show that it is possible to meet the ASIL-D level resiliency without resorting to conventional strategies like Dual Core Lock Step (DCLS) that has an area overhead of 100%. We achieve so through selective protection, where hardware structures are selectively protected (e.g., duplicated, hardened) based on their sensitivity to soft errors and their silicon areas. To identify the optimal configuration that minimizes the area overhead while meeting the ASIL-D standard, the main challenge is the large search space associated with the time-consuming RTL simulation. To address this challenge, we present a statistical analysis tool that is validated against Arm silicon and that allows us to quickly navigate hundreds of billions of fault sites without exhaustive RTL fault injections. We show that by carefully duplicating a small fraction of the functional blocks and hardening the Flops in other blocks meets the ASIL-D safety standard while introducing an area overhead of only 38 %.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sensitivity",
+                "Statistical analysis",
+                "Vehicle safety",
+                "Silicon",
+                "Software",
+                "Performance analysis",
+                "Protection"
+            ],
+            "Index Terms": [
+                "Soft Errors",
+                "Machine Learning Accelerators",
+                "Neural Network",
+                "Autonomous Vehicles",
+                "Functional Blocks",
+                "Area Overhead",
+                "Safety-critical Applications",
+                "Silicon Area",
+                "Hardware Structure",
+                "Running",
+                "Deep Neural Network",
+                "Reliability Analysis",
+                "Probability Density Function",
+                "Probability Of Events",
+                "Protection Scheme",
+                "Figure Of Merit",
+                "Application In Settings",
+                "Opening Hours",
+                "Block Level",
+                "Hardware Configuration",
+                "Technology Node",
+                "Word Error Rate",
+                "Combinational Logic",
+                "Raw Rate",
+                "Synopsys",
+                "Area Constraints"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1444,7 +2511,58 @@
                 "firstName": "Djordje",
                 "lastName": "Jevdjic"
             }
-        ]
+        ],
+        "abstract": "With the amount of data being generated every year increasing exponentially, figuring out where and how to store it efficiently and inexpensively is becoming a larger problem every day. The rapid improvement in performance and cost of DNA synthesis and sequencing methods has led to an increased interest in the use of DNA as a durable and compact medium for data storage. Today, we have a large spectrum of available chemical tools that enable efficient data access and manipulation of in-DNA data. While several DNA storage architectures have been proposed, there is no open-source codec or simulator that implements all of the required components of the DNA-based data storage pipeline for research and development. We present an open-source end-to-end DNA data storage toolkit that can take an input file through the entire DNA storage pipeline. Our work contains implementations of the state-of-the-art techniques for each step of the pipeline, including our own algorithms for each step. These steps include encoding data into DNA strands, simulating the wetlab processes of synthesis, storage and sequencing of those DNA strands, clustering of the sequenced results, reconstruction of DNA strands from noisy clusters, and decoding the initially encoded file with support for error-correction mechanisms. Each module can be used individually or combined to form an entire pipeline. We hope that our toolkit will be useful to researchers and developers who seek to experiment with the new and promising storage technology.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sequential analysis",
+                "Technological innovation",
+                "Codecs",
+                "Pipelines",
+                "DNA",
+                "Memory",
+                "Clustering algorithms"
+            ],
+            "Index Terms": [
+                "Data Storage",
+                "DNA Storage",
+                "DNA Sequencing",
+                "Decoding",
+                "DNA Synthesis",
+                "DNA Strand",
+                "Storage Media",
+                "Step Of The Pipeline",
+                "Entire Pipeline",
+                "Error Correction Mechanism",
+                "Polymerase Chain Reaction",
+                "Probabilistic Model",
+                "DNA Molecules",
+                "Recurrent Neural Network",
+                "Random Access",
+                "Nanopore Sequencing",
+                "Hamming Distance",
+                "Gated Recurrent Unit",
+                "Codeword",
+                "Forward Error Correction",
+                "Edit Distance",
+                "Reed-Solomon Codes",
+                "Deletion Errors",
+                "DNA Sequencing Technologies",
+                "Levenshtein Distance",
+                "Noisy Reads",
+                "Low-density Parity-check Codes",
+                "Neural Machine Translation",
+                "Simulation Module",
+                "Recurrent Neural Network Model"
+            ],
+            "Author Keywords": [
+                "DNA Storage",
+                "Data Storage",
+                "Noise Simulation",
+                "Clustering",
+                "Trace Reconstruction"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1497,7 +2615,58 @@
                 "firstName": "Mark",
                 "lastName": "Tehranipoor"
             }
-        ]
+        ],
+        "abstract": "The increasing complexity of system-on-chip (SoC) designs, prompted by the integration of additional functionalities, has led to a reliance on global sources in the SoC supply chain. This reliance introduces security concerns, including intellectual property (IP) theft, unauthorized usage, counterfeiting, and overproduction of integrated circuits (ICs). While various design-for-trust measures have been explored in academic research, such as watermarking, IC metering, IC camouflaging, and hardware obfuscation, there is currently no holistic approach within the SoC framework to support these measures. Secure provisioning of security assets within the chip is also critical for these measures, requiring the establishment of secure communication channels and the authentication of the chip by authorized entities. Existing root-of-trust mechanisms primarily target software-level threats during in-field operations but fall short of adequately addressing supply chain threats and ensuring secure asset provisioning. This paper introduces the Silicon Authentication Platform (SAP) security IP, specifically designed to address security vulnerabilities within the SoC supply chain. SAP is tailored to authenticate SoC dies within untrusted environments, ensuring secure provisioning of security assets and chip authentication during in-field operations. This hardware-based, plug-and-play IP facilitates lightweight integration into SoC designs, establishing a secure perimeter around its assets to protect them from potential leakage. In addition, a comprehensive security analysis showcasing SAP's resilience against contemporary attack scenarios, with minimal impact on performance and area overhead, is also provided in this paper.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Integrated circuits",
+                "Semiconductor device measurement",
+                "Supply chains",
+                "Authentication",
+                "Watermarking",
+                "Silicon",
+                "Software"
+            ],
+            "Index Terms": [
+                "Supply Chain",
+                "Provisioning",
+                "Secure Communication",
+                "Security Vulnerabilities",
+                "Attack Scenarios",
+                "Secure Channel",
+                "Area Overhead",
+                "Random Generation",
+                "Plaintext",
+                "Design Phase",
+                "Hash Function",
+                "Secret Key",
+                "Public Key",
+                "Security Protocols",
+                "Base Point",
+                "Elliptic Curve",
+                "Malware",
+                "Security Operations",
+                "Threat Model",
+                "Physical Unclonable Functions",
+                "Key Exchange",
+                "Authentication Protocol",
+                "Session Key",
+                "Time-to-digital Converter",
+                "Encryption Key",
+                "XOR Operation",
+                "Decoding",
+                "Manufacturing Stage",
+                "Synopsys"
+            ],
+            "Author Keywords": [
+                "System-on-Chip (SoC)",
+                "Supply Chain Security",
+                "Silicon Authentication",
+                "Secure Provisioning",
+                "Security IP",
+                "Hard-ware Security"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1538,7 +2707,57 @@
                 "firstName": "Jiang",
                 "lastName": "Hu"
             }
-        ]
+        ],
+        "abstract": "Microprocessor validation is a complex task that consumes substantial engineering time. Degradation of the system performance that does not affect its functional correctness, is particularly difficult to address given the lack of a golden reference for performance. This work introduces an automated methodology based on machine learning to assist in localizing performance faults, aiming to speed up the validation process. Our results show that, for the injected performance issues, whose average IPC impact is <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$&gt; 1{\\%}$</tex>, our technique is able to help localize the exact microarchitectural unit where the degradation occurs <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\sim$</tex> 75% of the time while achieving a top-3 unit accuracy (out of 11 possible locations) of <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$&gt; 97{\\%}$</tex>. The proposed setup requires a few seconds to perform a localization inference, leading to a reduced validation time.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Location awareness",
+                "Microarchitecture",
+                "Accuracy",
+                "Microprocessors",
+                "System performance",
+                "Machine learning"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Performance Degradation",
+                "Microarchitecture",
+                "Performance Issues",
+                "Average Impact",
+                "Gold Reference",
+                "Convolutional Neural Network",
+                "Machine Learning Models",
+                "Confidence Score",
+                "Base Classifiers",
+                "Small Impact",
+                "Fault Location",
+                "State Machine",
+                "Decrease In Accuracy",
+                "Engineering Design",
+                "Gradient Boosting Decision Tree",
+                "Serialized",
+                "Negative Labels",
+                "Top-1 Accuracy",
+                "Cause Of Degradation",
+                "Performance Verification",
+                "Clock Period",
+                "Misprediction",
+                "Changes In Microarchitecture",
+                "Counter Selection",
+                "Test Plan",
+                "Random Guessing",
+                "Positive Labels",
+                "Functional Unit",
+                "Neural Network"
+            ],
+            "Author Keywords": [
+                "performance",
+                "debugging",
+                "validation",
+                "machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1579,7 +2798,50 @@
                 "firstName": "Mohammad",
                 "lastName": "Alian"
             }
-        ]
+        ],
+        "abstract": "Full-system simulation of computer systems is crit-ical for capturing the complex interplay between various hard-ware and software components in future systems. Modeling the network subsystem is indispensable for the fidelity of full-system simulations due to the increasing importance of scale-out systems. Over the last decade, the network software stack has undergone major changes, with userspace networking stacks and data-plane networks rapidly replacing the conventional kernel network stack. Nevertheless, the current state-of-the-art architectural simulator, gem5, still employs kernel networking, which precludes realistic network application scenarios. In this work, we first demonstrate the limitations of gem5's current network stack in achieving high network bandwidth. Then, we enable a userspace networking stack on gem5. We extend gem5's NIC hardware model and device driver to sup-port userspace device drivers running the DPDK framework. Additionally, we implement a network load generator hardware model in gem5 to generate various traffic patterns and per-form per-packet timestamp and latency measurements without introducing packet loss. We develop a suite of six network-intensive benchmarks for stress testing the host network stack. These applications, based on DPDK, can run on both gem5 and real systems. Our experimental results show that enabling userspace networking improves gem5's network bandwidth by <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$6.3\\times$</tex> compared with the current Linux kernel software stack. We characterize the performance of DPDK benchmarks running on both a real system and gem5, and evaluate the sensitivity of the applications to various system and microarchitecture parameters. This work marks the first step in refactoring the networking subsystem in gem5.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sensitivity",
+                "Linux",
+                "Full stack",
+                "Benchmark testing",
+                "Hardware",
+                "Software",
+                "Generators"
+            ],
+            "Index Terms": [
+                "Network Applications",
+                "Microarchitecture",
+                "Network Bandwidth",
+                "Traffic Patterns",
+                "Network Software",
+                "Software Stack",
+                "Running",
+                "Higher Frequency",
+                "Processing Time",
+                "Performance In Applications",
+                "Drop Rate",
+                "Benchmark Test",
+                "Current Simulation",
+                "Packet Size",
+                "Maximum Bandwidth",
+                "Network Latency",
+                "Written Back",
+                "Network Packets",
+                "CPU Memory",
+                "Packet Drop",
+                "Packet Processing",
+                "Memory Hierarchy",
+                "Core Memory",
+                "L2 Cache",
+                "Context Switching",
+                "Architecture Configuration",
+                "Simulation Speed",
+                "Network Throughput",
+                "Direct Access"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1614,7 +2876,55 @@
                 "firstName": "Tor M.",
                 "lastName": "Aamodt"
             }
-        ]
+        ],
+        "abstract": "Ray tracing is a computationally intensive rendering technique that simulates the behavior of light rays as they interact with objects in a scene. It is becoming increasingly popular in video games and is already the de facto standard for animated movies. However, current hardware still struggles to efficiently ray trace complex scenes and requires further research. To evaluate early-stage hardware proposals that accelerate ray tracing for G PU s, one either uses cycle-accurate simulators, which are highly accurate and flexible but slow, or other models that are an order of magnitude faster but provide limited output with high error margins. In this paper, we propose Zatel, a prediction methodology for evaluating GPU performance on ray tracing workloads. We observe that the desired metrics can be estimated with reasonable accuracy by only tracing a representative subset of pixels. Furthermore, the parallel nature of GPUs allows us to split the scene into chunks, which lets Zatel execute faster using downscaled GPU configurations. We incorporate these two optimization steps into Zatel and evaluate it on a benchmark suite for ray tracing using Vulkan-Sim, a cycle-accurate simulator. By relying on Vulkan-Sim, architectural changes are captured through the simulator, and Zatel does not need to be updated to support each change. Zatel records less than 1 % error with 10 x simulation time speedup for measuring simulation cycles on a mobile G PU.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Video games",
+                "Accuracy",
+                "Measurement uncertainty",
+                "Graphics processing units",
+                "Ray tracing",
+                "Time measurement",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Ray Tracing",
+                "Simulation Time",
+                "High Error",
+                "Video Games",
+                "Changes In Architecture",
+                "Optimization Step",
+                "Objects In The Scene",
+                "Simulated Cycle",
+                "Times Speedup",
+                "Subset Of Pixels",
+                "Heatmap",
+                "Performance Metrics",
+                "Image Plane",
+                "Processing Unit",
+                "Estimation Performance",
+                "Final Prediction",
+                "Microarchitecture",
+                "Memory Control",
+                "Highest Error",
+                "Color Distribution",
+                "L2 Cache",
+                "Percentage Of Pixels",
+                "Cache Misses",
+                "Geometric Primitives",
+                "Bandwidth Utilization",
+                "Pixel Representation",
+                "Shared Component",
+                "Group Of Pixels"
+            ],
+            "Author Keywords": [
+                "Ray Tracing",
+                "Simulation",
+                "Graphics processors",
+                "Modeling methodologies"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1649,7 +2959,57 @@
                 "firstName": "Anjia",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "Efforts to optimize parallel scientific applications have focused on enhancing metrics related to either the computing aspects, such as execution performance, or the computational aspects, such as computation precision. However, attempting to simultaneously optimize both aspects often proves unproductive due to the differing expertise, benchmarks, and applications utilized by computer scientists and computational scientists. This paper introduces a Runtime Tuning (RTune) method designed to facilitate automated, runtime-time analysis and adjustment of application and system parameters during the simulation process to achieve user-defined objectives. The RTune API allows users to program computing and computational objectives within parallel iterative programs, while the RTune system manages measurement, modeling, and analysis based on these objectives throughout the computation process. We have evaluated the RTune method through three use cases. In simulations of wave propagation and for the objective of finding region of interest of the simulation, an RTune-optimized LULESH can decrease the number of iterations needed by 48 % to 98 % compared to a full simulation. For solver acceleration, an RTune-tuned Jacobi kernel can automatically adjust iteration counts based on the desired solver result precision. Additionally, for parallel applications, RTune can automatically determine the optimal thread count to minimize execution time, demonstrating its capability to efficiently configure system settings. The RTune library is available as open-source software under the BSD license and can be accessed from https://github.com/passlab/rtune.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Analytical models",
+                "Runtime",
+                "Computational modeling",
+                "Propagation",
+                "Libraries",
+                "Performance analysis",
+                "Iterative methods"
+            ],
+            "Index Terms": [
+                "Parallel Loops",
+                "Benchmark",
+                "Computer Science",
+                "Parallelization",
+                "Simulation Process",
+                "Scientific Applications",
+                "Computational Precision",
+                "Computational Aspects",
+                "Parallel Applications",
+                "Search Strategy",
+                "Objective Function",
+                "Computer Simulations",
+                "Stage 2",
+                "Optimal Performance",
+                "Contact Point",
+                "Search Space",
+                "Problem Size",
+                "Amount Of Computation",
+                "Objective Performance",
+                "Error Tolerance",
+                "Domain Decomposition",
+                "Strong Scaling",
+                "Loop Iteration",
+                "Mathematical Optimization",
+                "Advantage Of Nature",
+                "Natural Applications",
+                "Low Overhead",
+                "CPU Frequency",
+                "Xeon E5",
+                "Amount Of Effort"
+            ],
+            "Author Keywords": [
+                "Performance optimization",
+                "runtime tuning",
+                "computational simulation",
+                "live analysis and modeling"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1678,7 +3038,52 @@
                 "firstName": "Anna",
                 "lastName": "Yue"
             }
-        ]
+        ],
+        "abstract": "Hybrid CPUs are a response from industry to the increasingly difficult problem of power management in desktop-class processors. Hybrid CPUs comprise a big/performance core for regular tasks and a small/efficiency core primarily for background OS tasks. Although helpful in managing power, the introduction of two different kinds of cores in such a design significantly complicates the scheduling of applications across cores. It also introduces other issues such as ISA compatibility, OS compatibility, many processor SKUs/configurations and the difficulty with designing/validating two independent cores. We propose to simplify with the use of a single core that is application-aware and adjusts the core and the caches both based on observed IPC within application regions and priority across applications (regular versus background tasks). We show that this simpler design is similarly effective in managing system power and saving energy as the existing hybrid CPU s with two different kinds of cores.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Power demand",
+                "Processor scheduling",
+                "Power system management",
+                "Energy conservation",
+                "Hybrid power systems",
+                "Energy efficiency"
+            ],
+            "Index Terms": [
+                "CPU Designs",
+                "Simple Design",
+                "Power Relations",
+                "Energy Efficiency",
+                "Energy Conservation",
+                "Power Consumption",
+                "Performance Loss",
+                "Switching Frequency",
+                "Degrees Celsius",
+                "Acceleration Factor",
+                "Small Core",
+                "Considerable Power",
+                "Dynamic Power",
+                "Core Clock",
+                "Processing Nodes",
+                "Part Of Power",
+                "Power Policy",
+                "Intel Processor",
+                "Lower Core",
+                "Real Hardware",
+                "L2 Cache",
+                "Efficiency Goals",
+                "Multi-core",
+                "Hybrid Architecture",
+                "Power Contribution"
+            ],
+            "Author Keywords": [
+                "Hybrid cores",
+                "DVFS",
+                "Power management",
+                "Energy efficiency"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1707,7 +3112,55 @@
                 "firstName": "Natalie Enright",
                 "lastName": "Jerger"
             }
-        ]
+        ],
+        "abstract": "Mobile devices are essential in our daily lives. The hardware and software of these devices differs from their desktop and server counterparts. Evaluating these devices fairly and accurately requires special benchmarks. However, the computer architecture community lacks studies analyzing the performance characteristics of mobile benchmarks. This paper presents an extensive workload characterization of commercial mobile bench-mark suites using several hardware performance counters. We analyze the temporal behaviours of benchmarks. Our findings show the diverse load patterns across CPU core clusters. Our clustering analysis reveals a benchmark subset that reduces evaluation time by close to 75%, while preserving the richness of benchmark coverage. This work contributes insights for refining mobile benchmarking methodologies, providing a valuable compass for researchers navigating the landscape of mobile system architecture assessments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Refining",
+                "Systems architecture",
+                "Computer architecture",
+                "Benchmark testing",
+                "Hardware",
+                "Software"
+            ],
+            "Index Terms": [
+                "Benchmark Suite",
+                "Multi-core",
+                "Hardware Performance",
+                "Image Processing",
+                "Running Time",
+                "Performance Metrics",
+                "Clustering Algorithm",
+                "Reduction In Time",
+                "Object Detection",
+                "Load Level",
+                "Refinery",
+                "Digital Signal Processing",
+                "Values Of Metrics",
+                "3D Graph",
+                "Antirrhinum",
+                "K-medoids",
+                "Image Editing",
+                "Video Editing",
+                "Remote Memory",
+                "Evaluation Platform",
+                "Higher Levels Of Load",
+                "Average Memory",
+                "Cache Misses",
+                "Hardware Components",
+                "Image Classification",
+                "Total Distance",
+                "Image Synthesis",
+                "Fast Fourier Transform",
+                "Qualcomm"
+            ],
+            "Author Keywords": [
+                "Mobile benchmark suites",
+                "workload character-ization",
+                "performance evaluation"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1742,7 +3195,50 @@
                 "firstName": "Ioannis",
                 "lastName": "Sourdis"
             }
-        ]
+        ],
+        "abstract": "Modeling of on-chip interconnects in microarchitectural simulations is becoming more important. Chips continue to increase their number of cores, i.e., via 3D stacking and multi-chiplet integration, and their performance is gradually more affected by their network. However, existing simulation alternatives are either too slow for large systems or lack support for modeling interconnects, which is on its own a computationally intensive task. This work offers an open-source solution that integrates an accurate, widely used network simulator into an existing fast, parallel microarchitectural simulator enhanced with a new mechanism to make network modeling lightweight. It is based on the observation that a significant fraction of the network traffic has low contention and on the conjecture that the latency of such traffic can be calculated analytically with good accuracy. The proposed approach offers a mechanism to detect low contention traffic and analytically calculate its latency reducing the overheads of network simulation. In essence, it offers a knob for trading simulation accuracy for speed. This tradeoff is explored by demonstrating 2-4× faster simulations within 3-5% error in normalized IPC and 10-20% in average packet latency. Our simulation setup is an order of magnitude faster than an optimistic gem5 setup with point-to-point interconnects and 3× slower than a ZSim setup without network modeling. Our approach is further used to assess the impact of Networkon-Chip designs on system performance and shows that a 32-core system is on average 1.2× faster when using the current state of the art NoC instead of a baseline NoC.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Analytical models",
+                "Accuracy",
+                "Microarchitecture",
+                "Three-dimensional displays",
+                "Computational modeling",
+                "System performance",
+                "Stacking"
+            ],
+            "Index Terms": [
+                "Microarchitecture",
+                "Large-scale Simulations",
+                "System Performance",
+                "Network Model",
+                "Conjecture",
+                "Simulation Accuracy",
+                "Simulation Setup",
+                "Simulated Networks",
+                "Average Latency",
+                "Speed Accuracy",
+                "Parallel Simulator",
+                "Accuracy Of Model",
+                "Fastest",
+                "Part Of System",
+                "Window Size",
+                "Simulation Time",
+                "Simulation System",
+                "Memory Control",
+                "Injection Rate",
+                "Accuracy Of Network",
+                "Simulation Speed",
+                "Network Throughput",
+                "User-defined Threshold",
+                "Output Ports",
+                "Routing Algorithm",
+                "Network Events",
+                "Instruction Set Architecture",
+                "Critical Path",
+                "Clock Frequency"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1789,7 +3285,57 @@
                 "firstName": "Dimitris",
                 "lastName": "Gizopoulos"
             }
-        ]
+        ],
+        "abstract": "Building on the flexibility of open-source RISC-V-based CPU designs at the register-transfer level (RTL) we deliver a characterization study that is not feasible on commercial CPUs. We identify the major power-consuming hardware structures by focusing on SonicBOOM's out-of-order (OoO) microarchitecture across three design points of increasing aggressiveness. By introducing and employing the SimPoint methodology on a diverse set of workloads, we shed light on the relationship between microarchitecture and energy efficiency of BOOM, which is the highest-performance CPU design in the public domain. Our analysis highlights the Branch Prediction and the Instruction Scheduler Units as the most power-intensive components. We evaluate the energy efficiency (performance per watt) of the three design configurations of BOOM and conclude that the smallest of the three OoO cores, while being the slowest, prevails. The proposed experimental flow can be used to evaluate any CPU design using arbitrarily large workloads due to the effective use of the SimPoint methodology we introduce in Chipyard - in our case offering a 45-fold reduction of simulation time. Our findings, encompassing 8 key takeaways, can assist microprocessor designers in optimizing energy efficiency by addressing major power contributors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Out of order",
+                "Microarchitecture",
+                "Power demand",
+                "Microprocessors",
+                "Focusing",
+                "Computer architecture",
+                "Energy efficiency"
+            ],
+            "Index Terms": [
+                "Microarchitecture",
+                "Energy Efficiency",
+                "Key Takeaway",
+                "Benchmark",
+                "Design Process",
+                "Power Consumption",
+                "Total Power",
+                "Computer System",
+                "Per Cycle",
+                "Power Measurements",
+                "Power Estimation",
+                "Open-source Tool",
+                "Highest Consumption",
+                "Power Units",
+                "Total Power Consumption",
+                "Internal Power",
+                "Remote Memory",
+                "Data Cache",
+                "Trace Files",
+                "Misprediction",
+                "Design Space Exploration",
+                "Checkpointing",
+                "Electronic Design Automation",
+                "High Power Consumption",
+                "Future Design",
+                "Technology Node",
+                "Clock Frequency",
+                "Ground Plane"
+            ],
+            "Author Keywords": [
+                "energy efficiency",
+                "RISC-V",
+                "simulation",
+                "simpoint",
+                "microarchitecture",
+                "power estimation"
+            ]
+        }
     },
     {
         "publicationNumber": "10589923",
@@ -1818,7 +3364,9 @@
                 "firstName": "Stijn",
                 "lastName": "Eyerman"
             }
-        ]
+        ],
+        "abstract": "We are pleased to present the ISPASS 2024 technical program.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1834,7 +3382,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1857,7 +3407,9 @@
                 "firstName": "Timothy",
                 "lastName": "Rogers"
             }
-        ]
+        ],
+        "abstract": "The 2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS) is again bringing together people from around the world to discuss performance, modeling, and systems analysis. We are excited to host this special 25th anniversary of the conference in Indianapolis, IN. We look forward to an engaging and exciting program that brings researchers together to discuss the critical and interesting problems that will shape the field. The ISPASS community sits at the intersection of performance-conscious communities and provides an ideal meeting ground for diverse perspectives.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1873,7 +3425,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1889,7 +3443,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1905,7 +3461,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1921,7 +3479,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1937,7 +3497,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1953,7 +3515,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1969,7 +3533,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10589923",
@@ -1985,6 +3551,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

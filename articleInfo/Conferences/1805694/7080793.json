@@ -32,7 +32,42 @@
                 "firstName": "Satoshi",
                 "lastName": "Matsuoka"
             }
-        ]
+        ],
+        "abstract": "OpenACC is gaining momentum as an implicit and portable interface in porting legacy CPU-based applications to heterogeneous, highly parallel computational environment involving many-core accelerators such as GPUs and Intel Xeon Phi. OpenACC provides a set of loop directives similar to OpenMP for the parallelization and also to manage data movement, attaining functional portability across different heterogeneous devices; however, the performance portability of OpenACC is said to be insufficient due to the characteristics of different target devices, especially those regarding memory layouts, as automated attempts by the compilers to adapt is currently difficult. We are currently working to propose a set of directives to allow compilers to have better semantic information for adaptation; here, we particularly focus on data layout such as Structure of Arrays, advantageous data structure for GPUs, as opposed to Array of Structures, which exhibits good performance on CPUs. We propose a directive extension to OpenACC that allows the users to flexibility specify optimal layouts, even if the data structures are nested. Performance results show that we gain as much as 96 % in performance for CPUs and 165% for GPUs compared to programs without such directives, essentially attaining both functional and performance portability in OpenACC.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Layout",
+                "Arrays",
+                "Graphics processing units",
+                "Benchmark testing",
+                "Programming",
+                "Performance evaluation",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Data Layout",
+                "Parallelization",
+                "Graphics Processing Unit",
+                "Intel Xeon",
+                "Array Structure",
+                "Layout Optimization",
+                "Benchmark",
+                "New Variables",
+                "Multi-core",
+                "Programming Model",
+                "Third Dimension",
+                "Inference Rules",
+                "Array Size",
+                "Intel Xeon CPU",
+                "Two-dimensional Array",
+                "Remote Memory",
+                "Memory Bandwidth",
+                "One-dimensional Array",
+                "On-chip Memory",
+                "Multidimensional Array",
+                "Low-level Model"
+            ]
+        }
     },
     {
         "publicationNumber": "7080793",
@@ -97,7 +132,39 @@
                 "firstName": "Mitsuhisa",
                 "lastName": "Sato"
             }
-        ]
+        ],
+        "abstract": "The present paper introduces the XcalableACC (XACC) programming model, which is a hybrid model of the XcalableMP (XMP) Partitioned Global Address Space (PGAS) language and OpenACC. XACC defines directives that enable programmers to mix XMP and OpenACC directives in order to develop applications that can use accelerator clusters with ease. Moreover, in order to improve the performance of stencil applications, the Omni XACC compiler provides functions that can transfer a halo region on accelerator memory via Tightly Coupled Accelerators (TCA), which is a proprietary network for transferring data directly among accelerators. In the present paper, we evaluate the productivity and the performance of XACC through implementations of the HIMENO Benchmark. The results show that thanks to the productivity improvements, XACC requires less than half the source lines of code compare to a combination of Message Passing Interface (MPI) and OpenACC, which is commonly used together as a typical programming model. As a result of these performance improvements, XACC using TCA achieved up to 2.7 times faster performance than could be obtained via the combination of OpenACC and MPI programming model using GPUDirect RDMA over InfiniBand.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Arrays",
+                "Programming",
+                "Indexes",
+                "Syntactics",
+                "Graphics processing units",
+                "Synchronization",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Partitioned Global Address Space",
+                "Programming Model",
+                "Message Passing Interface",
+                "Synchronization",
+                "Parallelization",
+                "Graphics Processing Unit",
+                "Neighboring Nodes",
+                "Problem Size",
+                "Cluster Model",
+                "Benchmark Test",
+                "Internal Modes",
+                "Array Of Targets",
+                "Strong Scaling",
+                "Node Placement",
+                "Graphics Processing Unit Memory"
+            ],
+            "Author Keywords": [
+                "Design language; Development Compiler; Accelerator Cluster; Partitioned Global Address Space Language"
+            ]
+        }
     },
     {
         "publicationNumber": "7080793",
@@ -138,7 +205,46 @@
                 "firstName": "Dirk",
                 "lastName": "Pleiter"
             }
-        ]
+        ],
+        "abstract": "Todays HPC systems are increasingly utilizing accelerators to lower time to solution for their users and reduce power consumption. To utilize the higher performance and energy efficiency of these accelerators, application developers need to rewrite at least parts of their codes. Taking the C++ flow solver ZFS as an example, we show that the directive-based programming model allows one to achieve good performance with reasonable effort, even for mature codes with many lines of code. Using OpenACC directives permitted us to incrementally accelerate ZFS, focusing on the parts of the program that are relevant for the problem at hand. The two new OpenACC 2.0 features, unstructured data regions and atomics, are required for this. OpenACC's interoperability with existing GPU libraries via the host_data use_device construct allowed to use CUDAaware MPI to achieve multi-GPU scalability comparable to the CPU version of ZFS. Like many other codes, the data structures of ZFS have been designed with traditional CPUs and their relatively large private caches in mind. This leads to suboptimal memory access patterns on accelerators, such as GPUs. We show how the texture cache on NVIDIA GPUs can be used to minimize the performance impact of these suboptimal patterns without writing platform specific code. For the kernel most affected by the memory access pattern, we compare the initial array of structures memory layout with a structure of arrays layout.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Acceleration",
+                "Computer architecture",
+                "Microprocessors",
+                "Programming",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Programming Model",
+                "Unstructured Region",
+                "Reasonable Effort",
+                "Flow Solver",
+                "Parallelization",
+                "Fluid Dynamics",
+                "Data Transfer",
+                "Load Data",
+                "Array Structure",
+                "Reynolds-averaged Navier–Stokes",
+                "Level Of Parallelism",
+                "Lattice Boltzmann",
+                "Coal Dust",
+                "Strong Scaling",
+                "Race Conditions",
+                "Heterogeneous Architecture",
+                "Cache Hit",
+                "Master Cell",
+                "Aachen University",
+                "Device Memory",
+                "Straight Forward",
+                "Discontinuous Galerkin",
+                "Xeon E5",
+                "Mesh Generation",
+                "Programming Language",
+                "Finite Volume"
+            ]
+        }
     },
     {
         "publicationNumber": "7080793",
@@ -191,7 +297,39 @@
                 "firstName": "S. A.",
                 "lastName": "Jarvis"
             }
-        ]
+        ],
+        "abstract": "OpenACC is a directive-based programming model designed to allow easy access to emerging advanced architecture systems for existing production codes based on Fortran, C and C++. It also provides an approach to coding contemporary technologies without the need to learn complex vendor-specific languages, or understand the hardware at the deepest level. Portability and performance are the key features of this programming model, which are essential to productivity in real scientific applications. OpenACC support is provided by a number of vendors and is defined by an open standard. However the standard is relatively new, and the implementations are relatively immature. This paper experimentally evaluates the currently available compilers by assessing two approaches to the OpenACC programming model: the \"parallel\" and \"kernels\" constructs. The implementation of both of these construct is compared, for each vendor, showing performance differences of up to 84%. Additionally, we observe performance differences of up to 13% between the best vendor implementations. OpenACC features which appear to cause performance issues in certain compilers are identified and linked to differing default vector length clauses between vendors. These studies are carried out over a range of hardware including GPU, APU, Xeon and Xeon Phi based architectures. Finally, OpenACC performance, and productivity, are compared against the alternative native programming approaches on each targeted platform, including CUDA, OpenCL, OpenMP 4.0 and Intel Offload, in addition to MPI and OpenMP.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Graphics processing units",
+                "Computer architecture",
+                "Programming",
+                "Acceleration",
+                "Hardware",
+                "Microprocessors"
+            ],
+            "Index Terms": [
+                "Programming Model",
+                "Vector Of Length",
+                "Performance Issues",
+                "Product Code",
+                "Alternative Programs",
+                "PHI-base",
+                "Source Code",
+                "Relative Performance",
+                "Intel Xeon",
+                "Application Programming Interface",
+                "Problem Size",
+                "Code Version",
+                "Hardware Architecture",
+                "Single Architecture",
+                "Sandia National Laboratories",
+                "Kernel Computation",
+                "Xeon E5",
+                "NVIDIA Tesla"
+            ]
+        }
     },
     {
         "publicationNumber": "7080793",
@@ -226,7 +364,40 @@
                 "firstName": "Tom",
                 "lastName": "Henderson"
             }
-        ]
+        ],
+        "abstract": "The NIM is a performance-portable model that runs on CPU, GPU and MIC architectures with a single source code. The single source plus efficient code design allows application scientists to maintain the Fortran code, while computer scientists optimize performance and portability using OpenMP, OpenACC, and F2CACC directives. The F2C-ACC compiler was developed in 2008 at NOAA's Earth System Research Laboratory (ESRL) to support GPU parallelization before commercial Fortran GPU compilers were available. Since then, a number of vendors have built GPU compilers that are compliant to the emerging OpenACC standard. The paper will compare parallelization and performance of NIM using the F2C-ACC, Cray and PGI Fortran GPU compilers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Parallel processing",
+                "Instruction sets",
+                "Kernel",
+                "Computational modeling",
+                "Arrays",
+                "Meteorology"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Numerical Weather Prediction",
+                "Source Code",
+                "Fortran",
+                "Single Code",
+                "Data Management",
+                "Load Data",
+                "User Perspective",
+                "Local Memory",
+                "Vertical Levels",
+                "Single Thread",
+                "Use Of Memory",
+                "Parallel Execution",
+                "Weather Prediction Models",
+                "Stand-alone Test",
+                "Shared Memory"
+            ],
+            "Author Keywords": [
+                "Compiler; Accelerator; Multicore; GPGPU; Parallelization; OpenACC; Numerical Weather Prediction"
+            ]
+        }
     },
     {
         "publicationNumber": "7080793",
@@ -255,7 +426,51 @@
                 "firstName": "Jeffrey S.",
                 "lastName": "Vetter"
             }
-        ]
+        ],
+        "abstract": "Directive-based, accelerator programming models such as OpenACC have arisen as an alternative solution to program emerging Scalable Heterogeneous Computing (SHC) platforms. However, the increased complexity in the SHC systems incurs several challenges in terms of portability and productivity. This paper presents an open-sourced OpenACC compiler, called OpenARC, which serves as an extensible research framework to address those issues in the directive-based accelerator programming. This paper explains important design strategies and key compiler transformation techniques needed to implement the reference OpenACC compiler. Moreover, this paper demonstrates the efficacy of OpenARC as a research framework for directive-based programming study, by proposing and implementing OpenACC extensions in the OpenARC framework to 1) support hybrid programming of the unified memory and separate memory and 2) exploit architecture-specific features in an abstract manner. Porting thirteen standard OpenACC programs and three extended OpenACC programs to CUDA GPUs shows that OpenARC performs similarly to a commercial OpenACC compiler, while it serves as a high-level research framework.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Programming",
+                "Kernel",
+                "Parallel processing",
+                "Memory management",
+                "Central Processing Unit"
+            ],
+            "Index Terms": [
+                "Extensive Framework",
+                "Compiler Framework",
+                "Research Framework",
+                "Programming Model",
+                "Key Techniques",
+                "Separate Memory",
+                "Data Transfer",
+                "Functional Devices",
+                "Debugging",
+                "Software Libraries",
+                "Specific Memory",
+                "Caching",
+                "Static Function",
+                "Loop Iteration",
+                "Advanced Optimization",
+                "Level Of Parallelism",
+                "Traditional Language",
+                "Manually Optimized",
+                "Fine-grained Control",
+                "Memory Transfer",
+                "Shared Memory",
+                "Manual Version",
+                "Execution Mode",
+                "Device Memory",
+                "Memory Management",
+                "Verification Scheme",
+                "Parallel Loops",
+                "Application Programming Interface"
+            ],
+            "Author Keywords": [
+                "Compilers; Programming Techniques; Programming Environments; Code generation"
+            ]
+        }
     },
     {
         "publicationNumber": "7080793",
@@ -302,7 +517,54 @@
                 "firstName": "Barbara",
                 "lastName": "Chapman"
             }
-        ]
+        ],
+        "abstract": "Accelerators offer the potential to significantly improve the performance of scientific applications when offloading compute intensive portions of programs to the accelerators. However, effectively tapping their full potential is difficult owing to the programmability challenges faced by the users when mapping computation algorithms to the massively parallel architectures such as GPUs.Directive-based programming models offer programmers an option to rapidly create prototype applications by annotating region of code for offloading with hints to the compiler. This is critical to improve the productivity in the production code. In this paper, we study the effectiveness of a high-level directivebased programming model, OpenACC, for parallelizing a seismic migration application called Kirchhoff Migration on GPU architecture. Kirchhoff Migration is a real-world production code in the Oil & Gas industry. Because of its compute intensive property, we focus on the computation part and explore different mechanisms to effectively harness GPU's computation capabilities and memory hierarchy. We also analyze different loop transformation techniques in different OpenACC compilers and compare their performance differences. Compared toone socket (10 CPU cores) on the experimental platform, one GPU achieved a maximum speedup of 20.54x and 6.72x for interpolation and extrapolation kernel functions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Interpolation",
+                "Kernel",
+                "Programming",
+                "Extrapolation",
+                "Computer architecture",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Kirchhoff Migration",
+                "Parallelization",
+                "Programming Model",
+                "Computational Capabilities",
+                "Gas Industry",
+                "GPU Memory",
+                "Product Code",
+                "GPU Computation",
+                "High-level Programming",
+                "Memory Hierarchy",
+                "Image Resolution",
+                "Subsurface",
+                "Data Transfer",
+                "High-performance Computing",
+                "Fine Grid",
+                "Seismic Reflection",
+                "Xz Plane",
+                "Imaging Tasks",
+                "Coarse Grid",
+                "Reflection Point",
+                "Unknown Point",
+                "Low-level Model",
+                "Access Latency",
+                "L2 Cache",
+                "Bottom Plane",
+                "Blue Space",
+                "Kernel Computation",
+                "Data Cache",
+                "Top Plane",
+                "Xeon E5"
+            ],
+            "Author Keywords": [
+                "OpenACC; Kirchhoff Migration; GPU; Directives; Programming Model"
+            ]
+        }
     },
     {
         "publicationNumber": "7080793",
@@ -318,7 +580,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 First Workshop on Accelerator Programming using Directives",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7080793",
@@ -334,7 +598,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 First Workshop on Accelerator Programming using Directives",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7080793",
@@ -350,7 +616,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 First Workshop on Accelerator Programming using Directives",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7080793",
@@ -366,7 +634,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 First Workshop on Accelerator Programming using Directives",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7080793",
@@ -382,7 +652,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 First Workshop on Accelerator Programming using Directives",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7080793",
@@ -398,6 +670,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 First Workshop on Accelerator Programming using Directives",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: accelerator programming; OpenACC; C++ CFD code; and GPU.",
+        "keywords": {}
     }
 ]

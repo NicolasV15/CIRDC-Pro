@@ -52,9 +52,9 @@
             },
             {
                 "id": 37893133900,
-                "preferredName": "Jos\u00e9 L. Abell\u00e1n",
-                "firstName": "Jos\u00e9 L.",
-                "lastName": "Abell\u00e1n"
+                "preferredName": "José L. Abellán",
+                "firstName": "José L.",
+                "lastName": "Abellán"
             },
             {
                 "id": 37311384600,
@@ -68,7 +68,49 @@
                 "firstName": "David",
                 "lastName": "Kaeli"
             }
-        ]
+        ],
+        "abstract": "Homomorphic Encryption (HE) enables users to securely outsource both the storage and computation of sensitive data to untrusted servers. Not only does HE offer an attractive solution for security in cloud systems, but lattice-based HE systems are also believed to be resistant to attacks by quantum computers. However, current HE implementations suffer from prohibitively high latency. For lattice-based HE to become viable for real-world systems, it is necessary for the key bottlenecks—particularly polynomial multiplication—to be highly efficient. In this paper, we present a characterization of GPU-based implementations of polynomial multiplication. We begin with a survey of modular reduction techniques and analyze several variants of the widely-used Barrett modular reduction algorithm. We then propose a modular reduction variant optimized for 64-bit integer words on the GPU, obtaining a 1.8$\\times $speedup over the existing comparable implementations. Next, we explore the following GPU-specific improvements for polynomial multiplication targeted at optimizing latency and throughput: 1) We present a 2D mixed-radix, multi-block implementation of NTT that results in a 1.85$\\times $average speedup over the previous state-of-the-art. 2) We explore shared memory optimizations aimed at reducing redundant memory accesses, further improving speedups by 1.2$\\times$. 3) Finally, we fuse the Hadamard product with neighboring stages of the NTT, reducing the twiddle factor memory footprint by 50%. By combining our NTT optimizations, we achieve an overall speedup of 123.13$\\times $and 2.37$\\times $over the previous state-of-the-art CPU and GPU implementations of NTT kernels, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resistance",
+                "Quantum computing",
+                "Fuses",
+                "Graphics processing units",
+                "Throughput",
+                "Cryptography",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Polynomial Multiplication",
+                "Quantum Computing",
+                "Hadamard Product",
+                "Shared Memory",
+                "Performance Metrics",
+                "Fast Fourier Transform",
+                "Baseline For Comparison",
+                "Input Matrix",
+                "Discrete Fourier Transform",
+                "Arithmetic Operations",
+                "Temporal Localization",
+                "Open-source Library",
+                "Power-of-two",
+                "Multiple Blocks",
+                "Data Cache",
+                "Root Of Unity",
+                "Fewer Operations",
+                "Naive Implementation",
+                "L2 Cache",
+                "Modular Product"
+            ],
+            "Author Keywords": [
+                "Lattice-based cryptography",
+                "Homomorphic Encryption",
+                "Number Theoretic Transform",
+                "Modular arithmetic",
+                "Negacyclic convolution",
+                "GPU acceleration"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -103,7 +145,54 @@
                 "firstName": "Guru",
                 "lastName": "Venkataramani"
             }
-        ]
+        ],
+        "abstract": "With the rise in malware attacks on modern computer systems, there is a critical need for the computer security defenses to not only detect the presence of adversaries accurately, but also have the ability to do so at the earliest possible time to avoid suffering from extensive system damages. Currently, malware defenders have to accumulate sufficient amounts of system event samples to detect the malware presence and identify them with increased confidence. Unfortunately, in many instances, a longer wait may have already resulted in the loss of valuable time toward stopping the malicious activity, and may even nullify the usefulness of any potential defensive actions.In this paper, we present Foreseer, a framework that can help proactive defenses through forecasting the raw event series needed for early detection of malware. To accomplish this goal, we leverage Long Short-Term Memory (LSTM) neural networks aided with attention mechanisms, that can memorize complex sequential patterns and use this information to predict the future events with high accuracy. Foreseer design adopts a joint hardware-software optimization approach to improve its efficiency by using symbolic representation for its event series, deploying runtime machine code optimizations using Just-in-Time Python compilers, hardware accelerated mixed precision quantization available in Nvidia GPUs. We evaluate the efficacy of Foreseer framework using RanSAP, an open dataset for ransomware storage access patterns. Our experimental results show that Foreseer is able to synthesize ransomware-related features with low errors for most dominant factors used in detection (such as the size of a block accessed by a sample, shannon entropy), and cuts the time to predict the malware presence by about 40%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Runtime",
+                "Quantization (signal)",
+                "Neural networks",
+                "Ransomware",
+                "Forecasting",
+                "Computer security"
+            ],
+            "Index Terms": [
+                "Short-term Memory",
+                "Series Of Events",
+                "Long Short-term Memory",
+                "Long Memory",
+                "Neural Network",
+                "Attention Mechanism",
+                "Computer System",
+                "Block Size",
+                "Shannon Entropy",
+                "Access Patterns",
+                "Optimal Code",
+                "Memory Neural Network",
+                "Short-term Memory Neural Network",
+                "Time Series",
+                "Training Data",
+                "Error Rate",
+                "Training Dataset",
+                "Benign Samples",
+                "Energy Reduction",
+                "Past Events",
+                "Read Size",
+                "Input Sequence",
+                "Forecasting",
+                "CPU Utilization",
+                "System Logs",
+                "Dense Layer",
+                "Window Size"
+            ],
+            "Author Keywords": [
+                "Systems Security",
+                "Long Short-Term Memory",
+                "Event Prediction",
+                "Malware Detection"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -134,9 +223,9 @@
             },
             {
                 "id": 37273867200,
-                "preferredName": "Magnus Sj\u00e4lander",
+                "preferredName": "Magnus Själander",
                 "firstName": "Magnus",
-                "lastName": "Sj\u00e4lander"
+                "lastName": "Själander"
             },
             {
                 "id": 37267088500,
@@ -144,7 +233,48 @@
                 "firstName": "Stefanos",
                 "lastName": "Kaxiras"
             }
-        ]
+        ],
+        "abstract": "Although the cache has been a known side-channel for years, it has gained renewed notoriety with the introduction of speculative side-channel attacks such as Spectre, which were able to use caches to not just observe a victim, but to leak secrets. Because the cache continues to be one of the most exploitable side channels, it is often the primary target to safeguard in secure speculative execution schemes. One of the simpler secure speculation approaches is to delay speculative accesses, whose effect can be observed, until they become non-speculative. Delay-on-Miss, for example, delays all observable speculative loads, i.e., loads that miss in the cache, and preserves the majority of the performance of the baseline (unsafe speculation) by executing speculative loads that hit in the cache, which were thought to be unobservable. However, previous works have failed to consider how instruction fetching can eject cache lines from the shared, lower-level caches, and thus from higher cache levels due to inclusivity. In this work, we show how cache conflicts between instruction fetch and data accesses can extend previous attacks, and we present the following new insights: 1) It is possible to use lowerlevel caches to perform Prime+Probe through conflicts resulting from instruction fetching. This is an extension to previous Prime+Probe attacks that potentially avoids other developed mitigation strategies. 2) Data-instruction conflicts can be used to perform a Spectre attack that breaks Delay-on-Miss. After acquiring a secret, secret-dependent instruction fetching can cause cache conflicts that result in evictions in the L1D cache, creating observable timing differences. Essentially, it is possible to leak a secret bit-by-bit through the cache, despite Delay-on-Miss defending against caches. We call our new attack Data-Out Instruction-In, DOIN!, and demonstrate it on a real commercial core, the AMD Ryzen 9. We demonstrate how DOIN! interacts with Delay-on-Miss and perform an analysis of noise and bandwidth. Furthermore, we propose a simple defense extension for Delay-on-Miss to maintain its security guarantees, at the cost of negligible performance degradation while executing the SPEC CPU2006 workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Costs",
+                "Side-channel attacks",
+                "Bandwidth",
+                "Interference",
+                "Delays",
+                "Security"
+            ],
+            "Index Terms": [
+                "Time Difference",
+                "Security Guarantees",
+                "Remote Memory",
+                "AMD Ryzen",
+                "Flow Control",
+                "Information Leakage",
+                "Array Probe",
+                "Attack Success",
+                "Threat Model",
+                "Data Cache",
+                "Error Handling",
+                "Misprediction",
+                "Performance Overhead",
+                "Physical Address",
+                "L2 Cache",
+                "Cache Misses",
+                "Attack Success Rate",
+                "Cache Hit",
+                "Memory Hierarchy",
+                "Secret Value",
+                "Replacement Policy"
+            ],
+            "Author Keywords": [
+                "Speculative side-channels",
+                "cache side-channels",
+                "Spectre",
+                "security"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -152,7 +282,7 @@
         "publicationYear": "2022",
         "publicationDate": "26-27 Sept. 2022",
         "articleNumber": "9935048",
-        "articleTitle": "These Aren\u2019t The Caches You\u2019re Looking For: Stochastic Channels on Randomized Caches",
+        "articleTitle": "These Aren’t The Caches You’re Looking For: Stochastic Channels on Randomized Caches",
         "volume": null,
         "issue": null,
         "startPage": "37",
@@ -179,7 +309,51 @@
                 "firstName": "Todd",
                 "lastName": "Austin"
             }
-        ]
+        ],
+        "abstract": "Many security attacks utilize cache side-channels to subvert memory security mechanisms. By exploiting co-resident processes that share the cache, attackers simply monitor and manipulate their own cache state to infer activities of victim processes, exfiltrate program secrets, or establish unauthorized communication channels. To counter these unwanted cache channels, defenses that randomize line address to cache set mappings have emerged. In this paper, we present a novel cache communication technique based on stochastic channels, which are probabilistically formed and evicted to establish communication. The approach is coupled with noise reduction techniques in order to tolerate system noise and the cases where probabilistic channels do not form. Since the approach is stochastic, it is agnostic to the cache-indexing mechanism; thus, cache randomization defenses, including those with re-mapping capabilities, have little effect on this channel. We demonstrate the covert communication channel working seamlessly on real-world caches, randomized cache designs proposed in literature, and futuristic randomized caches. We then demonstrate the applicability of our error-resilient covert channel with the Spectre attack on randomized caches. We close by noting that stochastic cache channels suggest that randomized caches are not a durable defense against covert cache communication, and we advocate for the community to focus on cache partitioning technologies and novel defenses such as in-cache encryption and side-channel resistant accelerators.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resistance",
+                "Noise reduction",
+                "Communication channels",
+                "Receivers",
+                "Probabilistic logic",
+                "Encoding",
+                "Encryption"
+            ],
+            "Index Terms": [
+                "Communication Channels",
+                "System Noise",
+                "Probability Density Function",
+                "Noise Sources",
+                "Differential Signal",
+                "Reference Signal",
+                "Bit Error Rate",
+                "Information Bits",
+                "Reliable Communication",
+                "Attack Detection",
+                "Threat Model",
+                "Pseudo-random Number Generator",
+                "Data Cache",
+                "Encryption Key",
+                "Binary Index",
+                "Access Latency",
+                "L2 Cache",
+                "Cache Misses",
+                "Unrelated Processes",
+                "Synthetic Noise",
+                "Replacement Policy",
+                "Probe Channel",
+                "Random Design",
+                "Address Space",
+                "Mapping Strategy",
+                "Cryptographic Primitives",
+                "Limited Resources",
+                "Microarchitecture",
+                "Synchronization",
+                "Random Locations"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -214,7 +388,50 @@
                 "firstName": "Arash",
                 "lastName": "Vahidi"
             }
-        ]
+        ],
+        "abstract": "Confidential computing allows processing sensitive workloads in securely isolated spaces. Following earlier adoption of process-based approaches to isolation, vendors are now enabling hardware and firmware support for virtualization-based confidential computing on several server platforms. Due to variations in the technology stack, threat model, implementation and functionality, the available solutions offer somewhat different capabilities, trade-offs and security guarantees. In this paper we review, compare and contextualize four virtualization-based confidential computing technologies for enterprise server platforms - AMD SEV, ARM CCA, IBM PEF and Intel TDX.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computers",
+                "Program processors",
+                "Hardware",
+                "Servers",
+                "Security",
+                "Microprogramming"
+            ],
+            "Index Terms": [
+                "Confidential Computing",
+                "Threat Model",
+                "Hardware Support",
+                "Audio Recordings",
+                "Direct Access",
+                "Access Control",
+                "Security Status",
+                "Physical Access",
+                "Types Of Attacks",
+                "Secret Key",
+                "Virtual Machines",
+                "Public Key",
+                "Denial Of Service",
+                "Side-channel",
+                "Physical Attacks",
+                "Replay Attacks",
+                "Protective Memory",
+                "Normal Memory",
+                "Secure Channel",
+                "Encryption Key",
+                "Memory Integration",
+                "Context Switching",
+                "Cloud Providers",
+                "Execution Environment",
+                "Cloud Computing",
+                "Security Mechanisms",
+                "Data Integration"
+            ],
+            "Author Keywords": [
+                "Confidential Computing"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -243,7 +460,55 @@
                 "firstName": "Biswabandan",
                 "lastName": "Panda"
             }
-        ]
+        ],
+        "abstract": "On a multi-core system, the shared last-level cache(LLC) is vulnerable to various kinds of cross-core contention-based attacks. LLC randomization and LLC partitioning are two promising mitigation strategies that mitigate these attacks. LLC-randomization techniques make an attacker’s life difficult in mounting contention-based attacks but do not entirely mitigate them. Randomized caches are also ineffective in preventing occupancy-based attacks. In contrast, state-of-the-art LLC partitioning techniques mitigate all possible LLC contention-based attacks by allocating isolated LLC regions to different processes or security domains. However, restricting processes to isolated LLC region(s) affects overall LLC utilization and incurs performance overhead (as high as 72%) and memory subsystem energy overhead (as high as 89%); effectively providing security guarantee at the cost of performance and energy.One of the primary reasons for this trend is the fundamental design choice that drives all the state-of-the-art secure LLC partitioning techniques, which isolate all the applications and all the time at the LLC. We revisit this choice and argue that we need to isolate only the attacker process and not all the processes. To isolate the attacker, we propose Avenger, a mitigation technique that uses a state-of-the-art LLC contention attack detector and isolates only the attacker. The detector is flexible and can be trained as per the security requirements of any organization or cloud provider. Experimental results on a 16-core simulated system with one attacker and 15 victims show that Avenger outperforms three state-of-the-art secure LLC partitioning techniques in performance and energy overhead without affecting security. Overall, Avenger provides a robust security guarantee against all contention-based cross-core LLC attacks with 1% average performance overhead in contrast to an average performance overhead of more than 17% with the state-of-the-art secure LLC partitioning techniques.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Detectors",
+                "Organizations",
+                "Market research",
+                "Hardware",
+                "Energy efficiency",
+                "Security"
+            ],
+            "Index Terms": [
+                "Last-level Cache",
+                "Security Requirements",
+                "Attack Detection",
+                "Security Guarantees",
+                "Kinds Of Attacks",
+                "Cloud Providers",
+                "Security Domain",
+                "Performance Overhead",
+                "Partitioning Technique",
+                "Attack Process",
+                "Energy Consumption",
+                "Support Vector Machine",
+                "Cyclone",
+                "Agility",
+                "Information Leakage",
+                "Microarchitecture",
+                "Identification Of Domains",
+                "Virtual Machines",
+                "Denial Of Service",
+                "Rigid Approach",
+                "Security Monitoring",
+                "Replacement Policy",
+                "Multiple Attacks",
+                "Binary Index",
+                "L2 Cache",
+                "Access Latency",
+                "Dynamic Energy",
+                "Address Space",
+                "Threat Model"
+            ],
+            "Author Keywords": [
+                "Cache",
+                "security",
+                "microarchitecture"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -278,7 +543,56 @@
                 "firstName": "Omer",
                 "lastName": "Khan"
             }
-        ]
+        ],
+        "abstract": "Shared hardware resources in multicore processors enable massive performance gains but bring security challenges. Adversaries have successfully leaked on-chip data using timing-based side-channel attacks (SCA) targeting shared caches, network-on-chip, and memory controller hardware. Existing mitigation schemes protect on-chip data against attacks targeting a single hardware resource, while leaving the additional channels unprotected. This paper implements multi-level mitigation schemes that protect on-chip data access against timing-based SCA targeting multiple shared hardware resources. It evaluates the performance implications of individual and multi-level mitigation schemes using security-critical graph and machine learning workloads. The multi-level mitigation schemes are shown to have ~2% overall performance implication that primarily depends on the cache behavior of the workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Multicore processing",
+                "Side-channel attacks",
+                "Machine learning",
+                "Performance gain",
+                "Hardware",
+                "System-on-chip"
+            ],
+            "Index Terms": [
+                "Data Availability",
+                "Side-channel",
+                "On-chip Data",
+                "Mitigation Strategies",
+                "Functional Implications",
+                "Memory Control",
+                "Hardware Resources",
+                "Attack Target",
+                "Data Cache",
+                "Multilevel Strategy",
+                "Graph Learning",
+                "Benchmark",
+                "Time-variant",
+                "Increase In Time",
+                "Cardinality",
+                "Number Of Domains",
+                "Random Strategy",
+                "PageRank",
+                "Individual Channels",
+                "Partitioning Scheme",
+                "Time-division Multiplexing",
+                "L2 Cache",
+                "Remote Memory",
+                "Spatial Partitioning",
+                "Cache Misses",
+                "Performance Overhead",
+                "Cache Hit",
+                "Temporal Scheme",
+                "Off-chip Memory",
+                "Spatial Isolation"
+            ],
+            "Author Keywords": [
+                "Side Channel Attack",
+                "Multicore Security",
+                "Hardware Security"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -325,7 +639,40 @@
                 "firstName": "Carlos",
                 "lastName": "Rozas"
             }
-        ]
+        ],
+        "abstract": "Randomized, skewed caches (RSCs) such as CEASER-S have recently received much attention to defend against contention-based cache side channels. By randomizing and regularly changing the mapping(s) of addresses to cache sets, these techniques are designed to obfuscate the leakage of memory access patterns. However, new attack techniques, e.g., Prime+Prune+Probe, soon demonstrated the limits of RSCs as they allow attackers to more quickly learn which addresses contend in the cache and use this information to circumvent the randomization. To yet maintain side-channel resilience, RSCs must change the random mapping(s) more frequently with adverse effects on performance and implementation complexity.This work aims to make randomization-based approaches more robust to allow for reduced re-keying rates and presents Chameleon Cache. Chameleon Cache extends RSCs with a victim cache (VC) to decouple contention in the RSC from evictions observed by the user. The VC allows Chameleon Cache to make additional use of the multiple mappings RSCs provide to translate addresses to cache set indices: when a cache line is evicted from the RSC to the VC under one of its mappings, the VC automatically reinserts this evicted line back into the RSC by using a different mapping. As a result, the effects of previous RSC set contention are hidden and Chameleon Cache exhibits side-channel resistance and eviction patterns similar to fully associative caches with random replacement. We show that Chameleon Cache has performance overheads of < 1% and stress that VCs are more generically helpful to increase side-channel resistance and re-keying intervals of randomized caches.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resistance",
+                "Costs",
+                "Resists",
+                "Complexity theory",
+                "Stress",
+                "Resilience"
+            ],
+            "Index Terms": [
+                "Random Replacement",
+                "Cache Attacks",
+                "Performance Overhead",
+                "Random Sampling",
+                "Information Leakage",
+                "Power Demand",
+                "Evidential",
+                "System Noise",
+                "Data Cache",
+                "Encryption Key",
+                "Security Domain",
+                "Content Caching",
+                "Cache Misses",
+                "Area Constraints",
+                "Cache Hit"
+            ],
+            "Author Keywords": [
+                "Demonstration and mitigation for side channels",
+                "covert channels",
+                "and other vulnerabilities"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -372,7 +719,53 @@
                 "firstName": "Yan",
                 "lastName": "Solihin"
             }
-        ]
+        ],
+        "abstract": "Persistent memory (PM) is expected to augment or replace DRAM as main memory. PM combines byte-addressability with non-volatility, providing an opportunity to host byte-addressable data persistently. This paper addresses three problems with PM for the first time. First, we design a persistent memory object (PMO) abstraction that allows data to be retained in memory across process lifetimes and system power cycles. Second, we address the security of PMOs while at rest against corruption and disclosure attacks. Third, we address the programmability of PM crash consistency management with a primitive psync, that decouples crash consistency and concurrency management; psync allows the programmer to specify when data are crash consistent but conceals how it happens. Our PMO design outperforms NOVA-Fortis, a memory-mapped file-based approach providing crash consistency, by 3.61$\\times$ and 3.2$\\times$ for two sets of evaluated workloads. Adding protection for at-rest data to the design incurs a modest overhead, between 3 – 46%, depending on the level of protection.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Concurrent computing",
+                "Memory management",
+                "Random access memory",
+                "Benchmark testing",
+                "Computer crashes",
+                "Security"
+            ],
+            "Index Terms": [
+                "Persistent Memory",
+                "Corruption",
+                "Benchmark",
+                "Data Structure",
+                "Decoding",
+                "System Failure",
+                "Rollback",
+                "Power Outages",
+                "Critical Path",
+                "Threat Model",
+                "Creation Time",
+                "System Calls",
+                "Security Attacks",
+                "Memory Integration",
+                "Kernel Space",
+                "System Crashes",
+                "Address Space",
+                "Dereference",
+                "Integrity Verification",
+                "Linux Kernel",
+                "File System",
+                "Virtual Memory",
+                "Naive Approach",
+                "Encryption Key",
+                "Malicious Data",
+                "Performance Overhead",
+                "Semantic"
+            ],
+            "Author Keywords": [
+                "Persistent Memory",
+                "Memory Encryption",
+                "Memory Systems",
+                "Persistent Memory Objects"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -413,7 +806,57 @@
                 "firstName": "Tamara Silbergleit",
                 "lastName": "Lehman"
             }
-        ]
+        ],
+        "abstract": "Secure architectures are becoming an increasingly common demand. This is due in large part to the rise of cloud computing, as users are trusting their data with hardware that they do not own. Unfortunately, many secure computation and isolation techniques are still susceptible to side-channel attacks. While various defenses to side-channel attacks exist, each tends to be targeted to a specific vulnerability and comes with a high runtime overhead, making it difficult to combine these defenses together in a performant manner.This work proposes an efficient design for preventing a large range of cache side-channel attacks by leveraging a near-memory processing (NMP) architecture. Specifically, the proposed design stores all sensitive data in isolated NMP vaults and performs all computation involving that sensitive data on NMP cores. Our approach eliminates possible cache side-channels while also minimizing runtime overhead when the parallelizability of NMP architecture is leveraged. Simulation results from a cycle-accurate architecture model shows that offloading secure computation to NMP cores can have as little as 0.26% overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Runtime",
+                "Simulation",
+                "Computational modeling",
+                "Side-channel attacks",
+                "Computer architecture",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Memory Processes",
+                "Side-channel",
+                "Microarchitectural Side-channel Attacks",
+                "Parallelization",
+                "Cloud Computing",
+                "Sensitive Data",
+                "High Overhead",
+                "Processing Architecture",
+                "Multi-party Computation",
+                "Runtime Overhead",
+                "Benchmark",
+                "State In Order",
+                "Shared Resource",
+                "Types Of Attacks",
+                "Virtual Machines",
+                "File System",
+                "File Size",
+                "List Of Publications",
+                "Key Generation",
+                "Threat Model",
+                "Pufferfish",
+                "Performance Overhead",
+                "Shared Memory",
+                "Shared Structure",
+                "Data Cache",
+                "Cache Misses",
+                "Misprediction",
+                "Security Costs",
+                "Security Community",
+                "Prior Approaches"
+            ],
+            "Author Keywords": [
+                "near memory processing",
+                "secure architecture",
+                "cache side-channel defense",
+                "hardware security"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -448,7 +891,48 @@
                 "firstName": "Michel A.",
                 "lastName": "Kinsy"
             }
-        ]
+        ],
+        "abstract": "With memory safety and security issues continuing to plague modern systems, security is rapidly becoming a first class priority in new architectures and competes directly with performance and power efficiency. The capability-based architecture model provides a promising solution to many memory vulnerabilities by replacing plain addresses with capabilities, i.e., addresses and related metadata. A key advantage of the capability model is compatibility with existing code bases. Capabilities can be implemented transparently to a programmer, i.e., without source code changes. Capabilities leverage semantics in source code to describe access permissions but require customized compilers to translate the semantics to their binary equivalent.In this work, we introduce a complete capabilityaware compiler toolchain for such secure architectures. We illustrate the compiler construction with a RISC-V capability-based architecture, called Zeno. As a securityfocused, large-scale, global shared memory architecture, Zeno implements a Namespace-based capability model for accesses. Namespace IDs (NSID) are encoded with an extended addressing model to associate them with access permission metadata elsewhere in the system. The NSID extended addressing model requires custom compiler support to fully leverage the protections offered by Namespaces. The Zeno compiler produces code transparently to the programmer that is aware of Namespaces and maintains their integrity. The Zeno assembler enables custom Zeno instructions which support secure memory operations. Our results show that our custom toolchain moderately increases the binary size compared to nonZeno compilation. We find the minimal overhead incurred by the additional NSID management instructions to be an acceptable trade-off for the memory safety and security offered by Zeno Namespaces.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Access control",
+                "Codes",
+                "Program processors",
+                "Source coding",
+                "Semantics",
+                "Memory management",
+                "Memory architecture"
+            ],
+            "Index Terms": [
+                "Access Control",
+                "Semantic",
+                "Metadata",
+                "Additional Education",
+                "Memory Operations",
+                "Access Permissions",
+                "Shared Memory",
+                "Benchmark",
+                "Level Of Abstraction",
+                "Atomic Units",
+                "Code Generation",
+                "Source Language",
+                "Pipeline Stages",
+                "Code Snippets",
+                "Code Size",
+                "Memory Address",
+                "Address Space",
+                "Implicit Dependence",
+                "Buffer Overflow",
+                "Memory Hierarchy"
+            ],
+            "Author Keywords": [
+                "Security",
+                "Capability",
+                "Compiler",
+                "RISC-V",
+                "Global Shared Memory Space"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -495,7 +979,59 @@
                 "firstName": "Todd",
                 "lastName": "Austin"
             }
-        ]
+        ],
+        "abstract": "Data breaches that penetrate web-facing servers and exfiltrate sensitive user data have become pervasive. Insulating these systems from attack is seemingly impossible due to the ubiquity of software vulnerabilities within cloud applications. It is simply insurmountable to adequately address all such vulnerabilities, and therefore imprudent to rely on software applications to protect user data. Rather, the ideal systems solution upholds data confidentiality, even in the presence of vulnerable or compromised software. Homomorphic encryption (HE) provides these capabilities, but its limited expressiveness and significant runtime overheads have inhibited its adoption. In this work, we explore how trusted hardware can be leveraged to provide data confidentiality in the presence of vulnerable software while achieving practical performance overheads. We present Sequestered Encryption (SE)—a hardware technique for data privacy that sequesters sensitive plaintext data into a small hardware root of trust and encrypts this data in all external microarchitectural structures, thereby rendering secret values inaccessible to software. With optimizations, SE achieves <2.5× performance slowdowns on average compared to native execution, demonstrating that architectural approaches can emerge as data privacy solutions that possess zero trust in software while being dynamic, expressive, and performant.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data privacy",
+                "Microarchitecture",
+                "Runtime",
+                "Software systems",
+                "Rendering (computer graphics)",
+                "Software",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Data Privacy",
+                "Hardware Techniques",
+                "User Data",
+                "Confidential Information",
+                "Sensitive Data",
+                "Information Leakage",
+                "Performance Overhead",
+                "Cloud Applications",
+                "Architecture Approach",
+                "Secret Value",
+                "Sensitivity Values",
+                "Functional Unit",
+                "Secret Key",
+                "Data Owner",
+                "Side-channel",
+                "Encrypted Data",
+                "Instruction Set Architecture",
+                "Threat Model",
+                "Encryption Scheme",
+                "Datapath",
+                "Security Goals",
+                "Deterministic Time",
+                "Decryption Key",
+                "Physical Unclonable Functions",
+                "Hardware Capabilities",
+                "Key Exchange",
+                "Context Switching",
+                "Formal Verification",
+                "Cryptanalysis",
+                "Memory Address"
+            ],
+            "Author Keywords": [
+                "data privacy",
+                "privacy",
+                "data encryption",
+                "secure computation",
+                "hardware capability",
+                "architecture"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -542,7 +1078,56 @@
                 "firstName": "Weidong",
                 "lastName": "Cui"
             }
-        ]
+        ],
+        "abstract": "Code disclosure remains a huge threat to the intellectual property (IP) of any software that is deployed in a remote, untrusted environment. In this threat model, attackers have complete control over the software stack, so software-only solutions for preventing code disclosure have been doomed to fail. A natural alternative is to employ trusted hardware, e.g., an enclave-based architecture such as Intel SGX. However, existing SGX frameworks assume the target application is in the trusted computing base, i.e., free of vulnerabilities which can be exploited to leak code. Making matters worse, simply porting to an enclave-based paradigm is impractical for enterprise-scale applications, incurring large performance overheads and compatibility issues.In this paper, we take a first step towards building a practical, SGX-based code privacy enforcement framework called Pagoda that supports unmodified applications with minimal performance overhead. The key insight of Pagoda is that placing only application code within the enclave prevents arbitrary code accesses, and at the same time avoids the usual performance and compatibility issues stemming from protecting data within enclaves. Pagoda achieves code privacy throughout the application’s lifetime, by loading and decrypting encrypted binaries into the enclave, and enforcing eXecute-Only-Memory (XOM) to block arbitrary accesses to the private code during its execution.We have built a prototype of Pagoda for Linux-based systems on Intel SGX. The performance evaluation on SPEC CPU2017 benchmarks shows that Pagoda incurs an average of 2.1% performance overhead when compared to native runs. To demonstrate its compatibility, we show that Pagoda can run a wide range of applications, from common server applications such as Lighttpd and Memcached, to complicated graphical applications such as Quake without any source code modification.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Privacy",
+                "Trusted computing",
+                "Codes",
+                "Source coding",
+                "Loading",
+                "Prototypes"
+            ],
+            "Index Terms": [
+                "Performance Issues",
+                "Application Server",
+                "Threat Model",
+                "Performance Overhead",
+                "Application Code",
+                "Graphics Applications",
+                "Software Development",
+                "Flow Control",
+                "Types Of Applications",
+                "Main Applications",
+                "Software Libraries",
+                "Public Libraries",
+                "Side-channel",
+                "Function Calls",
+                "Protective Memory",
+                "Shared Object",
+                "Desktop Application",
+                "Error Handling",
+                "Cloud Providers",
+                "System Calls",
+                "Decryption Key",
+                "Dynamic Library",
+                "Cloud Applications",
+                "Kernel Images",
+                "Runtime Overhead",
+                "Boundary Crossing",
+                "Proprietary Software",
+                "Data Protection",
+                "Dynamic Loading",
+                "Hardware Changes"
+            ],
+            "Author Keywords": [
+                "Code privacy",
+                "Intel SGX",
+                "Execute Only Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -583,7 +1168,54 @@
                 "firstName": "Jason",
                 "lastName": "Lowe-Power"
             }
-        ]
+        ],
+        "abstract": "Trusted execution environments (TEEs) are primary enablers of confidential computing. This paper presents a systematization of the existing trusted execution environments in industry and academia. We highlight the common mechanisms these TEEs employ to provide different security guarantees and offer a detailed comparative analysis of different TEE proposals. TEEs are anticipated to be a promising solution for the security challenges in the high-performance computing (HPC) domain. However, this paper shows why the existing TEEs are unsuitable for high-performance computing systems. Finally, we present our call for action to work to evolve the TEE technologies with the evolving high-performance computing landscape.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Industries",
+                "Computers",
+                "High performance computing",
+                "Security",
+                "Proposals"
+            ],
+            "Index Terms": [
+                "Computer System",
+                "High-performance Computing",
+                "Trusted Execution Environment",
+                "Confidential Computing",
+                "Security Guarantees",
+                "High-performance Computing Systems",
+                "Resource Management",
+                "Access Control",
+                "Memory System",
+                "Virtual Machines",
+                "Memory Control",
+                "Denial Of Service",
+                "Side-channel",
+                "Single Thread",
+                "Threat Model",
+                "Physical Isolation",
+                "Modern Computer",
+                "Multi-party Computation",
+                "Formal Verification",
+                "Graviton",
+                "Virtual Memory",
+                "Physical Memory",
+                "Physical Address",
+                "Address Space",
+                "Encryption Key",
+                "Memory Regions",
+                "Memory Management",
+                "Cloud System",
+                "Non-volatile Memory",
+                "Heterogeneous Systems"
+            ],
+            "Author Keywords": [
+                "trusted execution environment (TEE)",
+                "high-performance computing (HPC)",
+                "confidential computing"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -624,7 +1256,51 @@
                 "firstName": "Antonia",
                 "lastName": "Zhai"
             }
-        ]
+        ],
+        "abstract": "Recent work has demonstrated the security risk associated with micro-architecture side-channels. The cache timing side-channel is a particularly popular target due to its availability and high leakage bandwidth. Existing proposals for defending cache side-channel attacks either degrade cache performance and/or limit cache sharing, hence, should only be invoked when the system is under attack. A lightweight monitoring mechanism that detects malicious micro-architecture manipulation in realistic environments is essential for the judicious deployment of these defense mechanisms.In this paper, we propose PREDATOR, a cache side-channel attack detector that identifies cache events caused by an attacker. To detect side-channel attacks in noisy environments, we take advantage of the observation that, unlike non-specific noises, an active attacker alters victim’s micro-architectural states on security critical accesses and thus causes the victim extra cache events on those accesses. PREDATOR uses precise performance counters to collect detailed victim’s access information and analyzes location-based deviations. PREDATOR is capable of detecting five different attacks with high accuracy and limited performance overhead in complex noisy execution environments. PREDATOR remains effective even when the attacker slows the attack rate by 256 times. Furthermore, PREDATOR is able to accurately report details about the attack such as the instruction that accesses the attacked data. In the case of GnuPG RSA [20], PREDATOR can pinpoint the square/multiply operations in the Modulo-Reduce algorithm; and in the case of OpenSSL AES [45], it can identify the accesses to the T<inf xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">e</inf>-Table.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Side-channel attacks",
+                "Detectors",
+                "Interference",
+                "Bandwidth",
+                "Software",
+                "Timing",
+                "Security"
+            ],
+            "Index Terms": [
+                "Side-channel",
+                "Attack Detection",
+                "Precise Monitoring",
+                "Cache Side-channel Attacks",
+                "Cache Side-channel",
+                "Noisy Environments",
+                "Execution Environment",
+                "Performance Overhead",
+                "Predators",
+                "Sampling Period",
+                "Detection Accuracy",
+                "F1 Score",
+                "Effect Of Noise",
+                "Precise Information",
+                "Environmental Noise",
+                "Performance Monitoring",
+                "Whispering",
+                "Clean Environment",
+                "Potential Attacks",
+                "High Detection Accuracy",
+                "Cache Misses",
+                "Content Caching",
+                "Cache Hit",
+                "Attack Onset",
+                "Noise Factors",
+                "Low Overhead",
+                "Noise Tolerance",
+                "Counting Mode",
+                "Different Types Of Attacks",
+                "Threat Model"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -683,7 +1359,51 @@
                 "firstName": "Timothy",
                 "lastName": "Sherwood"
             }
-        ]
+        ],
+        "abstract": "While recent cryptographic techniques enable cooperative multi-party client-server computations under mutual distrust, they also introduce an efficiency tradeoff. Hosting all of the computation from the different parties involved on one set of servers requires everyone to agree on which servers are trustworthy. On the other hand, keeping the computations truly distributed introduces significant delays because of the inherently latency-sensitive nature of the protocols involved. In this paper, we explore the architectural impact of a possible middle path to this problem: resource-poor but physically secure devices interacting with significant (but not mutually trusted) compute and storage resources. The idea is that a small and well-protected “Embassy” can serve as a plot of sovereign soil in an otherwise untrusted environment. Building on techniques from multiparty computation (MPC) we show how such an architecture, even when extremely limited in size, can leverage local network capabilities and asymmetries in cryptographic operations to perform more efficient interactive secure computations. Even with a client-side device $5\\times$ slower, we show that common MPC applications can still be accelerated by $3\\times$ on average. Moreover, we explore the potential for architectural changes to further support multi-party evaluation through the addition of dedicated evaluator hardware further improving performance $1.52\\times$.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Protocols",
+                "System performance",
+                "Neural networks",
+                "Computer architecture",
+                "Soil",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Computational Efficiency",
+                "Local Network",
+                "Physical Security",
+                "Storage Resources",
+                "Multi-party Computation",
+                "Cryptographic Techniques",
+                "Mutual Distrust",
+                "Cryptographic Operations",
+                "Neural Network",
+                "Computational Resources",
+                "High Bandwidth",
+                "Communication Cost",
+                "Public Key",
+                "Side-channel",
+                "Recent Onset",
+                "Communication Overhead",
+                "Threat Model",
+                "Hardware Accelerators",
+                "Multiple Parties",
+                "Gazelle",
+                "Physical Unclonable Functions",
+                "Zero-knowledge Proof",
+                "Hardware Security",
+                "Hybridization Protocol",
+                "Neural Network Inference",
+                "Bit-width",
+                "Secure Channel",
+                "Online Phase",
+                "Encryption",
+                "Class Of Devices"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -724,7 +1444,50 @@
                 "firstName": "Yinqian",
                 "lastName": "Zhang"
             }
-        ]
+        ],
+        "abstract": "Trusted Execution Environment (TEE) is the cornerstone of confidential computing. Among other TEEs, Intel® Secure Guard Extensions (Intel® SGX) is the most prominent solution that is frequently used in the public cloud to provide confidential computing services. Intel® SGX promotes runtime confidentiality and integrity of enclaves with minimal modifications to existing CPU microarchitectures. However, Transient Execution Attacks, such as L1 Terminal Fault (L1TF), Microarchitectural Data Sampling (MDS), and Transactional Asynchronous Abort (TAA) have exposed certain vulnerabilities within Intel® SGX solution. Over the past few years, Intel has developed various countermeasures against most of these vulnerabilities via microcode updates and hardware fixes. However, arguably, there are no existing tools nor studies that can measurably verify the effectiveness of these countermeasures. In this paper, we introduce an automated analysis tool, called ENCLYZER, to evaluate Transient Execution Vulnerabilities on Intel® SGX. We leverage ENCLYZER to comprehensively analyze a set of processors, with multiple versions of their microcode, to verify the correctness of these countermeasures. Our empirical analysis suggests that most countermeasures are effective in preventing attacks that are initiated from the same CPU hyperthread, but less effective for cross-thread attacks. Therefore, the application of the latest microcode patches and disabling hyperthreading is warranted to enhance the security of Intel® SGX-enabled systems. Security Configurations like hyperthreading disabled/enabled are attestable on Intel® SGX platform to provide user with increased confidence in making decision on system trustworthiness. Note that the Security Configurations cannot be modified without a system reboot.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Microarchitecture",
+                "Runtime",
+                "Program processors",
+                "Software",
+                "Hardware",
+                "Security"
+            ],
+            "Index Terms": [
+                "Transient Attack",
+                "Microarchitecture",
+                "Execution Environment",
+                "Real-world Setting",
+                "Multi-core",
+                "Access Control",
+                "Types Of Attacks",
+                "Rollback",
+                "Choice Of Technique",
+                "Threat Model",
+                "Software Framework",
+                "Unit Tests",
+                "Data Cache",
+                "Sequence Of Instructions",
+                "Code Snippets",
+                "Error Handling",
+                "Critical Section",
+                "Kernel Images",
+                "Physical Cores",
+                "Attack Success Rate",
+                "Context Switching",
+                "Linux Kernel",
+                "Source Leakage",
+                "Secret Value",
+                "Structural Basis",
+                "Kernel Parameters",
+                "Instruction Set Architecture",
+                "Control Techniques",
+                "Buffer State"
+            ]
+        }
     },
     {
         "publicationNumber": "9934997",
@@ -740,7 +1503,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE International Symposium on Secure and Private Execution Environment Design (SEED)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9934997",
@@ -756,7 +1521,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE International Symposium on Secure and Private Execution Environment Design (SEED)",
-        "authors": []
+        "authors": [],
+        "abstract": "Lists the conference organizers, sponsors, patrons, and/or committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9934997",
@@ -772,7 +1539,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE International Symposium on Secure and Private Execution Environment Design (SEED)",
-        "authors": []
+        "authors": [],
+        "abstract": "Start of the above-titled section of the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9934997",
@@ -788,7 +1557,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE International Symposium on Secure and Private Execution Environment Design (SEED)",
-        "authors": []
+        "authors": [],
+        "abstract": "Reports on the keynote speeches.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9934997",
@@ -804,7 +1575,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE International Symposium on Secure and Private Execution Environment Design (SEED)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9934997",
@@ -820,7 +1593,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE International Symposium on Secure and Private Execution Environment Design (SEED)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the author index for the conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9934997",
@@ -836,7 +1611,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE International Symposium on Secure and Private Execution Environment Design (SEED)",
-        "authors": []
+        "authors": [],
+        "abstract": "Lists the conference organizers, sponsors, patrons, and/or committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9934997",
@@ -852,6 +1629,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE International Symposium on Secure and Private Execution Environment Design (SEED)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the conference table of contents.",
+        "keywords": {}
     }
 ]

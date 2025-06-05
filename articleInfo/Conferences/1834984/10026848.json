@@ -32,7 +32,36 @@
                 "firstName": "Suren",
                 "lastName": "Byna"
             }
-        ]
+        ],
+        "abstract": "The complex software and hardware I/O stack of HPC platforms makes it challenging for end-users to obtain superior I/O performance and to understand the root causes of I/O bottlenecks they encounter. Despite the continuous efforts from the community to profile I/O performance and propose new optimization techniques and tuning options for improving the performance, there is still a translation gap between profiling and tuning. In this paper, we propose Drishti, a solution to guide scientists in optimizing I/O in their applications by detecting typical I/O performance pitfalls and providing recommendations. We illustrate its applicability in two case studies and evaluate its robustness and performance by summarizing the issues detected in over a hundred thousand Darshan logs collected on the Cori supercomputer at the National Energy Research Scientific Computing Center (NERSC). Drishti can empower end-users and guide them in the I/O optimization journey by shedding some light on everyday I/O performance pitfalls and how to fix them.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Scientific computing",
+                "Logic gates",
+                "Robustness",
+                "Supercomputers",
+                "Software",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Multiple Forms",
+                "Intel Xeon",
+                "Performance Issues",
+                "File System",
+                "Caching",
+                "Action Items",
+                "Command Line Tool",
+                "Performance Bottleneck",
+                "Domain Decomposition"
+            ],
+            "Author Keywords": [
+                "insights",
+                "I/O optimization",
+                "HPC",
+                "Darshan"
+            ]
+        }
     },
     {
         "publicationNumber": "10026848",
@@ -73,7 +102,41 @@
                 "firstName": "Adrian",
                 "lastName": "Jackson"
             }
-        ]
+        ],
+        "abstract": "High-performance object stores are an emerging technology which offers an alternative solution in the field of HPC storage, with potential to address long-standing scalability issues in traditional distributed POSIX file systems due to excessive consistency assurance and metadata prescriptiveness.In this paper we assess the performance of storing object-like data within a standard file system, where the configuration and access mechanisms have not been optimised for object access behaviour, and compare with and investigate the benefits of using an object storage system.Whilst this approach is not exploiting the file system in a standard way, this work allows us to investigate whether the underlying storage technology performance is more or less important than the software interface and infrastructure a file system or object store provides.",
+        "keywords": {
+            "IEEE Keywords": [
+                "File systems",
+                "Scalability",
+                "Benchmark testing",
+                "Writing",
+                "Hardware",
+                "Software",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Storage Systems",
+                "File System",
+                "Field Solution",
+                "Object Size",
+                "File Size",
+                "Non-volatile Memory",
+                "Numerical Weather Prediction",
+                "Access Patterns",
+                "Storage Services",
+                "Storage Nodes",
+                "Use Of Containers",
+                "Server Node"
+            ],
+            "Author Keywords": [
+                "scalable object storage",
+                "next-generation I/O",
+                "storage class memory",
+                "numerical weather prediction",
+                "DAOS",
+                "Lustre"
+            ]
+        }
     },
     {
         "publicationNumber": "10026848",
@@ -120,7 +183,42 @@
                 "firstName": "Suren",
                 "lastName": "Byna"
             }
-        ]
+        ],
+        "abstract": "Most high-fidelity physics simulation codes, such as Flash-X, need to save intermediate results (checkpoint files) to restart or gain insights into the evolution of the simulation. These simulation codes save such intermediate files synchronously, where computation is stalled while the data is written to storage. Depending on the problem size and computational requirements, this file write time can be a substantial portion of the total simulation time. In order to hide the I/O latency of checkpointing, asynchronous I/O methods have been introduced. These methods use background threads for performing I/O while the main threads continue with the simulation. The usage of background threads can compete for resources on the node as well as with communication. In this paper, we evaluate the overheads and the overall benefit of asynchronous I/O in HDF5 to simulations. Results from real-world high-fidelity simulations on the Summit supercomputer show that I/O operation is overlapped with application communication or computation or both, effectively hiding some or all of the I/O latency. Our evaluation shows that while using asynchronous I/O adds overhead to the application, the I/O time reduction is more significant, resulting in overall up to 1.5X performance speedup.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Codes",
+                "Computational modeling",
+                "Instruction sets",
+                "Conferences",
+                "Performance gain",
+                "Supercomputers"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Simulated Evolution",
+                "Simulation Code",
+                "Total Simulation Time",
+                "Physical Simulation",
+                "Time Step",
+                "Computation Time",
+                "Graphics Processing Unit",
+                "Plot Data",
+                "Application Programming Interface",
+                "Parallel System",
+                "File System",
+                "Mesh Refinement",
+                "Total Execution Time",
+                "Small Overhead",
+                "Resource Contention",
+                "Adaptive Mesh Refinement",
+                "High-performance Computing Systems"
+            ],
+            "Author Keywords": [
+                "FlashX AsyncIO HDF5"
+            ]
+        }
     },
     {
         "publicationNumber": "10026848",
@@ -185,7 +283,44 @@
                 "firstName": "Youngjae",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "High-performance computing (HPC) facilities have employed flash-based storage tier near to compute nodes to absorb high I/O demand by HPC applications during periodic system-level checkpoints. To accelerate these checkpoints, proxy-based distributed key-value stores (PD-KVS) gained particular attention for their flexibility to support multiple backends and different network configurations. PD-KVS rely internally on monolithic KVS, such as LevelDB or RocksDB, to exploit the KV interface and query support. However, PD-KVS are unaware of the high redundancy factor in checkpoint data, which can be up to GBs to TBs, and therefore, tend to generate high write and space amplification on these storage layers. In this paper, we propose DenKv which is deduplication-extended node-local LSM-tree-based KVS. DenKv employs asynchronous partially inline dedup (APID) and aims to maintain the performance characteristics of LSM-tree-based KVS while reducing the write and space amplification problems. We implemented DenKv atop BlobDB and showed that our proposed solution maintains performance while reducing write amplification up to 2× and space amplification by 4× on average.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Checkpointing",
+                "High performance computing",
+                "Conferences",
+                "Termination of employment",
+                "Supercomputers",
+                "Data systems",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Key-value Store",
+                "High-performance Computing",
+                "Network Configuration",
+                "Multiple Configurations",
+                "Fingerprint",
+                "Metadata",
+                "Size Threshold",
+                "File System",
+                "Memory Component",
+                "Intermediate Data",
+                "Storage Components",
+                "Number Of Writers",
+                "Bloom Filter",
+                "Chunk Size",
+                "Checkpointing",
+                "Reference Count",
+                "High-performance Computing Systems"
+            ],
+            "Author Keywords": [
+                "High Performance Computing",
+                "Key-Value Stores",
+                "Log-Structures Merge Tree",
+                "Deduplication"
+            ]
+        }
     },
     {
         "publicationNumber": "10026848",
@@ -244,7 +379,42 @@
                 "firstName": "Youngjae",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "A computational storage device (CSD) using Intel SPDK guarantees low latency and high throughput. The CSD must aid background tasks for the storage service applications (background tasks) without harming user I/O performance (foreground I/O) since the CSD is also a storage device. However, in practice, SPDK often increases foreground I/O latencies and underutilizes CPU cores in the CSD. These problems proceed from allocating foreground I/Os and background tasks to the same CPU core because SPDK processes them as the same request without distinguishing them. To tackle this, we propose a Background Task-aware Scheduler (BTS) for CSDs built using SPDK. BTS solves the following problems: (i) idle CPU cores in the CSD are not used, and (ii) the latency of foreground I/O increases due to interference with background tasks. For evaluation, we implemented a key-value interface CSD using SPDK. With BTS, the results show that idle CPUs are properly used to process background tasks by guaranteeing the low latency of foreground I/O when the background tasks are set to deduplication.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Conferences",
+                "Interference",
+                "Throughput",
+                "Data systems",
+                "Task analysis",
+                "Low latency communication"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Storage Devices",
+                "Storage Services",
+                "Time Window",
+                "High-performance Computing",
+                "Hash Function",
+                "Computation Tasks",
+                "File System",
+                "Key Values",
+                "Single Thread",
+                "Normal Situation",
+                "Core Binding",
+                "Increase In Response Time",
+                "Key-value Pairs",
+                "Resource Contention",
+                "CPU Utilization"
+            ],
+            "Author Keywords": [
+                "High Performance I/O",
+                "Intel SPDK",
+                "Computational Storage Device (CSD)"
+            ]
+        }
     },
     {
         "publicationNumber": "10026848",
@@ -260,7 +430,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026848",
@@ -276,7 +448,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026848",
@@ -292,7 +466,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026848",
@@ -308,7 +484,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026848",
@@ -324,7 +502,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026848",
@@ -340,6 +520,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

@@ -38,7 +38,48 @@
                 "firstName": "Gianluca",
                 "lastName": "Palermo"
             }
-        ]
+        ],
+        "abstract": "High-throughput molecular docking is a data-driven simulation methodology to estimate millions of molecules' position and interaction strength (ligands) when interacting with a given protein site. Because of its data-driven nature, the high-throughput molecular docking performance depends on how fast we can ingest data into the processing pipeline and how efficiently we can write molecular docking results to a shared file. This work characterizes the I/O performance of a high-performance, high-throughput molecular docking application, called Docker-HT, running on a supercomputer up to 512 computing nodes with two different parallel I/O configurations. We show that a tuned I/O configuration can improve the overall parallel efficiency from 71% to 90% on 512 nodes and identify and solve a performance degradation observed when running on 16 and 32 nodes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Proteins",
+                "Degradation",
+                "Conferences",
+                "Pipelines",
+                "Supercomputers",
+                "Data systems"
+            ],
+            "Index Terms": [
+                "Molecular Docking",
+                "High-throughput Molecular Docking",
+                "High-performance Computing",
+                "Processing Pipeline",
+                "Parallel Efficiency",
+                "Running",
+                "Group Size",
+                "Input Files",
+                "Virtual Screening",
+                "File System",
+                "Buffer Size",
+                "Number Of Ligands",
+                "Pocket Of Protein",
+                "Default Configuration",
+                "Performance Of Configurations",
+                "Read Operation",
+                "Total Execution Time",
+                "Number Of Writers",
+                "High-performance Computing Systems",
+                "Minimum Bandwidth",
+                "Queue Size",
+                "Workflow"
+            ],
+            "Author Keywords": [
+                "High-Throughput Molecular Docking",
+                "Parallel I/O",
+                "Darshan",
+                "I/O Profiling"
+            ]
+        }
     },
     {
         "publicationNumber": "9651231",
@@ -85,7 +126,40 @@
                 "firstName": "Christian",
                 "lastName": "Terboven"
             }
-        ]
+        ],
+        "abstract": "I/O performance in a multi-user environment is difficult to predict. Users do not know what I/O performance to expect when running and tuning applications. We propose to use the IO500 benchmark as a way to guide user expectations on their application&#x2019;s performance and to aid identifying root causes of their I/O problems that might come from the system. Our experiments describe how we manage user expectation with IO500 and provide a mechanism for system fault identification. This work also provides us with information of the tail latency problem that needs to be addressed and granular information about the impact of I/O technique choices (POSIX and MPI-IO).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fault diagnosis",
+                "Conferences",
+                "Benchmark testing",
+                "Data systems",
+                "Tuning"
+            ],
+            "Index Terms": [
+                "Running",
+                "Data Center",
+                "Performance Variables",
+                "Storage Systems",
+                "Bounding Box",
+                "Worst-case Scenario",
+                "High-performance Computing",
+                "View Of System",
+                "Realistic Expectations",
+                "Caching",
+                "Reasonable Expectation",
+                "Exploratory Work",
+                "Aachen University",
+                "File System",
+                "Overview Of Workflow"
+            ],
+            "Author Keywords": [
+                "I/O",
+                "workflow",
+                "data center",
+                "benchmarking"
+            ]
+        }
     },
     {
         "publicationNumber": "9651231",
@@ -132,7 +206,38 @@
                 "firstName": "Paolo",
                 "lastName": "Faraboschi"
             }
-        ]
+        ],
+        "abstract": "DNN models trained with very large datasets can perform rich deep learning tasks with high accuracy. However, feeding huge volumes of training data exerts significant pressure on IO subsystems as the entire data is re-loaded in random order on every iteration to enable convergence, with very little scope for reuse. To address this challenge, we co-optimize data tiering and iteration in DNN training for any given dataset and model with bandwidth and convergence conscious mini-epoch training (MET). This approach can substantially reduce the IO bandwidth required to provide sustained read throughput matching the processing speed of accelerators. Further, we introduce two different feedback mechanisms to adjust the repeating factor over each mini-epoch during the training. We have evaluated three different applications with MET. Most of them work outof-box with modest MET parameters. The adaptive repeating factor design was able to gain back most of the accuracy drop due lo large MET parameters.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Radio frequency",
+                "Deep learning",
+                "Training data",
+                "Bandwidth",
+                "Throughput",
+                "Data systems"
+            ],
+            "Index Terms": [
+                "Deep Learning",
+                "Training Data",
+                "Deep Neural Network",
+                "Feedback Mechanism",
+                "Accuracy Drop",
+                "Huge Volume Of Data",
+                "Deep Models",
+                "Entire Dataset",
+                "Stochastic Gradient Descent",
+                "Lower Band",
+                "Model Convergence",
+                "File System",
+                "Caching",
+                "Training Design",
+                "Feedback Modalities",
+                "Learning Rate Schedule",
+                "Pipelining"
+            ]
+        }
     },
     {
         "publicationNumber": "9651231",
@@ -167,7 +272,29 @@
                 "firstName": "Marc",
                 "lastName": "Snir"
             }
-        ]
+        ],
+        "abstract": "The paper addresses the following question: Are IO operations of HPC applications properly synchronized? We focus on parallel file systems that satisfy POSIX semantics. The outcome of I/O operations is well-defined provided that conflicting accesses to a file location are not concurrent, but are ordered. Accesses to distinct processes are ordered by the executed MPI communication. We derive the \"happens-before\" relation between I/O calls of HPC runs by analyzing traces collected during program execution. Various optimizations reduce the analysis overhead. We collected traces from 17 representative HPC applications. We found that 10 of them do not perform conflicting I/O accesses and, hence, are properly synchronized by default. The remaining 7 applications properly synchronize the conflicting I/O accesses.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "File systems",
+                "Conferences",
+                "Semantics",
+                "Data systems",
+                "Synchronization",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Synchronization",
+                "Semantic",
+                "Parallel System",
+                "Program Execution",
+                "Directed Acyclic Graph",
+                "Trace Files",
+                "Causal Flow",
+                "Transitive Closure"
+            ]
+        }
     },
     {
         "publicationNumber": "9651231",
@@ -232,7 +359,40 @@
                 "firstName": "Suren",
                 "lastName": "Byna"
             }
-        ]
+        ],
+        "abstract": "Using parallel file systems efficiently is a tricky problem due to inter-dependencies among multiple layers of I/O software, including high-level I/O libraries (HDF5, netCDF, etc.), MPI-IO, POSIX, and file systems (GPFS, Lustre, etc.). Profiling tools such as Darshan collect traces to help understand the I/O performance behavior. However, there are significant gaps in analyzing the collected traces and then applying tuning options offered by various layers of I/O software. Seeking to connect the dots between I/O bottleneck detection and tuning, we propose DXT Explorer, an interactive log analysis tool. In this paper, we present a case study using our interactive log analysis tool to identify and apply various I/O optimizations. We report an evaluation of performance improvement achieved for four I/O kernels extracted from science applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "File systems",
+                "Data visualization",
+                "Software",
+                "Libraries",
+                "Data systems",
+                "Performance analysis",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Interaction Analysis",
+                "Bottleneck Detection",
+                "Parallel System",
+                "Interactive Tool",
+                "File System",
+                "Profiling Tool",
+                "Tuning Parameter",
+                "Intel Xeon",
+                "Performance Issues",
+                "Interactive Visualization",
+                "Set Of Techniques",
+                "Trace Analysis",
+                "Interaction Plots",
+                "Interactive Exploration",
+                "Storage Services",
+                "Performance Bottleneck",
+                "Domain Decomposition",
+                "File Access",
+                "API Calls"
+            ]
+        }
     },
     {
         "publicationNumber": "9651231",
@@ -297,7 +457,43 @@
                 "firstName": "Sarp",
                 "lastName": "Oral"
             }
-        ]
+        ],
+        "abstract": "In high-performance computing (HPC), scientific applications often manage a massive amount of data using I/O libraries. These libraries provide convenient data model abstractions, help ensure data portability, and, most important, empower end users to improve I/O performance by tuning configurations across multiple layers of the HPC I/O stack. We propose SCTuner, an autotuner integrated within the I/O library itself to dynamically tune both the I/O library and the underlying I/O stack at application runtime. To this end, we introduce a statistical benchmarking method to profile the behaviors of individual supercomputer I/O subsystems with varied configurations across I/O layers. We use the benchmarking results as the built-in knowledge in SCTuner, implement an I/O pattern extractor, and plan to implement an online performance tuner as the SCTuner runtime. We conducted a benchmarking analysis on the Summit supercomputer and its GPFS file system Alpine. The preliminary results show that our method can effectively extract the consistent I/O behaviors of the target system under production load, building the base for I/O autotuning at application runtime.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Tuners",
+                "File systems",
+                "Production",
+                "Benchmark testing",
+                "Supercomputers",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "End-users",
+                "Target System",
+                "File System",
+                "Benchmark Methods",
+                "Benchmark Results",
+                "Pattern Extraction",
+                "Online Performance",
+                "Dynamic Tuning",
+                "Deep Neural Network",
+                "Rational Design",
+                "Parameter Settings",
+                "Performance Variables",
+                "Tuning Parameter",
+                "First Quartile",
+                "Storage Systems",
+                "Block Size",
+                "Storage Devices",
+                "Buffer Size",
+                "Target Environment",
+                "Checkpointing",
+                "High-performance Computing Systems"
+            ]
+        }
     },
     {
         "publicationNumber": "9651231",
@@ -332,7 +528,36 @@
                 "firstName": "Nicholas J.",
                 "lastName": "Wright"
             }
-        ]
+        ],
+        "abstract": "The proliferation of extreme-scale analytics and AI have motivated new parallel storage systems that use flash and storage class memory (SCM) exclusively to achieve the best attributes of both media, and such storage systems have clear relevance in HPC. We present a preliminary evaluation of one such exemplar system from VAST Data, which incorporates SCM and QLC flash in a single namespace, to quantify the benefit of such architectures. We show that traditional I/O performance measurement techniques struggle to properly characterize all-flash storage systems because they were designed to test much simpler storage systems, and we propose alternative methods to better reflect the performance that real workflows can expect.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Conferences",
+                "Bandwidth",
+                "Benchmark testing",
+                "Media",
+                "Aging",
+                "Data systems",
+                "Performance analysis"
+            ],
+            "Index Terms": [
+                "Storage Systems",
+                "Parallel System",
+                "Vast Data",
+                "High Performance",
+                "User Data",
+                "Data Reduction",
+                "Reading Test",
+                "File System",
+                "Dimensions Of Performance",
+                "Reading Performance",
+                "Caching",
+                "Data Placement",
+                "Datapath",
+                "Artificial Aging",
+                "Random Read"
+            ]
+        }
     },
     {
         "publicationNumber": "9651231",
@@ -348,7 +573,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM Sixth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651231",
@@ -364,7 +591,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM Sixth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651231",
@@ -380,7 +609,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM Sixth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651231",
@@ -396,7 +627,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM Sixth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651231",
@@ -412,7 +645,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM Sixth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651231",
@@ -428,6 +663,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM Sixth International Parallel Data Systems Workshop (PDSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     }
 ]

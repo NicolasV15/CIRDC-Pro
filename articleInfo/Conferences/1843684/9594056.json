@@ -44,7 +44,43 @@
                 "firstName": "Richard",
                 "lastName": "Wesel"
             }
-        ]
+        ],
+        "abstract": "Neural Normalized MinSum (N-NMS) decoding delivers better frame error rate (FER) performance on linear block codes than conventional Normalized MinSum (NMS) by assigning dynamic multiplicative weights to each check-to-variable node message in each iteration. Previous N-NMS efforts primarily investigated short block codes (N < 1000), because the number of N-NMS parameters required to be trained scales proportionately to the number of edges in the parity check matrix and the number of iterations. This imposes an impractical memory requirement for conventional tools such as Pytorch and Tensorflow to create the neural network and store gradients. This paper provides efficient methods of training the parameters of N-NMS decoders that support longer block lengths. Specifically, this paper introduces a family of Neural 2-dimensional Normalized (N-2D-NMS) decoders with various reduced parameter sets and shows how performance varies with the parameter set selected. The N-2D-NMS decoders share weights with respect to check node and/or variable node degree. Simulation results justify a reduced parameter set, showing that the trained weights of N- NMS have a smaller value for the neurons corresponding to larger check/variable node degree. Further simulation results on a (3096,1032) Protograph-Based Raptor-Like (PBRL) code show that the N-2D-NMS decoder can achieve the same FER as N- NMS while also providing at least a 99.7% parameter reduction. Furthermore, the N-2D-NMS decoder for the (16200,7200) DVBS- 2 standard LDPC code shows a lower error floor than belief propagation. Finally, this paper proposes a hybrid decoder training structure that utilizes a neural network which combines a feedforward module with a recurrent module. The decoding performance and parameter reduction of the hybrid training depends on the length of recurrent module of the neural network.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Simulation",
+                "Neurons",
+                "Parity check codes",
+                "Decoding",
+                "Feedforward neural networks",
+                "Block codes"
+            ],
+            "Index Terms": [
+                "Low-density Parity-check Codes",
+                "Neural Network",
+                "Simulation Results",
+                "Degree Of Variability",
+                "PyTorch",
+                "TensorFlow",
+                "Block Length",
+                "Standard Code",
+                "Code Blocks",
+                "Linear Code",
+                "Parity-check",
+                "Variable Nodes",
+                "Decoding Performance",
+                "Belief Propagation",
+                "Lower Floor",
+                "Error Floor",
+                "Parity-check Matrix",
+                "Additive Noise",
+                "Trainable Parameters",
+                "Maximum Iteration",
+                "Binary Phase Shift Keying",
+                "Neural Decoding"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -67,7 +103,38 @@
                 "firstName": "Valentin",
                 "lastName": "Savin"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose a Gradient Descent Bit-Flipping (GDBF) decoding with momentum, which considers past updates to provide inertia to the decoding process. We show that GDBF or randomized GDBF decoders with momentum may closely approach the floating-point Belief-Propagation decoding performance, and even outperform it in the error-floor region, especially for graphs with high connectivity degree.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encoding",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Gradient Descent",
+                "Bit-flipping Decoding",
+                "Decoding Performance",
+                "High Degree Of Connectivity",
+                "Objective Function",
+                "Deep Neural Network",
+                "Additive Noise",
+                "Local Optimum",
+                "Local Energy",
+                "Previous Iteration",
+                "Gradient-based Optimization",
+                "Codeword",
+                "Regional Performance",
+                "Low-density Parity-check Codes",
+                "Use Of Randomization",
+                "Momentum Term",
+                "Average Loop",
+                "Error Floor",
+                "Momentum Parameter",
+                "Previous Update",
+                "Word Error Rate",
+                "Decoder Parameters"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -92,9 +159,9 @@
             },
             {
                 "id": 37086305081,
-                "preferredName": "Sebastian D\u00f6rner",
+                "preferredName": "Sebastian Dörner",
                 "firstName": "Sebastian",
-                "lastName": "D\u00f6rner"
+                "lastName": "Dörner"
             },
             {
                 "id": 37085796220,
@@ -108,7 +175,44 @@
                 "firstName": "Stephan ten",
                 "lastName": "Brink"
             }
-        ]
+        ],
+        "abstract": "Attracted by its scalability towards practical code-word lengths, we revisit the idea of Turbo-autoencoders for end-to-end learning of PHY-Layer communications. For this, we study the existing concepts of Turbo-autoencoders from the literature and compare the concept with state-of-the-art classical coding schemes. We propose a new component-wise training algorithm based on the idea of Gaussian a priori distributions that reduces the overall training time by almost a magnitude. Further, we propose a new serial architecture inspired by classical serially concatenated Turbo code structures and show that a carefully optimized interface between the two component autoencoders is required. To the best of our knowledge, these serial Turbo autoencoder structures are the best known neural network based learned sequences that can be trained from scratch without any required expert knowledge in the domain of channel codes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Knowledge engineering",
+                "Codes",
+                "Scalability",
+                "Neural networks",
+                "Turbo codes",
+                "Encoding"
+            ],
+            "Index Terms": [
+                "Forward Error Correction",
+                "Neural Network",
+                "Scalable",
+                "Autoencoder",
+                "Training Algorithm",
+                "Series Of Structures",
+                "Deep Learning",
+                "Convolutional Neural Network",
+                "Likelihood Ratio Test",
+                "Additive Noise",
+                "Multiple-input Multiple-output",
+                "Bit Error Rate",
+                "Block Length",
+                "Neural Network Structure",
+                "Complex Training",
+                "Double Arrow",
+                "Decoder Structure",
+                "Binary Phase Shift Keying",
+                "Low-density Parity-check",
+                "Cyclic Redundancy Check",
+                "Block Error Rate",
+                "Lower Bit Error Rate",
+                "Transceiver Design"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -149,7 +253,42 @@
                 "firstName": "Cong",
                 "lastName": "Ling"
             }
-        ]
+        ],
+        "abstract": "We study the design of joint source-channel polar coding for biased Bernoulli sources in this paper, focusing on short blocklengths. We first apply the CRC-aided successive cancellation decoding scheme to source polar coding and demonstrate its superior performance at short blocklengths. Then we design a joint decoding scheme for concatenated source-channel polar codes, using soft information from the source decoder and source CRC bits to aid channel decoding. Simulations show that the proposed scheme outperforms separate source-channel polar coding and can even break through the finite blocklength bound of separate source-channel coding in some cases.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Focusing",
+                "Encoding",
+                "Decoding",
+                "Polar codes"
+            ],
+            "Index Terms": [
+                "Polar Codes",
+                "Short Blocklength",
+                "Joint Source-channel",
+                "Source Documents",
+                "Design Codes",
+                "Separate Codes",
+                "Decoding Scheme",
+                "Soft Information",
+                "Cyclic Redundancy Check",
+                "Sufficiently Large",
+                "Source Code",
+                "Internet Of Things",
+                "Original Source",
+                "Error Performance",
+                "Source Distribution",
+                "Information Bits",
+                "Forward Error Correction",
+                "Decoding Process",
+                "List Size",
+                "Probable Candidate",
+                "Block Error Rate",
+                "Candidate Paths",
+                "Decoding Algorithm",
+                "Low-density Parity-check Codes"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -190,7 +329,57 @@
                 "firstName": "Warren J.",
                 "lastName": "Gross"
             }
-        ]
+        ],
+        "abstract": "The recursive projection-aggregation (RPA) decoder is a recently proposed near maximum likelihood (ML) decoder for Reed-Muller (RM) codes with low rates and short code lengths. However, the high computational complexity of RPA decoding is a major bottleneck for using RPA in applications that have a limited resource and energy budget. In this work, syndrome-based early stopping techniques as well as a scheduling scheme are proposed for the RPA decoder, which help in reducing the computational complexity while keeping similar decoding performance. Comparing to the baseline RPA decoder, the proposed techniques result in a 69−98% reduction in the average computational complexity for a target frame error rate (FER) of 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">−5</sup>. Additionally, this work introduces hardware-friendly approximation functions to replace the RPA’s computationally expensive transcendental projection function.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Processor scheduling",
+                "Error analysis",
+                "Reed-Muller codes",
+                "Encoding",
+                "Computational complexity",
+                "Maximum likelihood decoding"
+            ],
+            "Index Terms": [
+                "Limited Resources",
+                "Computational Complexity",
+                "Shorter Length",
+                "Function Approximation",
+                "Early Stopping",
+                "Complexity Reduction",
+                "High Computational Complexity",
+                "Energy Budget",
+                "Scheduling Scheme",
+                "Code Length",
+                "Decoding Performance",
+                "Computational Complexity Reduction",
+                "Expensive Function",
+                "Likelihood Ratio Test",
+                "Number Of Projects",
+                "Binary Vector",
+                "Output Channels",
+                "Generator Matrix",
+                "Error Vector",
+                "Codeword",
+                "Parity-check Matrix",
+                "Cyclic Redundancy Check",
+                "Efficient Decoding",
+                "Early Stopping Criterion",
+                "Decoding Process",
+                "Ultra-reliable Low-latency Communications",
+                "Polar Codes",
+                "Noisy Channels",
+                "Linear Code"
+            ],
+            "Author Keywords": [
+                "Reed-Muller codes",
+                "maximum likelihood (ML) decoding",
+                "recursive projection-aggregation (RPA) decoder",
+                "short codes",
+                "early stopping criteria"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -219,7 +408,38 @@
                 "firstName": "Jia",
                 "lastName": "Zhan"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose using a single protograph to design joint source-channel codes (JSCCs). We present a generalized algorithm, called protograph extrinsic information transfer for JSCC algorithm (PEXIT-JSCC algorithm), for analyzing the channel threshold of the proposed JSCC. Using the classic AR3A and AR4JA protographs, we construct AR3A-JSCC and AR4JA-JSCC codes. We analyze their decoding thresholds and compare their performance with JSCC systems using optimized double protograph low-density-party-check codes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encoding",
+                "Parity check codes",
+                "Decoding",
+                "Optimization",
+                "Floors",
+                "Genetic algorithms"
+            ],
+            "Index Terms": [
+                "Joint Source-channel",
+                "Additive Noise",
+                "Bit Error Rate",
+                "Error Performance",
+                "Forward Error Correction",
+                "Types Of Codes",
+                "Variable Nodes",
+                "Low-density Parity-check Codes",
+                "Decoding Algorithm",
+                "Low-density Parity-check",
+                "Error Floor",
+                "Parity-check Matrix",
+                "Entropy Source"
+            ],
+            "Author Keywords": [
+                "JPEXIT analysis",
+                "protograph LDPC code",
+                "joint source-channel coding (JSCC)"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -242,7 +462,49 @@
                 "firstName": "Valentin",
                 "lastName": "Savin"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a new coded modulation scheme for reliable transmission of short data packets at very low signal-to-noise ratio, combining cyclic code shift keying modulation and non-binary polar coding. We consider non-binary polar codes defined over Galois fields, and propose a new design methodology, aimed at optimizing the choice of the kernel coefficients. Numerical results show that the system performance is close to the achievable limits in the finite blocklength regime.",
+        "keywords": {
+            "IEEE Keywords": [
+                "System performance",
+                "Design methodology",
+                "Modulation",
+                "Encoding",
+                "Decoding",
+                "Reliability",
+                "Polar codes"
+            ],
+            "Index Terms": [
+                "Polar Codes",
+                "Signal-to-noise",
+                "Design Methodology",
+                "Finite Field",
+                "Packet Transmission",
+                "Choice Of Coefficients",
+                "Data Packet Transmission",
+                "Monte Carlo Simulation",
+                "Decoding",
+                "Internet Of Things",
+                "Additive Noise",
+                "Mutual Information",
+                "Optimization Procedure",
+                "Error Probability",
+                "Random Permutations",
+                "Achievable Rate",
+                "Binary Code",
+                "Channel Capacity",
+                "Word Error Rate",
+                "Maximum Achievable Rate",
+                "Virtual Channel",
+                "Code Construction",
+                "Forward Error Correction",
+                "Bad Channels",
+                "Noisy Channels",
+                "Codeword",
+                "Spectral Efficiency",
+                "Alphabet"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -277,7 +539,42 @@
                 "firstName": "Tom",
                 "lastName": "Richardson"
             }
-        ]
+        ],
+        "abstract": "Hybrid automatic retransmission request (HARQ) in modern wireless communication systems such as 4G and 5G is designed to allowing efficient combining of multiple (re)transmissions so as to to achieve coding gain. The coding performance for each retransmission in isolation may, however, not be consistent, potentially lacking self-decodability of individual retransmissions. This can require the UE to receive multiple additional retransmissions when the initial transmission is missed, undermining the intended efficiency of the HARQ system. In this paper, we discuss the self-decodability of HARQ retransmissions and show it can be improved, providing a balance between coding gain and self-decodability, by modifying the rate-matching operation without changing the channel code construction. We present results illustrating the gains in self-decodability using the proposed scheme.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wireless communication",
+                "Systematics",
+                "5G mobile communication",
+                "Parity check codes",
+                "Encoding",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "5G New Radio",
+                "Forward Error Correction",
+                "User Equipment",
+                "Block Size",
+                "Coding System",
+                "Flexible Design",
+                "Wide Range Of Sizes",
+                "Fading Channel",
+                "Information Bits",
+                "Formation Of Channels",
+                "Implementation Complexity",
+                "Wide Range Of Rates",
+                "Start Location",
+                "Parity-check",
+                "Cyclic Shift",
+                "Circular Buffer",
+                "Block Error Rate"
+            ],
+            "Author Keywords": [
+                "channel codes",
+                "IR-HARQ",
+                "self-decodability"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -296,9 +593,9 @@
         "authors": [
             {
                 "id": 37086196802,
-                "preferredName": "Mathieu L\u00e9onardon",
+                "preferredName": "Mathieu Léonardon",
                 "firstName": "Mathieu",
-                "lastName": "L\u00e9onardon"
+                "lastName": "Léonardon"
             },
             {
                 "id": 37591295000,
@@ -306,7 +603,49 @@
                 "firstName": "Vincent",
                 "lastName": "Gripon"
             }
-        ]
+        ],
+        "abstract": "Polar codes can theoretically achieve very competitive Frame Error Rates. In practice, their performance may depend on the chosen decoding procedure, as well as other parameters of the communication system they are deployed upon. As a consequence, designing efficient polar codes for a specific context can quickly become challenging. In this paper, we introduce a methodology that consists in training deep neural networks to predict the frame error rate of polar codes based on their frozen bit construction sequence. We introduce an algorithm based on Projected Gradient Descent that leverages the gradient of the neural network function to generate promising frozen bit sequences. We showcase on generated datasets the ability of the proposed methodology to produce codes more efficient than those used to train the neural networks, even when the latter are selected among the most efficient ones.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Deep learning",
+                "Codes",
+                "Error analysis",
+                "Neural networks",
+                "Prediction algorithms",
+                "Reproducibility of results"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Coding Performance",
+                "Polar Codes",
+                "Error Rate",
+                "Gradient Descent",
+                "Function Neural Network",
+                "Coding Efficiency",
+                "Projected Gradient Descent",
+                "Training Set",
+                "High-dimensional",
+                "Monte Carlo Simulation",
+                "Validation Set",
+                "Nonlinear Function",
+                "Hidden Layer",
+                "Additive Noise",
+                "Larger Ones",
+                "Chance Level",
+                "Neural Network Training",
+                "Channel Model",
+                "Bit Error Rate",
+                "Error Inflation",
+                "Neurons In The Hidden Layer",
+                "Decoding Algorithm",
+                "Bit Error",
+                "Neural Network Prediction",
+                "Gradient Step",
+                "Gaussian Approximation",
+                "Effect Of Depth"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -331,8 +670,8 @@
             },
             {
                 "id": 37331206500,
-                "preferredName": "Val\u00e9rian Mannoni",
-                "firstName": "Val\u00e9rian",
+                "preferredName": "Valérian Mannoni",
+                "firstName": "Valérian",
                 "lastName": "Mannoni"
             },
             {
@@ -347,7 +686,47 @@
                 "firstName": "Inbar",
                 "lastName": "Fijalkow"
             }
-        ]
+        ],
+        "abstract": "This article deals with the decoding of short block length Low Density Parity Check (LDPC) codes. It has already been demonstrated that Belief Propagation (BP) can be adjusted to the short coding length, thanks to its modeling by a Recurrent Neural Network (BP-RNN). To strengthen this adaptation, we introduce a new training method for the BP-RNN. Its aim is to specialize the BP-RNN on error events sharing the same structural properties. This approach is then associated with a new decoder composed of several parallel specialized BP-RNN decoders, each trained on correcting a different type of error events. Our results show that the proposed specialized BP-RNNs working in parallel effectively enhance the decoding capacity for short block length LDPC codes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Adaptation models",
+                "Recurrent neural networks",
+                "Parity check codes",
+                "Encoding",
+                "Decoding",
+                "Belief propagation"
+            ],
+            "Index Terms": [
+                "Short Codes",
+                "Parallel Decoding",
+                "Neural Network",
+                "Recurrent Neural Network",
+                "Effect Of Error",
+                "Code Length",
+                "Parity-check",
+                "Belief Propagation",
+                "Low-density Parity-check Codes",
+                "Low-density Parity-check",
+                "Training Set",
+                "Likelihood Ratio Test",
+                "Internet Of Things",
+                "Additive Noise",
+                "Short Cycle",
+                "Similarity Coefficient",
+                "Bit Error Rate",
+                "Noise Model",
+                "Codeword",
+                "Signal-to-noise Ratio Values",
+                "Decoding Performance",
+                "Signal-to-noise Ratio Gain",
+                "Decoding Algorithm",
+                "Cyclic Redundancy Check",
+                "Event Classification",
+                "Variance Σ2"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -382,7 +761,45 @@
                 "firstName": "F.",
                 "lastName": "Ghaffari"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a simplified version of the Successive Cancellation (SC) decoder for Non-Binary Polar (NB-Polar) codes. The proposed decoder, named Successive Cancellation Min-Sum (SC-MS), is exclusively formulated in the Log-Likelihood Ratio (LLR) domain to reduce the decoding complexity of the SC decoder. The NB-Polar codes are associated with Cyclic Code-Shift Keying (CCSK) modulation to obtain a new coded modulation scheme for ultra-low signal-to-noise ratios (SNRs). The quantized version of the SC-MS decoder is investigated using quantized LLRs on optimized size of bits. Our simulation results show that the SC-MS decoder presents a negligible performance degradation with respect to the SC decoder for code length N< 2048. Additionally, the 2-bit SCMS and 3-bit SC-MS offer a good trade-off between decoding performance and complexity.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Codes",
+                "Monte Carlo methods",
+                "Simulation",
+                "Modulation",
+                "Encoding",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Simulation Results",
+                "Likelihood Ratio Test",
+                "Key Modulator",
+                "Code Length",
+                "Decoding Performance",
+                "Negligible Degradation",
+                "Polar Codes",
+                "Monte Carlo Simulation",
+                "Internet Of Things",
+                "Pseudo-random",
+                "Binary Code",
+                "Update Rule",
+                "Codeword",
+                "Forward Error Correction",
+                "Signal-to-noise Ratio Values",
+                "Finite Field",
+                "Decoding Process",
+                "Variable Nodes",
+                "Cyclic Shift",
+                "Information Symbols",
+                "Finite Precision",
+                "Successful Decoding",
+                "Binary Phase Shift Keying",
+                "Low Power Wide Area"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -419,15 +836,15 @@
             },
             {
                 "id": 37279105800,
-                "preferredName": "Stefano Calabr\u00f2",
+                "preferredName": "Stefano Calabrò",
                 "firstName": "Stefano",
-                "lastName": "Calabr\u00f2"
+                "lastName": "Calabrò"
             },
             {
                 "id": 37397844800,
-                "preferredName": "Georg B\u00f6cherer",
+                "preferredName": "Georg Böcherer",
                 "firstName": "Georg",
-                "lastName": "B\u00f6cherer"
+                "lastName": "Böcherer"
             },
             {
                 "id": 37530296100,
@@ -441,7 +858,32 @@
                 "firstName": "Talha",
                 "lastName": "Rahman"
             }
-        ]
+        ],
+        "abstract": "Coded modulation with probabilistic amplitude shaping (PAS) is considered for intensity modulation/direct detection channels with a transmitter peak-power constraint. PAS is used to map bits to a uniform PAM-6 distribution and outperforms PAM-8 for rates up to around 2.3 bits per channel use. PAM-6 with PAS also outperforms a cross-shaped QAM-32 constellation by up to 1dB and 0.65dB after bit-metric soft- and hard decoding, respectively. An alternative PAM-6 scheme based on a framed-cross-shaped QAM-32 constellation is proposed that shows similar gains.",
+        "keywords": {
+            "IEEE Keywords": [
+                "PSNR",
+                "Costs",
+                "Transmitters",
+                "Shape",
+                "Modulation",
+                "Probabilistic logic",
+                "Parity check codes"
+            ],
+            "Index Terms": [
+                "Coded Modulation",
+                "Peak Power Constraint",
+                "Uniform Distribution",
+                "Additive Noise",
+                "Forward Error Correction",
+                "Parity-check",
+                "Pulse Amplitude Modulation",
+                "Low-density Parity-check Codes",
+                "Low-density Parity-check",
+                "Constellation Points",
+                "Gray Code"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -482,7 +924,46 @@
                 "firstName": "David",
                 "lastName": "Gnaedig"
             }
-        ]
+        ],
+        "abstract": "This paper revisits several methods used in iterative decoders to improve the performance of the LTE Turbo code for small information blocks. By considering the iterative decoder as a chaotic system, some explanations are given on the unexpected behavior of several post-processing algorithms. A \"dither-inspired\" algorithm, called blind candidate decoding, is proposed. This algorithm improves error correction by performing several decoding attempts from a set of perturbed input. Combined with the use of the CRC as an outer code, a performance improvement of up to 1 dB in signal to noise ratio can be obtained for a frame error rate of 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">−3</sup>. Moreover, a stopping criterion based on the Euclidean distance between the output and the input is proposed to mitigate the critical problem of undetected errors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Error analysis",
+                "Euclidean distance",
+                "Tools",
+                "Turbo codes",
+                "Iterative algorithms",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Turbo Codes",
+                "Signal-to-noise",
+                "Long-term Development",
+                "Chaotic System",
+                "Cyclic Redundancy Check",
+                "Likelihood Ratio Test",
+                "Internet Of Things",
+                "Additive Noise",
+                "Performance Gain",
+                "Block Length",
+                "Information Bits",
+                "Forward Error Correction",
+                "Decoding Process",
+                "Random Perturbations",
+                "Power-of-two",
+                "Decoding Algorithm",
+                "Low-density Parity-check",
+                "Algorithm Checks",
+                "Error Floor"
+            ],
+            "Author Keywords": [
+                "Turbo Codes",
+                "candidate decoding",
+                "Flip and Check",
+                "Forced Symbol Methods"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -517,7 +998,46 @@
                 "firstName": "Gauri",
                 "lastName": "Joshi"
             }
-        ]
+        ],
+        "abstract": "Machine learning today involves massive distributed computations running on cloud servers, which are highly susceptible to slowdown or straggling. Recent work has demonstrated the effectiveness of erasure codes in mitigating such slowdown for linear computations, by adding redundant computations such that the entire computation can be recovered as long as a subset of nodes finish their assigned tasks. However, most machine learning algorithms typically involve non-linear computations that cannot be directly handled by these coded computing approaches. In this work, we propose a coded computing strategy for mitigating the effect of stragglers on non-linear distributed computations. Our strategy relies on the observation that many expensive non-linear functions can be decomposed into sums of cheap non-linear functions. We show that erasure codes, specifically rateless codes can be used to generate and compute random linear combinations of these functions at the nodes such that the original function can be computed as long as a subset of nodes return their computations. Simulations and experiments on AWS Lambda demonstrate the superiority of our approach over various uncoded baselines.A full version of this paper is accessible at [1]",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Machine learning algorithms",
+                "Computational modeling",
+                "Distributed databases",
+                "Machine learning",
+                "Encoding",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Nonlinear Estimation",
+                "Rateless Codes",
+                "Machine Learning",
+                "Learning Algorithms",
+                "Nonlinear Function",
+                "Distributed Computing",
+                "Subset Of Nodes",
+                "Entire Computation",
+                "Expensive Function",
+                "Random Variables",
+                "Kernel Function",
+                "Taylor Series",
+                "Extra Cost",
+                "Average Degree",
+                "Test Points",
+                "Submatrix",
+                "Sum Of Terms",
+                "Setup Time",
+                "Partial Sums",
+                "MapReduce",
+                "Reed-Solomon Codes",
+                "Worker Nodes",
+                "Replication Strategy",
+                "Distributed Fashion",
+                "Successful Decoding"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -552,7 +1072,40 @@
                 "firstName": "Xiao",
                 "lastName": "Ma"
             }
-        ]
+        ],
+        "abstract": "Spatially coupled serially concatenated codes (SC-SCCs) outperform the spatially coupled parallel concatenated codes (SC-PCCs) both in the waterfall region and the error-floor region. Although the SC-SCCs with a weak outer convolutional code (CC) and a strong inner CC reveal good waterfall performance, their error-floors are still too high. This paper introduces the recursive encoding structure into SC-SCCs to reduce the error-floor. We introduce the hybrid coupled serially concatenated codes (HC-SCCs), in which spatial coupling is achieved by taking a portion of the encoding outputs of both the outer and the inner encoders as the input of the current inner encoder. As a result, the proposed HC-SCCs are recursive in nature. The exact density evolution equations of the HC-SCCs are derived. Numerical results are provided to show the performance advantages of the proposed HC-SCCs. Particularly, simulation results show that, compared to the original SC-SCCs, about two orders of magnitude error-floor performance improvement are obtained with the proposed HC-SCCs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Couplings",
+                "Convolutional codes",
+                "Simulation",
+                "Encoding",
+                "Mathematical models",
+                "Concatenated codes",
+                "Iterative decoding"
+            ],
+            "Index Terms": [
+                "Concatenated Coding",
+                "Numerical Results",
+                "Evolution Equations",
+                "Order Of Improvement",
+                "Input Encoding",
+                "Spatial Coupling",
+                "Convolutional Codes",
+                "Demultiplexed",
+                "Additive Noise",
+                "Time Instants",
+                "Bit Error Rate",
+                "Information Bits",
+                "Maximum A Posteriori",
+                "Codeword",
+                "Parity-check",
+                "Subsequences Of Length",
+                "Low-density Parity-check Codes",
+                "Binary Phase Shift Keying",
+                "Class Of Codes"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -581,7 +1134,44 @@
                 "firstName": "Lele",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "Gradient coding is a coding theoretic framework to provide robustness against slow or unresponsive machines, known as stragglers, in distributed machine learning applications. Recently, Kadhe et al. proposed a gradient code based on a combinatorial design, called balanced incomplete block design (BIBD), which is shown to outperform many existing gradient codes in worst-case adversarial straggling scenarios. However, parameters for which such BIBD constructions exist are very limited. In this paper, we aim to overcome such limitations and construct gradient codes which exist for a wide range of parameters while retaining the superior performance of BIBD gradient codes. Two such constructions are proposed, one based on a probabilistic construction that relax the stringent BIBD gradient code constraints, and the other based on taking the Kronecker product of existing gradient codes. Theoretical error bounds for worst-case adversarial straggling scenarios are derived. Simulations show that the proposed constructions can outperform existing gradient codes with similar redundancy per data piece.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Redundancy",
+                "Machine learning",
+                "Probabilistic logic",
+                "Encoding",
+                "Robustness",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Superior Performance",
+                "Kronecker Product",
+                "Combination Of Design",
+                "Wide Range Of Parameters",
+                "Coding Performance",
+                "Incomplete Block Design",
+                "Balanced Block",
+                "Distributed Machine Learning",
+                "Training Data",
+                "Learning Algorithms",
+                "Linear Combination",
+                "Column Vector",
+                "Distribution System",
+                "Proof Of Theorem",
+                "Key Observation",
+                "Matrix M",
+                "Generator Matrix",
+                "Optimal Vector",
+                "Incidence Matrix",
+                "Gradient Calculation",
+                "Worst-case Error",
+                "Nonnegative Solution",
+                "Code In Order"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -616,7 +1206,55 @@
                 "firstName": "Norbert",
                 "lastName": "Wehn"
             }
-        ]
+        ],
+        "abstract": "Channel coding, or Forward Error Correction (FEC), is a crucial technology component in any digital baseband processing. Decoder IPs for advanced coding schemes like Turbo, LDPC, and Polar codes are major sources of power consumption and silicon area in baseband SOCs and largely contribute to the baseband latency and throughput limitations. Although we observe a continuous increase in throughput and lower latency requirements in emerging communication standards, the available power and energy budget does not increase due to, e.g., thermal design power constraints. If we look on the silicon technology progress, the transistor density still follows Moore’s law, but the power improvement largely slows down, that exacerbates the power density problem. Hence, for use cases with high throughput requirements like B5G, power, power density and energy efficiency become a major bottleneck for the successful application of advanced channel coding from a silicon implementation perspective. In this paper we focus especially on LDPC and Polar codes since they are part of many communication standards. Challenges, power and energy optimizations on the different design levels for decoders targeting throughput towards 1Tb/s and various trade-offs are presented.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Power system measurements",
+                "Baseband",
+                "Forward error correction",
+                "Throughput",
+                "Silicon",
+                "Energy efficiency",
+                "Parity check codes"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "Forward Error Correction",
+                "Efficient Decoding",
+                "High Throughput",
+                "Power Consumption",
+                "Power Density",
+                "Energy Budget",
+                "Increase In Throughput",
+                "Moore’s Law",
+                "Silicon Area",
+                "Throughput Requirements",
+                "Polar Codes",
+                "Large Improvement",
+                "Bit Error Rate",
+                "Key Performance Indicators",
+                "Bit Error",
+                "Improve Energy Efficiency",
+                "Least Significant Bit",
+                "Clock Frequency",
+                "Critical Path",
+                "Decoding Algorithm",
+                "Iterative Stages",
+                "Decoder Layer",
+                "Pipeline Stages",
+                "Code Blocks",
+                "First-in-first-out",
+                "Decoder Architecture",
+                "Clock Cycles",
+                "Number Of Wires",
+                "Variable Nodes"
+            ],
+            "Author Keywords": [
+                "Forward Error Correction",
+                "Beyond 5G"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -651,7 +1289,47 @@
                 "firstName": "Paul H.",
                 "lastName": "Siegel"
             }
-        ]
+        ],
+        "abstract": "A new family of modified polar codes and a new permutation selection scheme for belief propagation list (BPL) decoding are presented. We first propose a new code construction methodology to interpolate between Reed-Muller (RM) codes and polar codes. By taking advantage of an existing partial order on bit-channels whose corresponding indices share the same Hamming weight, we analyze the complexity of the new construction method. It is shown that we need to compute the reliability of roughly a fraction 1/log<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">3/2</sup>N of all the bit-channels contained in the subset. Then, we explore a special family of factor-graph layer permutations called stable permutations (SPs) that preserve a specified information set when the corresponding bit permutations are applied to message bit indices. Simulation results show that the error-rate performance of the new family of codes is better than that of 5G polar codes under successive cancellation list (SCL) decoding. In addition, the SP selection scheme stands out as a preferred one for BPL decoding in terms of error-rate performance, while the average number of iterations per belief propagation (BP) decoder on the permuted factor graph is close to that of the original BP decoder when an early stopping condition is applied.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "5G mobile communication",
+                "Simulation",
+                "Power line communications",
+                "Decoding",
+                "Reliability",
+                "Polar codes"
+            ],
+            "Index Terms": [
+                "Factor Graph",
+                "Interpolation",
+                "Simulation Results",
+                "Selection Strategy",
+                "Construction Method",
+                "Partial Order",
+                "Belief Propagation",
+                "Code Construction",
+                "Error Rate Performance",
+                "Binary Index",
+                "Hamming Weight",
+                "Family Of Codes",
+                "Polar Codes",
+                "Likelihood Ratio Test",
+                "Additive Noise",
+                "Error Probability",
+                "Index Set",
+                "Maximum A Posteriori",
+                "Automorphism",
+                "List Size",
+                "Decoding Algorithm",
+                "Block Error Rate",
+                "Coding Performance",
+                "Binary Phase Shift Keying",
+                "Cyclic Shift",
+                "Cyclic Permutation"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -686,7 +1364,43 @@
                 "firstName": "Jinhong",
                 "lastName": "Yuan"
             }
-        ]
+        ],
+        "abstract": "This paper investigates the design of spatially coupled low-density parity-check (SC-LDPC) codes constructed from connected-chain ensembles for bit-interleaved coded modulation (BICM) schemes. For short coupling lengths, connecting multiple SC-LDPC chains can improve decoding performance over single-chains and impose structured unequal error protection (UEP). A joint design of connected-chain ensembles and bit mapping to further exploit the UEP from codes and high-order modulations is proposed. Numerical results demonstrate the superiority of the proposed design over existing connected-chain ensembles and over single-chain ensembles with existing bit mapping design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Couplings",
+                "Modulation",
+                "Interleaved codes",
+                "Parity check codes",
+                "Encoding",
+                "Decoding",
+                "Error correction codes"
+            ],
+            "Index Terms": [
+                "Spatial Coupling",
+                "Coded Modulation",
+                "Bit-interleaved Coded Modulation",
+                "Higher-order Modes",
+                "Multiple Chains",
+                "Joint Design",
+                "Decoding Performance",
+                "Map Design",
+                "Coupling Length",
+                "Differential Evolution",
+                "Additive Noise",
+                "Maximum A Posteriori",
+                "Evolution Of Density",
+                "Continuous Transmission",
+                "Variable Nodes",
+                "Quadrature Amplitude Modulation",
+                "Asymptotic Performance",
+                "Degree Of Regularity",
+                "Saturation Threshold",
+                "Binary Phase Shift Keying",
+                "Binary Channel",
+                "Single Ensemble"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -717,11 +1431,58 @@
             },
             {
                 "id": 38514032100,
-                "preferredName": "S\u00f8ren Forchhammer",
-                "firstName": "S\u00f8ren",
+                "preferredName": "Søren Forchhammer",
+                "firstName": "Søren",
                 "lastName": "Forchhammer"
             }
-        ]
+        ],
+        "abstract": "In this work, a low-complexity multilevel coding (MLC) based coded modulation approach having rate flexibility with two degrees of freedom is proposed. It consists of an inner soft-decision (SD) polar code serially concatenated with an outer hard-decision (HD) code. For a given HD outer code, a method is developed to optimize a multi-stage decoding based MLC scheme so that it will require a fixed amount of inner decoding operations and thereby having constant complexity while changing the transmission rate with near-continuous granularity. Over the range of studied transmission rates, the proposed MLC scheme with outer staircase code and zipper code utilizes 75%, and 73% fewer inner SD decodings, respectively, compared to BICM. Compared to the existing MLC approaches, the proposed MLC scheme, with same inner and outer codes, provides up to 72% reduction in the number of required inner SD decodings.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data centers",
+                "Codes",
+                "Modulation",
+                "Optical fiber networks",
+                "Encoding",
+                "Decoding",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Multi-level Coding",
+                "Degrees Of Freedom",
+                "Reduction In The Number",
+                "Transmission Rate",
+                "Polar Codes",
+                "Coded Modulation",
+                "Simulation Results",
+                "Data Rate",
+                "Communication Systems",
+                "Range Of Rates",
+                "Additive Noise",
+                "Worst-case Scenario",
+                "Performance Gain",
+                "Bit Error Rate",
+                "Bit Error",
+                "Adaptive Rate",
+                "Information Bits",
+                "Codeword",
+                "Forward Error Correction",
+                "Deviation Scores",
+                "Cyclic Redundancy Check",
+                "Complexity Score",
+                "Least Significant Bit",
+                "Pulse Amplitude Modulation",
+                "Optical Communication Systems"
+            ],
+            "Author Keywords": [
+                "Rate flexibility",
+                "low-complexity codes",
+                "concatenated codes",
+                "polar codes",
+                "staircase codes",
+                "zipper codes"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -762,7 +1523,38 @@
                 "firstName": "Khaled",
                 "lastName": "Abdel-Ghaffar"
             }
-        ]
+        ],
+        "abstract": "This paper presents two classes of partial geometries (PaGs) derived from balanced incomplete block designs (BIBDs) of a special type. Based on these two classes of partial geometries, quasi-cyclic (QC) LDPC codes can be constructed. These codes not only perform well over AWGN channels (AWGNCs) but also can correct bursts of erasures over binary erasure channels (BECs) effectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Geometry",
+                "AWGN channels",
+                "Parity check codes",
+                "Encoding"
+            ],
+            "Index Terms": [
+                "Balanced Design",
+                "Part Geometry",
+                "Incomplete Block Design",
+                "Balanced Block",
+                "Low-density Parity-check Codes",
+                "Positive Integer",
+                "Submatrix",
+                "Base Line",
+                "Null Space",
+                "Codeword",
+                "Incidence Matrix",
+                "Basis Matrix",
+                "Object Pairs",
+                "Variable Nodes",
+                "Symbol Coding",
+                "Coding Performance",
+                "Primitive Element",
+                "Parity-check Matrix",
+                "Class Of Codes",
+                "T Point"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -803,7 +1595,47 @@
                 "firstName": "Catherine",
                 "lastName": "Douillard"
             }
-        ]
+        ],
+        "abstract": "The Log-domain BCJR algorithm is broadly used in iterative decoding processes. However, the serial nature of the recursive state metric calculations is a limiting factor for throughput increase. A possible solution resorts to high-radix decoding, which involves decoding several successive symbols at once. Despite several studies aiming at reducing its complexity, high-radix processing remains the most computationally intensive part of the decoder when targeting very high throughput. In this work, we propose a reformulation specifically targeting the complexity reduction of the recursive calculation units by either limiting the required number of operations or by selectively removing unnecessary ones. We report a complexity reduction of the add-compare-select units in the order of 50% compared to the recently proposed local-SOVA algorithm. In addition, our results show that several performance/complexity trade-offs can be achieved thanks to the proposed simplified variants. This represents a promising step forward in order to implement efficient very high throughput convolutional decoders.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Limiting",
+                "Costs",
+                "Throughput",
+                "Hardware",
+                "Encoding",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "High Throughput",
+                "Complexity Reduction",
+                "Recursive Estimation",
+                "Computational Complexity",
+                "Likelihood Ratio Test",
+                "Remainder Of This Paper",
+                "Reliability Values",
+                "Time Index",
+                "Bit Error Rate",
+                "Variety Of Algorithms",
+                "Hardware Implementation",
+                "Maximum A Posteriori",
+                "Hardware Architecture",
+                "Calculation Of Metrics",
+                "Number Of Updates",
+                "Merging Algorithm",
+                "Decoding Algorithm",
+                "Merge Operation",
+                "Update Operation",
+                "Convolutional Codes"
+            ],
+            "Author Keywords": [
+                "Max-Log-MAP decoding",
+                "local-SOVA algorithm",
+                "low-complexity decoding",
+                "high-throughput turbo decoders"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -822,8 +1654,8 @@
         "authors": [
             {
                 "id": 37408122500,
-                "preferredName": "C\u00e9dric Marchand",
-                "firstName": "C\u00e9dric",
+                "preferredName": "Cédric Marchand",
+                "firstName": "Cédric",
                 "lastName": "Marchand"
             },
             {
@@ -832,7 +1664,41 @@
                 "firstName": "Emmanuel",
                 "lastName": "Boutillon"
             }
-        ]
+        ],
+        "abstract": "In most communication systems, the coding rate of the error control code adapts to the channel condition. In this paper, we propose a new approach. A fixed coding rate GF(q) Non-binary code is used as an outer code, and a cardinal q nonlinear inner code is truncated to match the channel condition. The inner code is a Truncated Cyclic Code Shift Keying code. Simulation results for a payload of 120 bits show state-of-the-art performances in a wide range of SNR from -13.5 to 7 dB.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Communication systems",
+                "Simulation",
+                "Modulation",
+                "Decoding",
+                "Error correction",
+                "Channel coding"
+            ],
+            "Index Terms": [
+                "Simulation Results",
+                "Cyclic Shift",
+                "Loss Of Generality",
+                "Pseudo-random",
+                "Achievable Rate",
+                "Hamming Distance",
+                "Modulation Rate",
+                "Conditional Entropy",
+                "Maximum Gap",
+                "Information Symbols",
+                "Maximum Achievable Rate"
+            ],
+            "Author Keywords": [
+                "Low SNR",
+                "Rate-adaptive",
+                "Non-Binary decoder",
+                "CCSK",
+                "CSK",
+                "truncated",
+                "sequence"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -867,7 +1733,37 @@
                 "firstName": "Michael",
                 "lastName": "Lentmaier"
             }
-        ]
+        ],
+        "abstract": "Spatially-coupled serially concatenated codes (SC-SCCS) are a class of turbo-like codes constructed by interconnecting a sequence of SCCS using a set of block permutors. At short block lengths, however, the bit-error-rate (BER) performance of SC-SCCS constructed by independent block permutors exhibits a high error floor. In this paper, we propose an alternative method for constructing SC-SCCS to mitigate this problem. Particularly, we use a family of periodically time-varying blockwise convolutional permutors with flexible block length. We derive these convolutional permutors from a block permutor of an optimized spread by applying an unwrapping procedure. We prove that for any chosen block length, the unwrapping procedure preserves the spread of the original block permutor. We further present an efficient implementation method for the blockwise convolutional permutor that derives the permutation indices directly from those of the underlying block permutor. Considering both S-random permutors and quadratic permutation polynomial (QPP) permutors, we perform BER simulations for SC-SCCS with decoding latencies 4096 and 16384. Numerical results show that SC-SCCS based on the proposed convolutional permutors have no visible error floor, which is especially notable at short block lengths.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Convolutional codes",
+                "Couplings",
+                "Encoding",
+                "Decoding",
+                "Concatenated codes",
+                "Numerical models",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Concatenated Coding",
+                "Serial Concatenation",
+                "Block Length",
+                "High Floor",
+                "Error Floor",
+                "Diagonal",
+                "Sequence Elements",
+                "Matrix Representation",
+                "Information Bits",
+                "Bold Line",
+                "Code Blocks",
+                "Joint Design",
+                "Parity-check",
+                "Variable Nodes",
+                "Lower Floor",
+                "Block Error Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -914,7 +1810,44 @@
                 "firstName": "Amer",
                 "lastName": "Baghdadi"
             }
-        ]
+        ],
+        "abstract": "Non-binary Turbo codes have been shown to out-perform their binary counterparts in terms of error correcting performance yet the decoding complexity of the commonly used Min-Log-MAP algorithm prohibits efficient hardware implementations. In this work, we apply for the first time the recently proposed Local SOVA algorithm for decoding non-binary Turbo codes. Moreover, we propose a low complexity variant dedicated to the direct association with high order constellations denoted by the nearest neighbor Local SOVA. It considers only a limited amount of nearest competing constellation symbols for the soft output computation. Simulation results show that this approach allows a complexity reduction of up to 52% in terms of add-compare-select operations while maintaining the same error correcting performance compared to the Min-Log-MAP algorithm. It can even reach up to 80% if high code rates or frame error rates higher than 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">−4</sup> are targeted. The achieved complexity reduction represents a significant step forward towards hardware implementation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Codes",
+                "Error analysis",
+                "Simulation",
+                "Turbo codes",
+                "Hardware",
+                "Encoding"
+            ],
+            "Index Terms": [
+                "Low Complexity",
+                "Turbo Decoding",
+                "Complexity Reduction",
+                "Hardware Implementation",
+                "Additive Noise",
+                "Error Probability",
+                "Binary Code",
+                "Update Rule",
+                "Finite Field",
+                "Parity-check",
+                "Nearest Neighbor Approach",
+                "Merge Operation",
+                "Low-density Parity-check",
+                "Update Operation",
+                "Constellation Points",
+                "Convolutional Codes",
+                "Amount Of Operations",
+                "Coefficients A2"
+            ],
+            "Author Keywords": [
+                "Non-binary Turbo codes",
+                "low complexity decoding",
+                "Local SOVA"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -955,7 +1888,46 @@
                 "firstName": "Alex",
                 "lastName": "Alvarado"
             }
-        ]
+        ],
+        "abstract": "The so-called improved soft-aided bit-marking algorithm was recently proposed for staircase codes (SCCs) in the context of fiber optical communications. This algorithm is known as iSABM-SCC. With the help of channel soft information, the iSABM-SCC decoder marks bits via thresholds to deal with both miscorrections and failures of hard-decision (HD) decoding. In this paper, we study iSABM-SCC focusing on the parameter optimization of the algorithm and its performance analysis, in terms of the gap to the achievable information rates (AIRs) of HD codes and the fiber reach enhancement. We show in this paper that the marking thresholds and the number of modified component decodings heavily affect the performance of iSABM-SCC, and thus, they need to be carefully optimized. By replacing standard decoding with the optimized iSABM-SCC decoding, the gap to the AIRs of HD codes can be reduced to 0.26–1.02 dB for code rates of 0.74–0.87 in the additive white Gaussian noise channel with 8-ary pulse amplitude modulation. The obtained reach increase is up to 22% for data rates between 401 Gbps and 468 Gbps in an optical fiber channel.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical fibers",
+                "Codes",
+                "Focusing",
+                "Optical fiber communication",
+                "Encoding",
+                "Decoding",
+                "Performance analysis"
+            ],
+            "Index Terms": [
+                "Optimal Parameters",
+                "Optical Fiber",
+                "Gaussian Noise",
+                "Additive Noise",
+                "Pulse Amplitude Modulation",
+                "Optical Channel",
+                "Soft Information",
+                "Numerical Simulations",
+                "Likelihood Ratio Test",
+                "Probability Density Function",
+                "Optimal Threshold",
+                "Bit Error Rate",
+                "Dashed Curve",
+                "Optical Amplifier",
+                "Information Bits",
+                "Hamming Distance",
+                "Signal-to-noise Ratio Increases",
+                "Standard Single-mode Fiber",
+                "Codeword Length"
+            ],
+            "Author Keywords": [
+                "optical fiber communications",
+                "forward error correction",
+                "staircase codes",
+                "log-likelihood ratios"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -984,7 +1956,42 @@
                 "firstName": "Alex",
                 "lastName": "Nicolescu"
             }
-        ]
+        ],
+        "abstract": "Many channel decoders rely on parallel decoding attempts to achieve good performance with acceptable latency. However, most of the time fewer attempts than the foreseen maximum are sufficient for successful decoding. Input-distribution-aware (IDA) decoding allows to determine the parallelism of polar code list decoders by observing the distribution of channel information. In this work, IDA decoding is proven to be effective with different codes and decoding algorithms as well. Two techniques, M-IDA and MD-IDA, are proposed: they exploit the sampling of the input distribution inherent to particular decoding algorithms to perform low-cost IDA decoding. Simulation results on the decoding of BCH codes via the Chase and ORBGRAND algorithms show that they perform at least as well as the original IDA decoding, allowing to reduce run-time complexity down to 17% and 67% with minimal error correction degradation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Heuristic algorithms",
+                "Simulation",
+                "Parallel processing",
+                "Encoding",
+                "Decoding",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Code Blocks",
+                "Decoding Of Codes",
+                "Parallel Decoding",
+                "Runtime Complexity",
+                "Decoding Algorithm",
+                "Successful Decoding",
+                "Polar Codes",
+                "Additive Noise",
+                "Complexity Reduction",
+                "Fraction Of Time",
+                "Test Pattern",
+                "Information Bits",
+                "Forward Error Correction",
+                "Decoding Process",
+                "Types Of Codes",
+                "Parallel Paths",
+                "Low-density Parity-check Codes",
+                "Degree Of Parallelism",
+                "Binary Phase Shift Keying",
+                "Decoding Path",
+                "Block Error Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1009,8 +2016,8 @@
             },
             {
                 "id": 37408122500,
-                "preferredName": "C\u00e9dric Marchand",
-                "firstName": "C\u00e9dric",
+                "preferredName": "Cédric Marchand",
+                "firstName": "Cédric",
                 "lastName": "Marchand"
             },
             {
@@ -1019,7 +2026,38 @@
                 "firstName": "Emmanuel",
                 "lastName": "Boutillon"
             }
-        ]
+        ],
+        "abstract": "This paper presents a different vision of the Non-Binary LDPC decoding algorithm. So far, state-of-the-art decoders are mainly focused on the reduction of the check node processing complexity, with a potential side effect on the size of the messages that are exchanged in the iterative decoder. However, it is possible to take a different approach and consider the reduction of the message size as the main objective. The paper presents \"the Best, the Requested and the Default\" algorithm that shrinks dramatically the communication load between the variable nodes and check nodes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encoding",
+                "Decoding",
+                "Complexity theory",
+                "Reliability",
+                "Iterative decoding"
+            ],
+            "Index Terms": [
+                "Decoding Algorithm",
+                "Variable Nodes",
+                "Message Size",
+                "Communication Load",
+                "Likelihood Ratio Test",
+                "Codeword",
+                "Decoding Process",
+                "Parity-check",
+                "Decoding Performance",
+                "Level Of Parallelism",
+                "Message Length",
+                "Code Size",
+                "Parity-check Matrix"
+            ],
+            "Author Keywords": [
+                "NB-LDPC",
+                "Extended Min-Sum",
+                "Trellis-EMS",
+                "(Best, Requested, and Default)"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1054,7 +2092,55 @@
                 "firstName": "Yixuan",
                 "lastName": "Xie"
             }
-        ]
+        ],
+        "abstract": "Batched sparse (BATS) codes, a class of random linear network coding, are proposed to transmit a collection of packets through erasure networks. BATS codes generalize the fountain codes and preserve properties such as ratelessness and low encoding/decoding complexity. In BATS codes, the destination node starts decoding information packets only after receiving a sufficient number of coded packets. This induces a latency. The larger the size of information block is, the longer the latency. In this paper, we apply a sliding window framework over BATS codes, that divides the information block into smaller sub-blocks, thus helping to reduce the latency. In the proposed sliding window BATS coding scheme, multiple degree distributions are designed based on the overlapping pattern of input packets in a window, and coded packets are generated accordingly. Based on asymptotic performance analysis, we formulate a heuristic optimization problem to jointly optimize the degree distribution and the window selection probability for each sub-window. Simulation results show that the proposed sliding window BATS code outperforms the standard BATS codes and existing sliding window BATS codes in terms of overhead and latency.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Couplings",
+                "Codes",
+                "Simulation",
+                "Heuristic algorithms",
+                "Network coding",
+                "Encoding",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Sliding Window",
+                "Optimization Problem",
+                "Degree Distribution",
+                "Standard Code",
+                "Random Code",
+                "Destination Node",
+                "Multiple Distributions",
+                "Linear Code",
+                "Asymptotic Performance",
+                "Network Coding",
+                "Batch Size",
+                "Linear Programming",
+                "Time Slot",
+                "Heuristic Algorithm",
+                "Generator Matrix",
+                "File Size",
+                "Source Node",
+                "Transfer Matrix",
+                "Coding Structure",
+                "Processing Delay",
+                "Decoding Performance",
+                "Design Codes",
+                "Rank Distribution",
+                "Optimal Code",
+                "Finite Field",
+                "Variable Nodes",
+                "Wireless Communication Networks",
+                "Latency Performance",
+                "Total Delay"
+            ],
+            "Author Keywords": [
+                "BATS code",
+                "network coding",
+                "sliding window"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1079,8 +2165,8 @@
             },
             {
                 "id": 37089027818,
-                "preferredName": "Eduardo Dadalto C\u00e2mara Gomes",
-                "firstName": "Eduardo Dadalto C\u00e2mara",
+                "preferredName": "Eduardo Dadalto Câmara Gomes",
+                "firstName": "Eduardo Dadalto Câmara",
                 "lastName": "Gomes"
             },
             {
@@ -1089,7 +2175,51 @@
                 "firstName": "Pablo",
                 "lastName": "Piantanida"
             }
-        ]
+        ],
+        "abstract": "In this work <sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup>, we investigate the design of neural based channel decoders for the Binary Asymmetric Channel (BAC), which exhibits robustness issues related to training/testing channel parameters mismatch. Rather than enforcing the independence of the trained model to the channel parameter as in our previous work, we show that providing even a coarse (possibly imperfect) quantized CSI to the decoder, allows to build a single robust neural decoder for all values of channel parameters.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Estimation",
+                "Channel estimation",
+                "Robustness",
+                "Encoding",
+                "Decoding",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Channel Parameters",
+                "Robustness Issues",
+                "Binary Channel",
+                "Neural Decoding",
+                "Neural Network",
+                "Quantum",
+                "Training Dataset",
+                "Decoding",
+                "Training Phase",
+                "Mutual Information",
+                "Channel Model",
+                "Domain Adaptation",
+                "Generator Matrix",
+                "Maximum A Posteriori",
+                "Target Dataset",
+                "Proof Of The Lemma",
+                "Conditional Entropy",
+                "Crossover Probability",
+                "Neural Classifier",
+                "Perfect Channel State Information",
+                "Domain Adaptation Techniques",
+                "Conditional Mutual Information",
+                "Polar Codes",
+                "Remainder Of This Work",
+                "Information-theoretic Analysis",
+                "On-off Keying",
+                "Decision Rules",
+                "Adaptive Technique",
+                "Output Channels",
+                "Uniform Quantization"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1124,7 +2254,47 @@
                 "firstName": "Daniel J.",
                 "lastName": "Costello"
             }
-        ]
+        ],
+        "abstract": "Spatially coupled, parallel concatenated codes (SC-PCCs) have been shown to approach channel capacity when decoded using optimal iterative methods. However, under complexity constraints such decoding strategies can result in unacceptable power and latency costs. In this work, we employ convolutional self-orthogonal component codes along with low-complexity, suboptimal a posteriori probability (APP) threshold decoders with SC-PCCs to reduce decoding complexity. The proposed code design is faster, more energy efficient, and easier to implement than optimal methods, while offering significant coding gain over existing threshold decodable, turbo-like constructions of similar latency and complexity. The design also serves to further illustrate the advantages spatial coupling can provide to existing code constructions and decoder implementations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Couplings",
+                "Convolutional codes",
+                "Costs",
+                "Encoding",
+                "Energy efficiency",
+                "Complexity theory",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Spatial Coupling",
+                "Iterative Decoding",
+                "Optimization Method",
+                "Posteriori Probability",
+                "Decoding Scheme",
+                "Window Size",
+                "Unit Time",
+                "Low Complexity",
+                "Demultiplexed",
+                "Spatial Memory",
+                "Additive Noise",
+                "Bit Error Rate",
+                "Orthonormal Basis",
+                "Maximum A Posteriori",
+                "Output Of Block",
+                "Decoding Performance",
+                "Memory Elements",
+                "Information Symbols",
+                "Convolutional Codes",
+                "Target Block",
+                "Error Floor",
+                "Symbol Error",
+                "Decoding Algorithm",
+                "Permutation",
+                "Block Size",
+                "Weighting Factor"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1159,7 +2329,41 @@
                 "firstName": "David",
                 "lastName": "Haccoun"
             }
-        ]
+        ],
+        "abstract": "This article presents a class of multi-coding rates time-invariant Recursive Convolutional Doubly-Orthogonal codes (RCDO). The Nested-RCDO (N-RCDO) codes are generated from their RCDO mother code which has a Tanner graph with a girth equal to 10 due to the doubly-orthogonal conditions imposed onto the connections positions of the mother recursive convolutional encoder. This implies that the girths of the N-RCDO codes are also equals to 10. Moreover, results are showing that regular (3, d<inf xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">ρ</inf>) N-RCDO codes nearly achieve their asymptotic decoding limits for all the desired coding rates obtained from the regular mother RCDO code. These codes also offer a substantial additional coding gain as compared to the non-recursive multi coding rates CDO codes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Convolutional codes",
+                "Convolution",
+                "Communication systems",
+                "Encoding",
+                "Decoding",
+                "Iterative decoding",
+                "Signal to noise ratio"
+            ],
+            "Index Terms": [
+                "Recursive Convolution",
+                "Convolutional Codes",
+                "Less Than Or Equal",
+                "Additive Noise",
+                "Degree Distribution",
+                "Error Performance",
+                "Search Procedure",
+                "Encoder Output",
+                "Variable Nodes",
+                "Information Symbols",
+                "Induced Subgraph",
+                "Shift Register",
+                "Parity-check Matrix"
+            ],
+            "Author Keywords": [
+                "Multi coding rates",
+                "Low-Density Parity-Check Codes",
+                "mother convolutional codes",
+                "doubly-orthogonal conditions",
+                "iterative decoding"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1194,7 +2398,33 @@
                 "firstName": "Hans-Andrea",
                 "lastName": "Loeliger"
             }
-        ]
+        ],
+        "abstract": "Normals with unknown variances (NUV) representations encompass variational representations of sparsifying norms and priors for sparse Bayesian learning. Recently, a binarizing NUV prior has been proposed and shown to work very well on certain approximation problems. We elaborate on this new prior and begin to explore its use for recovery problems. Concretely, we apply the method to the multiuser multiple-input multiple-output (MIMO) detection problem. Empirically, the method outperforms existing approaches based on convex relaxations and is more robust than a method based on approximate message-passing.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Estimation",
+                "MIMO",
+                "Encoding",
+                "Bayes methods",
+                "MIMO communication"
+            ],
+            "Index Terms": [
+                "Multi-user Multiple-input Multiple-output",
+                "Estimation Problem",
+                "Multiple-input Multiple-output",
+                "Recovery Problem",
+                "Convex Relaxation",
+                "Local Minima",
+                "Expectation Maximization",
+                "Base Station",
+                "Linear Operator",
+                "Bit Error Rate",
+                "Posterior Mode",
+                "Channel Matrix",
+                "Semidefinite Relaxation",
+                "Constellation Points"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1213,9 +2443,9 @@
         "authors": [
             {
                 "id": 37089029154,
-                "preferredName": "Anthony G\u00f3mez-Fonseca",
+                "preferredName": "Anthony Gómez-Fonseca",
                 "firstName": "Anthony",
-                "lastName": "G\u00f3mez-Fonseca"
+                "lastName": "Gómez-Fonseca"
             },
             {
                 "id": 37283033400,
@@ -1229,7 +2459,40 @@
                 "firstName": "David G. M.",
                 "lastName": "Mitchell"
             }
-        ]
+        ],
+        "abstract": "This paper gives necessary and sufficient conditions for the Tanner graph of a quasi-cyclic (QC) low-density parity-check (LDPC) code based on the all-one protograph to have girth 6, 8, 10, and 12, respectively, in the case of parity-check matrices with column weight 4. These results are a natural extension of the girth results of the already-studied cases of column weight 2 and 3, and it is based on the connection between the girth of a Tanner graph given by a parity-check matrix and the properties of powers of the product between the matrix and its transpose. The girth conditions can be easily incorporated into fast algorithms that construct codes of desired girth between 6 and 12; our own algorithms are presented for each girth, together with constructions obtained from them and corresponding computer simulations. More importantly, this paper emphasizes how the girth conditions of the Tanner graph corresponding to a parity-check matrix composed of circulants relate to the matrix obtained by adding (over the integers) the circulant columns of the parity-check matrix. In particular, we show that imposing girth conditions on a parity-check matrix is equivalent to imposing conditions on a square circulant submatrix obtained from it.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sufficient conditions",
+                "Computer simulation",
+                "Parity check codes",
+                "Encoding"
+            ],
+            "Index Terms": [
+                "Sufficient Conditions",
+                "Low-density Parity-check",
+                "Tanner Graph",
+                "Computer Simulations",
+                "Coded Based",
+                "Submatrix",
+                "Low-density Parity-check Codes",
+                "Parity-check Matrix",
+                "Exponent",
+                "Cardinality",
+                "Minimum Distance",
+                "Composite Structure",
+                "Additive Noise",
+                "Smallest Value",
+                "Bit Error Rate",
+                "Block Length",
+                "Simple Cycle",
+                "Column Sums",
+                "Permutation Matrix",
+                "Regular Graphs",
+                "Error Floor",
+                "Binary Phase Shift Keying"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1260,8 +2523,8 @@
             },
             {
                 "id": 37589576800,
-                "preferredName": "Fr\u00e9d\u00e9ric Guilloud",
-                "firstName": "Fr\u00e9d\u00e9ric",
+                "preferredName": "Frédéric Guilloud",
+                "firstName": "Frédéric",
                 "lastName": "Guilloud"
             },
             {
@@ -1270,7 +2533,46 @@
                 "firstName": "Alain",
                 "lastName": "Thomas"
             }
-        ]
+        ],
+        "abstract": "Shuffled decoding enables to accelerate the extrinsic information exchange during iterative decoding of concatenated codes. It has already been applied to parallel convolutional codes or low-density parity-check codes. In this article, we propose to apply shuffled decoding to serial concatenation convolutional codes. We take advantage of their systematic encoding to propose an efficient shuffled decoding scheme. Compared to a standard iterative decoding scheme, the convergence of our shuffled implementation is obtained within fewer iterations, each one requiring also less time to be completed. This convergence acceleration yields doubling the throughput. We finally show that doubling the throughput comes at a lower cost than doubling the hardware resources, making this shuffled scheme efficient in term of implementation. For instance, the memory usage is 29% more efficient thanks to our proposal than a baseline scheme, which significantly reduces the power consumption of hardware decoders.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Convolutional codes",
+                "Costs",
+                "Memory management",
+                "Throughput",
+                "Hardware",
+                "Encoding",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Convolutional Codes",
+                "Memory Usage",
+                "Iterative Scheme",
+                "Hardware Resources",
+                "Low-density Parity-check Codes",
+                "Decoding Scheme",
+                "Baseline Schemes",
+                "Amount Of Time",
+                "Likelihood Ratio Test",
+                "Computational Resources",
+                "Channel Information",
+                "Bit Error Rate",
+                "Efficient Implementation",
+                "Bit Error",
+                "Information Bits",
+                "Codeword",
+                "Code Length",
+                "Parallel Technique",
+                "Calculation Of Metrics"
+            ],
+            "Author Keywords": [
+                "Serial Concatenated Convolutional Codes (SCCC)",
+                "iterative decoding",
+                "shuffled decoding",
+                "parallel implementations"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1299,7 +2601,32 @@
                 "firstName": "Yuval",
                 "lastName": "Cassuto"
             }
-        ]
+        ],
+        "abstract": "We study spatially coupled LDPC codes that allow access to sub-blocks much smaller than the full code block. Sub-block access is realized by a semi-global decoder that decodes a chosen target sub-block by only accessing the target, plus a prescribed number of helper sub-blocks adjacent in the code chain. This paper analyzes the semi-global decoding performance of spatially coupled LDPC codes constructed from protographs. The main result shows that semi-global decoding thresholds can be derived from certain thresholds we define for the single-sub-block graph. These characterizing thresholds are also used for deriving lower bounds on the decoder’s performance over channels with variability and memory across sub-blocks, which are motivated by applications in data storage.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory",
+                "Parity check codes",
+                "Encoding",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Decoding Performance",
+                "Low-density Parity-check Codes",
+                "Spatial Coupling",
+                "Data Storage",
+                "Data Storage Applications",
+                "Markov Chain",
+                "Transition Probabilities",
+                "Stationary Distribution",
+                "Channel State",
+                "Threshold Analysis",
+                "Channel Parameters",
+                "Value Of Income",
+                "Successful Decoding",
+                "Binary Channel"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1328,7 +2655,50 @@
                 "firstName": "Sergio",
                 "lastName": "Benedetto"
             }
-        ]
+        ],
+        "abstract": "A new design is proposed for spatial coupled turbo product codes matching the challenging constraints of forward error correcting codes for optical communication applications. The design includes a simple encoding algorithm that matches the reduced rate of the code w.r.t. the block turbo product codes and keeps the frame structure of the original block product code by replacing part of the information bits with properly designed check on checks. Moreover, conditions are shown on the spatial coupling matrix on the code that allows to increase the minimum distance of the code, thus coping with the very low bit error probability required in optical communications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Couplings",
+                "Convolutional codes",
+                "Product codes",
+                "Error probability",
+                "Turbo codes",
+                "Optical fiber communication",
+                "Error correction codes"
+            ],
+            "Index Terms": [
+                "Optical Communication",
+                "Product Code",
+                "Spatial Coupling",
+                "Minimum Distance",
+                "Error Probability",
+                "Bit Error Rate",
+                "Bit Error",
+                "Spatial Matrix",
+                "Information Bits",
+                "Forward Error Correction",
+                "Least Significant Bit",
+                "Decoding",
+                "Current Frame",
+                "Codeword",
+                "Non-causal",
+                "Error Patterns",
+                "Sequence Matrix",
+                "Code Blocks",
+                "Parity-check",
+                "Parity-check Matrix",
+                "Low-density Parity-check Codes",
+                "Error Floor",
+                "Optical Fiber Communication"
+            ],
+            "Author Keywords": [
+                "Spatially coupled codes",
+                "convolutional turbo codes",
+                "product codes",
+                "optical communications"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1347,17 +2717,46 @@
         "authors": [
             {
                 "id": 37085719110,
-                "preferredName": "Francisco L\u00e1zaro",
+                "preferredName": "Francisco Lázaro",
                 "firstName": "Francisco",
-                "lastName": "L\u00e1zaro"
+                "lastName": "Lázaro"
             },
             {
                 "id": 37392269300,
-                "preferredName": "Bal\u00e1zs Matuz",
-                "firstName": "Bal\u00e1zs",
+                "preferredName": "Balázs Matuz",
+                "firstName": "Balázs",
                 "lastName": "Matuz"
             }
-        ]
+        ],
+        "abstract": "We consider invertible Bloom lookup tables (IBLTs) which are probabilistic data structures that allow to store key-value pairs. An IBLT supports insertion and deletion of key-value pairs, as well as the recovery of all key-value pairs that have been inserted, as long as the number of key-value pairs stored in the IBLT does not exceed a certain number. The recovery operation on an IBLT can be represented as a peeling process on a bipartite graph. We present a density evolution analysis of IBLTs which allows to predict the maximum number of key-value pairs that can be inserted in the table so that recovery is still successful with high probability. This analysis holds for arbitrary irregular degree distributions and generalizes results in the literature. We complement our analysis by numerical simulations of our own IBLT design which allows to recover a larger number of key-value pairs as state-of-the-art IBLTs of same size.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Probabilistic logic",
+                "Numerical simulation",
+                "Encoding",
+                "Table lookup",
+                "Bipartite graph"
+            ],
+            "Index Terms": [
+                "Degree Distribution",
+                "Evolution Of Density",
+                "Key-value Pairs",
+                "Set Of Elements",
+                "Average Probability",
+                "Simulated Annealing",
+                "Hash Function",
+                "Maximum Degree",
+                "Random Function",
+                "Regular Distribution",
+                "Probability Of Node",
+                "String Length",
+                "Hypergraph",
+                "Delta Cells",
+                "Asymptotic Regime",
+                "Load Threshold",
+                "Output List"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1376,8 +2775,8 @@
         "authors": [
             {
                 "id": 37085537327,
-                "preferredName": "R\u00e9mi Chauvat",
-                "firstName": "R\u00e9mi",
+                "preferredName": "Rémi Chauvat",
+                "firstName": "Rémi",
                 "lastName": "Chauvat"
             },
             {
@@ -1392,7 +2791,43 @@
                 "firstName": "Matteo",
                 "lastName": "Paonni"
             }
-        ]
+        ],
+        "abstract": "LDPC-coded modulations are attractive solutions for many communications links. BICM provides a very simple, flexible yet effective way of combining binary channel codes with non-binary modulations. However, iterative demapping is sometimes necessary to increase the coding gains. This is especially the case for orthogonal modulations where the \"BICM capacity\" falls far away from the coded modulation capacity. Unfortunately, iterative demapping results in a significant computational cost. A pragmatic solution to reduce this computational cost aims at restricting the number of demapping activations. In this article, a strategy to compute the minimum number of demapping activations necessary for a target estimated BER performance is presented and results are introduced for BICM-ID with binary LDPC-coded orthogonal modulations. Iterative demap-ping schedules optimized for a limited number of demapper activations are designed and evaluated in the finite code length regime.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Schedules",
+                "Limiting",
+                "Bit error rate",
+                "Modulation",
+                "Receivers",
+                "Market research",
+                "Energy efficiency"
+            ],
+            "Index Terms": [
+                "Binary Code",
+                "Low-density Parity-check Codes",
+                "Low-density Parity-check",
+                "Orthogonal Modulation",
+                "Binary Low-density Parity-check",
+                "Computational Cost",
+                "Forward Error Correction",
+                "Code Length",
+                "Binary Channel",
+                "Coded Modulation",
+                "Additive Noise",
+                "Mutual Information",
+                "Exhaustive Search",
+                "Bit Error Rate",
+                "Global Navigation Satellite System",
+                "Optimal Schedule",
+                "Bit Error",
+                "Bit Error Rate Performance",
+                "Variable Nodes",
+                "Error Rate Performance",
+                "Low Power Wide Area Networks",
+                "Codeword Length"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1427,7 +2862,44 @@
                 "firstName": "Warren J.",
                 "lastName": "Gross"
             }
-        ]
+        ],
+        "abstract": "The dimming control is crucial for visible light communication (VLC) channels to maintain data transmission at different levels of lighting brightness. However, ensuring the dimming control while keeping a flicker-free channel remains a challenging task in VLC. Conventional techniques use the interleaving of compensation symbols (CS) applied on balanced codewords, usually obtained via run-length limited (RLL) codes. However, CS increases the redundancy used and are just thrown away during the decoding. Moreover, the interleaving step may increase the latency of the system. In this letter, new families of non-DC free RLL codes with variable weights are proposed. The dimming control can therefore be achieved without CS. Simulations stipulate that the proposed 4B7B code in FEC-coded channels achieve dimming ratios of 29% and 71% while improving on redundancy and error correction performance. For a 29% and 71% dimming ratios, at a BER of 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">−4</sup>, gains in dB of 0.8 and 0.6 versus 3 and 2.6 are reported between the coded proposed RLL against the coded 1B2B and 4B6B with CS respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Spectral efficiency",
+                "Redundancy",
+                "Lighting",
+                "Encoding",
+                "Error correction codes",
+                "Error correction",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Visible Light Communication",
+                "Run-length Limited",
+                "Run-length Limited Codes",
+                "Bit Error Rate",
+                "Forward Error Correction",
+                "Decoding",
+                "Additive Noise",
+                "Spectral Efficiency",
+                "Parity-check",
+                "Posteriori Probability",
+                "Successful Decoding",
+                "On-off Keying",
+                "Convolutional Codes",
+                "Polar Codes",
+                "Extra Bits",
+                "Conventional Codes"
+            ],
+            "Author Keywords": [
+                "Run-length limited",
+                "flicker-free",
+                "polar codes",
+                "successive cancellation decoding",
+                "visible light communication"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1462,7 +2934,36 @@
                 "firstName": "Bin",
                 "lastName": "Li"
             }
-        ]
+        ],
+        "abstract": "Polar codes and Reed-Muller codes belong to a family of codes called monomial codes. In this work, we study pre-transformed monomial codes, which cover several constructions including parity-check (PC) codes and PAC codes. We show that any pre-transformed monomial code can be transformed into a parity-check monomial code with the same codewords, and give an explicit algorithm for this transformation. We further prove that for certain monomial codes, the minimum weight is invariant under pre-transformation, but specific pre-transformation matrices can be constructed to reduce the number of minimum-weight codewords. These results offer theoretical support for the success of various heuristics, e.g., PAC codes attain dispersion bound, and provide guidance for designing short codes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Reed-Muller codes",
+                "Picture archiving and communication systems",
+                "Encoding",
+                "Polar codes",
+                "Dispersion"
+            ],
+            "Index Terms": [
+                "Minimum Weight",
+                "Codeword",
+                "Low-density Parity-check Codes",
+                "Family Of Codes",
+                "Polar Codes",
+                "Family Size",
+                "Minimum Distance",
+                "Scoring Function",
+                "Code Of Practice",
+                "Linear Subspace",
+                "Coding Performance"
+            ],
+            "Author Keywords": [
+                "Polar codes",
+                "RM codes",
+                "code distance"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1491,7 +2992,41 @@
                 "firstName": "Stephen",
                 "lastName": "Timmel"
             }
-        ]
+        ],
+        "abstract": "Polar codes use an explicit channel model, so the precise nature of the communication channel determines if and when polarization occurs. In practice, communication channels typically have memory which affects the probability of error in nearby symbols. In this paper, we extend existing results to show polarization for the more general family of information regular processes and define a growth rate for promptness. We then show that information regular processes with linear promptness polarize and provide an example with practical applications for which the rate of polarization is very slow.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Encoding",
+                "Entropy",
+                "Channel models",
+                "Polar codes"
+            ],
+            "Index Terms": [
+                "Polar Codes",
+                "Communication Channels",
+                "Promptness",
+                "Family Of Processes",
+                "Markov Chain",
+                "Algebra",
+                "Nondecreasing",
+                "Mixed State",
+                "Collusion",
+                "Aperiodic",
+                "Mixing Process",
+                "Generator Matrix",
+                "Block Length",
+                "Probability 2",
+                "Memoryless",
+                "Adjacent Blocks",
+                "Strong Mixing"
+            ],
+            "Author Keywords": [
+                "channel memory",
+                "mixing processes",
+                "polar codes"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1520,7 +3055,40 @@
                 "firstName": "Xiao",
                 "lastName": "Ma"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose a two-stage decoding algorithm for spatially-coupled algebraic low-density paritycheck (LDPC) codes with linear computational complexity, which consists of a sliding-window belief propagation (BP) decoding algorithm and a majority logic decoding algorithm. Simulation results are presented, showing that the error rate performance of SC-LDPC codes can be further improved by the majority logic decoding algorithm.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Error analysis",
+                "Simulation",
+                "Computational modeling",
+                "Benchmark testing",
+                "Parity check codes",
+                "Encoding",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Algebraic Codes",
+                "Error Rate",
+                "Computational Complexity",
+                "Belief Propagation",
+                "Error Rate Performance",
+                "Numerical Results",
+                "Additive Noise",
+                "Signal Sequence",
+                "Computational Load",
+                "Local Vector",
+                "Maximum A Posteriori",
+                "Nonzero Entries",
+                "Code Blocks",
+                "Variable Nodes",
+                "Two-stage Algorithm",
+                "Code Construction",
+                "Binary Phase Shift Keying",
+                "Parity-check Matrix",
+                "Window Region"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1563,11 +3131,52 @@
             },
             {
                 "id": 37271502500,
-                "preferredName": "Christophe J\u00e9go",
+                "preferredName": "Christophe Jégo",
                 "firstName": "Christophe",
-                "lastName": "J\u00e9go"
+                "lastName": "Jégo"
             }
-        ]
+        ],
+        "abstract": "In this paper, we provide some experimental evidence that a significant number of metric updates and sorting can be avoided during list decoding of polar codes. Starting from the observation that a non-negligible part of the reliable bit channels are located at the tail of the decoding sequence, it is possible to decode the end of the sequence without updating the metrics of list decoding. This tailored CRC-Aided successive cancellation list (T-CA-SCL) decoder can be seen as a simplification of SCL decoding. Moreover, a heuristic is proposed to determine the parameters required by the tailored-CA-SCL decoder. Experimental results show that the proposed tailored list decoding approach reduces the number of metric updates by 45% without significantly altering the error performance. Finally some leads are provided for further research to improve and extend the proposed approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Encoding",
+                "Decoding",
+                "Reliability",
+                "Polar codes",
+                "Computational complexity",
+                "Iterative decoding"
+            ],
+            "Index Terms": [
+                "Polar Codes",
+                "List Decoding",
+                "End Of Sequence",
+                "Number Of Updates",
+                "Reliable Channel",
+                "Monte Carlo Simulation",
+                "Computational Complexity",
+                "Performance Loss",
+                "Complexity Reduction",
+                "Software Implementation",
+                "Information Bits",
+                "Codeword",
+                "Signal-to-noise Ratio Values",
+                "Decoding Process",
+                "List Size",
+                "Decoding Performance",
+                "Number Of Splits",
+                "Decoding Algorithm",
+                "Decoding Step",
+                "Cyclic Redundancy Check",
+                "Decoding Path",
+                "Cyclic Redundancy",
+                "Memoryless Channel"
+            ],
+            "Author Keywords": [
+                "Polar codes",
+                "successive cancellation list decoding"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1602,7 +3211,41 @@
                 "firstName": "Valerio",
                 "lastName": "Bioglio"
             }
-        ]
+        ],
+        "abstract": "Polar codes are able to achieve the capacity of memoryless channels under successive cancellation (SC) decoding. Soft Cancellation (SCAN) is a soft-output decoder based on the SC schedule, useful in iterative decoding and concatenation of polar codes. However, the sequential nature of this decoder leads to high decoding latency compared to state-of-the-art codes. To reduce the latency of SCAN, in this paper we identify special nodes in the decoding tree, corresponding to specific frozen-bit sequences, and propose dedicated low-latency decoding approaches for each of them. The resulting fast-SCAN decoder does not alter the soft-output compared to the standard SCAN while dramatically reducing the decoding latency and yielding the same error correction performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Schedules",
+                "Codes",
+                "Encoding",
+                "Decoding",
+                "Memoryless systems",
+                "Error correction",
+                "Polar codes"
+            ],
+            "Index Terms": [
+                "Polar Codes",
+                "Decoding Of Polar Codes",
+                "Specific Node",
+                "Root Node",
+                "Polarization Effects",
+                "Information Bits",
+                "Codeword",
+                "Node Structure",
+                "Clock Cycles",
+                "Code Blocks",
+                "Decoding Algorithm",
+                "Soft Information",
+                "Left Child",
+                "Even Parity"
+            ],
+            "Author Keywords": [
+                "Polar Codes",
+                "Successive Cancellation decoding",
+                "soft decoding",
+                "SCAN decoding"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1631,7 +3274,46 @@
                 "firstName": "Stark",
                 "lastName": "Draper"
             }
-        ]
+        ],
+        "abstract": "Distributed optimization has become the norm for training machine learning models on large datasets. Learning bigger models on such systems leads to the exchange of large-volume updates. For this reason, limits on network communication in a distributed system can bottleneck learning progress. While compression techniques have been introduced to reduce bit-rates, no methods have yet leveraged the temporal structure that exist in consecutive vector updates. An important example is distributed momentum-SGD where temporal correlation is enhanced by the low-pass-filtering effect of applying momentum. In this paper we design methods that leverage temporal correlation to reduce bit-rates in systems employing momentum-SGD. We demonstrate that a significant reduction in the volume of communication can be realized. Experiments with the ImageNet dataset show that our proposed methods offers up to 40% bit savings compared to widely used methods such as Scaled-sign and Top-K.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Image coding",
+                "Correlation",
+                "Design methodology",
+                "Machine learning",
+                "Encoding",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Gradient Compression",
+                "Savings",
+                "Temporal Correlation",
+                "ImageNet Dataset",
+                "Communication Volume",
+                "Learning Rate",
+                "Test Accuracy",
+                "Illustrative Example",
+                "Stochastic Gradient Descent",
+                "Numerical Comparison",
+                "Conditional Entropy",
+                "Sparse Vector",
+                "Label Vector",
+                "P-block",
+                "Compression Scheme",
+                "K Index",
+                "Average Rate Of Change",
+                "Momentum Vector",
+                "Gradient Components",
+                "Updated Vector"
+            ],
+            "Author Keywords": [
+                "distributed optimization",
+                "gradient compression",
+                "momentum SGD"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1639,7 +3321,7 @@
         "publicationYear": "2021",
         "publicationDate": "30 Aug.-3 Sept. 2021",
         "articleNumber": "9594182",
-        "articleTitle": "Iterative Reed\u2013Muller Decoding",
+        "articleTitle": "Iterative Reed–Muller Decoding",
         "volume": null,
         "issue": null,
         "startPage": "1",
@@ -1678,7 +3360,44 @@
                 "firstName": "Stephan",
                 "lastName": "Ten Brink"
             }
-        ]
+        ],
+        "abstract": "Reed–Muller (RM) codes are known for their good maximum likelihood (ML) performance in the short block-length regime. Despite being one of the oldest classes of channel codes, finding a low complexity soft-input decoding scheme is still an open problem. In this work, we present a belief propagation (BP) decoding architecture for RM codes based on their rich automorphism group. The decoding algorithm can be seen as a generalization of multiple-bases belief propagation (MBBP) using polar BP as constituent decoders. We provide extensive errorrate performance simulations and compare our results to existing decoding schemes. We report a near-ML performance for the RM(3,7)-code (e.g., 0.05 dB away from the ML bound at BLER of 10−<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">4</sup>) at a competitive computational cost. To the best of our knowledge, our proposed decoder achieves the best performance of all iterative RM decoders presented thus far.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Computational modeling",
+                "Computer architecture",
+                "Iterative algorithms",
+                "Encoding",
+                "Complexity theory",
+                "Computational efficiency"
+            ],
+            "Index Terms": [
+                "Decoding Performance",
+                "Belief Propagation",
+                "Automorphism Group",
+                "Error Rate Performance",
+                "Decoding Scheme",
+                "Decoding Algorithm",
+                "Block Error Rate",
+                "Permutation",
+                "Additive Noise",
+                "Stochastic Gradient Descent",
+                "Lookup Table",
+                "Weight Training",
+                "Stopping Condition",
+                "Overcomplete",
+                "Variable Nodes",
+                "Coding Performance",
+                "Factor Graph",
+                "Signal-to-noise Ratio Range",
+                "Ultra-reliable Low-latency Communications",
+                "Binary Phase Shift Keying",
+                "Parity-check Matrix",
+                "Polar Codes",
+                "Neural Decoding"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1707,7 +3426,54 @@
                 "firstName": "Ram",
                 "lastName": "Zamir"
             }
-        ]
+        ],
+        "abstract": "Distributed computation is a framework used to break down a complex computational task into smaller tasks and distributing them among computational nodes. Erasure correction codes have recently been introduced and have become a popular workaround to the well known \"straggling nodes\" problem, in particular, by matching linear coding for linear computation tasks. It was observed that decoding tends to amplify the computation \"noise\", i.e., the numerical errors at the computation nodes. We propose taking advantage of the case that more nodes return than minimally required. We show how a clever construction of a polynomial code, inspired by recent results on robust frames, can significantly reduce the amplification of noise, and achieves graceful degradation with the number of straggler nodes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Codes",
+                "Encoding",
+                "Decoding",
+                "Task analysis"
+            ],
+            "Index Terms": [
+                "Coded Computation",
+                "Recent Results",
+                "Distributed Computing",
+                "Numerical Errors",
+                "Noise Amplification",
+                "Computing Nodes",
+                "Advantage In Cases",
+                "Linear Function",
+                "Large Systems",
+                "Information Theory",
+                "Matrix M",
+                "Numerical Instability",
+                "Generator Matrix",
+                "Consecutive Series",
+                "Gram Matrix",
+                "Arbitrary Field",
+                "Random Matrix Theory",
+                "Decoding Scheme",
+                "Master Node",
+                "Eigenvalue Distribution",
+                "Discrete Fourier Transform Matrix",
+                "Worker Nodes"
+            ],
+            "Author Keywords": [
+                "distributed computation",
+                "erasure codes",
+                "polynomial codes",
+                "noise amplification",
+                "numerical stability",
+                "DFT",
+                "frames",
+                "difference set",
+                "equiangular tight frames",
+                "Jacobi/MANOVA distribution",
+                "graceful degradation"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1732,11 +3498,54 @@
             },
             {
                 "id": 37269391900,
-                "preferredName": "J\u00fcrgen Freudenberger",
-                "firstName": "J\u00fcrgen",
+                "preferredName": "Jürgen Freudenberger",
+                "firstName": "Jürgen",
                 "lastName": "Freudenberger"
             }
-        ]
+        ],
+        "abstract": "Reed-Muller codes are a popular code family based on the Plotkin construction. Recently, these codes have regained some interest due to their close relation to polar codes and their low-complexity decoding. We consider a similar code family, i.e., the Plotkin concatenation with binary BCH component codes. This construction is more flexible regarding the attainable code parameters. In this work, we consider a list-based decoding algorithm for the Plotkin concatenation with BCH component codes. The proposed list decoding leads to a significant coding gain with only a small increase in computational complexity. Simulation results demonstrate that the Plotkin concatenation with the proposed decoding achieves near maximum likelihood decoding performance. This coding scheme can outperform polar codes for moderate code lengths.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Simulation",
+                "Reed-Muller codes",
+                "Encoding",
+                "Concatenated codes",
+                "Polar codes",
+                "Computational complexity"
+            ],
+            "Index Terms": [
+                "List Decoding",
+                "Concatenated Coding",
+                "Computational Complexity",
+                "Increase In Complexity",
+                "Binary Code",
+                "Code Length",
+                "Decoding Performance",
+                "Decoding Algorithm",
+                "Increase In Computational Complexity",
+                "Family Of Codes",
+                "Polar Codes",
+                "Code Parameters",
+                "Binary Components",
+                "Minimum Distance",
+                "Additive Noise",
+                "Stopping Criterion",
+                "Performance Gain",
+                "Boolean Operators",
+                "Signal-to-noise Ratio Values",
+                "Decoding Approach",
+                "Word Error Rate",
+                "List Size",
+                "Decoding Method",
+                "Recursive Structure",
+                "Code Construction",
+                "Soft Value",
+                "Floating-point Operations",
+                "Binary Phase Shift Keying",
+                "Product Code"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1765,7 +3574,48 @@
                 "firstName": "Lara",
                 "lastName": "Dolecek"
             }
-        ]
+        ],
+        "abstract": "Crossbar resistive memory with 1 Selector 1 Resistor (1S1R) structure is attractive for low-cost, power efficient, and high-density storage class memory (SCM) applications. As technology scales down to the single-nm regime, the increasing resistivity of wordline/bitline becomes a limiting factor to device reliability. Due to the line resistance, reliability of memory cells in an array is spatially non-uniform. In this paper, by mitigating and leveraging this spatial non-uniformity, we propose two simple yet effective coding schemes, one that utilizes interleaving and one that utilizes multiple codes based on a proposed location dependent code allocation (LDCA) framework, to reduce the undetected bit-error rate (UBER) or to allow for lower write voltage for power efficiency in the studied crossbar resistive memories.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resistance",
+                "Resistors",
+                "Codes",
+                "Limiting",
+                "Memory management",
+                "Voltage",
+                "Conductivity"
+            ],
+            "Index Terms": [
+                "Impedance",
+                "High Resistance",
+                "Resistant Lines",
+                "Storage Class Memories",
+                "Bit Error Rate",
+                "Device Reliability",
+                "Scalable Technology",
+                "Allocation Framework",
+                "Optimization Problem",
+                "Decoding",
+                "Channel State",
+                "Regularization Term",
+                "Channel Model",
+                "Optimal Allocation",
+                "Target Rate",
+                "Block Length",
+                "Codeword",
+                "Forward Error Correction",
+                "Channel Parameters",
+                "Single Code",
+                "Row Index",
+                "Column Index",
+                "Low-density Parity-check Codes",
+                "Memory Array",
+                "Integer Programming Problem",
+                "Area Overhead",
+                "Cost Matrix"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1806,7 +3656,41 @@
                 "firstName": "Gianluigi",
                 "lastName": "Liva"
             }
-        ]
+        ],
+        "abstract": "We revisit a coarsely quantized message passing decoding algorithm for low-density parity-check (LDPC) code ensembles, named quaternary message passing (QMP). Particularly, we analyze the performance of unstructured LDPC codes under QMP decoding by means of density evolution. The impact of degree-2 and degree-3 variable nodes on the error floor performance is also discussed. We design a code for QMP that performs within 0.55 dB of the 5G LDPC code at a block error rate of 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">−4</sup>.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Quantization (signal)",
+                "Error analysis",
+                "5G mobile communication",
+                "Message passing",
+                "Propagation losses",
+                "Parity check codes",
+                "Encoding"
+            ],
+            "Index Terms": [
+                "Evolution Of Density",
+                "Low-density Parity-check Codes",
+                "Message Passing",
+                "Low-density Parity-check",
+                "Error Floor",
+                "Density Evolution Analysis",
+                "Variable Nodes",
+                "Decoding Algorithm",
+                "Block Error Rate",
+                "Signal-to-noise",
+                "Likelihood Ratio Test",
+                "Additive Noise",
+                "Degree Distribution",
+                "Part Of Cycle",
+                "Codeword",
+                "Design Codes",
+                "Gaussian Random Variables",
+                "Belief Propagation",
+                "Iterative Thresholding",
+                "Beginning Of Iteration"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1831,11 +3715,46 @@
             },
             {
                 "id": 37271357600,
-                "preferredName": "J\u00f6rg Kliewer",
-                "firstName": "J\u00f6rg",
+                "preferredName": "Jörg Kliewer",
+                "firstName": "Jörg",
                 "lastName": "Kliewer"
             }
-        ]
+        ],
+        "abstract": "We consider the uplink of a cloud radio access network, in which baseband functionality is offloaded to the off-the-shelf servers in the cloud via network function virtualization (NFV). Specifically, we consider channel decoding of iteratively decodable channel codes as an important time-critical baseband operation. It has been shown that by reencoding the received channel codewords at the cloud with a linear NFV code, the impact of straggling decoders can be reduced. In our previous work the channel decoding operation at each server, after some probabilistic processing delay, was assumed to have converged to a codeword with only negligible probability of error. In contrast, in this work we leverage the fact that for iterative decoding we can trade-off latency versus decoding error by considering intermediate decoding results, i.e., after each decoder iteration. We derive an expression for the frame unavailability probability as a function of the decoding latency and thus of the number of completed iterations at all decoders. We show that for LDPC codes the latency is significantly reduced if we combine intermediate codeword estimates of the decoders at each iteration.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloud computing",
+                "Baseband",
+                "Probabilistic logic",
+                "Encoding",
+                "Decoding",
+                "Delays",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Virtual Network Functions",
+                "Channel Decoder",
+                "Cloud Computing",
+                "Codeword",
+                "Forward Error Correction",
+                "Expression Of Probability",
+                "Linear Code",
+                "Cloud Radio Access Network",
+                "Random Variables",
+                "Random Noise",
+                "Exponential Distribution",
+                "Generator Matrix",
+                "Subsequent Iterations",
+                "Code Blocks",
+                "Random Bits",
+                "Additive Noise Channel",
+                "Uplink Channel",
+                "Commercial Off-the-shelf",
+                "Error Floor",
+                "Time Tj",
+                "Average Error Probability"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1864,7 +3783,45 @@
                 "firstName": "Balazs",
                 "lastName": "Matuz"
             }
-        ]
+        ],
+        "abstract": "A simple decoder for q-ary low-density parity-check codes is studied, termed symbol message passing. The decoder passes hard decisions from a q-ary alphabet. For orthogonal modulations over the additive white Gaussian channel for which the modulation order and the field order q are equal, it is shown that the extrinsic messages can be modelled as observations of a q-ary symmetric channel, allowing to work out density evolution equations. A stability analysis is provided which emphasizes the influence of degree-3 variable nodes. Simulation results show performance gains for increasing q w.r.t. binary low-density parity-check codes with bit-interleaved coded modulation, and potential savings in decoding complexity.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Message passing",
+                "Simulation",
+                "Switched mode power supplies",
+                "Modulation",
+                "Performance gain",
+                "Parity check codes",
+                "Stability analysis"
+            ],
+            "Index Terms": [
+                "Low-density Parity-check Codes",
+                "Low-density Parity-check",
+                "Orthogonal Modulation",
+                "Stability Analysis",
+                "Additive Noise",
+                "Order Modes",
+                "Evolution Of Density",
+                "Variable Nodes",
+                "Numerical Results",
+                "Covariance Matrix",
+                "Likelihood Ratio Test",
+                "Transition Probabilities",
+                "Error Probability",
+                "Random Vector",
+                "Stability Conditions",
+                "Degree Distribution",
+                "Maximum Degree",
+                "Cardinality Of The Set",
+                "Belief Propagation",
+                "Gaussian Random Vector",
+                "Modulation Symbols",
+                "Parity-check Matrix",
+                "Decoding Algorithm",
+                "Fraction Of Edges"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1905,7 +3862,48 @@
                 "firstName": "Dominique",
                 "lastName": "Lavenier"
             }
-        ]
+        ],
+        "abstract": "This paper is dedicated to channel modeling and error-correction coding for DNA data storage with nanopore sequencing. We first propose a novel statistical model for DNA storage, which takes into account the memory within DNA storage error events, and follows the way nanopore sequencing works. Compared to existing channel models, the proposed model represents more accurate experimental datasets. We also propose a full error-correction scheme for DNA storage, based on a consensus algorithm and non-binary LDPC codes. Especially, we introduce a novel synchronization method which allows to eliminate remaining deletion errors after the consensus, before applying a belief-propagation LDPC decoding algorithm to correct substitution errors. This method exploits the LDPC code structure to correct deletions, and does not require adding any extra redundancy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sequential analysis",
+                "Redundancy",
+                "DNA",
+                "Memory",
+                "Consensus algorithm",
+                "Parity check codes",
+                "Encoding"
+            ],
+            "Index Terms": [
+                "Channel Model",
+                "DNA Storage",
+                "Statistical Models",
+                "Forward Error Correction",
+                "Synchronization Method",
+                "Substitution Errors",
+                "Decoding Algorithm",
+                "Low-density Parity-check",
+                "Deletion Errors",
+                "Sequence Length",
+                "Conditional Probability",
+                "Sequencing Techniques",
+                "Types Of Errors",
+                "Residual Error",
+                "Base Calling",
+                "Input Sequence",
+                "Memory Storage",
+                "Parity-check Matrix",
+                "Oxford Nanopore Technologies",
+                "Parity-check",
+                "Probabilistic Terms",
+                "Output Sequence",
+                "Synthesis Techniques",
+                "MinION Sequencing",
+                "Design Codes",
+                "New Set Of Data",
+                "Statistical Dependence"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1958,7 +3956,44 @@
                 "firstName": "Stefan",
                 "lastName": "Weithoffer"
             }
-        ]
+        ],
+        "abstract": "Having close-to-capacity performance and low error floor, even for small block lengths, make spatially coupled serially concatenated codes (SC-SCCs) a very promising class of codes. However, classical window decoding of SC-SCCs either limits the minimum block length or requires a large number of iterations, which increases the complexity and constrains the degree to which an SC-SCC decoder architecture can be parallelized. In this paper we propose jumping window decoding (JWD), an algorithmic modification to the scheduling of decoding such that it enables pipelined implementation of SC-SCCs decoder. Also, it provides flexibility in terms of block length and number of iterations and makes them independent of each other. Simulation results show that our scheme outperforms classical window decoding of both SC-SCCs and uncoupled SCCs, in terms of performance. Furthermore, we present a fully pipelined hardware architecture to realize JWD of SC-SCCs along with area estimates in 12 nm technology for the respective case study.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Simulation",
+                "Pipelines",
+                "Throughput",
+                "Scheduling",
+                "Hardware",
+                "Encoding",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Spatial Coupling",
+                "Concatenated Coding",
+                "Parallelization",
+                "Area Estimation",
+                "Small Blocks",
+                "Block Length",
+                "Hardware Architecture",
+                "Decoder Architecture",
+                "Error Floor",
+                "Wireless",
+                "Window Size",
+                "Block Size",
+                "Information Bits",
+                "Encoder Output",
+                "Code Blocks",
+                "Parity-check",
+                "Variable Nodes",
+                "Window Position",
+                "Low-density Parity-check Codes",
+                "Convolutional Encoder",
+                "Decoding Approach",
+                "Silicon Area",
+                "Kernel Computation"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -1989,9 +4024,9 @@
             },
             {
                 "id": 37274466600,
-                "preferredName": "Bane Vasi\u0107",
+                "preferredName": "Bane Vasić",
                 "firstName": "Bane",
-                "lastName": "Vasi\u0107"
+                "lastName": "Vasić"
             },
             {
                 "id": 37067204800,
@@ -2005,7 +4040,54 @@
                 "firstName": "Ravi",
                 "lastName": "Tandon"
             }
-        ]
+        ],
+        "abstract": "Decoder diversity is a powerful error correction framework in which a collection of decoders collaboratively correct a set of error patterns otherwise uncorrectable by any individual decoder. In this paper, we propose a new approach to design the decoder diversity of finite alphabet iterative decoders (FAIDs) for Low-Density Parity Check (LDPC) codes over the binary symmetric channel (BSC), for the purpose of lowering the error floor while guaranteeing the waterfall performance. The proposed decoder diversity is achieved by training a recurrent quantized neural network (RQNN) to learn/design FAIDs. We demonstrated for the first time that a machine-learned decoder can surpass in performance a man-made decoder of the same complexity. As RQNNs can model a broad class of FAIDs, they are capable of learning an arbitrary FAID. To provide sufficient knowledge of the error floor to the RQNN, the training sets are constructed by sampling from the set of most problematic error patterns - trapping sets. In contrast to the existing methods that use the cross-entropy function as the loss function, we introduce a frame-error-rate (FER) based loss function to train the RQNN with the objective of correcting specific error patterns rather than reducing the bit error rate (BER). The examples and simulation results show that the RQNN-aided decoder diversity increases the error correction capability of LDPC codes and lowers the error floor.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Simulation",
+                "Neural networks",
+                "Bit error rate",
+                "Estimation",
+                "Decoding",
+                "Error correction"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Training Set",
+                "Recurrent Neural Network",
+                "Bit Error Rate",
+                "Bit Error",
+                "Error Patterns",
+                "Parity-check",
+                "Problematic Patterns",
+                "Low-density Parity-check Codes",
+                "Low-density Parity-check",
+                "Error Floor",
+                "Quantum",
+                "Activation Function",
+                "Deep Neural Network",
+                "Hidden Layer",
+                "Additive Noise",
+                "Trainable Parameters",
+                "Output Channels",
+                "Rotational Symmetry",
+                "Sign Function",
+                "Variable Nodes",
+                "Consecutive Layers",
+                "Update Rule",
+                "Crossover Probability",
+                "Evolution Of Density",
+                "Decoding Process",
+                "Brute-force Approach"
+            ],
+            "Author Keywords": [
+                "Decoder diversity",
+                "Error floor",
+                "LDPC codes",
+                "Quantized neural network"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -2040,7 +4122,54 @@
                 "firstName": "Matthias",
                 "lastName": "Herrmann"
             }
-        ]
+        ],
+        "abstract": "Forward-Error-Correction (FEC) constitutes a dominant power consuming and throughput limiting component in the end-to-end digital baseband chain for wireless systems. With the progress in THz and Tbit/s link-level technologies towards practical solutions and deployments arguably in beyond-5G and 6G era, the performance and implementation bottleneck due to FEC in these systems becomes increasingly clear. In this paper, we explore FEC performance requirements for various beyond-5G wireless use-cases from a practical implementation perspective. We then provide some recent designs in Low Density Parity Check (LDPC) and Polar Codes, and their decoder architectures that demonstrate significant potential towards achieving throughputs approaching 1 Tbit/s.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wireless communication",
+                "Quantization (signal)",
+                "Limiting",
+                "Forward error correction",
+                "Throughput",
+                "Decoding",
+                "Error correction codes"
+            ],
+            "Index Terms": [
+                "Ultra-high Throughput",
+                "Parity-check",
+                "Low-density Parity-check",
+                "Polar Codes",
+                "Energy Efficiency",
+                "Power Consumption",
+                "Parallelization",
+                "Power Density",
+                "Block Size",
+                "Bit Error Rate",
+                "Efficient Implementation",
+                "Key Performance Indicators",
+                "Wireless Technologies",
+                "Small Blocks",
+                "Information Bits",
+                "Clock Cycles",
+                "List Size",
+                "Technology Node",
+                "Decoding Algorithm",
+                "Pipeline Stages",
+                "Cyclic Redundancy Check",
+                "Silicon Area",
+                "High Throughput",
+                "Node Level",
+                "Block Area",
+                "Operating Frequency"
+            ],
+            "Author Keywords": [
+                "Forward-Error-Correction",
+                "LDPC Codes",
+                "Polar Codes",
+                "ASIC design",
+                "Ultra-High Throughput Decoders"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -2059,8 +4188,8 @@
         "authors": [
             {
                 "id": 37085506575,
-                "preferredName": "J\u00e9r\u00e9my Nadal",
-                "firstName": "J\u00e9r\u00e9my",
+                "preferredName": "Jérémy Nadal",
+                "firstName": "Jérémy",
                 "lastName": "Nadal"
             },
             {
@@ -2077,11 +4206,54 @@
             },
             {
                 "id": 38273560300,
-                "preferredName": "Fran\u00e7ois Leduc-Primeau",
-                "firstName": "Fran\u00e7ois",
+                "preferredName": "François Leduc-Primeau",
+                "firstName": "François",
                 "lastName": "Leduc-Primeau"
             }
-        ]
+        ],
+        "abstract": "Estimating the energy consumption of LDPC decoders is a long and difficult task due to the large number of factors involved. Modern circuit synthesis tools can provide a satisfactory estimation of the power consumption, but this requires that the circuit be already implemented and it can take hours to provide the estimate. Currently, no accurate models are available to evaluate the decoding energy early in the design process. We propose a high-level energy model for flip-flop memory elements in LDPC architectures. The originality of the model is that it can analytically evaluate the variation of the energy due to the switching activity of the circuit gates, depending on the probability mass function (PMF) of the circuit inputs. Such PMFs are obtained through an adapted density evolution method that we propose. Therefore, the energy can be profiled for each decoding iteration and SNR value while considering several architecture choices. We illustrate the validity of the model by comparing the obtained energy estimates with measurements based on circuit simulations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Adaptation models",
+                "Energy consumption",
+                "Analytical models",
+                "Tools",
+                "Predictive models",
+                "Energy efficiency",
+                "Decoding"
+            ],
+            "Index Terms": [
+                "Accuracy Of Model",
+                "Energy Model",
+                "High-level Model",
+                "Low-density Parity-check",
+                "Low-density Parity-check Decoder",
+                "Energy Consumption",
+                "Energy Calculations",
+                "Active Switches",
+                "Probability Mass Function",
+                "Circuit Simulation",
+                "Evolution Of Density",
+                "Activation Of Signaling",
+                "Low Voltage",
+                "Additive Noise",
+                "Transformation Matrix",
+                "Bit Error Rate",
+                "Powerful Tool For Analysis",
+                "Clock Cycles",
+                "Memory Unit",
+                "Low-density Parity-check Codes",
+                "Bit Error Rate Performance",
+                "Decoding Performance",
+                "Static Random Access Memory",
+                "Input Bits",
+                "Variable Nodes",
+                "Flip Flop",
+                "Hardware Architecture",
+                "Switching Probability",
+                "Decoder Architecture"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -2106,9 +4278,9 @@
             },
             {
                 "id": 37086196802,
-                "preferredName": "Mathieu L\u00e9onardon",
+                "preferredName": "Mathieu Léonardon",
                 "firstName": "Mathieu",
-                "lastName": "L\u00e9onardon"
+                "lastName": "Léonardon"
             },
             {
                 "id": 37712509000,
@@ -2124,9 +4296,9 @@
             },
             {
                 "id": 37271502500,
-                "preferredName": "Christophe J\u00e9go",
+                "preferredName": "Christophe Jégo",
                 "firstName": "Christophe",
-                "lastName": "J\u00e9go"
+                "lastName": "Jégo"
             },
             {
                 "id": 37276552600,
@@ -2140,7 +4312,55 @@
                 "firstName": "Denis",
                 "lastName": "Barthou"
             }
-        ]
+        ],
+        "abstract": "Software implementation of digital communication systems is more and more used in different contexts. In the case of satellite communication standards, they are an appealing alternative in ground stations. The challenge is to push the performance of these digital communication systems to meet the real time constraints. In this paper, we propose an open source digital communication transceiver that enables to exploit the parallelism of general purpose processors (multicore, SIMD). It is also flexible, supporting several modulation and coding schemes. Finally, it is portable, being able to adapt to the level of parallelism of different CPU architectures (x86 and ARM).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Multicore processing",
+                "Parallel processing",
+                "Digital communication",
+                "Transceivers",
+                "Real-time systems",
+                "Software"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Open-source",
+                "Software Implementation",
+                "Ground Station",
+                "Real Constraints",
+                "Real-time Constraints",
+                "Digital Communication Systems",
+                "High Throughput",
+                "Stage 2",
+                "Parallelization",
+                "Real-time Performance",
+                "Carrier Frequency",
+                "Information Bits",
+                "Codeword",
+                "Multiple Frames",
+                "Amount Of Memory",
+                "Receiver Side",
+                "Real-time Communication",
+                "Transmission Phase",
+                "Synchronization Signal",
+                "Synchronization Task",
+                "Pipeline Stages",
+                "Real Communication",
+                "Real-time Sampling",
+                "Decoding Performance",
+                "Latency Measures"
+            ],
+            "Author Keywords": [
+                "Real-time system",
+                "SDR",
+                "Multicore CPU",
+                "SIMD",
+                "DVB-S2 standard",
+                "Radio transceiver"
+            ]
+        }
     },
     {
         "publicationNumber": "9594056",
@@ -2156,7 +4376,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 11th International Symposium on Topics in Coding (ISTC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover or splash screen of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9594056",
@@ -2172,6 +4394,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 11th International Symposium on Topics in Coding (ISTC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover or splash screen of the proceedings record.",
+        "keywords": {}
     }
 ]

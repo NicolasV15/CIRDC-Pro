@@ -20,7 +20,35 @@
                 "firstName": "Daniel",
                 "lastName": "Hansson"
             }
-        ]
+        ],
+        "abstract": "Lint tools analyze RTL statically and report code segments that do not comply with the selected coding guidelines. It is quick to run and as the error messages are very precise it is easy to fix the issues. It requires much less resources to fix a linting issue than to find and fix the same issue during simulation of a test. However, the large amounts of error and warning messages that the linting tools produce is a problem. Developers tend to push out linting until the very last moment just before the release. The engineers have plenty of critical test failures to attend to first, so it is a rational decision. However, this does not use the full potential of linting, because linting errors are very quick to fix, and some of the reported linting issues will be the same issues that takes much longer to debug during simulation. Pushing linting to the end of the project misses the opportunity to save a lot of time, but on the other hand developers cannot waste time by running the lint tool every now and again just-in-case they would find some good bugs. The solution is what we call continuous linting, where we combine the linting tool with an automatic debug tool of regression failures. At the start of the project we select the subset of the coding guidelines that the design must comply to. The automatic debug tool then runs the linting tool regularly, e.g. Each night, and when a linting issue is detected then the automatic debug tool sends a bug report to each individual with a list of linting errors this person has caused and in which commit they were introduced. We believe this unleashes the full potential of linting. By reporting the issues immediately to the individual that caused them instead of waiting to the end of the project, issues are fixed earlier at no extra human effort. The issues have to be fixed at some point and better sooner than later. This is all made possible by the automatic debug tool. As the engineers will fix their linting issues immediately, this will probably save time as some of the simulation bugs will be fixed faster and with less effort as more issues will be fixed due to linting error messages and fewer by manually analyzing simulation failures. In this paper we present the experience from a real ASIC project using continuous linting. We measured the number of linting issues that the automatic debug tool reported over a two month period. At the end of this period there were 0 linting issues outstanding. Had we waited until the end of the project to look at the lint issues there would have been 3617 lint issues in total to analyze. This is bound to have a significant positive effect on the project. The cost of fixing linting issues immediately by the person that just caused them is much less than for an engineer to sift through large amounts of lint errors and warnings at the end of the project.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer bugs",
+                "Application specific integrated circuits",
+                "Encoding",
+                "Testing",
+                "Manuals",
+                "Guidelines",
+                "IEEE Potentials"
+            ],
+            "Index Terms": [
+                "Rational Decision",
+                "End Of The Project",
+                "Automatic Tool",
+                "Start Of The Project",
+                "Real Projects",
+                "Test Failure",
+                "Bug Reports",
+                "Regression Test",
+                "Commercial Projects"
+            ],
+            "Author Keywords": [
+                "continuous linting",
+                "automatic debug",
+                "regression testing"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -55,7 +83,37 @@
                 "firstName": "Christophe",
                 "lastName": "Bobda"
             }
-        ]
+        ],
+        "abstract": "This paper presents an approach for reducing test bench implementation effort of SystemC designs, thus allowing an early verification success. We propose an automatic Universal Verification Methodology (UVM) environment that enables assertions-based, coverage driven and functional verification of SystemC models. The aim of this verification environment is to ease and speed up the verification of SystemC IPs by automatically producing a complete and working UVM test bench with all sub-environments constructed and blocks connected. Our experimentation shows that the proposed environment can rapidly be integrated to a SystemC design while improving its coverage and assertion-based verification.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Time-varying systems",
+                "Time-domain analysis",
+                "Libraries",
+                "Ports (Computers)",
+                "Protocols",
+                "Data models",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "National Science Foundation",
+                "Automatic Generation",
+                "Functional Verification",
+                "System C",
+                "Test Bench",
+                "Black Box",
+                "Data Streams",
+                "Simulated Phase",
+                "Clock Cycles",
+                "Input Stimulus",
+                "Electronic Design Automation"
+            ],
+            "Author Keywords": [
+                "UVM",
+                "Verification",
+                "SystemC/TLM"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -90,7 +148,45 @@
                 "firstName": "Rafik",
                 "lastName": "Guindi"
             }
-        ]
+        ],
+        "abstract": "System Verilog Assertions (SVA) is widely used by hardware designers and verification engineers to apply Assertion Based Verification (ABV) methodology on their hardware designs. However, the ambiguity of design specifications specified by different protocol standards in general and JEDEC memory protocol standards in specific imposes numerous difficulties on designers and verification engineers when translating design specifications into SVA. This motivated us to find a simple way to capture design specifications from JEDEC standard and automatically generate SVA that can be used as checkers for DDR memory protocols. In this paper, we propose a new method to capture design specifications using a timing diagram tool that documents the captured design specifications in a Timing Diagram Mark up Language (TDML) based format and generate SVA from the TDML document. The viability and the potential of our work are demonstrated with an Industrial case study using JEDEC LPDDR3 Memory Protocol Standard.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Standards",
+                "XML",
+                "Protocols",
+                "Hardware",
+                "Unified modeling language",
+                "Delays"
+            ],
+            "Index Terms": [
+                "Checkers",
+                "Design Specifications",
+                "Markup Language",
+                "Timing Diagram",
+                "Industrial Case Study",
+                "Time Constraints",
+                "Natural Language",
+                "End Stage",
+                "Time Information",
+                "Regression Test",
+                "State Machine",
+                "Unified Modeling Language",
+                "Red Triangles",
+                "Functional Verification",
+                "Constraint Value",
+                "State Diagram",
+                "Extensible Markup Language",
+                "Simulated Traces"
+            ],
+            "Author Keywords": [
+                "Timing Diagrams",
+                "TDML",
+                "Functional Verification",
+                "SVA",
+                "DDR memories"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -119,7 +215,40 @@
                 "firstName": "Chethan",
                 "lastName": "Harakchand"
             }
-        ]
+        ],
+        "abstract": "Functional verification of modern general purpose superscalar microprocessor design and validating the processor for all possible combinations of state transitions is an enormous challenge. A typical processor design goes through multiple stages of simulation, verification and evaluation before it is taped out for physical implementation. As the processor design and verification moves from one stage to the next, the cost of identifying and fixing design bugs increases significantly. FPGA verification provides a cost effective, scalable and rich environment for hunting deeper design bugs as compared to emulators and simulators, as it allows large number of verification cycles running at much closer to real time operation speeds but on the other hand, it does not offer same level of visibility and control over the design as compared to simulation and emulation environments. This lack of design visibility and control in FPGA introduces new challenges for the verification tool developers, design and debug engineers. This paper describes the challenges faced by the processor verification tools developers and debug engineers for verifying a processor design on FPGA implementation and few techniques that were successfully used at ARM to mitigate some of these challenges.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microprocessors",
+                "Conferences"
+            ],
+            "Index Terms": [
+                "Lack Of Control",
+                "Lack Of Visibility",
+                "Level Of Visibility",
+                "Verification Tool",
+                "Sequence Of Events",
+                "Pseudo-random",
+                "Reference Model",
+                "Shared Resource",
+                "Microarchitecture",
+                "Point Of Failure",
+                "Execution Speed",
+                "Consistency Checks",
+                "Frequent Intervals",
+                "Sequence Of Instructions",
+                "Corner Cases",
+                "Mean Time To Failure",
+                "Test Case Generation"
+            ],
+            "Author Keywords": [
+                "FPGA",
+                "RIS",
+                "verification",
+                "debug",
+                "RTL"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -148,7 +277,45 @@
                 "firstName": "Deepak",
                 "lastName": "Yeggina"
             }
-        ]
+        ],
+        "abstract": "Random instruction sequence (RIS) tools are widely used across the industry for processor verification and validation. These tools are often used to find design bugs in a relatively stable but not yet mature RTL design. RIS tools are very effective in generating test scenarios that are hard to envision. However, quite often completely random instruction sequences are of little test value for exposing corner cases in the design, especially if the bug involves a sequence of events happening in a narrow timing window. Macros can help enhance the test quality of the generated instruction sequences by providing controlled randomness around a specific sequence of instructions targeting a specific area in the processor architecture.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Generators",
+                "Context",
+                "Kernel",
+                "Switches",
+                "Metals"
+            ],
+            "Index Terms": [
+                "Random Sequence",
+                "Random Generation",
+                "Sequence Of Instructions",
+                "Verification And Validation",
+                "Predictive Value",
+                "Number Of Tests",
+                "Area Values",
+                "Multi-core",
+                "Test Sequences",
+                "End Of The Test",
+                "Memory System",
+                "Common Areas",
+                "Contextual Test",
+                "Executive Tests",
+                "Private Area",
+                "Instruction Group",
+                "Error Handling",
+                "Amount Of Computational Resources",
+                "Registration List",
+                "Context Switching"
+            ],
+            "Author Keywords": [
+                "Random instruction sequences",
+                "macros",
+                "directed testing"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -171,7 +338,40 @@
                 "firstName": "Weihua",
                 "lastName": "Han"
             }
-        ]
+        ],
+        "abstract": "Challenges of a complex chip verification come from every aspect, such as network file system (NFS) access, coding style etc. This paper presents some best practices from several sytem-on-chip (SoC) and processor projects we completed recently. It includes: improve NFS access during regression, save and restore technologies for simulation and interactive debug, compilation technologies based on design partitioning and pre-compiled design units, a mixed-signal co-simulation environment involving both UPF based low power RTL simulation and transistor level simulation, etc. These best practices improved the verification productivity and helped us to complete the projects successfully on schedule.",
+        "keywords": {
+            "IEEE Keywords": [
+                "System-on-chip",
+                "Databases",
+                "Servers",
+                "Best practices",
+                "Graphical user interfaces",
+                "Analytical models",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Best Practices",
+                "Parallel Model",
+                "Test Suite",
+                "Test Bench",
+                "Simulation Program",
+                "Common Part",
+                "Portion Of Time",
+                "Shared Object",
+                "Thousands Of Cases",
+                "Design Verification",
+                "Compile Time"
+            ],
+            "Author Keywords": [
+                "SoC Verification",
+                "Processor Verification",
+                "Simulation Program Relocation",
+                "Partition Compilation",
+                "Pre-Compiled Design",
+                "Mixed-signal Low Power co-simulation"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -194,7 +394,41 @@
                 "firstName": "Zdenek",
                 "lastName": "Prikryl"
             }
-        ]
+        ],
+        "abstract": "A fast and accurate simulator of the newly designed application specific instruction-set processors is essential during processor development, testing, and verification as well as for software development. Instruction-set simulators are usually used at the early stages of the design. They have good performance, but because of their low accuracy they cannot be used for a detailed pipeline or timing analysis. For this task, cycle-accurate simulators are used. They are of high accuracy since the whole micro architecture is simulated. But at the same time, the simulation time can be significantly longer than in the case of instruction-set simulators. We present a technique which reduces the simulation time with an acceleration of pipeline simulation. Experimental results show a speed-up during simulation. Moreover, the proposed concept can also be used for hardware realization of application specific instruction-set processors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pipelines",
+                "Program processors",
+                "Clocks",
+                "Decoding",
+                "Hardware",
+                "Automata",
+                "Delays"
+            ],
+            "Index Terms": [
+                "Simulation Time",
+                "Microarchitecture",
+                "Model Formulation",
+                "Functional Unit",
+                "Future Actions",
+                "Root Node",
+                "Automata",
+                "Symbolic Meaning",
+                "Identification Of Events",
+                "Target Application",
+                "Typical Simulation",
+                "Semantic Model",
+                "Starting State",
+                "Programming Tools",
+                "Clock Cycles",
+                "Current Cycle",
+                "Dynamic Scheduling",
+                "Finite Machine",
+                "Calendar Effects",
+                "Design Space Exploration"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -223,7 +457,38 @@
                 "firstName": "Gunaranjan",
                 "lastName": "Kurucheti"
             }
-        ]
+        ],
+        "abstract": "The challenge of verification of a multi-processor design is growing rapidly due to the increase of complexity in the design, bus protocols, weakly ordered memory and the presence of multiple hierarchies of caches in the memory subsystem. Adding to this complexity, ARM architecture also defines a set of attributes and characteristics required to support memory and devices in the system memory map. One of the key issues that need to be addressed, under these scenarios, is making sure that memory is consistent and coherent as different processors access, cache and update a single shared address space. In this work we present an ARM internal random instruction sequence (RIS) tool, MEMRIS (Memory Random Instruction Sequence), which provides a scalable approach to verify and validate memory coherence in multi-processor/cluster systems with up to 8-processors in both AARCH32/AARCH64. The output format of the generator is native ARM executables intended to run in a top-level simulation based environment. The MEMRIS generator allows the user to control many aspects of the test such as the number, size and location of address spaces as well as the mix of instructions that will operate on the defined memory regions. These memory regions are then configured to be shared between the Processing Elements (PEs), using defined address constraints, to hence trigger various sharing scenarios and invoke snoops and cache-line migrations. These scenarios are built using assembly sequences bounded into discrete zones. The zones are synchronized with various primitives throughout the test, i.e. Using Bakers algorithm and exclusives. The tool also internally models the code execution threads as to provide an optional self-check memory sequence at the end of the test.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Synchronization",
+                "Generators",
+                "Registers",
+                "Memory management",
+                "Hazards",
+                "Assembly",
+                "Message systems"
+            ],
+            "Index Terms": [
+                "Multiprocessor Systems",
+                "Memory Coherence",
+                "Synchronization",
+                "End Of The Test",
+                "Memory Regions",
+                "Address Space",
+                "Discrete Zones",
+                "Heuristic",
+                "Test Sequences",
+                "Test Section",
+                "Memory Applications",
+                "Validation Scenarios",
+                "Test Case Generation"
+            ],
+            "Author Keywords": [
+                "Multi-processor verification",
+                "Random instruction tool"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -252,7 +517,35 @@
                 "firstName": "Naresh Kumar",
                 "lastName": "Kadali"
             }
-        ]
+        ],
+        "abstract": "Code Coverage is a method used to gauge the effectiveness of a Test setup for a particular Design. Even with the advent of modern techniques like Functional Coverage, Code Coverage still remains an important cog in the wheel of SoC Verification cycle. Through Code Coverage, Design and Verification Engineers get to know about parts of code excited by the Test stimulus and more importantly, parts of code which have not been exercised. Code Coverage for SoC is usually a long pole in the Verification cycle typically because of huge Simulator Compile and Run times. The paper discusses the traditional SoC Coverage closure methodology and proposes an automated methodology to efficiently manage the Coverage enabled Simulation runs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "System-on-chip",
+                "Databases",
+                "Measurement",
+                "Servers",
+                "Switches",
+                "Random access memory",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Running Time",
+                "Simulation Run",
+                "Traditional Methodologies",
+                "Part Of Code",
+                "Reduction In Time",
+                "Huge Database",
+                "Coverage Metrics",
+                "Compile Time",
+                "Clock Generator"
+            ],
+            "Author Keywords": [
+                "SoC Verification",
+                "Code Coverage",
+                "EDA"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -275,7 +568,34 @@
                 "firstName": "Peter-Michael",
                 "lastName": "Seidel"
             }
-        ]
+        ],
+        "abstract": "The x86 instruction set has historically grown to have a very complex definition. Simply enumerating a representative for every type of instruction can already be challenging, but does not consider the allowed redundancies in instruction encoding, the variation of operand, addressing and constant choices and the generation of illegal instruction words. We are proposing a framework for directly targeting a broader set of instruction word choices in a controlled way based on a formal model of the x86 instruction encoding. This can be used for directed test case generation for the decoding of x86 instructions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encoding",
+                "Decoding",
+                "Computer architecture",
+                "Manuals",
+                "Law",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Test Case Generation",
+                "Instruction Decoder",
+                "Educational Settings",
+                "Special Education",
+                "Random Generation",
+                "Field Values",
+                "Single Node",
+                "Corner Cases",
+                "Legal Value",
+                "Machine Code"
+            ],
+            "Author Keywords": [
+                "Test case generation",
+                "x86 instruction decoding"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -316,7 +636,40 @@
                 "firstName": "Arun",
                 "lastName": "Mishra"
             }
-        ]
+        ],
+        "abstract": "SOCs are getting complex day by day which makes IP design reuse a key approach. To prove functional performance of the IP in SOC, stimulus is required which activates the particular feature of the logic and output is matched with the golden values. Real time experience shows that it is not feasible to test all the features of the IP in SOC, specially negative scenarios such as timeout while enumerating the device. In this paper we propose a novel Validation Framework which validates USBPHY-IP as slave controlled by prototype model implemented in FPGA. Modifications are made in IP as soon as bugs are found and after successful validation (zero bugs), IP finally occupies space into SOC. This approach is capable of checking all the features of USB 2.0 which are currently posing major challenges in SOC validation. This could be a systematic approach to root cause many issues because of the easiness to play with logic sitting inside FPGA. This paper discusses the challenges for USBPHY IP validation and addresses the issues using this innovative framework. Some of the results are presented in the form of case studies for 45nm silicon.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Universal Serial Bus",
+                "Field programmable gate arrays",
+                "System-on-chip",
+                "IP networks",
+                "Registers",
+                "Testing",
+                "Ecosystems"
+            ],
+            "Index Terms": [
+                "Silicon",
+                "Physical Layer",
+                "Validation Framework",
+                "LabVIEW",
+                "Setup Time",
+                "LabVIEW Software",
+                "Clock Cycles",
+                "Tedious Task",
+                "Logical Analysis",
+                "Compliance Testing",
+                "Novel Ecosystems"
+            ],
+            "Author Keywords": [
+                "USB PHY",
+                "ULPI",
+                "Validation",
+                "FPGA",
+                "SOC",
+                "IP"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -339,7 +692,30 @@
                 "firstName": "Mrugesh",
                 "lastName": "Walimbe"
             }
-        ]
+        ],
+        "abstract": "The typical multi core SOC of today faces several development constraints. While the process and methodology plans for a first pass silicon, it is not always guaranteed. A true SOC design team always plans for debug capability when the SOC samples arrive. A debug/Test solution should also not increase the complexity and schedule of design, verification and physical design process. The debug/Test solution discussed provides a method to debug/Test the SOC and at the same time cater towards measuring performance in debug mode. This paper is targeted for the IP and SOC design teams developing the debug architecture in a SOC. It focuses on simplifying the debug process. It focusses on SOC interconnect performance measurement in debug mode. This paper describes a debug/Test solution which can be used to debug a SOC. It provides for inbuilt interconnect path performance measurement in absence of processor based control. It also provides for the ability to provide sequencing in the interconnect transactions to simulate real time interconnect activity.",
+        "keywords": {
+            "IEEE Keywords": [
+                "System-on-chip",
+                "IP networks",
+                "Registers",
+                "Sequential analysis",
+                "Clocks",
+                "Logic functions"
+            ],
+            "Index Terms": [
+                "Performance Measures",
+                "First Pass",
+                "Read Data",
+                "Boolean Logic",
+                "Registration Status"
+            ],
+            "Author Keywords": [
+                "Debug",
+                "Interconnect",
+                "Performance measurement"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -368,7 +744,48 @@
                 "firstName": "Pradeep",
                 "lastName": "Nagarajan"
             }
-        ]
+        ],
+        "abstract": "Random Instruction Sequence (RIS) Generators are widely used for functional verification of processors. In the case of multiprocessor systems, these RIS tools can be used to generate instructions that act upon data shared between the multiple processors in the system. In addition to the random instruction sequences, addition of semi-directed functional sequences and deterministic instruction patterns in the tool -- orthogonal to the randomly generated instructions increase the chances of reaching the desired corner cases faster. Using carefully crafted address reuse and virtual memory mapping data inconsistency issues and arbitration bugs in the processors can be hit faster. This paper presents a case study of two bugs which were found in cache coherent multiprocessor systems using a RIS tool, and semi-directed sequences.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Generators",
+                "Multiprocessing systems",
+                "Computer bugs",
+                "Algorithms",
+                "Coherence",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "Generation Sequencing",
+                "Random Sequence",
+                "Arbitration",
+                "Functional Verification",
+                "Sequence Of Instructions",
+                "Multiple Processors",
+                "Virtual Memory",
+                "Sequence Of Events",
+                "Educational Settings",
+                "Stress Test",
+                "Effective Description",
+                "End Of The Test",
+                "Common Region",
+                "End Of Run",
+                "Test Bench",
+                "Data Cache",
+                "Memory Regions",
+                "Memory Address",
+                "Physical Address",
+                "Shared Memory"
+            ],
+            "Author Keywords": [
+                "multiprocessor verification",
+                "random instruction sequence",
+                "RIS generator",
+                "virtual address",
+                "cache invalidation request"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -391,7 +808,34 @@
                 "firstName": "Parikshit Pritam",
                 "lastName": "Dhodapkar"
             }
-        ]
+        ],
+        "abstract": "System development with complex bus architecture requires accuracy to model key system characteristics. It also requires the ability to execute the prototype to examine the behavior of the system for analyzing key metrics. This paper elucidates the development of synthesizable memory models for use in virtual prototyping for enhancing interconnect performance of a SoC and for boot code development. Virtual prototyping provided us with the accuracy, performance, and flexibility to model and analyze complex system to make critical design decisions. Thus, we have successfully modeled the SoC, peripheral memories and board delays, in order to emulate the system behavior. This paper will showcase how we used virtual prototyping for performance validation and early boot code development.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Virtual prototyping",
+                "System-on-chip",
+                "Software",
+                "Data models",
+                "Delays",
+                "Computer architecture",
+                "Accuracy"
+            ],
+            "Index Terms": [
+                "Memory Model",
+                "Virtual Prototyping",
+                "State Machine",
+                "Development Cycle",
+                "Memory Control",
+                "Datapath",
+                "Flash Memory",
+                "SD Card"
+            ],
+            "Author Keywords": [
+                "Virtual Prototyping",
+                "Synthezizable Memory Model",
+                "Early bootcode development"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -410,15 +854,15 @@
         "authors": [
             {
                 "id": 37085423264,
-                "preferredName": "Andrea H\u00f6ller",
+                "preferredName": "Andrea Höller",
                 "firstName": "Andrea",
-                "lastName": "H\u00f6ller"
+                "lastName": "Höller"
             },
             {
                 "id": 37085510196,
-                "preferredName": "Gerhard Sch\u00f6nfelder",
+                "preferredName": "Gerhard Schönfelder",
                 "firstName": "Gerhard",
-                "lastName": "Sch\u00f6nfelder"
+                "lastName": "Schönfelder"
             },
             {
                 "id": 38233988300,
@@ -438,7 +882,38 @@
                 "firstName": "Christian",
                 "lastName": "Kreiner"
             }
-        ]
+        ],
+        "abstract": "Safety-critical systems have to satisfy ever-growing demands for high computing performance and cost-efficiency. This leads to a move to commercial off-the-shelf hardware components that are not hardened. Unfortunately, these components are becoming increasingly vulnerable to operational faults and the manufacturers do not guarantee a certain level of dependability. However, in order to maintain a high integrity, safety-critical systems have to ensure the correct functionality of hardware components during operation. Besides redundancy techniques, this is typically realized with build-in self-tests implemented at software level. Safety-standards, such as the IEC 61508 standard, prescribe certain fault models that should be used to assess the diagnostic coverage of self-tests with fault injection experiments. Typical fault injection frameworks use gate-level net lists or RTL models. However, these hardware models are not publicly available for most COTS processors. In this paper we present a Fault Injection framework for the Evaluation of software-based Self-tests (FIES) according to the safety standard IEC 61508. This virtual platform supports widely-used embedded COTS processors, such as ARM cores, and provides feedback about the diagnostic coverage of self-tests in early design stages. It supports the simulation of faults in the control and execution path of an ARM processor and features an extended fault model to simulate memory coupling faults. The applicability of the approach is shown by using it for the evaluation of a memory test.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Circuit faults",
+                "Hardware",
+                "Random access memory",
+                "Built-in self-test",
+                "Registers",
+                "IEC standards"
+            ],
+            "Index Terms": [
+                "Safety-critical",
+                "Fault Injection Framework",
+                "Testing Rates",
+                "Level Of Reliability",
+                "Types Of Defects",
+                "Safety Standards",
+                "Defect Model",
+                "Hardware Components",
+                "Early Design Stages",
+                "ARM Processor",
+                "Fault-tolerant",
+                "Fault Location",
+                "Different Types Of Defects",
+                "Avionics",
+                "Commercial Off-the-shelf",
+                "Hardware Description",
+                "Considerable Disadvantage",
+                "Transient Faults"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -473,7 +948,44 @@
                 "firstName": "Franco",
                 "lastName": "Fummi"
             }
-        ]
+        ],
+        "abstract": "This paper presents a methodology to produce synthesizable HW descriptions starting from UML State Machine based representations. This problem has already been widely addressed in the past. However, all the previously proposed approaches present a common characteristic: they restrict the expressiveness of the starting model. In particular, a common approach consists on the definition of ad-hoc UML profiles to adapt UML to the typical constructs of the classical hardware description languages. Thus, forcing the designer to use only a subset of the UML modeling language. This differentiates the initial UML model for SW and HW design, thus contradicting the main assumption of Model-Based design and avoiding code reuse. This paper aims at overcoming this limitation, by allowing the designer to use the same models for SW and HW design. To achieve this result, the UML description is mapped into a general purpose Model of Computation, called univer CM, to remove any ambiguity of the UML definition. After the application of some manipulations, the automata composing the univer CM models are translated into VHDL processes respecting the templates defined for the HW synthesis. The proposed approach has been validated on some commercial designs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Unified modeling language",
+                "Automata",
+                "Computational modeling",
+                "Ports (Computers)",
+                "Encoding",
+                "Semantics",
+                "Sensitivity"
+            ],
+            "Index Terms": [
+                "Unified Modeling Language",
+                "Computational Model",
+                "State Machine",
+                "Model-based Design",
+                "Transition State",
+                "Previous Step",
+                "System Description",
+                "Target State",
+                "Composition State",
+                "End State",
+                "Atomic States",
+                "Clock Signal",
+                "Synchronization Process",
+                "Triggering Condition",
+                "Final Implementation",
+                "Path Computation",
+                "Real-time Constraints",
+                "System C"
+            ],
+            "Author Keywords": [
+                "HW synthesis",
+                "UML State Diagram",
+                "Components reuse"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -514,7 +1026,40 @@
                 "firstName": "Mohamed",
                 "lastName": "Dessouky"
             }
-        ]
+        ],
+        "abstract": "System-on-chip designs became complex. As such, tracing complex sequential circuits over many clock cycles is not a simple process any more. Due to that, many mistakes can be made while writing assertions. In this paper, a new effective methodology is proposed to debug errors in an assertion assuming that there is no error in the design or the test bench. The proposed methodology is based on an innovated propagate-and-repeat algorithm, an enhanced mutation model, and a new three-state visual representation. A multi-core processing utilizing an efficient event scheduling engine is used to speed up the methodology analysis time. Experimental results show the efficiency of the proposed methodology in determining the errors in the assertion and on providing more information on design behavior.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Debugging",
+                "Delays",
+                "Visualization",
+                "Algorithm design and analysis",
+                "Engines",
+                "Shape"
+            ],
+            "Index Terms": [
+                "Simulation Results",
+                "Debugging",
+                "Visual Representation",
+                "Test Bench",
+                "Clock Cycles",
+                "Signal Values",
+                "Boolean Operators",
+                "Feedback Information",
+                "Configuration Parameters",
+                "Repetitive Cycles",
+                "Clock Signal",
+                "Drawback Of This Technique",
+                "Cycle Delay",
+                "Ticking Clock"
+            ],
+            "Author Keywords": [
+                "SVA",
+                "propagate-and-repeat",
+                "visual representation"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -533,9 +1078,9 @@
         "authors": [
             {
                 "id": 37087667804,
-                "preferredName": "Luk\u00e1 Charv\u00e1t",
-                "firstName": "Luk\u00e1",
-                "lastName": "Charv\u00e1t"
+                "preferredName": "Luká Charvát",
+                "firstName": "Luká",
+                "lastName": "Charvát"
             },
             {
                 "id": 38667865400,
@@ -545,11 +1090,50 @@
             },
             {
                 "id": 38667890300,
-                "preferredName": "Tom\u00e1 Vojnar",
-                "firstName": "Tom\u00e1",
+                "preferredName": "Tomá Vojnar",
+                "firstName": "Tomá",
                 "lastName": "Vojnar"
             }
-        ]
+        ],
+        "abstract": "Implementation of a pipeline-based execution of instructions in purpose-specific microprocessors is an error prone task, which implies a need of proper verification of the resulting design. Various techniques were proposed for this purpose, but they usually require a significant manual intervention of the developers. In this work, we propose a novel, highly automated approach for discovering RAW hazards in in-order pipelined instruction execution. Our approach combines static analysis of data paths to detect anomalies and possible hazards, followed by a transformation of detected problematic paths to a parameterised system (PS), and a subsequent formal verification to check the possibility of unhandled hazards using techniques for formal verification of PSs. We have implemented our approach and successfully applied it on multiple non-trivial microprocessors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hazards",
+                "Pipelines",
+                "Registers",
+                "Ports (Computers)",
+                "Program processors",
+                "Microprocessors",
+                "Radiation detectors"
+            ],
+            "Index Terms": [
+                "Formal Verification",
+                "Static Analysis",
+                "Execution Of Operations",
+                "Datapath",
+                "Stage 2",
+                "Educational Settings",
+                "Education Classes",
+                "Types Of Connections",
+                "Control Logic",
+                "Consistency Checks",
+                "Transition Rules",
+                "Incorrect Data",
+                "Execution Plan",
+                "Logical Flow",
+                "Pipeline Stages",
+                "Sequence Of Instructions",
+                "Source Vertex",
+                "Linear Topology"
+            ],
+            "Author Keywords": [
+                "pipeline hazard",
+                "microprocessor analysis",
+                "formal verification",
+                "parameterised system",
+                "pipelined execution"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -580,11 +1164,58 @@
             },
             {
                 "id": 37265818100,
-                "preferredName": "G\u00f6rschwin Fey",
-                "firstName": "G\u00f6rschwin",
+                "preferredName": "Görschwin Fey",
+                "firstName": "Görschwin",
                 "lastName": "Fey"
             }
-        ]
+        ],
+        "abstract": "The complexity of modern chip designs is rapidly increasing. More and more blocks from old designs are reused and third party IP is licensed to fulfill strict time-to-market constraints. Often, poor documentation of such blocks makes improvements and extensions of the blocks a difficult time consuming task. In this paper we present a technique for automatically localizing the parts of the code which are relevant for a feature. With this a developer can better understand the design and, consequently, can adjust the design more efficiently. The presented approach uses mutants changing the code of the design at a certain location. The code changed by a mutant is considered to be related to a feature if the mutant is killed while the feature is used. The use cases are generated using an automatic approach. This approach is based on a description specifying how the different features are used. Compared to two previous approaches the manual work is significantly reduced and the localization is of similar or even better quality.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Automata",
+                "Manuals",
+                "Testing",
+                "Optimization",
+                "Feature extraction",
+                "Documentation",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Part Of Code",
+                "Source Code",
+                "State Variables",
+                "Design Features",
+                "Original Design",
+                "Automata",
+                "Part Of Design",
+                "Submodule",
+                "Simple Activity",
+                "Arithmetic Operations",
+                "Mutation Testing",
+                "Part Features",
+                "Automatic Generation",
+                "Primary Input",
+                "Manual Effort",
+                "Clock Cycles",
+                "System-on-chip",
+                "Primary Output",
+                "Automatic Localization",
+                "Case Generation",
+                "Coverage Metrics",
+                "Datapath",
+                "Type Of Action",
+                "Test Suite",
+                "Starting State",
+                "Dynamic Analysis",
+                "Mutually Exclusive"
+            ],
+            "Author Keywords": [
+                "Mutation testing",
+                "design understanding",
+                "HDL",
+                "analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -607,7 +1238,46 @@
                 "firstName": "Peter-Michael",
                 "lastName": "Seidel"
             }
-        ]
+        ],
+        "abstract": "We are combining ACL2 theorem proving with an off-the-shelf commercial model checker to verify a functional unit that would have been hard to verify by just using either of the two approaches. It is essential that our combination of the two tools allows for results of either of the tools to be used for the other tool in both directions. The unit is a packed integer multiplier that can handle a variety of multiplication operations on signed and unsigned integer operands ranging from 8 bits to 32 bits. The implementation of the unit is targeting low-power operation and is described in production RTL. The combination of the two verification approaches builds on the strengths and works around the challenges of each of the two approaches. Communication between the two approaches is based on a standard Veriloginterface. In this manuscript we are describing the verification environment and explain details of the verification project.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware design languages",
+                "Clocks",
+                "Load modeling",
+                "Engines",
+                "Libraries",
+                "Wires",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Essential Step",
+                "Model Checking",
+                "Model Checking Tools",
+                "Functional Unit",
+                "Variety Of Operations",
+                "Standard Interface",
+                "Verification Approach",
+                "Use Of Tools",
+                "Running Time",
+                "Specific Modifications",
+                "Part Of Design",
+                "Submodule",
+                "Addition Operations",
+                "Internal Signals",
+                "Internal Engine",
+                "Datapath",
+                "Formal Verification",
+                "Bitwise Operations"
+            ],
+            "Author Keywords": [
+                "ACL2",
+                "Theorem Proving",
+                "Model Checking",
+                "Multiplication",
+                "Verilog RTL"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -636,7 +1306,52 @@
                 "firstName": "Tushar",
                 "lastName": "Gupta"
             }
-        ]
+        ],
+        "abstract": "With growing adoption of the simulation acceleration technology for early functional verification of complex System-on-chip (SoC) designs, high level test benches contain substantial number of calls for debug and design state manipulation, to increase functional coverage. Ever increasing size and complexity of digital designs make these calls compute and IO intensive, requiring large software pre-processing time to prepare data suitable for feeding into the hardware accelerator. On the hardware side, growing design sizes are easily handled by parallelism inherently present in hardware accelerators with reconfigurable architecture, but it is often not trivial to speed up complex software test benches via parallel processing. In this paper, we present a novel methodology which enhances the performance of the system significantly by moving the software pre-processing time to an offline step named Partial Test bench Evaluation (PTE), which \"partially evaluates\" a test bench by running a pure simulation phase without requiring the hardware accelerator to be connected and generates optimized data to be directly fed into the hardware accelerator. Actual simulation acceleration with a partially evaluated test bench executes much faster than the same with the original test bench.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Acceleration",
+                "Software",
+                "Computational modeling",
+                "Databases",
+                "Life estimation",
+                "Heuristic algorithms"
+            ],
+            "Index Terms": [
+                "Test Bench",
+                "Simulated Acceleration",
+                "Functional Verification",
+                "Hardware Accelerators",
+                "Raw Data",
+                "Waveform",
+                "Simulation Time",
+                "Raw Files",
+                "Parallelization",
+                "Graphics Processing Unit",
+                "High-level Functions",
+                "Input Files",
+                "Hash Function",
+                "Physical Resources",
+                "Substantial Time",
+                "Substring",
+                "Masked Images",
+                "Idle Time",
+                "Time Gain",
+                "Job Scheduling",
+                "Dynamic Input",
+                "Memory Bank",
+                "Compile Time",
+                "Driver State",
+                "Simulation Software",
+                "Memory Size",
+                "Time T1"
+            ],
+            "Author Keywords": [
+                "Partial evaluation",
+                "simulation acceleration"
+            ]
+        }
     },
     {
         "publicationNumber": "7087213",
@@ -652,7 +1367,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "Many people contributed to the success of MTV 2014 and to the publishing of this proceeding. We thank all the contributors for their sustained interest, support and cooperation. MTV 2014 has been a great success. We are deeply indebted to all members of the organizing committee, program committee, session organizers, session chairs, and volunteers for their support to MTV events over the years. Special thanks to program co-chairs Dr. Jayanta Bhadra and Prof. Li-C Wang for their devotion to the success of MTV 2014. Very special thanks to Xiao Sun, Farhan Rahman, Adam Abadir and Himyanshu Anand for their tremendous efforts in the organization of MTV 2014. Last but not least, the top volunteer award this year goes to Wen Chen who has been extremely helpful with the organization of MTV this year. Sincere appreciation to MTV Corporate Supporters in 2014: AMD, ARM, Freescale, IBM, Mentor Graphics and Synopsys. This year MTV shared a lunch meeting on the 3rd day of the workshop with the Design Verification (DV) Club in Austin. This was a big success and we plan to continue this cooperation in future years. Special thanks to the new DV club chair, Kelly Larson of Paradigm Works for their continued support of MTV. ",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -668,7 +1385,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current staff, committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -684,7 +1403,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current staff, committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -700,7 +1421,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -716,7 +1439,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: microprocessor test; microprocessor verification; hardware verification; mutation analysis; debugging; formal logic; and memory verification.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -732,7 +1457,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -748,7 +1475,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -764,7 +1493,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -780,7 +1511,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -796,7 +1529,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference organizers greatly appreciate the support of the various corporate sponsors listed.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7087213",
@@ -812,6 +1547,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 15th International Microprocessor Test and Verification Workshop",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     }
 ]

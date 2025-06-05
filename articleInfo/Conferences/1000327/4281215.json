@@ -13,7 +13,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -42,7 +44,39 @@
                 "firstName": "Stefan",
                 "lastName": "Nilsson"
             }
-        ]
+        ],
+        "abstract": "A dynamic LC-trie is currently used in the Linux kernel to implement address lookup in the IP routing table. The main virtue of this data structure is that it supports both fast address lookups and frequent updates of the table. Also, it has an efficient memory management scheme and supports multiprocessor architectures using the RCU locking mechanism. The structure scales nicely: the expected number of memory accesses for one lookup is O(log log n), where n is the number of entries in the lookup table. In particular, the time does not depend on the length of the keys, 32-bit IPv4 addresses and 128-bit addresses does not make a difference in this respect. In this article we introduce TRASH, a combination of a dynamic LC-trie and a hash function. TRASH is a general purpose data structure supporting fast lookup, insert and delete operations for arbitrarily long bit strings. TRASH enhances the level-compression part of the LC-trie by prepending a header to each key. The header is a hash value based on the complete key. The extended keys will behave like uniformly distributed data and hence the average and maximum depth is typically very small, in practice less than 1.5 and 5, respectively. We have implemented the scheme in the Linux kernel as a replacement for the dst cache (IPv4) and performed a full scale test on a production router using 128-bit flow-based lookups. The Linux implementation of TRASH inherits the efficient RCU locking mechanism from the dynamic LC-trie implementation. In particular, the lookup time increases only marginally for longer keys and TRASH is highly insensitive to different types of data. The performance figures are very promising and the cache mechanism could easily be extended to serve as a unified lookup for fast socket lookup, flow logging, connection tracking and stateful networking in general.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data structures",
+                "Linux",
+                "Kernel",
+                "Routing",
+                "Memory management",
+                "Table lookup",
+                "Performance evaluation",
+                "Testing",
+                "Production",
+                "Sockets"
+            ],
+            "Index Terms": [
+                "Data Structure",
+                "Lookup Table",
+                "Hash Function",
+                "Key Size",
+                "Routing Table",
+                "Root Node",
+                "Tree Depth",
+                "Caching",
+                "Maximum Tree Depth",
+                "Cache Size",
+                "Packet Drop",
+                "Cache Misses",
+                "Fast Path",
+                "DoS Attacks",
+                "Uppsala University"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -95,7 +129,50 @@
                 "firstName": "Chunming",
                 "lastName": "Qiao"
             }
-        ]
+        ],
+        "abstract": "The next generation network (NGN) may be regarded as a fresh broadband architecture that best utilizes and combines the major advances in optical, wireless, and computer communication networking of the past decade. Attractive business opportunities will be opened by the NGN, but cost-effectiveness in building and operating it remains a crucial challenge that can differentiate a profitable implementation strategy from one that is merely \"hype\". This paper proposes a promising PON+WiMax architecture for optical-wireless-integration (OWI) and a cost model for this architecture that considers the related optimization issues. Results from initial use of this cost model compare OWI with other existing solutions for broadband access, showing superior cost-effectiveness for the OWI solution as well as the potential for further reducing capital and operating expenses.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Optical fiber networks",
+                "Passive optical networks",
+                "High speed optical techniques",
+                "Optical fiber cables",
+                "Next generation networking",
+                "Integrated optics",
+                "Telecommunications",
+                "National electric code",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Cost Model",
+                "Optical Networks",
+                "Broadband Internet",
+                "Wireless Networks",
+                "Distribution Network",
+                "Base Station",
+                "Service Data",
+                "Access Network",
+                "Wireless Technologies",
+                "Network Infrastructure",
+                "Optical Technology",
+                "Capital Expenditure",
+                "Planning Model",
+                "Housing Costs",
+                "Optimal Coverage",
+                "Mobility Support",
+                "Network Planning",
+                "Operational Expenditure",
+                "Broadband Services",
+                "Aggregator Node",
+                "Significant Economic Value"
+            ],
+            "Author Keywords": [
+                "cost modeling",
+                "optical wireless integration",
+                "VDSL"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -130,7 +207,46 @@
                 "firstName": "Nils",
                 "lastName": "Gura"
             }
-        ]
+        ],
+        "abstract": "Large, fast switches require novel approaches for scheduling. Arbiters must be able to keep up with the high switching rates given by multi-gigabit-per-second link rates and short cells. In this paper, we propose the <i xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">Parallel Wrapped Wave Front Arbiter</i> (PWWFA). We analyze its performance, present simulation results, discuss its implementation, and show bow this scheme can be applied in a large switch with multi-terabit-per-second throughput and hundreds of ports.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Throughput",
+                "Impedance matching",
+                "Processor scheduling",
+                "Communication switching",
+                "Iterative algorithms",
+                "Performance analysis",
+                "Analytical models",
+                "Pipeline processing",
+                "Iterative methods"
+            ],
+            "Index Terms": [
+                "Large Switching",
+                "Throughput",
+                "Cell Size",
+                "Matrix Elements",
+                "Unit Time",
+                "Transmission Rate",
+                "Processing Elements",
+                "Iterative Scheme",
+                "Transmission Time",
+                "Output Ports",
+                "Average Delay",
+                "Average Latency",
+                "Input Port",
+                "Light Load",
+                "Maximum Matching",
+                "Service Class",
+                "Shift Register"
+            ],
+            "Author Keywords": [
+                "switches",
+                "scheduling",
+                "arbiter"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -165,7 +281,36 @@
                 "firstName": "H. Jonathan",
                 "lastName": "Chao"
             }
-        ]
+        ],
+        "abstract": "Buffered crossbar switches have received great attention recently because they have become technologically feasible, have simpler scheduling algorithms, and achieve better performance than a bufferiess crossbar switch. Buffered crossbar switches have a buffer placed at each crosspoint. A cell is first delivered to a crosspoint buffer and then transferred to the output port. With a speedup of two, a buffered crossbar switch has previously been proved to provide 100% throughput. We propose what we believe is the first feasible scheduling scheme that can achieve 100% throughput without speedup and a finite crosspoint buffer. The proposed scheme is called SQUISH: a Stable Queue Input-output Scheduler with Hamiltonian walk. With SQUISH, each input/output first makes decisions based on the information from the virtual output queues and crosspoint buffers. Then it is compared with a Hamiltonian walk schedule to avoid possible \"bad\" states. We then prove that SQUISH can achieve 100% throughput with a speedup of one. Our simulation results also show good delay performance for SQUISH.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Switches",
+                "Scheduling algorithm",
+                "Traffic control",
+                "Delay",
+                "Telecommunication traffic",
+                "Fabrics",
+                "Chaos",
+                "Internet",
+                "Packet switching"
+            ],
+            "Index Terms": [
+                "Crossbar Switch",
+                "Output Ports",
+                "Scheduling Algorithm",
+                "Delay Performance",
+                "Time Slot",
+                "Data Packets",
+                "Average Delay",
+                "Input Port",
+                "Arrival Rate",
+                "Fluid Model",
+                "Traffic Patterns",
+                "Maximum Matching"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -194,7 +339,59 @@
                 "firstName": "Said",
                 "lastName": "Hoceini"
             }
-        ]
+        ],
+        "abstract": "In the context of modern high-speed Internet network, routing is often complicated by the notion of guaranteed quality of service (QoS), which can either be related to time, packet loss or bandwidth requirements: constraints related to various types of QoS make some routing inacceptable. Due to emerging real-time and multimedia applications, efficient routing of information packets in dynamically changing communication network requires that as the load levels, traffic patterns and topology of the network change, the routing policy also adapts. We focused in this paper on QoS based routing by developing a neuro-dynamic programming to construct dynamic state-dependent routing policies. In this paper, we propose an approach based on adaptive algorithm for packet routing using reinforcement learning called N best optimal path Q routing algorithm (NOQRA) which optimizes two criteria: cumulative cost path (or hop count if each link cost =1) and end-to-end delay. A load balancing policy depending on a dynamical traffic path probability distribution function is also defined and embodied in NOQRA to characterize the distribution of the traffic over the N Best Paths. Numerical results obtained with OPNET simulator for different levels of traffic's load show that NOQRA gives better results compared to standard optimal path routing and Q-routing algorithm based on Q-learning paradigm.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Quality of service",
+                "Communication networks",
+                "Routing",
+                "Telecommunication traffic",
+                "Dynamic programming",
+                "Cost function",
+                "Traffic control",
+                "Context-aware services",
+                "Context",
+                "IP networks"
+            ],
+            "Index Terms": [
+                "Service Quality",
+                "Quality Of Routes",
+                "Dynamical",
+                "Adaptive Algorithm",
+                "Load Level",
+                "Pathfinding",
+                "Optimal Path",
+                "Q-learning",
+                "Traffic Load",
+                "Traffic Patterns",
+                "Routing Algorithm",
+                "Multimedia Applications",
+                "Hop Count",
+                "Learning Process",
+                "Performance Of Algorithm",
+                "Large Networks",
+                "Part Of Network",
+                "Network Topology",
+                "Shortest Path",
+                "Time Of Delivery",
+                "Average Delivery",
+                "Candidate Paths",
+                "Quality Of Service Requirements",
+                "Internet Applications",
+                "Destination Node",
+                "Distance Vector",
+                "Low Load Condition",
+                "Network Congestion",
+                "Dynamic Programming",
+                "Left Part"
+            ],
+            "Author Keywords": [
+                "Self-Depedent Routing Decision",
+                "Quality of Service based Routing",
+                "Multi Path Routing"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -229,7 +426,49 @@
                 "firstName": "Slawomir",
                 "lastName": "Weclewski"
             }
-        ]
+        ],
+        "abstract": "Next generation switches/routers will have to use switching fabrics in order to achieve the desired capacity and speed to support growing Internet traffic. For high-performance switches and routers the Clos switching fabric is very attractive because of its modular architecture and scalability. A great many packet dispatching schemes for three-stage buffered and bufferless Clos switching fabrics were proposed in the literature. Some of them provide high throughput under uniform, others under nonuniform traffic distribution. In this paper the modified MSM Clos switching fabric and a very simple packet dispatching scheme, called Static Dispatching with Rapid Unload of Buffers (SDRUB), are proposed. We show via simulation that this modified switching fabric and the described scheduling deliver very good performance in terms of throughput, cell delay and input buffers size under different traffic distribution patterns.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Packet switching",
+                "Fabrics",
+                "Dispatching",
+                "Switches",
+                "Throughput",
+                "Traffic control",
+                "Delay",
+                "Scheduling algorithm",
+                "Telecommunication switching",
+                "Internet"
+            ],
+            "Index Terms": [
+                "Switch Fabric",
+                "Throughput",
+                "Modular Architecture",
+                "Traffic Patterns",
+                "Traffic Distribution",
+                "Simulation Experiments",
+                "Maximum Size",
+                "Active Period",
+                "Connectivity Patterns",
+                "Time Slot",
+                "Output Ports",
+                "Average Delay",
+                "Output Of Module",
+                "Input Port",
+                "Traffic Model",
+                "Different Types Of Patterns",
+                "Round Robin",
+                "Output Buffer",
+                "Non-uniform Pattern"
+            ],
+            "Author Keywords": [
+                "Clos-network",
+                "Dispatching Algorithm",
+                "Packet Switching",
+                "Packet Scheduling"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -258,7 +497,53 @@
                 "firstName": "Jinsoo",
                 "lastName": "Park"
             }
-        ]
+        ],
+        "abstract": "A large-capacity, multi-plane, multi-stage buffered packet switch, called the TrueWay switch (Chao, 2005), was previously proposed by us. It can achieve hundreds of terabits/sec capacity. A small-scale TrueWay switch was prototyped to demonstrate the concept and feasibility. Three different load balancing schemes were investigated to achieve high throughput and low average delay with a moderate speedup. In this paper, we focus on the study of one of the load balancing schemes, window-based re-sequencing scheme, without a speedup. It is the most promising one among the three in terms of performance. Buffered switch modules are used in different stages to eliminate the need of centralized scheduling. However, packet out-of-subsequence is inventible as packets are distributed to different paths that have various queuing delays. By applying flow control between the input and output ports and limiting the re-sequencing window size (similar to TCP/IP flow control), we are able to keep the implementation cost to an acceptable level while still providing high throughput. Link-level flow control between the switch stages is required to prevent the downstream queues from being overflowed. The interaction between link flow control at switch stages and end-to-end flow control at switch ports is an interesting problem. We show by simulations that the TrueWay switch can be engineered to achieve high throughput without an internal speedup even under bursty non-uniform traffic distributions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Packet switching",
+                "Switches",
+                "Throughput",
+                "Load management",
+                "Delay",
+                "Size control",
+                "Chaos",
+                "Prototypes",
+                "TCPIP",
+                "Costs"
+            ],
+            "Index Terms": [
+                "Flow Control",
+                "Data Packets",
+                "Throughput",
+                "Window Size",
+                "Load Balancing",
+                "Output Ports",
+                "Input Port",
+                "Switch Module",
+                "Uniform Distribution",
+                "Computer Simulations",
+                "Free Space",
+                "Time Slot",
+                "Congested",
+                "Input Modalities",
+                "Propagation Delay",
+                "Traffic Management",
+                "Buffer Size",
+                "Multiple Planes",
+                "Round-trip Time",
+                "Round Robin",
+                "Number Of Planes",
+                "Queue Size",
+                "Window Size Increases",
+                "Buffer Overflow"
+            ],
+            "Author Keywords": [
+                "packet switch",
+                "multi-plane switch",
+                "Clos network"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -305,7 +590,42 @@
                 "firstName": "Naoaki",
                 "lastName": "Yamanaka"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose a new optical network architecture, called Optical Slot Switching (OSS), suitable for large data transmission where we use PLZT optical switch controlled by GMPLS(Generalized Multi-Protocol Label Switching). PLZT ultra-high speed optical switch can improve the bandwidth efficiency by reducing the guard time between data compared with the conventional optical switch. In OSS network, user dynamically establishes the path and can transport a large size data efficiently by using reserved slots in a moment. Through the experimental results, we show that our proposed OSS is suitable for large data transmission.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical design",
+                "High speed optical techniques",
+                "Optical fiber networks",
+                "Optical switches",
+                "Time division multiplexing",
+                "Bandwidth",
+                "Data communication",
+                "Optical control",
+                "Switching circuits",
+                "Microswitches"
+            ],
+            "Index Terms": [
+                "Optical Switching",
+                "Optical Networks",
+                "Switching Network",
+                "High-speed Switching",
+                "Bandwidth Efficiency",
+                "Synchronization",
+                "Data Transfer",
+                "Optical Path",
+                "Control Unit",
+                "Switching Control",
+                "Various Types Of Data",
+                "Control Board",
+                "Time Division",
+                "Synchronization Of Networks",
+                "Switching System",
+                "Control Plane",
+                "Optical Units",
+                "Time-division Multiplexing"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -352,7 +672,41 @@
                 "firstName": "Jingshown",
                 "lastName": "Wu"
             }
-        ]
+        ],
+        "abstract": "In this paper, we analyze the switching performance of wavelength division multiplexing (WDM) optical packet switch (OPS) employing wavelength conversion (WC) techniques under Markovian modeled self-similar traffic input to realize the benefit of wavelength conversion. The analytical results are calculated and verified by simulation. We propose a procedure to calculate the numerical results in order to reduce the effort of computation. The computation complexity of the analysis is then presented. Our analysis is useful in dimensioning the WDM OPS to obtain satisfactory performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance analysis",
+                "Wavelength division multiplexing",
+                "Optical packet switching",
+                "Optical wavelength conversion",
+                "Traffic control",
+                "Telecommunication traffic",
+                "Queueing analysis",
+                "Optical buffering",
+                "Mathematics",
+                "Laboratories"
+            ],
+            "Index Terms": [
+                "Wavelength Division Multiplexing",
+                "Wavelength Conversion",
+                "Traffic Input",
+                "Analytical Results",
+                "Computational Complexity",
+                "Steady State",
+                "Rest Of The Paper",
+                "Service Time",
+                "Transition Probability Matrix",
+                "Probability Of Loss",
+                "Packet Loss",
+                "Queueing System",
+                "Definition Of Process",
+                "Arrival Process",
+                "Matrices Of Appropriate Dimensions",
+                "Wavelength Channels",
+                "Fractional Brownian Motion"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -387,7 +741,47 @@
                 "firstName": "Kohei",
                 "lastName": "Shiomoto"
             }
-        ]
+        ],
+        "abstract": "We developed distributed-controlled multi-layer traffic engineering system. There is no previous works that report the system. Therefore, we can not confirm feasibility and scalability of the system. In this paper, we report an experiment on our system consisting of Internet protocol (IP) routers and optical cross-connects (OXCs). In this system, control is provided by generalized multi-protocol label switching (GMPLS) and IP network topology and IP routes are dynamically reconfigured to suit traffic characteristics. These functions prevent traffic congestion as well as any decrease in link utilization rates. We had experiments to test behavior of the routers and OXCs depending on traffic characteristics. We cleared that the distributed-controlled multi-protocol label switching (MPLS)/GMPLS traffic engineering system was feasible and scalable by the experiments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Telecommunication traffic",
+                "Systems engineering and theory",
+                "Optical fiber networks",
+                "Communication system traffic control",
+                "Scalability",
+                "Internet",
+                "Protocols",
+                "Control systems",
+                "IP networks",
+                "Network topology"
+            ],
+            "Index Terms": [
+                "Experimental System",
+                "Traffic System",
+                "Traffic Engineering",
+                "Network Topology",
+                "Traffic Congestion",
+                "Advertising",
+                "Shortest Path",
+                "Heuristic Algorithm",
+                "Scale Of The Problem",
+                "Processing Power",
+                "Multilayer Network",
+                "Real Networks",
+                "Specific Node",
+                "Packet Loss",
+                "Traffic Load",
+                "Optical Switching",
+                "Traffic Patterns",
+                "Traffic Information",
+                "Traffic Demand",
+                "Pareto Distribution",
+                "Traffic Rate",
+                "Virtual Link",
+                "Control Plane"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -428,7 +822,53 @@
                 "firstName": "Hussein T.",
                 "lastName": "Mouftah"
             }
-        ]
+        ],
+        "abstract": "Topology control plays a critical role in the design of wireless ad hoc and sensor networks. It can assign reduced transmit powers to nodes so as to create reduced topologies with certain desired properties. In this paper, we design an energy-efficient localized topology control algorithm. The design objective is to prolong the operational time of networks resulted by the implementation of localized topology controlling at nodes in network. For this purpose, our designed algorithm introduces the strategy of energy criticality avoidance in assigning nodal transmit powers as well as in selecting energy-efficient routes for packet deliveries. Simulation results demonstrate the high performance of our designed algorithm in prolonging the network lifetime as compared with related work.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Network topology",
+                "Algorithm design and analysis",
+                "Wireless sensor networks",
+                "Energy efficiency",
+                "Spread spectrum communication",
+                "Wireless networks",
+                "Educational institutions",
+                "Communication system control",
+                "Design engineering",
+                "Helium"
+            ],
+            "Index Terms": [
+                "Local Control",
+                "Local Algorithm",
+                "Topology Control",
+                "Topology Control Algorithm",
+                "Sensor Networks",
+                "Packet Delivery",
+                "Network Lifetime",
+                "Power Values",
+                "Transmission Power",
+                "Algorithm Design",
+                "Neighboring Nodes",
+                "Original Algorithm",
+                "Original Network",
+                "Average Radius",
+                "Global Connectivity",
+                "Network Throughput",
+                "Communication Overhead",
+                "Spanning Tree",
+                "Energy Index",
+                "Average Node Degree",
+                "Prolonged Lifetime",
+                "Energy Of Nodes",
+                "Multi-hop Networks"
+            ],
+            "Author Keywords": [
+                "Topology control",
+                "localized algorithm",
+                "energy-efficient routing",
+                "wireless ad hoc and sensor networks"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -457,7 +897,41 @@
                 "firstName": "Mounir",
                 "lastName": "Hamdi"
             }
-        ]
+        ],
+        "abstract": "Routers need memories to store and forward packets. More than that, routers use memories to schedule flows according to their quality-of-service (QoS) requirements. The simple first-in-first-out (FIFO) queue memory is insufficient to provide QoS guarantees. Most current routers are based on the virtual-output-queue (VOQ) memory management and use heuristic algorithms, such as iSLIP or DRRM, to schedule packets. On the other hand, push-in-first-out (PIFO) queue memory has also been proposed as a model for routers to meet the QoS requirements. The PIFO queue does not need a scheduler since packets are always first-out from the queue head. However, due to the sorting-related problems of the push-in operation, it is normally supposed impractical to build the PIFO queues in real hardware. We try to touch this problem in this paper and propose an indexed PIFO queue (iPIFO) architecture and a memory management algorithm on it We believe it is a feasible solution to bring the PIFO queue to practice.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory architecture",
+                "Scheduling algorithm",
+                "Quality of service",
+                "Memory management",
+                "Hardware",
+                "Packet switching",
+                "Delay",
+                "Queueing analysis",
+                "Sorting",
+                "Computer science"
+            ],
+            "Index Terms": [
+                "Memory Architecture",
+                "Heuristic Algorithm",
+                "Problem In This Paper",
+                "Memory Management",
+                "Packet Forwarding",
+                "Time Complexity",
+                "Time Slot",
+                "Proper Localization",
+                "Memory System",
+                "Multiple Readings",
+                "Hardware Implementation",
+                "Arbitrary Position",
+                "Dynamic Memory",
+                "Part Of Search",
+                "Insertion Operator",
+                "Similar Proof",
+                "Critical Interval"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -486,7 +960,36 @@
                 "firstName": "Chien",
                 "lastName": "Chen"
             }
-        ]
+        ],
+        "abstract": "This study analyzes the blocking rate in an optical network with multi-granularity optical cross connect (MG-OXC). The MG-OXC architecture is composed of three kinds of granularity (fiber, waveband, and wavelength) in order to resolve the scalability problem due to the exponentially increasing traffic in traditional OXC. Based on the MG-OXC optical networks, a fundamental issue is to develop the algorithms for the routing and wavelength assignment (RWA) with tunnel allocation. In this paper, we have worked from a slightly different angle. We propose a blocking probability model using Erlang loss formula to estimate the performance of tunnel allocation with a different tunnel length constraint. Finally the analytical results, which have proved to be very close to the simulation results, obtained from various kinds of network topologies are shown.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical fiber networks",
+                "Scalability",
+                "Telecommunication traffic",
+                "Traffic control",
+                "Wavelength routing",
+                "Wavelength assignment",
+                "Optical losses",
+                "Performance loss",
+                "Analytical models",
+                "Network topology"
+            ],
+            "Index Terms": [
+                "Optical Networks",
+                "Blocking Probability",
+                "Simulation Results",
+                "Network Topology",
+                "Tunnel Length",
+                "Social Distancing",
+                "Iterative Procedure",
+                "Random Allocation",
+                "Pair Of Nodes",
+                "Traffic Model",
+                "End Nodes",
+                "Wavelength Channels"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -515,7 +1018,48 @@
                 "firstName": "Brigitte",
                 "lastName": "Jaumard"
             }
-        ]
+        ],
+        "abstract": "Next generation (NG) routers, characterized by high speed interfaces, large switching capacity and petabit packet processing speed have recently been deployed in core networks of world class operators. Based on distributed architectures, these routers are designed with control cards and line cards interconnected by a very high-speed switch fabric, where line cards contain processing and memory resource allowing the sharing of some route processing tasks with control cards. The traditional implementation model of router software, where control cards assume all the processing tasks, is therefore no longer appropriate. In this paper, we propose a distributed model for implementing router software in order to fully exploit the hardware platform of the next router generation, taking into account the additional capacity of line cards. The model corresponds to a distributed architecture with control cards acting as super nodes and line cards acting as peers. It also provides \"direct\" communication between line cards, allowing them to cooperate in some task processing without going through control cards. Such a model significantly increases the robustness, scalability and availability of routers. We also investigate the proposed distributed model in the context of different protocols supported by a router, such as signaling and routing protocols. Two case studies are presented where we discuss the advantages of the distributed model for OSPF and LDP protocols.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Switches",
+                "Communication system control",
+                "Peer to peer computing",
+                "Routing protocols",
+                "Next generation networking",
+                "Packet switching",
+                "Fabrics",
+                "Process control",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Distribution Models",
+                "Scalable",
+                "Processing Tasks",
+                "Control Lines",
+                "Memory Resources",
+                "Processing Routes",
+                "Hardware Platform",
+                "Distributed Architecture",
+                "Packet Processing",
+                "Synchronization",
+                "Service Quality",
+                "Network Topology",
+                "Shortest Path",
+                "Control Task",
+                "Memory Capacity",
+                "Software Implementation",
+                "Paper Deals",
+                "International Protocols",
+                "Software Architecture",
+                "Routing Information",
+                "Routing Table",
+                "Request Message",
+                "Control Plane",
+                "Path Computation"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -544,7 +1088,42 @@
                 "firstName": "Caterina",
                 "lastName": "Scoglio"
             }
-        ]
+        ],
+        "abstract": "We introduce a traffic demand aware cost model for the creation of overlay routing networks. We investigate the effects on the created network topologies when the traffic demand between nodes is considered. The resulting network topologies often differ dramatically from topologies formed when traffic demand between nodes is not weighed. We found that the global network characteristics were changed as well as individual node placement in the topology. Our results clearly show that the overlay network topology is adapted to reflect the underlying traffic demand distribution. We conclude that overlay network topologies formed using a traffic demand aware cost model are better suited to carry the traffic demand between nodes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Telecommunication traffic",
+                "Network topology",
+                "Traffic control",
+                "Costs",
+                "Peer to peer computing",
+                "Quality of service",
+                "Web and internet services",
+                "IP networks",
+                "Routing protocols"
+            ],
+            "Index Terms": [
+                "Network Topology",
+                "Traffic Demand",
+                "Cost Model",
+                "Traffic Model",
+                "Traffic Distribution",
+                "Service Quality",
+                "Network Formation",
+                "Transportation Costs",
+                "Exhaustive Search",
+                "Central Node",
+                "Diversity Metrics",
+                "Topological Changes",
+                "Maximum Degree",
+                "Nash Equilibrium",
+                "Out-degree",
+                "General Topology",
+                "Effective Node",
+                "Topological Node",
+                "Star Topology"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -573,7 +1152,47 @@
                 "firstName": "Itamar",
                 "lastName": "Elhanany"
             }
-        ]
+        ],
+        "abstract": "Parallel shared memory (PSM) switch architectures were initially introduced as means of resolving the high memory bandwidth requirements imposed by output-queued switches. At the core of the PSM architecture is a memory management algorithm that determines, for each arriving packet, the memory unit in which it will be placed. Recent work has indicated that in order to achieve high throughput, the number of parallel memories needed is O (N<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1.5</sup>), thereby significantly limiting scalability. This paper introduces a novel pipelined memory management algorithm which maintains a computational complexity of O(1) while reducing the number of required parallel memories to O (N). Our goal is to extend existing shared-memory architecture results in the context of fabric on a chip (FoC) - a paradigm that advocates the consolidation of core packet switching functions on a single chip. A detailed discussion is provided pertaining to the fundamental properties of the proposed scheme, along with hardware implementation considerations that illustrate its scalability and performance attributes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory architecture",
+                "Switches",
+                "Memory management",
+                "Scalability",
+                "Bandwidth",
+                "Throughput",
+                "Computational complexity",
+                "Computer architecture",
+                "Fabrics",
+                "Packet switching"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Shared Memory",
+                "High Bandwidth",
+                "Hardware Implementation",
+                "Switching Function",
+                "Single Chip",
+                "Memory Unit",
+                "Implementation Considerations",
+                "Number Of Memory",
+                "Memory Bandwidth",
+                "Service Quality",
+                "Binary Vector",
+                "Time Slot",
+                "Insertion Point",
+                "Departure Time",
+                "Memory Content",
+                "Column Element",
+                "Implementation Perspective",
+                "Pipeline Stages",
+                "Leftmost Column",
+                "Placement Decisions",
+                "Rectangular Structure",
+                "On-chip Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -602,7 +1221,36 @@
                 "firstName": "Itamar",
                 "lastName": "Elhanany"
             }
-        ]
+        ],
+        "abstract": "Input-queued cell switches employing the oldest-cell-first (OCF) policy have been shown to yield low mean delay characteristics. Moreover, it has been proven that OCF is stable for admissible i.i.d. arrival traffic when executed with a scheduling speedup of 2. However, an increase in link rates and port densities directly leads to a decrease in packet duration times, to a point where cell-by-cell switching is no longer considered practical. To address this challenge, this paper studies frame-based scheduling algorithms for a scalable combined input-output queued (CIOQ) switch architecture. The latter is decomposed into independent subgroups, each employing multiple simple crosspoint switches. A key outcome of this decomposition is a substantial reduction of scheduling times. Unlike many other schemes, which necessitate custom integrated circuits, the architecture proposed here utilizes commercially available crosspoint switches. We present a Lyapunov-based stability analysis that dictates moderate conditions under which the switch is stable for all admissible traffic patterns. By reconfiguring the crossbar switch once every several time slots, the timing constraints imposed on the scheduling algorithm are significantly relaxed. Simulation results are presented, demonstrating the merits of the approach, particularly in the presence of bursty traffic scenarios.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Packet switching",
+                "Scheduling algorithm",
+                "Traffic control",
+                "Timing",
+                "Scalability",
+                "Fabrics",
+                "Optical switches",
+                "Delay",
+                "Quality of service",
+                "Throughput"
+            ],
+            "Index Terms": [
+                "Data Packets",
+                "Scalable Architecture",
+                "Switch Architecture",
+                "Stability Analysis",
+                "Time Slot",
+                "Scheduling Algorithm",
+                "Traffic Scenarios",
+                "Service Quality",
+                "Average Delay",
+                "Frame Size",
+                "Memory Module",
+                "Arrival Process"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -643,7 +1291,53 @@
                 "firstName": "Weisheng",
                 "lastName": "Hu"
             }
-        ]
+        ],
+        "abstract": "Recently, jitter is becoming an important performance criterion in switch scheduling to accommodate many emerging real-time applications. Formerly proposed low-jitter scheduling algorithms decompose traffic demands into a weighted sum of permutation matrices and then schedule these decomposed permutation matrices. However, a port pair's appearance in these decomposed matrices may exceed their actual traffic demand. Such extra allocation may result in high jitter for a port pair. In order to smoothly schedule each port pair, we propose a novel scheduling algorithm termed as dichotomy slot allocation (DSA). To achieve low jitter and small cell loss, DSA allocates slots to port pairs based on a designed Dichotomy Order. Both analysis and simulation results demonstrate that DSA achieves relatively lower jitter as compared to the state of the art.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Jitter",
+                "Matrix decomposition",
+                "Traffic control",
+                "Round robin",
+                "Scheduling algorithm",
+                "Fabrics",
+                "Optical switches",
+                "Communication switching",
+                "Analytical models",
+                "Impedance matching"
+            ],
+            "Index Terms": [
+                "Scheduling Scheme",
+                "Slot Allocation",
+                "Cell Loss",
+                "Small Loss",
+                "Scheduling Algorithm",
+                "Traffic Demand",
+                "Permutation Matrix",
+                "Sum Of Matrices",
+                "Low Jitter",
+                "Maximum And Minimum",
+                "Output Ports",
+                "Minimum Interval",
+                "Input Port",
+                "Arrival Rate",
+                "Frame Size",
+                "Loss Ratio",
+                "Decomposition Algorithm",
+                "Maximum Interval",
+                "Frame Length",
+                "Array Position",
+                "Scheduled Intervals",
+                "Round Robin",
+                "Final Schedule",
+                "Open Position"
+            ],
+            "Author Keywords": [
+                "jitter",
+                "input-queued switch",
+                "dichotomy slot allocation"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -672,7 +1366,46 @@
                 "firstName": "Mounir",
                 "lastName": "Hamdi"
             }
-        ]
+        ],
+        "abstract": "Router-assisted explicit-feedback congestion control protocols have recently been introduced to overcome the inefficiency problem of TCP in high bandwidth-delay product (BDP) wired networks. However, two main challenges are encountered when applying this kind of congestion control to wireless networks. One is how to distinguish the two kinds of packet loss (non-congestion-related loss and congestion-related loss) in lossy wireless networks as well as how to react to them accordingly and properly. The other is bow to probe the unknown bandwidth capacity of a wireless link which is required in calculating router feedback. Through detailed analysis of these challenges, we have proposed some practical and novel enhancements on router-assisted congestion control for wireless environment We have also implemented these enhancements in a router-assisted congestion control protocol called QFCP. Simulation results using ns-2 show that it can fairly allocate wireless bandwidth resource in heterogeneous networks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Wireless networks",
+                "Bandwidth",
+                "Throughput",
+                "Probes",
+                "Wireless application protocol",
+                "Feedback",
+                "Computer science",
+                "Resource management",
+                "Buffer overflow",
+                "Councils"
+            ],
+            "Index Terms": [
+                "Wireless Networks",
+                "Heterogeneous Network",
+                "Packet Loss",
+                "Wireless Link",
+                "Link Capacity",
+                "Bandwidth Resources",
+                "Kind Of Loss",
+                "Simplex",
+                "Window Size",
+                "Base Station",
+                "Feedback Information",
+                "Bit Error",
+                "Data Packets",
+                "Buffer Size",
+                "Round-trip Time",
+                "Queue Length",
+                "Explicit Feedback",
+                "Traffic Rate",
+                "High-speed Network",
+                "Packet Loss Rate",
+                "Buffer Overflow",
+                "Link Bandwidth"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -701,7 +1434,45 @@
                 "firstName": "Richard. A.",
                 "lastName": "Thompson"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose a method to optimally partition a network's net capacity into circuit and packet switched channels. In our approach, the packet/burst switched channels are modeled as overflow channels. The overflow occurs from a group of circuit switched primary channels, which are semi-permanently allotted to a traffic source. Such a network provides balance between the statistical multiplexing gains of packet/burst switched channels and the minimum switching complexity of the circuit switching paradigm. We apply our design approach to optical core networks in which the complexity of packet/burst schemes are balanced with the cheap bulk carrying capacity of circuit switched channels. The blocking performance of various combinations of primary and overflow channels is analyzed and discussed, and optimized.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Packet switching",
+                "Optical fiber networks",
+                "Optical packet switching",
+                "Switching circuits",
+                "Telecommunication traffic",
+                "Optical buffering",
+                "Optical switches",
+                "Telecommunication switching",
+                "Traffic control",
+                "Wavelength division multiplexing"
+            ],
+            "Index Terms": [
+                "Data Packets",
+                "Optical Networks",
+                "Switching Circuit",
+                "Primary Channel",
+                "Traffic Sources",
+                "Exponential Distribution",
+                "Pair Of Nodes",
+                "Operating Range",
+                "Extreme Points",
+                "Minimum Point",
+                "Optimal Cost",
+                "Recursive Algorithm",
+                "Cost Ratio",
+                "Edge Nodes",
+                "Dynamic Channel",
+                "Wavelength Division Multiplexing",
+                "Core Nodes",
+                "Performance Of Anode",
+                "Hybrid Operating",
+                "Node Cost",
+                "Blocking Probability"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -748,7 +1519,43 @@
                 "firstName": "Andrea",
                 "lastName": "Fumagalli"
             }
-        ]
+        ],
+        "abstract": "Plug and play optical (PPO) nodes enable fast, re-configurable, and flexible ad hoc deployment of optical networks. Once plugged, the PPO nodes provide all-optical circuits between client nodes to alleviate the electronic processing bottleneck of high speed networks. To offer these wavelength routing functionalities to client nodes the PPO nodes must self-adjust to possible changes of the optical physical topology and fiber propagation characteristics. To discover such changes the PPO nodes must make use of a link state advertisement (LSA) protocol that is scalable in the number of plugged PPO nodes. This paper describes a scalable LSA protocol with constrained message flooding to match the limited propagation reach of the optical signal, i.e., the PPO node transparency island (TI). Scalability is thus achieved naturally by limiting the link state advertisement scope to only those PPO nodes that need to receive the link updates. As discussed in the paper, the proposed protocol appears to be a viable solution when the TI size is relatively small, e.g., in optical networks without signal regeneration.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "High speed optical techniques",
+                "Optical fiber networks",
+                "Optical propagation",
+                "Plugs",
+                "High-speed networks",
+                "Wavelength routing",
+                "Network topology",
+                "Circuit topology",
+                "Floods"
+            ],
+            "Index Terms": [
+                "Advertising",
+                "Pellucida",
+                "Scalable",
+                "Network Topology",
+                "Optical Networks",
+                "Network Deployment",
+                "Transmission Rate",
+                "Accessible Area",
+                "Signal Quality",
+                "Bit Error Rate",
+                "Bit Error",
+                "Transmission Parameters",
+                "Real-time Model",
+                "Metro Area",
+                "Control Messages",
+                "Fiber Transmission",
+                "Fiber Link",
+                "Incoming Links",
+                "Link Loss"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -783,7 +1590,40 @@
                 "firstName": "Chiara",
                 "lastName": "Piglione"
             }
-        ]
+        ],
+        "abstract": "We propose and describe four optical buffer-less switching node architectures studied in the European Network of Excellence e-Photon/ONe. We consider two possible switching scenarios: data at inputs may require either an output fiber (fiber to fiber switching) or an output fiber and a specific wavelength (wavelength to wavelength switching). We first describe the four architectures; then, we propose both heuristic and optimal algorithms to solve contention among data at inputs, and study their loss performance. Although the modeling refers to synchronous fixed-size data units, most of the observations and results hold also when considering the proposed architectures as optical cross-connects for circuit-mode operations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical buffering",
+                "Optical packet switching",
+                "Optical network units",
+                "High speed optical techniques",
+                "Performance analysis",
+                "Performance loss",
+                "Switching circuits",
+                "Optical switches",
+                "Round robin",
+                "Broadcasting"
+            ],
+            "Index Terms": [
+                "Optical Switching",
+                "Optimization Algorithm",
+                "Heuristic Algorithm",
+                "Time Slot",
+                "Regulon",
+                "Optical Amplifier",
+                "Probability Of Loss",
+                "Single Wavelength",
+                "Traffic Patterns",
+                "Wavelength Selection",
+                "Switching Point",
+                "Wavelength Set",
+                "Input Load",
+                "Fiber Input",
+                "Blocking Properties",
+                "Output Wavelength"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -818,7 +1658,42 @@
                 "firstName": "Jianfeng",
                 "lastName": "Zhong"
             }
-        ]
+        ],
+        "abstract": "To increase both the capacity and the processing speed of input-queued (IQ) switches, a fair scalable architecture (FSA) has been proposed. By employing FSA which comprises several chips of cascaded sub-scheduler, a large-scale high performance network scheduler can be realized without the capacity limitation of monolithic device. Besides, each sub-scheduler of FSA system can be configured using any existing dynamic scheduling algorithm to realize best-effort matching. In this paper, we present the detailed design program of FSA, and then its FPGA implementation with Xilinx Vertex-4 devices. The simulation and synthesis results indicate that the solution achieves a good tradeoff between performance and hardware complexity. The design also supports multicast traffic.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Scheduling algorithm",
+                "Hardware",
+                "Delay",
+                "Computer architecture",
+                "Processor scheduling",
+                "Large-scale systems",
+                "Field programmable gate arrays",
+                "Traffic control",
+                "Telecommunication traffic"
+            ],
+            "Index Terms": [
+                "Scheduling Architecture",
+                "Processing Speed",
+                "Scheduling Algorithm",
+                "Hardware Complexity",
+                "Multicast",
+                "Data Rate",
+                "Series Data",
+                "Arbitration",
+                "Time Slot",
+                "Income Data",
+                "Output Ports",
+                "Input Port",
+                "Parallel Data",
+                "Single Chip",
+                "Clock Frequency",
+                "Queue Length",
+                "Latency Performance",
+                "Scheduling Results"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -847,7 +1722,42 @@
                 "firstName": "Mounir",
                 "lastName": "Hamdi"
             }
-        ]
+        ],
+        "abstract": "As the technology advances, the speed and sizes of input-queued internet switches increase dramatically. The design of the switch scheduler becomes a primary challenge, because the time interval for making scheduling decisions becomes very small. One method to resolve this problem is to reduce the scheduling frequency for a batch of packets and pipeline the switching tasks. Such method is called batch scheduling. Since computing and setting up each switch configuration incurs a notable cost, it is preferred to have minimum number of configurations for every batch. We study in this paper approximation schemes for batch scheduling with minimum configurations. We propose three algorithms together with their (expected) approximation ratios. The naive round robin algorithm runs in O(N<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup>) time and has the worst possible approximation ratio. We try to improve the approximation ratio by randomization. The randomized round robin algorithm has an expected approximation ratio of O(ln N). In the same fashion, we propose the Barely Random Round Robin algorithm that uses less random bits at a cost of worse approximation ratio. Finally, our simulation results indicate that a fabric speedup of 2 is sufficient for our batch scheduling algorithms to provide quality of service (QoS).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Round robin",
+                "Processor scheduling",
+                "Approximation algorithms",
+                "Costs",
+                "Quality of service",
+                "Internet",
+                "Frequency",
+                "Pipelines",
+                "Packet switching"
+            ],
+            "Index Terms": [
+                "Minimum Configuration",
+                "Batch Scheduling",
+                "Service Quality",
+                "Number Of Configurations",
+                "Approximate Ratio",
+                "Scheduling Algorithm",
+                "Random Bits",
+                "Optimization Algorithm",
+                "Time Complexity",
+                "Linear Problem",
+                "Time Slot",
+                "Set Of Matrices",
+                "Row Sums",
+                "Makespan",
+                "Column Sums",
+                "Permutation Matrix",
+                "Adversary Model",
+                "Round Robin"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -888,7 +1798,41 @@
                 "firstName": "Tal",
                 "lastName": "Anker"
             }
-        ]
+        ],
+        "abstract": "Today's network intrusion prevention systems (NIPS) provide an important defense mechanism against security threats. The detection of network attacks utilizes a highspeed pattern matching algorithm that can be implemented in either hardware or software. Adapting a software-based pattern matching algorithm to hardware-based device is a complicated task. This paper presents a cost effective multi-pattern matching algorithm based on Field Programmable Gate Arrays (FPGAs) and standard RAM. The algorithm achieves line-rate speed, which is several orders of magnitude faster than the current state of the art, while attaining similar accuracy of detection. The algorithm can be easily adapted to operate in hardware-based NIPS and attain even higher speed by utilizing a TCAM memory.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pattern matching",
+                "Field programmable gate arrays",
+                "Telecommunication traffic",
+                "Engines",
+                "Hardware",
+                "Software algorithms",
+                "Costs",
+                "Read-write memory",
+                "Random access memory",
+                "Home appliances"
+            ],
+            "Index Terms": [
+                "Matching Algorithm",
+                "Pattern Matching",
+                "Pattern Matching Algorithm",
+                "Data Structure",
+                "Ordered Structure",
+                "Search String",
+                "Hash Function",
+                "End Position",
+                "Window Width",
+                "Pattern Length",
+                "Table Entries",
+                "Search Window",
+                "Successful Matching",
+                "Bloom Filter",
+                "Step Iv",
+                "Internal Data Structure",
+                "Bitrate"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -983,7 +1927,45 @@
                 "firstName": "Hatsushi",
                 "lastName": "Iiduka"
             }
-        ]
+        ],
+        "abstract": "We develop novel layer-3 (L3) Internet protocol (IP) packet switches to connect 80 Gbps WDM-based optical packet switching (OPS) networks with 10 Gbps Ethernet (10GbE). A L3 switch, which is the ingress edge node of the OPS network, generates an optical label according to a look-up table and the destination address of an IP packet, and then encapsulates the almost 10 Gbps IP packet into an 80 Gbps (8-wavelength x 10 Gbps) optical packet Another type of L3 switch, which is the egress edge node of the OPS network, decapsulates the IP packet from the optical packet and generates a lOGbE frame accommodating the IP packet according to a look-up table. We achieve the transmission of 7.2-Gbps IP packets throughput with a packet loss rate under 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">-6</sup> and demonstrate smooth UDP/IP-based 3D high-definition television (HDTV) video-streaming via the L3 switches and 80 Gbps WDM-based OPS system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Packet switching",
+                "Ethernet networks",
+                "Optical fiber networks",
+                "Optical packet switching",
+                "Optical switches",
+                "Table lookup",
+                "HDTV",
+                "IP networks",
+                "Protocols",
+                "Throughput"
+            ],
+            "Index Terms": [
+                "Data Packets",
+                "Network Packets",
+                "Internet Protocol Packets",
+                "Lookup Table",
+                "Edge Nodes",
+                "Optical Switching",
+                "Internet Protocol",
+                "High-definition Video",
+                "Packet Loss Rate",
+                "Bitrate",
+                "Packet Transmission",
+                "Electronic Parts",
+                "Medium Access Control",
+                "Distributed Feedback"
+            ],
+            "Author Keywords": [
+                "Layer-3 switch",
+                "IP packet",
+                "80 Gbps WDM-based optical packet switching",
+                "10 Gbps Ethernet",
+                "3D high-definition television (HDTV) video-streaming"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1024,7 +2006,52 @@
                 "firstName": "Shou Ting",
                 "lastName": "Kao"
             }
-        ]
+        ],
+        "abstract": "Internet routers need to classify incoming packets quickly into flows in order to support features such as Internet security, virtual private networks and Quality of Service (QoS). Packet classification uses information contained in the packet header, and a predefined rule table in the routers. Packet classification of multiple fields is generally a difficult problem. Hence, researchers have proposed various algorithms. This study proposes a multidimensional encoding method in which parameters such as the source IP address, destination IP address, source port, destination port and protocol type are placed in a multidimensional space. Similar to the previously best known algorithm, i.e., bitmap intersection, multi-dimensional encoding is based on the multi-dimensional range lookup approach, in which rules are divided into several multidimensional collision-free rule sets. These sets are then used to form the new coding vector to replace the bit vector of the bitmap intersection algorithm. The average memory storage of this encoding is ⊖ (L·N·logN) for each dimension, where L denotes the number of collision-free rule sets, and N represents the number of rules. The multi-dimensional encoding practically requires much less memory than bitmap intersection algorithm. Additionally, the computation needed for this encoding is as simple as bitmap intersection algorithm. The low memory requirement of the proposed scheme means that it not only decreases the cost of packet classification engine, but also increases the classification performance, since memory access represents the performance bottleneck in the packet classification engine implementation using a network processor.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encoding",
+                "Multidimensional systems",
+                "IP networks",
+                "Web and internet services",
+                "Quality of service",
+                "Search engines",
+                "Information security",
+                "Virtual private networks",
+                "Protocols",
+                "Costs"
+            ],
+            "Index Terms": [
+                "Packet Classification",
+                "Service Quality",
+                "Dimensional Space",
+                "Set Of Rules",
+                "Memory Storage",
+                "Internet Protocol",
+                "Order Flow",
+                "Internet Security",
+                "Multidimensional Set",
+                "Virtual Private Network",
+                "Code Vector",
+                "Packet Header",
+                "Destination Port",
+                "Search Space",
+                "Geometric Properties",
+                "Lookup Table",
+                "Network Services",
+                "Sequence Search",
+                "Space Complexity",
+                "Two-dimensional Space",
+                "Compression Algorithm",
+                "Packet Arrival",
+                "Binary Search",
+                "Search Performance",
+                "Rule Table",
+                "Independent Fields",
+                "Storage Requirements",
+                "Encoding Strategies"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1059,7 +2086,38 @@
                 "firstName": "Junhua",
                 "lastName": "Zhu"
             }
-        ]
+        ],
+        "abstract": "To improve the performance of TCP under different network scenarios, the idea of adjusting congestion window according to the bandwidth share estimation has been widely used. Various estimators are proposed in the literature. Some estimate the acquired bandwidth share, and some estimate the volume of traffic or packets queued in the buffers along the end-to-end path. We evaluate these estimation techniques with a common and effective performance metric, the number of DATA packets queued in the buffers and notice that because most estimators do not distinguish explicitly between the queuing delay on the forward path and that on the reverse path, in presence of large volumes of traffic on the reverse path these estimators become fragile. To address this problem, we propose a one-way queuing delay estimation scheme which only requires simple modifications to current TCP implementation (through a TCP option). With this estimation scheme, a one-way packet in queue estimator (OPQE) is proposed to provide a more robust and accurate estimation of the number of DATA packets queued along the forward path of a TCP connection. Simulation results show that OPQE has a good performance under different scenarios, even in the presence of reverse traffic.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Delay estimation",
+                "Africa",
+                "Traffic control",
+                "Telecommunication traffic",
+                "Protocols",
+                "Wireless networks",
+                "Computer science",
+                "Measurement",
+                "Delay effects"
+            ],
+            "Index Terms": [
+                "TCP Connection",
+                "Data Packets",
+                "Reverse Path",
+                "Low-pass",
+                "Random Error",
+                "Time Stamp",
+                "Packet Loss",
+                "Network Congestion",
+                "Round-trip Time",
+                "Trip Time",
+                "Clock Synchronization",
+                "Path-connected",
+                "Packet Arrival",
+                "Back Off"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1094,7 +2152,54 @@
                 "firstName": "Sanaa H.",
                 "lastName": "Ahmed"
             }
-        ]
+        ],
+        "abstract": "The technology of light-trails is an efficient and feasible alternative for IP transport over all-optical networks. This paper tackles the routing problem of light-trails with the solution objective of minimizing the number of needed light-trails to accommodate an offered traffic matrix. We present two enhancements to the integer linear programming (ILP) formulation of the routing problem. We also propose a computationally efficient routing heuristic for use with static and incremental traffic models. The efficiency of the proposed heuristic is confirmed using example problems of different network topologies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Traffic control",
+                "Optical receivers",
+                "Telecommunication traffic",
+                "Optical packet switching",
+                "Wavelength routing",
+                "Optical coupling",
+                "Optical fiber networks",
+                "All-optical networks",
+                "Network topology",
+                "Wavelength division multiplexing"
+            ],
+            "Index Terms": [
+                "Heuristic",
+                "Routing Problem",
+                "Light Trail",
+                "Network Topology",
+                "Traffic Model",
+                "Integer Linear Programming Formulation",
+                "Dynamic Properties",
+                "Data Packets",
+                "Channel Capacity",
+                "Source Node",
+                "Static Problem",
+                "Network Path",
+                "Optical Switching",
+                "Depth-first",
+                "Destination Node",
+                "End Nodes",
+                "Flow Set",
+                "Traffic Demand",
+                "Routing Algorithm",
+                "Wavelength Channels",
+                "Routing Decisions",
+                "Flow Demand",
+                "Speed Signal",
+                "Hop Count"
+            ],
+            "Author Keywords": [
+                "all-optical networks",
+                "IP over optical",
+                "light trails",
+                "traffic grooming"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1123,7 +2228,47 @@
                 "firstName": "Roberto",
                 "lastName": "Rojas-Cessa"
             }
-        ]
+        ],
+        "abstract": "Multicast traffic is expected to increase in packet-oriented networks by the inclusion of broadcast and multimedia-on-demand services. In addition to the high performance for unicast services, combined input-crosspoint buffered (CICB) packet switches have intrinsic properties that are favorable for switching and replication of multicast packets. In this paper we study the performance of CICB packet switches, including those with dedicated and shared crosspoint buffers (SMCB), both under multicast traffic. Furthermore, we propose arbitration schemes for shared-buffer packet switches to handle multicast traffic and study their performance on switching-replication efficiency. We show that the SMCB switch efficiently handles multicast traffic with uniform distribution of fan outs, and that its achievable throughput is comparable to that of a CICB switch. This property, combined with the efficient memory utilization, makes the SMCB switch an attractive solution for unicast and multicast networks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Packet switching",
+                "Switches",
+                "Unicast",
+                "Traffic control",
+                "Throughput",
+                "Telecommunication traffic",
+                "Fabrics",
+                "TV broadcasting",
+                "Cable TV",
+                "Teleconferencing"
+            ],
+            "Index Terms": [
+                "Data Packets",
+                "High Performance",
+                "Switching Performance",
+                "Fan-out",
+                "Remainder Of This Paper",
+                "Replication In Cells",
+                "Time Slot",
+                "Matching Process",
+                "Output Ports",
+                "Network Throughput",
+                "Input Combinations",
+                "Input Port",
+                "Traffic Patterns",
+                "Switching Model",
+                "First-in-first-out",
+                "Throughput Performance"
+            ],
+            "Author Keywords": [
+                "Multicast",
+                "buffered crosspoint",
+                "buffered crossbar",
+                "shared memory",
+                "packet switch"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1158,7 +2303,50 @@
                 "firstName": "Nirwan",
                 "lastName": "Ansari"
             }
-        ]
+        ],
+        "abstract": "Network active measurement is a required process in high performance networks for efficient QoS provisioning. The contention of the active measurement processes in a network can jeopardize measurement and overload network and computation resources. In this paper, we propose a novel scheduling algorithm to resolve contention of measurement tasks. Our proposed scheme is based on graph-coloring theory and uses a descending order of a clique (a set of contending nodes) in a graph. We evaluate our proposed scheme under different measurement task assignment scenarios. The simulation results demonstrate that our proposed scheme produces effective contention resolution and decreases the number of assigned colors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Time measurement",
+                "Telecommunication traffic",
+                "Quality of service",
+                "Scheduling algorithm",
+                "Network servers",
+                "Bandwidth",
+                "Frequency measurement",
+                "Performance evaluation",
+                "Monitoring",
+                "Costs"
+            ],
+            "Index Terms": [
+                "Measurement Of Activity",
+                "Task Scheduling",
+                "Descending Order",
+                "Network Process",
+                "Nodes In The Graph",
+                "Network Resources",
+                "Scheduling Algorithm",
+                "Sustained Release",
+                "Total Consumption",
+                "Measurement Points",
+                "Network Topology",
+                "Time Task",
+                "Time Slot",
+                "Vertices",
+                "Measurement Cycle",
+                "Vertex Degree",
+                "Internet Service Providers",
+                "Round-trip Time",
+                "Adjacent Vertices",
+                "Round Robin"
+            ],
+            "Author Keywords": [
+                "Scheduling",
+                "Network Measurements",
+                "Active Measurements",
+                "Graph Coloring"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1187,7 +2375,48 @@
                 "firstName": "Xiao-ming",
                 "lastName": "Zhang"
             }
-        ]
+        ],
+        "abstract": "To meet the requirements of parallelism, flexibility and extensibility, the multi-Processor Elements (PEs) architecture is widely applied in modern Network Processors (NPs) to support high-speed links of 10 Gbps. Multi-PEs are often organized in parallel to achieve efficient packet forwarding. It's a challenge to schedule the incoming packets from high-speed links to be processed by multiple PEs in parallel. In this paper, we propose Policy-based Packet Scheduler employing Flow Cache for 10Gbps NPs. For TCP flows, PPS-FC employs a flow cache, records the mapping relationship between TCP flow bundles and PEs and rates of flow bundles and utilizes the characteristic of flow timeout to design the scheme of cache management Meanwhile, according to the load-balancing indicator <i xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">σ(τ)</i> the scheduler shifts the high-rate flow bundles of the heavy-loaded PE to the light-loaded PE to preserve load balancing. The effectiveness of the scheduler with the well-chosen design parameters is evaluated by simulation with extrapolated workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Scheduling algorithm",
+                "Load management",
+                "Processor scheduling",
+                "Protocols",
+                "Delay effects",
+                "Intelligent networks",
+                "Parallel processing",
+                "Internet",
+                "Propagation delay",
+                "Pipeline processing"
+            ],
+            "Index Terms": [
+                "Packet Scheduling",
+                "Load Balancing",
+                "Packet Forwarding",
+                "High-speed Links",
+                "Parallelization",
+                "Processing Unit",
+                "Simulation Environment",
+                "Hash Function",
+                "Processing Power",
+                "Binary String",
+                "Scheduling Scheme",
+                "Interruption Of Flow",
+                "Multiple Links",
+                "Queue Length",
+                "Degree Of Balance",
+                "Load Imbalance",
+                "Cache Misses",
+                "Packet Processing"
+            ],
+            "Author Keywords": [
+                "Flow cache",
+                "Flow processing consistency",
+                "Load balancing",
+                "Packet scheduler"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1222,7 +2451,37 @@
                 "firstName": "Jin-shu",
                 "lastName": "Su"
             }
-        ]
+        ],
+        "abstract": "Our work is motivated by the desire to build an evolvable architecture of Internet routers in which extremely high line-rates and IP-lookup rates are supported simply. In this paper, we consider building a packet-switch net from multi-stage, lower speed components called forwarding and switching node (FSN) performing IP-lookups and switching independently. In particular, we propose a pipelined and scalable packet switch (PSPS) architecture in which the IP lookups and packet switching for multiple packets are overlapped by accessing different FSN (in different stages) for different packets at the same time. Since this is a position paper, we do not present results but rather present the concrete approaches adopted in a PSPS and suggest interesting directions for PSPS research.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Internet",
+                "Switches",
+                "Packet switching",
+                "Concrete",
+                "Routing",
+                "Telecommunication traffic",
+                "Sun",
+                "Buildings",
+                "Software algorithms",
+                "Logic"
+            ],
+            "Index Terms": [
+                "Internet Routers",
+                "Data Packets",
+                "Mapping Algorithm",
+                "Output Ports",
+                "Input Port",
+                "Memory Size",
+                "Routing Table"
+            ],
+            "Author Keywords": [
+                "IP-lookup",
+                "Forwarding and switching",
+                "Evolvable",
+                "Internet routers"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1251,7 +2510,43 @@
                 "firstName": "Kwan L.",
                 "lastName": "Yeung"
             }
-        ]
+        ],
+        "abstract": "Constructing a load balanced two-stage switch using optical switch fabrics must properly address the non-negligible amount of switch reconfiguration overhead. Unlike other optical switch fabrics, an NtimesN arrayed waveguide grating router (AWGR) allows N<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> parallel connections (one on each wavelength) established between its N inputs and N outputs. This eliminates the need for switch reconfigurations. In this paper, we design a load-balanced two-stage switch using AWGRs. In particular, we adopt the efficient feedback-based two-stage switch architecture. The key issue is how to implement the joint sequence of N switch configurations logically in AWGR. We show that the resulting logical joint sequence inherits the original staggered symmetry property as well as the in-order packet delivery property. Since building a large sized AWGR is difficult, a systematic approach of constructing large AWGR from smaller AWGR modules is also proposed. Simulations show that the feedback-based two-stage switch using AWGRs gives an excellent overall delay-throughput performance under various traffic conditions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Arrayed waveguide gratings",
+                "Optical switches",
+                "Fabrics",
+                "Optical arrays",
+                "Optical waveguides",
+                "Load management",
+                "Packet switching",
+                "Buildings",
+                "Delay",
+                "Optical buffering"
+            ],
+            "Index Terms": [
+                "Load Balancing",
+                "Arrayed Waveguide Grating",
+                "Traffic Conditions",
+                "Optical Switching",
+                "Logical Sequence",
+                "Efficient Switching",
+                "Sequence Of Configurations",
+                "Loss Of Generality",
+                "Feedback Mechanism",
+                "Time Slot",
+                "Small Modifications",
+                "Output Ports",
+                "Average Delay",
+                "Input Port",
+                "Input Load",
+                "Distinct Wavelengths",
+                "Efficient Feedback",
+                "Packet Arrival",
+                "Implementation Of Logic"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1280,7 +2575,56 @@
                 "firstName": "Roberto",
                 "lastName": "Rojas-Cessa"
             }
-        ]
+        ],
+        "abstract": "A frame-based round-robin arbitration scheme with explicit feedback control (FRE) for combined input-crosspoint buffered (CICB) packet switches have shown high switching performance. In this paper, we propose two FRE derivative schemes and a control model of crosspoint buffers in CICB switches. The proposed FRE schemes provide high throughput.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Packet switching",
+                "Switches",
+                "Throughput",
+                "Traffic control",
+                "Feedback control",
+                "Stability analysis",
+                "Buffer storage",
+                "Testing",
+                "Information analysis"
+            ],
+            "Index Terms": [
+                "Data Packets",
+                "Explicit Feedback",
+                "Arbitration Scheme",
+                "High Performance",
+                "Throughput",
+                "Feedback Control",
+                "Explicit Control",
+                "Dwell Time",
+                "Binary Data",
+                "Non-uniform Distribution",
+                "Service Rate",
+                "Feedback Information",
+                "Fluid Levels",
+                "Output Ports",
+                "Input Port",
+                "Frame Size",
+                "Fluid Model",
+                "Inflow Rate",
+                "Traffic Model",
+                "Efflux Rate",
+                "Containment Level",
+                "Switching Model",
+                "Active Fluid",
+                "Input Load",
+                "Left Half-plane",
+                "Simulink"
+            ],
+            "Author Keywords": [
+                "Round-robin",
+                "buffered crossbar",
+                "queued cross-point",
+                "stability",
+                "explicit feedback"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1309,7 +2653,42 @@
                 "firstName": "Peter",
                 "lastName": "Sjodin"
             }
-        ]
+        ],
+        "abstract": "In a network system, such as a router or a switch, it is difficult to achieve flexibility and performance at the same time. We propose an architecture that consists of network processors for packet processing and a VLAN-based Ethernet backplane for switching. This allows us to use flexible network processors for packet processing functions, and still exploit the cost-effectiveness of Ethernet to achieve switching capacity. We propose an architecture where we use VLAN tagging for internal traffic management, and also for distributed packet forwarding decisions between ingress and egress units. We describe our implementation of this system and report performance analysis, where we find that we can achieve near line rate performance in a system with Gigabit Ethernet ports, and that internal memory management is important for network processor performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Ethernet networks",
+                "Backplanes",
+                "Iron",
+                "Switches",
+                "Telecommunication traffic",
+                "Packet switching",
+                "Control systems",
+                "Communication system traffic control",
+                "Application specific integrated circuits",
+                "Integrated circuit technology"
+            ],
+            "Index Terms": [
+                "Network System",
+                "Distribution Network System",
+                "Packet Processing",
+                "General Purpose",
+                "Limiting Factor",
+                "International Network",
+                "Separate Control",
+                "Packet Loss",
+                "Packet Size",
+                "Traffic Engineering",
+                "Link Layer",
+                "Cycle Count"
+            ],
+            "Author Keywords": [
+                "network processor",
+                "parallel processing",
+                "distributed router",
+                "performance evaluation"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1338,7 +2717,53 @@
                 "firstName": "Kwan L.",
                 "lastName": "Yeung"
             }
-        ]
+        ],
+        "abstract": "A load-balanced two-stage switch is scalable and can provide close to 100% throughput. Its major problem is that packets can be mis-sequenced when they arrive at output ports. In a recent work, the packet mis-sequencing problem is elegantly solved by a feedback-based two-stage switch architecture. In this paper, we extend the feedback-based switch architecture from two-stage to three-stage to further cut down packet delay. The idea is to map the heavy flows to experience less middle-stage port delay using the switch fabric in the third stage. We show that the resulting three-stage architecture also ensures in-order packet delivery and close to 100% throughput. To identify heavy flows, a simple and practical traffic matrix estimation algorithm is also proposed. As compared with the original feedback-based two-stage switch architecture, the three-stage switch can cut down the delay performance by as large as 43.4% for a 32times32 switch under a hot-spot traffic pattern with input load at p=0.95. For random uniform traffic, the saving in delay is about 8%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Throughput",
+                "Packet switching",
+                "Traffic control",
+                "Fabrics",
+                "Delay",
+                "Communication switching",
+                "Partial response channels",
+                "Electronic mail",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Load Balancing",
+                "Switch Architecture",
+                "Throughput",
+                "Simple Algorithm",
+                "Simple Approximation",
+                "Output Ports",
+                "Traffic Patterns",
+                "Simple Matrix",
+                "Original Architecture",
+                "Input Load",
+                "Traffic Estimation",
+                "Independent Set",
+                "Time Slot",
+                "Computational Overhead",
+                "Data Packets",
+                "Average Delay",
+                "Input Port",
+                "Communication Overhead",
+                "Flow Experience",
+                "Input Delay",
+                "Packet Arrival",
+                "Efficient Feedback",
+                "Sequence Of Configurations",
+                "Amount Of Delay"
+            ],
+            "Author Keywords": [
+                "Load-balanced switch",
+                "two-stage switch",
+                "three-stage switch"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1385,7 +2810,50 @@
                 "firstName": "Lieguang",
                 "lastName": "Zeng"
             }
-        ]
+        ],
+        "abstract": "Emulating output queued (OQ) switch with sustainable implementation cost and low fixed delay is always preferable in high performance router design. Distributed shared memory (DSM) switch, also called switch-memory-switch (SMS) router, provides a promising way towards emulating OQ in backbone switches. However, the previous architectures and algorithms for DSM/SMS switches require either high implementation cost or iterations of scheduling. This paper proposes a Buffered Crossbar based DSM switch (BC-DSM), which can emulate the FCFS OQ based on a speedup-two buffered crossbar. Each crosspoint has only two packet buffers, one for arrival packet and one for departure packet Different with previous works of DSM, we do not aim to resolve memory access conflicts when packets arrive, but to randomly dispatch packets into memories through buffered crossbar and resolve departure conflicts by bounded small queueing and delay. For scheduling, the departure packets are prioritized in the transferring between the fabric and the memory. The advantages of our scheme include: 1) Only N two-speedup memories and one two-speedup buffered N times N crossbar are needed. 2) Scheduling process is simple and distributive, thanks to buffered crossbar. 3) No need for additional crosspoint buffer for overcoming long round-trip time (RTT), thanks to the probabilistic load-balancing scheme. 4) Simulation shows that only a few fixed delay is needed to provide extremely low packet loss rate such as 10<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">-8</sup>, under different types of traffic patterns, including bursty model and unbalanced model.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Fabrics",
+                "Costs",
+                "Packet switching",
+                "Bandwidth",
+                "Computer science",
+                "Spine",
+                "Scheduling algorithm",
+                "Delay effects",
+                "Traffic control"
+            ],
+            "Index Terms": [
+                "Implementation Costs",
+                "High Implementation Costs",
+                "Packet Arrival",
+                "Simulation Results",
+                "Statistical Approach",
+                "Low Loss",
+                "Input Port",
+                "Packet Loss",
+                "Scheduling Algorithm",
+                "Traffic Load",
+                "Traffic Patterns",
+                "Lower Loss Rate",
+                "Internet Traffic",
+                "Delay Distribution",
+                "Occupational Distribution",
+                "Input Delay",
+                "Memory Bank",
+                "Packet Loss Rate",
+                "Memory Wall"
+            ],
+            "Author Keywords": [
+                "Buffered Crossbar",
+                "Distributed Shared Memory",
+                "BC-DSM",
+                "Switch-Memory-Switch",
+                "Emulating FCFS OQ"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1414,7 +2882,45 @@
                 "firstName": "T.V.",
                 "lastName": "Lakshman"
             }
-        ]
+        ],
+        "abstract": "Architectures for high-speed switches have been intensely studied over the past few years due to the need to rapidly scale switch capacities to match the large capacity increases in optical transmission and to handle the fast growth in Internet traffic. Several key research results (McKeown, 1996), (Dai, 2000), showing how fundamental throughput limits can be overcome, have made input-buffered architectures popular for implementing high-speed switches. These architectures also have the inherent advantage of not needing a large speed-up at the output ports. However, a major bottleneck in scaling input-buffered switches is the scheduler needed to keep the switch stable and achieve high-throughput. Several approaches have been proposed to solve this problem including pipelining the implementation, reducing the frequency of schedule computations, etc. An alternate approach which eliminates the scheduler has been proposed but this requires switch speed-up and mechanisms to re-sequence out-of-order packets. In this paper, we develop a scheme that virtually eliminates the scheduling bottleneck. This is achieved by an intelligent combination of parallel implementation and a new scheduling algorithm that works well with partial information regarding arrivals and inexact knowledge of current backlog between various input-output ports. We show that our scheme is stable, achieves very low delays in comparison to other schemes, performs very well even at very high utilization and for various traffic patterns.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical switches",
+                "Processor scheduling",
+                "Buildings",
+                "High speed optical techniques",
+                "Internet",
+                "Throughput",
+                "Pipeline processing",
+                "Frequency",
+                "Packet switching",
+                "Out of order"
+            ],
+            "Index Terms": [
+                "Output Ports",
+                "Scheduling Algorithm",
+                "Traffic Patterns",
+                "Low Delay",
+                "Internet Traffic",
+                "High-speed Switching",
+                "Time Slot",
+                "Edge Weights",
+                "Maximum Weight",
+                "Binary Matrix",
+                "Average Delay",
+                "Input Port",
+                "Matching Problem",
+                "Maximum Matching",
+                "Queue Length",
+                "Size Matching",
+                "Pipelining",
+                "Delay Performance",
+                "Counter Value",
+                "Minimum Cost Flow",
+                "Destination Port"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1449,7 +2955,41 @@
                 "firstName": "Cristina",
                 "lastName": "Lopez-Bravo"
             }
-        ]
+        ],
+        "abstract": "In this paper we propose a novel scaling approach that combines the advantages of the fully decoupled Birkhoff-von Neumann architecture and the low latency of maximal size matching (MSM) schedulers, to meet the highly demanding performance requirements of electro-optical switches. We identify a sufficient condition for the stability of a decoupled MSM scheduler. The particular case of decoupled iSLIP is studied.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical switches",
+                "Delay",
+                "Traffic control",
+                "Packet switching",
+                "Computer architecture",
+                "Load management",
+                "Size control",
+                "Sufficient conditions",
+                "Stability",
+                "Internet"
+            ],
+            "Index Terms": [
+                "Electro-optical Switching",
+                "Throughput",
+                "High Load",
+                "Low Load",
+                "Connectivity Patterns",
+                "Time Slot",
+                "Load Balancing",
+                "Output Ports",
+                "Input Port",
+                "Output Stage",
+                "Real Implementation",
+                "Mild Assumptions",
+                "Packet Transmission",
+                "Permutation Matrix",
+                "Cyclic Shift",
+                "Input Load",
+                "Packet Arrival"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1472,7 +3012,41 @@
                 "firstName": "Saad",
                 "lastName": "Mneimneh"
             }
-        ]
+        ],
+        "abstract": "Load balancing has recently acquired increased interest among researchers in the switching community. The premise is to replace the single switch, running at a speed proportional to the number n of input and output ports (and to the line rate), by a load balanced switch consisting of k switches, each running at 1/k the speed. Indeed, with such an architecture, and for some classes of traffic patterns, simply spreading the traffic among the k switches achieves 100% throughput (thus the term load balancing). However, reordering among packets of the same flow may occur, which becomes a major concern. One way of avoiding this problem is to use a load balancing algorithm that does not split, i.e. that routes all packets of a given flow through exactly one of the k switches, without re-routing existing Hows. We shall call such a load balancing algorithm a non-splitting algorithm. While non-splitting algorithms definitely preserve the order of packets, it is intuitively well understood that these algorithms waste throughput. The focus of this paper is to exactly characterize this waste. We prove an asymptotic tight upper bound of 1/3 on the throughput of any non-splitting algorithm when n >> k.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Throughput",
+                "Load management",
+                "Packet switching",
+                "Upper bound",
+                "Computer science",
+                "Educational institutions",
+                "Assembly",
+                "Scattering",
+                "Costs"
+            ],
+            "Index Terms": [
+                "Throughput",
+                "Load Balancing",
+                "Load Balancing Algorithm",
+                "Upper Bound",
+                "Focus Of This Paper",
+                "Output Ports",
+                "Input Port",
+                "Tight Upper Bound",
+                "Flow Set",
+                "Link Capacity"
+            ],
+            "Author Keywords": [
+                "Load balanced switch",
+                "load balancing algorithm",
+                "non-splitting algorithm",
+                "throughput",
+                "upper bound"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1501,7 +3075,32 @@
                 "firstName": "Manolis",
                 "lastName": "Katevenis"
             }
-        ]
+        ],
+        "abstract": "Buffered crossbars are emerging as the architecture that will replace the bufferless core currently used in high-speed routers and switching fabrics. Their main drawback is the cost of N<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> crosspoint buffers, which must be implemented inside the crossbar chip. Using traditional credit-based backpressure, each such buffer may need to hold several tens of cells due to the non-negligible linecard-crossbar round-time. In this paper we present credit prediction, a method that renders the requirements on crosspoint buffer space independent of the linecard-crossbar round-trip time. Credit prediction uses a central scheduler, but scheduling operations at inputs and at outputs are pipelined and run in parallel, just as in traditional (distributed) buffered crossbars. In terms of performance, our scheme performs identically with traditional buffered crossbars when the linecard-fabric round-trip time is zero, while it achieves considerable buffer savings as this round-trip time increases. Effectively, with our method we can build effective buffered crossbars, using just one or two cells buffer per crosspoint.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Throughput",
+                "Fabrics",
+                "Costs",
+                "Packet switching",
+                "Centralized control",
+                "Computer science",
+                "Computer architecture",
+                "Proportional control",
+                "Semiconductor device measurement"
+            ],
+            "Index Terms": [
+                "Round-trip Time",
+                "Operation Schedule",
+                "Buffer Space",
+                "Throughput",
+                "Output Ports",
+                "Propagation Delay",
+                "Beginning Of Time",
+                "Control Chip"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1530,7 +3129,54 @@
                 "firstName": "Roberto",
                 "lastName": "Bruschi"
             }
-        ]
+        ],
+        "abstract": "In the last years, networking device architectures based on open source software, like Linux, have aroused lively interest from both scientific and industrial communities. The key to this success can probably be found in the flexibility and fast development time of the software approach, and the reliability level guaranteed by large communities of users and developers. In this contest, our aim is to customize, to analyze and to optimize a Linux based architecture for an exclusive networking use. In particular, the objective of this work is to study, to evaluate the performance and to optimize the IP lookup mechanism included in the Linux kernel. With this aim we have released a set of kernel patches to enhance the performance of the system by optimizing the IP lookup mechanism. We present a complete set of benchmarking results with both internal and external measurements.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linux",
+                "Software performance",
+                "Kernel",
+                "Open source software",
+                "Testing",
+                "Computer architecture",
+                "Performance analysis",
+                "Computer industry",
+                "Computer networks",
+                "Communication industry"
+            ],
+            "Index Terms": [
+                "Lookup Mechanism",
+                "Open-source Software",
+                "Objective Of This Work",
+                "External Measures",
+                "Industrial Communities",
+                "Kernel Function",
+                "Source Software",
+                "Hash Function",
+                "Network Throughput",
+                "Benchmark Test",
+                "Ethernet",
+                "Network Devices",
+                "Forward Process",
+                "Packet Transmission",
+                "Latency Measures",
+                "Control Plane",
+                "Network Interface",
+                "Routing Decisions",
+                "CPU Utilization",
+                "Routing Table",
+                "Packet Forwarding",
+                "Throughput Values",
+                "Datagram",
+                "Kernel Version",
+                "Performance Decay"
+            ],
+            "Author Keywords": [
+                "Open Router",
+                "IP lookup",
+                "Linux Router"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1571,7 +3217,51 @@
                 "firstName": "Jingshown",
                 "lastName": "Wu"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose an efficient approximate Markovian model for optical packet switch (OPS) employing partial buffer sharing (PBS) mechanism under self-similar traffic input The computation complexity could be greatly reduced while retaining satisfactory accuracy. Accordingly, we investigate and analyze both the short term and long term performance measures. Our model is useful in performing the optimal buffer control for OPS employing PBS to provide differentiated services (DiffServ) under self-similar traffic input.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical packet switching",
+                "Optical buffering",
+                "Traffic control",
+                "Diffserv networks",
+                "Performance analysis",
+                "Telecommunication buffers",
+                "Computer buffers",
+                "Markov processes",
+                "Telecommunication traffic",
+                "Mathematics"
+            ],
+            "Index Terms": [
+                "Model Estimates",
+                "Traffic Input",
+                "Performance Measures",
+                "Computational Complexity",
+                "Short-term Performance",
+                "Steady State",
+                "Markov Chain",
+                "State Space",
+                "High Loss",
+                "Transient State",
+                "Length Of Period",
+                "Second Moment",
+                "Poisson Process",
+                "Service Time",
+                "Probability Vector",
+                "Transition Probability Matrix",
+                "GHz CPU",
+                "Arrival Rate",
+                "Packet Loss",
+                "Queueing System",
+                "Traffic Load",
+                "Steady Loss",
+                "Event-triggered Mechanism",
+                "Range Of Time Scales",
+                "Inter-arrival Time",
+                "Buffer Space",
+                "Packet Length"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1612,7 +3302,45 @@
                 "firstName": "Laxmi N.",
                 "lastName": "Bhuyan"
             }
-        ]
+        ],
+        "abstract": "We consider utility max-min fairness of application traffic of a next generation Internet (NGI) service model contending for network bandwidth. The physical infrastructure that offers the bandwidth is a link-aggregated system where the links can be homogeneous or heterogeneous. Traffic can broadly be categorized into a few distinct classes and the containing flows in each class utilize the available bandwidth in the same way. The basis of this categorization is the realization that different applications derive different utility even when alloted the same bandwidth. The goal is to allocate bandwidth so as to equalize the utilities to each class is in a maximal and fair way. Once the required rates are computed these are utilized by the scheduler for scheduling packets over the links.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Web and internet services",
+                "Internet telephony",
+                "Application software",
+                "Telecommunication traffic",
+                "Traffic control",
+                "DSL",
+                "Computer science",
+                "Jitter",
+                "Processor scheduling"
+            ],
+            "Index Terms": [
+                "Physical Infrastructure",
+                "Internet Service",
+                "Quantum",
+                "Optimization Problem",
+                "Sigmoid Function",
+                "Nonlinear Function",
+                "Variety Of Services",
+                "User Satisfaction",
+                "Concave Function",
+                "Service Requirements",
+                "Single Linkage",
+                "Scheduling Algorithm",
+                "Nondecreasing Function",
+                "Internet Service Providers",
+                "Allocation Policy",
+                "Original Order",
+                "Admission Control",
+                "Round Robin",
+                "Bandwidth Allocation",
+                "Indifference Curves",
+                "Voice Over Internet Protocol"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1641,7 +3369,41 @@
                 "firstName": "Manolis",
                 "lastName": "Katevenis"
             }
-        ]
+        ],
+        "abstract": "It is widely believed that bufferless crossbar switches with virtual-output queues (VOQ) at their inputs can only operate when their input-output connections are reconfigured in synchrony, i.e. only under fixed-size cell traffic. Packet-mode scheduling has been studied, but, again, assuming that all packets consist of an integer number of cells, where the scheduling time coincides with the cell time. We show that bufferless crossbars can operate directly on variable-size packets, with input-output connections being made and torn down asynchronously with respect to each other. Although such operation can initially be thought of as an extension of packet-mode scheduling, the critical difference is that now the scheduling time is much longer than packet-size granularity. We study a transformation of the well-known iSLIP scheduling algorithm to asynchronous mode of operation, and we show by simulation that it can be adapted to yield throughput close to 100% under a range of workloads. The overall result is an efficient scheduling operation, with the added advantages of eliminating (a) packet fragmentation overhead (no partially filled cells), and (b) packet reassembly in the egress datapath.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Packet switching",
+                "Scheduling algorithm",
+                "Processor scheduling",
+                "Computer science",
+                "Impedance matching",
+                "Traffic control",
+                "Throughput",
+                "Fabrics",
+                "Bipartite graph"
+            ],
+            "Index Terms": [
+                "Scheduling Algorithm",
+                "Packet Size",
+                "Datapath",
+                "Synchronization",
+                "Arbitration",
+                "Heavy Load",
+                "State Machine",
+                "Data Packets",
+                "Starting State",
+                "Traffic Patterns",
+                "Task Scheduling",
+                "Switching Operation",
+                "Scheduling Decisions",
+                "Bipartite Matching",
+                "Packet Forwarding",
+                "Packet Arrival",
+                "Output Switching"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1676,7 +3438,46 @@
                 "firstName": "Gianfranco",
                 "lastName": "Ciardo"
             }
-        ]
+        ],
+        "abstract": "Designing routers against different attacks is imperative in today's Internet. We propose accurate, memory efficient, and scalable techniques to detect attacks such as worms, viruses, superspreaders, and denials-of-service (DoS) in routers. Our schemes enable detection in the routers by looking only at the IP headers. We propose a general methodology to use sketches, in particular count-min sketch, FM sketch, and counting and multi-counting Bloom filters, to recognize attacks in the routing architecture. Our techniques are based on change detection, for which we propose an algorithm that can work on data-streams and leverage the accurate and efficient estimation provided by sketches. We evaluate the performance of different schemes on real traces to show their accuracy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer worms",
+                "Traffic control",
+                "Filters",
+                "Change detection algorithms",
+                "Telecommunication traffic",
+                "Internet",
+                "Principal component analysis",
+                "Time series analysis",
+                "Data structures"
+            ],
+            "Index Terms": [
+                "Change Detection",
+                "Performance Of Different Strategies",
+                "Bloom Filter",
+                "Increase In The Number",
+                "Distance Function",
+                "Short Time Scales",
+                "Wavelet Transform",
+                "Changes In Flow",
+                "Sudden Increase",
+                "Data Streams",
+                "Traffic Flow",
+                "Hash Function",
+                "Distinct Elements",
+                "Linear Projection",
+                "User-defined Threshold",
+                "Multiset",
+                "Query Point",
+                "Kullback-Leibler Distance",
+                "Range Query",
+                "Destination Port",
+                "Malware",
+                "Change Detection Algorithm",
+                "False Positive Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1717,7 +3518,59 @@
                 "firstName": "Ezhan",
                 "lastName": "Karasan"
             }
-        ]
+        ],
+        "abstract": "Application of synchronous optical switches in optical packet/burst switched networks is considered. The shared per node architectural concept, where wavelength converters are shared among all input and output channels, is applied for contention resolution in the wavelength domain. A semi-analytical traffic model suitable to represent the different contributions to packet loss is proposed and validated. Full and limited range wavelength conversion capabilities are considered, and loss results obtained to support switch design. An approximated fully analytical approach for the limited range case is also described and comparison with simulation results is presented to assess the capability to capture the main aspects of packet loss behavior.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical losses",
+                "Optical buffering",
+                "Optical switches",
+                "Optical wavelength conversion",
+                "Optical packet switching",
+                "Packet switching",
+                "Wavelength conversion",
+                "Costs",
+                "Couplers",
+                "Nails"
+            ],
+            "Index Terms": [
+                "Packet Loss",
+                "Optical Switching",
+                "Wavelength Conversion",
+                "Synchronous Switching",
+                "Simulation Results",
+                "Analysis Approach",
+                "Input Channels",
+                "Output Channels",
+                "Conversion Capability",
+                "Markov Chain",
+                "Rate Analysis",
+                "Loss Of Expression",
+                "Fixed Point",
+                "Time Slot",
+                "Simulation Approach",
+                "Probability Of Loss",
+                "Single Wavelength",
+                "Tuning Range",
+                "Scheduling Algorithm",
+                "Switching Costs",
+                "Packet Arrival",
+                "Output Wavelength",
+                "Semi-analytical Model",
+                "Discrete-time Markov Chain",
+                "Fiber Input",
+                "Packet Forwarding",
+                "Degree Of Conversion",
+                "Light Load",
+                "Expression Of Probability"
+            ],
+            "Author Keywords": [
+                "Optical Packet Switching",
+                "Optical Burst Switching",
+                "Limited range tunable wavelength converters",
+                "performance modeling"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1758,7 +3611,53 @@
                 "firstName": "Nasir",
                 "lastName": "Ghani"
             }
-        ]
+        ],
+        "abstract": "Linear optimization has been exhaustively used for resource conservation and network design/planning. The primary assumption facilitating the use of linear optimization is that traffic is assumed to be deterministic, which in reality is not the case. In the domain of optical networks, the routing and wavelength assignment (RWA) problem for provisioning lightpaths or optical circuits is well known and is solved using constrained linear optimization. However, with emerging service requirements such as triple play, video-on-demand (VoD) and pseudo-wire edge-to-edge emulation (PWE3), the optimization involves stochastic parameters for dynamic service provisioning. Alternate solutions to lightpath communication that solve the paradox between maximizing dynamism as well as maintaining high-efficiency are proposed. In the electronic domain, solutions such as resilient packet rings (RPR) and next generation packet-over-SONET (NG-POS) have been considered. Conversely, in the all-optical domain light-trails, have been proposed as a solution to meet requirements of these emerging services. Optimal allocation of resources and subsequent network design is not possible using traditional linear programming approaches due to the time-variant nature of traffic and architectural properties of these optical and electronic solutions. Stochastic optimization -a technique that assumes probabilistic nature of traffic is a promising approach for planning and allocation of resources in a network. This paper discusses application of stochastic optimization to high-speed all-optical networks, in particular, to the emerging concept of light-trail networks. Light-trails are a generalized lightpath that enable dynamic sharing of a wavelength leading to efficient network utilization. A stochastic formulation for design of light-trail networks in metropolitan rings is presented. A simpler (tractable) formulation is also developed using a quantization hypothesis that restricts the solution space. The formulation is then abstracted to the well known Bender's decomposition method for solving stochastic optimization problems. The formulation is evaluated under varying traffic conditions. Results are obtained and compared with linear optimization. Cost savings in terms of network equipment (transponders) is presented.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Stochastic processes",
+                "Wavelength division multiplexing",
+                "WDM networks",
+                "Telecommunication traffic",
+                "Optical fiber networks",
+                "High speed optical techniques",
+                "Resource management",
+                "Design optimization",
+                "Wavelength routing",
+                "Wavelength assignment"
+            ],
+            "Index Terms": [
+                "Stochastic Optimization",
+                "Ring Topology",
+                "Optimization Problem",
+                "Linear Programming",
+                "Network Resources",
+                "Constrained Optimization",
+                "Optimal Resource Allocation",
+                "Optical Networks",
+                "Stochastic Optimization Problem",
+                "Optical Circuits",
+                "Network Equipment",
+                "Objective Function",
+                "Optimal Model",
+                "Number Of Values",
+                "Stochastic Model",
+                "Future Values",
+                "Two-stage Model",
+                "Linear Techniques",
+                "Traffic Distribution",
+                "Confidence Interval Method",
+                "Optical Switching",
+                "Voice Over Internet Protocol",
+                "Stochastic Optimization Model",
+                "Average Use",
+                "Control Channel"
+            ],
+            "Author Keywords": [
+                "light-trail",
+                "stochastic optimization"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1793,7 +3692,43 @@
                 "firstName": "Susumu",
                 "lastName": "Horiguchi"
             }
-        ]
+        ],
+        "abstract": "Combining the multi-log<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sub>N networks architecture and directional coupler technology is an interesting approach to building the photonic switching networks. This paper studies the strictly nonblocking design of such photonic multi-log<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sub>N networks under the general/cast traffic and various crosstalk constraints. This study covers the traditional designs for unicast traffic (f=1) or the designs for multicast traffic (f=N) as special cases.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Photonics",
+                "Telecommunication traffic",
+                "Unicast",
+                "Switches",
+                "Directional couplers",
+                "Wavelength division multiplexing",
+                "HDTV",
+                "Optical crosstalk",
+                "Optical fiber networks",
+                "Buildings"
+            ],
+            "Index Terms": [
+                "Crosstalk",
+                "Direct Coupling",
+                "Optical Switching",
+                "Switching Network",
+                "General Case",
+                "Set Of Elements",
+                "Switching Function",
+                "Hardware Cost",
+                "Wavelength Division Multiplexing",
+                "High-definition Video",
+                "Number Of Planes"
+            ],
+            "Author Keywords": [
+                "Strictly nonblocking",
+                "f-cast",
+                "photonic switches",
+                "multicast",
+                "crosstalk",
+                "banyan networks"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1822,7 +3757,54 @@
                 "firstName": "Tilman",
                 "lastName": "Wolf"
             }
-        ]
+        ],
+        "abstract": "Measurement and monitoring functionality is widely deployed in the present Internet infrastructure to gather insight into the operation of the network. It is important to obtain a detailed understanding of the system architectures and workloads associated with packet measurement. We present the results of a <i xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">quantitative</i> performance analysis of a variety of existing measurement systems under different workloads. These results give us an understanding of how much system resources are necessary to support measurement in next-generation high-performance networks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monitoring",
+                "IP networks",
+                "Next generation networking",
+                "Telecommunication traffic",
+                "Computer architecture",
+                "Performance analysis",
+                "Costs",
+                "Protocols",
+                "Intrusion detection",
+                "Stress"
+            ],
+            "Index Terms": [
+                "Monitoring Network",
+                "High-performance Network",
+                "Network Monitoring System",
+                "Measurement System",
+                "System Architecture",
+                "Data Rate",
+                "State Machine",
+                "Anomaly Detection",
+                "Core Processes",
+                "Processing Demands",
+                "High Data Rate",
+                "Intrusion Detection",
+                "Ad Hoc Networks",
+                "Measurement Capability",
+                "Specific Hardware",
+                "System A",
+                "Round-trip Time",
+                "Packet Size",
+                "Monitoring Capabilities",
+                "Passive Measurements",
+                "System C",
+                "Packet Drop",
+                "Packet Processing",
+                "Network Interface",
+                "Packet Header",
+                "Processing System",
+                "US Dollars",
+                "Passive Monitoring",
+                "Interconnected Systems",
+                "Sensor Networks"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1851,7 +3833,50 @@
                 "firstName": "Zhi-gang",
                 "lastName": "Sun"
             }
-        ]
+        ],
+        "abstract": "A novel approach for filtering spoofed IP packets, called spoofing prevention based on hierarchical coordination model, is proposed. In the approach a unique temporal signature is associated with each ordered pair of source destination networks. Each packet leaving a source network S is marked with the signature Sig(S,D) , associated with (S,D) , where D is the destination network. Upon arrival at the destination network the signature is verified and removed. The method verifies the authenticity of packets carrying the address s which belongs to the source address space of network S indexed by the signature. While the information about source address spaces of network is transmitted by hierarchical coordination model, in which by the same method the information is propagated and processed for routers residing in the same hierarchical, furthermore using dynamic bloom filter the information is fused to be delivered over hierarchies, thus the implementation is efficient The major benefits of SP-HCM are the strong incentive it provides to network operators to implement it, and the fact that the approach lends itself to stepwise deployment, since it benefits networks deploying the approach even if it is implemented only on parts of the Internet.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer hacking",
+                "Information filtering",
+                "Information filters",
+                "Telecommunication traffic",
+                "Space technology",
+                "Sun",
+                "IP networks",
+                "Web and internet services",
+                "Computer crime",
+                "Law enforcement"
+            ],
+            "Index Terms": [
+                "Hierarchical Model",
+                "Coordination Model",
+                "Pair Of Networks",
+                "Source Network",
+                "Dynamic Filter",
+                "Bloom Filter",
+                "False Positive",
+                "Information Processing",
+                "Alliance",
+                "Actuator",
+                "Complete Information",
+                "Network Topology",
+                "Information Gathering",
+                "Hash Function",
+                "Network Applications",
+                "Scaling Properties",
+                "Information Propagation",
+                "Storage Cost",
+                "Source Node",
+                "Destination Node",
+                "Network Of Facilities"
+            ],
+            "Author Keywords": [
+                "Bloom Filter",
+                "Hierarchical Coordination Model",
+                "Spoofing Prevention"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1886,7 +3911,45 @@
                 "firstName": "Milos",
                 "lastName": "Petrovic"
             }
-        ]
+        ],
+        "abstract": "High-capacity routers that circulate multicast packets have unique properties. Their architecture is non-blocking even for the multicast traffic. It also provides delay guarantees. This paper presents the detailed implementation of the controller that circulates multicast packets through a router toward their destination ports. The controller was implemented on the FPGA device and its functioning was tested. Its scalability and speed were assessed, and shown to be satisfactory.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Internet",
+                "Traffic control",
+                "Delay",
+                "Multicast algorithms",
+                "Scheduling algorithm",
+                "Unicast",
+                "Optimal scheduling",
+                "Field programmable gate arrays",
+                "Testing",
+                "Scalability"
+            ],
+            "Index Terms": [
+                "Destination Port",
+                "Internal Control",
+                "Input Signal",
+                "Design Parameters",
+                "Control Mode",
+                "Time Slot",
+                "Test Environment",
+                "Child Nodes",
+                "Types Of Messages",
+                "Scheduling Algorithm",
+                "Traffic Patterns",
+                "Functional Verification",
+                "Number Of Memory",
+                "Control Messages",
+                "Tree Position",
+                "Memory Block",
+                "Message Length",
+                "Question Session",
+                "Types Of Requests",
+                "Time Slot Duration",
+                "Control Packets"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1909,7 +3972,44 @@
                 "firstName": "George",
                 "lastName": "Apostolopoulos"
             }
-        ]
+        ],
+        "abstract": "In today's converged IP networks we gradually move away from the model where traffic forwarding closely follows routing. In many modern backbone networks traffic flows over a MPLS based forwarding plane that consists of a set of MPLS tunnels. In most cases these tunnels are provisioned using RSVP-TE, are computed and optimized off-line, failures are repaired by bypass tunnels, and the routing protocol (IGP) has a rather limited role in how traffic is routed. Compared to RSVP-TE provisioned MPLS forwarding planes, LDP provisioned MPLS forwarding planes have significant advantages in terms of scalability and simplicity, but they are still tied to the IGP routing and do not provide mechanisms for traffic engineering or traffic protection. In this work we build on our previous work in multi-topology routing and IGP link weight optimization and show how with simple extensions to the LDP protocol we can build MPLS forwarding planes that match the resilience and traffic engineering capabilities of the RSVP-TE provisioned planes without excessive label consumption.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multiprotocol label switching",
+                "Telecommunication traffic",
+                "Protection",
+                "Topology",
+                "Traffic control",
+                "Routing protocols",
+                "IP networks",
+                "Spine",
+                "Communication system traffic control",
+                "Scalability"
+            ],
+            "Index Terms": [
+                "Traffic Engineering",
+                "Traffic Flow",
+                "Optimal Weight",
+                "Pathfinding",
+                "Simple Extension",
+                "Link Weights",
+                "Network Topology",
+                "Shortest Path",
+                "Single Node",
+                "Number Of Labels",
+                "Single Linkage",
+                "Multiple Labels",
+                "Traffic Demand",
+                "Single Failure",
+                "Node Failure",
+                "Topological Number",
+                "Link Failure",
+                "Routing Cost",
+                "Routing Table",
+                "Local Repair"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1944,7 +4044,44 @@
                 "firstName": "Achille",
                 "lastName": "Pattavina"
             }
-        ]
+        ],
+        "abstract": "A multistage network architecture is proposed for nonblocking photonic switching exploiting waveguide interconnections and integrated 2x2 optical switching elements. The proposed architecture Low Crossover EGS is topologically equivalent to the Extended Generalized Shuffle Network, but a different novel configuration drastically reduces the number of waveguide crossovers of the interconnection stages. Some properties (number of switch elements and drivers required, number of crossovers, system attenuation and signal-to-crosstalk ratio) are derived and analyzed. The proposed EGS network is then compared with other known strictly nonblocking photonic guided-wave switching architectures, showing its scalability.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical waveguides",
+                "Optical attenuators",
+                "Optical crosstalk",
+                "Optical interconnections",
+                "Optical switches",
+                "Integrated circuit interconnections",
+                "Transmission line matrix methods",
+                "Distributed control",
+                "Optical fiber networks",
+                "Scalability"
+            ],
+            "Index Terms": [
+                "Optical Switching",
+                "Bicontinuous",
+                "Number Of Crossovers",
+                "Switching Elements",
+                "Stage 2",
+                "Optical Fiber",
+                "Modularity",
+                "Classification Network",
+                "Optical Signal",
+                "Insertion Loss",
+                "Rectangular Waveguide",
+                "Power-of-two",
+                "Architecture For Classification",
+                "Wavelength Division Multiplexing",
+                "Baseline Network",
+                "Extinction Ratio",
+                "Coupling Loss",
+                "Switching Network",
+                "Adjacent Stages",
+                "Interstage"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1979,7 +4116,35 @@
                 "firstName": "Thanh-Nhan",
                 "lastName": "Nguyen"
             }
-        ]
+        ],
+        "abstract": "The theory of multirate switching networks, started in the late 80s, has been very practically useful. In particular, it has served as the theoretical foundation for the development of most ATM switching systems. Rearrangeable multirate multicast switching networks are customarily called distribution networks, or distributors for short. It has been known for more than 15 years that distributors with cross-point complexity O(n log<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> n) can be constructed, where n is the number of inputs. The problem of constructing optimal distributors remains open thus far. In this paper, we give a general method for constructing given-depth rearrangeable multirate distributors. One of the rewards of our construction method is a distributor with cross-point complexity O(n log n), which we then show to be optimal. We thus settle the aforementioned open problem.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Asynchronous transfer mode",
+                "Switching systems",
+                "Bandwidth",
+                "Manufacturing",
+                "Unicast",
+                "Terminology",
+                "Bipartite graph",
+                "Broadcasting",
+                "Engineering profession"
+            ],
+            "Index Terms": [
+                "Distribution Network",
+                "Multicast",
+                "Switching Network",
+                "Rest Of The Paper",
+                "Conjecture",
+                "Total Weight",
+                "Network Size",
+                "Directed Acyclic Graph",
+                "Divisible",
+                "Capacity Of Nodes",
+                "Distribution Routes"
+            ]
+        }
     },
     {
         "publicationNumber": "4281215",
@@ -1995,7 +4160,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -2011,7 +4178,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "Photographs from the conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -2027,7 +4196,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -2043,7 +4214,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "Contains an entry for each attendee of this conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -2059,7 +4232,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "Copyright and Reprint Permissions: Abstracting is permitted with credit to the source. Libraries may photocopy beyond the limits of US copyright law, for private use of patrons, those articles in this volume that carry a code at the bottom of the first page, provided that the per-copy fee indicated in the code is paid through the Copyright Clearance Center. The papers in this book comprise the proceedings of the meeting mentioned on the cover and title page. They reflect the authors' opinions and, in the interests of timely dissemination, are published as presented and without change. Their inclusion in this publication does not necessarily constitute endorsement by the editors or the Institute of Electrical and Electronics Engineers, Inc.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -2075,7 +4250,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover or splash screen of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -2091,7 +4268,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "The author index contains an entry for each author and coauthor included in the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -2107,7 +4286,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: high performance switching; high performance routing; multistage packet switches; router design; network architecture; network protocol; flow control; route lookup; packet classification; switch scheduling; optical packet switches; traffic engineering control; buffered crossbar switches; advanced interconnection networks; network security; quality of service; network optimization; switch architectures; network control; network modeling.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -2123,7 +4304,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference organizers greatly appreciate the support of the various corporate sponsors listed.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4281215",
@@ -2139,6 +4322,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2007 Workshop on High Performance Switching and Routing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents of the proceedings.",
+        "keywords": {}
     }
 ]

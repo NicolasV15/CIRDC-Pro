@@ -26,7 +26,54 @@
                 "firstName": "M.",
                 "lastName": "Martonosi"
             }
-        ]
+        ],
+        "abstract": "Power density continues to increase exponentially with each new technology generation, posing a major challenge for thermal management in modern processors. Much past work has examined microarchitectural policies for reducing total chip power, but these techniques alone are insufficient if not aimed at mitigating individual hotspots. The industry's trend has been toward multicore architectures, which provide additional opportunities for dynamic thermal management. This paper explores various thermal management techniques that exploit the distributed nature of multicore processors. We classify these techniques in terms of core throttling policy, whether that policy is applied locally to a core or to the processor as a whole, and process migration policies. We use Turandot and a HotSpot-based thermal simulator to simulate a variety of workloads under thermal duress on a 4-core PowerPCtrade processor. Using benchmarks from the SPEC 2000 suite we characterize workloads in terms of instruction throughput as well as their effective duty cycles. Among a variety of options we find that distributed control-theoretic DVFS alone improves throughput by 2.5times under our test conditions. Our final design involves a PI-based core thermal controller and an outer control loop to decide process migrations. This policy avoids all thermal emergencies and yields an average of 2.6times speedup over the baseline across all workloads",
+        "keywords": {
+            "IEEE Keywords": [
+                "Thermal management",
+                "Multicore processing",
+                "Rapid thermal processing",
+                "Throughput",
+                "Control systems",
+                "Cooling",
+                "Taxonomy",
+                "Operating systems",
+                "Hardware",
+                "Robust control"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Thermal Management",
+                "Benchmark",
+                "Duty Cycle",
+                "Past Work",
+                "Control Loop",
+                "Outer Loop",
+                "Migration Policy",
+                "Thermal Control",
+                "Thermal Simulation",
+                "Time Scale",
+                "Operating System",
+                "Hot Spots",
+                "Adaptive Control",
+                "Form Of Control",
+                "Global Policy",
+                "Closed-loop Control",
+                "Total Work",
+                "PI Controller",
+                "Part Of Space",
+                "L2 Cache",
+                "Thermal Sensors",
+                "Mechanisms Of Migration",
+                "Phase-locked Loop",
+                "Steady-state Temperature",
+                "Thermal Variation",
+                "Target Temperature",
+                "Local Hotspots",
+                "Thermal Constraints",
+                "Voltage Scaling"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -67,7 +114,54 @@
                 "firstName": "J.",
                 "lastName": "Chase"
             }
-        ]
+        ],
+        "abstract": "One of the key challenges for high-density servers (e.g., blades) is the increased costs in addressing the power and heat density associated with compaction. Prior approaches have mainly focused on reducing the heat generated at the level of an individual server. In contrast, this work proposes power efficiencies at a larger scale by leveraging statistical properties of concurrent resource usage across a collection of systems (\"ensemble\"). Specifically, we discuss an implementation of this approach at the blade enclosure level to monitor and manage the power across the individual blades in a chassis. Our approach requires low-cost hardware modifications and relatively simple software support. We evaluate our architecture through both prototyping and simulation. For workloads representing 132 servers from nine different enterprise deployments, we show significant power budget reductions at performances comparable to conventional systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Energy management",
+                "Blades",
+                "Costs",
+                "Compaction",
+                "Monitoring",
+                "Power system management",
+                "Hardware",
+                "Computer architecture",
+                "Software prototyping",
+                "Virtual prototyping"
+            ],
+            "Index Terms": [
+                "Power Management",
+                "Blade Servers",
+                "Prototype",
+                "Power Density",
+                "Collection System",
+                "Resource Usage",
+                "Data Center",
+                "Power Consumption",
+                "Resource Utilization",
+                "Increase In Costs",
+                "Power Level",
+                "Performance Degradation",
+                "Total Power",
+                "Power Control",
+                "Reduction In Power",
+                "Cost Overruns",
+                "Changes In Utilization",
+                "Energy Meter",
+                "Power Delivery",
+                "Increase In Power Density",
+                "Voltage Scaling",
+                "CPU Utilization",
+                "Reactive Management",
+                "Design Space Exploration",
+                "Ensemble Level",
+                "Zeldovich",
+                "Provisioning",
+                "CPU Power",
+                "Frequency Scale",
+                "Heat Extraction"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -108,7 +202,44 @@
                 "firstName": "C.",
                 "lastName": "Cascaval"
             }
-        ]
+        ],
+        "abstract": "Transactional Memory (TM), Thread-Level Speculation (TLS), and Checkpointed multiprocessors are three popular architectural techniques based on the execution of multiple, cooperating speculative threads. In these environments, correctly maintaining data dependences across threads requires mechanisms for disambiguating addresses across threads, invalidating stale cache state, and making committed state visible. These mechanisms are both conceptually involved and hard to implement. In this paper, we present Bulk, a novel approach to simplify these mechanisms. The idea is to hash-encode a thread’s access information in a concise signature, and then support in hardware signature operations that efficiently process sets of addresses. Such operations implement the mechanisms described. Bulk operations are inexact but correct, and provide substantial conceptual and implementation simplicity. We evaluate Bulk in the context of TLS using SPECint2000 codes and TM using multithreaded Java workloads. Despite its simplicity, Bulk has competitive performance with more complex schemes. We also find that signature configuration is a key design parameter.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Yarn",
+                "Hardware",
+                "Access protocols",
+                "Java",
+                "US Department of Energy",
+                "Multithreading"
+            ],
+            "Index Terms": [
+                "Disambiguation",
+                "Complex Strategies",
+                "Simple Implementation",
+                "Multi-threaded",
+                "Conceptual Simplicity",
+                "Key Design Parameters",
+                "False Positive",
+                "Permutation",
+                "Simple Operation",
+                "State Machine",
+                "First Child",
+                "Set Of Lines",
+                "Partial Overlap",
+                "Conventional Scheme",
+                "Masked Images",
+                "Implementation Performance",
+                "Multiple Threads",
+                "Written Back",
+                "Single Processor",
+                "Bloom Filter",
+                "Context Switching",
+                "Bandwidth Usage",
+                "Zero Sequence",
+                "Binary Index"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -149,7 +280,46 @@
                 "firstName": "Y.N.",
                 "lastName": "Patt"
             }
-        ]
+        ],
+        "abstract": "Performance loss due to long-latency memory accesses can be reduced by servicing multiple memory accesses concurrently. The notion of generating and servicing long-latency cache misses in parallel is called Memory Level Parallelism (MLP). MLP is not uniform across cache misses - some misses occur in isolation while some occur in parallel with other misses. Isolated misses are more costly on performance than parallel misses. However, traditional cache replacement is not aware of the MLP-dependent cost differential between different misses. Cache replacement, if made MLP-aware, can improve performance by reducing the number of performance-critical isolated misses. This paper makes two key contributions. First, it proposes a framework for MLP-aware cache replacement by using a runtime technique to compute the MLP-based cost for each cache miss. It then describes a simple cache replacement mechanism that takes both MLP-based cost and recency into account. Second, it proposes a novel, low-hardware overhead mechanism called Sampling Based Adaptive Replacement (SBAR), to dynamically choose between an MLP-aware and a traditional replacement policy, depending on which one is more effective at reducing the number of memory related stalls. Evaluations with the SPEC CPU2000 benchmarks show that MLP-aware cache replacement can improve performance by as much as 23%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer aided software engineering",
+                "Performance loss",
+                "Costs",
+                "Parallel processing",
+                "Runtime",
+                "Sampling methods",
+                "System performance",
+                "Prefetching"
+            ],
+            "Index Terms": [
+                "Cache Replacement",
+                "Benchmark",
+                "Recent Events",
+                "Performance Loss",
+                "Cache Misses",
+                "Replacement Policy",
+                "High Probability",
+                "Parallelization",
+                "Selection Mechanism",
+                "Cost Value",
+                "Microarchitecture",
+                "Memory System",
+                "Most Significant Bit",
+                "Loop Iteration",
+                "Selection Policy",
+                "Block A",
+                "Replacement Strategy",
+                "Dynamic Selection",
+                "Data Cache",
+                "Additional Storage",
+                "Number Of Misses",
+                "Hardware Overhead",
+                "Tournament Selection",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -196,7 +366,50 @@
                 "firstName": "A.",
                 "lastName": "Moshovos"
             }
-        ]
+        ],
+        "abstract": "Prior research indicates that there is much spatial variation in applications' memory access patterns. Modern memory systems, however, use small fixed-size cache blocks and as such cannot exploit the variation. Increasing the block size would not only prohibitively increase pin and interconnect bandwidth demands, but also increase the likelihood of false sharing in shared-memory multiprocessors. In this paper, we show that memory accesses in commercial workloads often exhibit repetitive layouts that span large memory regions (e.g., several kB), and these accesses recur in patterns that are predictable through code-based correlation. We propose spatial memory streaming, a practical on-chip hardware technique that identifies code-correlated spatial access patterns and streams predicted blocks to the primary cache ahead of demand misses. Using cycle-accurate full-system multiprocessor simulation of commercial and scientific applications, we demonstrate that spatial memory streaming can on average predict 58% of LI and 65% of off-chip misses, for a mean performance improvement of 37% and at best 307%",
+        "keywords": {
+            "IEEE Keywords": [
+                "Application software",
+                "Bandwidth",
+                "Delay",
+                "Prefetching",
+                "Computer architecture",
+                "Hardware",
+                "Decision support systems",
+                "Data structures",
+                "Technological innovation",
+                "System performance"
+            ],
+            "Index Terms": [
+                "Spatial Patterns",
+                "Spatial Variation",
+                "Commercial Applications",
+                "Block Size",
+                "Scientific Applications",
+                "Memory System",
+                "Access Patterns",
+                "Data Structure",
+                "Web Server",
+                "Size Of Region",
+                "Web Application",
+                "Decision Support System",
+                "Spatial Regions",
+                "Storage Requirements",
+                "Predictive Index",
+                "Spatial Prediction",
+                "Most Significant Bit",
+                "Table Entries",
+                "Finer Granularity",
+                "Cache Misses",
+                "Future Access",
+                "Peak Coverage",
+                "L2 Cache",
+                "Bandwidth Utilization",
+                "Data Cache",
+                "Misprediction"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -231,7 +444,52 @@
                 "firstName": "R.K.",
                 "lastName": "Cytron"
             }
-        ]
+        ],
+        "abstract": "We present and evaluate an architecture for highthroughput pattern matching of regular expressions. Our approach matches multiple patterns concurrently, responds rapidly to changes in the pattern set, and is well suited for synthesis in an ASIC or FPGA. Our approach is based on a new and easily pipelined state-machine representation that uses encoding and compression techniques to improve density. We have written a compiler that translates a set of regular expressions and optimizes their deployment in the structures used by our architecture. We analyze our approach in terms of its throughput, density, and efficiency. We present experimental results from an implementation in a commodity FPGA, showing better throughput and density than the best known approaches.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pattern matching",
+                "Field programmable gate arrays",
+                "Computer architecture",
+                "Throughput",
+                "Computer networks",
+                "Postal services",
+                "Filters",
+                "Application specific integrated circuits",
+                "Encoding",
+                "Optimizing compilers"
+            ],
+            "Index Terms": [
+                "Pattern Matching",
+                "Regular Expressions",
+                "Expression Of Set",
+                "State Machine",
+                "High Throughput",
+                "Transition State",
+                "Count Data",
+                "Interesting Patterns",
+                "Search String",
+                "Per Cycle",
+                "Data Streams",
+                "Automata",
+                "Evidential",
+                "Bitstream",
+                "Transition Function",
+                "Clock Rate",
+                "Symbol Sequence",
+                "Physical Memory",
+                "Input Symbols",
+                "Knapsack Problem",
+                "Running Example",
+                "Decimal Digits",
+                "Part Of Column",
+                "Value Of Currency",
+                "Prototype Implementation",
+                "Current Word",
+                "Starting State",
+                "Set Of Equations"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -260,7 +518,53 @@
                 "firstName": "G.S.",
                 "lastName": "Sohi"
             }
-        ]
+        ],
+        "abstract": "This paper presents CMP Cooperative Caching, a unified framework to manage a CMP’s aggregate on-chip cache resources. Cooperative caching combines the strengths of private and shared cache organizations by forming an aggregate \"shared\" cache through cooperation among private caches. Locally active data are attracted to the private caches by their accessing processors to reduce remote on-chip references, while globally active data are cooperatively identified and kept in the aggregate cache to reduce off-chip accesses. Examples of cooperation include cache-to-cache transfers of clean data, replication-aware data replacement, and global replacement of inactive data. These policies can be implemented by modifying an existing cache replacement policy and cache coherence protocol, or by the new implementation of a directory-based protocol presented in this paper. Our evaluation using full-system simulation shows that cooperative caching achieves an off-chip miss rate similar to that of a shared cache, and a local cache hit rate similar to that of using private caches. Cooperative caching performs robustly over a range of system/cache sizes and memory latencies. For an 8-core CMP with 1MB L2 cache per core, the best cooperative caching scheme improves the performance of multithreaded commercial workloads by 5-11% compared with a shared cache and 4-38% compared with private caches. For a 4-core CMP running multiprogrammed SPEC2000 workloads, cooperative caching is on average 11% and 6% faster than shared and private cache organizations, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cooperative caching",
+                "Aggregates",
+                "Wire",
+                "Access protocols",
+                "Proposals",
+                "Resource management",
+                "Robustness",
+                "Costs",
+                "Added delay"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Cooperative Caching",
+                "Clean Data",
+                "Data Transfer",
+                "Cooperative Strategy",
+                "Data Cache",
+                "Caching Scheme",
+                "L2 Cache",
+                "Cache Hit",
+                "Replacement Policy",
+                "Use Of Resources",
+                "Global Data",
+                "Work Settings",
+                "Data Sharing",
+                "Average Latency",
+                "Temporal Localization",
+                "Data Block",
+                "Implementation Of Functions",
+                "Global Management",
+                "Local Banks",
+                "Access Latency",
+                "Cache Misses",
+                "Network-on-chip",
+                "Memory Hierarchy",
+                "Clean Copy",
+                "Bandwidth Requirements",
+                "Cache Size",
+                "Central Coherence",
+                "Remote Memory",
+                "Written Back"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -301,7 +605,53 @@
                 "firstName": "W.J.",
                 "lastName": "Dally"
             }
-        ]
+        ],
+        "abstract": "This paper describes the radix-64 folded-Clos network of the Cray BlackWidow scalable vector multiprocessor. We describe the BlackWidow network which scales to 32K processors with a worstcase diameter of seven hops, and the underlying high-radix router microarchitecture and its implementation. By using a high-radix router with many narrow channels we are able to take advantage of the higher pin density and faster signaling rates available in modern ASIC technology. The BlackWidow router is an 800 MHz ASIC with 64 18.75Gb/s bidirectional ports for an aggregate offchip bandwidth of 2.4Tb/s. Each port consists of three 6.25Gb/s differential signals in each direction. The router supports deterministic and adaptive packet routing with separate buffering for request and reply virtual channels. The router is organized hierarchically [13] as an 8×8 array of tiles which simplifies arbitration by avoiding long wires in the arbiters. Each tile of the array contains a router port, its associated buffering, and an 8×8 router subswitch. The router ASIC is implemented in a 90nm CMOS standard cell ASIC technology and went from concept to tapeout in 17 months.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Network topology",
+                "Application specific integrated circuits",
+                "Bandwidth",
+                "Delay",
+                "Switches",
+                "Multiprocessor interconnection networks",
+                "Costs",
+                "Microarchitecture",
+                "Tiles",
+                "Synchronization"
+            ],
+            "Index Terms": [
+                "Arbitration",
+                "Microarchitecture",
+                "Tiling Array",
+                "Virtual Channel",
+                "Flow Control",
+                "Hash Function",
+                "Subtree",
+                "Physical Layer",
+                "Load Balancing",
+                "Output Ports",
+                "Input Port",
+                "Column In Buffer",
+                "Power-of-two",
+                "Single Chip",
+                "Clock Cycles",
+                "Total Bandwidth",
+                "Routing Algorithm",
+                "Network Latency",
+                "Differential Pair",
+                "Routing Table",
+                "Network Slicing",
+                "Packet Length",
+                "Packet Header",
+                "Forward Progress",
+                "Datapath",
+                "Most Significant Bit",
+                "Shared Memory",
+                "Hop Count",
+                "Traffic Patterns"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -360,7 +710,45 @@
                 "firstName": "K.",
                 "lastName": "Olukotun"
             }
-        ]
+        ],
+        "abstract": "Transactional Memory (TM) simplifies parallel programming by allowing for parallel execution of atomic tasks. Thus far, TM systems have focused on implementing transactional state buffering and conflict resolution. Missing is a robust hardware/software interface, not limited to simplistic instructions defining transaction boundaries. Without rich semantics, current TM systems cannot support basic features of modern programming languages and operating systems such as transparent library calls, conditional synchronization, system calls, I/O, and runtime exceptions. This paper presents a comprehensive instruction set architecture (ISA) for TM systems. Our proposal introduces three key mechanisms: two-phase commit; support for software handlers on commit, violation, and abort; and full support for open- and closed-nested transactions with independent rollback. These mechanisms provide a flexible interface to implement programming language and operating system functionality. We also show that these mechanisms are practical to implement at the ISA and microarchitecture level for various TM systems. Using an execution-driven simulation, we demonstrate both the functionality (e.g., I/O and conditional scheduling within transactions) and performance potential (2.2× improvement for SPECjbb2000) of the proposed mechanisms. Overall, this paper establishes a rich and efficient interface to foster both hardware and software research on transactional memory.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Computer languages",
+                "Operating systems",
+                "Instruction sets",
+                "Parallel programming",
+                "Robustness",
+                "Software libraries",
+                "Runtime library",
+                "Computer architecture",
+                "Proposals"
+            ],
+            "Index Terms": [
+                "Operating System",
+                "Programming Language",
+                "Educational Settings",
+                "Parallelization",
+                "Conflict Resolution",
+                "Rollback",
+                "Instruction Set Architecture",
+                "Transparent System",
+                "Modern Programs",
+                "Error Handling",
+                "System Calls",
+                "Set Of Lines",
+                "Data Version",
+                "Deadlock",
+                "Serialized",
+                "Function Calls",
+                "Language Constructs",
+                "Conflict Detection",
+                "Hardware Support",
+                "L2 Cache",
+                "Virtual Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -425,7 +813,53 @@
                 "firstName": "K.",
                 "lastName": "Flautner"
             }
-        ]
+        ],
+        "abstract": "The physical layer of most wireless protocols is traditionally implemented in custom hardware to satisfy the heavy computational requirements while keeping power consumption to a minimum. These implementations are time consuming to design and difficult to verify. A programmable hardware platform capable of supporting software implementations of the physical layer, or software defined radio, has a number of advantages. These include support for multiple protocols, faster time-to-market, higher chip volumes, and support for late implementation changes. The challenge is to achieve this without sacrificing power. In this paper, we present a design study for a fully programmable architecture, SODA, that supports software defined radio a high-end signal processing application. Our design achieves high performance, energy efficiency, and programmability through a combination of features that include single-instruction multiple- data (SIMD) parallelism, and hardware optimized for 16bit computations. The basic processing element is an asymmetric processor consisting of a scalar and SIMD pipeline, and a set of distributed scratchpad memories that are fully managed in software. Results show that a four processor design is capable of meeting the throughput requirements of theW-CDMA and 802.11a protocols, while operating within the strict power constraints of a mobile terminal.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Software radio",
+                "Hardware",
+                "Physical layer",
+                "Wireless application protocol",
+                "Physics computing",
+                "Energy consumption",
+                "Time to market",
+                "Signal design",
+                "Signal processing"
+            ],
+            "Index Terms": [
+                "Power Consumption",
+                "Processing Elements",
+                "Computational Requirements",
+                "Physical Layer",
+                "Wireless Protocols",
+                "Throughput Requirements",
+                "Custom Hardware",
+                "Synchronization",
+                "Parallelization",
+                "Wireless Networks",
+                "Data Streams",
+                "Communication Protocol",
+                "Heterogeneous Systems",
+                "Power Requirements",
+                "Commercial Solution",
+                "Scalar Value",
+                "Parallel Data",
+                "Local Memory",
+                "Sandblasting",
+                "Scalar Operators",
+                "Vector Operations",
+                "Pipeline Stages",
+                "Dynamic Power",
+                "Datapath",
+                "Message Passing",
+                "Wireless Local Area Network",
+                "Code Division Multiple Access",
+                "Vector Process",
+                "Load Data"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -478,7 +912,52 @@
                 "firstName": "M.",
                 "lastName": "Kandemir"
             }
-        ]
+        ],
+        "abstract": "Long interconnects are becoming an increasingly important problem from both power and performance perspectives. This motivates designers to adopt on-chip network-based communication infrastructures and three-dimensional (3D) designs where multiple device layers are stacked together. Considering the current trends towards increasing use of chip multiprocessing, it is timely to consider 3D chip multiprocessor design and memory networking issues, especially in the context of data management in large L2 caches. The overall goal of this paper is to study the challenges for L2 design and management in 3D chip multiprocessors. Our first contribution is to propose a router architecture and a topology design that makes use of a network architecture embedded into the L2 cache memory. Our second contribution is to demonstrate, through extensive experiments, that a 3D L2 memory architecture generates much better results than the conventional two-dimensional (2D) designs under different number of layers and vertical (inter-wafer) connections. In particular, our experiments show that a 3D architecture with no dynamic data migration generates better performance than a 2D architecture that employs data migration. This also helps reduce power consumption in L2 due to a reduced number of data movements.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delay",
+                "Integrated circuit interconnections",
+                "Energy consumption",
+                "Microprocessors",
+                "Computer architecture",
+                "Network-on-a-chip",
+                "Memory management",
+                "Context",
+                "Network topology",
+                "Cache memory"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Data Management",
+                "Power Consumption",
+                "Multiple Layers",
+                "3D Architecture",
+                "Device Layer",
+                "3D Design",
+                "L2 Cache",
+                "Benchmark",
+                "Vertical Direction",
+                "Small Distance",
+                "Peak Temperature",
+                "Access Time",
+                "3D Technology",
+                "Mesh Network",
+                "Average Latency",
+                "Square Integrable",
+                "Line Search",
+                "Data Placement",
+                "Physical Channel",
+                "Access Latency",
+                "3D Topology",
+                "Replacement Policy",
+                "3D Scheme",
+                "Thermal Issues",
+                "Offsetting",
+                "Hop Count",
+                "Vertical Linkages"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -525,7 +1004,54 @@
                 "firstName": null,
                 "lastName": "Yan Solihin"
             }
-        ]
+        ],
+        "abstract": "Protection from hardware attacks such as snoopers and mod chips has been receiving increasing attention in computer architecture. This paper presents a new combined memory encryption/authentication scheme. Our new split counters for counter-mode encryption simultaneously eliminate counter overflow problems and reduce per-block counter size, and we also dramatically improve authentication performance and security by using the Galois/counter mode of operation (GCM), which leverages counter-mode encryption to reduce authentication latency and overlap it with memory accesses. Our results indicate that the split-counter scheme has a negligible overhead even with a small (32KB) counter cache and using only eight counter bits per data block. The combined encryption/authentication scheme has an IPC overhead of 5% on average across SPEC CPU 2000 benchmarks, which is a significant improvement over the 20% overhead of existing encryption/authentication schemes",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Cryptography",
+                "Authentication",
+                "Counting circuits",
+                "Protection",
+                "Hardware",
+                "Delay",
+                "Data security",
+                "Computer architecture",
+                "Information security"
+            ],
+            "Index Terms": [
+                "Georgia Institute Of Technology",
+                "Early Career Award",
+                "Memory Encryption",
+                "Benchmark",
+                "Data Block",
+                "Negligible Overhead",
+                "Decoding",
+                "Tree Level",
+                "Wide Range Of Parameters",
+                "Caching",
+                "Encryption Scheme",
+                "Replay Attacks",
+                "Splitting Strategy",
+                "Data Cache",
+                "Authentication Scheme",
+                "Memory Block",
+                "Performance Overhead",
+                "Physical Address",
+                "Authentication Code",
+                "L2 Cache",
+                "Merkle Tree",
+                "Cache Misses",
+                "Counter Value",
+                "Processor Chip",
+                "Block Cipher",
+                "Cache Hit",
+                "Prediction Scheme",
+                "Split Mode",
+                "Considerable Advantages",
+                "Block Size"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -554,7 +1080,51 @@
                 "firstName": "D.",
                 "lastName": "Yeung"
             }
-        ]
+        ],
+        "abstract": "The key to high performance in Simultaneous Multithreaded (SMT) processors lies in optimizing the distribution of shared resources to active threads. Existing resource distribution techniques optimize performance only indirectly. They infer potential performance bottlenecks by observing indicators, like instruction occupancy or cache miss counts, and take actions to try to alleviate them. While the corrective actions are designed to improve performance, their actual performance impact is not known since end performance is never monitored. Consequently, potential performance gains are lost whenever the corrective actions do not effectively address the actual bottlenecks occurring in the pipeline. We propose a different approach to SMT resource distribution that optimizes end performance directly. Our approach observes the impact that resource distribution decisions have on performance at runtime, and feeds this information back to the resource distribution mechanisms to improve future decisions. By evaluating many different resource distributions, our approach tries to learn the best distribution over time. Because we perform learning on-line, learning time is crucial. We develop a hill-climbing algorithm that efficiently learns the best distribution of resources by following the performance gradient within the resource distribution space. This paper conducts an in-depth investigation of learningbased SMT resource distribution. First, we compare existing resource distribution techniques to an ideal learning-based technique that performs learning off-line. This limit study shows learning-based techniques can provide up to 19.2% gain over ICOUNT, 18.0% gain over FLUSH, and 7.6% gain over DCRA across 21 multithreaded workloads. Then, we present an on-line learning algorithm based on hill-climbing. Our evaluation shows hill-climbing provides a 12.4% gain over ICOUNT, 11.3% gain over FLUSH, and 2.4% gain over DCRA across a larger set of 42 multiprogrammed workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Surface-mount technology",
+                "Resource management",
+                "Yarn",
+                "Performance gain",
+                "Multithreading",
+                "Hardware",
+                "Computer science",
+                "Monitoring",
+                "Pipelines",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Distribution Of Resources",
+                "Learning Algorithms",
+                "Limited Studies",
+                "Learning Curve",
+                "Performance Gain",
+                "Shared Resource",
+                "Performance Bottleneck",
+                "Learning-based Techniques",
+                "Cache Misses",
+                "Hill-climbing Algorithm",
+                "Benchmark",
+                "Grayscale",
+                "Performance Metrics",
+                "Maximum Peak",
+                "Local Maxima",
+                "Exhaustive Search",
+                "Performance Feedback",
+                "Multiple Peaks",
+                "Resource Usage",
+                "Resource Requirements",
+                "Offline Learning",
+                "Large Workload",
+                "Hill Slope",
+                "Hardware Resources",
+                "End Of Round",
+                "Positive Gradient",
+                "Individual Application"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -583,7 +1153,43 @@
                 "firstName": "J.-W.",
                 "lastName": "Maessen"
             }
-        ]
+        ],
+        "abstract": "We present a novel framework for defining memory models in terms of two properties: thread-local Instruction Reordering axioms and Store Atomicity, which describes inter-thread communication via memory. Most memory models have the store atomicity property, and it is this property that is enforced by cache coherence protocols. A memory model with Store Atomicity is serializable; there is a unique global interleaving of all operations which respects the reordering rules. Our framework uses partially ordered execution graphs; one graph represents many instruction interleavings with identical behaviors. The major contribution of this framework is a procedure for enumerating program behaviors in any memory model with Store Atomicity. Using this framework, we show that address aliasing speculation introduces new program behaviors; we argue that these new behaviors should be permitted by the memory model specification. We also show how to extend our model to capture the behavior of non-atomic memory models such as SPARC R TSO.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Yarn",
+                "Power system modeling",
+                "Computer architecture",
+                "Interleaved codes",
+                "Sun",
+                "Laboratories",
+                "Coherence",
+                "Protocols",
+                "History",
+                "Gold"
+            ],
+            "Index Terms": [
+                "Memory Model",
+                "Partial Order",
+                "Linear Order",
+                "Memory System",
+                "Local Store",
+                "Operator Of Order",
+                "Relaxed Model",
+                "Local Memory",
+                "Program Execution",
+                "Single Thread",
+                "Local Order",
+                "Serialized",
+                "Graph Generation",
+                "Load Operation",
+                "Multiple Threads",
+                "Memory Operations",
+                "Memory Address",
+                "Storage Operations",
+                "Program Behavior"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -624,7 +1230,59 @@
                 "firstName": "S.",
                 "lastName": "Chakradhar"
             }
-        ]
+        ],
+        "abstract": "Longest prefix matching (LPM) is a fundamental part of various network processing tasks. Previously proposed approaches for LPM result in prohibitive cost and power dissipation (TCAMs) or in large memory requirements and long lookup latencies (tries), when considering future line-rates, table sizes and key lengths (e.g., IPv6). Hash-based approaches appear to be an excellent candidate for LPM with the possibility of low power, compact storage, and O(1) latencies. However, there are two key problems that hinder their practical deployment as LPM solutions. First, naive hash tables incur collisions and resolve them using chaining, adversely affecting worst-case lookup-rate guarantees that routers must provide. Second, hash functions cannot directly operate on wildcard bits, a requirement for LPM, and current solutions require either considerably complex hardware or large storage space. In this paper we propose a novel architecture which successfully addresses for the first time, both key problems in hash based LPM - making the following contributions: (1) We architect an LPM solution based upon a recently-proposed, collision-free hashing scheme called Bloomier filter, by eliminating its false positives in a storage efficient way. (2) We propose a novel scheme called prefix collapsing, which provides support for wildcard bits with small additional storage and reduced hardware complexity. (3) We exploit prefix collapsing and key characteristics found in real update traces to support fast and incremental updates, a feature generally not available in collision-free hashing schemes",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delay",
+                "Bandwidth",
+                "National electric code",
+                "Laboratories",
+                "Costs",
+                "Power dissipation",
+                "Hardware",
+                "Filters",
+                "Internet",
+                "Tree data structures"
+            ],
+            "Index Terms": [
+                "Network Process",
+                "False Positive",
+                "Hash Function",
+                "Storage Space",
+                "Current Solution",
+                "Fast Update",
+                "Incremental Update",
+                "Real Traces",
+                "Data Structure",
+                "Experimental Evaluation",
+                "Lookup Table",
+                "Length Number",
+                "Number Table",
+                "Power Estimation",
+                "Denial Of Service",
+                "Collision Probability",
+                "Least Significant Bit",
+                "Intrusion Detection",
+                "Total Storage",
+                "Expansion Factor",
+                "Bloom Filter",
+                "Routing Table",
+                "Explosion In The Number",
+                "Storage Size",
+                "Naive Way",
+                "Number Of Keys",
+                "Separate Table",
+                "Sequence Memory"
+            ],
+            "Author Keywords": [
+                "IP Lookup",
+                "Packet Classification",
+                "Hash Tables",
+                "Bloom Filters",
+                "Longest Prefix Matching."
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -653,7 +1311,54 @@
                 "firstName": "G.S.",
                 "lastName": "Sohi"
             }
-        ]
+        ],
+        "abstract": "We present program demultiplexing (PD), an execution paradigm that creates concurrency in sequential programs by \"demultiplexing\" methods (functions or subroutines). Call sites of a demultiplexed method in the program are associated with handlers that allow the method to be separated from the sequential program and executed on an auxiliary processor. The demultiplexed execution of a method (and its handler) is speculative and occurs when the inputs of the method are (speculatively) available, which is typically far in advance of when the method is actually called in the sequential execution. A trigger, composed of predicates that are based on program counters and memory write addresses, launches the speculative execution of the method on another processor. Our implementation of PD is based on a full-system execution-based chip multi-processor simulator with software to generate triggers and handlers from an x86-program binary. We evaluate eight integer benchmarks from the SPEC2000 suite - programs written in C with no explicit concurrency and/or motivation to create concurrency - and achieve a harmonic mean speedup of 1.8x with our implementation of PD",
+        "keywords": {
+            "IEEE Keywords": [
+                "Demultiplexing",
+                "Yarn",
+                "Concurrent computing",
+                "Application software",
+                "Algorithms",
+                "Multicore processing",
+                "Computer aided instruction",
+                "Parallel processing",
+                "Counting circuits",
+                "Turning"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Demultiplexed",
+                "Benchmark",
+                "Programming Method",
+                "Sequential Execution",
+                "Execution Methods",
+                "Side Effects",
+                "Programming Language",
+                "Global Status",
+                "Flow Data",
+                "Flow Control",
+                "Sequential Order",
+                "Methods In Order",
+                "Linear Order",
+                "Object-oriented",
+                "Partial Order",
+                "Return Value",
+                "Modern Languages",
+                "Parallel Execution",
+                "Memory Allocation",
+                "Control Flow Graph",
+                "Hardware Support",
+                "Memory Address",
+                "Cache Misses",
+                "Multiple Processors",
+                "Single Processor",
+                "Debugging",
+                "Single Thread",
+                "Program Code",
+                "GNU Gcc"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -700,7 +1405,52 @@
                 "firstName": "F.T.",
                 "lastName": "Chong"
             }
-        ]
+        ],
+        "abstract": "The assumption of maximum parallelism support for the successful realization of scalable quantum computers has led to homogeneous, \"sea-of-qubits\" architectures. The resulting architectures overcome the primary challenges of reliability and scalability at the cost of physically unacceptable system area. We find that by exploiting the natural serialization at both the application and the physical microarchitecture level of a quantum computer, we can reduce the area requirement while improving performance. In particular we present a scalable quantum architecture design that employs specialization of the system into memory and computational regions, each individually optimized to match hardware support to the available parallelism. Through careful application and system analysis, we find that our new architecture can yield up to a factor of thirteen savings in area due to specialization. In addition, by providing a memory hierarchy design for quantum computers, we can increase time performance by a factor of eight. This result brings us closer to the realization of a quantum processor that can solve meaningful problems",
+        "keywords": {
+            "IEEE Keywords": [
+                "Quantum computing",
+                "Parallel processing",
+                "Concurrent computing",
+                "Computer architecture",
+                "Application software",
+                "Scalability",
+                "Costs",
+                "Microarchitecture",
+                "Physics computing",
+                "Design optimization"
+            ],
+            "Index Terms": [
+                "Quantum Computing",
+                "Memory Hierarchy",
+                "Architectural Design",
+                "Microarchitecture",
+                "Quantum Information",
+                "Memory Regions",
+                "Increase In Performance",
+                "Boolean Logic",
+                "Problem Size",
+                "Physical Movement",
+                "Forward Error Correction",
+                "Communication Requirements",
+                "Bandwidth Requirements",
+                "Transfer Network",
+                "Physical Layout",
+                "Teleportation",
+                "Quantum Gates",
+                "Quantum Algorithms",
+                "Quantum Error Correction",
+                "Single Qubit",
+                "Two-qubit Gates",
+                "Cache Hit",
+                "Cache Size",
+                "Level Of Encoding",
+                "Quantum Applications",
+                "Scalable Technology",
+                "Computing Units",
+                "Mesh Network"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -747,7 +1497,54 @@
                 "firstName": "J.B.",
                 "lastName": "Carter"
             }
-        ]
+        ],
+        "abstract": "Improvements in semiconductor technology have made it possible to include multiple processor cores on a single die. Chip Multi-Processors (CMP) are an attractive choice for future billion transistor architectures due to their low design complexity, high clock frequency, and high throughput. In a typical CMP architecture, the L2 cache is shared by multiple cores and data coherence is maintained among private L1s. Coherence operations entail frequent communication over global on-chip wires. In future technologies, communication between different L1s will have a significant impact on overall processor performance and power consumption. On-chip wires can be designed to have different latency, bandwidth, and energy properties. Likewise, coherence protocol messages have different latency and bandwidth needs. We propose an interconnect composed of wires with varying latency, bandwidth, and energy characteristics, and advocate intelligently mapping coherence operations to the appropriate wires. In this paper, we present a comprehensive list of techniques that allow coherence protocols to exploit a heterogeneous interconnect and evaluate a subset of these techniques to show their performance and power-efficiency potential. Most of the proposed techniques can be implemented with a minimum complexity overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Wires",
+                "Delay",
+                "Integrated circuit interconnections",
+                "Computer architecture",
+                "Bandwidth",
+                "Frequency",
+                "Energy consumption",
+                "Clocks",
+                "Throughput"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Coherence Protocol",
+                "Power Consumption",
+                "Core Processes",
+                "Multiple Cores",
+                "Clock Frequency",
+                "L2 Cache",
+                "Decision-making Process",
+                "Network Topology",
+                "Total Power",
+                "Unit Length",
+                "Base Case",
+                "Identification Of Sources",
+                "Low Latency",
+                "Heterogeneous Network",
+                "Heterogeneous Model",
+                "Forward Error Correction",
+                "Critical Path",
+                "Dynamic Power",
+                "Network Energy",
+                "Virtual Channel",
+                "Cache Misses",
+                "Routing Algorithm",
+                "Parallel Plate Capacitor",
+                "Heterogeneous Case",
+                "Link Bandwidth",
+                "Communication Latency",
+                "Benchmark",
+                "Additional Overhead",
+                "Word Size"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -812,7 +1609,57 @@
                 "firstName": "S.J.",
                 "lastName": "Eggers"
             }
-        ]
+        ],
+        "abstract": "Tiled architectures, such as RAW, SmartMemories, TRIPS, and WaveScalar, promise to address several issues facing conventional processors, including complexity, wire-delay, and performance. The basic premise of these architectures is that larger, higher-performance implementations can be constructed by replicating the basic tile across the chip. This paper explores the area-performance trade-offs when designing one such tiled architecture, WaveScalar. We use a synthesizable RTL model and cycle-level simulator to perform an area/performance pareto analysis of over 200 WaveScalar processor designs ranging in size from 19mm<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> to 575mm<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> and having a 22 FO4 cycle time. We demonstrate that, for multi-threaded workloads, WaveScalar performance scales almost ideally from 19 to 101mm <sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> when optimized for area efficiency and from 44 to 202mm<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> when optimized for peak performance. Our analysis reveals that WaveScalar's hierarchical interconnect plays an important role in overall scalability, and that WaveScalar achieves the same (or higher) performance in substantially less area than either an aggressive out-of-order superscalar or Sun's Niagara CMP processor",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Tiles",
+                "Process design",
+                "Data communication",
+                "Wire",
+                "Fabrication",
+                "Microarchitecture",
+                "Hardware design languages",
+                "Space technology",
+                "Computer science"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Cycle Time",
+                "Single Domain",
+                "Single Cluster",
+                "Per Cycle",
+                "Processing Elements",
+                "Design Space",
+                "Cluster Assignment",
+                "Microarchitecture",
+                "Efficient Design",
+                "Pareto Optimal",
+                "Conventional Design",
+                "Detailed Examples",
+                "Range Of Designs",
+                "Critical Path",
+                "Execution Of Operations",
+                "Remote Memory",
+                "Data Cache",
+                "Switching Network",
+                "Pipeline Stages",
+                "L2 Cache",
+                "Network-on-chip",
+                "Synopsys",
+                "Clock Cycles",
+                "Memory System",
+                "Communication Cost",
+                "Memory Structure"
+            ],
+            "Author Keywords": [
+                "WaveScalar",
+                "Dataflow computing",
+                "ASIC",
+                "RTL"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -901,7 +1748,54 @@
                 "firstName": null,
                 "lastName": "Jongman Kim"
             }
-        ]
+        ],
+        "abstract": "Packet-based on-chip networks are increasingly being adopted in complex system-on-chip (SoC) designs supporting numerous homogeneous and heterogeneous functional blocks. These network-on-chip (NoC) architectures are required to not only provide ultra-low latency, but also occupy a small footprint and consume as little energy as possible. Further, reliability is rapidly becoming a major challenge in deep sub-micron technologies due to the increased prominence of permanent faults resulting from accelerated aging effects and manufacturing/testing challenges. Towards the goal of designing low-latency, energy-efficient and reliable on-chip communication networks, we propose a novel fine-grained modular router architecture. The proposed architecture employs decoupled parallel arbiters and uses smaller crossbars for row and column connections to reduce output port contention probabilities as compared to existing designs. Furthermore, the router employs a new switch allocation technique known as \"mirroring effect\" to reduce arbitration depth and increase concurrency. In addition, the modular design permits graceful degradation of the network in the event of permanent faults and also helps to reduce the dynamic power consumption. Our simulation results indicate that in an 8 times 8 mesh network, the proposed architecture reduces packet latency by 4-40% and power consumption by 6-20% as compared to two existing router architectures. Evaluation using a combined performance, energy and fault-tolerance metric indicates that the proposed architecture provides 35-50% overall improvement compared to the two earlier routers",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Energy efficiency",
+                "Network-on-a-chip",
+                "System-on-a-chip",
+                "Delay",
+                "Telecommunication network reliability",
+                "Switches",
+                "Energy consumption",
+                "Accelerated aging",
+                "Manufacturing"
+            ],
+            "Index Terms": [
+                "Network-on-chip",
+                "Router Architecture",
+                "Power Consumption",
+                "Arbitration",
+                "Mesh Network",
+                "Output Ports",
+                "Modular Design",
+                "Dynamic Power",
+                "Energy Consumption",
+                "General Case",
+                "Types Of Defects",
+                "Critical Pathways",
+                "General Architecture",
+                "Control Logic",
+                "Average Latency",
+                "Input Port",
+                "Independent Modules",
+                "Traffic Patterns",
+                "Energy Constraints",
+                "Maximum Matching",
+                "Routing Algorithm",
+                "Virtual Channel",
+                "Network Latency",
+                "Wormhole",
+                "Minimal Overhead",
+                "Routing Scheme",
+                "Datapath",
+                "Area Overhead",
+                "Destination Node",
+                "Recycling Mechanism"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -936,7 +1830,53 @@
                 "firstName": "J.",
                 "lastName": "Torrellas"
             }
-        ]
+        ],
+        "abstract": "A simple and low-cost approach to supporting snoopy cache coherence is to logically embed a unidirectional ring in the network of a multiprocessor, and use it to transfer snoop messages. Other messages can use any link in the network. While this scheme works for any network topology, a naive implementation may result in long response times or in many snoop messages and snoop operations. To address this problem, this paper proposes flexible snooping algorithms, a family of adaptive forwarding and filtering snooping algorithms. In these algorithms, a node receiving a snoop request may either forward it to another node and then perform the snoop, or snoop and then forward it, or simply forward it without snooping. The resulting design space offers trade-offs in number of snoop operations and messages, response time, and energy consumption. Our analysis using SPLASH-2, SPECjbb, and SPECweb workloads finds several snooping algorithms that are more cost-effective than current ones. Specifically, our choice for a high-performance snooping algorithm is faster than the currently fastest algorithm while consuming 9-17% less energy; our choice for an energy-efficient algorithm is only 3-6% slower than the previous one while consuming 36-42% less energy",
+        "keywords": {
+            "IEEE Keywords": [
+                "Adaptive filters",
+                "Delay",
+                "Protocols",
+                "Network topology",
+                "Filtering algorithms",
+                "Hardware",
+                "Broadcasting",
+                "Computer science",
+                "Energy consumption",
+                "Algorithm design and analysis"
+            ],
+            "Index Terms": [
+                "Energy Consumption",
+                "Network Topology",
+                "Design Space",
+                "Current Ones",
+                "Forward Algorithm",
+                "Family Of Algorithms",
+                "Flexible Algorithm",
+                "Fastest Algorithm",
+                "False Positive",
+                "False Negative",
+                "Adaptive Algorithm",
+                "Implementation Of Algorithm",
+                "Positive Predictor",
+                "Multi-core",
+                "Negative Predictor",
+                "Type Prediction",
+                "Adaptive Filter",
+                "Exact Algorithm",
+                "Serialized",
+                "Implementation Difficulties",
+                "Bloom Filter",
+                "L2 Cache",
+                "Request Message",
+                "Single Message",
+                "Network-on-chip",
+                "Total Execution Time",
+                "Multicast",
+                "Ring Topology",
+                "True Positive Fraction"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -995,7 +1935,51 @@
                 "firstName": "J.P.",
                 "lastName": "Shen"
             }
-        ]
+        ],
+        "abstract": "Microprocessor design is undergoing a major paradigm shift towards multi-core designs, in anticipation that future performance gains will come from exploiting threadlevel parallelism in the software. To support this trend, we present a novel processor architecture called the Multiple Instruction Stream Processing (MISP) architecture. MISP introduces the sequencer as a new category of architectural resource, and defines a canonical set of instructions to support user-level inter-sequencer signaling and asynchronous control transfer. MISP allows an application program to directly manage user-level threads without OS intervention. By supporting the classic cache-coherent shared-memory programming model, MISP does not require a radical shift in the multithreaded programming paradigm. This paper describes the design and evaluation of the MISP architecture for the IA-32 family of microprocessors. Using a research prototype MISP processor built on an IA-32-based multiprocessor system equipped with special firmware, we demonstrate the feasibility of implementing the MISP architecture. We then examine the utility of MISP by (1) assessing the key architectural tradeoffs of the MISP architecture design and (2) showing how legacy multithreaded applications can be migrated to MISP with relative ease.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microprocessors",
+                "Computer architecture",
+                "Process design",
+                "Performance gain",
+                "Software performance",
+                "Application software",
+                "Yarn",
+                "Prototypes",
+                "Multiprocessing systems",
+                "Microprogramming"
+            ],
+            "Index Terms": [
+                "Multiple Streams",
+                "Multiple Processors",
+                "Instruction Stream",
+                "Programming Model",
+                "Significant Transfer",
+                "Single Thread",
+                "Programming Paradigm",
+                "Running",
+                "Operating System",
+                "Parallelization",
+                "Functional Unit",
+                "Virtual World",
+                "Application Programming Interface",
+                "Microarchitecture",
+                "Efficient Implementation",
+                "Single Application",
+                "Prototype System",
+                "Serialized",
+                "Synchronization Process",
+                "Triggering Condition",
+                "Kernel Images",
+                "Performance Overhead",
+                "Context Switching",
+                "Event Log",
+                "Code Execution",
+                "Model Execution",
+                "Parallel Data"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1018,7 +2002,45 @@
                 "firstName": null,
                 "lastName": "Chuanjun Zhang"
             }
-        ]
+        ],
+        "abstract": "Level one cache normally resides on a processor’s critical path, which determines the clock frequency. Directmapped caches exhibit fast access time but poor hit rates compared with same sized set-associative caches due to nonuniform accesses to the cache sets, which generate more conflict misses in some sets while other sets are underutilized. We propose a technique to reduce the miss rate of direct mapped caches through balancing the accesses to cache sets. We increase the decoder length and thus reduce the accesses to heavily used sets without dynamically detecting the cache set usage information. We introduce a replacement policy to direct-mapped cache design and increase the access to the underutilized cache sets with the help of programmable decoders. On average, the proposed balanced cache, or BCache, achieves 64.5% and 37.8% miss rate reductions on all 26 SPEC2K benchmarks for the instruction and data caches, respectively. This translates into an average IPC improvement of 5.9%. The B-Cache consumes 10.5% more power per access but exhibits 2% total memory access related energy saving due to the miss rate reductions and hence the reduction to applications’ execution time. Compared with previous techniques that aim at reducing the miss rate of direct-mapped caches, our technique requires only one cycle to access all cache hits and has the same access time of a direct-mapped cache.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Decoding",
+                "Clocks",
+                "Frequency",
+                "Delay",
+                "Computer science",
+                "Cities and towns",
+                "High performance computing",
+                "Bridges",
+                "Multiplexing",
+                "History"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Access Time",
+                "Missing Rate",
+                "Critical Path",
+                "Total Memory",
+                "Data Cache",
+                "Cache Hit",
+                "Replacement Policy",
+                "Decoding",
+                "Power Consumption",
+                "Per Cycle",
+                "Inverter",
+                "Remote Memory",
+                "Memory Address",
+                "Binary Index",
+                "L2 Cache",
+                "Cache Misses",
+                "Word Line",
+                "Extra Bits",
+                "NAND Gate",
+                "NOR Gate"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1059,7 +2081,54 @@
                 "firstName": "J.",
                 "lastName": "Kubiatowicz"
             }
-        ]
+        ],
+        "abstract": "We show that the problem of communication in a quantum computer reduces to constructing reliable quantum channels by distributing high-fidelity EPR pairs. We develop analytical models of the latency, bandwidth, error rate and resource utilization of such channels, and show that 100s of qubits must be distributed to accommodate a single data communication. Next, we show that a grid of teleportation nodes forms a good substrate on which to distribute EPR pairs. We also explore the control requirements for such a network. Finally, we propose a specific routing architecture and simulate the Quantum Fourier Transform to demonstrate the impact of resource contention.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Quantum computing",
+                "Multiprocessor interconnection networks",
+                "Computer networks",
+                "Paramagnetic resonance",
+                "Distributed computing",
+                "Computer network reliability",
+                "Telecommunication network reliability",
+                "Analytical models",
+                "Delay",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Interconnected Network",
+                "Quantum Computing",
+                "Error Rate",
+                "Teleportation",
+                "Quantum Channel",
+                "Resource Contention",
+                "End Point",
+                "Ion Trap",
+                "Functional Unit",
+                "Localization Performance",
+                "Reference State",
+                "Boolean Logic",
+                "Quantum State",
+                "Forward Error Correction",
+                "Decoherence",
+                "Mesh Grid",
+                "Local Communication",
+                "Two-level System",
+                "Qubit State",
+                "Quantum Operations",
+                "Ballistic Movements",
+                "Ballistic Transport",
+                "Quantum Algorithms",
+                "All-to-all Communication",
+                "Two-qubit Gates",
+                "Qubit System",
+                "Quantum Gates",
+                "Local Routing",
+                "Datapath",
+                "Classification Network"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1100,7 +2169,36 @@
                 "firstName": "T.C.",
                 "lastName": "Mowry"
             }
-        ]
+        ],
+        "abstract": "Thread-level speculation (TLS) has proven to be a promising method of extracting parallelism from both integer and scientific workloads, targeting speculative threads that range in size from hundreds to several thousand dynamic instructions and have minimal dependences between them. Recent work has shown that TLS can offer compelling performance improvements for database workloads, but only when targeting much larger speculative threads of more than 50,000 dynamic instructions per thread, with many frequent data dependences between them. To support such large and dependent speculative threads, hardware must be able to buffer the additional speculative state, and must also address the more challenging problem of tolerating the resulting cross-thread data dependences. In this paper we present hardware support for large speculative threads that integrates several previous proposals for TLS hardware. We also introduce support for sub-threads; a mechanism for tolerating cross-thread data dependences by checkpointing speculative execution. When speculation fails due to a violated data dependence, with sub-threads the failed thread need only rewind to the checkpoint of the appropriate sub-thread rather than rewinding to the start of execution; this significantly reduces the cost of mis-speculation. We evaluate our hardware support for large and dependent speculative threads in the database domain and find that the transaction response time for three of the five transactions from TPC-C (on a simulated 4-processor chip-multiprocessor) speedup by a factor of 1.9 to 2.9",
+        "keywords": {
+            "IEEE Keywords": [
+                "Yarn",
+                "Hardware",
+                "Delay",
+                "Parallel processing",
+                "Transaction databases",
+                "Computer science",
+                "Computer aided instruction",
+                "Concurrent computing",
+                "Proposals",
+                "Checkpointing"
+            ],
+            "Index Terms": [
+                "Hardware Support",
+                "Iterative Process",
+                "Parallelization",
+                "System Database",
+                "Work Unit",
+                "Single Thread",
+                "Store Of Value",
+                "Parallel Execution",
+                "Sequential Execution",
+                "L2 Cache",
+                "Cache Misses",
+                "Individual Transactions"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1135,7 +2233,52 @@
                 "firstName": null,
                 "lastName": "Jin Ren"
             }
-        ]
+        ],
+        "abstract": "RAID architectures have been used for more than two decades to recover data upon disk failures. Disk failure is just one of the many causes of damaged data. Data can be damaged by virus attacks, user errors, defective software/firmware, hardware faults, and site failures. The risk of these types of data damage is far greater than disk failure with today's mature disk technology and networked information services. It has therefore become increasingly important for today's disk array to be able to recover data to any point in time when such a failure occurs. This paper presents a new disk array architecture that provides timely recovery to any point-in-time, referred to as TRAP-array. TRAP-array stores not only the data stripe upon a write to the array, but also the time-stamped exclusive-ORs of successive writes to each data block. By leveraging the exclusive-OR operations that are performed upon each block write in today's RAID4/5 controllers, TRAP does not incur noticeable performance overhead. More importantly, TRAP is able to recover data very quickly to any point-in-time upon data damage by tracing back the sequence and history of exclusive-ORs resulting from writes. What is interesting is that TRAP architecture is amazingly space-efficient. We have implemented a prototype TRAP architecture using software at block device level and carried out extensive performance measurements using TPC-C benchmark running on Oracle and Postgress databases, TPC-W running on MySQL database, and file system benchmarks running on Linux and Windows systems. Our experiments demonstrated that TRAP is not only able to recover data to any point-in-time very quickly upon a failure but it also uses less storage space than traditional daily differential backup/snapshot. Compared to the state-of-the-art continuous data protection technologies, TRAP saves disk storage space by one to two orders of magnitude with a simple and a fast encoding algorithm. From an architecture point of view, TRAP-array opens up another dimension for storage arrays. It is orthogonal and complementary to RAID in the sense that RAID protects data in the dimension along an array of physical disks while TRAP protects data in the dimension along the time sequence",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Space technology",
+                "Protection",
+                "Databases",
+                "Computer errors",
+                "Microprogramming",
+                "Hardware",
+                "History",
+                "Software prototyping",
+                "Software performance"
+            ],
+            "Index Terms": [
+                "Disk Array",
+                "Time Sequence",
+                "Storage Space",
+                "File System",
+                "Data Block",
+                "Viral Attack",
+                "Windows Systems",
+                "Logistics",
+                "Recovery Time",
+                "Block Size",
+                "System Database",
+                "Benchmark Test",
+                "Software Defect",
+                "Application Server",
+                "Data Recovery",
+                "Random Changes",
+                "Block Level",
+                "Temporary Storage",
+                "Consistency Checks",
+                "Parity-check",
+                "File Version",
+                "Order Of Magnitude Improvement",
+                "Primary Storage",
+                "Space Efficiency",
+                "Types Of Databases",
+                "Point In The Past",
+                "Types Of Systems",
+                "Amount Of Space"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1176,7 +2319,44 @@
                 "firstName": null,
                 "lastName": "Kyung Dong Ryu"
             }
-        ]
+        ],
+        "abstract": "Conventional relaxed memory ordering techniques follow a proactive model: at a synchronization point, a processor makes its own updates to memory available to other processors by executing a memory barrier instruction, ensuring that recent writes have been ordered with respect to other processors in the system. We show that this model leads to superfluous memory barriers in programs with acquire-release style synchronization, and present a combined hardware/software synchronization mechanism called conditional memory ordering (CMO) that reduces memory ordering overhead. CMO is demonstrated on a lock algorithm that identifies those dynamic lock/unlock operations for which memory ordering is unnecessary, and speculatively omits the associated memory ordering instructions. When ordering is required, this algorithm relies on a hardware mechanism for initiating a memory ordering operation on another processor. Based on evaluation using a software-only CMO prototype, we show that CMO avoids memory ordering operations for the vast majority of dynamic acquire and release operations across a set of multithreaded Java workloads, leading to significant speedups for many. However, performance improvements in the software prototype are hindered by the high cost of remote memory ordering. Using empirical data, we construct an analytical model demonstrating the benefits of a combined hardware-software implementation",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Frequency synchronization",
+                "Costs",
+                "Software prototyping",
+                "Java",
+                "Software performance",
+                "Multiprocessing systems",
+                "Process control",
+                "Lead",
+                "Analytical models"
+            ],
+            "Index Terms": [
+                "Software Prototype",
+                "Synchronization Mechanism",
+                "Operating System",
+                "Application Programming Interface",
+                "Operating Frequency",
+                "Boolean Logic",
+                "Memory System",
+                "Explicit Instruction",
+                "Memory Model",
+                "Virtual Machines",
+                "Operator Of Order",
+                "Software Libraries",
+                "Hardware Implementation",
+                "Program Execution",
+                "Remote Operation",
+                "Part Of Memory",
+                "Performance Penalty",
+                "Hardware Support",
+                "Cache Misses",
+                "Synchronization Algorithm"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1217,7 +2397,54 @@
                 "firstName": "M.",
                 "lastName": "Ghosh"
             }
-        ]
+        ],
+        "abstract": "This paper presents a high-availability system architecture called INDRA an INtegrated framework for Dependable and Revivable Architecture that enhances a multicore processor (or CMP) with novel security and fault recovery mechanisms. INDRA represents the first effort to create remote attack immune, self-healing network services using the emerging multicore processors. By exploring the property of a tightly-coupled multicore system, INDRA pioneers several concepts. It creates a hardware insulation, establishes finegrained fault monitoring, exploits monitoring/backup concurrency, and facilitates fast recovery services with minimal performance impact. In addition, INDRA’s fault/exploit monitoring is implemented in software rather than in hardware logic, thereby providing better flexibility and upgradability. To provide efficient service recovery and thus improve service availability, we propose a novel delta state backup and recovery on-demand mechanism in INDRA that substantially outperforms conventional checkpointing schemes. We demonstrate and evaluate INDRA’s capability and performance using real network services and a cycle-level architecture simulator. As indicated by our performance results, INDRA is highly effective in establishing a more dependable system with high service availability using emerging multicore processors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multicore processing",
+                "Computer architecture",
+                "Availability",
+                "Hardware",
+                "Insulation",
+                "Remote monitoring",
+                "Educational institutions",
+                "Computer science",
+                "Computer security",
+                "Concurrent computing"
+            ],
+            "Index Terms": [
+                "Availability Of Services",
+                "Faster Recovery",
+                "Network Services",
+                "Recovery Status",
+                "Recovery Mechanisms",
+                "Security Mechanisms",
+                "Service Recovery",
+                "Backup Mechanism",
+                "Core Processes",
+                "Availability Of Space",
+                "Rollback",
+                "Virtual Machines",
+                "Recovery Model",
+                "Denial Of Service",
+                "Memory State",
+                "Application Server",
+                "Memory Space",
+                "Service Requests",
+                "Function Calls",
+                "Flash Memory",
+                "Buffer Overflow",
+                "Transient Faults",
+                "Service Failure",
+                "Loss Of Services",
+                "Context Switching",
+                "Security Evaluation",
+                "Virtual Memory",
+                "Memory Updating",
+                "Resource Recovery",
+                "Application Status"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1258,7 +2485,45 @@
                 "firstName": "K.M.",
                 "lastName": "Itoh"
             }
-        ]
+        ],
+        "abstract": "We evaluate the performance of quantum arithmetic algorithms run on a distributed quantum computer (a quantum multicomputer). We vary the node capacity and I/O capabilities, and the network topology. The tradeoff of choosing between gates executed remotely, through \"tele-ported gates\" on entangled pairs of qubits (telegate), versus exchanging the relevant qubits via quantum teleportation, then executing the algorithm using local gates (tele-data), is examined. We show that the teledata approach performs better, and that carry-ripple adders perform well when the teleportation block is decomposed so that the key quantum operations can be parallelized. A node size of only a few logical qubits performs adequately provided that the nodes have two transceiver qubits. A linear network topology performs acceptably for a broad range of system sizes and performance parameters. We therefore recommend pursuing small, high-I/O bandwidth nodes and a simple network. Such a machine will run Shor's algorithm for factoring large numbers efficiently",
+        "keywords": {
+            "IEEE Keywords": [
+                "Arithmetic",
+                "Quantum computing",
+                "Teleportation",
+                "Distributed computing",
+                "Network topology",
+                "Adders",
+                "Bandwidth",
+                "Circuits",
+                "Performance analysis",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "System Performance",
+                "Network Topology",
+                "Node Size",
+                "Quantum Computing",
+                "Linear Network",
+                "Quantum Teleportation",
+                "Linear Topology",
+                "Phase Shift",
+                "Fault-tolerant",
+                "Problem Size",
+                "Quantum State",
+                "Distributed Computing",
+                "Probe Beam",
+                "Baseline Case",
+                "Timing Gates",
+                "Quantum Gates",
+                "Quantum Error Correction",
+                "Single Qubit",
+                "Two-qubit Gates",
+                "Half Adder"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1293,7 +2558,41 @@
                 "firstName": "M.",
                 "lastName": "Huang"
             }
-        ]
+        ],
+        "abstract": "An efficient mechanism to track and enforce memory dependences is crucial to an out-of-order microprocessor. The conventional approach of using cross-checked load queue and store queue, while very effective in earlier processor incarnations, suffers from scalability problems in modern high-frequency designs that rely on buffering many in-flight instructions to exploit instruction-level parallelism. In this paper, we make a case for a very different approach to dynamic memory disambiguation. We move away from the conventional exact disambiguation strategy and adopt an opportunistic method: we allow loads and stores to access an L0 cache as they are issued out of program order, hoping that with such a laissez-faire approach, most loads actually obtain the right value. To guarantee correctness, they execute a second time in program order to access the non-speculative L1 cache. A discrepancy between the two executions triggers a replay. Such a design completely eliminates the necessity of real-time violation detection and thus avoids the conventional approach's complexity and the associated scalability issue. We show that even a simplistic design can provide similar performance level achieved with a conventional queue-based approach with optimistically-sized queues. When simple, optional optimizations are applied, the performance level is close to that achieved with ideally-sized queues",
+        "keywords": {
+            "IEEE Keywords": [
+                "Out of order",
+                "Design optimization",
+                "Delay",
+                "Scalability",
+                "Buffer storage",
+                "Microarchitecture",
+                "Logic",
+                "Coherence",
+                "Application software",
+                "Microprocessors"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Simple Design",
+                "Disambiguation",
+                "L2 Cache",
+                "Dependent Relationship",
+                "Conventional Design",
+                "Executive Order",
+                "Incorrect Data",
+                "Memory Operations",
+                "Conventional Configuration",
+                "Execution Stage",
+                "Corner Cases",
+                "Ideal Configuration",
+                "Naive Implementation",
+                "Bandwidth Consumption",
+                "Cache Misses",
+                "Memory Hierarchy"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1322,7 +2621,48 @@
                 "firstName": "J.E.",
                 "lastName": "Smith"
             }
-        ]
+        ],
+        "abstract": "A Co-Designed Virtual Machine allows designers to implement a processor via a combination of hardware and software. Dynamic binary translation converts code written for a conventional (legacy) ISA into optimized code for an underlying implementation-specific ISA. Because translation is done dynamically, an important consideration in such systems is the startup time for performing the initial translations. Beginning with a previously proposed co-designed VM that implements the x86 ISA, we study runtime binary translation overhead effects. The co-designed x86 virtual machine is based on an adaptive translation system that uses a basic block translator for initial emulation and a superblock translator for hotspot optimization. We analyze and model VM startup performance via simulation. We observe that non-hotspot emulation via basic block translation is the major part of the startup overhead. To reduce startup translation overhead, we follow the co-designed hardware / software philosophy and propose hardware assists to dramatically accelerate basic block translations. By combining hardware assists with balanced translation strategies, the co-designed translation system reduces runtime overhead significantly and demonstrates very competitive startup performance when compared with conventional processors running a set of Windows application benchmarks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Virtual machining",
+                "Hardware",
+                "Instruction sets",
+                "Virtual manufacturing",
+                "Emulation",
+                "Runtime",
+                "Adaptive systems",
+                "Performance analysis",
+                "Analytical models",
+                "Acceleration"
+            ],
+            "Index Terms": [
+                "Virtual Machines",
+                "Start-up Time",
+                "Benchmark",
+                "Translation System",
+                "Translation Strategies",
+                "Window Applications",
+                "Runtime Overhead",
+                "Steady State",
+                "Logarithmic Scale",
+                "Functional Unit",
+                "Work Settings",
+                "Performance Gain",
+                "Microarchitecture",
+                "Conventional Design",
+                "Steady-state Performance",
+                "Hardware Accelerators",
+                "Execution Of Operations",
+                "Simple Block",
+                "Steady Performance",
+                "Cache Misses",
+                "Context Switching",
+                "Memory Hierarchy",
+                "Coprocessor",
+                "Machine Configuration"
+            ]
+        }
     },
     {
         "publicationNumber": "10899",
@@ -1338,7 +2678,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "33rd International Symposium on Computer Architecture (ISCA'06)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1354,7 +2696,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "33rd International Symposium on Computer Architecture (ISCA'06)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1377,7 +2721,9 @@
                 "firstName": "David A.",
                 "lastName": "Patterson"
             }
-        ]
+        ],
+        "abstract": "At the business meeting on April 20, 1994 it was voted that SIGARCH adopt this set of guidelines to aid program chairs on matters of policy at SIGARCH sponsored conferences (e.g., ISCA, ASPLOS, and so on). Amendments to the guidelines would be voted on at SIGARCH business meetings. There are several options in these guidelines, so the program chair will report which options were selected in the chair's message that appears in the proceedings. To ensure that the guidelines are part of a tradition that is not forgotten, ACM will include them as part of the conference proceedings of the International Symposium on Computer Architecture (and thereby appear in Computer Architecture News once a year). ",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1393,7 +2739,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "33rd International Symposium on Computer Architecture (ISCA'06)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1416,7 +2764,9 @@
                 "firstName": "S.",
                 "lastName": "Herrod"
             }
-        ]
+        ],
+        "abstract": "The document was not made available for publication as part of the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1439,7 +2789,9 @@
                 "firstName": "P.",
                 "lastName": "Emma"
             }
-        ]
+        ],
+        "abstract": "The document was not made available for publication as part of the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1455,7 +2807,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "33rd International Symposium on Computer Architecture (ISCA'06)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1471,7 +2825,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "33rd International Symposium on Computer Architecture (ISCA'06)",
-        "authors": []
+        "authors": [],
+        "abstract": "Copyright and Reprint Permissions: Abstracting is permitted with credit to the source. Libraries may photocopy beyond the limits of US copyright law, for private use of patrons, those articles in this volume that carry a code at the bottom of the first page, provided that the per-copy fee indicated in the code is paid through the Copyright Clearance Center. The papers in this book comprise the proceedings of the meeting mentioned on the cover and title page. They reflect the authors' opinions and, in the interests of timely dissemination, are published as presented and without change. Their inclusion in this publication does not necessarily constitute endorsement by the editors or the Institute of Electrical and Electronics Engineers, Inc.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1487,7 +2843,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "33rd International Symposium on Computer Architecture (ISCA'06)",
-        "authors": []
+        "authors": [],
+        "abstract": "The author index contains an entry for each author and coauthor included in the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1503,7 +2861,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "33rd International Symposium on Computer Architecture (ISCA'06)",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: interconnection networks; memory models; power management; thermal management; multicore; memory access issues; cache design; security processors; network processors; multithreading; dataflow; cache coherence; and quantum computing",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1519,7 +2879,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "33rd International Symposium on Computer Architecture (ISCA'06)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1535,7 +2897,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "33rd International Symposium on Computer Architecture (ISCA'06)",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference offers a note of thanks and lists its reviewers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10899",
@@ -1558,6 +2922,8 @@
                 "firstName": "Y.",
                 "lastName": "Patt"
             }
-        ]
+        ],
+        "abstract": "The document was not made available for publication as part of the conference proceedings.",
+        "keywords": {}
     }
 ]

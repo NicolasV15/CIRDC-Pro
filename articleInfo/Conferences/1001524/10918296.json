@@ -32,7 +32,38 @@
                 "firstName": "Alberto",
                 "lastName": "Griggio"
             }
-        ]
+        ],
+        "abstract": "This paper introduces a new algorithm designed to verify safety properties for asynchronous compositions of symbolic transition systems. The approach combines under-approximation and over-approximation: on one side, it zooms in on a selected set of components, while forcing the remaining ones to stutter; on the other, the selected components are individually abstracted and re-composed. This strategy can be advantageous for scenarios involving large numbers of components, where only a small subset of key components allows to produce the right invariants for the system. We detail the application of our algorithm to a class of parameterized symbolic transition systems, by using a form of slicing as an abstraction. Our experimental results, although preliminary, show the potential of the approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Safety"
+            ],
+            "Index Terms": [
+                "Abstraction Refinement",
+                "Class Of Systems",
+                "Symbolic Meaning",
+                "Transit System",
+                "Safety Properties",
+                "Subset Of Components",
+                "State Variables",
+                "System Description",
+                "Disprove",
+                "Family System",
+                "Shared Variance",
+                "Production Simulations",
+                "Numerous Components",
+                "Model Checking",
+                "Transition Rules",
+                "Verification System",
+                "Form Of Formula"
+            ],
+            "Author Keywords": [
+                "Compositional Approach",
+                "CEGAR",
+                "Parameterized Systems"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -73,7 +104,32 @@
                 "firstName": "Nils",
                 "lastName": "Froleyks"
             }
-        ]
+        ],
+        "abstract": "The state-of-the-art to combinational equivalence checking is based on SAT sweeping. It recursively establishes equivalence of internal nodes of two circuits to prove equivalence of their outputs. The approach follows the topological order from inputs to outputs and makes use of simulation to refine the set of potentially equivalent nodes to reduce the number of SAT solver queries. This non-uniform hybrid reasoning, using both the circuit structure and a clausal encoding, is complex to orchestrate. In earlier work, clausal encoding was avoided using a dedicated circuit-aware SAT solver. Instead, we propose to perform SAT sweeping directly on the clausal encoding of the complete equivalence checking problem within the SAT solver, but again relying on a second, dedicated, internal SAT solver. Both SAT solvers work on a clausal representation. This allows to transparently make use of all the advanced reasoning capabilities of the SAT solver, particularly pre- and inprocessing techniques.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Circuits",
+                "Encoding",
+                "Cognition"
+            ],
+            "Index Terms": [
+                "Topological States",
+                "Negation",
+                "Set Of Equations",
+                "Isomorphism",
+                "Hybrid Approach",
+                "Competitive Problem"
+            ],
+            "Author Keywords": [
+                "Equivalence Checking",
+                "SAT Sweeping",
+                "Miters",
+                "Equivalence Reasoning",
+                "Conjunctive Normal Form",
+                "Backbones"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -96,7 +152,20 @@
                 "firstName": "K. Rustan M.",
                 "lastName": "Leino"
             }
-        ]
+        ],
+        "abstract": "Dafny is a verification-aware programming language. In a nutshell, the language is Java-like and has support for writing specifications and proofs. It has a long history of being used in education, has been the cornerstone of several ambitious research projects, and is in industrial use at AWS. This tutorial teaches how to write various kinds of proofs in Dafny. It covers proofs of imperative and functional programs, as well as the formalization of models and mathematical proofs. It demonstrates different proof styles and shows how to think about and debug proofs in the Dafny setting. The tutorial does not assume any prior experience in using Dafny or other proof assistants.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer languages",
+                "Design automation",
+                "Computational modeling",
+                "Education",
+                "Tutorials",
+                "Writing",
+                "Mathematical models",
+                "History"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -119,7 +188,23 @@
                 "firstName": "Aina",
                 "lastName": "Niemetz"
             }
-        ]
+        ],
+        "abstract": "Efficiently reasoning about bit-vector constraints in Satisfiability Modulo Theories (SMT) has been an ongoing challenge for many years. The dominant state-of-the-art approach for solving bit-vector formulas in SMT is bit-blasting, an eager reduction to propositional logic that is typically combined with aggressive simplifications of the input constraints prior to the actual reduction step. Even though this eager reduction may come at the cost of significantly increasing the formula size, it is surprisingly efficient in practice—thanks to state-of-the-art SAT solvers, which are usually able to efficiently deal with complex formulas over millions of variables. This size increase, however, is a potential bottleneck and the main reason why bit-blasting does not generally scale well for increasing bit-widths, especially in the presence of arithmetic operators, which translate to large and complex Boolean circuits on the bit-level. To tackle these scalability issues, there are two (orthogonal) avenues to explore: developing alternative approaches that do not (mainly) rely on translations to the SAT level, and improving the scalability of bit-blasting itself. In this talk, we will highlight techniques in each category: a propagation-based local search procedure as an alternative to bit-blasting, which can only determine satisfiability but improves performances over bit-blasting on satisfiable instances, and a CEGAR-style abstraction-refinement procedure that significantly improves the scalability of bit-blasting. We extended the state-of-the-art SMT solver Bitwuzla with both techniques and show that they significantly improve solver performance on a variety of benchmark sets across all logics supported by Bitwuzla, including combinations of bit-vectors with arrays, uninterpreted functions and floating-point arithmetic.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Costs",
+                "Scalability",
+                "Benchmark testing",
+                "Cognition",
+                "Logic",
+                "Logic arrays",
+                "Floating-point arithmetic"
+            ],
+            "Index Terms": [
+                "Propositional Logic"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -142,7 +227,29 @@
                 "firstName": "Mooly",
                 "lastName": "Sagiv"
             }
-        ]
+        ],
+        "abstract": "DeFi (Decentralized Financial) Protocols implement financial programs using low-level programming. DeFi adoption started to go parabolic in 2020, and it's still very robust in different market conditions in 2024. Today, DeFi assets exceed 300 billion USD. A fundamental principle behind DeFi is that small open-source software called “smart contracts” precisely define the trading conditions and create an open global economy not controlled by governments and people. However, smart contracts are difficult to implement correctly since their behavior can radically change in different market conditions. Moreover, hackers constantly try to abuse the code to drain the money stored in the smart contracts. On the positive side, it is pretty natural to write high-level formal specifications of smart contracts since their economical utilities are well understood. Indeed, this is a unique domain where software developers are eager to write formal specifications. I will describe the challenges of harnessing existing SMT solvers for reasoning about smart contracts.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Codes",
+                "Computer hacking",
+                "Smart contracts",
+                "Government",
+                "Programming",
+                "Cognition",
+                "Formal specifications",
+                "Open source software"
+            ],
+            "Index Terms": [
+                "Satisfiability Modulo Theories",
+                "Software Development",
+                "Market Conditions",
+                "Positive Side",
+                "Unique Domain",
+                "Smart Contracts"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -171,7 +278,25 @@
                 "firstName": "Nestan",
                 "lastName": "Tsiskaridze"
             }
-        ]
+        ],
+        "abstract": "The Student Forum at the International Conference on Formal Methods in Computer-Aided Design (FMCAD) gives undergraduate and graduate students the opportunity to introduce their research to the Formal Methods community and receive feedback. In 2024, the event took place in Prague, Czechia. Twenty three students were invited to give a short talk and present a poster of their work.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation"
+            ],
+            "Index Terms": [
+                "Forum For Students",
+                "Undergraduate Students",
+                "Graduate Students",
+                "Formal Methods",
+                "Cadence",
+                "Novelty Of This Work",
+                "Model Checking",
+                "Amazon Web Services",
+                "Potential Positive Impact",
+                "Program Committee"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -206,7 +331,29 @@
                 "firstName": "Mathias",
                 "lastName": "Preiner"
             }
-        ]
+        ],
+        "abstract": "The Hardware Model Checking Competition 2024 (HWMCC'24) was the 12th competitive event for hardware model checking tools. The competition was affiliated to the 24th conference on Formal Methods in Computer-Aided Design 2024 (FMCAD'24), which took place in Prague, Czech Republic, from October 14 to 18, 2024.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Model checking",
+                "Hardware",
+                "Cognition"
+            ],
+            "Index Terms": [
+                "Model Checking",
+                "Formal Methods",
+                "Induction Properties"
+            ],
+            "Author Keywords": [
+                "Automated Reasoning",
+                "Model Checking",
+                "Hardware Verification",
+                "Word-level Reasoning",
+                "Bit-Vectors",
+                "Certificates"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -229,7 +376,29 @@
                 "firstName": "Josef",
                 "lastName": "Urban"
             }
-        ]
+        ],
+        "abstract": "Human problem solvers often combine deductive reasoning and exploration with learning and pattern matching. In the recent years such combinations are also increasingly developed for building stronger automated theorem provers, SMT solvers and conjecturing and synthesis systems. The methods in this field include equipping the current deductive systems with efficient statistically learned guidance that controls the choice of the inference steps, using for example fast decision trees, graph neural networks and their combinations. Learning and AI methods can also be used to automatically design new symbolic strategies for today's ATPs and SMTs. This has the advantage of producing explainable ideas for steering the search space, which can be further taken up and modified by the systems' developers. I will also discuss several methods that try to directly synthesize reasoning objects such as instantiations and OEIS explanations, using various neural approaches. Perhaps the most interesting aspect of this research are the positive feedback loops between the proving and the learning methods. I will show that some of them can today go quite far and create quite interesting “alien” solutions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Learning systems",
+                "Feedback loop",
+                "Design automation",
+                "Buildings",
+                "Aerospace electronics",
+                "Search problems",
+                "Cognition",
+                "Graph neural networks",
+                "Decision trees",
+                "Pattern matching"
+            ],
+            "Index Terms": [
+                "Learning Methods",
+                "Positive Feedback Loop",
+                "Field Method",
+                "Pattern Matching",
+                "Graph Neural Networks"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -258,7 +427,35 @@
                 "firstName": "Shachar",
                 "lastName": "Itzhaky"
             }
-        ]
+        ],
+        "abstract": "E-graphs are a prominent data structure that has been increasing in popularity in recent years due to their ex-panding range of applications in various formal reasoning tasks. E-graphs allow systematic and efficient treatment of equality, which is pervasive in automated reasoning based on proofs. E-graphs handle equality well, but are severely limited in their handling of case splitting and other aspects of propositional reasoning, such as resolution, which introduce branching in provers and solvers. As a consequence, most tools resort to using e-graphs locally, recreating them ad-hoc when they are needed, and then discarding them. In exploratory scenarios, where it is necessary to retain multiple branches simultaneously, this limitation proves to be prohibitive. In particular, in theory exploration-a process where lemmas are discovered and then proven-this poses a significant challenge. Theory exploration must enumerate a space of possible assumptions, and must retain all of them to make progress. This poses a severe limitation on the ability to harness e-graphs for the task. Our key observation is that in exploratory reasoning tasks, branching represents versions of the same e-graph each with an added assumption, such as “x > y” or “is_sorted l”. Essentially, each e-graph represents an equality relation, and each branch corresponds to a matching coarsened equality relation. Based on this observation, we present an extension to e-graphs, called Colored E-Graphs, as a way to efficiently represent all of the coarsened equality relations in a single structure. A colored e-graph is a memory-efficient equivalent of multiple copies of an e-graph, with a much lower overhead. This is attained by sharing as much as possible between different cases, while carefully tracking which conclusion is true under which assumption. It can be viewed as adding multiple “color-coded” layers on top of the original e-graph structure, representing different assumptions. We run experiments and demonstrate that our colored e-graphs can support large numbers of assumptions and terms with space requirements that are about 10x lower, and with slightly improved performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Systematics",
+                "Design automation",
+                "Data structures",
+                "Cognition",
+                "Libraries",
+                "Periodic structures"
+            ],
+            "Index Terms": [
+                "Multiple Assumptions",
+                "Easter Eggs",
+                "Data Structure",
+                "Mechanistic Reasoning",
+                "Reasoning Tasks",
+                "Exploration Task",
+                "Semantic",
+                "Running Time",
+                "Additional Assumptions",
+                "Memory Usage",
+                "Rewriting",
+                "Basic Implementation",
+                "Canonized",
+                "Black Layer",
+                "Blue Layer"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -293,7 +490,38 @@
                 "firstName": "Xujie",
                 "lastName": "Si"
             }
-        ]
+        ],
+        "abstract": "Traditional implementations of strongly-typed functional programming languages often miss the root cause of type errors. As a consequence, type error messages are often misleading and confusing - particularly for students learning such a language. We describe Tyro, a type error localization tool which determines the optimal source of an error for ill-typed programs following fundamental ideas by Pavlinovic et al.: we first translate typing constraints into SMT (Satisfiability Modulo Theories) using an intermediate representation which is more readable than the actual SMT encoding; during this phase we apply a new encoding for polymorphic types. Second, we translate our intermediate representation into an actual SMT encoding and take advantage of recent advancements in off-the-shelf SMT solvers to effectively find optimal error sources for ill-typed programs. Our design maintains the separation of heuristic and search also present in prior and similar work. In addition, our architecture design increases modularity, re-usability, and trust in the overall architecture using an intermediate representation to facilitate the safe generation of the SMT encoding. We believe this design principle will apply to many other tools that leverage SMT solvers. Our experimental evaluation reinforces that the SMT approach finds accurate error sources using both expert-labeled programs and an automated method for larger-scale analysis. Compared to prior work, Tyro lays the basis for large-scale evaluation of error localization techniques, which can be integrated into programming environments and enable us to understand the impact of precise error messages for students in practice.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Location awareness",
+                "Measurement",
+                "Accuracy",
+                "Translation",
+                "Design automation",
+                "Computer architecture",
+                "Encoding",
+                "Functional programming",
+                "Programming environments"
+            ],
+            "Index Terms": [
+                "Types Of Errors",
+                "Heuristic",
+                "Sources Of Error",
+                "Modularity",
+                "Functional Polymorphisms",
+                "Intermediate Representation",
+                "Error Message",
+                "Types Of Strategies",
+                "Equality Constraints",
+                "Local Problems",
+                "Debugging",
+                "Hard Constraints",
+                "True Source",
+                "Annotated Loci",
+                "Type Inference"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -328,7 +556,50 @@
                 "firstName": "Stavros",
                 "lastName": "Tripakis"
             }
-        ]
+        ],
+        "abstract": "We present a novel and efficient method for synthesis of parameterized distributed protocols by sketching. Our method is both syntax-guided and counterexample-guided, and utilizes a fast equivalence reduction technique that enables efficient completion of protocol sketches, often significantly reducing the search space of candidate completions by several orders of magnitude. To our knowledge, our tool, Scythe, is the first synthesis tool for the widely used specification language TLA+. We evaluate Scythe on a diverse benchmark of distributed protocols, demonstrating the ability to synthesize a large scale distributed Raft-based dynamic reconfiguration protocol beyond the scale of what existing synthesis techniques can handle.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Design automation",
+                "Computer bugs",
+                "Benchmark testing",
+                "Maintenance engineering",
+                "Search problems",
+                "Specification languages",
+                "Safety",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Search Space",
+                "Specific Language",
+                "Synthesis Tool",
+                "Health-related Quality Of Life",
+                "State Variables",
+                "Types Of Elements",
+                "Expression Of Set",
+                "Normal Form",
+                "Sequence Of States",
+                "Deadlock",
+                "Empty Set",
+                "Model Checking",
+                "Safety Properties",
+                "Paired Expression",
+                "Semantic Equivalence",
+                "Naive Algorithm",
+                "Synthesis Algorithm",
+                "Logical Constraints",
+                "Return Type",
+                "Boolean Expression"
+            ],
+            "Author Keywords": [
+                "distributed protocols",
+                "synthesis",
+                "syntax-guided",
+                "counterexample-guided",
+                "sketching"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -357,7 +628,43 @@
                 "firstName": "Christoph",
                 "lastName": "Scholl"
             }
-        ]
+        ],
+        "abstract": "Using Symbolic Computer Algebra (SCA) enabled a huge progress in formal verification of arithmetic circuits in recent years. Several different approaches have been proposed showing great success especially for the verification of multipliers. Some of them are based on precomputing and simplifying polynomials for specific circuit structures like converging cones while others take advantage of known or detected hierarchy information to replace and simplify particular sub-circuits of the design. In this paper we propose a new method that avoids the use of such methods and applies only two dynamic approaches: (1) choosing a good substitution order for the backward rewriting process and (2) adjusting the phases of signals occurring in the intermediate polynomials during the verification process. Both methods are simply based on a greedy local search taking the sizes of intermediate polynomials into account. Our experimental results show that this method is very competitive with already existing tools and it improves their robustness, e.g. against optimizations of the verified circuits using logic synthesis.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Algebra",
+                "Circuits",
+                "Polynomials",
+                "Robustness",
+                "Logic",
+                "Optimization",
+                "Formal verification",
+                "Arithmetic"
+            ],
+            "Index Terms": [
+                "Dynamic Approach",
+                "Rewriting",
+                "Formal Verification",
+                "Benchmark",
+                "Upper Bound",
+                "Phase Change",
+                "Inverter",
+                "Partial Products",
+                "Individual Nodes",
+                "Integer Multiple",
+                "Node Level",
+                "Intermediate Size",
+                "Benchmark Set",
+                "Monomial",
+                "Penalty Factor",
+                "Dynamic Optimization",
+                "Dual Variables",
+                "Candidate Signaling",
+                "Verification Tool",
+                "Half Adder"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -410,7 +717,39 @@
                 "firstName": "Dirk",
                 "lastName": "Nowotka"
             }
-        ]
+        ],
+        "abstract": "We present a decision procedure for solving quantifier-free first-order formulas over the theory of strings, involving equality, regular constraints, and concatenation of string terms. Our approach uses an eager reduction to the Boolean satisfiability problem and extends the NFA2SAT string solver. We describe a novel SAT encoding for word equations that iteratively expands the search space and leverages incremental SAT solving. For unsatisfiable formulas, we estimate the bounds on the smallest solution from arithmetic constraints derived from word equations. An experimental evaluation shows that our approach is competitive with state-of-the-art string solvers and complements existing methods in string solving.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Benchmark testing",
+                "Atoms",
+                "Encoding",
+                "Decision feedback equalizers",
+                "Arithmetic"
+            ],
+            "Index Terms": [
+                "Search Space",
+                "Decision Problem",
+                "Regularization Constraint",
+                "Diagonal",
+                "Upper Bound",
+                "Negation",
+                "Variable Length",
+                "Set Of Equations",
+                "Side Of Equation",
+                "Start Position",
+                "Normal Form",
+                "Linear Constraints",
+                "Word Length",
+                "Regular Expressions",
+                "Equivalence Relation",
+                "Boolean Variable",
+                "String Length",
+                "Ostrich",
+                "Propositional Logic"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -451,7 +790,31 @@
                 "firstName": "Bruno",
                 "lastName": "Dutertre"
             }
-        ]
+        ],
+        "abstract": "The soundness of Satisfiability Modulo Theories (SMT) solvers is critical in many applications. One way to ensure soundness is to have solvers generate proofs that can be independently verified. Unfortunately, generating proofs can have a significant overhead. We propose a new proof format (eDRAT) that extends the well-known DRAT format from SAT to SMT. eDRAT proofs can be generated with little overhead and can be verified by combining existing tools for propositional reasoning with specialized theory checkers. We instrument the cvc5 solver to generate eDRAT proofs and we develop checkers for two SMT theories. Our checkers include an untrusted elaborator written in Rust and a formally verified component written in Lean that validates results from the elaborator. Empirical evaluation shows that eDRAT has a much lower proof generation overhead than other formats supported by cvc5, and it has comparable or better proof checking times.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Instruments",
+                "Cognition"
+            ],
+            "Index Terms": [
+                "Satisfiability Modulo Theories",
+                "Checkers",
+                "Negation",
+                "Symmetry Breaking",
+                "Boolean Variable",
+                "Low Overhead",
+                "Logic Of Theory",
+                "Backward Analysis",
+                "Logical Framework",
+                "Reasonable Steps",
+                "Boolean Search",
+                "Original Formula",
+                "Translational Validity",
+                "Easy Problem"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -492,7 +855,33 @@
                 "firstName": "Marijn J.H.",
                 "lastName": "Heule"
             }
-        ]
+        ],
+        "abstract": "Clausal proofs, particularly those based on the deletion resolution asymmetric tautology (DRAT) proof system, are widely used by Boolean satisfiability solvers for expressing proofs of unsatisfiability. Their success stems from their simplicity and scalability. When solvers go beyond pure propositional reasoning, however, generating clausal proofs becomes more difficult. Solvers that employ pseudo-Boolean reasoning, including cutting-planes operations, can express proofs in the VeriPB proof system, but its adoption is not widespread. We introduce PBIP (Pseudo-Boolean Implication Proof), a framework that provides an intermediate representation between VeriPB and clausal proofs. We also introduce a toolchain comprising 1) a VeriPB-to-PBIP translator that performs proof trimming and optimization, and 2) a PBIP-to-LRAT translator that makes use of proof-generating operations on ordered binary decision diagrams (BDDs) to generate clausal proofs in LRAT format, a variant of the DRAT that allows efficient checking. We demonstrate the viability of our approach, the effectiveness of our trimming, and the performance of our clausal proof generator on a set of native PB benchmarks and compare our approach to direct checking of VeriPB proofs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Scalability",
+                "Binary decision diagrams",
+                "Benchmark testing",
+                "Cognition",
+                "Generators",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Cutting-plane",
+                "Sequential Steps",
+                "Root Node",
+                "File Size",
+                "Boolean Variable",
+                "Input Constraints",
+                "Boolean Function",
+                "Step Of The Proof",
+                "Single Constraint",
+                "Prior Constraints",
+                "Trim Procedure"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -515,7 +904,46 @@
                 "firstName": "Antonina",
                 "lastName": "Nepeivoda"
             }
-        ]
+        ],
+        "abstract": "The paper presents a conceptual approach to abstract interpretation of string-manipulating programs, based on the existential theory of strings. We propose the word equation language as a base for lattices forming abstract domains of the string data. We construct a quantifier-free layer of the lattices, capturing the uniqueness properties of join and meet operations. The resulting finite-height lattice WLo utilizes useful properties of primitive roots of words and can be used as a base for future developments of word-equation-based abstract domains. We describe a tokenization procedure as a monotone lattice mapping, in order to enhance expressiveness of word equation language by means of string morphisms and special cases of other finite-state-machine transformations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Lattices",
+                "Tokenization"
+            ],
+            "Index Terms": [
+                "Abstract Domain",
+                "Basic Word",
+                "Root Properties",
+                "Contralateral",
+                "Infinity",
+                "Fixed Point",
+                "Alphabet",
+                "Static Analysis",
+                "Replacement Surgery",
+                "Tokenized",
+                "Sublattice",
+                "Regular Expressions",
+                "Substring",
+                "Concatenation Operation",
+                "Preimage",
+                "Inverse Mapping",
+                "String Theory",
+                "Largest Element",
+                "Concrete Values",
+                "Set Of Languages",
+                "Regular Language",
+                "Top Element",
+                "Finite Chain"
+            ],
+            "Author Keywords": [
+                "program analysis",
+                "abstract interpretation",
+                "word equations",
+                "lattice mappings"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -544,7 +972,60 @@
                 "firstName": "Warren A.",
                 "lastName": "Hunt"
             }
-        ]
+        ],
+        "abstract": "We present an automatic verification process for formally proving the correctness of a class of greedy numerical linear algebra algorithms. To demonstrate our methodology, we present theorem prover verifications of LU and Cholesky decompositions. We formalize a framework for reasoning about matrices and matrix algorithms by partitioning matrices and developing a generalized form of the inductive invariant common to this class of greedy algorithms. Our framework enables users to readily verify any algorithm in this class automatically by simply defining the algorithm itself and specifying the class of matrices on which the algorithm performs. Our framework is also adaptable to other greedy numerical linear algebra algorithms. To our knowledge, this is the first automatic approach to verifying an entire class of numerical linear algebra algorithms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linear systems",
+                "Codes",
+                "Scientific computing",
+                "Software algorithms",
+                "Fires",
+                "Linear algebra",
+                "Libraries",
+                "Partitioning algorithms",
+                "Matrix decomposition",
+                "Logic"
+            ],
+            "Index Terms": [
+                "Linear Solver",
+                "Numerical Algorithm",
+                "Linear Algebra",
+                "Verification Algorithm",
+                "Linear Algebra Algorithms",
+                "Classification Algorithms",
+                "Essential Step",
+                "Linear Algorithm",
+                "Cholesky Decomposition",
+                "Class Of Matrices",
+                "Matrix Algorithm",
+                "LU Factorization",
+                "Computer Science",
+                "Linear System",
+                "Symmetric Matrix",
+                "Commercial Applications",
+                "Formal Methods",
+                "Positive Definite Matrix",
+                "Nonsingular",
+                "Submatrix",
+                "Lower Triangular",
+                "Family Of Algorithms",
+                "Recursive Algorithm",
+                "Schur Complement",
+                "QR Decomposition",
+                "Formal Tools",
+                "Symmetric Positive Definite Matrix",
+                "Upper Triangular",
+                "Mechanistic Reasoning",
+                "Induction Step"
+            ],
+            "Author Keywords": [
+                "Numerical linear algebra",
+                "LU decomposition",
+                "Cholesky factorization theorem",
+                "Automated theorem proving"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -579,7 +1060,42 @@
                 "firstName": "Eunsuk",
                 "lastName": "Kang"
             }
-        ]
+        ],
+        "abstract": "Compositional verification algorithms are well-studied in the context of model checking. Properly selecting components for verification is important for efficiency, yet has received comparatively less attention. In this paper, we address this gap with a novel compositional verification framework that focuses on component selection as an explicit, first-class concept. The framework decomposes a system into components, which we then recompose into new components for efficient verification. At the heart of our technique is the recomposition map that determines how recomposition is performed; the component selection problem thus reduces to finding a good recomposition map. However, the space of possible recomposition maps can be large. We therefore propose heuristics to find a small portfolio of recomposition maps, which we then run in parallel. We have implemented our techniques in a model checker for the TLA<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">+</sup> language. In our experiments, we show that our tool achieves competitive performance with TLC-a well-known model checker for TLA<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">+</sup> -on a benchmark suite of distributed protocols.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Heart",
+                "Protocols",
+                "Design automation",
+                "Computational modeling",
+                "Model checking",
+                "Benchmark testing",
+                "Portfolios"
+            ],
+            "Index Terms": [
+                "Compositional Verification",
+                "Benchmark",
+                "Heuristic",
+                "Model Checking",
+                "Verification Algorithm",
+                "Resource Management",
+                "State Variables",
+                "State Space",
+                "Alphabet",
+                "Set Of Behaviors",
+                "Technical Report",
+                "Concrete Actions",
+                "Unreachable",
+                "Partial Order",
+                "Safety Properties",
+                "Symbolic Actions",
+                "Composite Technique",
+                "Portfolio Strategies",
+                "Subset Of Components",
+                "Large Savings",
+                "Partitioning Procedure"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -608,7 +1124,38 @@
                 "firstName": "Arie",
                 "lastName": "Gurfinkel"
             }
-        ]
+        ],
+        "abstract": "The concept of ownership in high level languages can aid both the programmer and the compiler to reason about the validity of memory operations. Previously, ownership semantics has been used successfully in high level automatic program verification to model a reference to data by a first order logic (FOL) representation of data instead of maintaining an address map. However, ownership semantics is not used in low-level program verification. We have identified two challenges. First, ownership information is lost when a program is compiled to a low-level intermediate representation (e.g., in LLVM IR). Second, pointers in low-level programs point to bytes using an address map (e.g., in unsafe Rust) and thus the verification condition (VC) cannot always replace a pointer by its FOL abstraction. To remedy the situation, we develop ownership semantics for an LLVM-like low-level intermediate representation. Using these semantics, the VC can opportunistically model some memory accesses by a direct access of a pointer cache that stores byte representation of data. This scheme reduces instances where an address map must be maintained, especially for mostly safe programs that follow ownership semantics. For unsafe functionality, memory accesses are modelled by operations on an address map and we provide mechanisms to keep the address map and pointer cache in-sync. We implement these semantics in SeabmC,a bit-precise bounded model checker for LLVM. For evaluation, the source programs are assumed to be written in C. Since C does not have ownership built-in, suitable macros are added that introduce and preserve ownership during translation to LLVM-like IR for verification. This approach is evaluated on mature open source C code. For both handcrafted benchmarks and practical programs, we observe a speedup of 1.3x-5x during SMT solving.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Translation",
+                "Program processors",
+                "Design automation",
+                "Computational modeling",
+                "Semantics",
+                "Data models",
+                "Fats",
+                "Complexity theory",
+                "Logic",
+                "High level languages"
+            ],
+            "Index Terms": [
+                "Intermediate Representation",
+                "Semantic",
+                "Practical Programs",
+                "First-order Logic",
+                "Memory Operations",
+                "Formal Verification",
+                "Verification Of Conditions",
+                "Correct Value",
+                "Memory Model",
+                "Caching",
+                "Access Rights",
+                "Memory Allocation",
+                "Memory Regions",
+                "Storage Operations"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -655,7 +1202,26 @@
                 "firstName": "Bryan",
                 "lastName": "Parno"
             }
-        ]
+        ],
+        "abstract": "SMT solvers provide powerful proof automation for program verification. However, relying on SMT solvers also leads to proof instability, where a previously successful proof may fail after the developer makes trivial modifications to the source program. Such instability is a major headache for developers, but the causes and potential mitigations for it have received limited attention. In this study, we find that irrelevant query context accounts for 78% of the instability in existing program-verification query sets. As a result, we design Shake, a novel technique that leverages the structure in program-verification SMT queries in order to filter out irrelevant context from such queries. Shake is the first SMT-level technique that targets instability, and we implement it as a pre-processing step for SMT solvers. We evaluate Shake on real-world, large-scale query sets, and we find that it leads to large reduction in context and a 29% and 41% improvement in query stability on Z3 and cvc5, with minor performance overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Automation",
+                "Prevention and mitigation",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Formal Verification",
+                "Query Set",
+                "Maximum Distance",
+                "Default Mode",
+                "Built-in Function",
+                "Manual Tuning",
+                "Original Query",
+                "Verification Of Conditions"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -702,7 +1268,36 @@
                 "firstName": "Kristin Y.",
                 "lastName": "Rozier"
             }
-        ]
+        ],
+        "abstract": "Hardware designs often contain logical redundancies: pairs of behaviorally-equivalent gates. Sequential redun-dancy removal is the process of removing gates that are behaviorally-equivalent within the reachable states of a design. It has many applications in the hardware design process, including logic optimization, equivalence checking, accelerating functional verification, and engineering change-order optimization. Redundancy removal is an intricate process, orchestrating various algorithms to compute equivalence-classes of potentially-equivalent gates, then to prove their validity. In this paper, we introduce techniques to enable exhaustive redundancy removal on practical designs, such as resource-balancing the underlying algorithms; self-tailoring them to sequentially-deep logic; and detailing an orders-of-magnitude optimization to the Proof Graph essential to proving non-inductive redundancies. We integrate these techniques within a state-of-the-art redundancy removal framework, illustrating their efficacy on various benchmarks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Scalability",
+                "Semiconductor devices",
+                "Redundancy",
+                "Logic gates",
+                "Hardware",
+                "Energy efficiency",
+                "Registers",
+                "Logic",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Removal Of Sequences",
+                "Redundancy Removal",
+                "Reachable States",
+                "Permutation",
+                "Scalable",
+                "Essential Step",
+                "Semiconductor Devices",
+                "Topological States",
+                "Primary Input",
+                "Additional Refinement",
+                "Public Benchmark",
+                "Simulation Run Time"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -737,7 +1332,42 @@
                 "firstName": "Caroline",
                 "lastName": "Trippel"
             }
-        ]
+        ],
+        "abstract": "Automating translation from natural language (NL) to temporal logic (TL) specifications offers to democratize verification of hardware systems. However, this vision is challenged by (i) inherent ambiguity in NL, which can create multiple plausible translation possibilities, and (ii) the need to validate translation output, when the translator can make mistakes. To address these challenges, we propose Synthtl, an interactive approach and tool, which uses large language models (LLMs), model checkers, and oracle (human) guidance, to translate an NL specification of a hardware design's intended behavior into a TL specification that reflects the NL and holds (formally) on the design. SynthTL performs structured translation, whereby it first decomposes a complex unstructured NL specification into a logical combination of simple NL sub-specifications. Then, it produces TL translations of the simple NL sub-specifications, called subtranslations, and mechanically combines these sub-translations to yield a TL translation of the complex NL specification. This approach significantly reduces the oracle effort required to validate the translation output, since only sub-translations and the logical relationships between them need to be inspected. Plus, it enables the design of automated model checker utilities, which efficiently guide the search for a translation that holds on the design, despite inherent NL ambiguity. With Synthtl, we conduct the largest LLM-assisted NL to TL specification translation case study to date, producing a correct formalization of the Arm AMBA AHB bus protocol.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Translation",
+                "Protocols",
+                "Design automation",
+                "Large language models",
+                "Machine vision",
+                "Computational modeling",
+                "Hardware",
+                "Behavioral sciences",
+                "Logic"
+            ],
+            "Index Terms": [
+                "Natural Language",
+                "Model Checking",
+                "Temporal Logic",
+                "Large Language Models",
+                "Inherent Ambiguity",
+                "Final Output",
+                "Root Node",
+                "Tree Nodes",
+                "Hash Function",
+                "Leaf Node",
+                "Cross-product",
+                "Validation Step",
+                "Child Nodes",
+                "Substring",
+                "Manual Effort",
+                "Translation Task",
+                "Percentage Of Nodes",
+                "Subtree Pruning",
+                "Natural Language Processing Approaches"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -826,7 +1456,51 @@
                 "firstName": "Clark",
                 "lastName": "Barrett"
             }
-        ]
+        ],
+        "abstract": "Deep reinforcement learning (DRL) is a powerful machine learning paradigm for generating agents that control autonomous systems. However, the “black box” nature of DRL agents limits their deployment in real-world safety-critical applications. A promising approach for providing strong guarantees on an agent's behavior is to use Neural Lyapunov Barrier (NLB) certificates, which are learned functions over the system whose properties indirectly imply that an agent behaves as desired. However, NLB-based certificates are typically difficult to learn and even more difficult to verify, especially for complex systems. In this work, we present a novel method for training and verifying NLB-based certificates for discrete-time systems. Specifically, we introduce a technique for certificate composition, which simplifies the verification of highly-complex systems by strategically designing a sequence of certificates. When jointly verified with neural network verification engines, these certificates provide a formal guarantee that a DRL agent both achieves its goals and avoids unsafe behavior. Furthermore, we introduce a technique for certificate filtering, which significantly simplifies the process of producing formally verified certificates. We demonstrate the merits of our approach with a case study on providing safety and liveness guarantees for a DRL-controlled spacecraft.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Space vehicles",
+                "Scalability",
+                "Neural networks",
+                "Programming",
+                "Deep reinforcement learning",
+                "Control systems",
+                "Reliability engineering",
+                "Safety",
+                "Complex systems"
+            ],
+            "Index Terms": [
+                "Deep Learning",
+                "Deep Reinforcement Learning",
+                "Learning Control",
+                "Deep Reinforcement Learning Controller",
+                "Barrier Certificates",
+                "Neural Network",
+                "Health-related Quality Of Life",
+                "Safety Guarantees",
+                "Deep Reinforcement Learning Agent",
+                "System Dynamics",
+                "Deep Neural Network",
+                "Barrier Function",
+                "State Space",
+                "Ordinary Differential Equations",
+                "Stochastic Gradient Descent",
+                "Lyapunov Function",
+                "Goal State",
+                "Real-world Systems",
+                "Training Objective",
+                "Conditions Hold",
+                "Safety Properties",
+                "Discrete Time Steps",
+                "Composite Approach",
+                "Deep Neural Network Architecture",
+                "Scale Of The Challenge",
+                "Formal Verification",
+                "Safety Constraints"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -873,7 +1547,34 @@
                 "firstName": "Jie-Hong Roland",
                 "lastName": "Jiang"
             }
-        ]
+        ],
+        "abstract": "Recently a refined complexity analysis of the satisfiability of Dependency Quantified Boolean Formula (DQBF) was established. In particular, it is shown that the satisfiability of 3-DQBF (i.e., DQBF with 3 existential variables) is NEXP-complete and it becomes PSPACE-complete for 2-DQBF. While all state of the art DQBF solvers focus on general DQBF, it is natural to ask if there is an efficient approach for solving 2-DQBF - similar to how modern SAT solvers differentiate between 2-SAT and 3-SAT instances. In this paper we show how to exploit modern Property Directed Reachbility (PDR) solvers to solve 2-DQBF instances. We present a novel linear time reduction from 2-DQBF instances to PDR instances and show how to convert the inductive-invariant certificates provided by PDR solvers to the Skolem-function certificates for 2-DQBF instances. The experimental results show that the approach is indeed more efficient than other state-of-the-art DQBF solvers, at least in solving 2-DQBF instances.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Computational modeling",
+                "Complexity theory",
+                "Icebergs",
+                "Reachability analysis",
+                "Certification"
+            ],
+            "Index Terms": [
+                "Reachable",
+                "Large Margin",
+                "Batch Experiments",
+                "Transit System",
+                "Constant Function",
+                "Boolean Variable",
+                "Safety Properties",
+                "Routine Inspection"
+            ],
+            "Author Keywords": [
+                "Dependency quantified Boolean formula (DQBF)",
+                "property directed reachability (PDR)",
+                "model extraction",
+                "Skolem functions"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -902,7 +1603,47 @@
                 "firstName": "Caroline",
                 "lastName": "Trippel"
             }
-        ]
+        ],
+        "abstract": "Implementing cache-coherent shared memory in heterogeneous systems is challenged by memory consistency model (MCM) mismatches among compute elements: what the system-wide MCM should be and how it should be enforced are not well-defined. In this paper, we posit that C11-the seminal heterogeneous MCM-is the natural MCM choice for such sys-tems. Based on this philosophy, we design and verify Memglue, an update-based consistency protocol (i.e., an MCM-respecting coherence protocol) that enforces a slight strengthening of C11 among a set of interacting heterogeneous compute clusters. Memglue has three notable features. First, it is modular: any cluster equipped with a Memglue translation shim can “plug into” any Memglue system. Second, it is verifiable: one system-wide proof ensures that Memglue upholds the C11 MCM with respect to Memglue messages exchanged by clusters' shims, and per-cluster proofs ensure that shims correctly translate relevant cluster coherence protocol messages to Memglue protocol messages. Third, it is polite: Memglue is compatible with a wide range of cluster coherence protocols and MCMs and exploits the permissible relaxed ordering behavior of each cluster to a high degree.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Translation",
+                "Philosophical considerations",
+                "Design automation",
+                "Computational modeling",
+                "Coherence",
+                "Manuals",
+                "Model checking",
+                "Hardware",
+                "Plugs"
+            ],
+            "Index Terms": [
+                "Heterogeneous Systems",
+                "Relevant Protocols",
+                "Relevant Messages",
+                "Shared Memory",
+                "Messaging Protocol",
+                "Synchronization",
+                "Metadata",
+                "Local Clustering",
+                "Open Model",
+                "Linear Order",
+                "Memory System",
+                "Local Protocols",
+                "Denial Of Service",
+                "Partial Order",
+                "Program Execution",
+                "Instruction Set Architecture",
+                "Model Checking",
+                "Litmus Test",
+                "Motivating Example",
+                "Memory Operations",
+                "Elastane",
+                "Heterogeneous Clusters",
+                "Universal Protocol"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -949,7 +1690,36 @@
                 "firstName": "Raphaël",
                 "lastName": "Rieu-Helft"
             }
-        ]
+        ],
+        "abstract": "We study the numerical accuracy of some specific computer program performing numerical computations. Such a numerical accuracy is expressed in terms of a bound on the difference between the floating-point computation and the corresponding rounding-free computation using mathematical real numbers. We do not only seek to discover such a bound “on paper” but we aim at obtaining computer-assisted formal proofs that this bound is correct for any possible inputs. The function we study comes from the domain of machine learning: a function computing the logarithm of the sum of exponentials of a sequence. The bound obtained is an original result, parameterized by the error bounds of the underlying implementations of the logarithm and exponential functions. The methodology we follow to conduct our formal proofs is also original, using a combination of the Why3 environment for deductive verification, an original modelling of floating-point computations using unbounded numbers, and the J<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">3</sup> environment for proving properties on C source code.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Accuracy",
+                "Design automation",
+                "Source coding",
+                "Computational modeling",
+                "Machine learning"
+            ],
+            "Index Terms": [
+                "Logarithm",
+                "Source Code",
+                "Exponential Function",
+                "Real Numbers",
+                "Error Bounds",
+                "Formal Proof",
+                "Numerical Accuracy",
+                "Machine Learning Domain",
+                "Preconditioning",
+                "Smooth Function",
+                "Constant Term",
+                "Mathematical Functions",
+                "Floating-point Operations",
+                "Implementation Of Functions",
+                "Floating-point Numbers",
+                "Formal Verification",
+                "Round Function"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -984,7 +1754,43 @@
                 "firstName": "Alberto",
                 "lastName": "Griggio"
             }
-        ]
+        ],
+        "abstract": "The paper presents a simple, yet effective program verification technique that combines symbolic execution with implicit predicate abstraction and CEGAR. The technique can prove correctness of many programs that are beyond the reach of the standard symbolic execution because their symbolic execution tree is prohibitively large or even infinite. The technique has been implemented in the software model checker KRATOS. Our experimental evaluation shows that it also decides correctness of some programs that were decided neither by the standard symbolic execution nor by IC3 with predicate abstraction (all implemented in KRATOS).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Computational modeling",
+                "Software",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Predicate Abstraction",
+                "Benchmark",
+                "False Positive",
+                "Symbiotic",
+                "Rest Of The Paper",
+                "Hardness",
+                "Current Position",
+                "Flow Control",
+                "Local Setting",
+                "Localization Error",
+                "Precise Function",
+                "Unreachable",
+                "Recursive Algorithm",
+                "Constraint Satisfaction Problem",
+                "Abstract States",
+                "Feasible Path",
+                "Running Example",
+                "Set Of Formulas",
+                "Graph Abstraction"
+            ],
+            "Author Keywords": [
+                "Program verification",
+                "symbolic execution",
+                "predicate abstraction",
+                "CEGAR"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -1019,7 +1825,29 @@
                 "firstName": "Marijn J. H.",
                 "lastName": "Heule"
             }
-        ]
+        ],
+        "abstract": "Modern SAT solvers are trustworthy because their results can be expressed in formal proof systems and validated with verified proof checkers. Today, the RAT and PR proof systems are the de facto standard: they capture many reasoning techniques used by SAT solvers, and they are supported by efficient, formally-verified checkers. However, RAT and PR struggle to succinctly express advanced reasoning techniques like symmetry breaking. In this paper, we present proof checking tools for the substitution redundancy (SR) proof system, a powerful generalization of PR and RAT. We first highlight three problems with linear-size SR proofs that are not expected to have linear-size PR or RAT proofs. We then present proof formats for SR with and without unit propagation hints, a tool to add those hints, and the first verified SR proof checker. Since SR generalizes other proof systems, our checker has the distinction of supporting the strongest clausal proof system to date. Finally, our experimental results show that SR proofs are much smaller than their RAT counterparts, and that verified SR proof checking is efficient in practice.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Redundancy",
+                "Cognition",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Checkers",
+                "Data Structure",
+                "Pigeons",
+                "Additional Lines",
+                "Red Edge",
+                "Identification Of Lines",
+                "Boolean Variable",
+                "Step Of The Proof",
+                "Short Proof",
+                "Blue Edges",
+                "Deletion Lines"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -1096,7 +1924,36 @@
                 "firstName": "Rahul",
                 "lastName": "Sharma"
             }
-        ]
+        ],
+        "abstract": "We investigate code reasoning skills of Large Language Models (LLMs) in the context of formal program verification. Specifically, we look at the problem of inferring loop invariants as well as ranking functions for proving safety properties and loop termination, respectively. We demonstrate how emergent capabilities of LLMs can be exploited through a combination of prompting techniques as well as by using them in conjunction with symbolic algorithms. We curate and contribute a dataset of verification problems inspired by past work. We perform a rigorous evaluation on this dataset to establish that LLMs have the potential of improving state-of-the-art in program verification.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Design automation",
+                "Codes",
+                "Large language models",
+                "Cognition",
+                "Safety"
+            ],
+            "Index Terms": [
+                "Formal Verification",
+                "Large Language Models",
+                "Ranking Function",
+                "Correction Algorithm",
+                "Source Model",
+                "Basic Algorithm",
+                "Program Characteristics",
+                "Inference Algorithm",
+                "Lexicographic",
+                "Formal Proof",
+                "Boolean Variable",
+                "Loop Iteration",
+                "Postconditioning",
+                "Verification Task",
+                "Complete Number",
+                "Beginning Of Iteration",
+                "Syntax Errors"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -1131,7 +1988,44 @@
                 "firstName": "Yong",
                 "lastName": "Li"
             }
-        ]
+        ],
+        "abstract": "Scalable and efficient conversions of LTL over finite horizon (LTLf) to their deterministic finite automata (DFA) remain a critical bottleneck in several applications of L T L f. Recently, compositional approaches have seen remarkable success in scaling the conversion to large formulas. Here the input formula is first decomposed into smaller subformulas, each of which can be easily converted to their DFAs, then these DFAs are composed to generate the desired DFA. This work proposes a series of simple-yet-effective optimizations to improve the performance of compositional approaches based on reducing the number of composition steps required to generate the desired DFA. We incorporate these optimizations in a tool called Lisa2 that builds on one of the state-of-the-art tools for LTLf-to-DFA con-version. A comprehensive empirical evaluation of Lisa2 demon-strates overall improvements on both parameters of the number of benchmarks solved and runtime. Most remarkably, it demon-strates significant improvement over structured benchmarks where runtime speedups range between 1.5x to 8000x under fair comparisons to prior state-of-the-art tools.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Design automation",
+                "Automata",
+                "Benchmark testing",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Composite Approach",
+                "Deterministic Finite Automaton",
+                "Fair Comparison",
+                "Number Of Steps",
+                "Empirical Evaluation",
+                "Semantic",
+                "Data Structure",
+                "Phase Composition",
+                "Root Node",
+                "Removal Of Duplicates",
+                "Boolean Operators",
+                "Leaf Node",
+                "Performance Of Tools",
+                "Directed Acyclic Graph",
+                "Explicit Representation",
+                "Children In Order",
+                "Prior Approaches",
+                "Improvement In Range",
+                "First-order Logic",
+                "Conversion Tool",
+                "Abstract Syntax Tree",
+                "Temporal Operators",
+                "Linear Logic",
+                "Composition Operator",
+                "Phase Decomposition"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -1154,7 +2048,41 @@
                 "firstName": "Shuvendu K.",
                 "lastName": "Lahirie"
             }
-        ]
+        ],
+        "abstract": "Verification-aware programming languages such as Dafny and F* provide means to formally specify and prove properties of a program. Although the problem of checking an implementation against a specification can be defined mechanically, there is no algorithmic way of ensuring the correctness of the user-intent formalization for programs — that a specification adheres to the user's intent behind the program. This is because intent or requirement is expressed informally in natural language and the specification is a formal artefact. However, the advent of large language models (LLMs) has made tremendous strides bridging the gap between informal intent and formal program implementations in the last couple of years, driven in large parts due to benchmarks and automated metrics to evaluate different techniques. Recent work has developed a framework for evaluating and benchmarking the user-intent formalization problem for main-stream programming languages [12]. However, as we argue in this paper, such an approach does not readily extend to verification-aware languages that support rich specifications (using quantifiers and ghost variables) that cannot be evaluated through dynamic execution. Previous work also required generating program mutants using LLMs to create the benchmark. We advocate an alternate, perhaps simpler approach of symbolically testing specifications to provide an intuitive metric for evaluating the quality of specifications that can be easily instantiated with most verification-aware languages. We demonstrate that our automated metric agrees closely on a human-labeled dataset of Dafny specifications for the popular MBPP code-generation benchmark, yet demonstrates cases where the human labeling is not perfect. We also outline formal verification challenges that need to be addressed to apply the technique more widely. We believe our work provides a stepping stone to enable the establishment of a benchmark and research agenda for the problem of user-intent formalization for programs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Computer languages",
+                "Design automation",
+                "Costs",
+                "Large language models",
+                "Natural languages",
+                "Benchmark testing",
+                "Labeling",
+                "Formal verification"
+            ],
+            "Index Terms": [
+                "Natural Language",
+                "Language Model",
+                "Formal Verification",
+                "Human Labeling",
+                "Similarity Measure",
+                "Validation Test",
+                "Manual Labeling",
+                "Code Generation",
+                "Postconditioning",
+                "Completeness Score",
+                "Test Set Validation",
+                "Concrete Values",
+                "Running Example"
+            ],
+            "Author Keywords": [
+                "formal verification",
+                "specifications",
+                "large language models"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -1231,7 +2159,36 @@
                 "firstName": "Michael W.",
                 "lastName": "Whalen"
             }
-        ]
+        ],
+        "abstract": "We introduce SMT-D, a tool for portfolio-based distributed SMT solving. We propose a general architecture consisting of two main components: (i) solvers extended with the capability of sharing and importing information on the fly while solving; and (ii) a central manager that orchestrates and monitors solvers while also deciding which information to share with which solvers. We introduce new information-sharing strategies based on the idea of maximizing the amount of useful diversity in the system. We show that on hard benchmarks from recent related work, SMT-D instantiated with the cvc5 SMT solver achieves significant speed-up over sequential performance, is competitive with existing portfolio approaches, and contributes a number of unique solutions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Scalability",
+                "Diversity reception",
+                "Symbols",
+                "Benchmark testing",
+                "Parallel processing",
+                "Solids",
+                "Logic",
+                "Portfolios",
+                "Tuning",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "Satisfiability Modulo Theories",
+                "Information Exchange",
+                "Diverse Systems",
+                "Parallelization",
+                "Individual Work",
+                "Partitioning Scheme",
+                "Parallel Strategy",
+                "Single Work",
+                "Prior Approaches",
+                "Control Plane",
+                "Portfolio Strategies",
+                "Logically Equivalent"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -1272,7 +2229,43 @@
                 "firstName": "Timothy",
                 "lastName": "Roscoe"
             }
-        ]
+        ],
+        "abstract": "In this paper, we extend open-state conformance testing from Mealy FSM specifications to implementations where only a subset of states are observable. We show that the classical transition tour can be used to completely test such implementations for conformance, including unobservable states, under the assumption that in the specification, any trace from an unobservable state eventually reaches an observable state - i.e. that the observable states form a feedback vertex set. Complete transition tour testing can efficiently test for many conformance relations when they are appropriately formulated. Generalized-quasi-reduction (GQR) is useful for protocol testing because it allows for partial, non-deterministic specifications, but establishing GQR in the general setting is complex and expensive. We show a relation that implies GQR and is practical for transition tour testing. Our setting of partial state observability applies to an important class of protocol implementations in modern hardware: cache coherence. These protocols are nearly universal in multi-processor systems, and are notoriously difficult to verify both at the specification and implementation level. We show that their structure lends them naturally to complete open-state testing under this extended definition. During design, coherence protocols are elaborated from an FSM of stable states with atomic, observable transitions by the addition of a large number of unobservable transient states to handle concurrency, including out-of-order and interleaved message delivery. We demonstrate that a real in-silicon implementation on the Cavium ThunderX-1 CN88XX CPU has exactly the required characteristics and we establish the GQR conformance relation against a specification of its inter-socket coherence protocol.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Out of order",
+                "Concurrent computing",
+                "Protocols",
+                "Design automation",
+                "Coherence",
+                "Conformance testing",
+                "Hardware",
+                "Transient analysis",
+                "Observability"
+            ],
+            "Index Terms": [
+                "Stable State",
+                "Transient State",
+                "Complete Test",
+                "State Machine",
+                "Implementation Of Protocol",
+                "Real Implementation",
+                "Subset Of States",
+                "Test Method",
+                "General Method",
+                "Multiple Conditions",
+                "Interoperability",
+                "Input Processing",
+                "Implementation Status",
+                "Caching",
+                "Real-world Implementation",
+                "Linearizable",
+                "Exhaustion Test",
+                "Finite Machine",
+                "Graph Traversal",
+                "Remote Nodes"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -1343,7 +2336,37 @@
                 "firstName": "Chungha",
                 "lastName": "Sung"
             }
-        ]
+        ],
+        "abstract": "Zelkova is an AWS service that answers questions about Identity and Access Management (IAM) access policies such as “Does this policy allow public access?”. Zelkova formalizes IAM policies and the meaning of “public” as a logical query that can be solved using SMT solvers. Among other conditions, Zelkova defines a policy as public if it allows access from a number of IP addresses that exceeds a given threshold. Encoding this check so that it is supported by all SMT solvers in the Zelkova portfolio is difficult because counting and restricting the number of models are not core SMT features. We describe two SMT encodings for checking whether the number of IPs allowed by a policy exceeds a given bound. Both encodings generate an SMT formula that can be discharged with a single call to an off-the-shelf SMT solver. Our approach takes less than 3s to detect whether a policy is public for 99.999% of the evaluated policies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Access control",
+                "Design automation",
+                "Encoding",
+                "IP networks",
+                "Portfolios"
+            ],
+            "Index Terms": [
+                "Access Control Policies",
+                "Publicly Accessible",
+                "Access Management",
+                "Identity Management",
+                "Set Of Equations",
+                "Size Classes",
+                "Before Presenting",
+                "Equality Constraints",
+                "Rest Of This Section",
+                "Arithmetic Operations",
+                "Regular Expressions",
+                "Count Model",
+                "Combination Of Classes",
+                "Set Of Statements",
+                "Grant Access",
+                "Single Query",
+                "Counting Problem",
+                "Integer Constraints"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -1402,7 +2425,43 @@
                 "firstName": "Pat",
                 "lastName": "Hanrahan"
             }
-        ]
+        ],
+        "abstract": "Compiling programs to an instruction set architecture (ISA) requires a set of rewrite rules that map patterns consisting of compiler instructions to patterns consisting of ISA instructions. We synthesize such rules by constructing SMT queries, whose solutions represent two functionally equivalent programs. These two programs are interpreted as an instruction selection rewrite rule. Existing work is limited to single-instruction ISA patterns, whereas our solution does not have that restriction. Furthermore, we address inefficiencies of existing work by developing two optimized algorithms. The first only generates unique rules by preventing synthesis of duplicate and composite rules. The second only generates lowest-cost rules by preventing synthesis of higher-cost rules. We evaluate our algorithms on multiple ISAs. Without our optimizations, the vast majority of synthesized rewrite rules are either duplicates, composites, or higher cost. Our optimizations result in synthesis speed-ups of up to 768 × and 4004 × for the two algorithms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Design automation",
+                "Instruction sets",
+                "Computer architecture",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Lowest Cost",
+                "Rewrite Rules",
+                "High Cost",
+                "Educational Settings",
+                "Set Of Rules",
+                "Instruction Set Architecture",
+                "Composition Rules",
+                "Unique Rules",
+                "Semantic",
+                "Iterative Algorithm",
+                "Commutative",
+                "Common Law",
+                "Pattern Matching",
+                "Equivalence Relation",
+                "Partial Order",
+                "Synthesis Time",
+                "Intermediate Representation",
+                "Multiset",
+                "Program Output",
+                "Code Size",
+                "Cost Metrics",
+                "Single Instruction",
+                "Connectivity Constraints",
+                "Component Library"
+            ]
+        }
     },
     {
         "publicationNumber": "10918296",
@@ -1418,7 +2477,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 Formal Methods in Computer-Aided Design (FMCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Proceedings of the 24th Conference on Formal Methods in Computer-Aided Design – FMCAD 2024.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10918296",
@@ -1434,7 +2495,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 Formal Methods in Computer-Aided Design (FMCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "The Conference on Formal Methods in Computer-Aided Design (FMCAD) is an annual conference on the theory and applications of formal methods in hardware and system verification. FMCAD provides a leading forum to researchers in academia and industry for presenting and discussing groundbreaking methods, technologies, theoretical results, and tools for reasoning formally about computing systems. FMCAD covers formal aspects of computer-aided system design including verification, specification, synthesis, and testing.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10918296",
@@ -1450,7 +2513,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 Formal Methods in Computer-Aided Design (FMCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Organizing Committee.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10918296",
@@ -1466,7 +2531,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 Formal Methods in Computer-Aided Design (FMCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Additional Reviewers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10918296",
@@ -1482,7 +2549,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 Formal Methods in Computer-Aided Design (FMCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Proceedings of the 24th Conference on Formal Methods in Computer-Aided Design – FMCAD 2024.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10918296",
@@ -1498,7 +2567,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 Formal Methods in Computer-Aided Design (FMCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10918296",
@@ -1514,7 +2585,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 Formal Methods in Computer-Aided Design (FMCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10918296",
@@ -1530,6 +2603,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 Formal Methods in Computer-Aided Design (FMCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Table of Contents.",
+        "keywords": {}
     }
 ]

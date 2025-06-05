@@ -20,7 +20,25 @@
                 "firstName": "Joel",
                 "lastName": "Emer"
             }
-        ]
+        ],
+        "abstract": "With the recent demonstration of 32nm processors we have seen Moore's law providing another large increase in the number of transistors. While more transistors provides architects with a great opportunity, I believe we have been observing increasing challenges in finding the most effective uses for these transistors. Design team size, mask costs and fabrication costs are all increasing, thus there is increasing desire to make the right decisions about which research ideas to bring forward to design. Unfortunately, our existing evaluation methodologies are proving increasingly ineffective at providing compelling evidence that a new idea warrants inclusion in future designs. In this talk, I will elaborate on these challenges and discuss some approaches to improve on our ability to prove the merit of architectural ideas. In particular, there is a recent movement toward using field-programmable gate arrays (FPGAs) as the basis for the evaluating future systems. Therefore, I will outline the alternative approaches to using FPGAs with an emphasis on using FPGAs to do performance modeling. But designing hardware models is far more complicated than writing software models, so included in the discussion will be techniques to reduce that complexity. These will include a practical approach to modularizing the model, separation of the functional and timing aspects of the simulation, and additional infrastructure important for performance modeling.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Acceleration",
+                "Field programmable gate arrays",
+                "Costs",
+                "Moore's Law",
+                "Fabrication",
+                "Hardware",
+                "Writing",
+                "Timing",
+                "Microarchitecture",
+                "Performance analysis"
+            ],
+            "Index Terms": [
+                "Moore’s Law"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -43,7 +61,35 @@
                 "firstName": "Dileep",
                 "lastName": "Bhandarkar"
             }
-        ]
+        ],
+        "abstract": "Performance analysis has always been an integral part of a computer architect's agenda. However, the term performance is used largely to measure “speed”. The dictionary defines performance more broadly as “the manner in which or the efficiency with which something reacts or fulfills its intended purpose”. In today's internet based on line computing environment, performance has taken a broader view. For example, power and energy efficiency is becoming as or more important measures of system performance as speed of computation. The industry's ability to deliver speed has outpaced the ability of most applications to consume it effectively. This talk will discuss how performance is viewed in the world of on line web services from an end user's point of view.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance analysis",
+                "Computer architecture",
+                "Velocity measurement",
+                "Energy efficiency",
+                "System performance",
+                "Instruments",
+                "Dictionaries",
+                "Internet",
+                "Energy measurement",
+                "Power measurement"
+            ],
+            "Index Terms": [
+                "CCD Camera",
+                "End-users",
+                "Strategic Planning",
+                "System Architecture",
+                "Electrical Engineering",
+                "Instruction Set Architecture",
+                "Financial Analysts",
+                "Graduate Work",
+                "Platform Architecture",
+                "User Point",
+                "Technical Leadership"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -90,7 +136,53 @@
                 "firstName": "Tor M.",
                 "lastName": "Aamodt"
             }
-        ]
+        ],
+        "abstract": "Modern Graphic Processing Units (GPUs) provide sufficiently flexible programming models that understanding their performance can provide insight in designing tomorrow's manycore processors, whether those are GPUs or otherwise. The combination of multiple, multithreaded, SIMD cores makes studying these GPUs useful in understanding tradeoffs among memory, data, and thread level parallelism. While modern GPUs offer orders of magnitude more raw computing power than contemporary CPUs, many important applications, even those with abundant data level parallelism, do not achieve peak performance. This paper characterizes several non-graphics applications written in NVIDIA's CUDA programming model by running them on a novel detailed microarchitecture performance simulator that runs NVIDIA's parallel thread execution (PTX) virtual instruction set. For this study, we selected twelve non-trivial CUDA applications demonstrating varying levels of performance improvement on GPU hardware (versus a CPU-only sequential version of the application). We study the performance of these applications on our GPU performance simulator with configurations comparable to contemporary high-end graphics cards. We characterize the performance impact of several microarchitecture design choices including choice of interconnect topology, use of caches, design of memory controller, parallel workload distribution mechanisms, and memory request coalescing hardware. Two observations we make are (1) that for the applications we study, performance is more sensitive to interconnect bisection bandwidth rather than latency, and (2) that, for some applications, running fewer threads concurrently than on-chip resources might otherwise allow can improve performance by reducing contention in the memory system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Analytical models",
+                "Yarn",
+                "Graphics",
+                "Parallel processing",
+                "Microarchitecture",
+                "Hardware",
+                "Process design",
+                "Concurrent computing",
+                "Parallel programming",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Programming Model",
+                "Microarchitecture",
+                "Memory System",
+                "Memory Control",
+                "Parallel Data",
+                "Single Thread",
+                "Multi-threaded",
+                "Benchmark",
+                "Neural Network",
+                "Key Pathways",
+                "Flow Control",
+                "Interconnected Network",
+                "Mesh Network",
+                "Temporal Localization",
+                "Caching",
+                "Local Memory",
+                "Global Access",
+                "Channel Bandwidth",
+                "Shared Memory",
+                "Breadth-first Search",
+                "Software Development Kit",
+                "Kernel Computation",
+                "Baseline Configuration",
+                "First-in-first-out",
+                "Option Pricing",
+                "L2 Cache",
+                "Diverse Paths",
+                "Cache Misses"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -131,7 +223,54 @@
                 "firstName": "Niraj K.",
                 "lastName": "Jha"
             }
-        ]
+        ],
+        "abstract": "Until very recently, microprocessor designs were computation-centric. On-chip communication was frequently ignored. This was because of fast, single-cycle on-chip communication. The interconnect power was also insignificant compared to the transistor power. With uniprocessor designs providing diminishing returns and the advent of chip multiprocessors (CMPs) in mainstream systems, the on-chip network that connects different processing cores has become a critical part of the design. Transistor miniaturization has led to high global wire delay, and interconnect power comparable to transistor power. CMP design proposals can no longer ignore the interaction between the memory hierarchy and the interconnection network that connects various elements. This necessitates a detailed and accurate interconnection network model within a full-system evaluation framework. Ignoring the interconnect details might lead to inaccurate results when simulating a CMP architecture. It also becomes important to analyze the impact of interconnection network optimization techniques on full system behavior. In this light, we developed a detailed cycle-accurate interconnection network model (GARNET), inside the GEMS full-system simulation framework. GARNET models a classic five-stage pipelined router with virtual channel (VC) flow control. Microarchitectural details, such as flit-level input buffers, routing logic, allocators and the crossbar switch, are modeled. GARNET, along with GEMS, provides a detailed and accurate memory system timing model. To demonstrate the importance and potential impact of GARNET, we evaluate a shared and private L2 CMP with a realistic state-of-the-art interconnection network against the original GEMS simple network. The objective of the evaluation was to figure out which configuration is better for a particular workload. We show that not modeling the interconnect in detail might lead to an incorrect outcome. We also evaluate Express Virtual Channels (EVCs), an on-chip network flow control proposal, in a full-system fashion. We show that in improving on-chip network latency-throughput, EVCs do lead to better overall system runtime, however, the impact varies widely across applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Garnets",
+                "Network-on-a-chip",
+                "Multiprocessor interconnection networks",
+                "Power system interconnection",
+                "System-on-a-chip",
+                "Proposals",
+                "Switches",
+                "Computational modeling",
+                "Microprocessors",
+                "Wire"
+            ],
+            "Index Terms": [
+                "Network Model",
+                "Detailed Network",
+                "Network-on-chip",
+                "Full-system Simulator",
+                "Accuracy Of Model",
+                "Flow Control",
+                "Multi-core",
+                "Interconnected Network",
+                "Simple Network",
+                "Optimal Network",
+                "Memory System",
+                "Virtual Channel",
+                "System Design",
+                "Arbitration",
+                "Network Design",
+                "Network Configuration",
+                "Memory Control",
+                "Output Ports",
+                "Average Latency",
+                "Input Port",
+                "L2 Cache",
+                "Interconnected Model",
+                "Routing Table",
+                "Data Cache",
+                "Routing Algorithm",
+                "Network Interface",
+                "Baseline Network",
+                "Architecture Parameters",
+                "Dynamic Energy",
+                "Cache Hit"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -172,7 +311,53 @@
                 "firstName": "Keshav",
                 "lastName": "Pingali"
             }
-        ]
+        ],
+        "abstract": "Until recently, parallel programming has largely focused on the exploitation of data-parallelism in dense matrix programs. However, many important application domains, including meshing, clustering, simulation, and machine learning, have very different algorithmic foundations: they require building, computing with, and modifying large sparse graphs. In the parallel programming literature, these types of applications are usually classified as irregular applications, and relatively little attention has been paid to them. To study and understand the patterns of parallelism and locality in sparse graph computations better, we are in the process of building the Lonestar benchmark suite. In this paper, we characterize the first five programs from this suite, which target domains like data mining, survey propagation, and design automation. We show that even such irregular applications often expose large amounts of parallelism in the form of amorphous data-parallelism. Our speedup numbers demonstrate that this new type of parallelism can successfully be exploited on modern multi-core machines.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Parallel processing",
+                "Parallel programming",
+                "Sparse matrices",
+                "Computational modeling",
+                "Machine learning",
+                "Clustering algorithms",
+                "Machine learning algorithms",
+                "Concurrent computing",
+                "Buildings",
+                "Data mining"
+            ],
+            "Index Terms": [
+                "Data Mining",
+                "Parallelization",
+                "Parallel Patterns",
+                "Sparse Graph",
+                "Benchmark Suite",
+                "Data Structure",
+                "Process In Order",
+                "Implementation Of Algorithm",
+                "Nodes In The Graph",
+                "Input Size",
+                "Application Suite",
+                "Agglomerative Clustering",
+                "Load Balancing",
+                "Large Input",
+                "Triangular Mesh",
+                "Mesh Refinement",
+                "Small Input",
+                "Delaunay Triangulation",
+                "Points In Plane",
+                "Unordered Set",
+                "Factor Graph",
+                "L2 Cache",
+                "Balanced Tree",
+                "Node Removal",
+                "Binary Tree",
+                "Spatial Hierarchy",
+                "Quality Constraints",
+                "Data Cache",
+                "Application Execution"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -207,7 +392,47 @@
                 "firstName": null,
                 "lastName": "Yuejian Xie"
             }
-        ]
+        ],
+        "abstract": "For academic computer architecture research, a large number of publicly available simulators make use of relatively simple abstractions for the microarchitecture of the processor pipeline. For some types of studies, such as those for multi-core cache coherence designs, a simple pipeline model may suffice. For detailed microarchitecture research, such as those that are sensitive to the exact behavior of out-of-order scheduling, ALU and bypass network contention, and resource management (e.g., RS and ROB entries), an over-simplified model is not representative of modern processor organizations. We present a new timing simulator that models a modern x86 microarchitecture at a very low level, including out-of-order scheduling and execution that much more closely mirrors current implementations, a detailed cache/memory hierarchy, as well as many x86-specific microarchitecture features (e.g., simple vs. complex decoders, micro-op decomposition and fusion, microcode lookup overhead for long/complex x86 instructions).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microarchitecture",
+                "Computational modeling",
+                "Pipelines",
+                "Out of order",
+                "Processor scheduling",
+                "Computer architecture",
+                "Computer simulation",
+                "Coherence",
+                "Resource management",
+                "Timing"
+            ],
+            "Index Terms": [
+                "Microarchitecture",
+                "Cycle-level Simulator",
+                "Type Of Study",
+                "Simulation Model",
+                "Data Storage",
+                "Functional Unit",
+                "Per Cycle",
+                "Aspects Of Model",
+                "Memory Control",
+                "Benchmark Test",
+                "Decoding Process",
+                "Single Entry",
+                "Execution Of Operations",
+                "Written Back",
+                "Data Cache",
+                "Pipeline Stages",
+                "Misprediction",
+                "Real Hardware",
+                "Separation Buffer",
+                "L2 Cache",
+                "End Of The Pipeline",
+                "Intel Core 2",
+                "Clock Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -254,7 +479,52 @@
                 "firstName": "Cristian",
                 "lastName": "Estan"
             }
-        ]
+        ],
+        "abstract": "Modern network devices employ deep packet inspection to enable sophisticated services such as intrusion detection, traffic shaping, and load balancing. At the heart of such services is a signature matching engine that must match packet payloads to multiple signatures at line rates. However, the recent transition to complex regular-expression based signatures coupled with ever-increasing network speeds has rapidly increased the performance requirements of signature matching. Solutions to meet these requirements range from hardwarecentric ASIC/FPGA implementations to software implementations using high-performance microprocessors. In this paper, we propose a programmable signature matching system prototyped on an Nvidia G80 GPU. We first present a detailed architectural and microarchitectural analysis, showing that signature matching is well suited for SIMD processing because of regular control flow and parallelism available at the packet level. Next, we examine two approaches for matching signatures: standard deterministic finite automata (DFAs) and extended finite automata (XFAs), which use far less memory than DFAs but require specialized auxiliary memory and small amounts of computation in most states. We implement a fully functional prototype on the SIMD-based G80 GPU. This system out-performs a Pentium4 by up to 9X and a Niagara-based 32-threaded system by up to 2.3X and shows that GPUs are a promising candidate for signature matching.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Prototypes",
+                "Automata",
+                "Inspection",
+                "Intrusion detection",
+                "Telecommunication traffic",
+                "Load management",
+                "Heart",
+                "Engines",
+                "Payloads",
+                "Application specific integrated circuits"
+            ],
+            "Index Terms": [
+                "Signature Matching",
+                "Flow Control",
+                "State Machine",
+                "Software Implementation",
+                "Regular Expressions",
+                "Network Devices",
+                "Intrusion Detection",
+                "Data Structure",
+                "Parallelization",
+                "Search String",
+                "Processing Elements",
+                "Data Packets",
+                "Caching",
+                "Local Memory",
+                "Single Thread",
+                "Representative Traces",
+                "Explicit Statement",
+                "Regular Access",
+                "Cache Hit",
+                "Stream Model",
+                "Single Instruction",
+                "Prototype Implementation",
+                "Number Of Signatures",
+                "Average Divergence",
+                "Packet Processing",
+                "Address Space",
+                "Starting State",
+                "Intel Core2"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -289,7 +559,49 @@
                 "firstName": "Matthias",
                 "lastName": "Hauswirth"
             }
-        ]
+        ],
+        "abstract": "Many experimental performance evaluations depend on accurate measurements of the cost of executing a piece of code. Often these measurements are conducted using infrastructures to access hardware performance counters. Most modern processors provide such counters to count micro-architectural events such as retired instructions or clock cycles. These counters can be difficult to configure, may not be programmable or readable from user-level code, and can not discriminate between events caused by different software threads. Various software infrastructures address this problem, providing access to per-thread counters from application code. This paper constitutes the first comparative study of the accuracy of three commonly used measurement infrastructures (perfctr, perfmon2, and PAPI) on three common processors (Pentium D, Core 2 Duo, and AMD ATHLON 64 X2).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Counting circuits",
+                "Watches",
+                "Informatics",
+                "Hardware",
+                "Measurement errors",
+                "Costs",
+                "Microarchitecture",
+                "Yarn",
+                "Application software",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Accurate Measurement",
+                "Performance Counters",
+                "Infrastructure",
+                "Single Thread",
+                "Clock Cycles",
+                "Application Code",
+                "Operating System",
+                "Cells Figure",
+                "Line In Fig",
+                "Analysis Of Determinants",
+                "Marathon",
+                "Counting Accuracy",
+                "Event Counts",
+                "Loop Iteration",
+                "Instruction Set Architecture",
+                "End Of The Measurement",
+                "Loop Size",
+                "Prior Section",
+                "Cycle Count",
+                "System Calls",
+                "True Counts",
+                "Cache Misses",
+                "Measurement Configuration",
+                "Counter Value",
+                "User Instructions"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -336,7 +648,54 @@
                 "firstName": "Mircea R.",
                 "lastName": "Stan"
             }
-        ]
+        ],
+        "abstract": "In temperature-aware design, the presence or absence of a heatsink fundamentally changes the thermal behavior with important design implications. In recent years, chip-level infrared (IR) thermal imaging has been gaining popularity in studying thermal phenomena and thermal management, as well as reverse-engineering chip power consumption. Unfortunately, IR thermal imaging needs a peculiar cooling solution, which removes the heatsink and applies an IR-transparent liquid flow over the exposed bare die to carry away the dissipated heat. Because this cooling solution is drastically different from a normal thermal package, its thermal characteristics need to be closely examined. In this paper, we characterize the differences between two cooling configurations-forced air flow over a copper heatsink (AIR-SINK) and laminar oil flow over bare silicon (OIL-SILICON). For the comparison, we modify the HotSpot thermal model by adding the IR-transparent oil flow and the secondary heat transfer path through the package pins, hence modeling what the IR camera actually sees at runtime. We show that OIL-SILICON and AIR-SINK are significantly different in both transient and steady-state thermal responses. OIL-SILICON has a much slower short-term transient response, which makes dynamic thermal management less efficient. In addition, for OIL-SILICON, the direction of oil flow plays an important role by changing hot spot location, thus impacting hot spot identification and thermal sensor placement. These results imply that the power- and temperature-aware design process cannot just rely on IR measurements. Simulation and IR measurement are both needed and are complementary techniques.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Power measurement",
+                "Thermal management",
+                "Cooling",
+                "Petroleum",
+                "Optical imaging",
+                "Packaging",
+                "Semiconductor device measurement",
+                "Infrared imaging",
+                "Energy management",
+                "Energy consumption"
+            ],
+            "Index Terms": [
+                "Infrared Measurements",
+                "Heat Transfer",
+                "Infrared Imaging",
+                "Hot Spots",
+                "Power Consumption",
+                "Flow Direction",
+                "Laminar Flow",
+                "Transient Response",
+                "Slow Response",
+                "Thermal Characteristics",
+                "Thermal Response",
+                "Thermal Model",
+                "Short-term Response",
+                "Thermal Management",
+                "Steady-state Response",
+                "Local Hotspots",
+                "Sensor Placement",
+                "Thermal Sensors",
+                "Dynamic Management",
+                "Secondary Transfer",
+                "Thermal Resistance",
+                "Steady-state Temperature",
+                "Transient Temperature",
+                "Forced Convection",
+                "Heat Transfer Coefficient",
+                "Low Thermal Resistance",
+                "Long-term Response",
+                "Heat Spreader",
+                "Oil Layer",
+                "Thermoelectric Coolers"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -389,7 +748,60 @@
                 "firstName": "Sally A.",
                 "lastName": "McKee"
             }
-        ]
+        ],
+        "abstract": "With the emerging many-core paradigm, parallel programming must extend beyond its traditional realm of scientific applications. Converting existing sequential applications as well as developing next-generation software requires assistance from hardware, compilers and runtime systems to exploit parallelism transparently within applications. These systems must decompose applications into tasks that can be executed in parallel and then schedule those tasks to minimize load imbalance. However, many systems lack a priori knowledge about the execution time of all tasks to perform effective load balancing with low scheduling overhead. In this paper, we approach this fundamental problem using machine learning techniques first to generate performance models for all tasks and then applying those models to perform automatic performance prediction across program executions. We also extend an existing scheduling algorithm to use generated task cost estimates for online task partitioning and scheduling. We implement the above techniques in the pR framework, which transparently parallelizes scripts in the popular R language, and evaluate their performance and overhead with both a real-world application and a large number of synthetic representative test scripts. Our experimental results show that our proposed approach significantly improves task partitioning and scheduling, with maximum improvements of 21.8%, 40.3% and 22.1% and average improvements of 15.9%, 16.9% and 4.2% for LMM (a real R application) and synthetic test cases with independent and dependent tasks, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Machine learning",
+                "Runtime",
+                "Application software",
+                "Predictive models",
+                "Testing",
+                "Parallel programming",
+                "Hardware",
+                "Load management",
+                "Scheduling algorithm",
+                "Costs"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Task Scheduling",
+                "Linear Mixed-effects Models",
+                "Real-world Applications",
+                "Load Balancing",
+                "Scheduling Algorithm",
+                "Low Overhead",
+                "Online Task",
+                "Independent Tasks",
+                "Synthetic Test",
+                "Task Cost",
+                "Training Data",
+                "Artificial Neural Network",
+                "Online Training",
+                "Directed Acyclic Graph",
+                "Communication Cost",
+                "Parallel Data",
+                "Benchmark Test",
+                "Perfect Prediction",
+                "Loop Iteration",
+                "Online Prediction",
+                "Function Calls",
+                "Dynamic Scheduling",
+                "Number Of Processors",
+                "Parallel Applications",
+                "Job Scheduling",
+                "Sliding Window Size",
+                "Static Algorithm",
+                "Scripting Language",
+                "Internal Library"
+            ],
+            "Author Keywords": [
+                "Performance Prediction",
+                "Artificial Neural Networks",
+                "Automatic Task Scheduling",
+                "Scripting Languages"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -418,7 +830,53 @@
                 "firstName": "Aleksandar",
                 "lastName": "Milenkovic"
             }
-        ]
+        ],
+        "abstract": "Insights into branch predictor organization and operation can be used in architecture-aware compiler optimizations to improve program performance. Unfortunately, such details are rarely publicly disclosed. In this paper we introduce a set of experiment flows and corresponding microbenchmarks for reverse engineering cache-like branch target and outcome predictor structures, indexed by branch address or program path information. The experiment flows are demonstrated on the Intel Pentium M branch predictor. We have been able to determine the size, organization, internal operation, and interactions between various hardware structures used in the Pentium M branch predictor, namely the branch target buffer, indirect branch target buffer, loop branch predictor buffer, global predictor, and bimodal predictor. These findings have been validated using a functional PIN model.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Reverse engineering",
+                "History",
+                "Microprocessors",
+                "Hardware",
+                "Interference",
+                "Program processors",
+                "Optimizing compilers",
+                "Pipelines",
+                "Clocks",
+                "Hazards"
+            ],
+            "Index Terms": [
+                "Reverse Engineering",
+                "Benchmark Test",
+                "Misprediction",
+                "Prediction Results",
+                "Indirect Targets",
+                "Internal Operations",
+                "Global Prediction",
+                "Path Information",
+                "Hardware Structure",
+                "Number Of Tests",
+                "Correct Predictions",
+                "Hash Function",
+                "Absence Of Structure",
+                "Local History",
+                "Flow Experiments",
+                "Incorrect Predictions",
+                "Single Entry",
+                "Exact Type",
+                "Allocation Policy",
+                "Training Policy",
+                "Conditional Branches",
+                "Replacement Policy",
+                "Policy Update",
+                "Pentium IV",
+                "Binary Index",
+                "Types Of Branches",
+                "Optimal Code",
+                "Real Machine",
+                "Design Space Exploration"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -465,7 +923,48 @@
                 "firstName": "Tin-Fook",
                 "lastName": "Ngai"
             }
-        ]
+        ],
+        "abstract": "The computer industry has adopted multi-threaded and multi-core architectures as the clock rate increase stalled in early 2000's. It was hoped that the continuous improvement of single-program performance could be achieved through these architectures. However, traditional parallelizing compilers often fail to effectively parallelize general-purpose applications which typically have complex control flow and excessive pointer usage. Recently hardware techniques such as Transactional Memory (TM) and Thread-Level Speculation (TLS) have been proposed to simplify the task of parallelization by using speculative threads. Potential of speculative parallelism in general-purpose applications like SPEC CPU 2000 have been well studied and shown to be moderately successful. Preliminary work examining the potential parallelism in SPEC2006 deployed parallel threads with a restrictive TLS execution model and limited compiler support, and thus only showed limited performance potential. In this paper, we first analyze the cross-iteration dependence behavior of SPEC 2006 benchmarks and show that more parallelism potential is available in SPEC 2006 benchmarks, comparing to SPEC2000. We further use a state-of-the-art profile-driven TLS compiler to identify loops that can be speculatively parallelized. Overall, we found that with optimal loop selection we can potentially achieve an average speedup of 60% on four cores over what could be achieved by a traditional parallelizing compiler such as Intel's ICC compiler.We also found that an additional 11% improvement can be potentially obtained on selected benchmarks using 8 cores when we extend TLS on multiple loop levels as opposed to restricting to a single loop level.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Parallel processing",
+                "Computer architecture",
+                "Yarn",
+                "Computer industry",
+                "Clocks",
+                "Continuous improvement",
+                "Application software",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Parallelization",
+                "Single Level",
+                "Multi-core",
+                "Information Technology Industry",
+                "Model Execution",
+                "Parallel Threads",
+                "Loop Level",
+                "Synchronization",
+                "High Coverage",
+                "Tree Nodes",
+                "Outer Loop",
+                "Local Memory",
+                "Profile Information",
+                "Loop Iteration",
+                "Critical Path",
+                "Consecutive Iterations",
+                "Iteration Count",
+                "Ambiguous Data",
+                "Parallel Execution",
+                "Parallel Loops",
+                "Set Of Loops",
+                "Hardware Support",
+                "Sequential Execution",
+                "Cache Misses",
+                "Compile Time"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -512,7 +1011,54 @@
                 "firstName": "Robert",
                 "lastName": "Dick"
             }
-        ]
+        ],
+        "abstract": "We describe and evaluate two new, independently-applicable power reduction techniques for power management on processors that support dynamic voltage and frequency scaling (DVFS): user-driven frequency scaling (UDFS) and process-driven voltage scaling (PDVS). In PDVS, a CPU-customized profile is derived offline that encodes the minimum voltage needed to achieve stability at each combination of CPU frequency and temperature. On a typical processor, PDVS reduces the voltage below the worst-case minimum operating voltages given in datasheets. UDFS, on the other hand, dynamically adapts CPU frequency to the individual user and the workload through direct user feedback. Our UDFS algorithms dramatically reduce typical operating frequencies and voltages while maintaining performance at a satisfactory level for each user. We evaluate our techniques independently and together through user studies conducted on a Pentium M laptop running Windows applications. We measure the overall system power and temperature reduction achieved by our methods. Combining PDVS and the best UDFS scheme reduces measured system power by 49.9% (27.8% PDVS, 22.1% UDFS), averaged across all our users and applications, compared to Windows XP DVFS. The average temperature of the CPU is decreased by 13.2degC. User trace-driven simulation to evaluate the CPU only indicates average CPU dynamic power savings of 57.3% (32.4% PDVS, 24.9% UDFS), with a maximum reduction of 83.4%. In a multitasking environment, the same UDFS+PDVS technique reduces the CPU dynamic power by 75.7% on average.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Dynamic voltage scaling",
+                "Frequency",
+                "Temperature",
+                "Energy management",
+                "Feedback",
+                "Stability",
+                "Power measurement",
+                "Kernel",
+                "Manufacturing processes",
+                "Energy consumption"
+            ],
+            "Index Terms": [
+                "Frequency Scale",
+                "Dynamic Scaling",
+                "Dynamic Frequency",
+                "Dynamic Voltage",
+                "Voltage Scaling",
+                "Dynamic Voltage Scaling",
+                "Dynamic Frequency Scaling",
+                "Energy Conservation",
+                "User Study",
+                "Temperature Reduction",
+                "Operating Frequency",
+                "Individual Users",
+                "Open Voltage",
+                "Reduction In Power",
+                "Combination Of Temperature",
+                "Direct Feedback",
+                "User Feedback",
+                "Power Management",
+                "Minimum Voltage",
+                "Dynamic Power",
+                "Nominal Voltage",
+                "Highest Frequency",
+                "Power Consumption",
+                "Supply Voltage",
+                "Button Press",
+                "CPU Utilization",
+                "Advantage Of Variation",
+                "Mean Time To Failure",
+                "Maximum Temperature",
+                "Critical Path"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -571,7 +1117,45 @@
                 "firstName": "Srihari",
                 "lastName": "Makineni"
             }
-        ]
+        ],
+        "abstract": "CMPs have now become mainstream and are growing in complexity with more cores, several shared resources (cache, memory, etc) and the potential for additional heterogeneous elements. In order to manage these resources, it is becoming critical to optimize the interaction between the execution environment (operating systems, virtual machine monitors, etc) and the CMP platform. Performance analysis of such OS and CMP interactions is challenging because it requires long running full-system execution-driven simulations. In this paper, we explore an alternative approach (CMPSched$im) to evaluate the interaction of OS and CMP architectures. In particular, CMPSched$im is focused on evaluating techniques to address the shared cache management problem through better interaction between CMP hardware and operating system scheduling. CMPSched$im enables fast and flexible exploration of this interaction by combining the benefits of (a) binary instrumentation tools (Pin), (b) user-level scheduling tools (Linsched) and (c) simple core/cache simulators. In this paper, we describe CMPSched$im in detail and present case studies showing how CMPSched$im can be used to optimize OS scheduling by taking advantage of novel shared cache monitoring capabilities in the hardware. We also describe OS scheduling heuristics to improve overall system performance through resource monitoring and application classification to achieve near optimal scheduling that minimizes the effects of contention in the shared cache of a CMP platform.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimal scheduling",
+                "Operating systems",
+                "Hardware",
+                "Monitoring",
+                "Environmental management",
+                "Resource management",
+                "Virtual machine monitors",
+                "Performance analysis",
+                "Analytical models",
+                "Instruments"
+            ],
+            "Index Terms": [
+                "Data Cache",
+                "Operating System",
+                "System Performance",
+                "Shared Resource",
+                "Optimal Schedule",
+                "Synchronization",
+                "Running",
+                "Service Quality",
+                "Resource Management",
+                "Global Optimization",
+                "Local Optimum",
+                "Worst-case Scenario",
+                "Huge Variety",
+                "Performance Loss",
+                "Usage In Applications",
+                "Hardware Architecture",
+                "Information Capacity",
+                "Scheduling Decisions",
+                "Scheduling Period",
+                "Application Running",
+                "Cache Misses"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -606,7 +1190,54 @@
                 "firstName": "Sangyeun",
                 "lastName": "Cho"
             }
-        ]
+        ],
+        "abstract": "Trace-driven simulation of superscalar processors is particularly complicated. The dynamic nature of superscalar processors combined with the static nature of traces can lead to large inaccuracies in the results, especially when traces contain only a subset of executed instructions for trace reduction. The main problem in the filtered trace simulation is that the trace does not contain enough information with which one can predict the actual penalty of a cache miss. In this paper, we discuss and evaluate three strategies to quantify the impact of a long latency memory access in a superscalar processor when traces have only L1 cache misses. The strategies are based on models about how a cache miss is treated with respect to other cache misses: (1) isolated cache miss model, (2) independent cache miss model, and (3) pairwise dependent cache miss model. Our experimental results demonstrate that the pairwise dependent cache miss model produces reasonably accurate results (4.8% RMS error) under perfect branch prediction. Our work forms a basis for fast, accurate, and configurable multicore processor simulation using a pre-determined processor core design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Delay",
+                "Computer simulation",
+                "Predictive models",
+                "Computer science",
+                "Information filtering",
+                "Information filters",
+                "Multicore processing",
+                "Process design",
+                "Computer errors"
+            ],
+            "Index Terms": [
+                "Long Memory",
+                "Simulation Accuracy",
+                "Core Processes",
+                "Impact Of Access",
+                "Execution Of Operations",
+                "Fast Simulation",
+                "L2 Cache",
+                "Cache Misses",
+                "Simulation Time",
+                "Fast Speed",
+                "Simulation Method",
+                "Relative Performance",
+                "Time Information",
+                "Machine Model",
+                "Benchmark Test",
+                "Early Design Stages",
+                "Remote Memory",
+                "Simulation Speed",
+                "Data Cache",
+                "Trace Files",
+                "Network-on-chip",
+                "Cache Hit",
+                "Machine Configuration",
+                "Running Program",
+                "Access Latency",
+                "Cache Size",
+                "Baseline Configuration",
+                "Multiple Traces",
+                "Program Execution",
+                "Optimism"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -641,7 +1272,46 @@
                 "firstName": "Ali-Reza",
                 "lastName": "Adl-Tabatabai"
             }
-        ]
+        ],
+        "abstract": "An analytic model is proposed to assess the performance of optimistic software transactional memory (STM) systems with in-place memory updates for write operations. Based on an absorbing discrete-time Markov chain, closed-form analytic expressions are developed, which are quickly solved iteratively to determine key parameters of the STM system. The model covers complex implementation details such as read/write locking, data consistency checks and conflict management. It provides fundamental insight into the system behavior, when we vary input parameters like number and size of concurrent transactions or the number of the data objects. Numerical results are validated by comparison with a discrete-event simulation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance analysis",
+                "Software performance",
+                "Programming profession",
+                "Microprocessors",
+                "Concurrent computing",
+                "Hardware",
+                "Space exploration",
+                "Transaction databases",
+                "Computer science",
+                "Power system management"
+            ],
+            "Index Terms": [
+                "Input Parameters",
+                "Objective Data",
+                "Memory System",
+                "Conflict Management",
+                "Consistency Checks",
+                "Discrete Event Simulation",
+                "Discrete-time Markov Chain",
+                "Transaction Size",
+                "Performance Measures",
+                "Simulation Model",
+                "Complex Behavior",
+                "Transition Probabilities",
+                "Concentration Conditions",
+                "Static Performance",
+                "Work Unit",
+                "Local Memory",
+                "Arbitrary Time",
+                "Transaction Data",
+                "Read Operation",
+                "Successful Reading",
+                "Transaction Records",
+                "Single Transaction"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -688,7 +1358,53 @@
                 "firstName": "Alok",
                 "lastName": "Choudhary"
             }
-        ]
+        ],
+        "abstract": "It is known that the execution of programs exhibits repetitive phases; in other words, the execution of programs can be partitioned into segments of execution, during which the application exhibits unique architectural properties. This property has been used for various optimization goals. In addition, phase information is utilized to reduce the run time of the architectural simulation. Conventionally, an application is examined in an architecture-independent manner (such as the number of times a basic block is executed) to extract information about the phases and then only the representative execution intervals are executed to analyze architectural choices. We claim that such approaches are becoming inadequate in the many-core era as application execution is not dominated by the instructions only, but instead the communication structure of the application is becoming as important as the instruction behavior. Hence, we propose to utilize communication behavior to determine the phases of an application. Our results reveal that the inclusion of the communication information can increase the accuracy of the phase detection significantly. Specifically, for SPLASH2 and Mine-Bench applications, the average (geometric mean) CPI error rate with the instruction-based phase detection is 11.01%, while our phase detection scheme has an average error rate of 3.41% when compared to the simulations that run the applications to completion.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Network-on-a-chip",
+                "Telecommunication traffic",
+                "Phase detection",
+                "Error analysis",
+                "Data mining",
+                "Information analysis",
+                "Solid modeling",
+                "Frequency",
+                "Manufacturing",
+                "Degradation"
+            ],
+            "Index Terms": [
+                "Network-on-chip",
+                "Error Rate",
+                "Geometric Mean",
+                "Simulation Time",
+                "Average Error",
+                "Phase Information",
+                "Communication Behaviors",
+                "Program Execution",
+                "Average Error Rate",
+                "Clustering Algorithm",
+                "Parallelization",
+                "Phase Analysis",
+                "Combination Of Techniques",
+                "Interconnected Network",
+                "Phase Behavior",
+                "Network Configuration",
+                "Limited Bandwidth",
+                "Phase Identification",
+                "Mesh Network",
+                "Target Application",
+                "One-dimensional Array",
+                "Ideal Network",
+                "Profile Information",
+                "Count Vector",
+                "L2 Cache",
+                "Upper Triangular",
+                "Frequency Vector",
+                "Application Behavior",
+                "Sum Of Elements"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -729,7 +1445,53 @@
                 "firstName": null,
                 "lastName": "Kazuaki Ishizaki"
             }
-        ]
+        ],
+        "abstract": "Advances in network performance and browser technologies, coupled with the ubiquity of internet access and proliferation of users, have lead to the emergence of a new class of web applications, called Web 2.0. Web 2.0 technologies enable easy collaboration and sharing by allowing users to contribute, modify, and aggregate content using applications like Wikis, Blogs, Social Networking communities, and Mashups. Web 2.0 applications also make heavy use of Ajax, which allows asynchronous communication between client and server, to provide a richer user experience. In this paper, we analyze the effect of these new features on the infrastructure that hosts these workloads. In particular, we focus on the data-centricity, inherent in many Web 2.0 applications, and study its impact on the persistence layer in an application server context. Our experimental results reveal some important performance characteristics; we show that frequent Ajax requests, and other requests arising from the participatory nature of Web 2.0, often retrieve and update persistent data. This can lead to frequent database accesses, lock contention, and reduced performance. We also show that problems in the persistence layer, arising from the data-intensive nature of Web 2.0 applications, can lead to poor scalability that can inhibit us from exploiting current and future multicore architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Network servers",
+                "Web server",
+                "IP networks",
+                "Collaborative work",
+                "Aggregates",
+                "Blogs",
+                "Social network services",
+                "Mashups",
+                "Asynchronous communication",
+                "Information retrieval"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Multi-core",
+                "Web Application",
+                "Access Database",
+                "Application Server",
+                "Frequent Access",
+                "Asynchronous Communication",
+                "Aggregate Content",
+                "Operating System",
+                "Path Length",
+                "Serial Sections",
+                "Research Database",
+                "User-generated Content",
+                "File System",
+                "Caching",
+                "Geocoding",
+                "Database Server",
+                "Internet Applications",
+                "Data Cache",
+                "Pet Store",
+                "Client Requests",
+                "Multiple Requests",
+                "SQL Queries",
+                "JavaScript Object Notation",
+                "L2 Cache",
+                "Types Of Transactions",
+                "Critical Section",
+                "HTML Page",
+                "Throughput"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -764,7 +1526,47 @@
                 "firstName": "Evelyn",
                 "lastName": "Duesterwald"
             }
-        ]
+        ],
+        "abstract": "Multicore systems increase the complexity of performance analysis by introducing a new source of additional costs: thread migration between cores. This paper explores the cost of thread migration for Java applications. We first present a detailed analysis of the sources of migration overhead and show that they result from a combination of several factors including application behavior (working set size), OS behavior (migration frequency) and hardware characteristics (nonuniform cache sharing among cores). We also present a performance characterization of several multi-threaded Java applications. Surprisingly, our analysis shows that, although significant migration penalizes can be produced in controlled environments, the set of Java applications that we examined do not suffer noticeably from migration overhead when run in a realistic operating environment on an actual multicore platform.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Yarn",
+                "Java",
+                "Multicore processing",
+                "Performance analysis",
+                "Frequency",
+                "Hardware",
+                "Load management",
+                "Operating systems"
+            ],
+            "Index Terms": [
+                "Migration Cost",
+                "Java Application",
+                "Application Running",
+                "Multicore Platforms",
+                "Thread Migration",
+                "Work Settings",
+                "Combination Of Several Factors",
+                "Array Data",
+                "Domain Boundaries",
+                "Application In Settings",
+                "Number Of Migrants",
+                "Array Size",
+                "Migration Path",
+                "Application Of This Work",
+                "Migration Decisions",
+                "Data Cache",
+                "Performance Overhead",
+                "Cache Size",
+                "L2 Cache",
+                "Cache Misses",
+                "Synthetic Benchmark",
+                "Bytes Of Data",
+                "Memory Hierarchy",
+                "Small Set Size"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -793,7 +1595,53 @@
                 "firstName": "Craig",
                 "lastName": "Zilles"
             }
-        ]
+        ],
+        "abstract": "In this work, we analyze the memory-intensive bioinformatics problem of ldquode novordquo DNA sequence assembly, which is the process of assembling short DNA sequences obtained by experiment into larger contiguous sequences. In particular, we analyze the performance scaling challenges inherent to de Bruijn graph-based assembly, which is particularly well suited for the data produced by ldquonext generationrdquo sequencing machines. Unlike many bioinformatics codes which are computation-intensive or control-intensive, we find the memory footprint to be the primary performance issue for de novo sequence assembly. Specifically, we make four main contributions: 1) we demonstrate analytically that performing error correction before sequence assembly enables larger genomes to be assembled in a given amount of memory, 2) we identify that the use of this technique provides the key performance advantage to the leading assembly code, Velvet, 3) we demonstrate how this pre-assembly error correction technique can be subdivided into multiple passes to enable de Bruijn graph-based assembly to scale to even larger genomes, and 4) we demonstrate how Velvet's in-core performance can be improved using memory-centric optimizations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "DNA",
+                "Sequences",
+                "Assembly",
+                "Bioinformatics",
+                "Genomics",
+                "Performance analysis",
+                "Error correction codes",
+                "Computer science",
+                "Costs",
+                "Error analysis"
+            ],
+            "Index Terms": [
+                "Short Sequences",
+                "Sequence Assembly",
+                "De Novo",
+                "Memory Footprint",
+                "Short DNA Sequences",
+                "DNA Sequence Assembly",
+                "Large Genome",
+                "Amount Of Memory",
+                "Contiguous Sequences",
+                "Original Sequence",
+                "Subsequent Phase",
+                "Nodes In The Graph",
+                "Hash Function",
+                "Large Sequence",
+                "Whole Genome Shotgun",
+                "Linear Graph",
+                "Erroneous Data",
+                "De Bruijn Graph",
+                "Assembly Algorithms",
+                "Number Of K-mers",
+                "Cache Misses",
+                "Intel Core 2",
+                "Physical Memory",
+                "Peak Memory",
+                "Virtual Memory",
+                "Assembly Problem",
+                "Hamiltonian Path",
+                "Performance Penalty",
+                "K-mer Size"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -828,7 +1676,43 @@
                 "firstName": "Derek",
                 "lastName": "Chiou"
             }
-        ]
+        ],
+        "abstract": "In this paper, we introduce the concept of full-system complete-and-rollback functional simulators that make efficient functional models in functional/timing partitioned simulators. Complete-and-rollback functional simulators can efficiently drive simulators of resolutions ranging from functional-only to cycle-accurate for a wide range of simulated machines. Complete-and-rollback functional models achieve their capabilities by executing instructions to completion, enabling their execution to be highly optimized, but providing rollback capabilities to enable on-the-fly modifications to the functional execution. We also introduce QUICK, an implementation of a full-system complete-and-rollback functional model that supports the x86 and PowerPC ISAs, boots unmodified Windows XP and Linux, and runs unmodified applications such as YouTube on Internet Explorer while fully supporting rollbacks, including across I/O operations. We present various case studies using QUICK and conduct performance analyses to demonstrate its simulation performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Timing",
+                "Instruction sets",
+                "Computational modeling",
+                "Microarchitecture",
+                "Performance analysis",
+                "Algorithms",
+                "Linux",
+                "Analytical models",
+                "Costs",
+                "Computer aided manufacturing"
+            ],
+            "Index Terms": [
+                "Simulation Performance",
+                "Rollback",
+                "Execution Of Operations",
+                "Windows XP",
+                "Internet Explorer",
+                "Operating System",
+                "End Of The Spectrum",
+                "Microarchitecture",
+                "Additional Education",
+                "User Access",
+                "Device Model",
+                "Real Devices",
+                "Original Path",
+                "Misprediction",
+                "Correct Path",
+                "Physical Address",
+                "Checkpointing",
+                "L2 Cache",
+                "Cache Misses"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -851,7 +1735,43 @@
                 "firstName": "Pierre",
                 "lastName": "Michaud"
             }
-        ]
+        ],
+        "abstract": "Trace-driven simulation is potentially much faster than cycle-accurate simulation. However, one drawback is the large amount of storage that may be necessary to store traces. Trace compression techniques are useful for decreasing the storage space requirement. But the compression ratio of existing trace compressors is limited because they implement lossless compression. We propose two new methods for compressing cache filtered address traces. The first method, byte sort, is a lossless compression method that achieves high compression ratios on cache-filtered address traces. The second method is a lossy one, based on the concept of phase. We have combined these two methods in a trace compressor called ATC. Our experimental results show that ATC gives high compression ratio while keeping the memory-locality characteristics of the original trace.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Compressors",
+                "Computational modeling",
+                "Multicore processing",
+                "Space exploration",
+                "Microscopy",
+                "Microarchitecture",
+                "Filtering",
+                "Computer architecture",
+                "Computer simulation",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Storage Space",
+                "Compressor",
+                "Compression Ratio",
+                "Compression Method",
+                "Lossless Compression",
+                "Original Trace",
+                "High Compression Ratio",
+                "Histogram",
+                "Interval Length",
+                "Buffer Size",
+                "Disc Space",
+                "Reversible Transformation",
+                "Sorting Method",
+                "Subsequent Intervals",
+                "Lossy Compression",
+                "Trace Length",
+                "Cache Misses",
+                "Application Behavior",
+                "Replacement Policy"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -880,7 +1800,53 @@
                 "firstName": "Trevor",
                 "lastName": "Mudge"
             }
-        ]
+        ],
+        "abstract": "This paper introduces a methodology to reduce the overall simulation time of large benchmarking suites. Previous work shows that it is possible to simulate only small sections of a benchmark's dynamic instruction stream in detail without sacrificing accuracy in simulation results with respect to overall behavior. As benchmarking suites increase in size, many such techniques still require a great deal of simulation time to complete. The methods presented in this paper build on this previous work by converting representative sections of a benchmark's execution into intrinsically checkpointed assembly (ITCY) code that can serve as a replacement for the original benchmark. In addition, a methodology is proposed that creates new benchmark binaries that no longer need input files or system calls in order to execute properly. Simulations of the new benchmarks are much faster, require less overhead, and still properly represent the original benchmark's execution profile. Results show that benchmarks created using these techniques can be very portable and accurately predict the performance of the original benchmark. An average error rate of less than 5% is achieved when compared to the original representative sections. In addition, a speedup of approximately 60times per benchmark is achieved over a standard set of SimPoints when the new benchmarks are executed serially and 1000times when executed in parallel. This translates into a reduction in simulation time from months to minutes and greatly decreases the amount of time necessary to test a new design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Assembly",
+                "Checkpointing",
+                "Computational modeling",
+                "Benchmark testing",
+                "Sampling methods",
+                "Microarchitecture",
+                "Computer science",
+                "Computer simulation",
+                "Error analysis",
+                "Microprocessors"
+            ],
+            "Index Terms": [
+                "Benchmark Test",
+                "Simulation Time",
+                "Great Deal Of Time",
+                "System Calls",
+                "Longer Need",
+                "Large Benchmark",
+                "Predictive Performance",
+                "Detailed Simulation",
+                "Microarchitecture",
+                "File Size",
+                "Interval Size",
+                "Performance Benchmarks",
+                "Local Memory",
+                "Memory Space",
+                "Code Generation",
+                "Code Blocks",
+                "Proper Execution",
+                "Misprediction",
+                "Simulation Interval",
+                "Checkpointing",
+                "Benchmark Suite",
+                "Start Of Interval",
+                "Technique In This Paper",
+                "Real Hardware",
+                "Address Space",
+                "PC Values",
+                "Multiple Intervals",
+                "System State",
+                "Original Target"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -921,7 +1887,48 @@
                 "firstName": "Nacho",
                 "lastName": "Navarro"
             }
-        ]
+        ],
+        "abstract": "The cell broadband engine architecture (CBEA) is an heterogeneous multiprocessor architecture developed by Sony, Toshiba and IBM. The major implementation of this architecture is the cell broadband engine (cell for short), a processor that contains one generic PowerPC core and eight accelerators. The cell is targeted at high-performance computing systems and consumer-level devices that have high computational requirements. The workloads for the former are generally run in a queue-based environment while those for the latter are multiprogrammed. Applications for the cell are composed of multiple parallel tasks: one runs on the PowerPC core and one or more run on the accelerators. The operating system (OS) is in charge of scheduling these tasks on top of the physical processors, and such scheduling decisions become critical in multiprogrammed environments. System developers need a way to analyze how user applications behave in these conditions to be able to tune the OS internal algorithms. This article presents Cetra, a new tool-set that allows system developers to study how cell workloads interact with Linux, the OS kernel. First, we outline the major features of Cetra and provide a detailed description of its internals. Then, we demonstrate the usefulness of Cetra by presenting a case study that shows the features of the tool-set and allows us to compare the results to those provided by other performance analysis tools available in the market. At last, we describe another case study in which we discovered a scheduling starvation bug using Cetra.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Engines",
+                "Computer architecture",
+                "Linux",
+                "Operating systems",
+                "Processor scheduling",
+                "Kernel",
+                "Performance analysis",
+                "Contracts",
+                "Gas insulated transmission lines",
+                "Electronic mail"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Scheduling Decisions",
+                "Kernel Images",
+                "Running",
+                "Changes In Conditions",
+                "Amount Of Time",
+                "Instrumentation",
+                "Running Time",
+                "Kind Of Information",
+                "Spawning",
+                "Waiting Time",
+                "State Machine",
+                "Scheduling Algorithm",
+                "Switching Costs",
+                "Task Scheduling",
+                "Raw Traces",
+                "Performance Bottleneck",
+                "System Calls",
+                "Message Passing Interface",
+                "Context Switching",
+                "Application Execution",
+                "Zoom Level",
+                "Queuing Time",
+                "State Tracking"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -956,7 +1963,47 @@
                 "firstName": "Stephen W.",
                 "lastName": "Keckler"
             }
-        ]
+        ],
+        "abstract": "This paper analyzes the performance of the TRIPS prototype chip's block predictor. The prototype is the first implementation of the block-atomic TRIPS architecture, wherein the unit of execution is a TRIPS hyperblock. The TRIPS prototype predictor uses a two-step prediction process: it first predicts the exit from the current hyperblock and uses the predicted exit in conjunction with the current hyperblock's address to predict the next hyperblock. SPECint2000 and SPECfp2000 benchmarks record average misprediction rates of 11.5% and 4.3%, respectively, on the prototype chip. Simulation-driven analysis identifies short history lengths, inadequate offset bits in the branch target buffers, and aliasing in the exit and target predictors as the main reasons for the predictor inefficiency. If the above issues are addressed, block misprediction rates can be reduced by 15% for SPECint2000 and 22% for SPECfp2000. Using a perceptron-based analysis, we show that there is significant loss in correlation in our current hyperblocks. We conclude that while carefully tuned block predictors can achieve relatively lower misprediction rates, new predictor designs and correlation-aware hyperblock formation are necessary to bridge the gap between block prediction accuracies and branch prediction accuracies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Prototypes",
+                "Accuracy",
+                "Performance analysis",
+                "Costs",
+                "Wire",
+                "Delay",
+                "Computer architecture",
+                "Analytical models",
+                "Predictive models",
+                "History"
+            ],
+            "Index Terms": [
+                "Prototype",
+                "Benchmark",
+                "Short History",
+                "Loss Of Correlation",
+                "Current Address",
+                "Misprediction",
+                "History Length",
+                "Target Sequence",
+                "Target Prediction",
+                "Simple Design",
+                "Tournament",
+                "Localization Prediction",
+                "Local History",
+                "Local Components",
+                "Instruction Set Architecture",
+                "Global Prediction",
+                "Distributed Architecture",
+                "Global Component",
+                "Block Construction",
+                "Types Of Branches",
+                "Design Space Exploration",
+                "Area Constraints",
+                "Indirect Predictor"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -985,7 +2032,54 @@
                 "firstName": "Jason",
                 "lastName": "Nieh"
             }
-        ]
+        ],
+        "abstract": "Developing CPU scheduling algorithms and understanding their impact in practice can be difficult and time consuming due to the need to modify and test operating system kernel code and measure the resulting performance on a consistent workload of real applications. To address this problem, we have developed WARP, a trace-driven virtualized scheduler execution environment that can dramatically simplify and speed the development of CPU schedulers. WARP is easy to use as it can run unmodified kernel scheduling code and can be used with standard user-space debugging and performance monitoring tools. It accomplishes this by virtualizing operating system and hardware events to decouple kernel scheduling code from its native operating system and hardware environment. A simple kernel tracing toolkit can be used with WARP to capture traces of all CPU scheduling related events from a real system. WARP can then replay these traces in its virtualized environment with the same timing characteristics as in the real system. Traces can be used with different schedulers to provide accurate comparisons of scheduling performance for a given application workload. We have implemented a WARP Linux prototype. Our results show that WARP can use application traces captured from its toolkit to accurately reflect the scheduling behavior of the real Linux operating system. Furthermore, testing scheduler behavior using WARP with application traces can be two orders of magnitude faster than running the applications using Linux.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Operating systems",
+                "Kernel",
+                "Linux",
+                "Hardware",
+                "Scheduling algorithm",
+                "System testing",
+                "Code standards",
+                "Debugging",
+                "Monitoring",
+                "Timing"
+            ],
+            "Index Terms": [
+                "Short-term Scheduling",
+                "Virtually",
+                "Operating System",
+                "Real Applications",
+                "Debugging",
+                "Scheduling Algorithm",
+                "Execution Environment",
+                "Kernel Images",
+                "Running",
+                "Amount Of Time",
+                "Process Model",
+                "Timing Of Events",
+                "Information Model",
+                "CPU Time",
+                "Fraction Of Time",
+                "Vertical Bars",
+                "Virtual Machines",
+                "Space Usage",
+                "Time Warping",
+                "Wall-clock Time",
+                "Scheduled Events",
+                "Linux Kernel",
+                "Scheduling Decisions",
+                "Trace Files",
+                "Number Of CPUs",
+                "Application Execution",
+                "Resource Contention",
+                "Memory Management",
+                "System Response Time",
+                "Hardware Configuration"
+            ]
+        }
     },
     {
         "publicationNumber": "4907867",
@@ -1001,7 +2095,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2009 IEEE International Symposium on Performance Analysis of Systems and Software",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4907867",
@@ -1017,7 +2113,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2009 IEEE International Symposium on Performance Analysis of Systems and Software",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4907867",
@@ -1033,7 +2131,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2009 IEEE International Symposium on Performance Analysis of Systems and Software",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: differentiating the roles of IR measurement and simulation for power and temperature-aware design; user- and process-driven dynamic voltage and frequency scaling; accuracy of performance counter measurements; GARNET: a detailed on-chip network model inside a full-system simulator; Cetra: a trace and analysis framework for the evaluation of Cell BE; Zesto: a cycle-level simulator for highly detailed microarchitecture exploration; Lonestar: a suite of parallel irregular program; exploring speculative parallelism in SPEC2006; machine learning based online performance prediction for runtime parallelization and task scheduling; WARP: enabling fast CPU scheduler development and evaluation; CMPSchedSim: evaluating OS/CMP interaction on shared cache management; understanding the cost of thread migration for multi-threaded Java applications running on a multicore platform; the data-centricity of Web 2.0 workloads and its impact on server performance; characterizing and optimizing the memory footprint of De Novo Short Read DNA sequence assembly; analytic model of optimistic software transactional memory; analyzing CUDA workloads using a detailed GPU simulator; evaluating GPUs for network packet signature matching; online compression of cache-filtered address traces; analysis of the TRIPS prototype block predictor; experiment flows and microbenchmarks for reverse engineering of branch predictor structures; analyzing the impact of on-chip network traffic on program phases for CMPs; SuiteSpecks and SuiteSpots: a methodology for the automatic conversion of benchmarking programs into intrinsically checkpointed assembly code; accurately approximating superscalar processor performance from traces; and QUICK: a flexible full-system functional model.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4907867",
@@ -1049,7 +2149,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2009 IEEE International Symposium on Performance Analysis of Systems and Software",
-        "authors": []
+        "authors": [],
+        "abstract": "The author index contains an entry for each author and coauthor included in the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4907867",
@@ -1065,7 +2167,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2009 IEEE International Symposium on Performance Analysis of Systems and Software",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference offers a note of thanks and lists its reviewers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4907867",
@@ -1081,7 +2185,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2009 IEEE International Symposium on Performance Analysis of Systems and Software",
-        "authors": []
+        "authors": [],
+        "abstract": "This page or pages intentionally left blank.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4907867",
@@ -1097,7 +2203,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2009 IEEE International Symposium on Performance Analysis of Systems and Software",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "4907867",
@@ -1113,6 +2221,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2009 IEEE International Symposium on Performance Analysis of Systems and Software",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents of the proceedings.",
+        "keywords": {}
     }
 ]

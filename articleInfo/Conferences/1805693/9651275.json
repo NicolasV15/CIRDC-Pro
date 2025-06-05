@@ -5,7 +5,7 @@
         "publicationYear": "2021",
         "publicationDate": "14-14 Nov. 2021",
         "articleNumber": "9651301",
-        "articleTitle": "Extending LLVM IR for DPC++ Matrix Support: A Case Study with Intel\u00ae Advanced Matrix Extensions (Intel\u00ae AMX)",
+        "articleTitle": "Extending LLVM IR for DPC++ Matrix Support: A Case Study with Intel® Advanced Matrix Extensions (Intel® AMX)",
         "volume": null,
         "issue": null,
         "startPage": "20",
@@ -50,7 +50,33 @@
                 "firstName": "Milind",
                 "lastName": "Girkar"
             }
-        ]
+        ],
+        "abstract": "In this paper, we introduce a DPC++ matrix extension to unify different tensor hardware: Intel<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">®</sup> Advanced Matrix Extensions (Intel<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">®</sup> AMX) to CPUs, NVIDIA<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">®</sup> TPUs, IBM<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">®</sup> POWER<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">®</sup> MMA, etc. These tensor hardware units are usually accessed by low-level intrinsics or assembly to perform matrix operations. It is hard for scientists to program these domain- specific devices without the kind of high-level abstractions and efficient implementations we introduce here.We also extend the existing LLVM matrix intrinsics to represent this DPC++ extension and yield efficient Intel AMX code generation. Based on our case study of implementing this interface on Intel AMX hardware, we discuss some of the limitations of existing LLVM Intermediate Representation (IR) and how they can be overcome to exploit tensor hardware.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Tensors",
+                "Codes",
+                "Conferences",
+                "Layout",
+                "Transforms",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "LLVM Intermediate Representation",
+                "Projection Matrix",
+                "Specific Device",
+                "Code Generation",
+                "Column Vector",
+                "Matrix Multiplication",
+                "Function Matrix",
+                "Type Of Matrix",
+                "Group Of Items",
+                "Parallel Data",
+                "Back End",
+                "Additional Argument"
+            ]
+        }
     },
     {
         "publicationNumber": "9651275",
@@ -97,7 +123,57 @@
                 "firstName": "Gokcen",
                 "lastName": "Kestor"
             }
-        ]
+        ],
+        "abstract": "Sparse tensor algebra is widely used in many applications, including scientific computing, machine learning, and data analytics. The performance of sparse tensor algebra kernels strongly depends on the intrinsic characteristics of the input tensors, hence many storage formats are designed for tensors to achieve optimal performance for particular applications/architectures, which makes it challenging to implement and optimize every tensor operation of interest on a given architecture. We propose a tensor algebra domain-specific language (DSL) and compiler framework to automatically generate kernels for mixed sparse-dense tensor algebra operations. The proposed DSL provides high-level programming abstractions that resemble the familiar Einstein notation to represent tensor algebra operations. The compiler introduces a new Sparse Tensor Algebra dialect built on top of LLVM’s extensible MLIR compiler infrastructure for efficient code generation while covering a wide range of tensor storage formats. Our compiler also leverages input-dependent code optimization to enhance data locality for better performance. Our results show that the performance of automatically generated kernels outperforms the state-of-the-art sparse tensor algebra compiler, with up to 20.92x, 6.39x, and 13.9x performance improvement over state-of-the-art tensor algebra compilers, for parallel SpMV, SpMM, and TTM, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tensors",
+                "Codes",
+                "Algebra",
+                "Scientific computing",
+                "Computer architecture",
+                "Machine learning",
+                "Programming"
+            ],
+            "Index Terms": [
+                "Sparse Tensor",
+                "Tensor Algebra",
+                "Machine Learning",
+                "Computer Science",
+                "Range Of Forms",
+                "Storage Form",
+                "Automatic Generation",
+                "Code Generation",
+                "Algebraic Operations",
+                "Coding Efficiency",
+                "Optimal Code",
+                "Input Tensor",
+                "Domain-specific Languages",
+                "Tensor Operations",
+                "Parallelization",
+                "Semantic Information",
+                "Sparse Data",
+                "Size Properties",
+                "Sparse Matrix",
+                "Sparse Format",
+                "Kernel Computation",
+                "Sequential Execution",
+                "Tensor Form",
+                "Dimensional Tensor",
+                "Specific Storage",
+                "Output Tensor",
+                "Parallel Execution",
+                "Compile Time",
+                "Nonzero Elements"
+            ],
+            "Author Keywords": [
+                "sparse computation",
+                "compiler",
+                "llvm",
+                "mlir",
+                "automatic code generation"
+            ]
+        }
     },
     {
         "publicationNumber": "9651275",
@@ -126,7 +202,40 @@
                 "firstName": "Jeffrey S.",
                 "lastName": "Vetter"
             }
-        ]
+        ],
+        "abstract": "OpenACC is a directive-based programming model for heterogeneous accelerators initially launched in 2010 to provide a portable solution at a level of abstraction above OpenCL, CUDA, and other lower-level programming models. Various implementations of OpenACC for C, C++, and Fortran exist; however, only one open-source, production implementation of OpenACC for Fortran does exist. Moreover, most contemporary compiler tool chains for heterogeneous computing are based on LLVM. This lack of support poses a serious risk for high-performance computing application developers targeting GPUs and other accelerators, and it limits the ability of the community to experiment with, extend, and contribute to the OpenACC specification and open-source implementation itself. To address this gap, we have designed and begun implementing Flacc: an effort funded by the US Exascale Computing Project to develop production OpenACC compiler support for Fortran based on Flang within the LLVM ecosystem. In this paper, we describe the Flacc goals, initial design and prototype, and challenges that we have encountered so far in our prototyping efforts. Flacc is implemented as a MLIR dialect in the Flang Fortran front end in LLVM. The Flacc front end currently supports OpenACC version 3.1, and the Flacc run time is currently under development and relies on contributions from the Clacc project. Current contributions to Flacc are available in the main ${\\color{Green}{\\mathbf{LLVM}}\\;{\\mathbf{repository}}}$.<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Exascale computing",
+                "Ecosystems",
+                "Semantics",
+                "Prototypes",
+                "Graphics processing units",
+                "Production"
+            ],
+            "Index Terms": [
+                "Running Time",
+                "Level Of Abstraction",
+                "Front End",
+                "Global Variables",
+                "Code Generation",
+                "Intermediate Representation",
+                "Reference Count",
+                "Definition File",
+                "Abstract Syntax Tree"
+            ],
+            "Author Keywords": [
+                "OpenACC",
+                "OpenMP",
+                "LLVM",
+                "MLIR",
+                "multicore",
+                "GPU",
+                "accelerators",
+                "compiler"
+            ]
+        }
     },
     {
         "publicationNumber": "9651275",
@@ -167,7 +276,58 @@
                 "firstName": "Ramakrishna",
                 "lastName": "Upadrasta"
             }
-        ]
+        ],
+        "abstract": "Data races, a major source of bugs in concurrent programs, can result in loss of manpower and time as well as data loss due to system failures. OpenMP, the de facto shared memory parallelism framework used in the HPC community, also suffers from data races. To detect race conditions in OpenMP programs and improve turnaround time and/or developer productivity, we present a data flow analysis based, fast, static data race checker in the LLVM compiler framework. Our tool can detect races in the presence or absence of explicit barriers, with implicit or explicit synchronization. In addition, our tool effectively works for the OpenMP target offloading constructs and also supports the frequently used OpenMP constructs.We formalize and provide a data flow analysis framework to perform Phase Interval Analysis (PIA) of OpenMP programs. Phase intervals are then used to compute the MHP (and its complement NHP) sets for the programs, which, in turn, are used to detect data races statically.We evaluate our work using multiple OpenMP race detection benchmarks and real world applications. Our experiments show that the checker is comparable to the state-of-the-art in various performance metrics with around 90% accuracy, almost perfect recall, and significantly lower runtime and memory footprint.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Measurement",
+                "Concurrent computing",
+                "Runtime",
+                "Program processors",
+                "Conferences",
+                "Computer bugs"
+            ],
+            "Index Terms": [
+                "Detection Conditions",
+                "Performance Metrics",
+                "Flow Data",
+                "Flow Analysis",
+                "Turnaround Time",
+                "High-performance Computing",
+                "Race Conditions",
+                "Phase Interval",
+                "False Positive",
+                "False Negative",
+                "Analysis Techniques",
+                "True Positive",
+                "Dynamic Analysis",
+                "Phase Change",
+                "F1 Score",
+                "Transfer Function",
+                "Parallelization",
+                "Root Node",
+                "Directed Graph",
+                "Static Analysis",
+                "Dynamic Tool",
+                "Static Techniques",
+                "Diagnostic Odds Ratio",
+                "Program Execution",
+                "Maximum Phase",
+                "Verification Phase",
+                "Array Size",
+                "Single Construct"
+            ],
+            "Author Keywords": [
+                "Data Races",
+                "OpenMP",
+                "Program Analysis",
+                "Static Analysis",
+                "MHP",
+                "Phase Interval Analysis",
+                "LLVM"
+            ]
+        }
     },
     {
         "publicationNumber": "9651275",
@@ -202,7 +362,52 @@
                 "firstName": "David",
                 "lastName": "Donofrio"
             }
-        ]
+        ],
+        "abstract": "The many nuances associated with hardware development have fostered a development environment exclusive to those possessing extensive knowledge on the low-level implementation details necessary for an effective design. Allowing users to focus on the design aspects specific to the domain they work in by abstracting the low-level implementation details could prove invaluable to their successThis work describes the StoneCutter infrastructure, along with its encompassing OpenSoC System Architect suite of tools, provide users with a high-level, C-like syntax for rapidly designing ISAs. The compiler is responsible for ingesting instruction definitions and generating optimized Chisel HDL output as well as target-specific LLVM-linked compiler capable of executing binaries on the prototype ISA. During the codegen phase, the necessary control signals are subsequently generated and then used to automatically pipeline the entire ISA based on the design’s I/O, arithmetic operations, and flow-control.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Conferences",
+                "Syntactics",
+                "Rapid prototyping",
+                "Hardware",
+                "Hardware design languages",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Pipelining",
+                "LLVM Pass",
+                "Control Signal",
+                "Arithmetic Operations",
+                "Metadata",
+                "Flow Control",
+                "Boolean Logic",
+                "Global Variables",
+                "Sparse Representation",
+                "Final Experiment",
+                "Stage In Order",
+                "Code Generation",
+                "Intermediate Representation",
+                "Instruction Set Architecture",
+                "Hardware Architecture",
+                "Load Operation",
+                "Read Operation",
+                "Memory Operations",
+                "Pipeline Stages",
+                "Weak Order",
+                "Series Of Optimizations",
+                "Pipeline Optimization",
+                "Memory Stage"
+            ],
+            "Author Keywords": [
+                "StoneCutter",
+                "Chisel",
+                "HLS",
+                "RTL",
+                "Pipelining",
+                "LLVM"
+            ]
+        }
     },
     {
         "publicationNumber": "9651275",
@@ -237,7 +442,55 @@
                 "firstName": "John",
                 "lastName": "Shalf"
             }
-        ]
+        ],
+        "abstract": "Automating the workload characterization process is increasingly important in hardware design. Although compiler tools can automatically collect profiling data and predict performance behaviors, the process has to be repeated for each potential design. Such challenge is exacerbated by the fast growing body of applications and input problems.We propose an alternative approach based on code similarity learning. The application is decomposed into small kernels that can be mapped to known patterns. The behaviors of a pattern on a hardware setup can be reused. To enable this technology, we propose a new code representation and similarity metric. We automate the detection process using compiler and ML methods. Specifically, we reformulate application’s dataflow graphs so that they can be compared based on both compute and data movement. We show this representation can distinguish kernels in the HPCG benchmark and help suggest optimal configurations for SpMV and GEMM hardware accelerators.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Codes",
+                "Conferences",
+                "Benchmark testing",
+                "Space exploration",
+                "Kernel",
+                "Tuning"
+            ],
+            "Index Terms": [
+                "Load Data",
+                "Hardware Accelerators",
+                "Code Representation",
+                "Training Set",
+                "Random Walk",
+                "Shortest Path",
+                "Sparse Matrix",
+                "Dot Product",
+                "Design Space",
+                "Feature Matrix",
+                "Static Analysis",
+                "Input Matrix",
+                "Graph Neural Networks",
+                "Dynamic Representation",
+                "Data Reuse",
+                "Hardware Architecture",
+                "Dynamic Graph",
+                "Sparsity Pattern",
+                "Datapath",
+                "Coding Patterns",
+                "Design Space Exploration",
+                "Memory Bandwidth",
+                "Memory Address",
+                "Vector Of Length",
+                "Block Size",
+                "Embedding Methods",
+                "Lookup Table",
+                "Cost Model"
+            ],
+            "Author Keywords": [
+                "Hardware Specialization",
+                "LLVM IR",
+                "Code Similarity Learning",
+                "Workload Analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "9651275",
@@ -253,7 +506,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 7th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651275",
@@ -269,7 +524,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 7th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651275",
@@ -285,7 +542,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 7th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651275",
@@ -301,7 +560,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 7th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651275",
@@ -317,7 +578,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 7th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9651275",
@@ -333,6 +596,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM 7th Workshop on the LLVM Compiler Infrastructure in HPC (LLVM-HPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     }
 ]

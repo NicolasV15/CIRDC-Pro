@@ -26,7 +26,47 @@
                 "firstName": "Yarsun",
                 "lastName": "Hsu"
             }
-        ]
+        ],
+        "abstract": "Distributed file systems have become popular in recent years. However, they still lack functions for doing fast arbitrary data insertion and truncation. To solve the problem, we present Wofs, an object-based distributed network file system which supports fast arbitrary data insertion and truncation. Wofs splits a file into many small objects, stores these objects in remote file servers, and uses a special B+tree to manage the metadata of these objects. Besides, Wofs uses the object-range locking policy to avoid data incoherence and improve performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "File systems",
+                "Arrays",
+                "Throughput",
+                "Performance evaluation",
+                "Linux"
+            ],
+            "Index Terms": [
+                "File System",
+                "Fast Data",
+                "Small Objects",
+                "Remote Server",
+                "Data Structure",
+                "Hierarchical Structure",
+                "Stable Performance",
+                "File Format",
+                "Standard Size",
+                "Number Of Objects",
+                "Entropy Values",
+                "Object Size",
+                "Objective Indicators",
+                "File Size",
+                "Performance Of Array",
+                "Mb In Size",
+                "Written Back",
+                "Kinds Of Operations",
+                "Complete Object",
+                "File Access"
+            ],
+            "Author Keywords": [
+                "file system",
+                "insert",
+                "truncate",
+                "object",
+                "B-tree"
+            ]
+        }
     },
     {
         "publicationNumber": "5570124",
@@ -61,7 +101,48 @@
                 "firstName": "Bongki",
                 "lastName": "Moon"
             }
-        ]
+        ],
+        "abstract": "For the past decade, numerous methods have been proposed for the design of a flash translation layer (FTL), which is the core engine of flash memory drives that critically determines the performance of the drives. In this paper, we revisit one of the popular FTL schemes called FAST, and augment it with new optimization techniques aiming particularly at online transaction processing (OLTP) workloads. As flash memory solid state drives (SSDs) are increasingly adopted for large-scale enterprise-class storage systems, it is important to develop an FTL that can deal with OLTP workloads in a scalable manner, which are characterized by a large number of small, random and skewed IO operations. With the proposed optimization methods such as giving a second chance to valid pages and isolating cold ones, the enhanced FTL, called FASTer, outperforms FAST considerably. In our experiments, FASTer reduced average elapsed time by more than 30 percent, and minimized the fluctuation of response time drastically. Overall, the performance of FASTer was comparable to a page mapping FTL, which tends to consume much more DRAM space to store a large mapping table. This will make the FASTer FTL one of the most cost effective and scalable FTL schemes for OLTP workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Ash",
+                "Time factors",
+                "Databases",
+                "Benchmark testing",
+                "Performance evaluation",
+                "Electronic mail",
+                "Random access memory"
+            ],
+            "Index Terms": [
+                "Flash Memory",
+                "Solid-state Drives",
+                "Flash Translation Layer",
+                "Skewness",
+                "Scalable",
+                "Response Time",
+                "Mapping Table",
+                "Logistics",
+                "Window Size",
+                "Skewed Distribution",
+                "Data Space",
+                "Size Of Space",
+                "Map Information",
+                "Temporal Localization",
+                "Data Block",
+                "Average Response Time",
+                "Amount Of Capacity",
+                "Response Time Variability",
+                "Merge Operation",
+                "Data Page",
+                "Disk Drive"
+            ],
+            "Author Keywords": [
+                "Flash Translation Layer",
+                "Full Associativity",
+                "OLTP",
+                "Hot-cold Separation"
+            ]
+        }
     },
     {
         "publicationNumber": "5570124",
@@ -96,7 +177,54 @@
                 "firstName": "Dhabaleswar K.",
                 "lastName": "Panda"
             }
-        ]
+        ],
+        "abstract": "With the ever-growing size of computer clusters and applications, system failures are becoming inevitable. Checkpointing, a strategy to ensure fault tolerance, has become imperative in such an environment. However existing mechanism of checkpoint writing to parallel systems doesn't perform well with increasing job size. Solid State Disk(SSD) is attracting more and more attention due to its technical merits such as good random access performance, low power consumption and shock resistance. However, how to apply SSDs into a parallel storage system to improve checkpoint writing still remains an open question. In this paper we propose a new strategy to enhance checkpoint writing performance by aggregating checkpoint writing at client side, and utilizing staging IO on data servers. We also explore the potentials to substitute traditional hard disks with SSDs on data server to achieve better write bandwidth. Our strategy achieves up to 6.3 times higher write bandwidth than a popular parallel file system PVFS2 with 8 client nodes and 4 data servers. In experiments with real applications using 64 application processes and 4 data servers, our strategy can accelerate checkpoint writing by up to 9.9 times compared to PVFS2.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Writing",
+                "Bandwidth",
+                "Checkpointing",
+                "Instruction sets",
+                "Message systems",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Solid-state Drives",
+                "Toughness",
+                "Application Process",
+                "Storage Systems",
+                "Fault-tolerant",
+                "Service Data",
+                "Low Power Consumption",
+                "Parallel System",
+                "Computer Cluster",
+                "File System",
+                "Client-side",
+                "Checkpointing",
+                "Intel Xeon",
+                "Data Streams",
+                "Storage Devices",
+                "Core Processes",
+                "Network Bandwidth",
+                "Multiple Streams",
+                "Remote Memory",
+                "Server Side",
+                "Chunk Size",
+                "Mean Time To Failure",
+                "Multiple Data Streams",
+                "Data Chunks",
+                "Computing Nodes",
+                "Single Stream",
+                "Parallel Applications",
+                "Index File"
+            ],
+            "Author Keywords": [
+                "Checkpoint",
+                "IO Aggregation",
+                "SSD"
+            ]
+        }
     },
     {
         "publicationNumber": "5570124",
@@ -125,7 +253,48 @@
                 "firstName": "Dongkun",
                 "lastName": "Shin"
             }
-        ]
+        ],
+        "abstract": "Flash memory-based non-volatile cache (NVC) is emerging as an effective solution for enhancing both the performances and the energy consumptions of storage systems. In order to attain significant performance and energy gains from NVC, it would be better to use multi-level-cell (MLC) flash memories since they can provide a large NVC capacity at low cost. However, the number of available program/erase cycles of MLC flash memory is smaller than that of single-level-cell (SLC) flash memory, which limits the lifespan of an NVC. In order to overcome this limitation, SLC/MLC combined flash memory is a promising solution for use in NVC. This paper proposes an effective management scheme for heterogeneous SLC and MLC regions of combined flash memory. It also proposes a design technique which is able to determine the optimal proportion between the two regions that maximizes performance and energy reduction, guaranteeing the lifespan constraint. We show experimentally how performance, lifespan, and energy consumption of the NVC-embedded hard disk change depending upon the configuration of the combined flash memory. We also show the superiority of the proposed NVC management policy in comparison to alternative policies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Ash",
+                "Hard disks",
+                "Memory management",
+                "Energy consumption",
+                "Microprocessors",
+                "Random access memory"
+            ],
+            "Index Terms": [
+                "Flash Memory",
+                "Energy Consumption",
+                "Energy Gain",
+                "Regional Heterogeneity",
+                "Alternative Policy",
+                "High Performance",
+                "Free Space",
+                "Size Of Region",
+                "International Migration",
+                "Regional Order",
+                "Longer Lifespan",
+                "Cold Regions",
+                "Reading Performance",
+                "Caching",
+                "Least Significant Bit",
+                "Cost Of Access",
+                "Idle Time",
+                "Most Significant Bit",
+                "Ratio Threshold",
+                "Solid-state Drives",
+                "Circular Buffer",
+                "Half Of The Blocks",
+                "Disk Drive",
+                "Changes In Workload"
+            ],
+            "Author Keywords": [
+                "flash memory",
+                "hybrid storage"
+            ]
+        }
     },
     {
         "publicationNumber": "5570124",
@@ -150,15 +319,15 @@
             },
             {
                 "id": 37547847300,
-                "preferredName": "Bj\u00f6rn Kolbeck",
-                "firstName": "Bj\u00f6rn",
+                "preferredName": "Björn Kolbeck",
+                "firstName": "Björn",
                 "lastName": "Kolbeck"
             },
             {
                 "id": 37547846800,
-                "preferredName": "Mikael H\u00f6gqvist",
+                "preferredName": "Mikael Högqvist",
                 "firstName": "Mikael",
-                "lastName": "H\u00f6gqvist"
+                "lastName": "Högqvist"
             },
             {
                 "id": 37547847000,
@@ -166,7 +335,38 @@
                 "firstName": "Felix",
                 "lastName": "Hupfeld"
             }
-        ]
+        ],
+        "abstract": "Today's distributed file system architectures scale well to large amounts of data. Their performance, however, is often limited by their metadata server. In this paper, we reconsider the database backend of the metadata server and propose a design that simplifies implementation and enhances performance.In particular, we argue that the concept of log-structured merge (LSM) trees is a better foundation for the storage layer of a metadata server than the traditionally used B-trees. We present BabuDB, a database that relies on LSM-tree-like index structures, and describe how it stores file system metadata.We show that our solution offers better scalability and performance than equivalent ext4 and Berkeley DB-based metadata server implementations. Our experiments include real-world metadata traces from a Linux kernel build and an IMAP mail server. Results show that BabuDB is up to twice as fast as the ext4-based backend and outperforms a Berkeley DB setup by an order of magnitude.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Indexes",
+                "Java",
+                "Servers",
+                "Kernel",
+                "Layout",
+                "Linux"
+            ],
+            "Index Terms": [
+                "File System",
+                "Metadata Storage",
+                "System Metadata",
+                "File System Metadata",
+                "Structural Index",
+                "Merging Algorithm",
+                "Tree Search",
+                "Metadata File",
+                "Linearizable",
+                "File Content",
+                "State Database",
+                "Block Index",
+                "Hardness Index"
+            ],
+            "Author Keywords": [
+                "File System Metadata",
+                "BabuDB",
+                "LSM trees"
+            ]
+        }
     },
     {
         "publicationNumber": "5570124",
@@ -189,7 +389,42 @@
                 "firstName": "Peter",
                 "lastName": "Sobe"
             }
-        ]
+        ],
+        "abstract": "Cauchy Reed/Solomon is an XOR-based erasure-tolerant coding scheme, applied for reliable distributed storage, fault-tolerant memory and reconstruction of content from widely distributed data. The encoding and decoding is based on XOR operations and already well supported by microprocessors.On multicore processors, the coding procedures should also exploit parallelism to speed up coding. In this paper we derive coding procedures from code parameters (e.g. the number of tolerated failures) and propose their transformation into parallel coding schedules that are mapped on multicore processors. We (i) compare functionally decomposed coding procedures with data-parallel coding of different blocks, and (ii) specify the method to derive these schedules.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encoding",
+                "Equations",
+                "Mathematical model",
+                "Decoding",
+                "Multicore processing",
+                "Iterative decoding",
+                "Generators"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Parallelization",
+                "XOR Operation",
+                "Time Step",
+                "Set Of Equations",
+                "Output Data",
+                "Uneven Distribution",
+                "Graphics Processing Unit",
+                "Storage Systems",
+                "Data Elements",
+                "Storage Devices",
+                "Core Processes",
+                "Generator Matrix",
+                "File System",
+                "Codeword",
+                "Finite Field",
+                "Storage Resources",
+                "Mapping Step",
+                "Parity-check",
+                "Iterative Equation",
+                "Coding Algorithm"
+            ]
+        }
     },
     {
         "publicationNumber": "5570124",
@@ -220,11 +455,48 @@
             },
             {
                 "id": 37299903000,
-                "preferredName": "Andr\u00e9 Brinkmann",
-                "firstName": "Andr\u00e9",
+                "preferredName": "André Brinkmann",
+                "firstName": "André",
                 "lastName": "Brinkmann"
             }
-        ]
+        ],
+        "abstract": "Today's file systems typically need multiple disk accesses for a single read operation of a file. In the worst case, when none of the needed data is already in the cache, the metadata for each component of the file path has to be read in. Once the metadata of the file has been obtained, an additional disk access is needed to read the actual file data. For a target scenario consisting almost exclusively of reading small files, which is typical in many Web 2.0 scenarios, this behavior severely impacts read performance. In this paper, we propose a new file system approach, which computes the expected location of a file using a hash function on the file path. Additionally, file metadata is stored together with the actual file data. Together, these characteristics allow a file to be read in with only a single disk access. The introduced approach is implemented extending the ext2 file system and stays very compatible with the Posix semantics. The results show very good random read performance nearly independent of the organization and size of the file set or the available cache size. In contrast, the performance of standard file systems is very dependent on these parameters.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Target tracking",
+                "Resource management",
+                "File systems",
+                "Magnetic heads",
+                "Hard disks",
+                "Geometry"
+            ],
+            "Index Terms": [
+                "File System",
+                "Small Files",
+                "Hash Function",
+                "Reading Performance",
+                "Read Operation",
+                "Metadata File",
+                "Cache Size",
+                "Random Read",
+                "Uniform Distribution",
+                "Head Movements",
+                "File Size",
+                "Block Group",
+                "Caching",
+                "Benchmark Results",
+                "Multiple Files",
+                "Number Of Tracks",
+                "Remote Memory",
+                "Geometry Information",
+                "Solid-state Drives",
+                "Zipf Distribution"
+            ],
+            "Author Keywords": [
+                "filesystem",
+                "hashing"
+            ]
+        }
     },
     {
         "publicationNumber": "5570124",
@@ -265,7 +537,54 @@
                 "firstName": "Kartik",
                 "lastName": "Gopalan"
             }
-        ]
+        ],
+        "abstract": "Cluster-based storage systems increasingly use commodity communication technologies, such as Fibre Channel over Ethernet (FCoE), for accessing stored data over the network. Data is striped over multiple storage nodes, and storage traffic often shares the network with non-storage traffic. In such conditions, storage clients can experience severely degraded performance, such as TCP throughput collapse and network congestion due to competing network traffic. Furthermore, consolidation of multiple virtual machines (VMs) onto fewer physical nodes can worsen the performance of network storage systems. The root cause of this performance problem is that network traffic from multiple sources can cause transient overloads in the switch buffers. In this paper, we make the case that virtualization opens up a new set of opportunities to alleviate and solve such performance problems experienced by network storage in particular, and data center Ethernet in general. We present an architecture, called XCo, for explicit coordination of network traffic among VMs in a data center Ethernet that is inexpensive, fully transparent, currently feasible, and complementary to any switch-level hardware support. We present experimental evidence via proof-of-concept implementation and evaluation to support this claim and describe the challenges and opportunities in a complete solution.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Optical switches",
+                "Servers",
+                "Receivers",
+                "Ethernet networks",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Data Center",
+                "Ethernet",
+                "Explicit Coordination",
+                "Virtual Machines",
+                "Complete Solution",
+                "Network Congestion",
+                "Hardware Support",
+                "Physical Nodes",
+                "Quantum",
+                "Center For Control",
+                "Network Topology",
+                "Local Control",
+                "Direct Access",
+                "Local Coordinate",
+                "Single Node",
+                "Transmission Network",
+                "Primary Control",
+                "Large Flow",
+                "Migration Time",
+                "Output Ports",
+                "Data Block",
+                "Packet Loss",
+                "Wide Area Network",
+                "Network Diameter",
+                "Switching Network",
+                "Feasibility Conditions",
+                "Storage Services",
+                "Transmission Link"
+            ],
+            "Author Keywords": [
+                "Data Center",
+                "Ethernet",
+                "Congestion",
+                "Network storage"
+            ]
+        }
     },
     {
         "publicationNumber": "5570124",
@@ -312,7 +631,50 @@
                 "firstName": "Angelos",
                 "lastName": "Bilas"
             }
-        ]
+        ],
+        "abstract": "In this work we examine how transparent compression in the I/O path can improve space efficiency for online storage. We extend the block layer with the ability to compress and decompress data as they flow between the file-system and the disk. Achieving transparent compression requires extensive metadata management for dealing with variable block sizes, dynamic block mapping, block allocation, explicit work scheduling and I/O optimizations to mitigate the impact of additional I/O sand compression overheads. Preliminary results show that online transparent compression is a viable option for improving effective storage capacity, it can improve I/O performance by reducing I/O traffic and seek distance, and has a negative impact on performance only when single-thread I/O latency is critical.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Performance evaluation",
+                "Benchmark testing",
+                "Databases",
+                "Servers",
+                "Context",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Block Level",
+                "Space Efficiency",
+                "Storage Capacity",
+                "Varying Block Sizes",
+                "Throughput",
+                "Large Extent",
+                "Source Code",
+                "Free Space",
+                "Performance Degradation",
+                "Storage Systems",
+                "System Database",
+                "Compression Ratio",
+                "Caching",
+                "Internal Fragment",
+                "Compression Algorithm",
+                "Free Pool",
+                "Compression Level",
+                "Compression Efficiency",
+                "High Compression Ratio",
+                "Logic Blocks",
+                "CPU Utilization",
+                "Number Of CPUs",
+                "Linux Kernel",
+                "Translation Table"
+            ],
+            "Author Keywords": [
+                "online block-level compression",
+                "I/O performance",
+                "log-structured block device"
+            ]
+        }
     },
     {
         "publicationNumber": "5570124",
@@ -328,7 +690,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -344,7 +708,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -360,7 +726,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -376,7 +744,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference offers a note of thanks and lists its reviewers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -392,7 +762,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -408,7 +780,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "Conference proceedings title page.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -424,7 +798,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover or splash screen of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -440,7 +816,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "The author index contains an entry for each author and coauthor included in the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -456,7 +834,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with:taking advantage of SSDs; and metadata management.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -472,7 +852,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "5570124",
@@ -488,6 +870,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2010 International Workshop on Storage Network Architecture and Parallel I/Os",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     }
 ]

@@ -13,7 +13,26 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 18th International Conference on Application of Concurrency to System Design (ACSD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides an abstract of the invited presentation and may include a brief professional biography of the presenter. The complete presentation was not made available for publication as part of the conference proceedings.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Integrated circuit modeling",
+                "Computational modeling",
+                "Adaptation models",
+                "Time factors",
+                "System-on-chip",
+                "Robustness",
+                "Logic gates"
+            ],
+            "Index Terms": [
+                "Distributed Algorithm",
+                "Distribution System",
+                "Role Of Circuits",
+                "Low Response Time",
+                "Network-on-chip"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -48,7 +67,46 @@
                 "firstName": "Wil M.P.",
                 "lastName": "van der Aalst"
             }
-        ]
+        ],
+        "abstract": "Conformance checking is a branch of process mining that aims to assess to what degree a given set of log traces and a corresponding reference model conform to each other. The state-of-the-art approach in conformance checking is based on the concept of alignments. Alignments express the observed behaviour in terms of the reference model while minimizing the number of mismatches between the event data and the model. The currently known best algorithm for constructing alignments applies the A* shortest path algorithm for each trace of event data. In this work, we apply insights from the field of model checking to aid conformance checking. We investigate whether alignments can be computed efficiently via symbolic reachability with decision diagrams. We designed a symbolic algorithm for computing shortest-paths on graphs restricted to 0- and 1-cost edges (which is typical for alignments). We have implemented our approach in the LTSmin model checking toolset and compare its performance with the A* implementation supported by ProM. We generated more than 4000 experiments (Petri net model and log trace combinations) by setting various parameters, and analysed performance and related these to structural properties. Our empirical study shows that the symbolic technique is in general better suited for computing alignments on large models than the A* approach. Our approach is better performing in cases where the size of the state-space tends to blow up. Based on our experiments we conclude that the techniques are complementary, since there is a significant number of cases where A* outperforms the symbolic technique and vice versa.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Petri nets",
+                "Computational modeling",
+                "Cost function",
+                "Model checking",
+                "Data models",
+                "Standards",
+                "Mathematical model"
+            ],
+            "Index Terms": [
+                "Event Data",
+                "Shortest Path",
+                "Reachable",
+                "Process Mining",
+                "Model Checking",
+                "Significant Number Of Cases",
+                "Petri Nets",
+                "Influence Diagram",
+                "Cost Function",
+                "Backward Induction",
+                "Optimal Alignment",
+                "Multiset",
+                "Forward Search",
+                "Event Log",
+                "Decision Node",
+                "Transitive Closure"
+            ],
+            "Author Keywords": [
+                "conformance checking",
+                "process mining",
+                "model checking",
+                "symbolic reachability",
+                "alignment",
+                "algorithm",
+                "graph search"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -77,7 +135,46 @@
                 "firstName": "Gianfranco",
                 "lastName": "Ciardo"
             }
-        ]
+        ],
+        "abstract": "Multivalued decision diagrams are an excellent technique to study the behavior of discrete-state systems such as Petri nets, but their variable order (mapping places to MDD levels) greatly affects efficiency, and finding an optimal order even just to encode a given set is NP-hard. In state-space generation, the situation is even worse, since the set of markings to be encoded keeps evolving and is known only at the end. Previous heuristics to improve the efficiency of the saturation algorithm often used in state-space generation seek a variable order minimizing a simple function of the Petri net, such as the sum over each transition of the top variable position (SOT) or variable span (SOS). This, too, is NP-hard, so we cannot compute orders that minimize SOT or SOS in most cases but, even if we could, it would have limited effectiveness. For example, SOT and SOS can be led astray by multiple copies of a transition (giving more weight to it), or transitions with equal inputs and outputs (giving weight to transitions that should be ignored). These anomalies inspired us to define SOUPS, a new heuristic that only takes into account the unique and productive portion of each transition. The SOUPS metric can be easily computed, allowing us to use it in standard search techniques like simulated annealing to find good orders. Experiments show that SOUPS is a much better proxy for the quantities we really hope to improve, the memory and time for MDD manipulation during state-space generation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Concurrent computing",
+                "System analysis and design"
+            ],
+            "Index Terms": [
+                "Simulated Annealing",
+                "Optimal Order",
+                "Petri Nets",
+                "Influence Diagram",
+                "Cardinality",
+                "Multiple Modalities",
+                "Related Products",
+                "Heuristic Algorithm",
+                "Number Of Orders",
+                "Tree Height",
+                "Memory Usage",
+                "Good Score",
+                "Canonical Form",
+                "Black Squares",
+                "Binary Tree",
+                "Polynomial-time Algorithm",
+                "Incidence Matrix",
+                "Bottom Level",
+                "Gray Squares",
+                "Good Order",
+                "Cache Hit",
+                "Balanced Tree",
+                "Reachable Set",
+                "Hardware Environment",
+                "Number Of Arcs"
+            ],
+            "Author Keywords": [
+                "Saturation",
+                "Decision Diagrams",
+                "Variable Ordering"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -112,7 +209,54 @@
                 "firstName": "Klaus",
                 "lastName": "Schneider"
             }
-        ]
+        ],
+        "abstract": "One reason for the limited use of instruction level parallelism (ILP) by conventional processors is their use of registers. Therefore, some recent processor architectures expose their datapaths to the compiler so that the compiler can move values directly between processing units. In particular, the Synchronous Control Asynchronous Dataflow (SCAD) machine is an exposed datapath architecture that uses FIFO buffers at the input and output ports of its processing units. Code generation techniques inspired by classic queue machines can completely eliminate the use of conventional registers in SCAD. However, bounded buffer sizes may still make spill code necessary to store values temporarily in main memory. Since memory access is expensive, it has to be avoided to improve the execution time of programs. Memory optimal code generation problems have been extensively studied in the case of register machines and were proven to be NP-complete. In this paper, we prove that memory optimal code generation for SCAD is also NP-complete by presenting a polynomial-time transformation from memory optimal register code to memory optimal SCAD code. In particular, we present a one to one correspondence between the registers in register machines and the entries of buffers in SCAD machines which indicates that these architectures are closer to each other than expected. Still, SCAD machines offer important advantages: The size of circuit implementations of buffers scales much better compared to register files so that more space is available on SCAD machines with the same chip size. Second, the instruction set of SCAD does not depend on a fixed number of registers or buffers. We therefore present experimental results to compare the execution time of memory optimal SCAD code with FIFO buffers and memory optimal code based on conventional register allocation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Computer architecture",
+                "Buffer storage",
+                "Process control",
+                "Instruction sets",
+                "Commutation"
+            ],
+            "Index Terms": [
+                "Processing Unit",
+                "Code Generation",
+                "Optimal Code",
+                "Datapath",
+                "Educational Settings",
+                "Output Ports",
+                "Input Port",
+                "Buffer Size",
+                "Processing Architecture",
+                "Parallel Use",
+                "First-in-first-out",
+                "Use Of Registers",
+                "Registration Code",
+                "Commutative",
+                "Loading Values",
+                "Boolean Operators",
+                "Computational Overhead",
+                "Directed Acyclic Graph",
+                "Sufficient Space",
+                "Depth-first",
+                "Output Buffer",
+                "Memory Operations",
+                "Runtime Overhead",
+                "Number Of Memory",
+                "Amount Of Operations",
+                "Load Operation",
+                "Buffer Space",
+                "Breadth-first Search"
+            ],
+            "Author Keywords": [
+                "code generation",
+                "exposed data path processors",
+                "NP completeness",
+                "complexity analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -153,7 +297,52 @@
                 "firstName": "Twan",
                 "lastName": "Basten"
             }
-        ]
+        ],
+        "abstract": "This paper presents a partial-order reduction method for performance analysis of max-plus timed systems. A max-plus timed system is a network of automata, where the timing behavior of deterministic system tasks (events in an automaton) is captured in (max, +) matrices. These tasks can be characterized in various formalisms like synchronous data flow, Petri nets, or real-time calculus. The timing behavior of the system is captured in a (max, +) state space, calculated from the composition of the automata. This state space may exhibit redundant interleaving with respect to performance aspects like throughput or latency. The goal of this work is to obtain a smaller state space to speed up performance analysis. To achieve this, we first formalize state-space equivalence with respect to throughput and latency analysis. Then, we present a way to compute a reduced composition directly from the specification. This yields a smaller equivalent state space. We perform the reduction on-the-fly, without first computing the full composition. Experiments show the effectiveness of the method on a set of realistic manufacturing system models.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Automata",
+                "Timing",
+                "Performance analysis",
+                "Throughput",
+                "Task analysis",
+                "Semantics",
+                "Algebra"
+            ],
+            "Index Terms": [
+                "State Space",
+                "Petri Nets",
+                "Full Composition",
+                "Resource Availability",
+                "Performance Metrics",
+                "Matrix Multiplication",
+                "Time Resources",
+                "Size Of Space",
+                "Sum Of Weights",
+                "Action Execution",
+                "Corresponding State",
+                "Minimum Ratio",
+                "Temporal Distance",
+                "System Throughput",
+                "Simple Cycle",
+                "Independence In Activities",
+                "Resource Dependence",
+                "Drill Bit",
+                "Action Instances",
+                "Composition Operator",
+                "Throughput Values"
+            ],
+            "Author Keywords": [
+                "max-plus",
+                "performance",
+                "throughput",
+                "latency",
+                "partial-order reduction",
+                "max-plus automata",
+                "max-plus algebra",
+                "performance analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -161,7 +350,7 @@
         "publicationYear": "2018",
         "publicationDate": "25-29 June 2018",
         "articleNumber": "8542131",
-        "articleTitle": "On Reconciling Concurrency, Sequentiality and Determinacy for Reactive Systems\u2014A Sequentially Constructive Circuit Semantics for Esterel",
+        "articleTitle": "On Reconciling Concurrency, Sequentiality and Determinacy for Reactive Systems—A Sequentially Constructive Circuit Semantics for Esterel",
         "volume": null,
         "issue": null,
         "startPage": "95",
@@ -194,7 +383,47 @@
                 "firstName": "Michael",
                 "lastName": "Mendler"
             }
-        ]
+        ],
+        "abstract": "A classic challenge in designing reactive systems is how to reconcile concurrency with determinacy. Synchronous languages, such as Esterel, SyncCharts or SCADE, resolve this by providing a semantics that does not depend on run-time scheduling decisions. Esterel's circuit semantics is grounded in physics: An Esterel program is considered valid (constructive) iff it corresponds to a delay-insensitive circuit. The circuit semantics provides on the one hand a mathematically grounded semantics, based on constructive logic, on the other hand it gives a direct path to a data-flow style software implementation. However, Esterel's constructive semantics entails a rather restricted regime for handling sequential accesses to shared data. Thus many programs are rejected as being non-constructive, even though they have a very natural, determinate interpretation. We here present a sequentially constructive circuit semantics (SCC) that lifts this restriction, by distinguishing sequential and concurrent execution contexts. This permits an imperative style familiar to programmers versed in C, for example, without leaving the sound physical foundation of synchronous programming.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Semantics",
+                "Hardware",
+                "Program processors",
+                "Concurrent computing",
+                "Schedules",
+                "Wires"
+            ],
+            "Index Terms": [
+                "Semantic",
+                "Synchronization",
+                "Flow Control",
+                "Sequential Order",
+                "Signal Values",
+                "Input Sequence",
+                "Cycle Ergometer",
+                "Observation Points",
+                "Boolean Logic",
+                "Global Environment",
+                "Shared Variance",
+                "Boolean Variable",
+                "Sequencing Flow",
+                "Parallel Threads",
+                "Evaluation Rules",
+                "Input Events",
+                "Class Program",
+                "Compile Time",
+                "Boolean Expression"
+            ],
+            "Author Keywords": [
+                "Reactive systems",
+                "determinacy",
+                "synchronous programming",
+                "sequential constructiveness",
+                "Esterel",
+                "circuit semantics"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -235,7 +464,42 @@
                 "firstName": "Charlotte",
                 "lastName": "Seidner"
             }
-        ]
+        ],
+        "abstract": "This paper investigates the optimal-cost reachability problem in the context of time Petri nets, where a rate cost is associated with each place. This problem consists in deciding whether or not a given goal marking is reachable and providing, in case it is reachable, a sequence leading at lower cost to the goal marking. This paper shows that for some subclasses of cost time Petri nets, the optimal-cost reachability problem can be solved more efficiently using a method based on the state classes, without resorting to linear programming or splitting state classes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Petri nets",
+                "Semantics",
+                "Linear programming",
+                "Time factors",
+                "Computational modeling",
+                "Cost function",
+                "Upper bound"
+            ],
+            "Index Terms": [
+                "Petri Nets",
+                "Time Petri Nets",
+                "Linear Programming",
+                "Semantic",
+                "Shortest Path",
+                "Optimal Cost",
+                "Paper Deals",
+                "Canonical Form",
+                "Set Of Integers",
+                "Sum Of Costs",
+                "Minimum Delay",
+                "Sequence Of Transitions",
+                "Negative Cycle",
+                "Rational Numbers",
+                "Infinite Sequence",
+                "Fire Intervals",
+                "Linear Programming Techniques"
+            ],
+            "Author Keywords": [
+                "Time Petri nets",
+                "optimal cost reachability problem"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -282,7 +546,44 @@
                 "firstName": "Maciej",
                 "lastName": "Koutny"
             }
-        ]
+        ],
+        "abstract": "This paper presents SONCraft - an open source tool for editing, simulating, and analysing Structured Occurrence Nets (SONs), which is a Petri net-based formalism for modelling the behaviour of complex evolving systems. The tool is implemented as a Java plug-in within the Workcraft platform, which is a flexible framework for the development and analysis of Interpreted Graph Models. SONCraft provides an easy to use graphical interface that facilitates model entry, supports interactive visual simulation, and allows the use of a set of analytical tools. We give an overview of SONCraft functionality and architecture.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tools",
+                "Analytical models",
+                "Computational modeling",
+                "Visualization",
+                "Petri nets",
+                "Accidents",
+                "Windows"
+            ],
+            "Index Terms": [
+                "Construction Tools",
+                "Graphical User Interface",
+                "Editing Tools",
+                "Overview Of Architecture",
+                "Mathematical Model",
+                "Start Time",
+                "Time Information",
+                "Formal Definition",
+                "Visual Model",
+                "Types Of Connections",
+                "Forensic Investigations",
+                "Partial Order",
+                "Consistency Checks",
+                "Breadth-first Search",
+                "Alternation Behavior",
+                "Petri Nets",
+                "Scenario Generation"
+            ],
+            "Author Keywords": [
+                "SONCraft",
+                "system modelling and analysis",
+                "structured occurrence nets",
+                "complex evolving systems"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -301,9 +602,9 @@
         "authors": [
             {
                 "id": 38480372100,
-                "preferredName": "\u00c9tienne Andr\u00e9",
-                "firstName": "\u00c9tienne",
-                "lastName": "Andr\u00e9"
+                "preferredName": "Étienne André",
+                "firstName": "Étienne",
+                "lastName": "André"
             },
             {
                 "id": 37936595100,
@@ -317,7 +618,43 @@
                 "firstName": "Mathias",
                 "lastName": "Ramparison"
             }
-        ]
+        ],
+        "abstract": "Timed automata (TAs) represent a powerful formalism to model and verify systems where concurrency is mixed with hard timing constraints. However, they can seem limited when dealing with uncertain or unknown timing constants. Several parametric extensions were proposed in the literature, and the vast majority of them leads to the undecidability of the EF-emptiness problem: \"is the set of valuations for which a given location is reachable empty?\" Here, we study an extension of TAs where clocks can be updated to a parameter. While the EF-emptiness problem is undecidable for rational-valued parameters, it becomes PSPACE-complete for integer-valued parameters. In addition, exact synthesis of the parameter valuations set can be achieved. We also extend these two results to the EF-universality (\"are all valuations such that a given location is reachable?\"), AF-emptiness (\"is the set of valuations for which a given location is unavoidable empty?\") and AF-universality (\"are all valuations such that a given location is unavoidable?\") problems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cost accounting",
+                "Clocks",
+                "Automata",
+                "Timing",
+                "Semantics",
+                "Authorization",
+                "Concurrent computing"
+            ],
+            "Index Terms": [
+                "Timed Automata",
+                "Reachable",
+                "Unknown Constant",
+                "Semantic",
+                "Input Size",
+                "Decision Problem",
+                "Number Of Months",
+                "Parameter Update",
+                "Visibility Graph",
+                "Emptiness",
+                "Extra Parameters",
+                "Domain Parameters",
+                "Induction Hypothesis",
+                "Additional Edges",
+                "Elapsed Time",
+                "Space Of Polynomials"
+            ],
+            "Author Keywords": [
+                "parametric timed automata",
+                "parameter synthesis",
+                "reachability emptiness",
+                "decidability"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -364,7 +701,46 @@
                 "firstName": "Othmane",
                 "lastName": "Rezine"
             }
-        ]
+        ],
+        "abstract": "A formal model called database manipulating systems was introduced to model data-aware dynamic systems. Its semantics is given by an infinite labelled transition systems where a label can be an unbounded relational database. Reachability problem is undecidable over schemas consisting of either a binary relation or two unary relations. We study the reachability problem under schema restrictions and restrictions on the query language. We provide tight complexity bounds for different combinations of schema and query language, by reductions to/from standard formalism of infinite state systems such as Petri nets and counter systems. Our reductions throw light into the connections between these two seemingly unrelated models.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Database languages",
+                "Complexity theory",
+                "Reactive power",
+                "Relational databases",
+                "Standards",
+                "Business"
+            ],
+            "Index Terms": [
+                "Model Formulation",
+                "Relational Database",
+                "Query Language",
+                "Binary Relation",
+                "Counting System",
+                "Petri Nets",
+                "Upper Bound",
+                "Activation Domain",
+                "Automata",
+                "Forms Of Action",
+                "State Machine",
+                "Related Strategies",
+                "Problem Instances",
+                "Model Checking",
+                "Free Variables",
+                "Multiset",
+                "Proposition States",
+                "Set Of Places",
+                "Query Length",
+                "Counter Value"
+            ],
+            "Author Keywords": [
+                "reachability problem",
+                "database driven systems",
+                "complexity",
+                "decidability"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -407,11 +783,63 @@
             },
             {
                 "id": 37086543796,
-                "preferredName": "Christian R\u00f6der",
+                "preferredName": "Christian Röder",
                 "firstName": "Christian",
-                "lastName": "R\u00f6der"
+                "lastName": "Röder"
             }
-        ]
+        ],
+        "abstract": "A project consist of a partially ordered set of tasks that need to be performed to reach the project's goals. Ordering the tasks and coordinating the individual actors are prerequisites for the success of a project. The sub-teams (groups) may be distributed in terms of space, time or organization. The groups have to plan their local (intra-group) tasks and coordinate their inter-group tasks while avoiding global deadlocks. Today, centralized approaches with a single diagram for the entire team are used to model the global task order and calculate its critical path. We propose that each group models its intra- and inter-group tasks in a single diagram. Causal nets represent the precedences in an ideal way. Inter-group tasks require a special treatment that we provide by extending causal nets with synchronous channels. These can be executed within the Renew IDE. We consider time aspects based on a mapping between those extended causal nets and Network Planning Technique (NPT). Supported by a Renew plugin we aggregate the separated groups' diagrams to a global NPT diagram to calculate the project's critical path. Beside the tool support for general project management, we present and discuss the support for agile and distributed software development projects. Our extensions preserve the efficient checking for consistent, partially ordered global project plans.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Synchronization",
+                "System recovery",
+                "Planning",
+                "Project management",
+                "Uplink",
+                "Time factors"
+            ],
+            "Index Terms": [
+                "Synchronization Channel",
+                "Causal Net",
+                "Project Management",
+                "Task Order",
+                "Entire Team",
+                "Partial Order",
+                "Critical Path",
+                "Single Diagram",
+                "Modeling Techniques",
+                "Integration Process",
+                "Local Processes",
+                "Start Time",
+                "Global Perspective",
+                "Coordinative",
+                "Software Engineering",
+                "Multi-agent Systems",
+                "Software Components",
+                "Task Duration",
+                "Local Perspectives",
+                "Projection Process",
+                "Technical Environment",
+                "Petri Nets",
+                "Coordination Task",
+                "Workflow Management System",
+                "Project Duration",
+                "Synchronous Communication",
+                "Continuous Integration",
+                "Precedence Relations",
+                "Wrong Assumptions",
+                "Ontology Development"
+            ],
+            "Author Keywords": [
+                "High-level Petri nets",
+                "Synchronous Channels",
+                "Causal Nets",
+                "Project Management",
+                "Critical Path Method",
+                "Team Coordination"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -430,14 +858,14 @@
         "authors": [
             {
                 "id": 37267524300,
-                "preferredName": "Lo\u00efc H\u00e9lou\u00ebt",
-                "firstName": "Lo\u00efc",
-                "lastName": "H\u00e9lou\u00ebt"
+                "preferredName": "Loïc Hélouët",
+                "firstName": "Loïc",
+                "lastName": "Hélouët"
             },
             {
                 "id": 37339847000,
-                "preferredName": "Herv\u00e9 Marchand",
-                "firstName": "Herv\u00e9",
+                "preferredName": "Hervé Marchand",
+                "firstName": "Hervé",
                 "lastName": "Marchand"
             },
             {
@@ -446,7 +874,46 @@
                 "firstName": "John",
                 "lastName": "Mullins"
             }
-        ]
+        ],
+        "abstract": "A system satisfies opacity if its secret behaviors cannot be detected by any user of the system. Opacity of distributed systems was originally set as a boolean predicate before being quantified as measures in a probabilistic setting. This paper considers a different quantitative approach that measures the efforts that a malicious user has to make to detect a secret. This effort is measured as a distance w.r.t a regular profile specifying a normal behavior. This leads to several notions of quantitative opacity. When attackers are passive that is, when they just observe the system, quantitative opacity is brought back to a language inclusion problem, and is PSPACE-complete. When attackers are active, that is, interact with the system in order to detect secret behaviors within a finite depth observation, quantitative opacity turns to be a two-player finite-state quantitative game of partial observation. A winning strategy for an attacker is a sequence of interactions with the system leading to a secret detection without exceeding some profile deviation measure threshold. In this active setting, the complexity of opacity is EXPTIME-complete.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Automata",
+                "Standards",
+                "Silicon",
+                "Games",
+                "Measurement uncertainty",
+                "Probabilistic logic",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Quantitative Data",
+                "Distribution System",
+                "First-order Logic",
+                "Malicious Users",
+                "Partial Information",
+                "User Behavior",
+                "Activity In Order",
+                "Automata",
+                "Information Leakage",
+                "Value Of Node",
+                "Behavior Of Agents",
+                "Hamming Distance",
+                "Starting State",
+                "Access Rights",
+                "Levenshtein Distance",
+                "End Of Path",
+                "User Pairing",
+                "System Running",
+                "Number Of Anomalies",
+                "Passive Attacks"
+            ],
+            "Author Keywords": [
+                "opacity",
+                "games",
+                "quantitative"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -475,7 +942,42 @@
                 "firstName": "Walter",
                 "lastName": "Vogler"
             }
-        ]
+        ],
+        "abstract": "A refinement preorder for a model of concurrent systems should be compositional (i.e. a precongruence for parallel composition) and should not introduce faults into a fault-free specification. Arguably, if these are the features of interest, the coarsest such precongruence is the optimal refinement preorder and often, it preserves additional properties. For the model of interface automata, originally faults are communication errors in the form of unexpected inputs. The respective optimal preorder has been characterized as the inclusion of two trace sets. Here, we extend these characterizations by regarding also quiescence (quiescence and divergence resp.) as faults. The latter preorder is coarser, i.e. better, than an earlier preorder regarding errors, quiescence and divergence. A conjunction operator allows to specify different facets of an overall specification by separate automata and then to combine them. We also present conjunction operators for our settings, avoiding flaws that can be found in the literature.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Automata",
+                "Testing",
+                "Semantics",
+                "Synchronization",
+                "Concurrent computing",
+                "System analysis and design",
+                "Gold"
+            ],
+            "Index Terms": [
+                "Automata",
+                "Divergence",
+                "Preorder",
+                "Communication Errors",
+                "Semantic",
+                "Reachable",
+                "Quiescent State",
+                "Open Model",
+                "Normal Form",
+                "Internal Activities",
+                "Cartesian Product",
+                "Refinement Step",
+                "Breadth-first Search"
+            ],
+            "Author Keywords": [
+                "interface automata",
+                "communication error",
+                "quiescence",
+                "divergence",
+                "coarsest precongruence",
+                "conjunction"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -504,7 +1006,47 @@
                 "firstName": "Dumitru",
                 "lastName": "Potop-Butucaru"
             }
-        ]
+        ],
+        "abstract": "The following topics are dealt with: computational complexity; Petri nets; reachability analysis; automata theory; formal verification; decision diagrams; formal specification; data flow computing; search problems; and simulated annealing.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pipelines",
+                "Computational modeling",
+                "Instruction sets",
+                "Hardware",
+                "Analytical models",
+                "Semantics",
+                "Timing"
+            ],
+            "Index Terms": [
+                "Synchronization",
+                "Simulation Code",
+                "Type Inference",
+                "Pipeline Model",
+                "Worst-case Time",
+                "Input Values",
+                "Data Abstraction",
+                "Absence Of Values",
+                "Clock Cycles",
+                "Source Operating",
+                "Refactoring",
+                "Function Calls",
+                "Pipeline Stages",
+                "Semantic Consistency",
+                "Piece Of Code",
+                "Formal Semantics"
+            ],
+            "Author Keywords": [
+                "xMAS",
+                "HW modeling",
+                "instruction set simulation",
+                "cycle accurate simulation",
+                "domain specific languages",
+                "endochrony",
+                "semantic preservation",
+                "Lucid Synchrone"
+            ]
+        }
     },
     {
         "publicationNumber": "8536819",
@@ -520,7 +1062,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 18th International Conference on Application of Concurrency to System Design (ACSD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8536819",
@@ -536,7 +1080,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 18th International Conference on Application of Concurrency to System Design (ACSD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8536819",
@@ -552,7 +1098,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 18th International Conference on Application of Concurrency to System Design (ACSD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8536819",
@@ -568,7 +1116,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 18th International Conference on Application of Concurrency to System Design (ACSD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8536819",
@@ -584,7 +1134,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 18th International Conference on Application of Concurrency to System Design (ACSD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8536819",
@@ -600,7 +1152,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 18th International Conference on Application of Concurrency to System Design (ACSD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8536819",
@@ -616,7 +1170,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 18th International Conference on Application of Concurrency to System Design (ACSD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8536819",
@@ -632,6 +1188,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 18th International Conference on Application of Concurrency to System Design (ACSD)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]

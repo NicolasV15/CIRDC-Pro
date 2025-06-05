@@ -20,7 +20,32 @@
                 "firstName": "Diego",
                 "lastName": "Novillo"
             }
-        ]
+        ],
+        "abstract": "Profile-guided optimizations (PGO) offer more optimization opportunities that are typically hard to obtain with static heuristics and techniques. In several application domains, significant performance can be gained by using runtime profiles to guide optimization. However, traditional PGO techniques that rely on compiler instrumentation are difficult enough to use that they have not become very popular.This paper describes SamplePGO, an LLVM implementation of a profile-guided technique that addresses the usability problem. Instead of using compiler-generated instrumentation to generate profiles, it relies on profile information gathered by external sampling profilers. These profilers use commonly available hardware counters to inspect the execution of a program.In our experience with large applications in video/image processing, logs processing, web search and ads, we have obtained, in our GCC implementation, performance improvements of up to 30% using SamplePGO over statically optimized code.While the LLVM implementation is fully functional as of LLVM 3.5, not many optimization passes in LLVM make use of profile information. Therefore, the speedups we have been able to obtain using LLVM are much more modest (up to 5% over statically optimized code).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Instruments",
+                "Runtime",
+                "Hardware",
+                "Radiation detectors",
+                "Usability",
+                "Performance gain"
+            ],
+            "Index Terms": [
+                "Use Of Information",
+                "Profile Information",
+                "Set Of Equations",
+                "Edge Weights",
+                "Generation Of Profiles",
+                "Usability Issues",
+                "Outgoing Edges",
+                "Weight Of Block",
+                "Runtime Overhead",
+                "Conditional Branches",
+                "Control Flow Graph"
+            ]
+        }
     },
     {
         "publicationNumber": "7068091",
@@ -79,7 +104,40 @@
                 "firstName": "Olivier",
                 "lastName": "Sallenave"
             }
-        ]
+        ],
+        "abstract": "GPUs devices are becoming critical building blocks of High-Performance platforms for performance and energy efficiency reasons. As a consequence, parallel programming environment such as OpenMP were extended to support offloading code to such devices. OpenMP compilers are faced with offering an efficient implementation of device-targeting constructs.One main issue in implementing OpenMP on a GPU is related to efficiently supporting sequential and parallel regions, as GPUs are only optimized to execute highly parallel workloads. Multiple solutions to this issue were proposed in previous research. In this paper, we propose a method to coordinate threads in an NVIDIA GPU that is both efficient and easily integrated as part of a compiler. To support our claims, we developed CUDA programs that mimic multiple coordination schemes and we compare their performances. We show that a scheme based on dynamic parallelism performs poorly compared to inspector-executor schemes that we introduce in this paper. We also discuss how to integrate these schemes to the LLVM compiler infrastructure.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Kernel",
+                "Parallel processing",
+                "Synchronization",
+                "Acceleration",
+                "Performance evaluation"
+            ],
+            "Index Terms": [
+                "Coordination Strategy",
+                "Parallel Dynamics",
+                "Differences In Performance",
+                "Target Region",
+                "Modularity",
+                "High-performance Computing",
+                "Functional Devices",
+                "Single Thread",
+                "Fortran",
+                "Multiple Blocks",
+                "Code Generation",
+                "Multiple Kernel",
+                "Code Blocks",
+                "Multiple Threads",
+                "Target Platform",
+                "Sequential Sections",
+                "Single Kernel",
+                "Code Section",
+                "N Blocks",
+                "Modular Way"
+            ]
+        }
     },
     {
         "publicationNumber": "7068091",
@@ -108,7 +166,50 @@
                 "firstName": "Sergei",
                 "lastName": "Gorlatch"
             }
-        ]
+        ],
+        "abstract": "We present PACXX -- a unified programming model for programming many-core systems that comprise accelerators like Graphics Processing Units (GPUs). One of the main difficulties of the current GPU programming is that two distinct programming models are required: the host code for the CPU is written in C/C++ with the restricted, C-like API for memory management, while the device code for the GPU has to be written using a device-dependent, explicitly parallel programming model, e.g., OpenCL or CUDA. This leads to long, poorly structured and error-prone codes. In PACXX, both host and device programs are written in the same programming language -- the newest C++14 standard, with all modern features including type inference (auto), variadic templates, generic lambda expressions, as well as STL containers and algorithms. We implement PACXX by a custom compiler (based on the Clang front-end and LLVM IR) and a runtime system, that together perform major tasks of memory management and data synchronization automatically and transparently for the programmer. We evaluate our approach by comparing it to CUDA and OpenCL regarding program size and target performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Graphics processing units",
+                "Programming",
+                "Vectors",
+                "Synchronization",
+                "Runtime",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Programming Model",
+                "Synchronization",
+                "Programming Language",
+                "Graphics Processing Unit",
+                "Type Inference",
+                "Memory Management",
+                "Histogram",
+                "Source Code",
+                "Intel Xeon",
+                "Index Range",
+                "Declarative Memory",
+                "Code Generation",
+                "Function Calls",
+                "Implicit Memory",
+                "Multiple Threads",
+                "Variable C",
+                "Memory Allocation",
+                "Error Handling",
+                "Small Overhead",
+                "Device Memory",
+                "Memory Transfer",
+                "Address Space",
+                "Shared Memory",
+                "Return Type",
+                "Xeon E5",
+                "Compile Time",
+                "Dynamic Array",
+                "Intermediate Representation",
+                "Random Access"
+            ]
+        }
     },
     {
         "publicationNumber": "7068091",
@@ -157,9 +258,9 @@
             },
             {
                 "id": 37960082200,
-                "preferredName": "Matthias S. M\u00fcller",
+                "preferredName": "Matthias S. Müller",
                 "firstName": "Matthias S.",
-                "lastName": "M\u00fcller"
+                "lastName": "Müller"
             },
             {
                 "id": 37540800800,
@@ -179,7 +280,42 @@
                 "firstName": "Greg L.",
                 "lastName": "Lee"
             }
-        ]
+        ],
+        "abstract": "Neither static nor dynamic data race detection methods, by themselves, have proven to be sufficient for large HPC applications, as they often result in high runtime overheads and/or low race-checking accuracy. While combined static and dynamic approaches can fare better, creating such combinations, in practice, requires attention to many details. Specifically, existing state-of-the-art dynamic race detectors are aimed at low-level threading models, and cannot handle high-level models such as OpenMP. Further, they do not provide mechanisms by which static analysis methods can target selected regions of code with sufficient precision. In this paper, we present our solutions to both challenges. Specifically, we identify patterns within OpenMP runtimes that tend to mislead existing dynamic race checkers and provide mechanisms that help establish an explicit happens-before relation to prevent such misleading checks. We also implement a fine-grained blacklist mechanism to allow a runtime analyzer to exclude regions of code at line number granularity. We support race checking by adapting ThreadSanitizer, a mature data-race checker developed at Google that is now an integral part of Clang and GCC; and we have implemented our techniques within the state-of-the-art Intel OpenMP Runtime. Our results demonstrate that these techniques can significantly improve runtime analysis accuracy and overhead in the context of data race checking of OpenMP applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Synchronization",
+                "Instruments",
+                "Instruction sets",
+                "Message systems",
+                "Programming",
+                "Accuracy"
+            ],
+            "Index Terms": [
+                "Static Analysis",
+                "Blacklist",
+                "High-level Model",
+                "Runtime Analysis",
+                "Runtime Overhead",
+                "Semantic",
+                "Source Code",
+                "Accuracy And Precision",
+                "False Alarm",
+                "Programming Model",
+                "Basic Patterns",
+                "Synchronization Process",
+                "Finer Granularity",
+                "Synchronization Patterns",
+                "Static Techniques",
+                "Strong Scaling",
+                "Race Conditions",
+                "Data-dependent Analysis",
+                "Release Mode",
+                "Critical Section",
+                "Compile Time"
+            ]
+        }
     },
     {
         "publicationNumber": "7068091",
@@ -220,7 +356,38 @@
                 "firstName": "Patrick",
                 "lastName": "McCormick"
             }
-        ]
+        ],
+        "abstract": "A primary concern of future high performance systems is the way data movement is managed; the sheer scale of data to be processed directly affects the achievable performance these systems can attain. However, the increasingly complex but inherently symbiotic relationships between upcoming scientific applications and high-performance architectures necessitate increasingly informative and flexible tools to ensure performance goals are met.In this work we develop a memory-hierarchy model that quantifies a given application's cache behavior. What makes this work unique is that we instrument code at compile time, gather architecture-independent data at run time using a generic memory-hierarchy model, and delay selecting a particular cache hierarchy (levels, sizes, and associativities) to a post-processing step, where cache performance can be derived rapidly without having to re-run a slow cache simulator. We show that this approach is capable of predicting cache misses to within 13% of what is predicted by a traditional, high-fidelity, but slow cache simulator.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruments",
+                "Hardware",
+                "Radiation detectors",
+                "Vectors",
+                "Computer architecture",
+                "Data models",
+                "Histograms"
+            ],
+            "Index Terms": [
+                "Load Data",
+                "Movement Model",
+                "Running Time",
+                "Levels Of Hierarchy",
+                "Cache Misses",
+                "Compile Time",
+                "End Of The Spectrum",
+                "Hash Function",
+                "Fortran",
+                "Floating-point Operations",
+                "Function Calls",
+                "Array Of Values",
+                "Stacking Model",
+                "Cache Size",
+                "L2 Cache",
+                "Memory Hierarchy",
+                "Replacement Policy"
+            ]
+        }
     },
     {
         "publicationNumber": "7068091",
@@ -236,7 +403,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 LLVM Compiler Infrastructure in HPC",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7068091",
@@ -252,7 +421,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 LLVM Compiler Infrastructure in HPC",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the foreword to the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7068091",
@@ -268,7 +439,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 LLVM Compiler Infrastructure in HPC",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents from this conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7068091",
@@ -284,7 +457,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 LLVM Compiler Infrastructure in HPC",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: high performance computing; code optimization; standards-driven programming; and programming productivity.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7068091",
@@ -300,7 +475,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 LLVM Compiler Infrastructure in HPC",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents copyright information for this conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7068091",
@@ -316,6 +493,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 LLVM Compiler Infrastructure in HPC",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the author index from this conference.",
+        "keywords": {}
     }
 ]
