@@ -38,7 +38,35 @@
                 "firstName": "Yili",
                 "lastName": "Zheng"
             }
-        ]
+        ],
+        "abstract": "Work-stealing is a popular approach for dynamic load balancing of task-parallel programs. However, as has been widely studied, the use of classical work-stealing algorithms on massively parallel and distributed supercomputers introduces several performance issues. One such issue is the overhead of failed steals (communicating with a victim that has no work), which is far more severe in the distributed context than within a single SMP node. Due to the cost of inter-node communication, it is critical to reduce the number of failed steals in a distributed context. Prior work has demonstrated that load-aware victim processor selection can reduce the number of failed steals, but it cannot eliminate the failed steals completely.In this paper, we present two different load-aware implementations of distributed work-stealing algorithm in HabaneroUPC++ PGAS library - BaselineWS and SuccessOnlyWS. BaselineWS follows prior work in implementing a distributed work-stealing strategy. SuccessOnlyWS implements a novel distributed work-stealing strategy that completely eliminate inter-node failed attempts by introducing a new policy for moving work from busy to idle processors. This strategy also avoids querying the same processor multiple times with failed steals. We evaluate both BaselineWS and SuccessOnlyWS by using up to 12288 cores of Edison, a CRAY-XC30 supercomputer and by using dynamic irregular applications, as exemplified by the UTS and NQueens benchmarks. We demonstrate that SuccessOnlyWS provides performance improvements up to 7% over BaselineWS.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Supercomputers",
+                "Benchmark testing",
+                "Runtime",
+                "Electronics packaging",
+                "Heuristic algorithms",
+                "Context",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Load Balancing",
+                "Failed Attempt",
+                "Exercise",
+                "Programming Model",
+                "Potential Victims",
+                "Search Phase",
+                "Source Of Degradation",
+                "Task Queue"
+            ],
+            "Author Keywords": [
+                "Distributed work-stealing",
+                "Habanero",
+                "PGAS"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -73,7 +101,38 @@
                 "firstName": "Alexandru",
                 "lastName": "Iosup"
             }
-        ]
+        ],
+        "abstract": "Graph analysis is becoming increasingly important in many research fields - biology, social sciences, data mining - and daily applications - path finding, product recommendation. Many different large-scale graph-processing systems have been proposed for different platforms. However, little effort has been placed on designing systems for hybrid CPU-GPU platforms.In this work, we present HyGraph, a novel graph-processing systems for hybrid platforms which delivers performance by using CPUs and GPUs concurrently. Its core feature is a specialized data structure which enables dynamic scheduling of jobs onto both the CPU and the GPUs, thus (1) supersedes the need for static workload distribution, (2) provides load balancing, and (3) minimizes inter-process communication overhead by overlapping computation and communication.Our preliminary results demonstrate that HyGraph outperforms CPU-only and GPU-only solutions, delivering close-to-optimal performance on the hybrid system. Moreover, it supports large-scale graphs which do not fit into GPU memory, and it is competitive against state-of-the-art systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Dynamic scheduling",
+                "Heuristic algorithms",
+                "Performance evaluation",
+                "Instruction sets",
+                "Load management",
+                "Central Processing Unit"
+            ],
+            "Index Terms": [
+                "Load Balancing",
+                "Graph Processing",
+                "Dynamic Load Balancing",
+                "Hybrid CPU-GPU",
+                "Data Mining",
+                "Hybrid System",
+                "Pathfinding",
+                "Job Scheduling",
+                "Dynamic Scheduling",
+                "Product Recommendations",
+                "Hybrid Platform",
+                "GB Memory",
+                "Heterogeneous Systems",
+                "Heterogeneous Process",
+                "Algorithm Execution",
+                "GPU Acceleration",
+                "Scheduling Performance"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -108,7 +167,32 @@
                 "firstName": "Christopher D.",
                 "lastName": "Krieger"
             }
-        ]
+        ],
+        "abstract": "Tensor decomposition, the higher-order analogue to singular value decomposition, has emerged as a useful tool for finding relationships in large, sparse, multidimensional data sets. As this technique matures and is applied to increasingly larger data sets, the need for high performance implementations becomes critical. In this work, we perform an objective empirical evaluation of three popular parallel implementations of the Candecomp/Parafac Alternating Least Squares (CP-ALS) tensor decomposition algorithm, namely SPLATT, DFacTo, and ENSIGN. We conduct performance studies across a variety of data sets, comparing the total memory required, the runtime, and the parallel scalability of each implementation. We find that the approach taken by SPLATT results in the fastest runtimes across the data sets, performing 5-22.64 times faster than the other tools. Additionally, SPLATT consumes 1.16-8.62 times less memory than the other tools. When tested on up to 20 cores or nodes, SPLATT using distributed memory parallelism exhibits the best strong scaling.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tensile stress",
+                "Runtime",
+                "Memory management",
+                "Scalability",
+                "Kernel",
+                "Parallel processing",
+                "Data structures"
+            ],
+            "Index Terms": [
+                "Tensor Decomposition",
+                "Singular Value Decomposition",
+                "Multidimensional Data",
+                "Total Memory",
+                "Multidimensional Datasets",
+                "Strong Scaling",
+                "Sparse Matrix",
+                "Memory Usage",
+                "Average Running Time",
+                "Memory Bandwidth",
+                "Shared Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -137,7 +221,42 @@
                 "firstName": "George",
                 "lastName": "Karypis"
             }
-        ]
+        ],
+        "abstract": "The k-nearest neighbor graph is an important structure in many data mining methods for clustering, advertising, recommender systems, and outlier detection. Constructing the graph requires computing up to n<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup> similarities for a set of n objects. This has led researchers to seek approximate methods, which find many but not all of the nearest neighbors. In contrast, we leverage shared memory parallelism and recent advances in similarity joins to solve the problem exactly, via a filtering based approach. Our method considers all pairs of potential neighbors but quickly filters those that could not be a part of the k-nearest neighbor graph, based on similarity upper bound estimates. We evaluated our solution on several real-world datasets and found that, using 16 threads, our method achieves up to 12.9× speedup over our exact baseline and is sometimes faster even than approximate methods. Moreover, an approximate version of our method is up to 21.7× more efficient than the best approximate state-of-the-art baseline at similar high recall.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Indexes",
+                "Instruction sets",
+                "Tiles",
+                "Search problems",
+                "Sorting",
+                "Advertising",
+                "Recommender systems"
+            ],
+            "Index Terms": [
+                "K-nearest Neighbor",
+                "Graph Construction",
+                "K-nearest Neighbor Graph",
+                "Fast Construction",
+                "Estimation Method",
+                "Real-world Datasets",
+                "Outlier Detection",
+                "High Recall",
+                "Recommender Systems",
+                "Upper Bound Estimate",
+                "Shared Memory",
+                "Filtering Process",
+                "Exact Method",
+                "Candidate List",
+                "Load Balancing",
+                "Minimum Similarity",
+                "Strong Scaling",
+                "Phase Filter",
+                "Nearest Neighbor Graph",
+                "Order Of Objects",
+                "Current Neighborhood"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -178,7 +297,37 @@
                 "firstName": "Jun",
                 "lastName": "Makino"
             }
-        ]
+        ],
+        "abstract": "Iterative methods on irregular grids have been used widely in all areas of comptational science and engineering for solving partial differential equations with complex geometry. They provide the flexibility to express complex shapes with relatively low computational cost. However, the direction of the evolution of high-performance processors in the last two decades have caused serious degradation of the computational efficiency of iterative methods on irregular grids, because of relatively low memory bandwidth. Data compression can in principle reduce the necessary memory memory bandwidth of iterative methods and thus improve the efficiency. We have implemented several data compression algorithms on the PEZY-SC processor, using the matrix generated for the HPCG benchmark as an example. For the SpMV (Sparse Matrix-Vector multiplication) part of the HPCG benchmark, the best implementation without data compression achieved 11.6Gflops/chip, close to the theoretical limit due to the memory bandwidth. Our implementation with data compression has achieved 32.4Gflops. This is of course rather extreme case, since the grid used in HPCG is geometrically regular and thus its compression efficiency is very high. However, in real applications, it is in many cases possible to make a large part of the grid to have regular geometry, in particular when the resolution is high. Note that we do not need to change the structure of the program, except for the addition of the data compression/decompression subroutines. Thus, we believe the data compression will be very useful way to improve the performance of many applications which rely on the use of irregular grids.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data compression",
+                "Benchmark testing",
+                "Bandwidth",
+                "Sparse matrices",
+                "Electronic mail",
+                "Hardware",
+                "Clocks"
+            ],
+            "Index Terms": [
+                "Source Code",
+                "Compression Algorithm",
+                "Matrix Multiplication",
+                "Theoretical Limit",
+                "Memory Bandwidth",
+                "Sparse Matrix",
+                "Problem Size",
+                "Nonzero Elements",
+                "Floating-point Operations",
+                "Remote Memory",
+                "L2 Cache"
+            ],
+            "Author Keywords": [
+                "Finite Element Analysis",
+                "Sparse Matrices",
+                "Data Compression"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -213,7 +362,38 @@
                 "firstName": "David",
                 "lastName": "Kaeli"
             }
-        ]
+        ],
+        "abstract": "Among the many choices to perform image segmentation, Level-Set Methods have demonstrated great potential for unstructured images. However, the usefulness of Level-Set Methods have been limited by their irregular workload characteristics such as high degree of branch divergence and input dependencies, as well as the high computational costs required to solve partial differential equations (PDEs).In this paper, we propose a novel algorithm for Level-Set Segmentation that first divides the pixels from an image into 4 categories. Then we traverse each image curve to obtain the final contour. The first two categories drive the inward evolution of the curve, while the remaining two drive the outward evolution of the curve. Using our categorization, we avoid solving PDEs and perform the evolution with an optimized flood-fill algorithm.Leveraging recently-introduced CUDA features that include dynamic parallelism and concurrent kernel execution, we can accelerate this algorithm on an NVDIA GPU. Our results show we can obtain benefits across a variety of input sizes. We can achieve a speedup greater than 56x with our CUDA optimized implementation run on a K20m GPU as compared to an OpenMP parallel implementation executed on a 16-core Intel Xeon E2560 SandyBridge CPU.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Heuristic algorithms",
+                "Graphics processing units",
+                "Parallel processing",
+                "Kernel",
+                "Fractals",
+                "Optimization",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Level Set Segmentation",
+                "Graphics Processing Unit",
+                "Partial Differential Equations",
+                "Intel Xeon",
+                "Evolution Curves",
+                "Level Set Method",
+                "Parallel Dynamics",
+                "Performance Of Algorithm",
+                "Image Size",
+                "Implementation Of Algorithm",
+                "Block Size",
+                "Object Parts",
+                "Neighboring Pixels",
+                "Stopping Condition",
+                "Degree Of Parallelism",
+                "pHi Values"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -254,7 +434,34 @@
                 "firstName": "Vivek",
                 "lastName": "Sarkar"
             }
-        ]
+        ],
+        "abstract": "Structured prediction algorithms-used when applying machine learning to tasks like natural language parsing and image understanding-present some opportunities for fine-grained parallelism, but also have problem-specific serial dependencies. Most implementations exploit only simple opportunities such as parallel BLAS, or embarrassing parallelism over input examples. In this work we explore an orthogonal direction: using the fact that these algorithms can be described as specialized forward-chaining theorem provers [1], [2], and implementing fine-grained parallelization of the forward-chaining mechanism. We study context-free parsing as a simple canonical example, but the approach is more general.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Parallel processing",
+                "Probabilistic logic",
+                "Grammar",
+                "Heuristic algorithms",
+                "Machine learning algorithms",
+                "Prediction algorithms",
+                "Interference"
+            ],
+            "Index Terms": [
+                "Probabilistic Context-free Grammar",
+                "Fine-grained Parallelism",
+                "Parallelization",
+                "Structure Prediction",
+                "Dynamic Programming",
+                "Core Processes",
+                "Executive Order",
+                "Dijkstra’s Algorithm",
+                "Computational Graph",
+                "Agenda Item",
+                "Grammar Rules",
+                "Priority Queue",
+                "Context-free Grammar"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -295,7 +502,44 @@
                 "firstName": "Vitaliy",
                 "lastName": "Gleyzer"
             }
-        ]
+        ],
+        "abstract": "The need to analyze increasingly larger graph datasets has driven the exploration of new methods and unique system architectures for graph processing. One such method moves away from the typical edge- and vertex-centric approaches and describes graph algorithms using linear-algebra operations, bringing the added benefits of predictable data-access patterns and ease of implementation. The performance of this approach is limited by the sparse nature of graph adjacency matrices, which leads to inefficient use of memory bandwidth, and reduced scalability in distributed systems. In order to maximize the scalability and performance of these linear-algebra systems, we require new sparse-matrix storage formats capable of maximizing memory throughput and minimizing latency, while maintaining low storage overhead. In this paper, we present an overview of a novel sparse-matrix storage format called Hashed-Index Sparse-Column/Row (HISC/R) which guarantees constant-time row or column access complexity at low storage overhead, while also supporting online non-zero element insertions and deletions. We evaluate the performance of HISC/R using randomly generated Kronecker graphs, demonstrating a 19% reduction in memory footprint, and 40% reduction in memory reads, for sparse matrix/matrix multiplication compared to competing formats.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sparse matrices",
+                "Indexes",
+                "Memory management",
+                "Scalability",
+                "Complexity theory",
+                "Prediction algorithms"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Storage Form",
+                "Graph Processing",
+                "Format For Processing",
+                "Distribution System",
+                "System Architecture",
+                "Performance Of Approach",
+                "Nonzero Elements",
+                "Ease Of Implementation",
+                "Low Overhead",
+                "Types Of Edges",
+                "Adjacency Matrix Of Graph",
+                "Memory Reading",
+                "Graph Datasets",
+                "Factor Loadings",
+                "Vector Of Values",
+                "Hash Function",
+                "Linear Probe",
+                "Indicator Vector",
+                "Storage Performance",
+                "Sparse Vector",
+                "Sparse Regions",
+                "Hardware Architecture",
+                "Number Of Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -318,7 +562,21 @@
                 "firstName": "David",
                 "lastName": "Padua"
             }
-        ]
+        ],
+        "abstract": "Summary form only given. The complete presentation was not made available for publication as part of the conference proceedings. High-performing irregular algorithms are typically implemented using simple operations and conventional control structures. In addition, due to today's compilers inability to manipulate these implementations, program tuning must usually be done by hand. Better notations and automatic optimization would help improve programmer productivity, portability, and maintainability. This talk will review high-level notation proposals for the description of irregular algorithms, as well as compiler and autotuning techniques for the optimization of these algorithms. A short discussion of open research problems and necessary conditions for adoption of these more advanced notations and strategies will conclude the presentation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Conferences",
+                "Optimization",
+                "Parallel processing",
+                "Computer architecture",
+                "Programming",
+                "Program processors"
+            ],
+            "Index Terms": [
+                "Higher Level Of Abstraction"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -437,7 +695,47 @@
                 "firstName": "Steve",
                 "lastName": "Stein"
             }
-        ]
+        ],
+        "abstract": "There is growing evidence that current architectures do not well handle cache-unfriendly applications such as sparse math operations, data analytics, and graph algorithms. This is due, in part, to the irregular memory access patterns demonstrated by these applications, and in how remote memory accesses are handled. This paper introduces a new, highly-scalable PGAS memory-centric system architecture where migrating threads travel to the data they access. Scaling both memory capacities and the number of cores can be largely invisible to the programmer.The first implementation of this architecture, implemented with FPGAs, is discussed in detail. A comparison of key parameters with a variety of today's systems, of differing architectures, indicates the potential advantages. Early projections of performance against several well-documented kernels translate these advantages into comparative numbers. Future implementations of this architecture may expand the performance advantages by the application of current state of the art silicon technology.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Message systems",
+                "Instruction sets",
+                "Computer architecture",
+                "Programming",
+                "Registers",
+                "Systems architecture"
+            ],
+            "Index Terms": [
+                "System Architecture",
+                "Electromagnetic System",
+                "Remote Memory",
+                "Current Architecture",
+                "Architecture Implementation",
+                "Large Systems",
+                "Programming Model",
+                "Processing Elements",
+                "Memory System",
+                "Interconnected Systems",
+                "Linear Algebra",
+                "Local Memory",
+                "Single Thread",
+                "Breadth-first Search",
+                "Global Space",
+                "Portion Of Space",
+                "Remote Operation",
+                "Function Calls",
+                "Memory Operations",
+                "Linearizable",
+                "Single Instruction",
+                "Shared Memory",
+                "Address Space",
+                "Programming Paradigm",
+                "Network Bandwidth",
+                "Large Memory",
+                "Memory Control"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -478,7 +776,47 @@
                 "firstName": "Richard",
                 "lastName": "Vuduc"
             }
-        ]
+        ],
+        "abstract": "This paper presents the optimized design and implementation of sparse tensor-times-dense matrix multiply (SpTTM) for CPU and GPU platforms. This primitive is a critical bottleneck in data analysis and mining applications based on tensor methods, such as the Tucker decomposition. We first design and implement sequential SpTTM to avoid explicit data transformations between a tensor and a matrix, which is the conventional approach. We further optimize SpTTM on multicore CPU and GPU systems by parallelizing, avoiding locks, and exploiting data locality. Our sequential SpTTM is up to 3.5× faster than the SpTTM from Tensor Toolbox and 1.5× over that from Cyclops Tensor Framework. Our parallel algorithms show 4.1× speedup on multicore Intel Core i7 and 18.8× speedup on NVIDIA K40c GPU over our sequential SpTTM respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tensile stress",
+                "Sparse matrices",
+                "Matrix decomposition",
+                "Indexes",
+                "Multicore processing",
+                "Graphics processing units",
+                "Data analysis"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Sparse Matrix",
+                "Sparse Tensor",
+                "Many-core Architecture",
+                "Parallelization",
+                "Data Transformation",
+                "Matrix Multiplication",
+                "Data Analytics Applications",
+                "Critical Bottleneck",
+                "Tucker Decomposition",
+                "Time And Space",
+                "Matrix Inequalities",
+                "Mode Of Production",
+                "Nonzero Entries",
+                "Density Modulation",
+                "Tensor Decomposition",
+                "Input Tensor",
+                "Second-order Tensor",
+                "Shared Memory",
+                "Output Tensor",
+                "Third-order Tensor",
+                "Higher-order Tensors",
+                "Tensor Operations",
+                "Tensor Representation",
+                "C++ Language",
+                "Sparse Format"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -519,7 +857,46 @@
                 "firstName": "Dana",
                 "lastName": "Hammond"
             }
-        ]
+        ],
+        "abstract": "In the field of computational fluid dynamics, the Navier-Stokes equations are often solved using an unstructured-grid approach to accommodate geometric complexity. Implicit solution methodologies for such spatial discretizations generally require frequent solution of large tightly-coupled systems of block-sparse linear equations. The multicolor point-implicit solver used in the current work typically requires a significant fraction of the overall application run time. In this work, an efficient implementation of the solver for graphics processing units is proposed. Several factors present unique challenges to achieving an efficient implementation in this environment. These include the variable amount of parallelism available in different kernel calls, indirect memory access patterns, low arithmetic intensity, and the requirement to support variable block sizes. In this work, the solver is reformulated to use standard sparse and dense Basic Linear Algebra Subprograms (BLAS) functions. However, experiments show that the performance of the BLAS functions available in existing CUDA libraries is suboptimal for matrices representative of those encountered in actual simulations. Instead, optimized versions of these functions are developed. Depending on block size, the new implementations show performance gains of up to 7× over the existing CUDA library functions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image color analysis",
+                "Mathematical model",
+                "Sparse matrices",
+                "Graphics processing units",
+                "Libraries",
+                "Linear systems",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "System Of Equations",
+                "Block Size",
+                "Efficient Implementation",
+                "Navier Stokes Equations",
+                "Software Libraries",
+                "Linear System",
+                "Functional Performance",
+                "Grid Points",
+                "Row Vector",
+                "Partial Differential Equations",
+                "Structure Of Matrix",
+                "Matrix Multiplication",
+                "Sparse Matrix",
+                "Block Diagonal",
+                "Element Of Vector",
+                "Output Vector",
+                "Implementation Performance",
+                "Upper Triangular",
+                "Forward Phase",
+                "Matrix-vector Product",
+                "Elements Nb",
+                "Lower Triangular",
+                "Broad Range Of Sizes",
+                "Example Of Matrix"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -554,7 +931,41 @@
                 "firstName": "Herman",
                 "lastName": "Lam"
             }
-        ]
+        ],
+        "abstract": "In an effort to offset the rapidly increasing data volume processed by large data centers today, their architects have increasingly been exploring unconventional architectures like FPGAs. Large-scale RC systems like Novo-G# show promise for both big-data processing and HPC, but are limited by a lengthy and difficult design process. In this paper we present a mixed MPI/OpenCL framework that enables rapid and simple multi-FPGA app development on Novo-G# with support for multidimensional inter-FPGA communication. The framework encapsulates inter-FPGA links into Altera OpenCL channels, abstracting away many of the complexities of inter-FPGA communication, and achieves an aggregate data rate of 288 Gbps per FPGA over six input and six output links. We use case studies and analysis to showcase a methodology for efficient design of multi-FPGA OpenCL apps on Novo-G# with our framework, and demonstrate its use to create various multi-FPGA applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Kernel",
+                "Servers",
+                "Protocols",
+                "Acceleration",
+                "Hardware",
+                "Transceivers"
+            ],
+            "Index Terms": [
+                "Data Center",
+                "App Developers",
+                "Data Transfer",
+                "Performance Loss",
+                "Error Detection",
+                "Physical Layer",
+                "Multiple Devices",
+                "Channel Access",
+                "Use Of Channels",
+                "Catapult",
+                "Profiling Tool",
+                "Channel Bandwidth",
+                "Multiple Kernel",
+                "Decomposition Of Data",
+                "Multiple Servers",
+                "Memory Bandwidth",
+                "Standard Interface",
+                "Set Of Kernels",
+                "High-level Synthesis",
+                "Protocol Stack"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -595,7 +1006,46 @@
                 "firstName": "Srinivas",
                 "lastName": "Aluru"
             }
-        ]
+        ],
+        "abstract": "The Automata Processor was designed for string-pattern matching. In this paper, we showcase its use to execute integer and floating-point comparisons and apply the same to accelerate interval stabbing queries. An interval stabbing query determines which of the intervals in a set overlap a query point. Such queries are often used in computational geometry, pattern matching, database management systems, and geographic information systems. The check for each interval is programmed as a single automaton and multiple automata are executed in parallel to provide significant performance gains. While handling 32-bit integers or single-precision floating-point numbers, up to 2.75 trillion comparisons can be executed per second, whereas 0.79 trillion comparisons per second can be completed for 64-bit integers or double-precision floating-point numbers. Additionally, our solution leaves the intervals in the set unordered; allowing addition or deletion of an interval in constant time. This is not possible for contemporary solutions wherein the intervals are ordered, making the query times faster, but making the updating of intervals complex. Our automata designs exemplify techniques that maximize resource utilization and minimize performance bottlenecks, which may be useful to future application developers on this processor. Their modular design allows them to become constituent parts of larger automata, where the numerical comparisons are part of the overall pattern matching operation. We have validated the designs on hardware, and the routines to generate the necessary automata and execute them on the AP will be made available as software libraries shortly.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Automata",
+                "Vegetation",
+                "Routing",
+                "Electronic mail",
+                "Pattern matching",
+                "Acceleration",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Automata",
+                "Geographic Information System",
+                "Pattern Matching",
+                "Modular Design",
+                "Computational Geometry",
+                "Floating-point Numbers",
+                "Single Precision",
+                "Query Time",
+                "Query Point",
+                "Maximize Resource Utilization",
+                "Central Point",
+                "Number Of Comparisons",
+                "Original Design",
+                "Data Streams",
+                "Processing Elements",
+                "State Machine",
+                "Number Of Orders",
+                "Subintervals",
+                "Non-negative Integer",
+                "Sign Bit",
+                "Lexicographic",
+                "Tree Segmentation",
+                "Labeling Algorithm",
+                "Output Buffer",
+                "Half Of The Range"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -630,7 +1080,46 @@
                 "firstName": "Mary",
                 "lastName": "Hall"
             }
-        ]
+        ],
+        "abstract": "Applications over sparse matrices and graphs often rely on efficient matrix representations that exploit the nonzero structure of the sparse representation. In some cases, this structure varies within the matrix, e.g., some portions are more dense and others are very sparse. For such matrices, hybrid algorithms are commonly used in sparse linear algebra and graph libraries, which employ multiple representations and computations. Automating such an approach in a compiler is difficult as it depends on analysis of the input matrix, which is only available at runtime. This paper describes compiler and runtime support for generating hybrid implementations. It automatically partitions the input matrix or graph into multiple disjoint subsets, which correspond to significant differences of nonzero structures. These subsets can then be optimized separately. For this purpose, the paper introduces a non-affine split transformation, which automatically generates an inspector and multiple executors. The inspector analyzes and partitions the input matrix according to the split criteria. The resulting executors are further optimized with customized transformations to derive specialized representations. We demonstrate the performance gains on an Nvidia K20c (Kepler) GPU of hybrid implementations for examples from sparse linear algebra and graph analytics: sparse matrix-vector multiplication and stochastic gradient descent.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sparse matrices",
+                "Runtime",
+                "Arrays",
+                "Libraries",
+                "Hybrid power systems",
+                "Partitioning algorithms",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Sparse Computations",
+                "Stochastic Gradient Descent",
+                "Sparse Matrix",
+                "Input Matrix",
+                "Sparse Representation",
+                "Matrix Representation",
+                "Hybrid Algorithm",
+                "Multiple Representations",
+                "Multiple Subsets",
+                "Disjoint Subsets",
+                "Sparse Graph",
+                "Data Transformation",
+                "Linear Solver",
+                "Evidential",
+                "Nonzero Elements",
+                "Hybrid Forms",
+                "Nonzero Entries",
+                "Extra Computation",
+                "Dense Part",
+                "Graph Algorithms",
+                "Row Length",
+                "Sparse Format",
+                "Auxiliary Matrix",
+                "Separate Representations",
+                "Multiple Partitions"
+            ]
+        }
     },
     {
         "publicationNumber": "7831547",
@@ -646,7 +1135,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 6th Workshop on Irregular Applications: Architecture and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7831547",
@@ -662,7 +1153,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 6th Workshop on Irregular Applications: Architecture and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7831547",
@@ -678,7 +1171,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 6th Workshop on Irregular Applications: Architecture and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7831547",
@@ -694,7 +1189,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 6th Workshop on Irregular Applications: Architecture and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7831547",
@@ -710,7 +1207,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 6th Workshop on Irregular Applications: Architecture and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: multicore architecture; OpenCL framework; and high-performance graph processing.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7831547",
@@ -726,6 +1225,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 6th Workshop on Irregular Applications: Architecture and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     }
 ]

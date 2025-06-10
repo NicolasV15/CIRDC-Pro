@@ -44,7 +44,43 @@
                 "firstName": "David",
                 "lastName": "Bader"
             }
-        ]
+        ],
+        "abstract": "Graph processing is typically considered to be a memory-bound rather than compute-bound problem. One common line of thought is that more available memory bandwidth corresponds to better graph processing performance. However, in this work we show that this is not necessarily the case. We demonstrate that the key factor in the utilization of the memory system for graph algorithms is not the raw bandwidth, or even latency of memory requests, but instead is the number of memory channels available to handle small data transfers with low locality. Using several widely used graph frameworks, including Gunrock (on the GPU) and GAPBS & Ligra (for CPUs), we characterize two very distinct memory hierarchies with respect to key graph analytics kernels. Our results show that the differences in peak bandwidths of several of the latest Pascal-generation GPU memory subsystems aren't reflected in the performance of various analytics. Furthermore, our experiments on CPU and Xeon Phi systems show that the number of memory channels utilized can be a decisive factor in performance across several different applications. For CPU systems with smaller thread counts, the memory channels can be underutilized while systems with high thread counts can oversaturate the memory subsystem, which leads to limited performance. Lastly, we model the performance of including more channels with narrower access widths than those found in existing memory subsystems, and we analyze the trade-offs in terms of the two most prominent types of memory accesses found in graph algorithms, streaming and random accesses.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Graphics processing units",
+                "Instruction sets",
+                "Random access memory",
+                "Memory management",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Impact Of Channels",
+                "Channel Memory",
+                "Data Transfer",
+                "Graphical Analysis",
+                "Performance Factors",
+                "Memory System",
+                "Random Access",
+                "Utilization Factor",
+                "Graph Algorithms",
+                "Memory Bandwidth",
+                "Graph Processing",
+                "Graphical Framework",
+                "Performance Of Algorithm",
+                "Betweenness Centrality",
+                "PageRank",
+                "Additional Channels",
+                "Narrow Channel",
+                "Titan Xp",
+                "Effective Bandwidth",
+                "Cache Size",
+                "L2 Cache",
+                "Random Read",
+                "Synthetic Benchmark"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -60,7 +96,15 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides an abstract for each of the keynote presentations and may include a brief professional biography of each presenter. The complete presentations were not made available for publication as part of the conference proceedings.",
+        "keywords": {
+            "Index Terms": [
+                "Modern C++",
+                "Deep Learning Models",
+                "Facebook"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -101,7 +145,57 @@
                 "firstName": "Mohammad",
                 "lastName": "Zubair"
             }
-        ]
+        ],
+        "abstract": "This paper presents a new mixed-precision implementation of a linear-solver kernel used in practical large-scale CFD simulations to improve GPU performance. The new implementation reduces memory traffic by using the half-precision format for some critical computations while maintaining double-precision solution accuracy. As the linear-solver kernel is memory bound on GPUs, a reduction in memory traffic directly translates to improved performance. The performance of the new implementation is assessed for a benchmark steady flow simulation and a large-scale unsteady turbulent flow application. Both studies were conducted using NVIDIAÆ Tesla V100 GPUs on the Summit system at the Oak Ridge Leadership Computing Facility.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Mathematical model",
+                "Jacobian matrices",
+                "Kernel",
+                "Image color analysis",
+                "Sparse matrices",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Unstructured Grids",
+                "Turbulent Flow",
+                "Linear Solver",
+                "Tesla V100",
+                "Memory Reduction",
+                "System Of Equations",
+                "Linear System",
+                "Row Vector",
+                "First Pass",
+                "Partial Differential Equations",
+                "Types Of Applications",
+                "Block Diagonal",
+                "Low Precision",
+                "Navier Stokes Equations",
+                "Mean Flow",
+                "Turbulence Model",
+                "Reynolds-averaged Navier–Stokes",
+                "Angle Of Attack",
+                "Iterative Convergence",
+                "Single Precision",
+                "Memory Bandwidth",
+                "Row Block",
+                "Iterative Solver",
+                "Half Space",
+                "Matrix-vector Product",
+                "Memory Space",
+                "Nonlinear Vector",
+                "Jacobian Matrix",
+                "Software Libraries"
+            ],
+            "Author Keywords": [
+                "mixed precision",
+                "high performance computing",
+                "optimization",
+                "GPU"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -130,7 +224,38 @@
                 "firstName": "Jason G.",
                 "lastName": "DeVinney"
             }
-        ]
+        ],
+        "abstract": "We report on a software package that offers high-bandwidth and memory-efficient ways for a parallel application to transmit numerous small data items among its processes. The package provides a standalone library that can integrated into any SHMEM, UPC, or MPI application. It defines a simple interface to parallel objects called conveyors, and it provides a variety of conveyor implementations. Often the most efficient type of conveyor is an asynchronous three-hop conveyor, which makes heavy use of fast intranode communication. This type also uses the least memory internally. Conveyors of this type scale well to 100,000 processes and beyond. Our experience with conveyors applied to irregular algorithms at scale has convinced us of the necessity and profitability of message aggregation. The conveyor interface is a low-level C API that is intended to guide future hardware and runtime improvements and to be a foundation for future parallel programming models.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Libraries",
+                "Message systems",
+                "Bandwidth",
+                "Routing",
+                "Histograms",
+                "Data structures",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Programming Model",
+                "Use Of Communication",
+                "Small Items",
+                "Benchmark",
+                "Synchronization",
+                "Data Structure",
+                "Local State",
+                "Push And Pull",
+                "Return Value",
+                "Routing Algorithm",
+                "Remote Memory",
+                "Memory Operations",
+                "Pair Of Processes",
+                "Application Code",
+                "Optional Features",
+                "Point-to-point Communication",
+                "Communication Objectives"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -171,7 +296,44 @@
                 "firstName": "Roger",
                 "lastName": "Pearce"
             }
-        ]
+        ],
+        "abstract": "We present Metall, a persistent memory allocator designed to provide developers with an API to allocate custom C++ data structures in both block-storage and byte-addressable persistent memories (e.g., NVMe and Intel Optane DC Persistent Memory). Metall incorporates state-of-the-art allocation algorithms in Supermalloc with the rich C++ interface developed by Boost.Interprocess, and provides persistent memory snapshoting (versioning) capabilities. We demonstrate Metall processing large graphs in a variety of conditions and data-structure configurations, indicating a bright future for data-analytics leveraging emerging persistent memory technologies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resource management",
+                "Arrays",
+                "Random access memory",
+                "Containers",
+                "Memory management",
+                "Nonvolatile memory"
+            ],
+            "Index Terms": [
+                "Persistent Memory",
+                "Memory Allocation",
+                "Graph Processing",
+                "Data Structure",
+                "Allocation Algorithm",
+                "Small Objects",
+                "Graph Data",
+                "Large Objects",
+                "Random Access",
+                "Vertices",
+                "Graph Construction",
+                "Non-volatile Memory",
+                "Memory Space",
+                "User Control",
+                "Internal Size",
+                "Internal Architecture",
+                "Physical Memory",
+                "Normal Copy",
+                "Substantial Improvement In Performance",
+                "Edge List",
+                "Virtual Memory",
+                "File System",
+                "Substantial Cost Reduction",
+                "Chunk Size"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -212,7 +374,56 @@
                 "firstName": "David",
                 "lastName": "Keyes"
             }
-        ]
+        ],
+        "abstract": "The computation of tomographic reconstructors (ToR) is at the core of a simulation framework to design the next generation of adaptive optics (AO) systems to be installed on future Extremely Large Telescopes (ELT). In fact, it is also a critical component for their operation on sky. The goals of these instruments range from the detection of the light from the most distant galaxies to the analysis of the composition of exoplanets terrestrial atmospheres. Based on advanced AO techniques, the instrument MOSAIC relies on a computational framework to filter out the Earth atmospheric turbulence and eventually enhance the images quality out of ground-based telescopes. The ToR calculation is a compute-bound operation based on the Cholesky factorization. Due to its cubical algorithmic complexity, the ToR may represent a major bottleneck for the E-ELT when scaling up the large number of wavefront sensors used in the baseline MOSAIC design. To mitigate this increasing dimensionality overhead, this paper presents the implementation of a novel mixed-precision Cholesky-based dense matrix solver on hardware accelerators. The new algorithm takes into account the data-sparse structure of the covariance matrix operator and uses the tensor cores of NVIDIA V100 GPUs to leverage performance at an unprecedented scale. To our knowledge, this is the first computational astronomy application that exploits V100's tensor cores outside of the traditional arena of artificial intelligence. Experimental results demonstrate the accuracy robustness and the high performance of the mixed-precision ToR on synthetic datasets, which paves the way for future instrument deployments on the E-ELT",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Telescopes",
+                "Atmospheric measurements",
+                "Tomography",
+                "Tensors",
+                "Covariance matrices"
+            ],
+            "Index Terms": [
+                "Hardware Accelerators",
+                "Covariance Matrix",
+                "Sparse Matrix",
+                "Projection Matrix",
+                "Cholesky Decomposition",
+                "Adaptive Optics",
+                "Atmospheric Turbulence",
+                "Exoplanets",
+                "Wavefront Sensor",
+                "Heuristic",
+                "Instrumentation",
+                "Symmetric Matrix",
+                "New Instrument",
+                "Computation Tasks",
+                "Software Solutions",
+                "Iterative Refinement",
+                "Peak Performance",
+                "Hardware Resources",
+                "Optical Instrument",
+                "Single Precision",
+                "Functor",
+                "Deformable Mirror",
+                "Single GPU",
+                "Covariance Matrix Structure",
+                "Precise Approach",
+                "Computational Precision",
+                "Starlight",
+                "Positive Definite",
+                "Theoretical Performance"
+            ],
+            "Author Keywords": [
+                "European Extremely Large Telescope",
+                "Tomographic Reconstructor",
+                "Mixed-Precision Algorithms",
+                "High Performance Computing",
+                "GPUs and Tensor Cores"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -253,7 +464,40 @@
                 "firstName": "Hiroaki",
                 "lastName": "Kobayashi"
             }
-        ]
+        ],
+        "abstract": "Vector gather instructions are responsible for handling indirect memory accesses in vector processing. Since the indirect memory accesses usually express irregular access patterns, they have relatively low spatial and temporal locality compared with regular access patterns. As a result, an application with many vector gather instructions suffers from long latencies of the indirect memory accesses. Thus, the long latencies cause a significant performance degradation in vector processing. This paper proposes a hardware prefetching mechanism to hide memory access latencies of indirect memory accesses. The mechanism prefetches cacheable index data before executing a vector gather instruction, and predicts the addresses of the memory requests issued by the vector gather instruction. The mechanism then tries to prefetch the data based on the predicted addresses. As a result, the mechanism can reduce the memory access latencies of vector gather instructions. Moreover, this paper discusses how many cache blocks should be loaded per prediction regarding a single vector gather instruction by varying the prefetching parameters of distance and degree. In the evaluation, the performance of a simple kernel is examined with two types of index data: sequential and random. The evaluation results show that the prefetching mechanism improves the performance of the sequential-indexed and random-indexed kernels by 2.2x and 1.2x, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Prefetching",
+                "Indexes",
+                "Hardware",
+                "Loading"
+            ],
+            "Index Terms": [
+                "Hardware Prefetching",
+                "Index Data",
+                "Irregular Patterns",
+                "Access Patterns",
+                "Single Instruction",
+                "Indirect Access",
+                "Performance Improvement",
+                "Highest Performance",
+                "Sparse Matrix",
+                "Array Elements",
+                "Trace Data",
+                "Pair Of Parameters",
+                "Graph Algorithms",
+                "Duplicate Values",
+                "Vector Process",
+                "Cache Hit",
+                "Random Array"
+            ],
+            "Author Keywords": [
+                "Vector instructions",
+                "Indirect memory access",
+                "Hardware prefetching"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -300,7 +544,43 @@
                 "firstName": "Seiji",
                 "lastName": "Umatani"
             }
-        ]
+        ],
+        "abstract": "This paper proposes priority-based and weight-based steal strategies for an idle worker (thief) to select a victim worker in work-stealing frameworks. Typical work-stealing frameworks employ uniformly random victim selection. We implemented the proposed strategies on a work-stealing framework called Tascell; Tascell programmers can let each worker estimate and declare the remaining work amount of its current task as a real number so that the enhanced Tascell framework can use declared values as priorities or weights. To reduce the total task division cost, the proposed strategies avoid stealing small tasks. With a priority-based strategy, a thief selects the victim that has the highest known priority at that time. With a weight-based non-uniformly random strategy, a thief uses the relative weights of victim candidates as their selection probabilities. The proposed selection strategies achieved superior performance compared to uniformly random selection. Our evaluation uses a parallel implementation of the ``highly serial'' version of the Barnes-Hut force calculation algorithm in a shared memory environment and five benchmark programs in a distributed memory environment.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Probabilistic logic",
+                "Backtracking",
+                "Load management",
+                "Instruction sets",
+                "Conferences",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Total Cost",
+                "Real Numbers",
+                "Random Selection",
+                "Random Strategy",
+                "Current Task",
+                "Benchmark Test",
+                "Parallel Implementation",
+                "Small Tasks",
+                "Body Mass",
+                "Probability Values",
+                "Parallelization",
+                "Number Of Workers",
+                "Amount Of Work",
+                "Array Elements",
+                "Force Estimation",
+                "Tree Search",
+                "Parallel Execution",
+                "N Log N",
+                "Task Request"
+            ],
+            "Author Keywords": [
+                "parallel programming languages; work stealing; priority; weight; concurrency; many-core; Barnes–Hut algorithm"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -335,7 +615,42 @@
                 "firstName": "Jonathan Mark",
                 "lastName": "Bull"
             }
-        ]
+        ],
+        "abstract": "Over the last decade, the vertex-centric programming model has attracted significant attention in the world of graph processing, resulting in the emergence of a number of vertex-centric frameworks. Its simple programming interface, where computation is expressed from a vertex point of view, offers both ease of programming to the user and inherent parallelism for the underlying framework to leverage. However, vertex-centric programs represent an extreme form of irregularity, both inter and intra core. This is because they exhibit a variety of challenges from a workload that may greatly vary across supersteps, through fine-grain synchronisations, to memory accesses that are unpredictable both in terms of quantity and location. In this paper, we explore three optimisations which address these irregular challenges; a hybrid combiner carefully coupling lock-free and lock-based combinations, the partial externalisation of vertex structures to improve locality and the shift to an edge-centric representation of the workload. We also assess the suitability of more traditional optimisations such as dynamic load-balancing and software prefetching. The optimisations were integrated into the iPregel vertex-centric framework, enabling the evaluation of each optimisation in the context of graph processing across three general purpose benchmarks common in the vertex-centric community, each run on four publicly available graphs covering all orders of magnitude from a million to a billion edges. The result of this work is a set of techniques which we believe not only provide a significant performance improvement in vertex-centric graph processing, but are also applicable more generally to irregular applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Programming",
+                "Parallel processing",
+                "Computational modeling",
+                "Postal services",
+                "Out of order"
+            ],
+            "Index Terms": [
+                "Graph Processing",
+                "Benchmark",
+                "Programming Model",
+                "Hybrid Combinations",
+                "Attention Of The World",
+                "Shortest Path",
+                "Number Of Combinations",
+                "Network Graph",
+                "Neutral Values",
+                "Combination Of Operators",
+                "User-defined Function",
+                "Dynamic Scheduling",
+                "Unpredictable Patterns",
+                "Load Imbalance"
+            ],
+            "Author Keywords": [
+                "vertex-centric",
+                "hybrid combiner",
+                "structure externalisation",
+                "edge-centric workload",
+                "load-balancing",
+                "cache efficiency"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -376,7 +691,48 @@
                 "firstName": "Hironori",
                 "lastName": "Kasahara"
             }
-        ]
+        ],
+        "abstract": "Indirect memory accesses caused by sparse linear algebra calculations are widely used in important real applications. However, they also cause serious inefficient memory accesses and pipeline stalls resulting low execution efficiency even with high memory bandwidth and much computational resource. One of the important issues of indirect memory accesses, such as accessing A[B[i]], is it requires two succeeding different memory accesses: the index loads (B[i]) and the following data element accesses (A[B[i]]). To overcome this situation, we propose the Cascaded-DMAC (CDMAC). This CDMAC is intended to be attached in each core of a multicore chip in addition to a CPU core, a vector accelerator, and a local data memory. It performs data transfers between an off-chip main memory and an in-core local data memory, which provides data to the accelerator. The key idea of the CDMAC is cascading two DMACs so that the first one loads indices, then the second one accesses data elements by using these indices. Thus, this organization realizes the autonomous indirect memory accesses by giving an index array and an element array, and obtains the efficient SIMD computations by lining up the sparse data into the local data memory. We implemented a multicore processor having the proposed CDMAC on an FPGA board. The evaluation result of sparse matrix-vector multiplications on the FPGA shows that the CDMAC achieves 17x speedup at most compared with the CPU data transfer.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Indexes",
+                "Data transfer",
+                "Sparse matrices",
+                "Field programmable gate arrays",
+                "Multicore processing",
+                "Bridges",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Indirect Access",
+                "Indirect Memory",
+                "Irregular Applications",
+                "Data Transfer",
+                "Data Elements",
+                "Local Memory",
+                "Memory Bandwidth",
+                "Off-chip Memory",
+                "Input Vector",
+                "Sparse Matrix",
+                "Random Matrix",
+                "Random Access",
+                "Memory Control",
+                "Vector Process",
+                "Cache Size",
+                "Cache Misses",
+                "Band Matrix"
+            ],
+            "Author Keywords": [
+                "Cascaded DMA Controller",
+                "CDMAC",
+                "DMAC",
+                "DMA",
+                "indirect memory access",
+                "sparse matrix vector multiplication",
+                "SpMV",
+                "SMVM"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -419,9 +775,9 @@
             },
             {
                 "id": 37064569200,
-                "preferredName": "Ayd\u0131n Bulu\u00e7",
-                "firstName": "Ayd\u0131n",
-                "lastName": "Bulu\u00e7"
+                "preferredName": "Aydın Buluç",
+                "firstName": "Aydın",
+                "lastName": "Buluç"
             },
             {
                 "id": 37281788900,
@@ -429,7 +785,54 @@
                 "firstName": "Katherine",
                 "lastName": "Yelick"
             }
-        ]
+        ],
+        "abstract": "Distributed data structures are key to implementing scalable applications for scientific simulations and data analysis. In this paper we look at two implementation styles for distributed data structures: remote direct memory access (RDMA) and remote procedure call (RPC). We focus on operations that require individual accesses to remote portions of a distributed data structure, e.g., accessing a hash table bucket or distributed queue, rather than global operations in which all processors collectively exchange information. We look at the trade-offs between the two styles through microbenchmarks and a performance model that approximates the cost of each. The RDMA operations have direct hardware support in the network and therefore lower latency and overhead, while the RPC operations are more expressive but higher cost and can suffer from lack of attentiveness from the remote side. We also run experiments to compare the real-world performance of RDMA- and RPC-based data structure operations with the predicted performance to evaluate the accuracy of our model, and show that while the model does not always precisely predict running time, it allows us to choose the best implementation in the examples shown. We believe this analysis will assist developers in designing data structures that will perform well on current network architectures, as well as network architects in providing better support for this class of distributed data structures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data structures",
+                "Data models",
+                "Libraries",
+                "Analytical models",
+                "Distributed databases",
+                "Concurrent computing",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Data Structure",
+                "Remote Procedure Call",
+                "Remote Direct Memory Access",
+                "Distributed Data Structure",
+                "Direct Access",
+                "Low Latency",
+                "Hash Function",
+                "Benchmark Test",
+                "Remote Access",
+                "Remote Memory",
+                "Benchmark",
+                "Operational Costs",
+                "Target Value",
+                "Flow Control",
+                "Sparse Matrix",
+                "Cost Components",
+                "Local Memory",
+                "Target Node",
+                "Round Trip",
+                "Return Value",
+                "Linearizable",
+                "Shared Memory",
+                "Remote Data",
+                "Remote Operation",
+                "Memory Operations",
+                "Level Requirements",
+                "Multiple Trips",
+                "Insertion Operator"
+            ],
+            "Author Keywords": [
+                "distributed data structures",
+                "remote procedure call (RPC)",
+                "remote direct memory access (RDMA)"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -452,7 +855,50 @@
                 "firstName": "Daniel",
                 "lastName": "Thuerck"
             }
-        ]
+        ],
+        "abstract": "Solving numerically tough matrices often requires full pivoting and aggressive iterative refinement even with modern direct solvers. Iterative solvers and preconditioners, preferred in parallel computing often cannot keep up, especially novel, massively-parallel fixed-point methods. We show that even for tough, indefinite matrices, these methods can be an alternative by (a) using a blocked version and (b) introducing a data structure an algorithms for two level, global pivoting. Our approach allows register-based pivoting for high performance, batched CUDA kernels and, for the first time on GPUs, also flexible permutations on the block level. Our experiments show that these modifications help to mitigate the irregular computation stemming from pivoting. Our implementation generates fixed-point style preconditioners that can keep up with traditional, more accurate and static preconditioners - even for tough, indefinite systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Jacobian matrices",
+                "Kernel",
+                "Sparse matrices",
+                "Symmetric matrices",
+                "Iterative methods",
+                "Graphics processing units",
+                "Data structures"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Block Level",
+                "Pattern Matrix",
+                "Diagonally Dominant",
+                "Dominant Matrix",
+                "Data Structure",
+                "Column Vector",
+                "Fixed Point",
+                "Linear System",
+                "Symmetric Matrix",
+                "Block Size",
+                "Regular Grid",
+                "Sparse Matrix",
+                "Block Diagonal",
+                "Input Matrix",
+                "Random Matrix",
+                "Linear Algebra",
+                "Maximum Magnitude",
+                "Breadth-first Search",
+                "Symmetric Case",
+                "Dense Block",
+                "Schur Complement",
+                "Single Precision",
+                "Double Precision",
+                "Degree Of Dominance",
+                "Eigenvalue Distribution",
+                "Fixed-point Iteration",
+                "Block Structure",
+                "Parallel System"
+            ]
+        }
     },
     {
         "publicationNumber": "8943075",
@@ -468,7 +914,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8943075",
@@ -484,7 +932,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8943075",
@@ -500,7 +950,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8943075",
@@ -516,7 +968,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8943075",
@@ -532,6 +986,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 9th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]

@@ -32,7 +32,49 @@
                 "firstName": "Jeffrey S.",
                 "lastName": "Vetter"
             }
-        ]
+        ],
+        "abstract": "Decomposing sparse matrices into lower and upper triangular matrices (sparse LU factorization) is a key operation in many computational scientific applications. We developed SparseLU, a sparse linear algebra library that implements a new algorithm for LU factorization on general sparse matrices. The new algorithm divides the input matrix into tiles to which OpenMP tasks are created for factorization computation, where only tiles that contain nonzero elements are computed. For comparative performance analysis, we used the reference library SuperLU. Testing was performed on synthetically generated matrices which replicate the conditions of the real-world matrices. SparseLU is able to reach a mean speedup of ~29× compared to SuperLU.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Conferences",
+                "Linear algebra",
+                "Computer architecture",
+                "Libraries",
+                "Performance analysis",
+                "Sparse matrices",
+                "Matrix decomposition"
+            ],
+            "Index Terms": [
+                "LU Factorization",
+                "Math Library",
+                "Sparse LU",
+                "Sparse LU Factorization",
+                "Sparse Matrix",
+                "Nonzero Elements",
+                "Input Matrix",
+                "Triangular Matrix",
+                "Linear Algebra",
+                "Reference Library",
+                "Upper Triangular",
+                "Lower Triangular",
+                "Sparse Factorization",
+                "Data Structure",
+                "Parallelization",
+                "Matrix Size",
+                "Matrix Density",
+                "Histogram Data",
+                "Parallel Machines",
+                "Kinds Of Operations",
+                "Diagonally Dominant",
+                "Tile Size",
+                "Synthetic Matrix"
+            ],
+            "Author Keywords": [
+                "LU factorization",
+                "Sparse Linear Algebra",
+                "OpenMP"
+            ]
+        }
     },
     {
         "publicationNumber": "10027178",
@@ -79,7 +121,37 @@
                 "firstName": "Sidharth",
                 "lastName": "Kumar"
             }
-        ]
+        ],
+        "abstract": "Datalog, a bottom-up declarative logic programming language, has a wide variety of uses for deduction, modeling, and data analysis, across application domains. Datalog can be efficiently implemented using relational algebra primitives such as join, projection and union. While there exist several multi-threaded and multi-core implementations of Datalog, targeting CPU-based systems, our work makes an inroad towards developing a Datalog implementation for GPUs. We demonstrate the feasibility of a high-performance relational algebra backend for a subset of Datalog applications that can effectively leverage the parallelism of GPUs using cuDF. cuDF is a library from the Rapids suite that uses the NVIDIA CUDA programming model for GPU parallelism. It provides similar functionalities to Pandas, a popular data analysis engine. In this paper, we analyze and evaluate the performance of cuDF versus Pandas for two graph-mining problems implemented in Datalog, (1) triangle counting and (2) transitive-closure computation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data analysis",
+                "Algebra",
+                "Logic programming",
+                "Conferences",
+                "Graphics processing units",
+                "Computer architecture",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Transitive Closure",
+                "Logical Language",
+                "Fixed Point",
+                "Undirected",
+                "Filtration Performance",
+                "Single GPU",
+                "Graph Size",
+                "Steep Learning Curve",
+                "Input Graph",
+                "Union Operation"
+            ],
+            "Author Keywords": [
+                "relational-algebra",
+                "-transitive-closure",
+                "-cudf",
+                "-datalog"
+            ]
+        }
     },
     {
         "publicationNumber": "10027178",
@@ -126,7 +198,43 @@
                 "firstName": "Flavio",
                 "lastName": "Vella"
             }
-        ]
+        ],
+        "abstract": "Research to accelerate matrix multiplication, pushed by the growing computational demands of deep learning, has sprouted many efficient architectural solutions, such as NVIDIA's Tensor Cores. These accelerators are designed to process efficiently a high volume of small dense matrix products in parallel. However, it is not obvious how to leverage these accelerators for sparse matrix multiplication. A natural way to adapt the accelerators to this problem is to divide the matrix into small blocks, and then multiply only the nonzero blocks. In this paper, we investigate ways to reorder the rows of a sparse matrix to reduce the number of nonzero blocks and cluster the nonzero elements into a few dense blocks. While this pre-processing can be computationally expensive, we show that the high speed-up provided by the accelerators can easily repay the cost, especially when several multiplications follow one reordering.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Deep learning",
+                "Tensors",
+                "Costs",
+                "Conferences",
+                "Focusing",
+                "Computer architecture",
+                "Software"
+            ],
+            "Index Terms": [
+                "Sparse Matrix",
+                "Matrix Multiplication",
+                "Small Blocks",
+                "Parallel Production",
+                "Hierarchical Clustering",
+                "Clustering Algorithm",
+                "Parallelization",
+                "Intersection Over Union",
+                "Block Diagonal",
+                "Block Structure",
+                "Hamming Distance",
+                "Minimum Density",
+                "Iterative Clustering",
+                "Block Technique",
+                "Block Procedure",
+                "Closest Cluster"
+            ],
+            "Author Keywords": [
+                "Reordering",
+                "clustering",
+                "sparse matrices",
+                "tensor cores"
+            ]
+        }
     },
     {
         "publicationNumber": "10027178",
@@ -155,7 +263,46 @@
                 "firstName": "Peter",
                 "lastName": "Kogge"
             }
-        ]
+        ],
+        "abstract": "The conventional model of parallel programming today involves either copying data across cores (and then having to track its most recent value), or not copying and requiring deep software stacks to perform even the simplest operation on data that is “remote”, i.e., out of the range of loads and stores from the current core. As application requirements grow to larger data sets, with more irregular access to them, both conventional approaches start to exhibit severe scaling limitations. This paper reviews some growing evidence of the potential value of a new model of computation that skirts between the two: data does not move (i.e., is not copied), but computation instead moves to the data. Several different applications involving large sparse computations, streaming of data, and complex mixed mode operations have been coded for a novel platform where thread movement is handled invisibly by the hardware. The evidence to date indicates that parallel scaling for this paradigm can be significantly better than any mix of conventional models.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Parallel programming",
+                "Computational modeling",
+                "Message passing",
+                "Memory management",
+                "Machine learning",
+                "Linear algebra",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Computational Model",
+                "Data Streams",
+                "Complex Operations",
+                "Machine Learning",
+                "Throughput",
+                "Sparsity",
+                "Stochastic Gradient Descent",
+                "Hash Function",
+                "Memory Control",
+                "Partial Sums",
+                "Hybrid Algorithm",
+                "Hypergraph",
+                "Conventional Architecture",
+                "Memory Operations",
+                "Key Takeaway",
+                "Linearizable",
+                "Conventional Implementation",
+                "Conventional Clustering",
+                "Shared Memory",
+                "Perfectionism Scale"
+            ],
+            "Author Keywords": [
+                "multi-threading",
+                "thread migration",
+                "parallel scaling"
+            ]
+        }
     },
     {
         "publicationNumber": "10027178",
@@ -196,7 +343,46 @@
                 "firstName": "Hiroaki",
                 "lastName": "Kobayashi"
             }
-        ]
+        ],
+        "abstract": "Vector gather instructions are available in various processors, which are essential for handling irregular memory accesses. Additionally, the processors support virtual memory that allows programmers not to consider the limitation of the physical memory space. To realize the virtual memory, the processors require address translation between virtual and physical addresses. When a vector gather instruction loads data elements distributed over the physical memory space, all virtual addresses must be translated one by one, causing many translations by accessing a Translation Lookaside Buffer (TLB). Hence, the TLB easily becomes a bottleneck in handling vector gather instructions. To relieve the bottleneck, this paper proposes an address coalescing method for the address translations of vector gather instructions by utilizing vector arithmetic units in the processor. The evaluation results show that the proposed method can achieve a 2x performance improvement in numerical and 1.08x in graph applications, which contain many vector gather instructions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Instruction sets",
+                "Heuristic algorithms",
+                "Conferences",
+                "Memory management",
+                "Distributed databases",
+                "Faces"
+            ],
+            "Index Terms": [
+                "Address Translation",
+                "Memory Space",
+                "Physical Memory",
+                "Physical Address",
+                "Virtual Memory",
+                "Numerous Applications",
+                "Sparse Matrix",
+                "Vector Of Length",
+                "Element Of Vector",
+                "Memory System",
+                "Active Memory",
+                "Parallel Data",
+                "Access Patterns",
+                "Performance Bottleneck",
+                "Single Page",
+                "Graph Algorithms",
+                "XOR Operation",
+                "Vector Process",
+                "Memory Address",
+                "Indirect Access"
+            ],
+            "Author Keywords": [
+                "Vector gather instructions",
+                "TLB",
+                "page-address coalescing"
+            ]
+        }
     },
     {
         "publicationNumber": "10027178",
@@ -225,7 +411,54 @@
                 "firstName": "Martin",
                 "lastName": "Burtscher"
             }
-        ]
+        ],
+        "abstract": "Processing large graphs has become an important irregular workload. We present Massively Parallel Log Graphs (MPLG) to accelerate GPU graph codes, including highly optimized codes. MPLG combines a compressed in-memory repre-sentation with low-overhead parallel decompression. This yields a speedup if the boost in memory performance due to the reduced footprint outweighs the overhead of the extra instructions to decompress the graph on the fly. However, achieving a sufficiently low overhead is difficult, especially on GPUs with their high-bandwidth memory. Prior work has only successfully employed similar ideas on CPUs, but those approaches exhibit limited parallelism, making them unsuitable for GPUs. On large real-world inputs, MPLG speeds up graph analytics by up to 67% on a Titan V GPU. Averaged over 15 graphs from several domains, it improves the performance of Rodinia's breadth-first search by 11.9%, Gardenia's connected components by 5.8%, and ECL's graph coloring by 5.0%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Conferences",
+                "Graphics processing units",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Graphical Analysis",
+                "Low Overhead",
+                "Large Graphs",
+                "Breadth-first Search",
+                "Gardenia",
+                "Compressed Representation",
+                "Rodinia",
+                "Boxplots",
+                "Decoding",
+                "Graphical Representation",
+                "Performance Of Algorithm",
+                "Parallelization",
+                "Third Quartile",
+                "GB Memory",
+                "Performance Loss",
+                "High Bandwidth",
+                "Small Footprint",
+                "Compression Ratio",
+                "GPU Memory",
+                "Pair Of Vertices",
+                "Cache Misses",
+                "L2 Cache",
+                "Graph Algorithms",
+                "Array Of Values",
+                "Input Graph",
+                "Edge List",
+                "Graph Size",
+                "First Quartile",
+                "Whisker Plots",
+                "Coding Performance"
+            ],
+            "Author Keywords": [
+                "Compressed in-memory representation",
+                "graph analytics",
+                "massive parallelism",
+                "GPU acceleration"
+            ]
+        }
     },
     {
         "publicationNumber": "10027178",
@@ -241,7 +474,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10027178",
@@ -257,7 +492,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10027178",
@@ -273,7 +510,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10027178",
@@ -289,7 +528,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10027178",
@@ -305,7 +546,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10027178",
@@ -321,7 +564,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10027178",
@@ -337,6 +582,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

@@ -20,7 +20,39 @@
                 "firstName": "Daniel",
                 "lastName": "Thuerck"
             }
-        ]
+        ],
+        "abstract": "The last two decades have seen continued exponential performance increases in HPC systems, well after the predicted end of Moore's Law for CPUs, largely due to the widespread adoption of throughput-oriented compute accelerators such as GPUs. When faced with irregular yet throughput-oriented applications, their simple, grid-based computing model turns into a serious limitation. Instead of repeatedly tackling the issues of irregularity on the application layer, we argue that a generalization of the CUDA model to irregular grids can be supported through minor modifications to already established throughput-oriented architectures. To that end, we propose a unifying approach that combines techniques from both SIMD and MIMD approaches, but adheres to the SIMT principles - based on an unlikely ally: a wide-SIMD vector architecture. We extend CUDA's familiar programming model and implement SIMT-inspired strategies for dealing with data and control flow irregularities. Our approach requires only minimal hardware changes and an additional compiler phase. Using a model-based software simulation, we demonstrate that the proposed system can be a first step towards native support for irregularity on throughput-oriented processors while greatly simplifying the development of irregular applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Conferences",
+                "Graphics processing units",
+                "Computer architecture",
+                "Programming",
+                "Throughput",
+                "Software"
+            ],
+            "Index Terms": [
+                "Flow Control",
+                "Programming Model",
+                "Moore’s Law",
+                "Model-based Simulations",
+                "Hardware Changes",
+                "Multi-core",
+                "Sparse Matrix",
+                "Vector Of Length",
+                "Hardware Modifications",
+                "Multiple Partitions",
+                "Execution Path",
+                "Context Switching"
+            ],
+            "Author Keywords": [
+                "Throughput oriented computing",
+                "Architecture",
+                "GPGPU",
+                "Vector processor"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -43,7 +75,26 @@
                 "firstName": "Mary",
                 "lastName": "Hall"
             }
-        ]
+        ],
+        "abstract": "Scalable computations where the data is sparse — that is, a tiny subset of the data is populated — are widely represented in scientific computing, data analytics and machine learning. Sparse data are typically represented by sparse matrices and graphs, which reduce data storage and computation requirements (e.g., by storing only nonzero data elements) through the use of indirection matrices such as B in A[B[i]]. This indirection impacts performance on modern architectures. Whether the code is optimized by human programmer, compiler or hardware, any optimizations that must understand the memory access patterns for A require the values of B, which are not known until runtime. Generating highperformance code for sparse computations is made more challenging by modern architectures, where data movement cost is dominant. Significant interest in compiler technology for sparse tensors has arisen with the intense interest in machine learning systems. In this talk, we will approach this challenge from a compiler perspective, and describe active areas of research and future requirements.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tensors",
+                "Sparse matrices",
+                "Optimization",
+                "Machine learning",
+                "Codes",
+                "Tuning",
+                "Scientific computing"
+            ],
+            "Index Terms": [
+                "Computer Science",
+                "Sparse Matrix",
+                "Evidential",
+                "Modern Architecture",
+                "Machine Learning Systems"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -66,7 +117,24 @@
                 "firstName": "Nuwan",
                 "lastName": "Jayasena"
             }
-        ]
+        ],
+        "abstract": "Summary form only given, as follows. The complete presentation was not made available for publication as part of the conference proceedings. Many of the implementation technology scaling trends the computing industry has historically relied on have started to taper off or are posing increasing design challenges. This has led to the proliferation of many-core processors and accelerators, advanced packaging technologies, and innovations in memory architecture which, in aggregate, are enabling increasingly sophisticated node organizations. However, these nodes also consist of complex memory organizations that necessitate careful data management to achieve high hardware utilization. The need for such data management is making memory performanceoptimization particularly important. This talk will illustrate examples in memory access monitoring and memory-aware data structures that show the significant performance potential that can be realized by treating memory as a first-class citizen. Further, motivated by these specific point examples, the talk will also highlight general areas for further hardware-software collaborative research and innovation aimed at further improving memory performance in future computing systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Optimization",
+                "Technological innovation",
+                "Organizations",
+                "Performance evaluation",
+                "Patents",
+                "Packaging"
+            ],
+            "Index Terms": [
+                "Computational Memory",
+                "Improved Memory Performance",
+                "Memory Architecture"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -95,7 +163,47 @@
                 "firstName": "Hal",
                 "lastName": "Finkel"
             }
-        ]
+        ],
+        "abstract": "Field-programmable gate arrays (FPGAs) are becoming promising heterogeneous computing components. In the meantime, high-level synthesis has been pushing the FPGA-based development from a register-transfer level to a high-level-language design flow using the OpenCL and C/C++ programming languages. The performance of binary search applications is often associated with irregular memory access patterns to off-chip memory. In this paper, we implement the binary search algorithms using OpenCL, and evaluate their performance on an Intel Arria 10 based FPGA platform. Based on the evaluation results, we optimize the grid search in XSBench by vectorizing and replicating the binary search kernel. We identify the computational overhead in the implementations of the vectorizable binary search algorithms, and overcome it by grouping work-items into work-groups. Our optimizations improve the performance of the grid search using the classic binary search by a factor of 1.75 on the FPGA.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Computer languages",
+                "Conferences",
+                "Computer architecture",
+                "Heterogeneous networks",
+                "Kernel",
+                "Field programmable gate arrays"
+            ],
+            "Index Terms": [
+                "Binary Search",
+                "Binary Search Algorithm",
+                "Field-programmable Gate Array Platform",
+                "Implementation Of Algorithm",
+                "Grid Search",
+                "High-level Synthesis",
+                "Classical Search",
+                "Number Of Values",
+                "Classification Algorithms",
+                "Power Grid",
+                "Multi-core",
+                "Application Programming Interface",
+                "Problem Size",
+                "Array Elements",
+                "Computing Units",
+                "Implementation Performance",
+                "Loop Iteration",
+                "Additional Argument",
+                "Neutron Energy",
+                "Memory Bandwidth"
+            ],
+            "Author Keywords": [
+                "Irregular memory access",
+                "binary search",
+                "FPGA",
+                "OpenCL"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -166,7 +274,51 @@
                 "firstName": "George",
                 "lastName": "Karypis"
             }
-        ]
+        ],
+        "abstract": "Graph neural networks (GNN) have shown great success in learning from graph-structured data. They are widely used in various applications, such as recommendation, fraud detection, and search. In these domains, the graphs are typically large, containing hundreds of millions of nodes and several billions of edges. To tackle this challenge, we develop DistDGL, a system for training GNNs in a mini-batch fashion on a cluster of machines. DistDGL is based on the Deep Graph Library (DGL), a popular GNN development framework. DistDGL distributes the graph and its associated data (initial features and embeddings) across the machines and uses this distribution to derive a computational decomposition by following an owner-compute rule. DistDGL follows a synchronous training approach and allows ego-networks forming the mini-batches to include non-local nodes. To minimize the overheads associated with distributed computations, DistDGL uses a high-quality and light-weight min-cut graph partitioning algorithm along with multiple balancing constraints. This allows it to reduce communication overheads and statically balance the computations. It further reduces the communication by replicating halo nodes and by using sparse embedding updates. The combination of these design choices allows DistDGL to train high-quality models while achieving high parallel efficiency and memory scalability. We demonstrate our optimizations on both inductive and transductive GNN models. Our results show that DistDGL achieves linear speedup without compromising model accuracy and requires only 13 seconds to complete a training epoch for a graph with 100 million nodes and 3 billion edges on a cluster with 16 machines.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Computational modeling",
+                "Scalability",
+                "Memory management",
+                "Load management",
+                "Graph neural networks",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Neural Network Training",
+                "Graph Neural Networks",
+                "Distribution Graph",
+                "Successful Learning",
+                "Graph Partitioning",
+                "Partitioning Algorithm",
+                "Fraud Detection",
+                "Graph-structured Data",
+                "Graph Neural Network Model",
+                "Cluster Of Machines",
+                "Model Parameters",
+                "Convolutional Neural Network",
+                "Deep Neural Network",
+                "Parallelization",
+                "PyTorch",
+                "Graph Structure",
+                "Data Partitioning",
+                "Load Balancing",
+                "Single Machine",
+                "Mini-batch Training",
+                "Sparsity Parameter",
+                "Random Partition",
+                "Edge Features",
+                "Efficient Update",
+                "Gradient Parameter",
+                "Large Graphs",
+                "Input Graph",
+                "Workload Balance",
+                "Breadth-first Search"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -209,8 +361,8 @@
             },
             {
                 "id": 37088850205,
-                "preferredName": "J\u00e9r\u00f4me Eberhardt",
-                "firstName": "J\u00e9r\u00f4me",
+                "preferredName": "Jérôme Eberhardt",
+                "firstName": "Jérôme",
                 "lastName": "Eberhardt"
             },
             {
@@ -219,7 +371,53 @@
                 "firstName": "Stefano",
                 "lastName": "Forli"
             }
-        ]
+        ],
+        "abstract": "AUTODOCK is a molecular docking software widely used in computational drug design. Its time-consuming executions have motivated the development of AUTODOCK-GPU, an OpenCL-accelerated version that can run on GPUs and CPUs. This work discusses the development of AUTODOCK-GPU from a programming perspective, detailing how our design addresses the irregularity of AUTODOCK while pushing towards higher performance. Details on required data transformations, re-structuring of complex functionality, as well as the performance impact of different configurations are also discussed. While AUTODOCK-GPU reaches speedup factors of 341x on a Titan V GPU and 51x on a 48-core Xeon Platinum 8175M CPU, experiments show that performance gains are highly dependent on the molecular complexity under analysis. Finally, we summarize our preliminary experiences when porting AUTODOCK onto FPGAs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Drugs",
+                "Conferences",
+                "Platinum",
+                "Graphics processing units",
+                "Programming",
+                "Performance gain"
+            ],
+            "Index Terms": [
+                "Molecular Docking",
+                "Parallelization",
+                "Molecular Complexes",
+                "Running",
+                "Large Values",
+                "Intermolecular Interactions",
+                "Scoring Function",
+                "Local Search",
+                "Search Method",
+                "Rigid Body",
+                "Score Calculation",
+                "Lookup Table",
+                "Virtual Screening",
+                "Rotatable Bonds",
+                "Built-in Function",
+                "Ligand Atoms",
+                "Large Input",
+                "Computing Units",
+                "Gradient Calculation",
+                "Local Search Method",
+                "Ligand Pose",
+                "Hardware Accelerators",
+                "Hardware Architecture",
+                "Integer Multiple",
+                "Pipelining"
+            ],
+            "Author Keywords": [
+                "Variable execution performance",
+                "divergent control structures",
+                "OpenCL",
+                "molecular docking",
+                "AutoDock"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -266,7 +464,48 @@
                 "firstName": "George M.",
                 "lastName": "Slota"
             }
-        ]
+        ],
+        "abstract": "Graph coloring is often used in parallelizing scientific computations that run in distributed and multi-GPU environments; it identifies sets of independent data that can be updated in parallel. Many algorithms exist for graph coloring on a single GPU or in distributed memory, but hybrid MPI+GPU algorithms have been unexplored until this work, to the best of our knowledge. We present several MPI+GPU coloring approaches that use implementations of the distributed coloring algorithms of Gebremedhin et al. and the shared-memory algorithms of Deveci et al. The on-node parallel coloring uses implementations in KokkosKernels, which provide parallelization for both multicore CPUs and GPUs. We further extend our approaches to solve for distance-2 coloring, giving the first known distributed and multi-GPU algorithm for this problem. In addition, we propose novel methods to reduce communication in distributed graph coloring. Our experiments show that our approaches operate efficiently on inputs too large to fit on a single GPU and scale up to graphs with 76.7 billion edges running on 128 GPUs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multicore processing",
+                "Conferences",
+                "Graphics processing units",
+                "Distributed databases",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Multiple GPUs",
+                "Parallelization",
+                "Single GPU",
+                "Computation Time",
+                "Random Number",
+                "Random Generation",
+                "Partial Differential Equations",
+                "Conflict Resolution",
+                "Hessian Matrix",
+                "Maximum Degree",
+                "Communication Cost",
+                "Communication Time",
+                "Target Application",
+                "Distributed Algorithm",
+                "Parallel Algorithm",
+                "Input Graph",
+                "Automatic Differentiation",
+                "Tesla V100 GPU",
+                "Neighboring Vertices",
+                "Communication Rounds",
+                "Local Graph",
+                "Conflict Detection",
+                "Strong Scaling",
+                "Small Batch"
+            ],
+            "Author Keywords": [
+                "graph coloring",
+                "distributed algorithms",
+                "GPU"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -301,7 +540,58 @@
                 "firstName": "Sebastian",
                 "lastName": "Pokutta"
             }
-        ]
+        ],
+        "abstract": "Fast domain propagation of linear constraints has become a crucial component of today's best algorithms and solvers for mixed integer programming and pseudo-boolean optimization to achieve peak solving performance. Irregularities in the form of dynamic algorithmic behaviour, dependency structures, and sparsity patterns in the input data make efficient implementations of domain propagation on GPUs and, more generally, on parallel architectures challenging. This is one of the main reasons why domain propagation in state-of-the-art solvers is single thread only. In this paper, we present a new algorithm for domain propagation which (a) avoids these problems and allows for an efficient implementation on GPUs, and is (b) capable of running propagation rounds entirely on the GPU, without any need for synchronization or communication with the CPU. We present extensive computational results which demonstrate the effectiveness of our approach and show that ample speedups are possible on practically relevant problems: on state-of-the-art GPUs, our geometric mean speed-up for reasonably-large instances is around 10x to 20x and can be as high as 195x on favorably-large instances.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Integer programming",
+                "Heuristic algorithms",
+                "Conferences",
+                "Graphics processing units",
+                "Parallel architectures",
+                "Synchronization",
+                "Sparse matrices"
+            ],
+            "Index Terms": [
+                "Efficient Algorithm",
+                "Sparse Matrix",
+                "Parallelization",
+                "Graphics Processing Unit",
+                "Efficient Implementation",
+                "Dependence Structure",
+                "Linear Constraints",
+                "Mixed Integer",
+                "Single Thread",
+                "Sparsity Pattern",
+                "Maximum Activity",
+                "Steps Of Algorithm",
+                "Load Balancing",
+                "Work Unit",
+                "System Constraints",
+                "Mixed Integer Linear Programming",
+                "Sequential Algorithm",
+                "Parallel Algorithm",
+                "Depth-first",
+                "Breadth-first Search",
+                "Shared Memory",
+                "Row Block",
+                "Race Conditions",
+                "Parallel Implementation",
+                "Instance Size",
+                "Linearizable",
+                "Constraint Matrix",
+                "Parallel Case",
+                "Coprocessor"
+            ],
+            "Author Keywords": [
+                "Mixed Integer Linear Programming",
+                "MIP",
+                "GPU",
+                "Domain Propagation",
+                "Bound Tightening",
+                "Parallel Algorithms"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -330,7 +620,52 @@
                 "firstName": "Jeremy D.",
                 "lastName": "Buhler"
             }
-        ]
+        ],
+        "abstract": "Throughput-oriented streaming applications on massive data sets are a prime candidate for parallelization on wide-SIMD platforms, especially when inputs are independent of one another. Many such applications are represented as a pipeline of compute nodes connected by directed edges. Here, we study applications with irregular data flow, i.e., those where the number of outputs produced per input to a node is data-dependent and unknown a priori. Moreover, we target these applications to architectures (GPUs) where different nodes of the pipeline execute cooperatively on a single wide-SIMD processor. To promote greater SIMD parallelism, irregular application pipelines can utilize queues to gather and compact multiple data items between nodes. However, the decision to introduce a queue between two nodes must trade off benefits to occupancy against costs associated with queue reading, writing, and management. Moreover, once queues are introduced to an application, their relative sizes impact the frequency with which the application switches between nodes, incurring scheduling and context-switching overhead. This work examines two optimization problems associated with queues. First, we consider which pairs of successive nodes in a pipeline should have queues between them to maximize overall application throughput. Second, given a fixed total budget for queue space, we consider how to choose the relative sizes of inter-node queues to minimize the frequency of switching between nodes. We formulate a dynamic programming approach to the first problem and give an empirically useful approximation to the second that allows for an analytical solution. Finally, we validate our theoretical results using real-world irregular streaming computations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Heuristic algorithms",
+                "Conferences",
+                "Pipelines",
+                "Computer architecture",
+                "Switches",
+                "Writing",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Streaming Applications",
+                "Relative Size",
+                "Parallelization",
+                "Flow Data",
+                "Dynamic Programming",
+                "Pair Of Nodes",
+                "Switching Frequency",
+                "Single Processor",
+                "Running Time",
+                "Input Vector",
+                "Service Time",
+                "Communication Cost",
+                "Safety Considerations",
+                "Parallel Data",
+                "Number Of Switches",
+                "Switching Rate",
+                "Input Stream",
+                "Large Copy Number",
+                "Pipeline Stages",
+                "Sink Node",
+                "Queue Size",
+                "Behavior Of Nodes",
+                "Compile Time",
+                "Subset Of Edges"
+            ],
+            "Author Keywords": [
+                "queuing",
+                "SIMD",
+                "irregular",
+                "dataflow",
+                "streaming"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -371,7 +706,57 @@
                 "firstName": "Roger",
                 "lastName": "Pearce"
             }
-        ]
+        ],
+        "abstract": "Subgraph search in a massive background graph, i.e., pattern matching in graphs, is a challenging problem, particularly in an interactive usage scenario where fast response time is important. Our approach, Prune.Juice [1], is based on two intuitions: first, rather than directly searching for individual matches, it is cheaper to eliminate vertices and edges of the background graph that do not participate in any match. Second, to perform this pruning process, it is possible to decompose a search pattern into a set of constraints, and use each of these constraints to eliminate non-matching vertices and edges. This paper explores the feasibility of indexing the background graph to accelerate the checking of non-local constraints (e.g., cycles and paths), the most expensive phase of pruning. In particular, we demonstrate that indexing labeled triangle (i.e., a 3-Cycle) participation is a valuable acceleration technique. Additionally, we observe that labeled triangle counts at edges can be employed to detect 3-Paths that have terminal points with non-unique labels, at relatively little extra cost. Such paths and triangles are basic sub-constraints that can be used to rapidly prune non-matching vertices and edges. As proof of concept, we show that, using triangle information alone, indexing further accelerates expensive queries in Prune.Juice by up to <tex>$\\mathbf{500}\\times$</tex> on billion-edge graphs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image edge detection",
+                "Conferences",
+                "Computer architecture",
+                "Search problems",
+                "Acceleration",
+                "Time factors",
+                "Pattern matching"
+            ],
+            "Index Terms": [
+                "Subgraph Search",
+                "Proof Of Concept",
+                "Terminal Point",
+                "Pattern Matching",
+                "Interaction Scenarios",
+                "Real-world Datasets",
+                "Exact Match",
+                "Vertices",
+                "Storage Requirements",
+                "Local Constraints",
+                "Types Of Constraints",
+                "Graph Partitioning",
+                "Large Graphs",
+                "Search Performance",
+                "Unique Label",
+                "Performance Bottleneck",
+                "Additional Edges",
+                "Neighboring Vertices",
+                "Matching System",
+                "Apache Spark",
+                "Vertex Labels",
+                "Template Search",
+                "Approximate Matching",
+                "Source Vertex",
+                "Graph Datasets",
+                "YouTube",
+                "Worst Case",
+                "Worker Nodes",
+                "Source Code",
+                "Shared Memory"
+            ],
+            "Author Keywords": [
+                "pattern matching",
+                "subgraph isomorphism",
+                "triangle counting",
+                "distributed computing"
+            ]
+        }
     },
     {
         "publicationNumber": "9407248",
@@ -387,7 +772,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9407248",
@@ -403,7 +790,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Welcome to the 2020 edition of IA3, the workshop on Irregular Applications: Architectures and Algorithms. The 10th anniversary edition for IA3 happens at an unprecedented time for humanity with the COVID-19 Pandemic creating disruptions, changes in behaviors, and issues in many aspects of society. The Pandemic represents a complex data analytics challenge, where new methods are required at all levels of the high-performance system stack to provide insights and actionable knowledge on continuously changing information. Thus, the computing topics addressed by IA3 are more relevant than ever as reflected by the programs of the workshop and the main SC conference, where analytics and graph analytics, in particular, are a central theme.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9407248",
@@ -419,7 +808,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9407248",
@@ -435,7 +826,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Conference proceedings front matter may contain various advertisements, welcome messages, committee or program information, and other miscellaneous conference information. This may in some cases also include the cover art, table of contents, copyright statements, title-page or half title-pages, blank pages, venue maps or other general information relating to the conference that was part of the original conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9407248",
@@ -451,7 +844,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9407248",
@@ -467,6 +862,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2020 IEEE/ACM 10th Workshop on Irregular Applications: Architectures and Algorithms (IA3)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]

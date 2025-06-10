@@ -32,7 +32,62 @@
                 "firstName": "Martin",
                 "lastName": "Schulz"
             }
-        ]
+        ],
+        "abstract": "The network hardware used in High-Performance Computing (HPC) systems is one of the core differentiators to regular compute clusters and has seen substantial improvements over the years. However, to fully utilize its capabilities, careful application tuning is necessary, which in turn is only possible if insights into application behavior can be obtained. With the rise of increasingly complex HPC application software stacks, this requires new kinds of fine-grained network monitoring capabilities. While regular TCP/IP based traffic can be monitored using a large variety of existing tools, for Remote Direct Memory Access (RDMA) based communication, which is prevalent in HPC networks, only very few tools are available. Further, those few tools either largely depend on features of specific network hardware, are mostly limited to node-granular monitoring only, or are limited to specific programming models. In this paper, we introduce a novel network monitoring tool that directly layers on a portable network abstraction library, namely libfabric, while enabling application specific monitoring. With that, our tool provides network hardware and programming model agnostic, per-process monitoring of RDMA-based network utilization and is capable of always-on, system-wide monitoring of production environments. We conduct a detailed overhead analysis on several state-of-the-art HPC systems with a variety of network hardware and show that our monitoring tool induces low overhead in the monitored application. In addition, we apply our monitoring tool to a real-world HPC application running in a production environment.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Production systems",
+                "Source coding",
+                "High performance computing",
+                "TCPIP",
+                "Programming",
+                "Hardware",
+                "Libraries",
+                "Software measurement",
+                "Monitoring",
+                "Tuning"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Monitoring Network",
+                "Running",
+                "Real-world Applications",
+                "Direct Access",
+                "Monitoring Tool",
+                "Production Environment",
+                "Low Overhead",
+                "Network Utility",
+                "Remote Memory",
+                "Software Stack",
+                "High-performance Computing Systems",
+                "Network Hardware",
+                "Time Series",
+                "Time Step",
+                "Running Time",
+                "Physical Space",
+                "Data Transfer",
+                "Advection",
+                "File System",
+                "API Calls",
+                "Packet Size",
+                "Monitoring Solutions",
+                "Point-to-point Communication",
+                "Payload Size",
+                "Spectral Space",
+                "Red Vertical Line",
+                "Synthetic Benchmark",
+                "Message Size",
+                "Community In Order"
+            ],
+            "Author Keywords": [
+                "Monitoring",
+                "HPC",
+                "RDMA",
+                "libfabric",
+                "Application-granular",
+                "High-Speed-Network"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -61,7 +116,51 @@
                 "firstName": "Konstantin",
                 "lastName": "Rygol"
             }
-        ]
+        ],
+        "abstract": "Deep learning (DL)/artificial intelligence (AI) workloads are known to be computationally demanding, and recent advances with technologies like large language models (LLMs) require scaling to large pools of GPUs to hit performance targets. Often, large HPC/AI workloads will rely on Ethernet or InfiniBand (IB) networking to scale across multi-node clusters once the resources within a node are insufficient. The challenge is that using multi-node resources is difficult. Workloads need to adopt technologies like MPI to communicate across nodes, and there are various challenges associated with managing shared file systems and software across a cluster of nodes. Advances in composable disaggregated infrastructure (CDI) provide an alternative. They allow system designers to scale the system bus to entire racks of resources, allowing multi-node scaling within the convenience of a single node. However, there are technical differences between scaling system resources and scaling network resources, and the constraints imposed by technologies like PCIe provide an interesting set of trade-offs that need to be considered when designing systems. In this work, we present a system bus optimized for AI workloads. Our proposed design leverages a rail-optimized topology to achieve strong performance for LLM applications. We demonstrate how the same topology and software routing optimization deployed on Ethernet/IB networks can be applied to large-scale system bus deployments. Our proposed design can achieve 3.7x better collective performance compared to a more traditional system bus design, and application-level evaluations demonstrate how intelligent topology design can provide a speedup of up to 1.8x in LLM inference and a performance improvement of up to 12% in LLM training throughput.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Rails",
+                "Network topology",
+                "Large language models",
+                "Scalability",
+                "Throughput",
+                "Routing",
+                "Software",
+                "Topology",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Throughput",
+                "Deep Learning",
+                "Ethernet",
+                "Topology Optimization",
+                "Benchmark",
+                "Running",
+                "Parallelization",
+                "Network Topology",
+                "Function Of Size",
+                "Increase In Performance",
+                "Artificial Intelligence Applications",
+                "Single Host",
+                "Parallel Data",
+                "Benchmark Test",
+                "Message Size",
+                "End-use Applications",
+                "Half Of Table",
+                "Standard Topology",
+                "Multiple GPUs"
+            ],
+            "Author Keywords": [
+                "Large Language Models (LLMs)",
+                "High-Performance Computing (HPC)",
+                "Composable Disaggregated Infrastructure (CDI)",
+                "GPU",
+                "Data Center Infrastructure",
+                "Scalability"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -108,7 +207,48 @@
                 "firstName": "Martin",
                 "lastName": "Schulz"
             }
-        ]
+        ],
+        "abstract": "Dynamic Resource Management (DRM) allows dynamically changing the resources assigned to a job during its execution. This flexibility can improve productivity in completed jobs per unit of time, resource utilization rate, and energy consumption, among other metrics. Despite its benefits, DRM remains complex to implement, which is one of the reasons it has not yet been widely adopted in production HPC systems. To address this challenge, we design, implement, and evaluate a methodology aimed at improving the programmability of DRM for iterative algorithm-based applications, while maintaining a generic and flexible foundation. Specifically, we interface the Dynamic Management of Resources API (DMR-API), an application-level abstraction layer that simplifies the adoption of dynamic resources—particularly in classical iteration-based HPC applications—with the Dynamic Processes with PSets (DPP) approach, which provides a set of generic design principles for dynamic resource management in high-performance parallel programming models. This integration makes DRM more accessible for iteration-based HPC applications through the DMR-API, while preserving the generality and flexibility of DPP at the system software level to support a wider range of HPC application types. Our results show that DRM can be effectively leveraged in HPC environments with minimal coding effort, unlocking the benefits of dynamic resource allocation for job throughput and system utilization.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Production systems",
+                "Energy consumption",
+                "Runtime",
+                "Benchmark testing",
+                "Dynamic scheduling",
+                "Throughput",
+                "Dynamic programming",
+                "System software",
+                "Resource management"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Dynamic Resource",
+                "Dynamic Process",
+                "Rational Design",
+                "Resource Management",
+                "Parallelization",
+                "Programming Model",
+                "General Design",
+                "Dynamic Management",
+                "Resource Assignment",
+                "Dynamic Resource Allocation",
+                "High-performance Computing Systems",
+                "Benchmark",
+                "Feature Space",
+                "Development Of Applications",
+                "Makespan",
+                "Dynamic Scheduling",
+                "Scheduling Decisions",
+                "Key-value Pairs",
+                "Resource Management System",
+                "Software Stack",
+                "Dynamic Coding",
+                "Scheduling Performance",
+                "Application Patterns"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -161,7 +301,58 @@
                 "firstName": "Mikkel",
                 "lastName": "Lykkegaard"
             }
-        ]
+        ],
+        "abstract": "Uncertainty Quantification (UQ) workloads are becoming increasingly common in science and engineering. They involve the submission of thousands or even millions of similar tasks with potentially unpredictable runtimes, where the total number is usually not known a priori. A static one-size-fits-all batch script would likely lead to suboptimal scheduling, and native schedulers installed on High-Performance Computing (HPC) systems such as SLURM often struggle to efficiently handle such workloads. In this paper, we introduce a new load balancing approach suitable for UQ workflows. To demonstrate its efficiency in a real-world setting, we focus on the GS2 gyrokinetic plasma turbulence simulator. Individual simulations can be computationally demanding, with runtimes varying significantly—from minutes to hours—depending on the high-dimensional input parameters. Our approach uses the UQ and Modelling Bridge, which offers a language-agnostic interface to a simulation model, combined with HyperQueue which works alongside the native scheduler. In particular, deploying this framework on HPC systems does not require system-level changes. We benchmark our proposed framework against a standalone SLURM approach using GS2 and a Gaussian Process surrogate thereof. Our results demonstrate a reduction in scheduling overhead by up to three orders of magnitude and a maximum reduction of 38% in CPU time for long-running simulations compared to the naïve SLURM approach, while making no assumptions about the job submission patterns inherent to UQ workflows.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Adaptation models",
+                "Runtime",
+                "Uncertainty",
+                "Processor scheduling",
+                "Computational modeling",
+                "High performance computing",
+                "Gaussian processes",
+                "Load management",
+                "Servers",
+                "Load modeling"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Uncertainty Quantification",
+                "Task Scheduling",
+                "High-performance Computing Systems",
+                "Benchmark",
+                "Submission",
+                "Input Parameters",
+                "Gaussian Process",
+                "CPU Time",
+                "Load Balancing",
+                "System-level Changes",
+                "Limited Time",
+                "Posterior Probability",
+                "Resource Utilization",
+                "Parallelization",
+                "Forward Model",
+                "Quantity Of Interest",
+                "Requests For Resources",
+                "Model Server",
+                "Message Passing Interface",
+                "Makespan",
+                "Containerized",
+                "Gaussian Process Model",
+                "File System",
+                "Integration Points",
+                "Client Requests",
+                "Unstable Modes"
+            ],
+            "Author Keywords": [
+                "High-Performance Computing (HPC)",
+                "Load Balancing",
+                "Task Scheduling",
+                "Gaussian Processes",
+                "Fusion"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -202,7 +393,61 @@
                 "firstName": "Bronson",
                 "lastName": "Messer"
             }
-        ]
+        ],
+        "abstract": "Heterogeneous CPU-GPU architectures dominate high-performance computing (HPC), but their increasing power demands pose significant challenges at exascale levels. Dynamic voltage and frequency scaling (DVFS) is the most efficient technique for managing power consumption, but its effectiveness is hindered by hardware variability and aging effects, which introduce power and performance heterogeneity across identical GPUs. With that in mind, we propose V-FORGE, a variability and frequency-aware optimization framework for improving GPU energy efficiency in HPC environments. V-FORGE integrates power-performance variability profiling, a Random Forest classifier for GPU frequency prediction, and dynamic optimization to select the most suitable GPU node and frequency for each application. Through experiments on 400 AMD MI250X GPUs across fifteen HPC applications, V-FORGE improves the performance and energy efficiency (represented by the energy-delay product - EDP) by up to 41% compared to default execution of HPC applications and achieves over 73% of solutions within the Top-1% of optimal configurations found via exhaustive search. Additionally, V-FORGE demonstrates adaptability in dynamic environments by efficiently managing scenarios where the ideal GPU node is unavailable.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Power demand",
+                "Exascale computing",
+                "Graphics processing units",
+                "Voltage",
+                "Energy efficiency",
+                "Hardware",
+                "Resource management",
+                "Optimization",
+                "Random forests",
+                "Radio spectrum management"
+            ],
+            "Index Terms": [
+                "Exascale Computing",
+                "Energy Efficiency",
+                "Power Consumption",
+                "Dynamic Environment",
+                "Random Forest Classifier",
+                "Exhaustive Search",
+                "High-performance Computing",
+                "Power Demand",
+                "Frequency Scale",
+                "Dynamic Optimization",
+                "Dynamic Frequency",
+                "Dynamic Voltage",
+                "Voltage Scaling",
+                "Application Execution",
+                "Energy Consumption",
+                "Performance Metrics",
+                "Stress Test",
+                "Operating Frequency",
+                "Power Efficiency",
+                "Power Performance",
+                "High-performance Computing Systems",
+                "Ideal Frequency",
+                "Optimal Frequency",
+                "Execution Mode",
+                "Node Selection",
+                "Powerful GPU",
+                "Cache Hit",
+                "Computing Nodes",
+                "Design Space Exploration",
+                "Exhaustive Search Method"
+            ],
+            "Author Keywords": [
+                "Energy efficiency",
+                "performance",
+                "GPU",
+                "hardware variability",
+                "Exascale systems"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -237,7 +482,47 @@
                 "firstName": "Etienne",
                 "lastName": "Renault"
             }
-        ]
+        ],
+        "abstract": "Interleaving/Unrolling and Vectorization are two popular means to optimize applications. While the first one creates multiple copies of the loop body content, the second one focuses on operating on multiple data elements in parallel thanks to SIMD units available in the CPU. In theory, interleaving and vectorization are orthogonal optimizations, one relying on instruction-level parallelism/superscalarity, and the other on data-level parallelism within a single instruction. Modern CPU architectures provide both of these parallelism mechanisms at once, and the combination of vectorization and interleaving is complex, influencing each other due to instruction selection and complexity of underlying hardware, and the programmer often has to rely on the compiler's auto-vectorization. Based on a large evaluation of 642 loops coming from the literature, this paper demonstrates that significant gains (up to 20%) can be obtained by adapting the LLVM auto-vectorizer to better exploit interleaving and vectorization for a given AArch64 architecture. The proposed approach is flexible and can be easily applied at both loop level or application level. Experiments on 5 mini-apps coming from the HPC realm show similar improvements and demonstrates the co-design potential of the presented approach.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Out of order",
+                "Program processors",
+                "Costs",
+                "Single instruction multiple data",
+                "Benchmark testing",
+                "Hardware",
+                "Complexity theory",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Parallel Data",
+                "Single Instruction",
+                "Loop Level",
+                "Benchmark",
+                "Throughput",
+                "Source Code",
+                "Individual Teachers",
+                "Granite",
+                "Instructions For Use",
+                "Microarchitecture",
+                "Cost Model",
+                "Code Generation",
+                "Multiple Configurations",
+                "Single Iteration",
+                "Vector Operations",
+                "Scheduling Model",
+                "Default Choice",
+                "Manually Optimized",
+                "Baseline Configuration"
+            ],
+            "Author Keywords": [
+                "HPC",
+                "Compilers",
+                "AArch64",
+                "Vectorization"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -278,7 +563,58 @@
                 "firstName": "Abhinav",
                 "lastName": "Bhatele"
             }
-        ]
+        ],
+        "abstract": "Large Language Model (LLM) based coding tools have been tremendously successful as software development assistants, yet they are often designed for general purpose programming tasks and perform poorly for more specialized domains such as high performance computing. Creating specialized models and tools for these domains is crucial towards gaining the benefits of LLMs in areas such as HPC. While previous work has explored HPC-specific models, LLMs still struggle to generate parallel code and it is not at all clear what hurdles are still holding back these LLMs and what must be done to overcome them. In this work, we conduct an in-depth study along the many axes of fine-tuning a specialized HPC LLM in order to better understand the challenges. Based on our findings we fine-tune and evaluate a specialized HPC LLM that is shown to be the best performing open-source code LLM for parallel code generation to date.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Parallel languages",
+                "Codes",
+                "Large language models",
+                "Computational modeling",
+                "Memory management",
+                "Training data",
+                "Programming",
+                "Data models",
+                "Synthetic data",
+                "Software development management"
+            ],
+            "Index Terms": [
+                "Parallel Language",
+                "Large Language Models",
+                "Open-source Software",
+                "Parallelization",
+                "Software Development",
+                "High-performance Computing",
+                "Language Model",
+                "Code Generation",
+                "Data Quality",
+                "Model Performance",
+                "Natural Language",
+                "Choice Of Model",
+                "Types Of Problems",
+                "Teacher Model",
+                "Model Size",
+                "Large Model",
+                "Increase In Performance",
+                "Small Model",
+                "Popular Model",
+                "Source Model",
+                "Fine-tuned Model",
+                "Parallel Model",
+                "Model Execution",
+                "Parallel Data",
+                "Diverse Outputs",
+                "Parallel Capabilities",
+                "Code Snippets",
+                "Linear Algebra",
+                "Geometric Problem"
+            ],
+            "Author Keywords": [
+                "Large Language Models",
+                "Code Generation",
+                "HPC"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -325,7 +661,65 @@
                 "firstName": "Alan",
                 "lastName": "Edelman"
             }
-        ]
+        ],
+        "abstract": "The Hamming distance, a fundamental measure of dissimilarity between data points, plays a crucial role in various fields, including error detection, machine learning, and genomic sequence alignment, where it is commonly used for identifying mismatches in nucleotide or protein sequences. This work introduces two implementations for computing Hamming distances for sequence alignment: synchronous and asynchronous matrix-based approaches. While most existing implementations rely on vector-based methods due to their simplicity and ease of use, they are not efficient for large-scale data. Our work focuses on enhancing performance by introducing matrix-based implementations that significantly improve computational efficiency and scalability. Our asynchronous implementation showcases Julia for sequential task flow and PaRSEC for parameterized task graph execution models on homogeneous and heterogeneous architectures. CPU computations use INT8 GEMM from oneMKL, while GPU implementations employ Tensor/Matrix Core INT8 GEMM from cuBLAS/hipBLAS and 1-bit TensorOps GEMM capabilities from CUTLASS. For constructing bitmask matrices on GPUs, we develop both a naive CUDA implementation using global memory and an optimized implementation utilizing shared memory at the warp level, with the optimized version achieving a 5X speedup over the naive approach. The results demonstrate significant performance improvements, with the asynchronous matrix-based implementation achieving up to 284X speedup over the vector-based approach on CPUs, while the asynchronous GPU-enabled implementation on A100 GPUs delivers a 15X speedup compared to the CPU matrix-based approach and a three orders of magnitude improvement over the CPU vector-based approach. Furthermore, the asynchronous implementation of PaRSEC scales well on up to 256 nodes of Summit and Frontier. These advancements highlight the scalability and efficiency of matrix-based Hamming distance computation, leveraging GPU acceleration and advanced asynchronous execution, paving the way forward for large-scale genomic sequence alignment and data analysis.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Proteins",
+                "Runtime",
+                "Scalability",
+                "Graphics processing units",
+                "Genomics",
+                "Computer architecture",
+                "Computational efficiency",
+                "Hamming distances",
+                "Resource management",
+                "Bioinformatics"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Transformation Matrix",
+                "Hamming Distance",
+                "Usability",
+                "Nucleotide Sequences",
+                "Frontier",
+                "Large-scale Data",
+                "Genome Alignment",
+                "Masked Images",
+                "Naive Approach",
+                "Large-scale Data Analysis",
+                "Sequencing Flow",
+                "Genome Sequence Alignment",
+                "GPU Acceleration",
+                "Heterogeneous Architecture",
+                "Order Of Magnitude Improvement",
+                "Synchronization Approach",
+                "Distance Matrix",
+                "Parallelization",
+                "Matrix Multiplication",
+                "Binary Matrix",
+                "NVIDIA GPU",
+                "GB Memory",
+                "Task Execution",
+                "Task Scheduling",
+                "Linearizable",
+                "Projection Matrix",
+                "Parallel Efficiency",
+                "Tile Size",
+                "Single GPU"
+            ],
+            "Author Keywords": [
+                "Hamming Distance",
+                "Matrix Multiply",
+                "Genomics",
+                "1-bit Integer",
+                "Julia",
+                "PaRSEC",
+                "CUTLASS",
+                "Mixed-Precision",
+                "GPU"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -366,7 +760,60 @@
                 "firstName": "Rio",
                 "lastName": "Yokota"
             }
-        ]
+        ],
+        "abstract": "Solving large linear systems efficiently is at the heart of many problems in high-performance computing. For dense matrices with a particular structure that results in low-rank off-diagonal blocks (e.g., Green's function interaction matrices in boundary integral equations, frontal matrices in multi-frontal solvers, and covariance matrices in statistics), hierarchical matrices with shared bases can be used to reduce the cubic complexity to linear complexity. While these matrices are subdivided into a hierarchy of blocks with the majority of them being low-rank, the underlying operations during factorization are still based on dense linear algebra. As such, they should be able to exploit the performance advantages provided by mixed precision matrix engines. We develop an approach based on mixed-precision iterative solvers that is suitable for hierarchical matrices with shared bases. By reducing the approximation accuracy during the factorization we are not only able to take advantage of low-precision arithmetic, but also succeed in reducing the total number of floating-point operations (FLOPS) for a desired target accuracy. Additionally, the iterative refinement serves as a way of restoring accuracy that has been sacrificed during factorization in order to enable a higher degree of parallelism. The proposed algorithm is implemented on GPU and capable of using low-precision Tensor Cores during factorization. We investigate the trade-off between accuracy, floating-point precision, and number of iterations and provide insights on optimal choices of the individual parameters.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linear systems",
+                "Accuracy",
+                "Tensors",
+                "Linear algebra",
+                "Parallel processing",
+                "Approximation error",
+                "Complexity theory",
+                "Iterative methods",
+                "Covariance matrices",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Hierarchical Matrix",
+                "Accurate Estimation",
+                "Linear System",
+                "Sparse Matrix",
+                "Integral Equation",
+                "True Target",
+                "Iterative Refinement",
+                "Floating-point Operations",
+                "Linear Complexity",
+                "Iterative Solver",
+                "Degree Of Parallelism",
+                "Off-diagonal Blocks",
+                "Preconditioning",
+                "Parallelization",
+                "Singular Value",
+                "Kernel Function",
+                "Singular Value Decomposition",
+                "Block Diagonal",
+                "Efficient Implementation",
+                "Lower Rank",
+                "Double Precision",
+                "Dense Block",
+                "Outer Loop",
+                "Low-rank Approximation",
+                "Single Precision",
+                "Schur Complement",
+                "Solution Of The Linear System",
+                "LU Factorization",
+                "Hyperbaric Oxygen",
+                "Original Matrix"
+            ],
+            "Author Keywords": [
+                "Mixed precision",
+                "Hierarchical low-rank matrices",
+                "Iterative refinement",
+                "Preconditioner"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -407,7 +854,54 @@
                 "firstName": "Zeynep",
                 "lastName": "Kiziltan"
             }
-        ]
+        ],
+        "abstract": "It is fundamental to design accurate workload power prediction techniques to address environmental sustainability challenges in modern high-performance computing (HPC) systems. While existing Machine Learning (ML) approaches are effective, they retain some limitations in production environments. To address these, we introduce UoPC, a user-based online framework for predicting job power consumption in HPC systems. UoPC leverages ML-based predictive models tailored for individual users, eliminating the need for voluminous data and training. It offers a user-friendly Python implementation suitable for both end-user usage and integration into workload management systems. We evaluate UoPC on more than 1.3 million jobs executed on Fugaku,<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup><sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup>https://www.fujitsu.com/global/about/innovation/fugaku/ a supercomputer hosted at RIKEN, demonstrating its effectiveness. It achieves only a 10% prediction error, with minimal overhead on the system operations. By employing a <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$k-\\mathbf{nearest}$</tex> neighbours (KNN) prediction model augmented with Natural Language Processing (NLP), UoPC streamlines prediction processes for newly submitted jobs. It requires only limited historical data, making it practical for diverse high-performance computing environments and workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Power demand",
+                "High performance computing",
+                "Systems operation",
+                "Production",
+                "Machine learning",
+                "Predictive models",
+                "Nearest neighbor methods",
+                "Natural language processing",
+                "Supercomputers"
+            ],
+            "Index Terms": [
+                "Power Consumption",
+                "High-performance Computing",
+                "High-performance Computing Systems",
+                "Prediction Model",
+                "Prediction Accuracy",
+                "Operating System",
+                "Prediction Error",
+                "Production Environment",
+                "Python Implementation",
+                "Accurate Power",
+                "Workload Management",
+                "Job Execution",
+                "Voluminous Data",
+                "Predictive Performance",
+                "Large Amount Of Data",
+                "Machine Learning Models",
+                "Training Time",
+                "Prediction Algorithms",
+                "Prediction Task",
+                "Data In Dataset",
+                "System Power Consumption",
+                "Average Power Consumption",
+                "Mean Absolute Percentage Error",
+                "Similar Job",
+                "Need For Large Amounts",
+                "Job Scheduling",
+                "Inference Time",
+                "Total Power Consumption",
+                "Amount Of Historical Data",
+                "Job Characteristics"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -448,7 +942,59 @@
                 "firstName": "David E.",
                 "lastName": "Keyes"
             }
-        ]
+        ],
+        "abstract": "This paper explores the performance optimization of out-of-core (OOC) Cholesky factorization on shared-memory systems equipped with multiple GPUs<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup><sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup>Code release available at https://github.com/ecrc/ooc-cholesky. We employ fine-grained computational tasks to expose concurrency while creating opportunities to overlap data movement asynchronously with computations, especially when dealing with matrices that cannot fit in the GPU memory. We leverage the directed acyclic graph of the task-based Cholesky factorization and map it onto a static scheduler that promotes data reuse while supporting strategies for reducing data movement with the CPU host when the GPU memory is exhausted. The CPU-GPU interconnect may become the main performance bottleneck as the gap between the GPU execution rate and the traditional PCIe bandwidth continues to widen. While the surface-to-volume effect of compute-bound kernels partially mitigates the overhead of data motion, deploying mixed-precision (MxP) computations exacerbates the throughput discrepancy. Using static task scheduling, we evaluate the performance capabilities of the new ultra-fast NVIDIA chip interconnect technology, codenamed NVLink-C2C, that constitutes the backbone of the NVIDIA Grace Hopper Superchip (GH200), against a new four-precision (FP64/FP32/FP16/FP8) left-looking Cholesky factorization. We report the performance results of a benchmarking campaign on various NVIDIA GPU generations and interconnects. We highlight 20% performance superiority against cuSOLVER on a single GH200 with FP64, while hiding the cost of OOC task-based Cholesky factorization and we scale almost linearly on four GH200 superchips. With MxP enabled, our statically scheduled four-precision tile-based Cholesky factorization scores a 3X speedup against its FP64-only counterpart, delivering application-worthy FP64 accuracy when modeling a large-scale geospatial statistical application. Our results represent a significant advance in handling large datasets for modern tightly coupled computing environments, especially for OOC applications requiring intensive data movement and processing.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Technological innovation",
+                "Accuracy",
+                "Processor scheduling",
+                "Memory management",
+                "Graphics processing units",
+                "Data transfer",
+                "Throughput",
+                "Spatial databases",
+                "Scheduling",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Cholesky Decomposition",
+                "Graphics Processing Unit",
+                "Load Data",
+                "Computation Tasks",
+                "Directed Acyclic Graph",
+                "Movement Intensity",
+                "Graphics Processing Unit Memory",
+                "Genome-wide Association Studies",
+                "Covariance Matrix",
+                "Maximum Likelihood Estimation",
+                "Level Of Accuracy",
+                "Matrix Size",
+                "Calculation Process",
+                "Processing Unit",
+                "Data Transfer",
+                "Gaussian Process",
+                "Positive Definite Matrix",
+                "Memory Usage",
+                "High Bandwidth",
+                "Covariance Function",
+                "Memory Transfer",
+                "Geospatial Model",
+                "Multiple Streams",
+                "Tile Size",
+                "Data Cache",
+                "Triangular Matrix",
+                "Linear Algebra"
+            ],
+            "Author Keywords": [
+                "Out-of-Core Algorithms",
+                "Left-Looking Cholesky Factorization",
+                "GPU Accelerators",
+                "Mixed-Precision Computations",
+                "Static Task Scheduling",
+                "Data Transfer Optimization"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -477,7 +1023,66 @@
                 "firstName": "Marc",
                 "lastName": "Maußner"
             }
-        ]
+        ],
+        "abstract": "This work demonstrated a proof-of-concept use case for the emerging quantum-centric supercomputing approaches combining HPC resources with quantum computers. We presented a systematic implementation of hybrid quantum-classical computational method for accelerating atomistic simulations studying corrosion inhibition. We used aluminium surface with screened inhibitor molecule on top. We combined density functional theory (DFT) with quantum algorithm through an active space embedding scheme. We chosen inhibitor molecules of 1,2,4-Triazole and 1,2,4-Triazole-3-thiol. Our implementation leveraged the ADAPT-VQE algorithm with benchmarking against classical DFT calculations, achieving binding energies of -0.386 eV and -1.279 eV for 1,2,4-Triazole and 1,2,4-Triazole-3-thiol, respectively. The binding energy of the thiol derivative aligned with experimental observations regarding sulfur-functionalized inhibitors' which could improve corrosion protection. The methodology employed the orb-d3-v2 machine learning potential for rapid geometry optimizations, followed by accurate DFT calculations using CP2K with PBE functional and Grimme's D3 dispersion corrections. CP2K is a robust DFT package that can scale on HPC classical resources of CPUs and GPUs efficiently. We also benchmarked against smaller systems and revealed that StatefulAdaptVQE implementation achieves a 5-6×computational speedup while maintaining accuracy. This work contributes to the literature studying quantum-accelerated materials science applied to periodic systems, demonstrating the viability of hybrid quantum-classical approaches for studying surface-adsorbate interactions in corrosion inhibition applications. In which, can be transferable to other applications such as carbon capture on metal oxide frameworks and solid-state battery materials studies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Adaptation models",
+                "Quantum computing",
+                "Accuracy",
+                "Systematics",
+                "Inhibitors",
+                "Corrosion",
+                "Computational modeling",
+                "Discrete Fourier transforms",
+                "Benchmark testing",
+                "Solid state batteries"
+            ],
+            "Index Terms": [
+                "Atomistic Simulations",
+                "Corrosion Inhibition",
+                "Binding Energy",
+                "Density Functional Theory",
+                "Density Functional Theory Calculations",
+                "Geometry Optimization",
+                "Active Space",
+                "Quantum Computing",
+                "Classical Computer",
+                "Corrosion Protection",
+                "Quantum Algorithms",
+                "Embedding Scheme",
+                "Solid-state Batteries",
+                "D3 Dispersion Correction",
+                "Periodic Boundary Conditions",
+                "Plane Wave",
+                "Metal Surface",
+                "Fermi Level",
+                "Surface Interactions",
+                "Al Substrate",
+                "Aerospace Applications",
+                "Automotive Applications",
+                "Strong Binding Energy",
+                "Workflow",
+                "Quantum Resources",
+                "Generalized Gradient Approximation",
+                "Inhibition Efficiency",
+                "Convergence Threshold",
+                "Triazole"
+            ],
+            "Author Keywords": [
+                "HPC",
+                "DFT",
+                "quantum simulations",
+                "quantum computing",
+                "quantum-centric supercomputing",
+                "adaptVQE",
+                "CP2K",
+                "Corrosion Inhibition",
+                "atomistic simulations",
+                "ML potentials",
+                "Qiskit"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -530,7 +1135,58 @@
                 "firstName": "Ye",
                 "lastName": "Luo"
             }
-        ]
+        ],
+        "abstract": "The Aurora supercomputer is an exascale-class system designed to tackle some of the most demanding computational workloads. Equipped with both High Bandwidth Memory (HBM) and DDR memory, it provides unique trade-offs in performance, latency, and capacity. This paper presents a comprehensive analysis of the memory systems on the Aurora supercomputer, with a focus on evaluating the trade-offs between HBM and DDR memory systems. We explore how different memory configurations, including memory modes (Flat and Cache) and clustering modes (Quad and SNC4), influence key system performance metrics such as memory bandwidth, latency, CPU-GPU PCIe bandwidth, and MPI communication bandwidth. Additionally, we examine the performance of three representative HPC applications — HACC, QMCPACK, and BFS — each illustrating the impact of memory configurations on performance. By using microbenchmarks and application-level analysis, we provide insights into how to select the optimal memory system and configuration to maximize performance based on the application characteristics. The findings presented in this paper offer guidance for users of the Aurora system and similar exascale systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Ion radiation effects",
+                "System performance",
+                "Bandwidth",
+                "Supercomputers",
+                "Performance analysis",
+                "Magnetosphere"
+            ],
+            "Index Terms": [
+                "HPC Applications",
+                "System Performance",
+                "Performance Metrics",
+                "Memory System",
+                "High Bandwidth",
+                "Benchmark Test",
+                "Key Metrics",
+                "Breadth-first Search",
+                "Memory Bandwidth",
+                "Benchmark",
+                "Monte Carlo Simulation",
+                "Large Capacity",
+                "Data Transfer",
+                "Cosmological",
+                "Memory Capacity",
+                "Low Latency",
+                "Single Node",
+                "Impact Of System",
+                "Complex Configurations",
+                "Simulation Domain",
+                "Scale Efficiency",
+                "Bidirectional Transfer",
+                "CPU Memory",
+                "Memory Footprint",
+                "Graph Size",
+                "Bandwidth Demand",
+                "Memory Reading",
+                "Double Precision",
+                "Numbering Scheme",
+                "Weak Performance"
+            ],
+            "Author Keywords": [
+                "Performance Evaluation",
+                "HBM",
+                "Intel Xeon Max CPU",
+                "Aurora Supercomputer",
+                "HPC Applications"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -583,7 +1239,58 @@
                 "firstName": "Hiroaki",
                 "lastName": "Kobayashi"
             }
-        ]
+        ],
+        "abstract": "Ising machines have recently attracted attention as a new computational method for efficiently solving combinatorial optimization problems. NEC Vector Annealing (VA), working on vector processors, is one of the Ising machines that introduces parallel processing. By using multiple vector processors, VA can handle and accelerate large-scale combinatorial optimization problems. This paper clarifies the characteristics of VA through evaluation using the traveling salesperson problem in terms of solution accuracy, execution time, and scalability.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Annealing",
+                "Accuracy",
+                "Scalability",
+                "Urban areas",
+                "Simulated annealing",
+                "Parallel processing",
+                "Vectors",
+                "Computational efficiency",
+                "Vector processors",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Traveling Salesperson Problem",
+                "Accurate Solution",
+                "Large-scale Problems",
+                "Combinatorial Optimization Problem",
+                "Vector Process",
+                "Multiple Processors",
+                "Differences In Distribution",
+                "Parallelization",
+                "Matrix Multiplication",
+                "Term In Equation",
+                "Simulated Annealing",
+                "Temporal Differences",
+                "Problem Size",
+                "Submatrix",
+                "NP-hard Problem",
+                "Ising Model",
+                "Conventional Estimation",
+                "Number Of Cities",
+                "Digital Computer",
+                "Quantum Technologies",
+                "Correct Calculation",
+                "Message Passing Interface",
+                "Distribution Of Cities",
+                "Variable Update",
+                "Lattice Points",
+                "Constraint Term",
+                "Memory Capacity",
+                "Core Level"
+            ],
+            "Author Keywords": [
+                "Ising machine",
+                "Simulated Annealing",
+                "Combinatorial Optimization Problem",
+                "Traveling Salesperson Problem"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -636,7 +1343,48 @@
                 "firstName": "Estela",
                 "lastName": "Suarez"
             }
-        ]
+        ],
+        "abstract": "Chiplet-based processor design, which combines small dies called chiplets to form a larger chip, enables scalable designs at economical costs. This trend has received high attention such that standards for chiplet design have rapidly established, including packaging, protocols, and Chiplet-to-Chiplet (C2C) interfaces. With numerous well-defined chiplet options available, hardware architects would leverage on the co-design process to make optimal decisions on design parameters. An important performance limitation in multi-chiplet designs come from the protocol translation in the C2C communication, needed to maintain cache coherency and avoid risk of deadlocks. When integrating multiple chiplets, deadlocks can happen from both protocol and routing, making deadlock-free designs important. This paper tackles these challenges by introducing a Chiplet-to-Chiplet Gateway (C2CG) architecture, a C2C interface that bridges two chiplet protocols and ensures deadlock-free C2C communication. We also extend the Coherent Hub Interface (CHI) protocol to support cache coherent data sharing among cores across chiplets. The complete design is implemented in the gem5 simulator, constructing a modeling tool for chiplet-based co-design targeting next-generation High-performance Computing (HPC) processors. We demonstrate the benefit of the model through a design space exploration of three 64-core Armv8 HPC processor configurations: monolithic, two- and four-chiplet. The exploration, using representative HPC benchmarks, provides insights into C2C parameters and studies the impact of Non-Uniform Memory Access (NUMA) configuration, giving valuable co-design feedback for hardware architects.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Translation",
+                "Chiplets",
+                "High performance computing",
+                "Computational modeling",
+                "Computer architecture",
+                "System recovery",
+                "Packaging",
+                "Hardware",
+                "Topology"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "High-performance Computing",
+                "Data Sharing",
+                "Deadlock",
+                "Valuable Feedback",
+                "Co-design Process",
+                "Design Space Exploration",
+                "Organic Substances",
+                "Standard Software",
+                "Memory Control",
+                "Advanced Software",
+                "Buffer Size",
+                "Types Of Messages",
+                "Breadth-first Search",
+                "Data Cache",
+                "Packaging Technology",
+                "Memory Bandwidth",
+                "Request Message",
+                "L2 Cache"
+            ],
+            "Author Keywords": [
+                "High-Performance Computing",
+                "Chiplet",
+                "Cache coherency"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -689,7 +1437,60 @@
                 "firstName": "Marc G.",
                 "lastName": "Genton"
             }
-        ]
+        ],
+        "abstract": "Modified Bessel functions of the second kind are widely used in physics, engineering, spatial statistics, and machine learning. Since contemporary scientific applications, including machine learning, rely on GPUs for acceleration, providing robust GPU-hosted implementations of special functions, such as the modified Bessel function, is crucial for performance. Existing implementations of the modified Bessel function of the second kind rely on CPUs and have limited coverage of the full range of values needed in some applications. In this work, we present a robust implementation of the modified Bessel function of the second kind on GPUs, eliminating the dependence on the CPU host. We cover a range of values commonly used in real applications, providing high accuracy compared to common libraries like the GNU Scientific Library (GSL) when referenced to Mathematica as the authority. Our GPU-accelerated approach also demonstrates a 2.68X performance improvement using a single A100 GPU compared to the GSL on 40-core Intel Cascade Lake CPUs. Our implementation is integrated into ExaGeoStat, the HPC framework for Gaussian process modeling, where the modified Bessel function of the second kind is required by the Matérn covariance function in generating covariance matrices. We accelerate the matrix generation process in ExaGeoStat by up to 12.62X with four A100 GPUs while maintaining almost the same accuracy for modeling and prediction operations using synthetic and real datasets.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Accuracy",
+                "Computational modeling",
+                "Graphics processing units",
+                "Gaussian processes",
+                "Machine learning",
+                "Libraries",
+                "Computational efficiency",
+                "Covariance matrices",
+                "Optimization",
+                "Synthetic data"
+            ],
+            "Index Terms": [
+                "Gaussian Process",
+                "Bessel Function",
+                "Modified Bessel Function",
+                "Machine Learning",
+                "Process Model",
+                "Covariance Matrix",
+                "Modeling Framework",
+                "Real Applications",
+                "Scientific Applications",
+                "Mathematica",
+                "Generator Matrix",
+                "Covariance Function",
+                "Gaussian Process Model",
+                "Matérn Covariance Function",
+                "Parameter Estimates",
+                "Upper Bound",
+                "Differential Equations",
+                "Computational Efficiency",
+                "Maximum Likelihood Estimation",
+                "Log-likelihood",
+                "Numerical Accuracy",
+                "Recurrence Relation",
+                "Mean Squared Prediction Error",
+                "Continued Fraction",
+                "Synthetic Data Generation",
+                "Unit Square",
+                "Asymptotic Expansion",
+                "Infinite Series",
+                "Iteration Count",
+                "Parallelization"
+            ],
+            "Author Keywords": [
+                "Modified Bessel function of the second kind",
+                "GPU implementation",
+                "Tile-based matrix computations",
+                "Gaussian processes"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -760,7 +1561,59 @@
                 "firstName": "Ayse K.",
                 "lastName": "Coskun"
             }
-        ]
+        ],
+        "abstract": "High-Performance Computing (HPC) systems are critical for many scientific applications, but they are often subject to performance variations due to “anomalies”, which can lead to reduced efficiency and higher operational costs. To address this, machine learning (ML) techniques have been increasingly applied to automatically detect performance anomalies. However, traditional unsupervised anomaly detection methods assume that training datasets are free of anomalies. In real-world HPC systems, though, data is typically contaminated by anomalies caused by factors such as shared resource contention, software bugs, or hardware failures. These anomalies in the training data can significantly undermine the performance of ML models. To overcome this issue, we introduce Refine, a robust anomaly detection framework based on variational autoencoders (VAEs). Refine iteratively removes high-error samples during training in an unsupervised manner. By gradually reducing the proportion of anomalies in the training dataset based on reconstruction error, our approach enhances the model's robustness and overall performance. We evaluate Refine using data collected from a production HPC system, Eclipse, and demonstrate its effectiveness in handling varying levels of contamination. Even with up to 10% anomalies in the training dataset, Refine achieves an F1-score of 0.88, outperforming state-of-the-art unsupervised anomaly detection methods. Moreover, when applied to real production system data, Refine achieves 100% accuracy in detecting anomalies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Production systems",
+                "High performance computing",
+                "Training data",
+                "Machine learning",
+                "Software",
+                "Robustness",
+                "Hardware",
+                "Data models",
+                "Anomaly detection"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Anomaly Detection",
+                "High-performance Computing Systems",
+                "Unsupervised Anomaly Detection",
+                "Model Performance",
+                "Training Dataset",
+                "Machine Learning Models",
+                "Detection Performance",
+                "Variational Autoencoder",
+                "Unsupervised Manner",
+                "Software Defect",
+                "Hardware Failure",
+                "Resource Contention",
+                "Test Dataset",
+                "Normal Samples",
+                "Real-world Data",
+                "Normal Behavior",
+                "Healthy Samples",
+                "Training Stage",
+                "Characteristic Scale",
+                "Telemetry Data",
+                "Single Iteration",
+                "System Crashes",
+                "Knee Point",
+                "Latent Space",
+                "Application Running",
+                "Anomalous Data",
+                "Multivariate Time Series",
+                "Anomaly Score",
+                "Iterative Filtering"
+            ],
+            "Author Keywords": [
+                "High Performance Computing",
+                "Machine Learning",
+                "Anomaly Detection"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -819,7 +1672,58 @@
                 "firstName": "Martin",
                 "lastName": "Schulz"
             }
-        ]
+        ],
+        "abstract": "Quantum Computing (QC) presents a significant departure from and substantial parallels to classical computing. Some such parallels include the need to understand topology and system characteristics information and make that available to users as well as other system components like compilers, runtimes, and schedulers. We analyze the differences and extend sys-sage to capture quantum information. This leverages code reuse and automatically incorporates QC information into the software stack for hybrid HPCQC integration. This paper addresses the extensions to sys-sage, a classical HPC-relevant library, to also represent and store the characteristics of Quantum Processing Units (QPUs). Our work also presents the role of sys-sage in pre-processing and analyzing the topology and properties of different components of QCs to provide valuable insights that compilers, schedulers or circuit mappers can use. These features aim to facilitate the HPCQC ecosystem by providing a unified interface.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Quantum system",
+                "Runtime",
+                "Qubit",
+                "Ecosystems",
+                "Libraries",
+                "Topology",
+                "Usability",
+                "Interoperability",
+                "Testing"
+            ],
+            "Index Terms": [
+                "Quantum Technologies",
+                "Components Of System",
+                "Quantum Information",
+                "Quantum Computing",
+                "Topological Information",
+                "Classical Computer",
+                "Software Stack",
+                "Hierarchical Structure",
+                "Properties Of Systems",
+                "Class Of Systems",
+                "High-performance Computing",
+                "Dynamic Information",
+                "Quantum System",
+                "Coherence Time",
+                "Neutral Atoms",
+                "Datapath",
+                "Static Information",
+                "Dynamic Topology",
+                "Quantum Circuit",
+                "Quantum Gates",
+                "High-performance Computing Systems",
+                "Two-qubit Gates",
+                "Real-world Use Cases",
+                "JSON File",
+                "Dynamic Metrics",
+                "Quantum Algorithms",
+                "Operating Characteristics",
+                "Hardware Resources",
+                "Types Of Components"
+            ],
+            "Author Keywords": [
+                "Quantum Computing",
+                "High Performance Computing",
+                "HPCQC Integration"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -866,7 +1770,61 @@
                 "firstName": "Achim",
                 "lastName": "Streit"
             }
-        ]
+        ],
+        "abstract": "Modeling the crucial dynamic properties of tissue simulations is computationally expensive due to the complex interactions between cells and its surrounding extracellular matrix (ECM). This work extends the Cellular Potts Model (CPM) with a dynamic ECM model to simulate the viscoelastic mechanics. Our implementation leverages the NAStJA framework, a highly scalable system for distributed simulations. We assess the performance of our implementations on different HPC setups and analyze the scalability challenges of large-scale tissue simulations. GPU-accelerated simulations significantly reduce computation time but are limited by host-device communication.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Computational modeling",
+                "Scalability",
+                "Memory management",
+                "Graphics processing units",
+                "Data models",
+                "Supercomputers",
+                "Computational efficiency",
+                "Time factors",
+                "Extracellular"
+            ],
+            "Index Terms": [
+                "Extracellular Matrix",
+                "High-performance Computing",
+                "Stencil Computations",
+                "Scalable",
+                "Viscoelastic",
+                "Large-scale Simulations",
+                "Time Step",
+                "Computational Efficiency",
+                "Field Data",
+                "Parallelization",
+                "Particle Velocity",
+                "Force Estimation",
+                "Cell-matrix Interactions",
+                "Displacement Values",
+                "Lattice Sites",
+                "Communication Overhead",
+                "Hardware Configuration",
+                "Particle Displacement",
+                "Neighboring Sites",
+                "Memory Bandwidth",
+                "Strong Scaling",
+                "GPU Implementation",
+                "Shared Memory",
+                "Message Passing Interface",
+                "Influence Cell Behavior",
+                "Device Memory",
+                "Cell Types",
+                "Tumor Spheroids",
+                "Cell-matrix Adhesion",
+                "Finite Element Method"
+            ],
+            "Author Keywords": [
+                "GPU-Accelerated Simulations",
+                "Tissue Simulations",
+                "Extracellular Matrix",
+                "Cellular Potts Model",
+                "NAStJA"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -907,7 +1865,61 @@
                 "firstName": "David",
                 "lastName": "Keyes"
             }
-        ]
+        ],
+        "abstract": "This paper introduces sTiles, a GPU-accelerated software framework that computes factorization of sparse structured symmetric matrices. By leveraging tile algorithms to achieve fine-grained computations, sTiles employs a structure-aware flow of task executions for the Cholesky factorization to tackle challenging arrowhead sparse matrices with variable bandwidths. These matrices, common in various scientific and engineering fields, necessitate an adaptive factorization strategy that operates only on nonzero tiles. Our approach relies first on a collection of permutation techniques to minimize fill-in during factorization. Then, sTiles proceeds with a customized static scheduler to orchestrate computational tasks on shared-memory systems equipped with GPU hardware accelerators. sTiles strikes the required balance between the tile size and the degree of parallelism. The former has a direct impact on the algorithmic intensity, although monitoring the additional floating-point operations and memory footprint becomes crucial for parallel performance. The latter may be limited due to the inherent arrowhead sparse matrix structure. To further expose parallelism, we must adopt a left-looking variant of the Cholesky factorization to break the sequential dependencies during the accumulation operations on the trailing submatrix and operate on them instead using tree reductions. Extensive evaluations demonstrate a boost in performance for the sparse Cholesky factorization on various arrowhead structured matrices against the state-of-the-art sparse libraries, with sTiles achieving up to 8.41X/9.34X/5.07X/11.08X speedups compared to CHOLMOD/SymPACK/MUMPS/PARDISO, respectively. On GPUs, sTiles further exploits the computational throughput by adjusting the two key ingredients aforementioned to attain a 5X speedup compared to a 32-core AMD EPYC CPU when executed on an NVIDIA A100 GPU. Our generic software framework<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup><sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup>The software is available at https://github.com/esmail-abdulfattah/sTiles imports well-established concepts from dense matrix computations but they all require customizations in their deployments on hybrid architectures to best handle factorizations of sparse matrices with arrowhead structures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Symmetric matrices",
+                "Software algorithms",
+                "Graphics processing units",
+                "Bandwidth",
+                "Parallel processing",
+                "Throughput",
+                "Software",
+                "Libraries",
+                "Computational efficiency",
+                "Sparse matrices"
+            ],
+            "Index Terms": [
+                "Matrix Factorization",
+                "Structure Of Matrix",
+                "Symmetric Matrix",
+                "Sparse Matrix",
+                "Linear Solver",
+                "Computation Tasks",
+                "Cholesky Decomposition",
+                "Memory Footprint",
+                "Sparse Structure",
+                "Software Framework",
+                "Degree Of Parallelism",
+                "Tile Size",
+                "Sparse Factorization",
+                "Scalable",
+                "Parallelization",
+                "Efficient Management",
+                "Matrix Size",
+                "Dense Regions",
+                "Intel Xeon",
+                "Performance Gain",
+                "GPU Memory",
+                "Integrated Nested Laplace Approximation",
+                "Directed Acyclic Graph",
+                "Stochastic Partial Differential Equations",
+                "Parallel Strategy",
+                "L2 Cache",
+                "GPU Acceleration",
+                "Sparse Regions",
+                "Nonzero Elements",
+                "Dense Clusters"
+            ],
+            "Author Keywords": [
+                "Sparse Matrix Computations",
+                "Arrowhead Structured Matrices",
+                "Tile Algorithms",
+                "Cholesky Factorization",
+                "Hybrid Architectures"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -966,7 +1978,53 @@
                 "firstName": "Samuel",
                 "lastName": "Williams"
             }
-        ]
+        ],
+        "abstract": "Maximizing supercomputing throughput within power and cooling limits is a key challenge for exascale systems, which are increasingly constrained by power rather than performance. Effective power management is essential. Whereas power capping has been well-known to increase energy efficiency and reduce energy costs, power variability has emerged as an orthogonal driving force on cost through service pricing models and increased electronic component wear out. This paper presents a performance-power-efficiency model that combines application performance, empirical power usage, power variability, and energy efficiency in a single methodology to enable optimization of HPC system operation. Using seven workloads and three microbenchmarks, we demonstrate the ability of our methodology to understand performance and energy efficiency through power capping on NVIDIA A100 GPUs and motivate future system design and execution policies. We show that power capping can reduce power spikes without sacrificing energy efficiency, and power capping can potentially improve power-constrained system throughput by 1.8× based on capped maximum node power and 2.5× based on peak node power usage.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Data centers",
+                "Costs",
+                "Power system management",
+                "High performance computing",
+                "Computational modeling",
+                "Systems operation",
+                "Throughput",
+                "Energy efficiency",
+                "System analysis and design"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "Energy Cost",
+                "Supercapacitors",
+                "Power Management",
+                "Benchmark Test",
+                "System Throughput",
+                "Voltage Spikes",
+                "Empirical Power",
+                "Power Usage",
+                "Energy Consumption",
+                "Data Center",
+                "Performance Metrics",
+                "Power Consumption",
+                "Maximum Power",
+                "Performance Degradation",
+                "Highest Efficiency",
+                "Peak Power",
+                "Power Efficiency",
+                "Relative Efficiency",
+                "Rectified Linear Unit Function",
+                "Power Variation",
+                "Utility Grid",
+                "Green Zone",
+                "Average User",
+                "Reduction In Power",
+                "Power Fluctuations",
+                "Diagonal Line",
+                "Total Energy Consumption",
+                "Relative Performance"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -1013,7 +2071,59 @@
                 "firstName": "Ganesh",
                 "lastName": "Gopalakrishnan"
             }
-        ]
+        ],
+        "abstract": "There is an unmet need for static data race checkers that can analyze incomplete programs typical of early program development stages, and are also easily to adapt to different parallel programming models. In this work, we present a novel race checking approach based on Graph Neural Networks (GNN) called GORC that has these attributes. GORC is trained on PrograML control/data graph representations extracted from OpenMP programs that are labeled as racy or race-free, and helps predict races in unseen OpenMP programs. We provide a detailed evaluation of GORC, demonstrating that our approach can deliver high accuracy while also handling many more programs than existing static race checkers. Despite the scarcity of training data, GORC achieves a higher recall rate than LLOV, a widely cited static race checker for OpenMP. It outperforms state-of-the-art ML-based techniques for OpenMP data race detection on three different data-sets. This paper describes GORC's architecture, detailed evaluations, and a novel attribution study that confirms that GORC is learning features relevant to producing data race classifications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Adaptation models",
+                "Analytical models",
+                "Accuracy",
+                "Parallel programming",
+                "Training data",
+                "Detectors",
+                "Benchmark testing",
+                "Graph neural networks",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Graph Neural Networks",
+                "Training Data",
+                "Graphical Representation",
+                "Parallelization",
+                "Parallel Model",
+                "Checkers",
+                "Benchmark",
+                "Source Code",
+                "Machine Learning Models",
+                "Programming Language",
+                "False Alarm",
+                "Static Analysis",
+                "Shared Variance",
+                "Graph Convolutional Network",
+                "Static Approach",
+                "Encoder Layer",
+                "Graph Convolution",
+                "Training Instances",
+                "Function Calls",
+                "Graph Attention Network",
+                "Race Conditions",
+                "Variable Nodes",
+                "Race Type",
+                "Message Passing",
+                "Benchmark Suite",
+                "Call Detail Records",
+                "Rest Of This Section",
+                "Nodes In The Graph",
+                "Graph Attention"
+            ],
+            "Author Keywords": [
+                "Graph Neural Networks",
+                "Data Race Detection",
+                "Static Race Checking",
+                "Open"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -1042,7 +2152,58 @@
                 "firstName": "Matthew",
                 "lastName": "Anderson"
             }
-        ]
+        ],
+        "abstract": "Power gateways in the form of a microgrid can incorporate multiple distributed energy resources (DER) in either grid forming or grid following mode and support high performance computing (HPC) power profiles including the large load-follow requirements observed in multi-user HPC systems. The microgrid's flexibility to operate in either grid forming or grid following mode and to actively switch between these modes enables baseline power from multiple non-baseline DER while maintaining high power quality metrics for the HPC system. But this enormous flexibility in demand response and time of use shifting is generally programmed independently of any integration with an HPC job scheduler, which can better inform the load shaping by the microgrid. While there are many existing approaches where the HPC job scheduler takes in information from the grid to make queue scheduling decisions, this work takes the opposite view and explores three strategies where the forecast of jobs in the queue can change the settings of the grid. Three strategies are tested where the forecast of jobs in the queue adjusts the settings of a microgrid designed for a datacenter, in this case with three classes of HPC architectures. The strategies are demonstrated using a microgrid with 64 kW of solar capacity and 320 kWh of battery over a period of 21 days operating with significant load-follow swings, a throttled grid, cloudy conditions, switching between grid following and grid forming modes, and a wide range of battery states-of-charge, all while maintaining high quality power metrics. The strategies presented provide a mechanism for the forecast of jobs in the queue to influence and adjust the settings of a microgrid and to improve HPC power outcomes such as maximizing renewable energy usage.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Renewable energy sources",
+                "High performance computing",
+                "Microgrids",
+                "Switches",
+                "Logic gates",
+                "Distributed power generation",
+                "Batteries",
+                "Time factors",
+                "Grid forming"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "High-quality",
+                "High Power",
+                "Renewable Energy",
+                "Quality Metrics",
+                "Power Quality",
+                "Power Profile",
+                "Distributed Energy Resources",
+                "Job Scheduling",
+                "Baseline Power",
+                "High-performance Computing Systems",
+                "Case-control",
+                "Greenhouse Gas",
+                "Loading Control",
+                "Renewable Energy Sources",
+                "Inverter",
+                "Load Changes",
+                "Geothermal",
+                "Power Production",
+                "Solar Production",
+                "Utility Grid",
+                "Total Harmonic Distortion",
+                "Load Forecasting",
+                "Voltage Sag",
+                "Commercial Off-the-shelf",
+                "Solar Power Plants",
+                "Power Conditions",
+                "Resource Usage",
+                "Grid Power"
+            ],
+            "Author Keywords": [
+                "Microgrids",
+                "HPC Schedulers",
+                "Power"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -1077,7 +2238,50 @@
                 "firstName": "Miquel",
                 "lastName": "Pericàs"
             }
-        ]
+        ],
+        "abstract": "As multicore vector processors improve in computational and memory performance, running SIMT (Single Instruction Multiple Threads) programs on CPUs has become increasingly appealing, potentially eliminating the need for dedicated GPU hardware. SYCL is a royalty-free cross-platform C++ programming model for heterogeneous computing that implements the SIMT model and provides a path to run GPU programs on CPU hardware. Several SYCL implementations have been developed. To understand their performance on multicore vector CPUs, this paper systematically evaluates the two major SYCL implementations using a set of micro-benchmarks to assess key features such as memory bandwidth, kernel scheduling, synchronization, and vectorization. We test SYCL implementations across Intel Icelake, AMD Zen2, Fujitsu A64FX, and AWS Graviton3 systems, comparing Ahead-of-Time (AoT) and Just-In-Time (JIT) compilation flows, with OpenCL and OpenMP backends, and compare the results with native OpenMP implementations. Based on the results from these experiments, we generate a table of recommendations for SYCL developers. In general, our results show that AoT outperforms JIT in memory bandwidth, while JIT excels in scheduling and synchronization. SYCL on A64FX achieves near-peak memory bandwidth but underperforms in parallelization and reduction tasks. Our study also explores data management strategies, including USM and buffer & accessor (B&A), and backend configurations, revealing that these factors significantly impact performance. Our findings underscore the importance of selecting the appropriate toolchain to maximize SYCL's potential for portable and high-performance execution across diverse hardware platforms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Adaptation models",
+                "Multicore processing",
+                "Computational modeling",
+                "Graphics processing units",
+                "Bandwidth",
+                "Benchmark testing",
+                "Programming",
+                "Hardware",
+                "Vectors",
+                "Synchronization"
+            ],
+            "Index Terms": [
+                "Synchronization",
+                "Data Management",
+                "Parallelization",
+                "Multi-core",
+                "Programming Model",
+                "Memory Bandwidth",
+                "Load Data",
+                "Problem Size",
+                "Task Scheduling",
+                "Outer Product",
+                "Global Range",
+                "Memory Operations",
+                "Linearizable",
+                "Memory Allocation",
+                "Benchmark Suite",
+                "Shared Memory",
+                "Problem Size Increases"
+            ],
+            "Author Keywords": [
+                "Benchmarking",
+                "CPUs",
+                "SYCL",
+                "OpenMP",
+                "Intel OneAPI",
+                "DPC++",
+                "AdaptiveCpp"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -1112,7 +2316,29 @@
                 "firstName": "Suhaib A.",
                 "lastName": "Fahmy"
             }
-        ]
+        ],
+        "abstract": "Monte Carlo simulations are widely used for financial applications, particularly in option pricing. Multi-asset option pricing has not been as widely investigated as single-asset problems and presents specific challenges. This paper presents an efficient way to design a dataflow overlay for multi-asset option pricing on AMD Versal AI Engines by leveraging their SIMD capabilities and the high-performance interconnect network linking them. The proposed dataflow overlay achieves a highly scalable parallelized implementation that can utilize nearly the totality of the available AI Engines on the AMD Versal VCK5000 accelerator. We also show that it achieves up to 25.7× speedup over a traditional FPGA programmable logic implementation using the Vitis Quantitive Finance Library, a specialized AMD library for quantitative finance on FPGAs, and up to 13.41× speedup over a highly parallelized CPU implementation over 128 threads. We show that although an Nvidia RTX A6000 GPU implementation has 0.73× the execution time of our design, our design achieves 1.82× the energy efficiency.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pricing",
+                "Engines",
+                "Computational modeling",
+                "Finance",
+                "Artificial intelligence",
+                "Field programmable gate arrays",
+                "Stochastic processes",
+                "Mathematical models",
+                "Computer architecture",
+                "Accuracy"
+            ],
+            "Author Keywords": [
+                "Domain-Specific Accelerator",
+                "AMD Versal ACAP",
+                "Option Pricing",
+                "Monte Carlo Simulation",
+                "High-Performance Quantitative Finance"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -1171,7 +2397,62 @@
                 "firstName": "Hasan Metin",
                 "lastName": "Aktulga"
             }
-        ]
+        ],
+        "abstract": "MFDn (Many-body Fermion Dynamics for nucleons) is a cutting-edge Configuration Interaction (CI) code designed to tackle nuclear quantum many-body problems. The core computational task in MFDn involves solving a large sparse eigenvalue problem using iterative methods, where the most costly computational step is the sparse matrix-vector multiplication (SpMV). Recently, an MPI/OpenACC based SpMV was developed to enable MFDn to run efficiently on NVIDIA GPUs. In this work, we explore various strategies to further enhance the performance of MFDn by exploiting architecture features of GPUs and making use of alternative programming models such as CUDA kernels as well as communication protocols such as the asynchronous point-to-point (P2P) message passing and NVIDIA Collective Communication Library (NCCL). We demonstrate the performance gain achieved by using these techniques. In particular, we show that, on problem sizes with up to 1.3 trillion nonzeros, we can obtain up to <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$2.0\\times$</tex> improvement in the overall solver time by switching from OpenACC to a hand-optimized CUDA implementation across 1540 GPUs. Additionally, when combined with asynchronous P2P message passing and NCCL, we observe performance boosts of <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$2.9\\times$</tex> (P2P) and <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$4.9\\times$</tex> (NCCL) compared to the baseline optimized version using the MPI/OpenACC programming model. Our study has uncovered a few limitations of the existing directive based programming models such as OpenACC and highlights the challenges of using CUDA-aware MPI for certain collective communications. While the primary focus of this work is on optimizing the performance of MFDn, the insights and solutions we provide are likely to be relevant to a broad range of applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Message passing",
+                "Graphics processing units",
+                "Switches",
+                "Programming",
+                "Libraries",
+                "Software",
+                "Synchronization",
+                "Sparse matrices",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Programming Model",
+                "Configuration Interaction",
+                "National Science Foundation",
+                "Problem Size",
+                "Computation Tasks",
+                "Nucleon",
+                "Solving Time",
+                "Relative Performance",
+                "Symmetric Matrix",
+                "Multi-core",
+                "Sparse Matrix",
+                "Dimensional Matrix",
+                "Load Data",
+                "Submatrix",
+                "Load Balancing",
+                "Local Computing",
+                "Communication Overhead",
+                "Local Reduction",
+                "Iterative Solver",
+                "Parallel Efficiency",
+                "Shared Memory",
+                "Load Imbalance",
+                "Communication Volume",
+                "Message Size",
+                "Hamiltonian Matrix",
+                "Host Side",
+                "Strong Scaling",
+                "Test Problems"
+            ],
+            "Author Keywords": [
+                "quantum many-body problem",
+                "Lanczos",
+                "distributed SpMV",
+                "MPI",
+                "NCCL",
+                "OpenACC",
+                "CUDA",
+                "roofline model"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -1248,7 +2529,54 @@
                 "firstName": "Laura",
                 "lastName": "Schulz"
             }
-        ]
+        ],
+        "abstract": "Quantum systems have traditionally operated within highly controlled laboratory environments to minimize internal noise and maximize stability. However, when these systems are integrated into High Performance Computing (HPC) environments and setup for continuous operation, they encounter significantly higher levels of external noise and instability coupled with higher demands. This paper introduces a comprehensive framework to counter the challenges of maintaining the stability of operational quantum computers in such noisy HPC settings. We propose a novel system architecture that monitors and manages the environmental conditions of quantum computing systems using a broad set of sensors, enhancing their robustness and reliability. Our architecture is open and can be extended to other setups. It can serve as a blueprint for other sites as it spans quantum technologies and offers broad coverage. Ultimately, this data will be essential to facilitate advancements in machine learning to drive real-time error mitigation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computers",
+                "Quantum system",
+                "Trapped ions",
+                "Quantum computing",
+                "Working environment noise",
+                "Systems architecture",
+                "Machine learning",
+                "Stability analysis",
+                "Telemetry",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Quantum System",
+                "Center For High Performance Computing",
+                "Machine Learning",
+                "Quantum Computing",
+                "Magnetic Field",
+                "Machine Learning Models",
+                "Power Consumption",
+                "Internet Of Things",
+                "Environmental Data",
+                "Environmental Parameters",
+                "Ion Trap",
+                "Magnetometer",
+                "Temperature Sensor",
+                "Electromagnetic Interference",
+                "Environmental Noise",
+                "Network Infrastructure",
+                "Raspberry Pi",
+                "Sensor Readings",
+                "Telemetry Data",
+                "High-performance Computing Systems",
+                "Coherent Noise",
+                "Room Pressure",
+                "Quantum Circuit",
+                "Quantum Operations",
+                "Humidity Sensor",
+                "Telemetry System",
+                "Amount Of Heat",
+                "Serialized",
+                "Compressor"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -1307,7 +2635,59 @@
                 "firstName": "Amanda",
                 "lastName": "Randles"
             }
-        ]
+        ],
+        "abstract": "The rapid proliferation of heterogeneous programming languages and multi-vendor hardware has underscored the critical need to evaluate the performance portability of scientific applications. In this work, we present the systematic porting and optimization of a massively parallel fluid-structure interaction code across multiple heterogeneous programming frameworks for deployment on leadership-class supercomputers from major vendors. Our analysis focuses on at-scale performance for simulations involving hundreds of millions of deformable cells, executed on a combination of CPUs and GPUs spanning thousands of nodes on exascale machines. We benchmark the performance of each implementation, highlighting the trade-offs inherent in adopting diverse programming models. Key insights regarding the portability of CUDA on multi-vendor platforms, the superior multi-core CPU performance from SYCL, and architectural considerations on performance optimization are distilled from our experience, offering guidance to other users of high performance computing based on our findings.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Biological system modeling",
+                "Computational modeling",
+                "High performance computing",
+                "Graphics processing units",
+                "Computer architecture",
+                "Programming",
+                "Hardware",
+                "Supercomputers",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Fluid-structure Interaction",
+                "Performance Portability",
+                "Superior Performance",
+                "Programming Language",
+                "Parallelization",
+                "Graphics Processing Unit",
+                "Programming Model",
+                "Thousands Of Nodes",
+                "Red Blood Cells",
+                "Frontier",
+                "Finite Element",
+                "Source Code",
+                "Cell Volume",
+                "Problem Size",
+                "Parallel Data",
+                "Middle Column",
+                "Argonne National Laboratory",
+                "Parallel Algorithm",
+                "Code Changes",
+                "Shared Memory",
+                "Set Of Platforms",
+                "Linearizable",
+                "Lattice Boltzmann Method",
+                "Oak Ridge National Laboratory",
+                "Heterogeneous Architecture",
+                "Optimal Code",
+                "Heterogeneous Nodes",
+                "Code Execution"
+            ],
+            "Author Keywords": [
+                "Computational fluid dynamics",
+                "fluid structure interaction",
+                "GPU computing",
+                "high performance computing",
+                "performance portability"
+            ]
+        }
     },
     {
         "publicationNumber": "11008903",
@@ -1323,6 +2703,8 @@
         "publisher": "Prometeus GmbH",
         "articleContentType": "Conferences",
         "publicationTitle": "ISC High Performance 2025 Research Paper Proceedings (40th International Conference)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

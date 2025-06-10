@@ -26,7 +26,51 @@
                 "firstName": "Franz-Josef",
                 "lastName": "Preundt"
             }
-        ]
+        ],
+        "abstract": "This paper presents a theoretical analysis and practical evaluation of the main bottlenecks towards a scalable distributed solution for the training of Deep Neural Networks (DNNs). The presented results show, that the current state of the art approach, using data-parallelized Stochastic Gradient Descent (SGD), is quickly turning into a vastly communication bound problem. In addition, we present simple but fixed theoretic constraints, preventing effective scaling of DNN training beyond only a few dozen nodes. This leads to poor scalability of DNN training in most practical scenarios.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Scalability",
+                "Computational modeling",
+                "Neural networks",
+                "Graphics processing units",
+                "Convergence",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Scalable",
+                "Deep Network",
+                "Deep Neural Network",
+                "Neural Network Training",
+                "Stochastic Gradient Descent",
+                "Training Data",
+                "Computation Time",
+                "Step Size",
+                "Batch Size",
+                "Parallelization",
+                "Layer-by-layer",
+                "Model Size",
+                "Matrix Multiplication",
+                "Fully-connected Layer",
+                "Single Node",
+                "Network Bandwidth",
+                "File System",
+                "Computing Units",
+                "Communication Overhead",
+                "Large Batch Size",
+                "Theoretical Constraints",
+                "Strong Scaling",
+                "Distribution Of Training Data",
+                "Shallow Network",
+                "Worker Nodes",
+                "Convolutional Layers",
+                "Perfectionism Scale",
+                "High-dimensional",
+                "Benchmark Networks"
+            ]
+        }
     },
     {
         "publicationNumber": "7835346",
@@ -67,7 +111,43 @@
                 "firstName": "Brian",
                 "lastName": "Van Essen"
             }
-        ]
+        ],
+        "abstract": "We study data-parallel training of deep neural networks on high-performance computing infrastructure. The key problem with scaling data-parallel training is avoiding severe communication/computation imbalance. We explore quantizing gradient updates before communication to reduce bandwidth requirements and compare it against a baseline implementation that uses the MPI allreduce routine. We port two existing quantization approaches, one-bit and threshold, and develop our own adaptive quantization algorithm. The performance of these algorithms is evaluated and compared with MPI_Allreduce when training models for the MNIST dataset and on a synthetic benchmark. On an HPC system, MPI_Allreduce outperforms the existing quantization approaches. Our adaptive quantization is comparable or superior for large layers without sacrificing accuracy. It is 1.76 times faster than the next best approach for the largest layers in our benchmark and achieves near-linear speedup in data-parallel training.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Quantization (signal)",
+                "Training",
+                "Data models",
+                "Parallel processing",
+                "Bandwidth",
+                "Laboratories",
+                "Electronic mail"
+            ],
+            "Index Terms": [
+                "Deep Neural Network",
+                "Data Parallel Training",
+                "MNIST Dataset",
+                "Quantification Algorithm",
+                "Gradient Update",
+                "Message Passing Interface",
+                "Synthetic Benchmark",
+                "Large Datasets",
+                "Scalable",
+                "Volume Of Data",
+                "Parallelization",
+                "Data Reduction",
+                "Selection Algorithm",
+                "Fully-connected Layer",
+                "Projection Matrix",
+                "Quantization Error",
+                "Distributed Computing",
+                "Open Reduction",
+                "Error Feedback",
+                "AdaGrad",
+                "Worker Nodes",
+                "Parameter Server"
+            ]
+        }
     },
     {
         "publicationNumber": "7835346",
@@ -138,7 +218,51 @@
                 "firstName": "Gangotree",
                 "lastName": "Chakma"
             }
-        ]
+        ],
+        "abstract": "Current Deep Learning models use highly optimized convolutional neural networks (CNN) trained on large graphical processing units (GPU)-based computers with a fairly simple layered network topology, i.e., highly connected layers, without intra-layer connections. Complex topologies have been proposed, but are intractable to train on current systems. Building the topologies of the deep learning network requires hand tuning, and implementing the network in hardware is expensive in both cost and power.In this paper, we evaluate deep learning models using three different computing architectures to address these problems: quantum computing to train complex topologies, high performance computing (HPC) to automatically determine network topology, and neuromorphic computing for a low-power hardware implementation. Due to input size limitations of current quantum computers we use the MNIST dataset for our evaluation.The results show the possibility of using the three architectures in tandem to explore complex deep learning networks that are untrainable using a von Neumann architecture. We show that a quantum computer can find high quality values of intra-layer connections and weights, while yielding a tractable time result as the complexity of the network increases; a high performance computer can find optimal layer-based topologies; and a neuromorphic computer can represent the complex topology and weights derived from the other architectures in low power memristive hardware.This represents a new capability that is not feasible with current von Neumann architecture. It potentially enables the ability to solve very complicated problems unsolvable with current computing technologies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Machine learning",
+                "Quantum computing",
+                "Computers",
+                "Neuromorphics",
+                "Network topology",
+                "Topology",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Deep Learning",
+                "High-performance Computing",
+                "Quantum Computing",
+                "Neuromorphic Computing",
+                "Complex Deep Learning",
+                "Complex Deep Learning Networks",
+                "Neural Network",
+                "Complex Network",
+                "Convolutional Network",
+                "Convolutional Neural Network",
+                "Deep Network",
+                "Deep Learning Models",
+                "Network Topology",
+                "Graphics Processing Unit",
+                "Complicated Problems",
+                "Complex Topology",
+                "Topology Optimization",
+                "MNIST Dataset",
+                "Network Hardware",
+                "Hidden Layer",
+                "Restricted Boltzmann Machine",
+                "Spiking Neural Networks",
+                "Neuromorphic Systems",
+                "Hidden Nodes",
+                "Boltzmann Machine",
+                "Complex Neural Network",
+                "Neuron Model",
+                "Trial-and-error Method",
+                "Object Recognition",
+                "Ensemble Of Networks"
+            ]
+        }
     },
     {
         "publicationNumber": "7835346",
@@ -169,11 +293,52 @@
             },
             {
                 "id": 37393298000,
-                "preferredName": "Steven Latr\u00e9",
+                "preferredName": "Steven Latré",
                 "firstName": "Steven",
-                "lastName": "Latr\u00e9"
+                "lastName": "Latré"
             }
-        ]
+        ],
+        "abstract": "The Internet of Things (IoT) is more and more becoming a platform for mission critical applications with stringent requirements in terms of response time and mobility. Therefore, a centralized High Performance Computing (HPC) environment is often not suitable or simply non-existing. Instead, there is a need for a scalable HPC model that supports the deployment of applications on the decentralized but resource constrained devices of the IoT. Recently, Reinforcement Learning (RL) algorithms have been used for decision making within applications by directly interacting with the environment. However, most RL algorithms are designed for centralized environments and are time and resource consuming. Therefore, they are not applicable to such constrained decentralized computing environments. In this paper, we propose a scalable Parallel Q-Learning (PQL) algorithm for resource constrained environments. By combining a table partition strategy together with a co-allocation of both processing and storage, we can significantly reduce the individual resource cost and, at the same time, guarantee convergence and minimize the communication cost. Experimental results show that our algorithm reduces the required training in proportion of the number of Q-Learning agents and, in terms of execution time, it is up to 24 times faster than several well-known PQL algorithms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Convergence",
+                "Training",
+                "Partitioning algorithms",
+                "Heuristic algorithms",
+                "Algorithm design and analysis",
+                "Scalability",
+                "Machine learning algorithms"
+            ],
+            "Index Terms": [
+                "Scaling Algorithm",
+                "Q-learning Algorithm",
+                "Learning Algorithms",
+                "Internet Of Things",
+                "High-performance Computing",
+                "Number Of Agents",
+                "Communication Cost",
+                "Partitioning Scheme",
+                "Reinforcement Learning Algorithm",
+                "Convergence Guarantees",
+                "Reduction In The Number",
+                "Grid Size",
+                "Optimal Policy",
+                "Multiple Agents",
+                "Goal State",
+                "Processing Resources",
+                "Markov Decision Process",
+                "Load Balancing",
+                "Starting State",
+                "Algorithm Execution",
+                "Physical Nodes",
+                "Process Of Agents",
+                "Partitioning Algorithm",
+                "Total Execution Time",
+                "Tabular Representation",
+                "Multi-agent Reinforcement Learning",
+                "Communication Scheme"
+            ]
+        }
     },
     {
         "publicationNumber": "7835346",
@@ -214,7 +379,51 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "We present a portable and highly-optimized Deep Neural Network (DNN) algorithm and its implementation techniques. Our approach is a novel combination of existing HPC techniques that methodically applies autotuning as well as data layout and low-level optimizations that achieve performance matching and/or exceeding what is possible with either reverse engineering and manual assembly coding or proprietary vendor libraries. The former was done inside the maxDNN implementation and the latter is represented by cuDNN. Our work may be directly applied to the most time consuming part of DNN workflow, namely the training process which often needs a restart when it stagnates due to, for example, diminishing gradients and getting stuck in local minima. With the result of performance tests on a consumer-grade GPU with the latest High Bandwidth Memory (HBM) stack, our methodology can match a server grade hardware at a fraction of the price. Another tuning sweep on a new GPU architecture from a different vendor also attests to the portability of our approach and the quality of our implementation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Neural networks",
+                "Graphics processing units",
+                "Training",
+                "Machine learning",
+                "Hardware",
+                "Convolution"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Deep Neural Network",
+                "Convolutional Layers",
+                "Network Layer",
+                "OpenCL Kernel",
+                "Reverse Engineering",
+                "Deep Learning",
+                "Convolutional Neural Network",
+                "Working Group",
+                "Input Image",
+                "Single Image",
+                "Fast Fourier Transform",
+                "Search Space",
+                "Convolution Kernel",
+                "Network Design",
+                "Fully-connected Layer",
+                "Projection Matrix",
+                "Deep Learning Framework",
+                "Output Image",
+                "Gradient Descent Method",
+                "Local Kernel",
+                "Stochastic Gradient Descent Method",
+                "Single Kernel",
+                "Local Memory",
+                "Batch Of Images",
+                "Device Memory",
+                "Learning Network",
+                "Machine Learning",
+                "Heatmap",
+                "Single Precision"
+            ]
+        }
     },
     {
         "publicationNumber": "7835346",
@@ -273,7 +482,44 @@
                 "firstName": "James S.",
                 "lastName": "Plank"
             }
-        ]
+        ],
+        "abstract": "One of the key impediments to the success of current neuromorphic computing architectures is the issue of how best to program them. Evolutionary optimization (EO) is one promising programming technique; in particular, its wide applicability makes it especially attractive for neuromorphic architectures, which can have many different characteristics. In this paper, we explore different facets of EO on a spiking neuromorphic computing model called DANNA. We focus on the performance of EO in the design of our DANNA simulator, and on how to structure EO on both multicore and massively parallel computing systems. We evaluate how our parallel methods impact the performance of EO on Titan, the U.S.'s largest open science supercomputer, and BOB, a Beowulf-style cluster of Raspberry Pi's. We also focus on how to improve the EO by evaluating commonality in higher performing neural networks, and present the result of a study that evaluates the EO performed by Titan.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Neuromorphics",
+                "Training",
+                "Computer architecture",
+                "Optimization",
+                "Instruction sets",
+                "Electronic mail",
+                "Neural networks"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "High-performance Computing",
+                "Parallel Method",
+                "Raspberry Pi",
+                "Neuromorphic Computing",
+                "Subpopulations",
+                "Population Size",
+                "Synapse",
+                "Parallelization",
+                "Evolutionary Algorithms",
+                "Fitness Function",
+                "Training Methods",
+                "Single Node",
+                "Output Neurons",
+                "Use Of Simulation",
+                "Spiking Neural Networks",
+                "Input Neurons",
+                "Postsynaptic Neurons",
+                "Fire Events",
+                "Neuromorphic Systems",
+                "Message Passing Interface",
+                "Population Size Number",
+                "Local Input"
+            ]
+        }
     },
     {
         "publicationNumber": "7835346",
@@ -302,7 +548,49 @@
                 "firstName": "Guojing",
                 "lastName": "Cong"
             }
-        ]
+        ],
+        "abstract": "Stochastic gradient descent (SGD) and its distributed variants are essential to leverage modern computing resources for large-scale machine learning tasks. ASGD [1] is one of the most popular asynchronous distributed variant of SGD. Recent mathematical analyses have shown that with certain assumptions on the learning task (and ignoring communication cost), ASGD exhibits linear speed-up asymptotically. However, as practically observed, ASGD does not lead linear speed-up as we increase the number of learners. Motivated by this, we investigate finite time convergence properties of ASGD. We observe that the learning rate used by mathematical analyses to guarantee linear speed-up can be very small (and practically sub-optimal with respect to convergence speed) as opposed to practically chosen learning rates (for quick convergence) which exhibit sub-linear speed-up. We show that such an observation can in fact be supported by mathematical analysis, i.e., in the finite time regime, better convergence rate guarantees can be proven for ASGD with small number of learners, thus indicating lack of linear speed up as we increase the number of learners. Thus we conclude that even with ignoring communication cost, there is an inherent inefficiency in ASGD with respect to increasing the number of learners.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Convergence",
+                "Mathematical analysis",
+                "Servers",
+                "Training",
+                "Neural networks",
+                "Linear programming",
+                "Convolution"
+            ],
+            "Index Terms": [
+                "Stochastic Gradient Descent",
+                "Machine Learning",
+                "Learning Rate",
+                "Convergence Rate",
+                "Finite Time",
+                "Mathematical Analysis",
+                "Number Of Learners",
+                "Finite-time Convergence",
+                "Neural Network",
+                "Error Rate",
+                "Objective Function",
+                "Convolutional Layers",
+                "Cross-entropy",
+                "Parameter Vector",
+                "Optimal Rate",
+                "Update Step",
+                "Theoretical Guarantees",
+                "Coordinate Descent",
+                "Convergence Guarantees",
+                "Number Of Updates",
+                "Partial Gradient",
+                "Popular Variant",
+                "Gradient Norm",
+                "Input Label",
+                "Optimal Learning Rate",
+                "Variance Reduction Techniques",
+                "Constant Learning Rate",
+                "Average Norm"
+            ]
+        }
     },
     {
         "publicationNumber": "7835346",
@@ -318,7 +606,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 2nd Workshop on Machine Learning in HPC Environments (MLHPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7835346",
@@ -334,7 +624,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 2nd Workshop on Machine Learning in HPC Environments (MLHPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: data-parallel training; deep neural networks; OpenCL kernels; distributed training; parallel scalability; scalable parallel Q-learning algorithm; resource constrained decentralized computing environments; parallel evolutionary optimization; neuromorphic network training; complex deep learning networks and asynchronous stochastic gradient descent.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7835346",
@@ -350,7 +642,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 2nd Workshop on Machine Learning in HPC Environments (MLHPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7835346",
@@ -366,6 +660,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 2nd Workshop on Machine Learning in HPC Environments (MLHPC)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     }
 ]
