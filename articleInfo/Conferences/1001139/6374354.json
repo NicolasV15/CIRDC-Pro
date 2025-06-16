@@ -13,7 +13,15 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides an abstract for each of the three keynote presentations and a brief professional biography of each presenter.",
+        "keywords": {
+            "Index Terms": [
+                "Exascale Computing",
+                "High-performance Computing",
+                "Department Of Energy"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -54,7 +62,57 @@
                 "firstName": "Onur",
                 "lastName": "Mutlu"
             }
-        ]
+        ],
+        "abstract": "The network-on-chip (NoC) is a primary shared resource in a chip multiprocessor (CMP) system. As core counts continue to increase and applications become increasingly data-intensive, the network load will also increase, leading to more congestion in the network. This network congestion can degrade system performance if the network load is not appropriately controlled. Prior works have proposed source-throttling congestion control, which limits the rate at which new network traffic (packets) enters the NoC in order to reduce congestion and improve performance. These prior congestion control mechanisms have shortcomings that significantly limit their performance: either 1) they are not application-aware, but rather throttle all applications equally regardless of applications' sensitivity to latency, or 2) they are not network-load-aware, throttling according to application characteristics but sometimes under- or over-throttling the cores. In this work, we propose Heterogeneous Adaptive Throttling, or HAT, a new source-throttling congestion control mechanism based on two key principles: application-aware throttling and network-load-aware throttling rate adjustment. First, we observe that only network-bandwidth-intensive applications(those which use the network most heavily) should be throttled, allowing the other latency-sensitive applications to make faster progress without as much interference. Second, we observe that the throttling rate which yields the best performance varies between workloads, a single, static, throttling rate under-throttles some workloads while over-throttling others. Hence, the throttling mechanism should observe network load dynamically and adjust its throttling rate accordingly. While some past works have also used a closed-loop control approach, none have been application-aware. HAT is the first mechanism to combine application-awareness and network-load-aware throttling rate adjustment to address congestion in a NoC. We evaluate HAT using a wide variety of multiprogrammed workloads on several NoC-based CMP systems with 16-, 64-, and 144-cores and compare its performance to two state-of-the-art congestion control mechanisms. Our evaluations show that HAT consistently provides higher system performance and fairness than prior congestion control mechanisms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "System performance",
+                "Adaptive systems",
+                "Throughput",
+                "Routing",
+                "Switches",
+                "Radiation detectors",
+                "System-on-a-chip"
+            ],
+            "Index Terms": [
+                "Network-on-chip",
+                "High Performance",
+                "System Performance",
+                "Multi-core",
+                "Past Work",
+                "Shared Resource",
+                "Network Congestion",
+                "Network Load",
+                "Network Size",
+                "Network Design",
+                "Performance Gain",
+                "Memory Control",
+                "Congested",
+                "Dynamic Adjustment",
+                "System Throughput",
+                "Total Network",
+                "Network Utility",
+                "Improve System Performance",
+                "Routing Algorithm",
+                "Epoch Length",
+                "Data Cache",
+                "L2 Cache",
+                "Cache Misses",
+                "Forward Progress",
+                "Network Latency",
+                "Baseline Network",
+                "End Of Epoch",
+                "Adaptive Adjustment",
+                "Single Application",
+                "Central Node"
+            ],
+            "Author Keywords": [
+                "on-chip networks",
+                "congestion control",
+                "application awareness",
+                "multicore"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -113,7 +171,44 @@
                 "firstName": "Robert W.",
                 "lastName": "Wisniewski"
             }
-        ]
+        ],
+        "abstract": "Traditionally, there have been two approaches to providing an operating environment for high performance computing (HPC). A Full-Weight Kernel(FWK) approach starts with a general-purpose operating system and strips it down to better scale up across more cores and out across larger clusters. A Light-Weight Kernel (LWK) approach starts with a new thin kernel code base and extends its functionality by adding more system services needed by applications. In both cases, the goal is to provide end-users with a scalable HPC operating environment with the functionality and services needed to reliably run their applications. To achieve this goal, we propose a new approach, called Fused OS, that combines the FWK and LWK approaches. Fused OS provides an infrastructure capable of partitioning the resources of a multicoreheterogeneous system and collaboratively running different operating environments on subsets of the cores and memory, without the use of a virtual machine monitor. With Fused OS, HPC applications can enjoy both the performance characteristics of an LWK and the rich functionality of an FWK through cross-core system service delegation. This paper presents the Fused OS architecture and a prototype implementation on Blue Gene/Q. The Fused OS prototype leverages Linux with small modifications as a FWK and implements a user-level LWK called Compute Library (CL) by leveraging CNK. We present CL performance results demonstrating low noise and show micro-benchmarks running with performance commensurate with that provided by CNK.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linux",
+                "Kernel",
+                "Monitoring",
+                "Instruction sets",
+                "Noise",
+                "Prototypes",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Operating System",
+                "Outdoor Environments",
+                "Multi-core",
+                "High-performance Computing",
+                "Heterogeneous Systems",
+                "Prototype Implementation",
+                "Kernel Approach",
+                "Benchmark",
+                "Running",
+                "File System",
+                "Single Thread",
+                "Handling System",
+                "Space Usage",
+                "Computing Nodes",
+                "System Calls",
+                "Shared Memory",
+                "Linux Kernel",
+                "Linux Environment"
+            ],
+            "Author Keywords": [
+                "HPC",
+                "Operating System",
+                "Kernel"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -144,11 +239,44 @@
             },
             {
                 "id": 37274120800,
-                "preferredName": "Laxmikant V. Kal\u00e9",
+                "preferredName": "Laxmikant V. Kalé",
                 "firstName": "Laxmikant V.",
-                "lastName": "Kal\u00e9"
+                "lastName": "Kalé"
             }
-        ]
+        ],
+        "abstract": "An exascale machine is expected to be delivered in the time frame 2018-2020. Such a machine will be able to tackle some of the hardest computational problems and to extend our understanding of Nature and the universe. However, to make that a reality, the HPC community has to solve a few important challenges. Resilience will become a prominent problem because an exascale machine will experience frequent failures due to the large amount of components it will encompass. Some form of fault tolerance has to be incorporated in the system to maintain the progress rate of applications as high as possible. In parallel, the system will have to be more careful about power management. There are two dimensions of power. First, in a power-limited environment, all the layers of the system have to adhere to that limitation (including the fault tolerance layer). Second, power will be relevant due to energy consumption: an exascale installation will have to pay a large energy bill. It is fundamental to increase our understanding of the energy profile of different fault tolerance schemes. This paper presents an evaluation of three different fault tolerance approaches: checkpoint/restart, message-logging and parallel recovery. Using programs from different programming models, we show parallel recovery is the most energy-efficient solution for an execution with failures. At the same time, parallel recovery is able to finish the execution faster than the other approaches. We explore the behavior of these approaches at extreme scales using an analytical model. At large scale, parallel recovery is predicted to reduce the total execution time of an application by 17% and reduce the energy consumption by 13% when compared to checkpoint/restart.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Protocols",
+                "Energy consumption",
+                "Sockets",
+                "Computer crashes",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "Fault-tolerant",
+                "Energy Consumption",
+                "Programming Model",
+                "Power Management",
+                "Extreme Scale",
+                "Low Power",
+                "Parallelization",
+                "Rollback",
+                "Load Balancing",
+                "Local Storage",
+                "Node Failure",
+                "Lost Work",
+                "Checkpointing",
+                "Load Imbalance"
+            ],
+            "Author Keywords": [
+                "fault tolerance",
+                "energy efficiency"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -189,7 +317,46 @@
                 "firstName": "Robert A.",
                 "lastName": "van de Geijn"
             }
-        ]
+        ],
+        "abstract": "Digital Signal Processors (DSP) are commonly employed in embedded systems. The increase of processing needs in cellular base-stations, radio controllers and industrial/medical imaging systems, has led to the development of multi-core DSPs as well as inclusion of floating point operations while maintaining low power dissipation. The eight-core DSP from Texas Instruments, codenamed TMS320C6678, provides a peak performance of 128 GFLOPS (single precision) and an effective 32 GFLOPS(double precision) for only 10 watts. In this paper, we present the first complete implementation and report performance of the Level-3 Basic Linear Algebra Subprograms(BLAS) routines for this DSP. These routines are first optimized for single core and then parallelized over the different cores using OpenMP constructs. The results show that we can achieve about 8 single precision GFLOPS/watt and 2.2double precision GFLOPS/watt for General Matrix-Matrix multiplication (GEMM). The performance of the rest of theLevel-3 BLAS routines is within 90% of the corresponding GEMM routines.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Digital signal processing",
+                "Kernel",
+                "Computer architecture",
+                "Linear algebra",
+                "Libraries",
+                "System-on-a-chip"
+            ],
+            "Index Terms": [
+                "Digital Signal Processing",
+                "Parallelization",
+                "Linear Algebra",
+                "Texas Instruments",
+                "Double Precision",
+                "Single Precision",
+                "Diagonal",
+                "Graphics Processing Unit",
+                "Matrix Multiplication",
+                "High-performance Computing",
+                "Load Data",
+                "Output Matrix",
+                "Lower Triangular",
+                "Multiple Cores",
+                "Vertical Stripes",
+                "Message Passing Interface",
+                "On-chip Memory",
+                "Core Architecture",
+                "Memory Hierarchy",
+                "Shared Memory"
+            ],
+            "Author Keywords": [
+                "DSPs",
+                "linear algebra",
+                "BLAS"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -232,9 +399,9 @@
             },
             {
                 "id": 37274120800,
-                "preferredName": "Laxmikant V. Kal\u00e9",
+                "preferredName": "Laxmikant V. Kalé",
                 "firstName": "Laxmikant V.",
-                "lastName": "Kal\u00e9"
+                "lastName": "Kalé"
             },
             {
                 "id": 37268407200,
@@ -242,7 +409,44 @@
                 "firstName": "Paul",
                 "lastName": "Ricker"
             }
-        ]
+        ],
+        "abstract": "This paper presents scalable algorithms and data structures for adaptive mesh refinement computations. We describe a novel mesh restructuring algorithm for adaptive mesh refinement computations that uses a constant number of collectives regardless of the refinement depth. To further increase scalability, we describe a localized hierarchical coordinate-based block indexing scheme in contrast to traditional linear numbering schemes, which incur unnecessary synchronization. In contrast to the existing approaches which take O(P) time and storage per process, our approach takes only constant time and has very small memory footprint. With these optimizations as well as an efficient mapping scheme, our algorithm is scalable and suitable for large, highly-refined meshes. We present strong-scaling experiments up to 2k ranks on Cray XK6, and 32k ranks on IBM Blue Gene/Q.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Algorithm design and analysis",
+                "Synchronization",
+                "Runtime",
+                "Mathematical model",
+                "Benchmark testing",
+                "Heuristic algorithms"
+            ],
+            "Index Terms": [
+                "Mesh Refinement",
+                "Adaptive Mesh Refinement",
+                "Mapping Strategy",
+                "Hierarchical Strategy",
+                "Strong Scaling",
+                "Time Step",
+                "Siblings",
+                "Time Delay",
+                "Dynamic Range",
+                "Parallelization",
+                "Algorithm Design",
+                "State Machine",
+                "Depth Range",
+                "Dynamic Loading",
+                "Load Balancing",
+                "Communication Partners",
+                "Mesh Structure",
+                "Hyperbolic Equation",
+                "Current Resolution",
+                "Parallel Efficiency",
+                "Number Of Processors",
+                "Advection Equation",
+                "Refinement Level"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -283,7 +487,48 @@
                 "firstName": "Sandip",
                 "lastName": "Kundu"
             }
-        ]
+        ],
+        "abstract": "The emergence of asymmetric multicore processors(AMPs) has elevated the problem of thread scheduling in such systems. The computing needs of a thread often vary during its execution (phases) and hence, reassigning threads to cores(thread swapping) upon detection of such a change, can significantly improve the AMP's power efficiency. Even though identifying a change in the resource requirements of a workload is straightforward, determining the thread reassignment is a challenge. Traditional online learning schemes rely on sampling to determine the best thread to core in AMPs. However, as the number of cores in the multicore increases, the sampling overhead may be too large. In this paper, we propose a novel technique to dynamically assess the current thread to core assignment and determine whether swapping the threads between the cores will be beneficial and achieve a higher performance/Watt. This decision is based on estimating the expected performance and power of the current program phase on other cores. This estimation is done using the values of selected performance counters in the host core. By estimating the expected performance and power on each core type, informed thread scheduling decisions can be made while avoiding the overhead associated with sampling. We illustrate our approach using an 8-core high performance/low-power AMP and show the performance/Watt benefits of the proposed dynamic thread scheduling technique. We compare our proposed scheme against previously published schemes based on online learning and two schemes based on the use of an oracle, one static and the other dynamic. Our results show that significant performance/Watt gains can be achieved through informed thread scheduling decisions in AMPs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Radiation detectors",
+                "Multicore processing",
+                "Estimation",
+                "Instruction sets",
+                "Benchmark testing",
+                "Correlation",
+                "Message systems"
+            ],
+            "Index Terms": [
+                "Multi-core",
+                "Thread Scheduling",
+                "Online Learning",
+                "Core Type",
+                "Dynamic Scheduling",
+                "Benchmark",
+                "Phase Change",
+                "Stable Phase",
+                "Performance In Applications",
+                "Power Estimation",
+                "Small Core",
+                "Benefits Scheme",
+                "Online Estimation",
+                "Classification Phase",
+                "L2 Cache",
+                "Counter Value",
+                "Cache Misses",
+                "Core Performance",
+                "Baseline Configuration",
+                "Static Scheme"
+            ],
+            "Author Keywords": [
+                "Asymmetric multicore",
+                "heterogeneous multicore",
+                "dynamic thread scheduling",
+                "online thread scheduling",
+                "power efficiency"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -312,7 +557,56 @@
                 "firstName": "Qing",
                 "lastName": "Yang"
             }
-        ]
+        ],
+        "abstract": "This paper examines several promising throughput enhancements to the Lempel-Ziv-Oberhumer (LZO) 1x-1-15 data compression algorithm. Of many algorithm variants present in the current library version, 2.06, LZO 1x-1-15 is considered to be the fastest, geared toward speed rather than compression ratio. We present several algorithm modifications tailored to modern multi-core architectures in this paper that are intended to increase compression speed while minimizing any loss in compression ratio. On average, the experimental results show that on a modern quad core system, a 3.9x speedup in compression time is achieved over the baseline algorithm with no loss to compression ratio. Allowing for a 25% loss in compression ratio, up to a 5.4x speedup in compression time was observed.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Image coding",
+                "Libraries",
+                "Dictionaries",
+                "Hardware",
+                "Data compression"
+            ],
+            "Index Terms": [
+                "Compression Speed",
+                "Source Code",
+                "Variety Of Algorithms",
+                "Compression Ratio",
+                "Core System",
+                "Baseline Algorithms",
+                "Compression Algorithm",
+                "Time Compression",
+                "Real-Time System",
+                "Search Algorithm",
+                "Data Streams",
+                "Performance Gain",
+                "Hash Function",
+                "Original Algorithm",
+                "Combination Of Algorithms",
+                "Data Block",
+                "Multiple Cores",
+                "Copies Of The Data",
+                "Match Length",
+                "Input Stream",
+                "Bytes Of Data",
+                "L2 Cache",
+                "Output Stream",
+                "Cache Misses",
+                "Lossless Compression",
+                "Data Cache",
+                "Uniform Resource Locator",
+                "Software Version",
+                "File Size"
+            ],
+            "Author Keywords": [
+                "Lossless Data Compression",
+                "Lempel-Ziv-Oberhumer (LZO)",
+                "Real-Time Systems",
+                "Parallel Computing",
+                "Parallel Algorithms"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -343,9 +637,9 @@
             },
             {
                 "id": 38181578100,
-                "preferredName": "Juan L\u00f3pez",
+                "preferredName": "Juan López",
                 "firstName": "Juan",
-                "lastName": "L\u00f3pez"
+                "lastName": "López"
             },
             {
                 "id": 38527177800,
@@ -377,7 +671,49 @@
                 "firstName": "Bradford L.",
                 "lastName": "Chamberlain"
             }
-        ]
+        ],
+        "abstract": "Chapel is a parallel programming language designed to improve the productivity and ease of use of conventional and parallel computers. This language currently delivers sub optimal performance when executing codes that perform global data re-allocation operations on distributed memory architectures. This is mainly due to data communication that is done without aggregation (one message for each remote array element). In this work, we analyze Chapel's standard Block and Cyclic distribution modules and optimize the communication routines for array assignments by performing aggregation. Thanks to the expressive power of Chapel, the compiler and runtime have enough information to do communication aggregation without user intervention. The runtime relies on the low-level GAS Net networking layer, whose versions of one-sided bulk put/get routines that support strides are particularly useful for us. Experimental results conducted on Hector (a Cray XE6) and Jaguar (Cray XK6)reveal that the implemented techniques can lead to significant reductions in communication time.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Arrays",
+                "Reactive power",
+                "Runtime",
+                "Productivity",
+                "Standards",
+                "Indexes"
+            ],
+            "Index Terms": [
+                "Global Data",
+                "Parallelization",
+                "Array Elements",
+                "Communication Time",
+                "User Intervention",
+                "Global Operations",
+                "Standard Block",
+                "Routine Communication",
+                "Data Distribution",
+                "Number Of Loci",
+                "Index Set",
+                "Time In Seconds",
+                "Redundant Data",
+                "Parallel Data",
+                "Local Descriptors",
+                "Global Descriptors",
+                "Parallel Machines",
+                "Domain Mapping",
+                "Domain Indices",
+                "Communication Layer",
+                "Global Array"
+            ],
+            "Author Keywords": [
+                "Chapel",
+                "Block distribution",
+                "cyclic distribution",
+                "data re-distribution",
+                "communication aggregation",
+                "one-sided communications"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -396,8 +732,8 @@
         "authors": [
             {
                 "id": 38526278400,
-                "preferredName": "Jo\u00e3o V.F. Lima",
-                "firstName": "Jo\u00e3o V.F.",
+                "preferredName": "João V.F. Lima",
+                "firstName": "João V.F.",
                 "lastName": "Lima"
             },
             {
@@ -418,7 +754,55 @@
                 "firstName": "Vincent",
                 "lastName": "Danjean"
             }
-        ]
+        ],
+        "abstract": "The race for Exascale computing has naturally led the current technologies to converge to multi-CPU/multi-GPU computers, based on thousands of CPUs and GPUs interconnected by PCI-Express buses or interconnection networks. To exploit this high computing power, programmers have to solve the issue of scheduling parallel programs on hybrid architectures. And, since the performance of a GPU increases at a much faster rate than the throughput of a PCI bus, data transfers must be managed efficiently by the scheduler. This paper targets multi-GPU compute nodes, where several GPUs are connected to the same machine. To overcome the data transfer limitations on such platforms, the available soft wares compute, usually before the execution, a mapping of the tasks that respects their dependencies and minimizes the global data transfers. Such an approach is too rigid and it cannot adapt the execution to possible variations of the system or to the application's load. We propose a solution that is orthogonal to the above mentioned: extensions of the Xkaapi software stack that enable to exploit full performance of a multi-GPUs system through asynchronous GPU tasks. Xkaapi schedules tasks by using a standard Work Stealing algorithm and the runtime efficiently exploits concurrent GPU operations. The runtime extensions make it possible to overlap the data transfers and the task executions on current generation of GPUs. We demonstrate that the overlapping capability is at least as important as computing a scheduling decision to reduce completion time of a parallel program. Our experiments on two dense linear algebra problems (Matrix Product and Cholesky factorization) show that our solution is highly competitive with other soft wares based on static scheduling. Moreover, we are able to sustain the peak performance (approx. 310 GFlop/s) on DGEMM, even for matrices that cannot be stored entirely in one GPU memory. With eight GPUs, we archive a speed-up of 6.74 with respect to single-GPU. The performance of our Cholesky factorization, with more complex dependencies between tasks, outperforms the state of the art single-GPU MAGMA code.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Runtime",
+                "Kernel",
+                "Computer architecture",
+                "Linear algebra"
+            ],
+            "Index Terms": [
+                "Concurrent Operations",
+                "Work-stealing",
+                "Parallelization",
+                "Data Transfer",
+                "Matrix Production",
+                "Task Execution",
+                "Linear Algebra",
+                "Cholesky Decomposition",
+                "Peak Performance",
+                "GPU Memory",
+                "Task Scheduling",
+                "Hybrid Architecture",
+                "Software Stack",
+                "Flow Data",
+                "Multi-core",
+                "Programming Model",
+                "Block Size",
+                "Dimensional Matrix",
+                "GB Memory",
+                "Hybrid System",
+                "Memory Transfer",
+                "Scheduling Algorithm",
+                "GPU Implementation",
+                "Scheduling Scheme",
+                "Access Mode",
+                "Communication Cost",
+                "Cost Model",
+                "First-in-first-out",
+                "Double Precision",
+                "Dynamic Scheduling"
+            ],
+            "Author Keywords": [
+                "multi-GPUs",
+                "work stealing",
+                "dense linear algebra",
+                "data flow model"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -447,7 +831,52 @@
                 "firstName": "Binoy",
                 "lastName": "Ravindran"
             }
-        ]
+        ],
+        "abstract": "Distributed software transactional memory (or DTM) is an emerging promising model for distributed concurrency control, as it avoids the problems with locks (e.g., distributed deadlocks), while retaining the programming simplicity of coarse-grained locking. We consider DTM in Herlihy and Sun's data flow distributed execution model, where transactions are immobile and objects dynamically migrate to invoking transactions. To support DTM in this model and ensure transactional properties including atomicity, consistency, and isolation, we develop an algorithm called Transactional Forwarding Algorithm (or TFA). TFA guarantees a consistent view of shared objects between distributed transactions, provides atomicity for object operations, and transparently handles object relocation and versioning using an asynchronous version clock-based validation algorithm. We show that TFA is opaque (its correctness property) and permits strong progressiveness (its progress property). We implement TFA in a Java DTM framework and conduct experimental studies on a 120-node system, executing over 4 million transactions, with more than 1000 active concurrent transactions. Our implementation reveals that TFA outperforms competing distributed concurrency control models including Java RMI with spin locks, distributed shared memory, and directory-based DTM, by as much as 13x (for read-dominant transactions), and competitor DTM implementations by as much as 4x.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Synchronization",
+                "Protocols",
+                "System recovery",
+                "Concurrency control",
+                "Software",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Distribution System",
+                "Flow Data",
+                "Deadlock",
+                "Shared Object",
+                "Spin-lock",
+                "Shared Memory",
+                "Benchmark",
+                "Throughput",
+                "Replica",
+                "Relevant Effects",
+                "Objective Value",
+                "Application Programming Interface",
+                "Object Location",
+                "Single Node",
+                "Communication Cost",
+                "Benchmark Test",
+                "Partial Order",
+                "Serialized",
+                "Access Request",
+                "Local Clock",
+                "Versions Of Objects",
+                "Multiple Threads",
+                "Current Node",
+                "Critical Section",
+                "Clock Synchronization"
+            ],
+            "Author Keywords": [
+                "Distributed Systems",
+                "Software Transactional Memory",
+                "Asynchronous Network",
+                "Concurrency"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -482,7 +911,48 @@
                 "firstName": "Robert A.",
                 "lastName": "van de Geijn"
             }
-        ]
+        ],
+        "abstract": "Reducing power consumption and increasing efficiency is a key concern for many applications. How to design highly efficient computing elements while maintaining enough flexibility within a domain of applications is a fundamental question. In this paper, we present how broadcast buses can eliminate the use of power hungry multi-ported register files in the context of data-parallel hardware accelerators for linear algebra operations. We demonstrate an algorithm/architecture co-design for the mapping of different collective communication operations, which are crucial for achieving performance and efficiency in most linear algebra routines, such as GEMM, SYRK and matrix transposition. We compare a broadcast bus based architecture with conventional SIMD, 2D-SIMD and flat register file for these operations in terms of area and energy efficiency. Results show that fast broadcast data movement abilities in a prototypical linear algebra core can achieve up to 75× better power and up to 10× better area efficiency compared to traditional SIMD architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Arrays",
+                "Symmetric matrices",
+                "Vectors",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Hardware Accelerators",
+                "Register File",
+                "Power Consumption",
+                "Load Data",
+                "Transpose Of Matrix",
+                "Linear Algebra",
+                "Flat Files",
+                "Matrix Elements",
+                "Matrix Multiplication",
+                "Projection Matrix",
+                "Linear Solver",
+                "Power Efficiency",
+                "Real Matrices",
+                "Input Matrix",
+                "Power Estimation",
+                "Memory Size",
+                "Lower Triangular",
+                "Transpose Operator",
+                "Table Entries",
+                "L2 Cache",
+                "Local Storage",
+                "Array Of Units"
+            ],
+            "Author Keywords": [
+                "Register-file",
+                "Broadcast bus",
+                "Matrix Multiply",
+                "Power efficiency",
+                "High performance computing"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -525,17 +995,63 @@
             },
             {
                 "id": 37283770000,
-                "preferredName": "Eduard Ayguad\u00e9",
+                "preferredName": "Eduard Ayguadé",
                 "firstName": "Eduard",
-                "lastName": "Ayguad\u00e9"
+                "lastName": "Ayguadé"
             },
             {
                 "id": 37282406300,
-                "preferredName": "Adri\u00e1n Cristal",
-                "firstName": "Adri\u00e1n",
+                "preferredName": "Adrián Cristal",
+                "firstName": "Adrián",
                 "lastName": "Cristal"
             }
-        ]
+        ],
+        "abstract": "In this paper we present Atomic Dataflow model (ADF), a new task-based parallel programming model for C/C++ which integrates dataflow abstractions into the shared memory programming model. The ADF model provides pragma directives that allow a programmer to organize a program into a set of tasks and to explicitly define input data for each task. The task dependency information is conveyed to the ADF runtime system which constructs the dataflow task graph and builds the necessary infrastructure for dataflow execution. Additionally, the ADF model allows tasks to share data. The key idea is that computation is triggered by dataflow between tasks but that, within a task, execution occurs by making atomic updates to common mutable state. To that end, the ADF model employs transactional memory which guarantees atomicity of shared memory updates. We show examples that illustrate how the programmability of shared memory can be improved using the ADF model. Moreover, our evaluation shows that the ADF model performs well in comparison with programs parallelized using OpenMP and transactional memory.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Games",
+                "Runtime",
+                "Programming",
+                "Instruction sets",
+                "Synchronization",
+                "Data models",
+                "Buffer storage"
+            ],
+            "Index Terms": [
+                "Shared Memory",
+                "Shared Memory Model",
+                "Parallelization",
+                "Programming Model",
+                "Data Sharing",
+                "Synchronization",
+                "Differences In Performance",
+                "Processing Unit",
+                "Processing Tasks",
+                "Matrix Multiplication",
+                "Task Execution",
+                "Application Programming Interface",
+                "Load Balancing",
+                "Single Thread",
+                "Task Scheduling",
+                "Parallel Implementation",
+                "Execution Of Operations",
+                "Concurrent Task",
+                "Routing Algorithm",
+                "Actions Of Players",
+                "Game World",
+                "Input Tokens",
+                "Objective Activity",
+                "Game Engine",
+                "Gaming Applications",
+                "Variety Of Conditions"
+            ],
+            "Author Keywords": [
+                "Parallel programming",
+                "dataflow",
+                "shared memory",
+                "transactional memory"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -564,7 +1080,57 @@
                 "firstName": "Dimitrios S.",
                 "lastName": "Nikolopoulos"
             }
-        ]
+        ],
+        "abstract": "Understanding the energy efficiency of computing systems is paramount. Although processors remain dominant energy consumers and the focal target of energy-aware optimization in computing systems, the memory subsystem dissipates substantial amounts of power, which at high densities may exceed50% of total system power. The failure of DRAM to keep up with increasing processor speeds, creates a two-pronged bottleneck for overall system energy efficiency. This paper presents a high-performance, autonomic power instrumentation setup to measure energy consumption in computing systems and accurately attribute energy to processors and components of the memory hierarchy. We provide a set of carefully engineered micro benchmarks that reveal the energy efficiency under different memory access patterns and stress the importance of minimizing costly data transfers that involve multiple levels of the system's memory hierarchy. Lastly, we present BTL (Bottom line), a processor specific model for deriving lower bounds of energy consumption. BTL predicts the minimum dynamic energy consumption for any workload, thus uncovering opportunities for energy optimization.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Power demand",
+                "Memory management",
+                "Prefetching",
+                "Instruments",
+                "Energy consumption",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Bottom Line",
+                "Memory Hierarchy",
+                "Energy Consumption",
+                "Dissipation",
+                "Lower Bound",
+                "Instrumentation",
+                "Energy Efficiency",
+                "Memory System",
+                "Amount Of Power",
+                "Benchmark Test",
+                "Dynamic Energy",
+                "Upper Bound",
+                "Model Construction",
+                "Power Consumption",
+                "Reference Number",
+                "Per Cycle",
+                "Internal Resistance",
+                "Sensor Devices",
+                "Arithmetic Operations",
+                "Current Sensor",
+                "Dynamic Power",
+                "Impact Of Memory",
+                "Power Supply Unit",
+                "Hall Sensor",
+                "Dynamic Power Consumption",
+                "Off-chip Memory",
+                "Memory Operations",
+                "Cache Misses",
+                "Step Speed",
+                "Memory Bandwidth"
+            ],
+            "Author Keywords": [
+                "Energy",
+                "Power",
+                "Memory",
+                "Energy Efficiency",
+                "Power Modeling"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -593,7 +1159,55 @@
                 "firstName": "Ricardo",
                 "lastName": "Bianchini"
             }
-        ]
+        ],
+        "abstract": "Modern servers require large main memories, which so far have been enabled by improvements in DRAM density. However, the scalability of DRAM is approaching its limit, so Phase-Change Memory (PCM) is being considered as an alternative technology. PCM is denser, more scalable, and consumes lower idle power than DRAM, while exhibiting byte-address ability and access times in the nanosecond range. Unfortunately, PCM is also slower than DRAM and has limited endurance. These characteristics prompted the study of hybrid memory systems, combining a small amount of DRAM and a large amount of PCM. In this paper, we leverage hybrid memories to improve the performance of cooperative memory caches in server clusters. Our approach entails a novel policy that exploits popularity information in placing objects across servers and memory technologies. Our results show that (1) DRAM-only and PCM-only memory systems do not perform well in all cases, and (2) when managed properly, hybrid memories always exhibit the best or close-to-best performance, with significant gains in many cases, without increasing energy consumption.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Random access memory",
+                "Phase change materials",
+                "Presses",
+                "Memory management",
+                "Arrays",
+                "Performance evaluation"
+            ],
+            "Index Terms": [
+                "Popularity",
+                "Energy Consumption",
+                "Increased Energy Expenditure",
+                "Memory System",
+                "Memory Technologies",
+                "Nanosecond Range",
+                "Free Space",
+                "Replica",
+                "Hybrid System",
+                "Number Of Objects",
+                "Memory Capacity",
+                "Storage Devices",
+                "Internet Service",
+                "Caching",
+                "Dynamic Energy",
+                "Written Back",
+                "Solid-state Drives",
+                "Migration Energy",
+                "Memory Regions",
+                "Number Of Writers",
+                "Popular Object",
+                "Real Traces",
+                "Cache Hit",
+                "Cache Misses",
+                "Low Penalty",
+                "HTTP Requests",
+                "Object Placement",
+                "Private Network",
+                "Twitter",
+                "Public Network"
+            ],
+            "Author Keywords": [
+                "cooperative memory caches",
+                "persistent memory"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -652,7 +1266,48 @@
                 "firstName": "Yale N.",
                 "lastName": "Patt"
             }
-        ]
+        ],
+        "abstract": "Cache memories have traditionally been designed to exploit spatial locality by fetching entire cache lines from memory upon a miss. However, recent studies have shown that often the number of sub-blocks within a line that are actually used is low. Furthermore, those sub-blocks that are used are accessed only a few times before becoming dead (i.e., never accessed again). This results in considerable energy waste since 1) data not needed by the processor is brought into the cache, and 2) data is kept alive in the cache longer than necessary. We propose the Dead Sub-Block Predictor (DSBP) to predict which sub-blocks of a cache line will be actually used and how many times it will be used in order to bring into the cache only those sub-blocks that are necessary, and power them off after they are touched the predicted number of times. We also use DSBP to identify dead lines (i.e., all sub-blocks off) and augment the existing replacement policy by prioritizing dead lines for eviction. Our results show a 24% energy reduction for the whole cache hierarchy when averaged over the SPEC2000, SPEC2006 and NAS-NPB benchmarks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Radiation detectors",
+                "History",
+                "Indexes",
+                "Benchmark testing",
+                "Turning",
+                "Energy consumption",
+                "Prediction algorithms"
+            ],
+            "Index Terms": [
+                "Energy Conservation",
+                "Benchmark",
+                "Energy Reduction",
+                "Energy Waste",
+                "Kept Alive",
+                "Considerable Energy",
+                "Remote Memory",
+                "Entire Line",
+                "Replacement Policy",
+                "Energy Consumption",
+                "Metadata",
+                "Usage Patterns",
+                "Hash Function",
+                "Temporal Localization",
+                "Dynamic Energy",
+                "Loop Iteration",
+                "Previous Users",
+                "Data Cache",
+                "Negative Interference",
+                "L2 Cache",
+                "Cache Misses"
+            ],
+            "Author Keywords": [
+                "Dead Sub-Block Predictor",
+                "Dead Line Predictor",
+                "Cache Memory",
+                "Energy Savings"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -689,11 +1344,47 @@
             },
             {
                 "id": 38199735700,
-                "preferredName": "Fernando Magno Quint\u00e3o Pereira",
-                "firstName": "Fernando Magno Quint\u00e3o",
+                "preferredName": "Fernando Magno Quintão Pereira",
+                "firstName": "Fernando Magno Quintão",
                 "lastName": "Pereira"
             }
-        ]
+        ],
+        "abstract": "The rising popularity of graphics processing units is bringing renewed interest in code optimization techniques for SIMD processors. Many of these optimizations rely on divergence analyses, which classify variables as uniform, if they have the same value on every thread, or divergent, if they might not. This paper introduces a new kind of divergence analysis, that is able to represent variables as affine functions of thread identifiers. We have implemented this analysis in Ocelot, an open source compiler, and use it to analyze a suite of 177 CUDA kernels from well-known benchmarks. We can mark about one fourth of all program variables as affine functions of thread identifiers. In addition to the novel divergence analysis, we also introduce the notion of a divergence aware register allocator. This allocator uses information from our analysis to either rematerialize affine variables, or to move uniform variables to shared memory. As a testimony of its effectiveness, our divergence aware allocator produces GPU code that is 29.70% faster than the code produced by Ocelot's register allocator. Divergence analysis with affine constraints is publicly available in the Ocelot compiler since June/2012.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Registers",
+                "Graphics processing units",
+                "Synchronization",
+                "Optimization",
+                "Resource management"
+            ],
+            "Index Terms": [
+                "Divergence Analysis",
+                "Benchmark",
+                "Graphics Processing Unit",
+                "Optimal Code",
+                "Shared Memory",
+                "Processing Elements",
+                "Linear Time",
+                "Propagation Constant",
+                "Local Memory",
+                "Loop Iteration",
+                "Linear Scan",
+                "Abstract States",
+                "Dependency Graph",
+                "Source Program",
+                "Regular Application",
+                "Rodinia",
+                "Set Of Names",
+                "Top Element"
+            ],
+            "Author Keywords": [
+                "GPU",
+                "SIMD",
+                "Divergence"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -728,7 +1419,50 @@
                 "firstName": "Alexander",
                 "lastName": "Gaenko"
             }
-        ]
+        ],
+        "abstract": "Although high-performance computing has always been about efficient application execution, both energy and power consumption have become critical concerns owing to their effect on operating costs and failure rates of large-scale computing platforms. Modern microprocessors are equipped with the capabilities to reduce their power consumption using techniques such as dynamic voltage and frequency scaling (DVFS) and CPU clock modulation (called throttling). Without careful application, however, DVFS and throttling may cause a significant performance loss due to system overhead. This work presents design considerations for a runtime procedure that dynamically analyzes blocking point-to-point communications, groups them according to the proposed criteria, and applies frequency scaling by analyzing both communication and architectural parameters without penalizing the performance much. Experiments, performed on NAS parallel benchmarks verify the proposed design by exhibiting energy savings of as much as 11% with a performance loss as low as 2%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Time frequency analysis",
+                "Runtime",
+                "Benchmark testing",
+                "Radiation detectors",
+                "Switches",
+                "Power demand",
+                "Degradation"
+            ],
+            "Index Terms": [
+                "Energy Conservation",
+                "Point-to-point Communication",
+                "Benchmark",
+                "Energy Consumption",
+                "Power Consumption",
+                "High-performance Computing",
+                "Performance Loss",
+                "Frequency Scale",
+                "Dynamic Scaling",
+                "Dynamic Frequency",
+                "Architecture Parameters",
+                "Application Execution",
+                "System Overhead",
+                "Transition State",
+                "Performance Degradation",
+                "End Of Phase",
+                "Internode",
+                "Conservation Strategies",
+                "Operating Frequency",
+                "Current Frequency",
+                "Message Size",
+                "Aggressive Strategies",
+                "Suitable Frequency",
+                "Parallel Applications",
+                "CPU Frequency",
+                "Parallel Execution",
+                "Performance Overhead",
+                "Computational Intensity",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -763,7 +1497,46 @@
                 "firstName": "Changsoo",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "A virtual cluster (VC) consists of multiple virtual machines (VMs) running on different physical hosts, inter-connected by a virtual network. A fault-tolerant protocol and mechanism are essential to the VC's availability and usability. We present Virtual Predict Check pointing (or VPC), a lightweight, globally consistent check pointing mechanism, which checkpoints the VC for immediate restoration after VM failures. By predicting the checkpoint-caused page faults during each check pointing interval, VPC further reduces the solo VM downtime than traditional incremental check pointing approaches. Besides, VPC uses a globally consistent check-pointing algorithm, which preserves the global consistency of the VMs' execution and communication states, and only saves the updated memory pages during each check pointing interval to reduce the entire VC downtime. Our implementation reveals that, compared with past VC check pointing/migration solutions including VNsnap, VPC reduces the solo VM downtime by as much as 45%, under the NPB benchmark, and reduces the entire VC downtime by as much as 50%, under the NPB distributed program. Additionally, VPC incurs a memory overhead of no more than 9%. In all cases, VPC's performance overhead is less than 16%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Checkpointing",
+                "Servers",
+                "Hardware",
+                "Memory management",
+                "Nonvolatile memory",
+                "Random access memory",
+                "Fault tolerance"
+            ],
+            "Index Terms": [
+                "Virtual Cluster",
+                "Benchmark",
+                "Fault-tolerant",
+                "Virtual Machines",
+                "Memory Updating",
+                "Global Consistency",
+                "Performance Overhead",
+                "Running",
+                "Data Center",
+                "Experimental Evaluation",
+                "Amount Of Memory",
+                "Memory Size",
+                "Baseline Case",
+                "Occurrence Of Errors",
+                "Time Vector",
+                "Beginning Of Interval",
+                "Physical Machines",
+                "System Crashes",
+                "Cut Line",
+                "Destination States"
+            ],
+            "Author Keywords": [
+                "Virtual Machine",
+                "Checkpointing",
+                "Prediction"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -810,7 +1583,50 @@
                 "firstName": "Mateo",
                 "lastName": "Valero"
             }
-        ]
+        ],
+        "abstract": "We present an efficient implementation of the radix sort algorithm for the Tilera TILEPro64 processor. The TILEPro64 is one of the first successful commercial manycore processors. It is composed of 64 tiles interconnected through multiple fast Networks-on-chip and features a fully coherent, shared distributed cache. The architecture has a large degree of flexibility, and allows various optimization strategies. We describe how we mapped the algorithm to this architecture. We present an in-depth analysis of the optimizations for each phase of the algorithm with respect to the processor's sustained performance. We discuss the overall throughput reached by our radix sort implementation (up to 132 MK/s) and show that it provides comparable or better performance-per-watt with respect to state-of-the art implementations on x86 processors and graphic processing units.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tiles",
+                "Histograms",
+                "Bandwidth",
+                "Computer architecture",
+                "Instruction sets",
+                "Sorting",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Many-core Architecture",
+                "Throughput",
+                "Graphics Processing Unit",
+                "Sustainability Performance",
+                "Phase Of The Algorithm",
+                "Sorting Algorithm",
+                "Performance Of Algorithm",
+                "End Of Phase",
+                "Number Of Passes",
+                "Memory Control",
+                "Access Patterns",
+                "Key Distribution",
+                "Adjacent Blocks",
+                "Data Cache",
+                "Operator Splitting",
+                "Memory Bandwidth",
+                "Memory Allocation",
+                "Number Of Keys",
+                "On-chip Memory",
+                "Local Histogram",
+                "L2 Cache",
+                "Cumulative Histogram",
+                "Access Latency",
+                "Virtual Memory",
+                "Bandwidth Utilization",
+                "Architectural Features",
+                "Memory Operations",
+                "Local Data",
+                "Processing Architecture"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -839,7 +1655,44 @@
                 "firstName": "Shankar",
                 "lastName": "Balachandran"
             }
-        ]
+        ],
+        "abstract": "Parallel applications are becoming mainstream and architectural techniques for multicores that target these applications are the need of the hour. Sharing of data by multiple threads and issues due to data coherence are unique to parallel applications. We propose CSHARP, a hardware framework that brings coherence and sharing awareness to any shared last level cache replacement policy. We use the degree of sharing of cache lines and the information present in coherence vectors to make replacement decisions. We apply CSHARP to a state-of-the-art cache replacement policy called TA-DRRIP to show its effectiveness. Our experiments on four core simulated system show that applying CSHARP on TA-DRRIP gives an extra 10% reduction in miss-rate at the LLC. Compared to LRU policy, CSHARP on TA-DRRIP shows a 18% miss-rate reduction and a 7% performance boost. We also show the scalability of our proposal by studying the hardware overhead and performance on a 8-core system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Coherence",
+                "Registers",
+                "Indexes",
+                "Hardware",
+                "Benchmark testing",
+                "Multicore processing",
+                "Protocols"
+            ],
+            "Index Terms": [
+                "Parallel Applications",
+                "Replacement Policy",
+                "Simulation System",
+                "Multi-core",
+                "Data Sharing",
+                "Multiple Threads",
+                "Data Cache",
+                "Hardware Overhead",
+                "Migration Patterns",
+                "Largest Reduction",
+                "Promotion Policies",
+                "Time In The Literature",
+                "Coherent State",
+                "Absence Of Lines",
+                "Current Owners",
+                "Bloom Filter",
+                "L2 Cache",
+                "Cache Misses"
+            ],
+            "Author Keywords": [
+                "Last-Level Cache",
+                "Replacement algorithm",
+                "Parallel Applications"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -886,7 +1739,50 @@
                 "firstName": "David J.",
                 "lastName": "Lilja"
             }
-        ]
+        ],
+        "abstract": "Given an N-point sequence, finding its k largest components in the frequency domain is a problem of great interest. This problem, which is usually referred to as a sparse Fourier Transform, was recently brought back on stage by a newly proposed algorithm called the sFFT. In this paper, we present a parallel implementation of sFFT on both multi-core CPUs and GPUs using a human voice signal as a case study. Using this example, an estimate of k for the 3dB cutoff points was conducted through concrete experiments. In addition, three optimization strategies are presented in this paper. We demonstrate that the multi-core-based sFFT achieves speedups of up to three times a single-threaded sFFT while a GPU-based version achieves up to ten times speedup. For large scale cases, the GPU-based sFFT also shows its considerable advantages, which is about 40 times speedup compared to the latest out-of-card FFT implementations [2].",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Instruction sets",
+                "Kernel",
+                "Estimation",
+                "Libraries",
+                "Frequency domain analysis",
+                "Human voice"
+            ],
+            "Index Terms": [
+                "Fast Fourier Transform",
+                "Sparse Transformation",
+                "Sparse Fourier Transform",
+                "Frequency Domain",
+                "Largest Component",
+                "Rest Of The Paper",
+                "Parallelization",
+                "Input Signal",
+                "Data Transfer",
+                "Filtering Process",
+                "Limited Memory",
+                "Sound Processor",
+                "GPU Memory",
+                "Power-of-two",
+                "Random Pairs",
+                "Negligible Variation",
+                "Signal Size",
+                "Double Precision",
+                "Total Execution Time",
+                "GPU Acceleration",
+                "GPU Implementation",
+                "Bitwise Operations",
+                "Phase Filter"
+            ],
+            "Author Keywords": [
+                "Sparse FFT",
+                "GPUs",
+                "Multi-core CPUs",
+                "performance speedup"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -921,7 +1817,56 @@
                 "firstName": "Edson",
                 "lastName": "Borin"
             }
-        ]
+        ],
+        "abstract": "The current level of circuit integration led to complex designs encompassing full systems on a single chip, known as System-on-a-Chip (SoC). In order to predict the best design options and reduce the design costs, designers are required to perform a large design space exploration on early stages of the design. To speed up this process, Electronic Design Automation (EDA) tools are employed to model and experiment with the system. ArchC is an \"Architecture Description Language\" (ADL) and a set of tools that can be leveraged to automatically build SoC simulators based on high-level system models, enabling easy and fast design space exploration in early stages of the design. Currently, ArchC is capable of automatically generating hardware simulators, assemblers, and linkers for a given architecture model. In this work, we present ACCGen, an automatic Compiler Generator for ArchC, the missing link on the automatic generation of compiler tool chains for ArchC. Our experimental results show that compilers generated by ACCGen are correct for Mibench applications. They compare, as well, the generated code quality with LLVM and gcc, two well-known open-source compilers. We also show that ACCGen is fast and has little impact on the design space exploration turnaround time, allowing the designer to, using an easy and fully automated workflow, completely assess the outcome of architectural changes in less than 2 minutes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Semantics",
+                "Assembly",
+                "Computer architecture",
+                "Generators",
+                "Registers",
+                "Syntactics",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Automatic Generation",
+                "Model Architecture",
+                "Changes In Architecture",
+                "Software Quality",
+                "Design Space Exploration",
+                "Electronic Design Automation",
+                "Search Engine",
+                "Source Code",
+                "Application Programming Interface",
+                "Leaf Node",
+                "Front End",
+                "Higher Level Of Abstraction",
+                "Code Generation",
+                "Intermediate Representation",
+                "Instruction Set Architecture",
+                "Back End",
+                "Mechanistic Reasoning",
+                "Source Language",
+                "Optimal Code",
+                "High-level Description",
+                "System C",
+                "C++ Code",
+                "Automated Synthesis",
+                "Software Teams",
+                "Architectural Modifications",
+                "Program Output",
+                "Hardware Resources",
+                "Platform Design"
+            ],
+            "Author Keywords": [
+                "EDA",
+                "ADL",
+                "Code Generator Generator",
+                "Compiler Backend",
+                "Automatic Compiler Generation"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -946,9 +1891,9 @@
             },
             {
                 "id": 37086619229,
-                "preferredName": "Gheorghe Alm\u00e1si",
+                "preferredName": "Gheorghe Almási",
                 "firstName": "Gheorghe",
-                "lastName": "Alm\u00e1si"
+                "lastName": "Almási"
             },
             {
                 "id": 37340977200,
@@ -962,7 +1907,46 @@
                 "firstName": "Charles",
                 "lastName": "Archer"
             }
-        ]
+        ],
+        "abstract": "Modern large scale parallel machines feature an increasingly deep hierarchy of interconnections. Individual processing cores employ simultaneous multithreading (SMT) to better exploit functional units, multiple coherent processors are collocated in a node to better exploit links to cache, memory and network (SMP), and multiple nodes are interconnected by specialized low latency/high speed networks. Current trends indicate ever wider SMP nodes in the future. To service these nodes, modern high performance network devices (including Infiniband and all of IBM's recent offerings) offer the ability to sub-divide the network devices' resources among the processing threads. System software, however, lags in exploiting these capabilities, leaving users of e.g., MPI[14], UPC[19] in a bind, requiring complex and fragile workarounds in user programs. In this paper we discuss our implementation of endpoints, the software paradigm central to the IBM PAMI messaging library [3]. A PAMI endpoint is an expression in software of a slice of the network device. System software can service endpoints without serializing the many threads on an SMP by forcing them through a critical section. In the paper we describe the basic guarantees offered by PAMI to the programmer, and how these can be used to enable efficient implementations of high level libraries and programming languages like UPC. We evaluate the efficiency of our implementation on a novel P7IHsystem with up to 4096 cores, running micro benchmarks designed to find performance deficiencies in the endpoints implementation of both point-to-point and collective functions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Context",
+                "Message systems",
+                "Libraries",
+                "Hardware",
+                "Geometry",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Benchmark Test",
+                "Network Devices",
+                "Parallel Machines",
+                "Message Passing Interface",
+                "Multiple Processors",
+                "Critical Section",
+                "Start-up",
+                "Performance Degradation",
+                "Task Participants",
+                "Network Resources",
+                "Advantage Of Nature",
+                "Number Of Contexts",
+                "Response Message",
+                "Model Execution",
+                "Multiple Endpoints",
+                "Multiple Threads",
+                "Parallel Sections",
+                "Message Size",
+                "Shared Memory"
+            ],
+            "Author Keywords": [
+                "MPI",
+                "endpoint",
+                "network",
+                "programming",
+                "model"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -987,8 +1971,8 @@
             },
             {
                 "id": 38527091300,
-                "preferredName": "Jo\u00e3o P.L. de Carvalho",
-                "firstName": "Jo\u00e3o P.L.",
+                "preferredName": "João P.L. de Carvalho",
+                "firstName": "João P.L.",
                 "lastName": "de Carvalho"
             },
             {
@@ -1003,7 +1987,39 @@
                 "firstName": "Rodolfo",
                 "lastName": "Azevedo"
             }
-        ]
+        ],
+        "abstract": "Transactional memory (TM) is a new synchronization mechanism devised to simplify parallel programming, thereby helping programmers to unleash the power of current multicore processors. Although software implementations of TM (STM) have been extensively analyzed in terms of runtime performance, little attention has been paid to an equally important constraint faced by nearly all computer systems: energy consumption. In this work we conduct a comprehensive study of energy and runtime tradeoff sin software transactional memory systems. We characterize the behavior of three state-of-the-art lock-based STM algorithms, along with three different conflict resolution schemes. As a result of this characterization, we propose a DVFS-based technique that can be integrated into the resolution policies so as to improve the energy-delay product (EDP). Experimental results show that our DVFS-enhanced policies are indeed beneficial for applications with high contention levels. Improvements of up to 59% in EDP can be observed in this scenario, with an average EDP reduction of 16% across the STAMP workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delay",
+                "Algorithm design and analysis",
+                "Genomics",
+                "Bioinformatics",
+                "Program processors",
+                "Energy consumption"
+            ],
+            "Index Terms": [
+                "Energy Consumption",
+                "Computer System",
+                "Multi-core",
+                "Conflict Resolution",
+                "Transactive Systems",
+                "Rest Of The Paper",
+                "Energy Efficiency",
+                "Vacation",
+                "Design Space",
+                "Labyrinth",
+                "Simulation Platform",
+                "Data Cache",
+                "Results For Configurations",
+                "Shared Memory"
+            ],
+            "Author Keywords": [
+                "Energy Consumption",
+                "Transactional Memory",
+                "Parallel Computing"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1050,7 +2066,49 @@
                 "firstName": "Leonardo",
                 "lastName": "Piga"
             }
-        ]
+        ],
+        "abstract": "This note describes the Synthetic Workload Application Toolkit (SWAT) and presents the results from a set of experiments on some key cloud workloads. SWAT is a software platform that automates the creation, deployment, provisioning, execution, and (most importantly) data gathering of synthetic compute workloads on clusters of arbitrary size. SWAT collects and aggregates data from application execution logs, operating system call interfaces, and micro architecture-specific program counters. The data collected by SWAT are used to characterize the effects of network traffic, file I/O, and computation on program performance. The output is analyzed to provide insight into the design and deployment of cloud workloads and systems. Each workload is characterized according to its scalability with the number of server nodes and Hadoop server jobs, sensitivity to network characteristics (bandwidth, latency, statistics on packet size), and computation vs. I/O intensity as these values adjusted via workload-specific parameters. (In the future, we will use SWAT's benchmark synthesizer capability.) We also characterize micro-architectural characteristics that give insight on the micro architecture of processors better suited for this class of workloads. We contrast our results with prior work on Cloud Suite [5], validating some conclusions and providing further insight into others. This illustrates SWAT's data collection capabilities and usefulness to obtain insight on cloud applications and systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Operating systems",
+                "Radiation detectors",
+                "Servers",
+                "Delay",
+                "Electric breakdown",
+                "Microarchitecture"
+            ],
+            "Index Terms": [
+                "Cloud Workload",
+                "Scalable",
+                "Operating System",
+                "Cloud Applications",
+                "Running",
+                "Search Engine",
+                "Multi-core",
+                "Cluster Nodes",
+                "File System",
+                "Quality Of Service Requirements",
+                "Bandwidth Requirements",
+                "Network Delay",
+                "Network Latency",
+                "Read Operation",
+                "Data Cache",
+                "Master Node",
+                "Amazon EC2",
+                "Message Size",
+                "Worker Nodes",
+                "L2 Cache",
+                "Cache Misses",
+                "MapReduce Framework"
+            ],
+            "Author Keywords": [
+                "cloud",
+                "scale-out",
+                "workload",
+                "servers"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1097,7 +2155,50 @@
                 "firstName": "Georges",
                 "lastName": "Da Costa"
             }
-        ]
+        ],
+        "abstract": "Modern high performance computing subsystems (HPC) – including processor, network, memory, and IO – are provided with power management mechanisms. These include dynamic speed scaling and dynamic resource sleeping. Understanding the behavioral patterns of high performance computing systems at runtime can lead to a multitude of optimization opportunities including controlling and limiting their energy usage. In this paper, we present a general purpose methodology for optimizing energy performance of HPC systems considering processor, disk and network. We rely on the concept of execution vector along with a partial phase recognition technique for on-the-fly dynamic management without any a priori knowledge of the workload. We demonstrate the effectiveness of our management policy under two real-life workloads. Experimental results show that our management policy in comparison with baseline unmanaged execution saves up to 24% of energy with less than 4% performance overhead for our real-life workloads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Vectors",
+                "Hardware",
+                "Sensor phenomena and characterization",
+                "Runtime",
+                "Radiation detectors",
+                "Energy consumption"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "CPU Frequency",
+                "High-performance Computing Systems",
+                "CPU Frequency Scaling",
+                "Management Policies",
+                "Energy Usage",
+                "Partial Recognition",
+                "Energy Consumption",
+                "Information Technology",
+                "Rest Of The Paper",
+                "Power Consumption",
+                "Performance Degradation",
+                "System Configuration",
+                "Interconnected Network",
+                "Phase System",
+                "Manhattan Distance",
+                "Cluster Nodes",
+                "Ongoing Phase",
+                "Reference Vector",
+                "Static Graph",
+                "Linux Kernel",
+                "Recognition Thresholds",
+                "Problem Of Energy Consumption",
+                "System Power Consumption"
+            ],
+            "Author Keywords": [
+                "energy optimization",
+                "phase identification",
+                "hardware performance counters",
+                "system adaptation"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1132,7 +2233,52 @@
                 "firstName": "Elias P.",
                 "lastName": "Duarte Jr."
             }
-        ]
+        ],
+        "abstract": "Cut trees are a compact representation of the edge-connectivity between every pair of vertices of an undirected graph, and have a large number of applications. In this work a parallel version of the well known Gomory-Hu cut tree algorithm is presented. The parallel strategy is based on the master/slave model. The strategy is optimistic in the sense that the master process manipulates the tree being constructed and the slaves solve minimum s-t-cuts independently. Another version is proposed that employs a heuristic that enumerates all (up to a limit) of the minimum s-t-cuts in order to choose the most balanced one. The algorithm was implemented and extensive experimental results are presented, including a comparison with Gusfieldâs cut tree algorithm. Parallel versions of these algorithms have achieved significant speedups on real and synthetic graphs. We discuss the trade-offs between the two alternatives, each of which presents better results given the characteristics of the input graph. In particular, the existence of balanced cuts clearly gives an advantage to Gomory-Huâsalgorithm.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Partitioning algorithms",
+                "Educational institutions",
+                "Erbium",
+                "Clustering algorithms",
+                "Informatics",
+                "Electronic mail",
+                "Contracts"
+            ],
+            "Index Terms": [
+                "Implementation Of Algorithm",
+                "Tree Cut",
+                "Cut-tree Algorithm",
+                "Gomory-Hu Tree",
+                "Heuristic",
+                "Undirected",
+                "Adaptive Algorithm",
+                "Vertices",
+                "Pair Of Vertices",
+                "Input Graph",
+                "Running Time",
+                "Performance Of Algorithm",
+                "Parallelization",
+                "Tree Nodes",
+                "Total Run Time",
+                "Maximum Flow",
+                "Local Connectivity",
+                "Sequential Algorithm",
+                "Parallel Algorithm",
+                "Graph Size",
+                "Minimum Cut",
+                "Cut Algorithm",
+                "Flow Algorithm",
+                "Algorithm Ends",
+                "Combinatorial Structure",
+                "Worst-case Time Complexity",
+                "Tree Graph"
+            ],
+            "Author Keywords": [
+                "Cut trees",
+                "parallel algorithms"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1167,7 +2313,49 @@
                 "firstName": "Viktor K.",
                 "lastName": "Prasanna"
             }
-        ]
+        ],
+        "abstract": "Inference is a key problem in exploring probabilistic graphical models for machine learning algorithms. Recently, many parallel techniques have been developed to accelerate inference. However, these techniques are not widely used due to their implementation complexity. MapReduce provides an appealing programming model that has been increasingly used to develop parallel solutions. MapReduce though has been mainly used for data parallel applications. In this paper, we investigate the use of MapReduce for exact inference in Bayesian networks. MapReduce based algorithms are proposed for evidence propagation in junction trees. We evaluate our methods on general-purpose multi-core machines using Phoenix as the underlying MapReduce runtime. The experimental results show that our methods achieve 20x speedup on an Intel West mere-EX based system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Junctions",
+                "Bayesian methods",
+                "Particle separators",
+                "Parallel processing",
+                "Inference algorithms",
+                "Runtime",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Exact Inference",
+                "Bayesian Model",
+                "Programming Model",
+                "Graphical Model",
+                "Implementation Complexity",
+                "Parallel Data",
+                "Joining Tree",
+                "Parallel Technique",
+                "Probabilistic Graphical Models",
+                "Random Variables",
+                "Parallelization",
+                "Tree Height",
+                "Sequential Task",
+                "Random Tree",
+                "Directed Acyclic Graph",
+                "Node Level",
+                "Phase Map",
+                "Depth-first",
+                "Input Pair",
+                "Good Scalability",
+                "Map Tasks",
+                "Balanced Tree"
+            ],
+            "Author Keywords": [
+                "exact inference",
+                "data dependency",
+                "MapReduce",
+                "multi-core"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1198,8 +2386,8 @@
             },
             {
                 "id": 38199735700,
-                "preferredName": "Fernando Magno Quint\u00e3o Pereira",
-                "firstName": "Fernando Magno Quint\u00e3o",
+                "preferredName": "Fernando Magno Quintão Pereira",
+                "firstName": "Fernando Magno Quintão",
                 "lastName": "Pereira"
             },
             {
@@ -1214,7 +2402,37 @@
                 "firstName": "Renato A.",
                 "lastName": "Ferreira"
             }
-        ]
+        ],
+        "abstract": "Simultaneous Multi-Threading (SMT) is a hardware model in which different threads share the same instruction fetching unit. This model is a compromise between high parallelism and low hardware cost. Minimal Multi-Threading (MMT) is a technique recently proposed to share instructions and execution between threads in a SMT machine. In this paper we propose new ways to explore redundancies in the MMT execution model. First, we propose and evaluate a new thread reconvergence heuristics that handles function calls better than previous approaches. Second, we demonstrate the existence of substantial regularity in inter-thread memory access patterns. We validate our results on the four data-parallel applications present in the PARSEC benchmark suite. The new thread reconvergence heuristics is, on the average, 82% more efficient than MMT's original reconvergence method. Furthermore, about 69% to 87% of all the memory addresses are either the same for all the threads, or are affine expressions of the thread identifier. This observation motivates the design of newly proposed hardware that benefits from regularity in inter-thread memory accesses.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Hardware",
+                "Radiation detectors",
+                "Computer architecture",
+                "Benchmark testing",
+                "Synchronization",
+                "Pipelines"
+            ],
+            "Index Terms": [
+                "Heuristic",
+                "Access Patterns",
+                "Function Calls",
+                "Model Execution",
+                "High Parallelism",
+                "Partial Differential Equations",
+                "Lexicographic",
+                "Amount Of Regularization",
+                "Critical Section",
+                "Simultaneous Access",
+                "Smoothed Particle Hydrodynamics"
+            ],
+            "Author Keywords": [
+                "Minimal Multi-Threading",
+                "Parallelism",
+                "Synchronization"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1255,7 +2473,48 @@
                 "firstName": "John",
                 "lastName": "Feo"
             }
-        ]
+        ],
+        "abstract": "Triadic analysis encompasses a useful set of graph mining methods that are centered on the concept of a triad, which is a sub graph of three nodes. Such methods are often applied in the social sciences as well as many other diverse fields. Triadic methods commonly operate on a triad census that counts the number of triads of every possible edge configuration in a graph. Like other graph algorithms, triadic census algorithms do not scale well when graphs reach tens of millions to billions of nodes. To enable the triadic analysis of large-scale graphs, we developed and optimized a triad census algorithm to efficiently execute on shared memory architectures. We then conducted performance evaluations of the parallel triad census algorithm on three specific systems: CrayXMT, HP Superdome, and AMD multi-core NUMA machine. These three systems have shared memory architectures but with markedly different hardware capabilities to manage parallelism.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Algorithm design and analysis",
+                "Arrays",
+                "Instruction sets",
+                "Social network services",
+                "Patents",
+                "Vectors"
+            ],
+            "Index Terms": [
+                "Graphical Analysis",
+                "Multi-threaded",
+                "Shared Memory",
+                "Large-scale Graphs",
+                "Shared Memory Architecture",
+                "Triadic Analysis",
+                "Tens Of Millions",
+                "Graph Algorithms",
+                "Social Networks",
+                "Data Structure",
+                "Power-law",
+                "Parallelization",
+                "Power Grid",
+                "High-performance Computing",
+                "Digital Networks",
+                "Directed Graph",
+                "User-generated Content",
+                "Hash Function",
+                "Social Network Analysis",
+                "CPU Utilization",
+                "Large Graphs",
+                "Citation Network",
+                "L2 Cache",
+                "Sparse Graph",
+                "Parallel Efficiency",
+                "Memory Operations",
+                "Graph Datasets",
+                "Memory System"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1296,7 +2555,49 @@
                 "firstName": "Kaoutar",
                 "lastName": "El Maghraoui"
             }
-        ]
+        ],
+        "abstract": "Recovering from OS crashes has traditionally been done using reboot or checkpoint-restart mechanisms. Such techniques either fail to preserve the state before the crash happens or require modifications to applications. To eliminate these problems, we present a novel OS-hyper visor infrastructure for automated OS crash diagnosis and recovery in virtual servers. Our approach uses a small hidden OS-repair-image that is dynamically created from the healthy running OS instance. Upon an OS crash, the hyper visor automatically loads this repair-image to perform diagnosis and repair. The offending process is then quarantined, and the fixed OS automatically resumes running without a reboot. Our experimental evaluations demonstrated that it takes less than 3 seconds to recover from an OS crash. This approach can significantly reduce the downtime and maintenance costs in data centers. This is the first design and implementation of an OS-hyper visor combo capable of automatically resurrecting a crashed commercial server-OS.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer crashes",
+                "Kernel",
+                "Maintenance engineering",
+                "Virtual machine monitors",
+                "Hardware",
+                "Registers",
+                "Data structures"
+            ],
+            "Index Terms": [
+                "Running",
+                "Submission",
+                "Data Center",
+                "Data Structure",
+                "Corruption",
+                "Power System",
+                "High Availability",
+                "Intraday",
+                "Fault-tolerant",
+                "Faster Recovery",
+                "Error Control",
+                "Virtual Machines",
+                "Local Memory",
+                "Reinstalled",
+                "Application Status",
+                "Hardware Failure",
+                "System Crashes",
+                "Checkpointing",
+                "Kernel Images",
+                "Address Space",
+                "File System"
+            ],
+            "Author Keywords": [
+                "Operating Systems",
+                "Reliability",
+                "Availability",
+                "Computer Crash",
+                "System Recovery"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1361,7 +2662,53 @@
                 "firstName": "Steve",
                 "lastName": "Poole"
             }
-        ]
+        ],
+        "abstract": "Network design aspects that influence cost and performance can be classified according to their distance from the applications, into issues concerning topology, switch technology, link technology, network adapter, and communication library. The network adapter has a privileged position to take decisions with more global information than any other component in the network. It receives feedback from the switches and requests from the communication libraries and applications. Also, compared to a network switch, an adapter has access to significantly more memory (host memory and on-chip memory) and memory bandwidth (which typically exceeds network bandwidth). The potential of the adapter to improve global network performance has not yet been fully exploited. In this work we show a series of noticeable performance improvements (of at least 10% to 15%) for medium-sized message exchanges in typical HPC communication patterns by optimizing message segmentation and packet injection policies, that can be implemented in an adapter's firmware inexpensively. We also show that implementing equivalent solutions in the switch (as opposed to the adapter) leads to only marginal performance improvements as the ones obtained by controlling the segmentation and injection policy at the adapter, while involving significantly more cost. In addition, enhancing the adapter will lead to less hardware complexity in the switches, thus reducing cost and energy consumption.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Libraries",
+                "Adaptation models",
+                "Delay",
+                "Computational modeling",
+                "Protocols",
+                "Receivers"
+            ],
+            "Index Terms": [
+                "Network Performance",
+                "Communication Patterns",
+                "Type Of Communication",
+                "Imbalance",
+                "Performance Degradation",
+                "Data Transfer",
+                "Performance Loss",
+                "Host Adaptation",
+                "Central Pattern",
+                "Input Port",
+                "Segment Size",
+                "Buffer Size",
+                "Starfish",
+                "Segment Level",
+                "Critical Path",
+                "Current Segment",
+                "Order Of Arrival",
+                "Message Size",
+                "Output Buffer",
+                "Data Messages",
+                "Messaging Protocol",
+                "Message Levels"
+            ],
+            "Author Keywords": [
+                "Networks",
+                "Fat Trees",
+                "NIC",
+                "adapter",
+                "HPC",
+                "collectives",
+                "all to all",
+                "near-neighbor"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1398,11 +2745,62 @@
             },
             {
                 "id": 37274120800,
-                "preferredName": "Laxmikant V. Kal\u00e9",
+                "preferredName": "Laxmikant V. Kalé",
                 "firstName": "Laxmikant V.",
-                "lastName": "Kal\u00e9"
+                "lastName": "Kalé"
             }
-        ]
+        ],
+        "abstract": "Information Set Generation (ISG) is the identification of the set of paths in an imperfect information game tree that are consistent with a player's observations. The ability to reason about the possible a history is critical to the performance of game-playing agents. ISG represents a class of combinatorial search problems which is computationally intensive but challenging to efficiently parallelize. In this paper, we address the parallelization of information set generation in the context of Kriegspiel (partially observable chess). We implement the algorithm on top of a general purpose combinatorial search engine and discuss its performance using datasets from real game instances in addition to benchmarks. Further, we demonstrate the effect of load balancing strategies, problem sizes and computational granularity (grain size parameters) on performance. We achieve speedups of over 500 on 1,024 processors, far exceeding previous scalability results for game tree search applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Games",
+                "Program processors",
+                "Load management",
+                "Law",
+                "Runtime",
+                "Search problems"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Tree Search",
+                "Game Tree",
+                "Game Tree Search",
+                "Scalable",
+                "Search Engine",
+                "Problem Size",
+                "Load Balancing",
+                "Imperfect Information",
+                "Previous Results",
+                "Performance Variables",
+                "Tree Nodes",
+                "Random Strategy",
+                "Subtree",
+                "Piece Of Work",
+                "Problem Instances",
+                "Tree Level",
+                "Computational Expense",
+                "Parts Of The Tree",
+                "Actual Observations",
+                "Number Of Processors",
+                "Parallel Efficiency",
+                "Belief State",
+                "Game Conditions",
+                "Game Of Chess",
+                "Single Processor",
+                "Starting State",
+                "Parallel Implementation",
+                "Controlling Grain Size",
+                "Running Time"
+            ],
+            "Author Keywords": [
+                "game tree search",
+                "information sets",
+                "load balancing",
+                "kriegspiel",
+                "grain size",
+                "combinatorial search"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1437,7 +2835,44 @@
                 "firstName": "Erik",
                 "lastName": "Hagersten"
             }
-        ]
+        ],
+        "abstract": "Performance loss caused by L1 instruction cache misses varies between different architectures and cache sizes. For processors employing power-efficient in-order execution with small caches, performance can be significantly affected by instruction cache misses. The growing use of low-power multi-threaded CPUs (with shared L1 caches) in general purpose computing platforms requires new efficient techniques for analyzing application instruction cache usage. Such insight can be achieved using traditional simulation technologies modeling several cache sizes, but the overhead of simulators may be prohibitive for practical optimization usage. In this paper we present a statistical method to quickly model application instruction cache performance. Most importantly we propose a very low-overhead sampling mechanism to collect runtime data from the application's instruction stream. This data is fed to the statistical model which accurately estimates the instruction cache miss ratio for the sampled execution. Our sampling method is about 10x faster than previously suggested sampling approaches, with average runtime overhead as low as 25% over native execution. The architecturally-independent data collected is used to accurately model miss ratio for several cache sizes simultaneously, with average absolute error of 0.2%. Finally, we show how our tool can be used to identify program phases with large instruction cache footprint. Such phases can then be targeted to optimize for reduced code footprint.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Data models",
+                "Computational modeling",
+                "Adaptation models",
+                "Program processors",
+                "Runtime",
+                "Hardware",
+                "Radiation detectors"
+            ],
+            "Index Terms": [
+                "Low Overhead",
+                "Statistical Models",
+                "Average Error",
+                "Average Absolute Error",
+                "Cache Size",
+                "Cache Misses",
+                "Runtime Overhead",
+                "General-purpose Computer",
+                "Benchmark",
+                "Estimation Error",
+                "Window Size",
+                "Reference Number",
+                "Application Process",
+                "Distance Distribution",
+                "Detailed Simulation",
+                "Program Execution",
+                "Sampling Window",
+                "Average Relative Error",
+                "Optimal Code",
+                "Data Cache",
+                "Code Size",
+                "L2 Cache",
+                "Replacement Policy"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1456,8 +2891,8 @@
         "authors": [
             {
                 "id": 38529018000,
-                "preferredName": "Jos\u00e9 Luis March",
-                "firstName": "Jos\u00e9 Luis",
+                "preferredName": "José Luis March",
+                "firstName": "José Luis",
                 "lastName": "March"
             },
             {
@@ -1480,11 +2915,54 @@
             },
             {
                 "id": 37274199100,
-                "preferredName": "Jos\u00e9 Duato",
-                "firstName": "Jos\u00e9",
+                "preferredName": "José Duato",
+                "firstName": "José",
                 "lastName": "Duato"
             }
-        ]
+        ],
+        "abstract": "Chip multiprocessors (CMPs) are becoming the common choice to implement embedded systems due to they achieve a good tradeoff between performance and power. Because of manufacturability reasons, CMPs use to implement one or several memory controllers, each one shared by a set of cores. Thus, memory requests from distinct cores compete among them when accessing to memory. This means that the memory access latency can widely vary depending on the co-runners and the memory controller scheduling policy, thus yielding to unpredictable behavior. This work focuses on the design of a memory controller to support workloads with real-time constraints, both hard real-time (HRT) and soft real-time (SRT) applications. These systems must guarantee the execution of HRT applications while improving the performance of the SRT applications. In this paper we propose two memory controller policies for multicore embedded systems: HR-first and ATR-first. The former prioritizes memory requests of HRT tasks, achieving important energy savings but poor performance for SRT applications. The latter gives priority to those HRT requests that are critical to guarantee schedulability. Results show that the ATR-first policy presents similar energy consumption as the HR-first policy while reducing the number of SRT deadline misses around 49%, on average, and reaching the fulfillment of all deadlines in some scenarios.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Real-time systems",
+                "Instruction sets",
+                "Quality of service",
+                "Multicore processing",
+                "Embedded systems",
+                "Energy consumption",
+                "Batteries"
+            ],
+            "Index Terms": [
+                "Service Quality",
+                "Multi-core",
+                "Real-time Constraints",
+                "Energy Consumption",
+                "Memory Control",
+                "Application Execution",
+                "Power Consumption",
+                "Active Period",
+                "Maximum Speed",
+                "Active Task",
+                "Static Analysis",
+                "Memory Domain",
+                "Priority Order",
+                "Working Frequency",
+                "Battery Charging",
+                "Scheduling Scheme",
+                "Scheduling Algorithm",
+                "Task Scheduling",
+                "Multi-threaded",
+                "Number Of Misses",
+                "Task Queue",
+                "Task Execution Time",
+                "Task Request"
+            ],
+            "Author Keywords": [
+                "Memory Access",
+                "Multicore Systems",
+                "Real-Time",
+                "Quality of Service"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1509,9 +2987,9 @@
             },
             {
                 "id": 38273510700,
-                "preferredName": "Ricardo Fern\u00e1ndez-Pascual",
+                "preferredName": "Ricardo Fernández-Pascual",
                 "firstName": "Ricardo",
-                "lastName": "Fern\u00e1ndez-Pascual"
+                "lastName": "Fernández-Pascual"
             },
             {
                 "id": 37270074200,
@@ -1519,7 +2997,54 @@
                 "firstName": "Manuel E.",
                 "lastName": "Acacio"
             }
-        ]
+        ],
+        "abstract": "Direct coherence protocols have been recently proposed as an alternative to directory-based protocols to keep cache coherence in many-core CMPs. Differently from directory-based protocols, in direct coherence the responsible for providing the requested data in case of a cache miss (i.e., the owner cache) is also tasked with keeping the updated directory information and serializing the different accesses to the block by all cores. This way, these protocols send requests directly to the owner cache, thus avoiding the indirection caused by accessing a separate directory (usually in the home node). A hints mechanism ensures a high hit rate when predicting the current owner of a block for sending requests, but at the price of significantly increasing network traffic, and consequently, energy consumption. In this work, we show how using a heterogeneous interconnection network composed of two kinds of links is enough to drastically reduce the energy consumed by hint messages, obtaining significant improvements in energy efficiency.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Coherence",
+                "Protocols",
+                "Wires",
+                "Energy consumption",
+                "Multiprocessor interconnection",
+                "Tiles",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "Heterogeneous Network",
+                "Improve Energy Efficiency",
+                "Directed Coherence",
+                "Coherence Protocol",
+                "Energy Consumption",
+                "Interconnected Network",
+                "Serialized",
+                "Cache Misses",
+                "Kind Of Link",
+                "Reduction In Consumption",
+                "Reduce Energy Consumption",
+                "Core Processes",
+                "Linkage Types",
+                "Dynamic Energy",
+                "Directed Networks",
+                "Homogeneous Network",
+                "Fractional Power",
+                "Response Message",
+                "Written Back",
+                "Network-on-chip",
+                "Request Message",
+                "Control Messages",
+                "Number Of Wires",
+                "Area Overhead",
+                "Data Messages",
+                "Increase In Execution Time",
+                "Shared Memory"
+            ],
+            "Author Keywords": [
+                "Cache coherence",
+                "heterogeneous networks",
+                "direct coherence"
+            ]
+        }
     },
     {
         "publicationNumber": "6374354",
@@ -1535,7 +3060,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1551,7 +3078,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1567,7 +3096,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1583,7 +3114,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1599,7 +3132,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1615,7 +3150,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1631,7 +3168,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference offers a note of thanks and lists its reviewers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1647,7 +3186,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the backer or splash screen of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1663,7 +3204,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1679,7 +3222,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1695,7 +3240,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6374354",
@@ -1711,6 +3258,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 IEEE 24th International Symposium on Computer Architecture and High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: energy; GPU; cloud computing; parallel algorithms; operating systems; run-time systems; global data; shared data and instruction-level issues.",
+        "keywords": {}
     }
 ]

@@ -86,7 +86,49 @@
                 "firstName": "Hartmut",
                 "lastName": "Kaiser"
             }
-        ]
+        ],
+        "abstract": "Despite advancements in the areas of parallel and distributed computing, the complexity of programming on High Performance Computing (HPC) resources has deterred many domain experts, especially in the areas of machine learning and artificial intelligence (AI), from utilizing performance benefits of such systems. Researchers and scientists favor high-productivity languages to avoid the inconvenience of programming in low-level languages and costs of acquiring the necessary skills required for programming at this level. In recent years, Python, with the support of linear algebra libraries like NumPy, has gained popularity despite facing limitations which prevent this code from distributed runs. Here we present a solution which maintains both high level programming abstractions as well as parallel and distributed efficiency. Phylanx, is an asynchronous array processing toolkit which transforms Python and NumPy operations into code which can be executed in parallel on HPC resources by mapping Python and NumPy functions and variables into a dependency tree executed by HPX, a general purpose, parallel, task-based runtime system written in C++. Phylanx additionally provides introspection and visualization capabilities for debugging and performance analysis. We have tested the foundations of our approach by comparing our implementation of widely used machine learning algorithms to accepted NumPy standards.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Python",
+                "Libraries",
+                "Machine learning",
+                "Task analysis",
+                "Runtime",
+                "C++ languages",
+                "Message systems"
+            ],
+            "Index Terms": [
+                "Python Code",
+                "Runtime System",
+                "Asynchronous Execution",
+                "Machine Learning",
+                "Learning Algorithms",
+                "High-performance Computing",
+                "Domain Experts",
+                "Distributed Computing",
+                "Advances In This Area",
+                "Area Of Machine Learning",
+                "Least-squares",
+                "Big Data",
+                "Evaluation Of Function",
+                "Parallelization",
+                "Objective Data",
+                "TensorFlow",
+                "Root Node",
+                "Single Node",
+                "Graph Generation",
+                "Collaborative Filtering",
+                "Performance Bottleneck",
+                "Algorithm In Python",
+                "Python Implementation",
+                "Code Blocks",
+                "Logistic Regression Algorithm"
+            ],
+            "Author Keywords": [
+                "Array-computing,-Asynchronous,-High-Performance-Computing,-HPX,-Python,-Runtime-systems"
+            ]
+        }
     },
     {
         "publicationNumber": "8632881",
@@ -115,7 +157,45 @@
                 "firstName": "Muthu",
                 "lastName": "Baskaran"
             }
-        ]
+        ],
+        "abstract": "Dynamic task-based parallelism has become a widely-accepted paradigm in the quest for exascale computing. In this work, we deliver a non-trivial demonstration of the advantages of explicit over implicit tasking in OpenMP 4.5 in terms of both expressiveness and performance. We target the Kripke benchmark, a mini-application used to test the performance of discrete particle codes, and find that the dependence structure of the core “sweep” kernel is well-suited for dynamic task-based systems. Our results show that explicit tasking delivers a 31.7% and 8.1% speedup over a pure implicit implementation for a small and large problem, respectively, while a hybrid variant also underperforms the explicit variant by 13.1% and 5.8%, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Parallel processing",
+                "Runtime",
+                "Programming",
+                "Benchmark testing",
+                "Syntactics",
+                "Mathematical model"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Small Problems",
+                "Coding Performance",
+                "Parallelization",
+                "Variety Of Tasks",
+                "Wavefront",
+                "Spawning",
+                "Load Data",
+                "Problem Size",
+                "Iterative Optimization",
+                "Outer Loop",
+                "Overhead Costs",
+                "Loop Iteration",
+                "Low Overhead",
+                "Explicit Task",
+                "Level Of Parallelism",
+                "Implicit Task"
+            ],
+            "Author Keywords": [
+                "Tasks",
+                "Runtime",
+                "OpenMP",
+                "Kripke",
+                "Optimizing-Compiler"
+            ]
+        }
     },
     {
         "publicationNumber": "8632881",
@@ -156,7 +236,46 @@
                 "firstName": "Hartmut",
                 "lastName": "Kaiser"
             }
-        ]
+        ],
+        "abstract": "Experience shows that on today's high performance systems the utilization of different acceleration cards in conjunction with a high utilization of all other parts of the system is difficult. Future architectures, like exascale clusters, are expected to aggravate this issue as the number of cores are expected to increase and memory hierarchies are expected to become deeper. One big aspect for distributed applications is to guarantee high utilization of all available resources, including local or remote acceleration cards on a cluster while fully using all the available CPU resources and the integration of the GPU work into the overall programming model. For the integration of CUDA code we extended HPX, a general purpose C++ run time system for parallel and distributed applications of any scale, and enabled asynchronous data transfers from and to the GPU device and the asynchronous invocation of CUDA kernels on this data. Both operations are well integrated into the general programming model of HPX which allows to seamlessly overlap any GPU operation with work on the main cores. Any user defined CUDA kernel can be launched on any (local or remote) GPU device available to the distributed application. We present asynchronous implementations for the data transfers and kernel launches for CUDA code as part of a HPX asynchronous execution graph. Using this approach we can combine all remotely and locally available acceleration cards on a cluster to utilize its full performance capabilities. Overhead measurements show, that the integration of the asynchronous operations (data transfer + launches of the kernels) as part of the HPX execution graph imposes no additional computational overhead and significantly eases orchestrating coordinated and concurrent work on the main cores and the used GPU devices.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Kernel",
+                "C++ languages",
+                "Data transfer",
+                "Task analysis",
+                "Programming",
+                "Message systems"
+            ],
+            "Index Terms": [
+                "Running Time",
+                "Data Transfer",
+                "Programming Model",
+                "Part Of The Graph",
+                "Main Core",
+                "Benchmark",
+                "Synchronization",
+                "Computation Time",
+                "Programming Language",
+                "Kernel Function",
+                "Block Size",
+                "Distributed Computing",
+                "Specific Device",
+                "Local Devices",
+                "Increase In Computation Time",
+                "Function Calls",
+                "Time Vector",
+                "Remote Devices",
+                "Message Passing Interface",
+                "Parallel Execution",
+                "NVIDIA Tesla",
+                "Message Passing"
+            ],
+            "Author Keywords": [
+                "Asynchronous-many-task-systems-(ATM),-CUDA,-parallelism,-concurrency,-HPX"
+            ]
+        }
     },
     {
         "publicationNumber": "8632881",
@@ -221,7 +340,55 @@
                 "firstName": "Jun",
                 "lastName": "Makino"
             }
-        ]
+        ],
+        "abstract": "In this paper we describe the basic idea, implementation and achieved performance of our DSL for stencil computation, Formura, on systems based on PEZY-SC2 manycore processor. Formura generates, from high-level description of the differential equation and simple description of finitedifference stencil, the entire simulation code with MPI parallelization with overlapped communication and calculation, advanced temporal blocking and parallelization for many-core processors. Achieved performance is 4.78 PF, or 21.5% of the theoretical peak performance for an explicit scheme for compressive CFD, with the accuracy of fourth-order in space and third-order in time. For a slightly modified implementation of the same scheme, efficiency was slightly lower (17.5%) but actual calculation time per one timestep was faster by 25%. Temporal blocking improved the performance by up to 70%. Even though the B/F number of PEZY-SC2 is low, around 0.02, we have achieved the efficiency comparable to those of highly optimized CFD codes on machines with much higher memory bandwidth such as K computer. We have demonstrated that automatic generation of the code with temporal blocking is a quite effective way to make use of very large-scale machines with low memory bandwidth for large-scale CFD calculations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "Mathematical model",
+                "Finite difference methods",
+                "DSL",
+                "Computational modeling",
+                "Memory management",
+                "Upper bound"
+            ],
+            "Index Terms": [
+                "Finite Difference",
+                "Code Generation",
+                "Temporal Block",
+                "Explicit Scheme",
+                "Memory Bandwidth",
+                "Theoretical Peak",
+                "Integration Time",
+                "Grid Points",
+                "Time Derivative",
+                "Blocking Effect",
+                "Finite Difference Method",
+                "Local Memory",
+                "Explicit Method",
+                "Spatial Derivatives",
+                "Floating-point Operations",
+                "Original Equation",
+                "Calculation Of Derivatives",
+                "Implicit Method",
+                "Naive Approach",
+                "Higher-order Derivatives",
+                "High-order Scheme",
+                "Parallel Framework",
+                "Remote Memory",
+                "Space Derivatives",
+                "Differences In Coordination",
+                "CFL Number",
+                "Processor Chip",
+                "Spatial Differences",
+                "Correct Predictions"
+            ],
+            "Author Keywords": [
+                "DSL",
+                "Stencil-computation",
+                "temporal-blocking"
+            ]
+        }
     },
     {
         "publicationNumber": "8632881",
@@ -274,7 +441,54 @@
                 "firstName": "Rick",
                 "lastName": "Stevens"
             }
-        ]
+        ],
+        "abstract": "Advanced programming models, domain specific languages, and scripting toolkits have the potential to greatly accelerate the adoption of high performance computing. These complex software systems, however, are often difficult to install and maintain, especially on exotic high-end systems. We consider deep learning workflows used on petascale systems and redeployment on research clusters using containers. Containers are used to deploy the MPI-based infrastructure, but challenges in efficiency, usability, and complexity must be overcome. In this work, we address these challenges through enhancements to a unified workflow system that manages interaction with the container abstraction, the cluster scheduler, and the programming tools. We also report results from running the application on our system, harnessing 298 TFLOPS (single precision).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Containers",
+                "Optimization",
+                "Cancer",
+                "Python",
+                "Programming",
+                "Deep learning",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Deep Learning",
+                "Programming Model",
+                "High-performance Computing",
+                "Programming Tools",
+                "Single Precision",
+                "Domain-specific Languages",
+                "Running",
+                "Operating System",
+                "Cancer Research",
+                "Alternative Models",
+                "End-users",
+                "Parameter Space",
+                "Deep Learning Models",
+                "TensorFlow",
+                "Response Surface",
+                "Hyperparameter Tuning",
+                "Programming Environment",
+                "Virtual Machines",
+                "Model Hyperparameters",
+                "Hyperparameter Values",
+                "Model-based Optimization",
+                "Optimal Workflow",
+                "Heterogeneous Clusters",
+                "Hyperparameter Search",
+                "Load Balancing",
+                "JavaScript Object Notation",
+                "High-level Programming"
+            ],
+            "Author Keywords": [
+                "container",
+                "workflows",
+                "deep-learning",
+                "cancer"
+            ]
+        }
     },
     {
         "publicationNumber": "8632881",
@@ -333,7 +547,53 @@
                 "firstName": "Bill",
                 "lastName": "Carlson"
             }
-        ]
+        ],
+        "abstract": "A well-recognized characteristic of extreme scale systems is that their computation bandwidths far exceed their communication bandwidths. PGAS runtimes have proven to be effective in enabling efficient use of communication bandwidth for many applications, due to their efficient support for short non- blocking one-sided messages. However, they were not designed for exploiting the massive levels of intra-node parallelism found in extreme scale systems. Thus, a key question in the use of PGAS runtimes on extreme scale platforms is: what kind of node-level runtime system should be integrated with PGAS runtimes? In this paper, we explore the premise that event-driven intra- node runtimes could be promising candidates for integration with PGAS runtimes, due to their ability to overlap useful computation with background long-latency operations. For this exploration, we use OpenSHMEM as an exemplar of PGAS runtimes, and Node.js as an exemplar of event-driven runtimes. While Node.js may seem an unusual choice for high-performance computing, its prominent role as an event-driven runtime for server-side Javascript is a good match for what we need for optimizing the use of communication bandwidth. At the same time, the availability of excess computation bandwidth in extreme scale systems can help mitigate the local computation overheads of Javascript relative to native languages such as C++. Further, since the Node.js environment is single-threaded, we get an automatic guarantee that no data races will occur on Javascript objects, a guarantee that we cannot get with C++. Our integration of Open- SHMEM and Node.js makes it possible to expose nonblocking PGAS operations as JavaScript constructs that can seamlessly be used with the JavaScript asynchronous mechanisms, such as those based on promises. We believe that the exploration and preliminary results in this paper offer a new direction for future research on building high productivity runtimes for extreme scale systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Electronics packaging",
+                "Task analysis",
+                "Bandwidth",
+                "Programming",
+                "C++ languages",
+                "Asynchronous communication"
+            ],
+            "Index Terms": [
+                "Partitioned Global Address Space",
+                "Results Of This Paper",
+                "New Directions For Research",
+                "Communication Bandwidth",
+                "Extreme Scale",
+                "Benchmark",
+                "Additional Work",
+                "Programming Model",
+                "Natural Function",
+                "Communication Activities",
+                "Remote Locations",
+                "Computational Work",
+                "Benchmark Test",
+                "Local Memory",
+                "Remote Data",
+                "Communication Tasks",
+                "Model Execution",
+                "Remote Memory",
+                "Asynchronous Communication",
+                "C++ Programming",
+                "Message Passing Interface",
+                "Synchronous Communication",
+                "Synthetic Work",
+                "Shared Object"
+            ],
+            "Author Keywords": [
+                "Node.js",
+                "JavaScript",
+                "PGAS",
+                "OpenSHMEM",
+                "Asynchronous-Many-Task-(AMT)",
+                "Habanero-Library"
+            ]
+        }
     },
     {
         "publicationNumber": "8632881",
@@ -380,7 +640,40 @@
                 "firstName": "Nicolas",
                 "lastName": "Morals"
             }
-        ]
+        ],
+        "abstract": "Futures are a widely-used abstraction for enabling deferred execution in imperative programs. Deferred execution enqueues tasks rather than explicitly blocking and waiting for them to execute. Many task-based programming models with some form of deferred execution rely on explicit parallelism that is the responsibility of the programmer. Deterministic-by-default (implicitly parallel) models instead use data effects to derive concurrency automatically, alleviating the burden of concurrency management. Both implicitly and explicitly parallel models are particularly challenging for imperative object-oriented programming. Fine-granularity parallelism across member functions or amongst data members may exist, but is often ignored. In this work, we define a general permissions model that leverages the C++ type system and move semantics to define an asynchronous programming model embedded in the C++ type system. Although a default distributed memory semantic is provided, the concurrent semantics are entirely configurable through C++ constexpr integers. Correct use of the defined semantic is verified at compile-time, allowing deterministic-by-default concurrency to be safely added to applications. Here we demonstrate the use of these ``extended futures'' for distributed memory asynchronous communication and load balancing. An MPI particle in-cell application is modified with the wrapper class using this task model, with results presented for a Haswell system up to 64 nodes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Semantics",
+                "Object oriented modeling",
+                "Concurrent computing",
+                "Load management",
+                "Load modeling",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Programming Model",
+                "Object-oriented",
+                "Load Balancing",
+                "State Machine",
+                "Balanced Distribution",
+                "Parallel Data",
+                "Field In Space",
+                "Task Scheduling",
+                "Functor",
+                "Model Execution",
+                "Virtual Resources",
+                "Return Type"
+            ],
+            "Author Keywords": [
+                "task-based-runtimes",
+                "template-metaprogramming",
+                "parallel-computing",
+                "programming-models",
+                "execution-models"
+            ]
+        }
     },
     {
         "publicationNumber": "8632881",
@@ -415,7 +708,53 @@
                 "firstName": "Mitsuhisa",
                 "lastName": "Sato"
             }
-        ]
+        ],
+        "abstract": "As both the complexity of algorithms and architecture increase, development of scientific software becomes a challenge. In order to exploit future architecture, we consider a Multi-SPMD workflow programing model. Then, data transfer between tasks during computation highly depends on the architecture and middleware used. In this study we design an adaptive system for data management in a parallel programming environment which can express two level of parallelism. We show how the consideration of multiple strategies based on I/O and direct message passing can improve performances and fault tolerance in the YML-XMP environment. On a real application with a sufficiently large amount of local data, speedup of 1.36 for a mixed strategy to 1.73 for a direct message passing method are obtained compared to our original design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Parallel processing",
+                "Distributed databases",
+                "Programming",
+                "Computational modeling",
+                "Computer architecture",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Data Management",
+                "Programming Model",
+                "Local Data",
+                "Parallelization",
+                "Fault-tolerant",
+                "Mixed Strategy",
+                "Data Management System",
+                "Level Of Parallelism",
+                "Parallel Environment",
+                "Median Time",
+                "Data Repository",
+                "Data Exchange",
+                "Direct Communication",
+                "Separate Data",
+                "Multiple Access",
+                "Parallel Model",
+                "Computation Tasks",
+                "Fine Grain",
+                "File System",
+                "Coarse-grained",
+                "Task Scheduling",
+                "Parallel Data",
+                "Kind Of Communication",
+                "Software Quality",
+                "Gaussian Elimination",
+                "Parallel Sections"
+            ],
+            "Author Keywords": [
+                "Multi-SPMD",
+                "Workflow-programing",
+                "Data-management",
+                "Programing-model"
+            ]
+        }
     },
     {
         "publicationNumber": "8632881",
@@ -431,7 +770,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 4th International Workshop on Extreme Scale Programming Models and Middleware (ESPM2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8632881",
@@ -447,7 +788,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 4th International Workshop on Extreme Scale Programming Models and Middleware (ESPM2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8632881",
@@ -463,7 +806,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 4th International Workshop on Extreme Scale Programming Models and Middleware (ESPM2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8632881",
@@ -479,6 +824,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2018 IEEE/ACM 4th International Workshop on Extreme Scale Programming Models and Middleware (ESPM2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]
