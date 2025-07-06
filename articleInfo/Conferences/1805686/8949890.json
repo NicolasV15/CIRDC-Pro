@@ -26,7 +26,24 @@
                 "firstName": "Amnon",
                 "lastName": "Barak"
             }
-        ]
+        ],
+        "abstract": "In most MPI implementations, abstraction layers separate the collective operation algorithms from the communication primitives, thus hindering its optimization with network acceleration technologies, such as RDMA. Open UCX is an RDMA-based point-ot-point communication library, that can reduce the latency between processes in MPI applications, particularly in large-scale system. This paper presents a design and implementation of a library for MPI collective operations, by extending Open UCX. Our approach is transparent to MPI applications, and can reduce the latency of repeated calls to such operations by an average of 8% for relatively small message sizes and as much as 90% for larger messages.",
+        "keywords": {
+            "Index Terms": [
+                "Library Design",
+                "Message Size",
+                "Optimization Method",
+                "Set Of Operations",
+                "Planning Phase",
+                "Average Latency",
+                "Communication Latency",
+                "Multiple Calls",
+                "Message Length",
+                "Ranked Set",
+                "Point-to-point Communication",
+                "Creation Of Plans"
+            ]
+        }
     },
     {
         "publicationNumber": "8949890",
@@ -85,7 +102,28 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "Most applications targeting exascale, such as those part of the Exascale Computing Project (ECP), are designed for heterogeneous architectures and rely on the Message Passing Interface (MPI) as their underlying parallel programming model. In this paper we analyze the limitations of collective MPI communication for the computation of fast Fourier transforms (FFTs), which are relied on heavily for large-scale particle simulations. We present experiments made at one of the largest heterogeneous platforms, the Summit supercomputer at ORNL. We discuss communication models from state-of-the-art FFT libraries, and propose a new FFT library, named HEFFTE (Highly Efficient FFTs for Exascale), which supports heterogeneous architectures and yields considerable speedups compared with CPU libraries, while maintaining good weak as well as strong scalability.",
+        "keywords": {
+            "Index Terms": [
+                "Fast Fourier Transform",
+                "Message Passing Interface",
+                "Scalable",
+                "Oak Ridge National Laboratory",
+                "Actual Performance",
+                "Graphics Processing Unit",
+                "Computer Technology",
+                "Cost Model",
+                "Communication Cost",
+                "Node Level",
+                "Part Of Costs",
+                "Parallel Implementation",
+                "Communication Scheme",
+                "Communication Framework",
+                "Input Array",
+                "All-to-all Communication"
+            ]
+        }
     },
     {
         "publicationNumber": "8949890",
@@ -120,7 +158,23 @@
                 "firstName": "William",
                 "lastName": "Gropp"
             }
-        ]
+        ],
+        "abstract": "The MPI_Allreduce collective operation is a core kernel of many parallel codebases, particularly for reductions over a single value per process. The commonly used allreduce recursive-doubling algorithm obtains the lower bound message count, yielding optimality for small reduction sizes based on node-agnostic performance models. However, this algorithm yields duplicate messages between sets of nodes. Node-aware optimizations in MPICH remove duplicate messages through use of a single master process per node, yielding a large number of inactive processes at each inter-node step. In this paper, we present an algorithm that uses the multiple processes available per node to reduce the maximum number of inter-node messages communicated by a single process, improving the performance of allreduce operations, particularly for small message sizes.",
+        "keywords": {
+            "Index Terms": [
+                "Message Size",
+                "Data Exchange",
+                "Computational Requirements",
+                "Node Positions",
+                "Local Computing",
+                "Floating-point Operations",
+                "Communication Requirements",
+                "Blue Water",
+                "Duplication Nodes",
+                "Shared Memory",
+                "Load Imbalance"
+            ]
+        }
     },
     {
         "publicationNumber": "8949890",
@@ -155,7 +209,38 @@
                 "firstName": "George",
                 "lastName": "Bosilca"
             }
-        ]
+        ],
+        "abstract": "Most applications targeting exascale, such as those part of the Exascale Computing Project (ECP), are designed for heterogeneous architectures and rely on the Message Passing Interface (MPI) as their underlying parallel programming model. In this paper we analyze the limitations of collective MPI communication for the computation of fast Fourier transforms (FFTs), which are relied on heavily for large-scale particle simulations. We present experiments made at one of the largest heterogeneous platforms, the Summit supercomputer at ORNL. We discuss communication models from state-of-the-art FFT libraries, and propose a new FFT library, named HEFFTE (Highly Efficient FFTs for Exascale), which supports heterogeneous architectures and yields considerable speedups compared with CPU libraries, while maintaining good weak as well as strong scalability.",
+        "keywords": {
+            "Index Terms": [
+                "Remote Memory Access",
+                "Scalable",
+                "Asynchronous System",
+                "Task Completion",
+                "Direct Access",
+                "Localization Task",
+                "Average Latency",
+                "High Latency",
+                "Local Memory",
+                "Serialized",
+                "End Of Round",
+                "Remote Memory",
+                "Multiple Threads",
+                "Use Of Capabilities",
+                "Single Window",
+                "Message Processing",
+                "Linearizable",
+                "Communication Rounds",
+                "Local Graph",
+                "Current Round",
+                "Incoming Messages",
+                "Remote Processing",
+                "Hardware Capabilities",
+                "Communication Patterns",
+                "Computer Cluster",
+                "Semantic"
+            ]
+        }
     },
     {
         "publicationNumber": "8949890",
@@ -220,7 +305,40 @@
                 "firstName": "Jonathan",
                 "lastName": "Crawford"
             }
-        ]
+        ],
+        "abstract": "Partitioned Global Address Space (PGAS) models are a part of system software that is being designed to support communication runtimes for exascale applications. MPI has been shown to be a viable option to develop a scalable PGAS communication subsystem and has the advantages of its standardization and higher performance. We used MPI two-sided semantics with a combination of automatic and user defined splitting of MPI communicators to achieve asynchronous progress. Our implementation can make use of multiple asynchronous progress ranks (PR) per node that can be mapped to the computing architecture of a node in a distributed cluster. We are able to show significant speed up of over 2.0X and scaling of a communication bound computational chemistry application distributed over 1024 nodes of state-of-the-art HPC clusters. Our results show that while running a communication bound application workload on a certain number of cluster nodes, an optimum number of ranks dedicated for communication can be found to achieve asynchronous communication progress and obtain highest performance.",
+        "keywords": {
+            "Index Terms": [
+                "Global Array",
+                "Chemical Calculations",
+                "Cluster Nodes",
+                "Computational Resources",
+                "Computational Load",
+                "Performance Gain",
+                "Communication Protocol",
+                "Problem Size",
+                "Core Processes",
+                "Network Bandwidth",
+                "Dual-channel",
+                "Small Problems",
+                "Task Scheduling",
+                "Network Congestion",
+                "Dual Network",
+                "Large-sized Problems",
+                "Memory Regions",
+                "Double Excitations",
+                "Message Size",
+                "Tile Size",
+                "L2 Cache",
+                "Communication Load",
+                "Load Imbalance",
+                "Multi-core",
+                "V100 GPU",
+                "Load Balancing",
+                "Communication Cost",
+                "Network Performance"
+            ]
+        }
     },
     {
         "publicationNumber": "8949890",
@@ -261,7 +379,38 @@
                 "firstName": "George",
                 "lastName": "Bosilca"
             }
-        ]
+        ],
+        "abstract": "As the modern hardware landscape continues to drastically change, the degree of parallelism required to maintain a high occupancy of resources has substantially increased. These hardware changes have highlighted the limitations of the traditional method of using one process per processing unit, which indicates that a more flexible programming paradigm is necessary. In the context of the message passing paradigm, MPI needs a significant improvement in threaded performance in order to fully utilize all hardware capabilities. However, for developers to know what needs to be improved, and for users to know what performance to expect, benchmarks are needed to quickly assess the capabilities and performance of MPI implementations. This paper introduces a new communication benchmark designed to replicate typical application communication patterns and assess their performance with a varied amount of resources. We evaluate three MPI implementations with our benchmark suite and assess their strengths and weaknesses.",
+        "keywords": {
+            "Index Terms": [
+                "Benchmark",
+                "Communication Performance",
+                "Message Passing Interface",
+                "Communication Patterns",
+                "Implementation Performance",
+                "Message Passing",
+                "Programming Paradigm",
+                "Window Size",
+                "Performance Metrics",
+                "Operation Mode",
+                "Development Of Applications",
+                "Scientific Applications",
+                "High-performance Computing",
+                "Network Bandwidth",
+                "Processing Mode",
+                "Serialized",
+                "Drop Off",
+                "Performance In Mode",
+                "Multiple Communication",
+                "Hybrid Mode",
+                "Message Size",
+                "Multiple Threads",
+                "Point-to-point Communication",
+                "Global Matching",
+                "Single Receiver",
+                "Incoming Messages"
+            ]
+        }
     },
     {
         "publicationNumber": "8949890",
@@ -277,7 +426,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8949890",
@@ -293,7 +444,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8949890",
@@ -309,7 +462,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8949890",
@@ -325,7 +480,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8949890",
@@ -341,7 +498,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8949890",
@@ -357,6 +516,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]

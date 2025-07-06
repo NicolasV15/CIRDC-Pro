@@ -32,7 +32,45 @@
                 "firstName": "Torsten",
                 "lastName": "Hoefler"
             }
-        ]
+        ],
+        "abstract": "Efficient data communication is a major goal for scalable and cost-effective use of datacenter and HPC system resources. To let applications communicate efficiently, exchanged data must be serialized at the source and deserialized at the destination. The serialization/deserialization process enables exchanging data in a language- and machine-independent format. However, serialization/deserialization overheads can negatively impact application performance. For example, a server within a microservice framework must deserialize all incoming requests before invoking the respective microservices. We show how data deserialization can be offloaded to fully programmable Smart-NICs and performed on the data path, on a per-packet basis. This solution avoids intermediate memory copies, enabling on-the-fly deserialization. We showcase our approach by offloading Google Protocol Buffers, a widely used framework to serialize/deserialize data. Our evaluation demonstrates that, by offloading data deserialization to the NIC, we can achieve up to <tex>$4. 8\\mathrm{x}$</tex> higher throughput than a single AMD Ryzen 7 CPU. We then show through microservice throughput modeling how we can improve the overall throughput by pipelining the deserialization and actual application activities with PsPIN.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Conferences",
+                "Computational modeling",
+                "Microservice architectures",
+                "Throughput",
+                "Data structures",
+                "Internet"
+            ],
+            "Index Terms": [
+                "High Throughput",
+                "Data Center",
+                "Serialized",
+                "Datapath",
+                "Classical Methods",
+                "Parallelization",
+                "Network Process",
+                "Stream Processing",
+                "Memory Space",
+                "M2 Type",
+                "Hardware Accelerators",
+                "Service Class",
+                "Memory Management",
+                "Types Of Requests",
+                "L2 Cache",
+                "Single Packet"
+            ],
+            "Author Keywords": [
+                "SmartNICs",
+                "sPIN",
+                "deserialization",
+                "offload",
+                "RPC",
+                "microservices"
+            ]
+        }
     },
     {
         "publicationNumber": "10026849",
@@ -61,7 +99,57 @@
                 "firstName": "Preeti",
                 "lastName": "Malakar"
             }
-        ]
+        ],
+        "abstract": "Most parallel profilers reveal only the MPI point-to-point communication patterns in a communication matrix. However, this may lead to sub-optimal process mapping due to incomplete information about the application communications. In this work, we have developed a profiler, IPMPI, that reveals the complete communication information including collective communications. We compare the results of two recent process mapping tools, TopoMatch and LPMS, with and without the input from IPMPI. We have run six applications and benchmarks such as ROMS, LAMMPS, DFT, HPCG, miniAMR and miniFE on two supercomputers and our shared department cluster. We observed a maximum average gain between 5.7 - 8.6% across these systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Visualization",
+                "Three-dimensional displays",
+                "Runtime",
+                "Discrete Fourier transforms",
+                "Transforms",
+                "Benchmark testing",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Message Passing Interface",
+                "Message Passing Interface Communication",
+                "Benchmark",
+                "Information Communication",
+                "High-performance Computing",
+                "Mapping Process",
+                "Communication Patterns",
+                "Maximum Gain",
+                "Point-to-point Communication",
+                "Reduction In Time",
+                "Network Topology",
+                "Communication Activities",
+                "Mapping Algorithm",
+                "Time In Seconds",
+                "Problem Size",
+                "Count Matrix",
+                "Network Bandwidth",
+                "Communication Time",
+                "Number Of Switches",
+                "Function Calls",
+                "Message Size",
+                "Hop Count",
+                "Pair Of Processes",
+                "Communication Graph",
+                "Communication Volume",
+                "Job Scheduling",
+                "Strong Scaling",
+                "Large-sized Problems",
+                "Workflow Execution",
+                "Effective Mapping"
+            ],
+            "Author Keywords": [
+                "profiling",
+                "MPI P2P",
+                "collectives",
+                "process mapping"
+            ]
+        }
     },
     {
         "publicationNumber": "10026849",
@@ -90,7 +178,50 @@
                 "firstName": "Christian",
                 "lastName": "Bischof"
             }
-        ]
+        ],
+        "abstract": "MPI is widely used for programming large HPC clusters. MPI also includes persistent operations, which specify recurring communication patterns. The idea is that the usage of those operations can result in a performance benefit compared to the standard non-blocking communication. But in current MPI implementations, this performance benefit is not really observable. We determine the message envelope matching as one of the causes of overhead. Unfortunately, this matching can only hardly be overlapped with computation. In this work, we explore how compiler knowledge can be used to extract more performance benefit from the usage of persistent operations. We find that the compiler can do some of the required matching work for persistent MPI operations. As persistent MPI requests can be used multiple times, the compiler can, in some cases, prove that message matching is only needed for the first occurrence and can be entirely skipped for subsequent instances. In this paper, we present the required compiler analysis, as well as an implementation of a communication scheme that skips the message envelope matching and directly transfers the data via RDMA instead. This allows us to substantially reduce the communication overhead that cannot be overlapped with computation. Using the Intel IMB-ASYNC Benchmark, we can see a communication overhead reduction of up to 95 percent for larger message sizes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Codes",
+                "Conferences",
+                "Programming",
+                "Benchmark testing",
+                "Standards",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Performance Benefits",
+                "Communication Overhead",
+                "Communication Standards",
+                "Communication Scheme",
+                "Message Size",
+                "Computation Time",
+                "Local Analysis",
+                "Flow Control",
+                "Data Transfer",
+                "Communication Protocol",
+                "System Noise",
+                "Communication Partners",
+                "Receiver Side",
+                "Additional Overhead",
+                "Warm-up Period",
+                "Control Messages",
+                "Warm-up Phase",
+                "Incoming Messages",
+                "CPU Resources",
+                "Compile Time"
+            ],
+            "Author Keywords": [
+                "MPI",
+                "message passing interface",
+                "message matching",
+                "persistent MPI communication",
+                "compiler analysis",
+                "HPC"
+            ]
+        }
     },
     {
         "publicationNumber": "10026849",
@@ -119,7 +250,55 @@
                 "firstName": "Laxmikant V.",
                 "lastName": "Kale"
             }
-        ]
+        ],
+        "abstract": "Thread-based MPI runtimes, which associate private communication contexts or endpoints with each thread, rather than sharing a single context across a multithreaded process, have been proposed as an alternative to MPI's traditional multithreading models. Adaptive MPI is one such implementation, and in this work we identify and overcome shortcomings in its support for asynchronous point-to-point communication. We examine also the consequences of MPI's messaging semantics on its runtime and investigate how its design can be improved for applications that do not require the full messaging semantics. We show that the issues for AMPI reduce to similar problems first identified in the context of efficient MPI+X support. Our focus is on enhancing AMPI's support for asynchrony and concurrency while still optimizing for communication locality through a novel locality-aware message matching scheme. We compare performance with and without the relaxed messaging semantics and our associated optimizations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Context",
+                "Concurrent computing",
+                "Adaptation models",
+                "Visualization",
+                "Runtime",
+                "Semantics",
+                "Virtualization"
+            ],
+            "Index Terms": [
+                "Semantic",
+                "Multi-threaded",
+                "Private Communication",
+                "Point-to-point Communication",
+                "Data Structure",
+                "Programming Model",
+                "Current Design",
+                "Progression In Models",
+                "Hash Function",
+                "Communication Patterns",
+                "Serialized",
+                "Idle Time",
+                "Original Implementation",
+                "Critical Path",
+                "Asynchronous Communication",
+                "First-in-first-out",
+                "Strong Scaling",
+                "Paired Rank",
+                "Message Size",
+                "Context Switching",
+                "Shared Memory",
+                "Load Imbalance",
+                "Address Space",
+                "University Of Illinois",
+                "Parallelization",
+                "Flow Control",
+                "Combustion Simulations",
+                "Fine Grain"
+            ],
+            "Author Keywords": [
+                "AMPI",
+                "MPI",
+                "Communication Optimizations",
+                "Charm++"
+            ]
+        }
     },
     {
         "publicationNumber": "10026849",
@@ -135,7 +314,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026849",
@@ -151,7 +332,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026849",
@@ -167,7 +350,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026849",
@@ -183,7 +368,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026849",
@@ -199,7 +386,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10026849",
@@ -215,6 +404,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

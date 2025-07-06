@@ -38,7 +38,43 @@
                 "firstName": "Guillaume",
                 "lastName": "Houzeaux"
             }
-        ]
+        ],
+        "abstract": "Modern supercomputers allow the simulation of complex phenomena with increased accuracy. Eventually, this requires finer geometric discretizations with larger numbers of mesh elements. In this context, and extrapolating to the Exascale paradigm, meshing operations such as generation, adaptation or partition, become a critical issue within the simulation workflow. In this paper, we focus on mesh partitioning. In particular, we present some improvements carried out on an in-house parallel mesh partitioner based on the Hilbert Space-Filling Curve. Additionally, taking advantage of its performance, we present the application of the SFC-based partitioning for dynamic load balancing. This method is based on the direct monitoring of the imbalance at runtime and the subsequent re-partitioning of the mesh. The target weights for the optimized partitions are evaluated using a least-squares approximation considering all measurements from previous iterations. In this way, the final partition corresponds to the average performance of the computing devices engaged.",
+        "keywords": {
+            "Index Terms": [
+                "Load Balancing",
+                "Mesh Partition",
+                "Imbalance",
+                "Least Squares Estimation",
+                "Previous Iteration",
+                "Element Mesh",
+                "Linear Regression",
+                "Parallelization",
+                "Adaptive Algorithm",
+                "Bounding Box",
+                "Regular Grid",
+                "Airplane",
+                "System Instability",
+                "Parallel Strategy",
+                "Correction Coefficient",
+                "Balancing Process",
+                "Graph Partitioning",
+                "Coarse Grid",
+                "Partitioning Algorithm",
+                "Split Point",
+                "Dimensional Domain",
+                "Partitioning Problem",
+                "University Of Illinois"
+            ],
+            "Author Keywords": [
+                "Space-Filling Curve",
+                "SFC",
+                "Mesh partitioning",
+                "Geometric partitioning",
+                "Load Balancing",
+                "Parallel computing"
+            ]
+        }
     },
     {
         "publicationNumber": "8938201",
@@ -79,7 +115,44 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "This paper introduces a generic and flexible matrix- matrix multiplication algorithm C = A × B for state-of-the-art computing platforms. Typically, these platforms are distributed- memory machines whose nodes are equipped with several accelerators. To the best of our knowledge, SLATE [9] is the only library that provides a publicly available implementation on such platforms, and it is currently limited to problem instances where the C matrix can entirely fit in the memory of the GPU accelerators. Our algorithm relies on the classical tile-based outer-product algorithm, but enhances it with several control dependencies to increase data re-use and to optimize communication flow from/to the accelerators within each node. The algorithm is written with the PARSEC runtime system, which allows for a fast and generic implementation, while achieving close-to-peak performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Indexes",
+                "Acceleration",
+                "Prefetching",
+                "Partitioning algorithms",
+                "Runtime"
+            ],
+            "Index Terms": [
+                "Multiple Algorithms",
+                "Flexible Algorithm",
+                "General Case",
+                "User Data",
+                "Matrix Size",
+                "Flow Data",
+                "Matrix Production",
+                "Algorithm Parameters",
+                "Single Run",
+                "Load Data",
+                "Square Matrix",
+                "Problem Size",
+                "Computing Devices",
+                "GPU Memory",
+                "Device-to-device",
+                "Entire Matrix",
+                "Double Precision",
+                "Grid Nodes",
+                "Tile Size"
+            ],
+            "Author Keywords": [
+                "Linear Algebra",
+                "Accelerator architectures",
+                "Run- time environment"
+            ]
+        }
     },
     {
         "publicationNumber": "8938201",
@@ -126,7 +199,47 @@
                 "firstName": "Toshiyuki",
                 "lastName": "Imamura"
             }
-        ]
+        ],
+        "abstract": "Iterative methods for solving large linear systems are common parts of computational fluid dynamics (CFD) codes. The Preconditioned Conjugate Gradient (P-CG) method is one of the most widely used iterative methods. However, in the P-CG method, global collective communication is a crucial bottleneck especially on accelerated computing platforms. To resolve this issue, communication avoiding (CA) variants of the P-CG method are becoming increasingly important. In this paper, the P-CG and Preconditioned Chebyshev Basis CA CG (P-CBCG) solvers in the multiphase CFD code JUPITER are ported to the latest V100 GPUs. All GPU kernels are highly optimized to achieve about 90% of the roofline performance, the block Jacobi preconditioner is re-designed to extract high computing power of GPUs, and the remaining bottleneck of halo data communication is avoided by overlapping communication and computation. The overall performance of the P-CG and P-CBCG solvers is determined by the competition between the CA properties of the global collective communication and the halo data communication, indicating an importance of the inter-node interconnect bandwidth per GPU. The developed GPU solvers are accelerated up to 2x compared with the former CPU solvers on KNLs, and excellent strong scaling is achieved up to 7,680 GPUs on the Summit.",
+        "keywords": {
+            "Index Terms": [
+                "Conjugate Gradient",
+                "Multiphase Computational Fluid Dynamics",
+                "Gradient Method",
+                "Global Communication",
+                "Strong Scaling",
+                "Preconditioned Conjugate Gradient",
+                "Computational Cost",
+                "Matrix Size",
+                "Vector-based",
+                "Block Size",
+                "Core Part",
+                "Performance Gain",
+                "Square Matrix",
+                "Production Operations",
+                "Communication Cost",
+                "Poisson Equation",
+                "Good Scalability",
+                "Polynomial Basis",
+                "Refactoring",
+                "Additional Communication",
+                "Kernel Computation",
+                "Chebyshev Polynomials",
+                "Memory Bandwidth",
+                "GPU Implementation",
+                "Single Kernel",
+                "Ill-conditioned Problem",
+                "Numerical Experiments",
+                "Null Space",
+                "Maximum Eigenvalue",
+                "Cylindrical"
+            ],
+            "Author Keywords": [
+                "Communication avoiding Krylov subspace method",
+                "CFD",
+                "GPU"
+            ]
+        }
     },
     {
         "publicationNumber": "8938201",
@@ -161,7 +274,55 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "The use of low-precision computations is popular in accelerating machine learning and artificial intelligence (AI) applications. Hardware architectures, such as high-end graphics processing units (GPUs), now support native 16-bit floating-point arithmetic (i.e., half-precision). While half precision provides a natural 2×/4× speedup against the performance of single/double precisions, respectively, modern GPUs are equipped with hard- ware accelerators that further boost the FP16 performance. These accelerators, known as tensor cores (TCs), have a theoretical peak performance that is 8×/16× faster than FP32/FP64 performance, respectively. Such a high level of performance has encouraged researchers to harness the compute power of TCs outside AI applications. This paper presents a mixed-precision dense linear solver (Ax = b) for complex matrices using the GPU's TC units. Unlike similar efforts that have discussed accelerating Ax = b in real FP16 arithmetic, this paper focuses on complex FP16 precisions. The developed solution uses a “half-complex” pre- cision to accelerate the solution of Ax = b while maintaining complex FP32 precision accuracy. The proposed solver requires the development of a high-performance mixed-precision ma- trix multiplication (CGEMM-FP16) that accepts half-complex inputs, and uses the TCs' full-precision products and FP32 accumulations for the computation. We discuss two designs and their performance. Similar to the way fast GEMMs power the performance of LAPACK, the mixed-precision CGEMM- FP16 can enable the development of mixed-precision LAPACK algorithms. We illustrate this by integrating both CGEMM-FP16s into the development of mixed-precision LU factorizations of complex matrices. Finally, an iterative refinement solver is used to deliver complex FP32 accuracy using a preconditioned GMRES solver. Our experiments, conducted on V100 GPUs, show that the mixed-precision solver can be up to 2.5× faster than a full single-complex precision solver.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Libraries",
+                "Tensors",
+                "Acceleration",
+                "Graphics processing units",
+                "Computer architecture",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Half-precision",
+                "Matrix Multiplication",
+                "Machine Learning Applications",
+                "Low Precision",
+                "Artificial Intelligence Applications",
+                "Iterative Refinement",
+                "Peak Performance",
+                "Hardware Architecture",
+                "Theoretical Performance",
+                "Hardware Accelerators",
+                "Iterative Solver",
+                "LU Factorization",
+                "Final Results",
+                "Linear System",
+                "Imaginary Part",
+                "Types Of Problems",
+                "Singular Value",
+                "High-performance Computing",
+                "Application Programming Interface",
+                "Single Precision",
+                "Hybrid Design",
+                "Floating-point Operations",
+                "Oak Ridge National Laboratory",
+                "Type Of Matrix",
+                "Linear Algebra",
+                "Numerous Behaviors",
+                "Large Matrix",
+                "Numerical Stability"
+            ],
+            "Author Keywords": [
+                "Half precision",
+                "Tensor cores FP16 arithmetic",
+                "mixed-precision solvers"
+            ]
+        }
     },
     {
         "publicationNumber": "8938201",
@@ -196,7 +357,56 @@
                 "firstName": "David",
                 "lastName": "Wagner"
             }
-        ]
+        ],
+        "abstract": "Implementation of Finite Elements by NASA (ScIFEN) is a software package developed to solve complex computational materials and structures problems using the finite element method (FEM). In this paper, we describe optimization techniques to speed up the linear solver computation that occurs within the ScIFEN application. We consider GPUs from two different vendors, NVIDIA and AMD as our target platforms for optimization and highlight differences in performance and optimization techniques. The NVIDIA GPU Volta V100 is used in the Summit system deployed at Oak Ridge National Laboratory, and the new exascale system, Frontier, will be using AMD Radeon Instinct GPU. We evaluated the performance of various optimization techniques on test matrices, ranging in size from 100K to 4M, that are representative of ScIFEN applications. The linear solver computation is memory-bound on both GPUs. Our experiments show that on the NVIDIA GPU we obtained up to 79% of the theoretical peak bandwidth, while the AMD GPU achieved 59%. Overall, the NVIDIA V100 GPU outperforms the 1 AMD MI 25 GPU . We observed an overall speedup of up to 37X on an NVIDIA V100 compared to an Intel Skylake 12-core machine. The solver for a 4M degree of freedom system took under 2.5 seconds.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Sparse matrices",
+                "Optimization",
+                "Mathematical model",
+                "Finite element analysis",
+                "Linear systems",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Instinct",
+                "Structural Problems",
+                "Finite Element",
+                "Finite Element Method",
+                "Technical Performance",
+                "Linear Solver",
+                "Oak Ridge National Laboratory",
+                "Degree Of System",
+                "Good Indicator Of Performance",
+                "System Of Equations",
+                "Linear System",
+                "Sparse Matrix",
+                "Vector Matrix",
+                "Dot Product",
+                "Newton Method",
+                "System Of Linear Equations",
+                "Software Libraries",
+                "Array Size",
+                "Row Block",
+                "Iterative Solver",
+                "Single Precision",
+                "Consecutive Blocks",
+                "Nonzero Entries",
+                "Matrix-vector Product",
+                "GPU Implementation",
+                "Double Precision",
+                "Vector Operations"
+            ],
+            "Author Keywords": [
+                "Iterative Solver",
+                "Sparse Matrices",
+                "Unstructured Grid",
+                "High performance computing",
+                "Optimization",
+                "GPUs"
+            ]
+        }
     },
     {
         "publicationNumber": "8938201",
@@ -221,9 +431,9 @@
             },
             {
                 "id": 37086087437,
-                "preferredName": "Johannes H\u00f6tzer",
+                "preferredName": "Johannes Hötzer",
                 "firstName": "Johannes",
-                "lastName": "H\u00f6tzer"
+                "lastName": "Hötzer"
             },
             {
                 "id": 37087228938,
@@ -243,7 +453,56 @@
                 "firstName": "Britta",
                 "lastName": "Nestler"
             }
-        ]
+        ],
+        "abstract": "The sintering process, which turns loose powders into dense materials, is naturally found in the formation of glaciers, but is also the indispensable process to manufacture ceramic materials. The dynamically evolving microstructure, which is established during this process, largely influences the resulting material properties. To investigate this complex three- dimensional, scale-bridging evolution in realistic domain sizes, a highly optimized and parallelized multiphysics phase-field solver is developed. The solver is optimized in a holistic way, from the application level over the time integration and parallelization, down to the hardware. Optimizations include communication hiding, explicit vectorization, implicit schemes and local reduction of degrees of freedom. With this, we are able to investigate large- scale, three-dimensional domains and long integration times. We have achieved a single-core peak performance of 32.5%, scaled up to 172 032 cores on Hazel Hen, and simulated a multi-million particle system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mathematical model",
+                "Computational modeling",
+                "Microstructure",
+                "Optimization",
+                "Indexes",
+                "Adaptation models",
+                "Solids"
+            ],
+            "Index Terms": [
+                "Sintering Process",
+                "Microstructure",
+                "Parallelization",
+                "Integration Time",
+                "Domain Size",
+                "Peak Performance",
+                "Dense Material",
+                "Implicit Scheme",
+                "Overview Of Problems",
+                "Time Scale",
+                "Time Step",
+                "Length Scale",
+                "Lognormal",
+                "Conjugate Gradient",
+                "Interaction Parameters",
+                "3D Mesh",
+                "Grain Growth",
+                "Evolution Equations",
+                "Fast Transport",
+                "Floating-point Operations",
+                "Explicit Scheme",
+                "Interface Parameters",
+                "Phase-field Model",
+                "Domain Decomposition",
+                "Runtime Complexity",
+                "Spatial Index",
+                "Code Vector",
+                "Strong Scaling",
+                "Cognitive Domains"
+            ],
+            "Author Keywords": [
+                "phase-field",
+                "sintering simulation",
+                "parallel scala- bility",
+                "implicit"
+            ]
+        }
     },
     {
         "publicationNumber": "8938201",
@@ -272,7 +531,42 @@
                 "firstName": "Guillaume",
                 "lastName": "Pallez"
             }
-        ]
+        ],
+        "abstract": "In this work, we study the robustness of Speculative Scheduling to data incompleteness. Speculative scheduling has allowed to incorporate future types of applications into the design of HPC schedulers, specifically applications whose runtime is not perfectly known but can be modeled with probability distributions. Preliminary studies show the importance of spec- ulative scheduling in dealing with stochastic applications when the application runtime model is completely known. In this work we show how one can extract enough information even from incomplete behavioral data for a given HPC applications so that speculative scheduling still performs well. Specifically, we show that for synthetic runtimes who follow usual probability distributions such as truncated normal or exponential, we can extract enough data from as little as 10 previous runs, to be within 5% of the solution which has exact information. For real traces of applications, the performance with 10 data points varies with the applications (within 20% of the full-knowledge solution), but converges fast (5% with 100 previous samples). Finally a side effect of this study is to show the importance of the theoretical results obtained on continuous probability distributions for speculative scheduling. Indeed, we observe that the solutions for such distributions are more robust to incomplete data than the solutions for discrete distributions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Stochastic processes",
+                "Probability distribution",
+                "Data models",
+                "Schedules",
+                "Scheduling",
+                "Heuristic algorithms"
+            ],
+            "Index Terms": [
+                "Incomplete Data",
+                "Continuous Distribution",
+                "Discrete Distribution",
+                "Truncated Normal",
+                "Mean Square Error",
+                "Big Data",
+                "Real Applications",
+                "Continuous Model",
+                "Discrete Data",
+                "Performance In Applications",
+                "Resource Requirements",
+                "Medical Image Analysis",
+                "Statistical Interpretation",
+                "Input Data Size",
+                "Polynomial Interpolation"
+            ],
+            "Author Keywords": [
+                "HPC scheduling",
+                "stochastic applications",
+                "perfor- mance modeling",
+                "discrete and continuous estimators"
+            ]
+        }
     },
     {
         "publicationNumber": "8938201",
@@ -313,7 +607,46 @@
                 "firstName": "Masashi",
                 "lastName": "Horikoshi"
             }
-        ]
+        ],
+        "abstract": "The parallel multigrid method is expected to play an important role in large-scale scientific computing on exa-scale supercomputer systems. Previously we proposed Hierarchical Coarse Grid Aggregation (hCGA), which dramatically improved the performance of the parallel multigrid solver when the number of MPI processes was O(104) or more. Because hCGA can handle only two layers of parallel hierarchical levels, the computation overhead due to coarse grid solver may become significant when the number of MPI processes reaches O(105)- O(106) or more. In the present work, we propose AM-hCGA (Adaptive Multilevel hCGA) that can take into account multiple layers of three or more levels, and show preliminary results using the Oakforest-PACS (OFP) system by JCAHPC. Additionally, we also examine the impact of a lightweight multi-kernel operating system, called IHK/McKernel, for parallel multigrid solvers running on OFP.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Conferences",
+                "Large-scale systems"
+            ],
+            "Index Terms": [
+                "Multigrid Method",
+                "Parallel Multigrid",
+                "Coarse Grid",
+                "Computation Time",
+                "Parallelization",
+                "Sparse Matrix",
+                "Conjugate Gradient",
+                "Positive Definite Matrix",
+                "Large-scale Systems",
+                "Problem Size",
+                "Types Of Noise",
+                "Poisson Equation",
+                "Finite Volume Method",
+                "Communication Overhead",
+                "Nonzero Components",
+                "Rest Part",
+                "Job Scheduling",
+                "Relative Fluctuations",
+                "Strong Scaling",
+                "Domain Decomposition",
+                "Linux Kernel"
+            ],
+            "Author Keywords": [
+                "parallel computing",
+                "iterative solvers",
+                "multigrid",
+                "manycore",
+                "noise",
+                "light weight kernel",
+                "IHK/McKernel"
+            ]
+        }
     },
     {
         "publicationNumber": "8938201",
@@ -372,7 +705,37 @@
                 "firstName": "Mark S.",
                 "lastName": "Shephard"
             }
-        ]
+        ],
+        "abstract": "The effective execution of unstructured mesh based particle-in-cell, PIC, simulations on GPUs requires careful design and implementation choices to ensure performance while maintaining productive programmability. This paper overviews the developing PUMIPic library that employs a set of mesh centric data structures and algorithms upon which unstructured mesh PIC simulation codes can be developed. Current performance results for component tests on up to 96 GPUs of the Summit system at Oak Ridge National Laboratory are presented.",
+        "keywords": {
+            "Index Terms": [
+                "Unstructured Mesh",
+                "Data Structure",
+                "Oak Ridge National Laboratory",
+                "Uniform Distribution",
+                "Operation Time",
+                "Partial Differential Equations",
+                "Particle Position",
+                "Structure Of Particles",
+                "Domain Of Interest",
+                "Load Balancing",
+                "Element Mesh",
+                "Access Patterns",
+                "Safe Zone",
+                "Breadth-first Search",
+                "Key Operations",
+                "Back Plane",
+                "Tokamak",
+                "Particle Migration",
+                "Indexing Scheme",
+                "Mesh Vertices"
+            ],
+            "Author Keywords": [
+                "unstructured mesh",
+                "particle-in-cell",
+                "plasma physics"
+            ]
+        }
     },
     {
         "publicationNumber": "8938201",
@@ -388,7 +751,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 10th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8938201",
@@ -404,7 +769,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 10th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8938201",
@@ -420,7 +787,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 10th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8938201",
@@ -436,7 +805,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 10th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8938201",
@@ -452,7 +823,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 10th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "8938201",
@@ -468,6 +841,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 IEEE/ACM 10th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]

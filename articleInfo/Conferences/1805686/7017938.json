@@ -50,7 +50,51 @@
                 "firstName": "Courtenay T.",
                 "lastName": "Vaughan"
             }
-        ]
+        ],
+        "abstract": "Advances in node-level architecture and interconnect technology needed to reach extreme scale necessitate a reevaluation of long-standing models of computation, in particular bulk synchronous processing. The end of Dennard-scaling and subsequent increases in CPU core counts each successive generation of general purpose processor has made the ability to leverage parallelism for communication an increasingly critical aspect for future extreme-scale application performance. But the use of massive multithreading in combination with MPI is an open research area, with many proposed approaches requiring code changes that can be unfeasible for important large legacy applications already written in MPI. This paper covers the design and initial evaluation of an extension of a massive multithreading runtime system supporting dynamic parallelism to interface with MPI to handle fine-grain parallel communication and communication-computation overlap. Our initial evaluation of the approach uses the ubiquitous stencil computation, in three dimensions, with the halo exchange as the driving example that has a demonstrated tie to real code bases. The preliminary results suggest that even for a very well-studied and balanced workload and message exchange pattern, co-scheduling work and communication tasks is effective at significant levels of decomposition using up to 131,072 cores. Furthermore, we demonstrate useful communication-computation overlap when handling blocking send and receive calls, and show evidence suggesting that we can decrease the burstiness of network traffic, with a corresponding decrease in the rate of stalls (congestion) seen on the host link and network.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Message systems",
+                "Context",
+                "Parallel processing",
+                "Programming",
+                "Computational modeling",
+                "Instruction sets"
+            ],
+            "Index Terms": [
+                "Work Tasks",
+                "Communication Tasks",
+                "Decomposition Level",
+                "Burstiness",
+                "Parallelization",
+                "Number Of Workers",
+                "Region Of Domain",
+                "Programming Model",
+                "Computer Technology",
+                "Applicability Domain",
+                "Local Domain",
+                "Local Issues",
+                "Department Of Defense",
+                "Parallel Approach",
+                "Department Of Energy",
+                "Network Congestion",
+                "Level Of Parallelism",
+                "Heterogeneous Resources",
+                "High-level Model",
+                "Scheduled Events",
+                "Shared Memory",
+                "Adaptive Mesh Refinement",
+                "Task Queue",
+                "Application Code",
+                "Message Size",
+                "Development Of Applications",
+                "Effective Communication",
+                "Dimensional Surface",
+                "Task Context",
+                "Deadlock"
+            ]
+        }
     },
     {
         "publicationNumber": "7017938",
@@ -75,9 +119,9 @@
             },
             {
                 "id": 38581303800,
-                "preferredName": "Andreas Sch\u00e4fer",
+                "preferredName": "Andreas Schäfer",
                 "firstName": "Andreas",
-                "lastName": "Sch\u00e4fer"
+                "lastName": "Schäfer"
             },
             {
                 "id": 37561241000,
@@ -85,7 +129,30 @@
                 "firstName": "Rob",
                 "lastName": "Latham"
             }
-        ]
+        ],
+        "abstract": "In order to describe a structured region of memory, the routines in the MPI standard use a (count, datatype) pair. The C specification for this convention uses an int type for the count. Since C int types are nearly always 32 bits large and signed, counting more than 231 elements poses a challenge. Instead of changing the existing MPI routines, and all consumers of those routines, the MPI Forum asserts that users can build up large datatypes from smaller types. To evaluate this hypothesis and to provide a user-friendly solution to the large-count issue, we have developed BigMPI, a library on top of MPI that maps large-count MPI-like functions to MPI-3 standard features. BigMPI demonstrates a way to perform such a construction, reveals shortcomings of the MPI standard, and uncovers bugs in MPI implementations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Vectors",
+                "Standards",
+                "Libraries",
+                "Optimization",
+                "Context",
+                "Memory management",
+                "Open area test sites"
+            ],
+            "Index Terms": [
+                "Prototype",
+                "Load Data",
+                "Displacement Vector",
+                "Buffer Size",
+                "Type Of Integration",
+                "Open Reduction",
+                "System Calls",
+                "Address Space",
+                "Element Count"
+            ]
+        }
     },
     {
         "publicationNumber": "7017938",
@@ -120,7 +187,36 @@
                 "firstName": "Pavan",
                 "lastName": "Balaji"
             }
-        ]
+        ],
+        "abstract": "As resilience research in high-performance computing has matured, so too have the tools, libraries, and languages that result from it. The Message Passing Interface (MPI) Forum is considering the addition of fault tolerance to a future version of the MPI standard, and a new chapter called User-Level Failure Mitigation (ULFM) has been proposed to fill this need. However, as ULFM usage has become more widespread, many potential users are concerned about its complexity and the need to rewrite existing codes. In this paper, we present a usage model that is similar to the usage already common in existing codes but that does not require the user to restart the application (thereby incurring the costs of re-entering the batch queue, startup costs, etc.). We use a new implementation of ULFM in MPICH, a popular open source MPI implementation, and demonstrate the ULFM usage using the Monte Carlo Communication Kernel, a proxy-app developed by the Center for Exascale Simulation of Advanced Reactors. Results show that the approach used incurs a level of intrusiveness into the code similar to that of existing checkpoint/restart models, but with less overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Resilience",
+                "Checkpointing",
+                "Benchmark testing",
+                "Runtime",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Recovery Model",
+                "Failure Mitigation",
+                "High-performance Computing",
+                "Fault-tolerant",
+                "New Chapter",
+                "Message Passing Interface",
+                "Recovery Time",
+                "Development Of Applications",
+                "Group Processes",
+                "Particle Position",
+                "Failure Process",
+                "Argonne National Laboratory",
+                "Replacement Process",
+                "Remote Processing",
+                "List Of Processes"
+            ]
+        }
     },
     {
         "publicationNumber": "7017938",
@@ -136,7 +232,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Exascale MPI at Supercomputing Conference",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright for this conference publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7017938",
@@ -152,7 +250,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Exascale MPI at Supercomputing Conference",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: exascale MPI (message passing interface); and supercomputing.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7017938",
@@ -168,7 +268,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Exascale MPI at Supercomputing Conference",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7017938",
@@ -184,6 +286,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Exascale MPI at Supercomputing Conference",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     }
 ]

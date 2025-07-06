@@ -38,7 +38,41 @@
                 "firstName": "Vincent",
                 "lastName": "Heuveline"
             }
-        ]
+        ],
+        "abstract": "SYCL is an open-standard, parallel programming model for programming heterogeneous devices from Khronos. It allows single-source programming of diverse attached devices in a cross-platform manner in modern C&#x002B;&#x002B;. SYCL provides different layers of parallel abstractions, including Same Instruction Multiple Thread (SIMT) kernels, data-parallel loop concurrency and hierarchical parallelism. We discuss Scoped Parallelism as an extension to the existing Hierarchical Parallelism in SYCL, and highlight the advantages and disadvantages of these models from the perspective of the programmer and an implementer of SYCL. In this paper, we compare writing benchmark programs using SIMT kernel, hierarchical parallelism and scoped parallelism paradigms, and present results running on a high-performance CPU and GPU.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Concurrent computing",
+                "Parallel programming",
+                "Exascale computing",
+                "Conferences",
+                "Graphics processing units",
+                "C++ languages",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Hierarchical Parallelism",
+                "Parallelization",
+                "Programming Model",
+                "Parallel Model",
+                "Parallel Data",
+                "Disadvantages Of Models",
+                "Semantic",
+                "Working Group",
+                "Amount Of Work",
+                "Matrix Multiplication",
+                "Efficient Implementation",
+                "Local Memory",
+                "Memory Space",
+                "Use Of Constructs",
+                "Model Execution",
+                "Level Of Parallelism",
+                "Memory Allocation",
+                "Degree Of Parallelism",
+                "Compile Time"
+            ]
+        }
     },
     {
         "publicationNumber": "9654232",
@@ -79,7 +113,56 @@
                 "firstName": "Dirk",
                 "lastName": "Pfl&#x00FC;ger"
             }
-        ]
+        ],
+        "abstract": "The numerical solution of high-dimensional PDE problems is essential for many research questions, such as understanding relativistic astrophysics, quantum physics, or hot fusion plasmas. At the same time, it is haunted by the curse of dimensionality, rendering finely resolved simulations infeasible even on modern architectures. The Sparse Grid Combination Technique helps to break the curse of dimensionality for high-dimensional PDE problems to some extent. But even then, simulations are restricted by the size of HPC systems. A new implementation based on the open-source code DisCoTec allows to distribute existing solvers even across compute systems: The widely distributed combination technique enables simulations at scales that would otherwise be intractable.This paper introduces the extended algorithm and showcases a proof of concept for the remote communication set-up. The scaling properties for the single-system and two-system cases are presented, and the numerical correctness of the implementation is validated.The widely distributed combination technique is useful in cases where the memory and/or compute resources are not sufficient for a particular problem to fit on one single available system, but multiple systems are able to accommodate it.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Exascale computing",
+                "Computational modeling",
+                "Conferences",
+                "Computer architecture",
+                "Parallel processing",
+                "Rendering (computer graphics)"
+            ],
+            "Index Terms": [
+                "Computer System",
+                "Combination Of Techniques",
+                "Proof Of Concept",
+                "Partial Differential Equations",
+                "Scaling Properties",
+                "Curse Of Dimensionality",
+                "Modern Architecture",
+                "Remote Communication",
+                "Sparse Techniques",
+                "Numerical Solution Of Problem",
+                "Sparse Grid",
+                "Degrees Of Freedom",
+                "Time And Space",
+                "Time Step",
+                "Running Time",
+                "Management Process",
+                "Regular Grid",
+                "Advection",
+                "Updated Data",
+                "Sparse Representation",
+                "Single Grid",
+                "Domain Decomposition",
+                "Number Of Grids",
+                "High-order Scheme",
+                "Unit Cube",
+                "Local Machine",
+                "Load Imbalance",
+                "CFL Number",
+                "Strong Scaling",
+                "Load Balancing"
+            ],
+            "Author Keywords": [
+                "sparse grid combination technique",
+                "high dimensional simulation",
+                "parallelism"
+            ]
+        }
     },
     {
         "publicationNumber": "9654232",
@@ -114,7 +197,52 @@
                 "firstName": "Olga",
                 "lastName": "Pearce"
             }
-        ]
+        ],
+        "abstract": "The current proliferation of GPU-based HPC systems necessitates a method for assessing the performance of simulations on heterogeneous machines. The addition of GPUs to a system adds multiple hierarchical levels of parallelism to the node architecture. In this paper, we demonstrate that the traditional load imbalance metric is insufficient for capturing the load imbalance on GPU-based machines, since it treats the GPU as a monolithic entity and ignores the internal parallelism. We propose a new hierarchical metric that improves the correlation of measured performance and application workload by up to 20.61%. Using our metric for determining application load instead of the traditional metric as the input for the load balancing algorithm reduces the residual load imbalance by up to 4&#x00D7; in our application.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Correlation",
+                "Exascale computing",
+                "Conferences",
+                "Graphics processing units",
+                "Parallel processing",
+                "Load management"
+            ],
+            "Index Terms": [
+                "Load Imbalance",
+                "High-performance Computing",
+                "Load Balancing",
+                "Traditional Metrics",
+                "Level Of Parallelism",
+                "High-performance Computing Systems",
+                "Molecular Dynamics",
+                "Molecular Dynamics Simulations",
+                "Percentage Of Time",
+                "Amount Of Work",
+                "Dynamic Balance",
+                "Waiting Time",
+                "Work Unit",
+                "Small Problems",
+                "Critical Path",
+                "Execution Efficiency",
+                "Imbalance In Levels",
+                "Large Amount Of Work",
+                "Perfect Balance",
+                "Simulated Space",
+                "Efficiency Metrics",
+                "Atom Count",
+                "Bin Packing",
+                "Current Imbalance",
+                "System Hierarchy"
+            ],
+            "Author Keywords": [
+                "GPU",
+                "load balance",
+                "distributed computing",
+                "performance analysis tools"
+            ]
+        }
     },
     {
         "publicationNumber": "9654232",
@@ -155,7 +283,57 @@
                 "firstName": "Matthias S.",
                 "lastName": "M&#x00FC;ller"
             }
-        ]
+        ],
+        "abstract": "HPC systems are becoming rapidly larger, heterogeneous, and generally more complex to fulfill the growing demand for computational resources in science and engineering. HPC system and architecture-specific optimizations are necessary to leverage the full potential of such systems. One approach is to develop a high-level, structured source code by leveraging parallel patterns. Our previous work proposed a framework to optimize pattern-based codes for a target HPC system automatically. Global optimizations can be carried out by the framework, optimizing the dataflow throughout the parallel algorithm and efficiently scheduling the application on the available resources.We propose a compact and fast intermediate representation (IR) of parallel pattern-based applications to enable such global optimizations. A tree-based hierarchical abstraction called abstract pattern tree (APT) is introduced to this end. It is augmented with scheduling information provided by the optimization framework. The resulting IR is implemented in a prototype compiler and evaluated on the Rodinia benchmark suite. 17 out of the 19 benchmarks could be represented by a small set of parallel patterns and statically analyzed by the prototype compiler. The original source code could be highly condensed by using parallel patterns, which increases the development productivity. The compiler prototype implementation showed a feasible compilation time below one second for most benchmarks. The proposed PPIR was compared to LLVM IR.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Codes",
+                "Exascale computing",
+                "Conferences",
+                "Prototypes",
+                "Benchmark testing",
+                "Scheduling"
+            ],
+            "Index Terms": [
+                "Parallel Patterns",
+                "Intermediate Representation",
+                "Benchmark",
+                "Source Code",
+                "Global Optimization",
+                "Parallel Algorithm",
+                "Prototype Implementation",
+                "Rodinia",
+                "High-performance Computing Systems",
+                "Input Parameters",
+                "Parallelization",
+                "Data Elements",
+                "Tree Structure",
+                "Dynamic Programming",
+                "Memory Usage",
+                "Index Range",
+                "Communication Patterns",
+                "Size Pattern",
+                "Memory Consumption",
+                "Trace Data",
+                "Access Patterns",
+                "Domain-specific Languages",
+                "Code Generation",
+                "Hardware Architecture",
+                "Bit-shift",
+                "Optimal Code",
+                "Series Of Patterns",
+                "Function Calls",
+                "Language Patterns",
+                "Machine Code"
+            ],
+            "Author Keywords": [
+                "Parallel Patterns",
+                "Intermediate Representation",
+                "HPC",
+                "Global Optimization"
+            ]
+        }
     },
     {
         "publicationNumber": "9654232",
@@ -171,7 +349,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9654232",
@@ -187,7 +367,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9654232",
@@ -203,7 +385,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9654232",
@@ -219,7 +403,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9654232",
@@ -235,7 +421,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9654232",
@@ -251,6 +439,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     }
 ]

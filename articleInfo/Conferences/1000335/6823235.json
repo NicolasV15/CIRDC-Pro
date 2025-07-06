@@ -104,7 +104,49 @@
                 "firstName": "Bizhu",
                 "lastName": "Qiu"
             }
-        ]
+        ],
+        "abstract": "As architecture, systems, and data management communities pay greater attention to innovative big data systems and architecture, the pressure of benchmarking and evaluating these systems rises. However, the complexity, diversity, frequently changed workloads, and rapid evolution of big data systems raise great challenges in big data benchmarking. Considering the broad use of big data systems, for the sake of fairness, big data benchmarks must include diversity of data and workloads, which is the prerequisite for evaluating big data systems and architecture. Most of the state-of-the-art big data benchmarking efforts target evaluating specific types of applications or system software stacks, and hence they are not qualified for serving the purposes mentioned above. This paper presents our joint research efforts on this issue with several industrial partners. Our big data benchmark suite-BigDataBench not only covers broad application scenarios, but also includes diverse and representative data sets. Currently, we choose 19 big data benchmarks from dimensions of application scenarios, operations/ algorithms, data types, data sources, software stacks, and application types, and they are comprehensive for fairly measuring and evaluating big data systems and architecture. BigDataBench is publicly available from the project home page http://prof.ict.ac.cn/BigDataBench. Also, we comprehensively characterize 19 big data workloads included in BigDataBench with varying data inputs. On a typical state-of-practice processor, Intel Xeon E5645, we have the following observations: First, in comparison with the traditional benchmarks: including PARSEC, HPCC, and SPECCPU, big data applications have very low operation intensity, which measures the ratio of the total number of instructions divided by the total byte number of memory accesses; Second, the volume of data input has non-negligible impact on micro-architecture characteristics, which may impose challenges for simulation-based big data architecture research; Last but not least, corroborating the observations in CloudSuite and DCBench (which use smaller data inputs), we find that the numbers of L1 instruction cache (L1I) misses per 1000 instructions (in short, MPKI) of the big data applications are higher than in the traditional benchmarks; also, we find that L3 caches are effective for the big data applications, corroborating the observation in DCBench.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Computer architecture",
+                "Social network services",
+                "System software",
+                "Search engines"
+            ],
+            "Index Terms": [
+                "Big Data",
+                "Internet Service",
+                "Benchmark Suite",
+                "Data Sources",
+                "Small Data",
+                "Types Of Applications",
+                "Software Applications",
+                "Industry Partners",
+                "Big Data Applications",
+                "Architecture Research",
+                "Software Stack",
+                "L2 Cache",
+                "Non-negligible Impact",
+                "Stacking Type",
+                "Social Networks",
+                "Search Engine",
+                "Volume Of Data",
+                "Data Generation",
+                "Small Datasets",
+                "Real-world Data",
+                "Different Types Of Applications",
+                "Text Data",
+                "Graph Data",
+                "Applicability Domain",
+                "Real-world Datasets",
+                "Input Data Size",
+                "Small Input",
+                "MapReduce",
+                "Unstructured Data",
+                "Benchmark Test"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -163,7 +205,42 @@
                 "firstName": "Onur",
                 "lastName": "Mutlu"
             }
-        ]
+        ],
+        "abstract": "Modern DRAM cells are periodically refreshed to prevent data loss due to leakage. Commodity DDR (double data rate) DRAM refreshes cells at the rank level. This degrades performance significantly because it prevents an entire DRAM rank from serving memory requests while being refreshed. DRAM designed for mobile platforms, LPDDR (low power DDR) DRAM, supports an enhanced mode, called per-bank refresh, that refreshes cells at the bank level. This enables a bank to be accessed while another in the same rank is being refreshed, alleviating part of the negative performance impact of refreshes. Unfortunately, there are two shortcomings of per-bank refresh employed in today's systems. First, we observe that the perbank refresh scheduling scheme does not exploit the full potential of overlapping refreshes with accesses across banks because it restricts the banks to be refreshed in a sequential round-robin order. Second, accesses to a bank that is being refreshed have to wait. To mitigate the negative performance impact of DRAM refresh, we propose two complementary mechanisms, DARP (Dynamic Access Refresh Parallelization) and SARP (Subarray Access Refresh Parallelization). The goal is to address the drawbacks of per-bank refresh by building more efficient techniques to parallelize refreshes and accesses within DRAM. First, instead of issuing per-bank refreshes in a round-robin order, as it is done today, DARP issues per-bank refreshes to idle banks in an out-of-order manner. Furthermore, DARP proactively schedules refreshes during intervals when a batch of writes are draining to DRAM. Second, SARP exploits the existence of mostly-independent subarrays within a bank. With minor modifications to DRAM organization, it allows a bank to serve memory accesses to an idle subarray while another subarray is being refreshed. Extensive evaluations on a wide variety of workloads and systems show that our mechanisms improve system performance (and energy efficiency) compared to three state-of-the-art refresh policies and the performance benefit increases as DRAM density increases.",
+        "keywords": {
+            "IEEE Keywords": [
+                "DRAM chips",
+                "Out of order",
+                "System performance",
+                "Standards",
+                "Schedules",
+                "Organizations"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "System Performance",
+                "Increase In Density",
+                "Performance Benefits",
+                "Improve System Performance",
+                "Wide Variety Of Systems",
+                "Chromatography",
+                "Electric Charge",
+                "Performance Degradation",
+                "Average Performance",
+                "Performance Gain",
+                "Advantage Of The Fact",
+                "Memory Control",
+                "Serialized",
+                "Rows Of Cells",
+                "Simulation Methodology",
+                "Written Back",
+                "Strict Order",
+                "System Performance Degradation",
+                "Sense Amplifier",
+                "Banks In Order",
+                "Power Overhead"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -222,7 +299,38 @@
                 "firstName": "Soojung",
                 "lastName": "Ryu"
             }
-        ]
+        ],
+        "abstract": "High performance in GPGPU workloads is obtained by maximizing parallelism and fully utilizing the available resources. The thousands of threads are assigned to each core in units of CTA (Cooperative Thread Arrays) or thread blocks - with each thread block consisting of multiple warps or wavefronts. The scheduling of the threads can have significant impact on overall performance. In this work, explore alternative thread block or CTA scheduling; in particular, we exploit the interaction between the thread block scheduler and the warp scheduler to improve performance. We explore two aspects of thread block scheduling - 1) LCS (lazy CTA scheduling) which restricts the maximum number of thread blocks allocated to each core, and 2) BCS (block CTA scheduling) where consecutive thread blocks are assigned to the same core. For LCS, we leverage a greedy warp scheduler to help determine the optimal number of thread blocks by only measuring the number of instructions issued while for BCS, we propose an alternative warp scheduler that is aware of the “block” of CTAs allocated to a core. With LCS and the observation that maximum number of CTAs does not necessary maximize performance, we also propose mixed concurrent kernel execution that enables multiple kernels to be allocated to the same core to maximize resource utilization and improve overall performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Scheduling",
+                "Kernel",
+                "Resource management",
+                "Hardware",
+                "Graphics processing units",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "Resource Utilization",
+                "Alternative Schedules",
+                "Thread Block",
+                "Wavefront",
+                "Multiple Kernel",
+                "Performance Degradation",
+                "Increase In Performance",
+                "Memory Control",
+                "Slight Degradation",
+                "Dynamic Scheduling",
+                "Round Robin",
+                "Improve Resource Utilization",
+                "Monitoring Phase",
+                "Resource Contention",
+                "L2 Cache",
+                "Cache Misses",
+                "NVIDIA GPU"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -257,7 +365,46 @@
                 "firstName": "Margaret",
                 "lastName": "Martonosi"
             }
-        ]
+        ],
+        "abstract": "Massively parallel, throughput-oriented systems such as graphics processing units (GPUs) offer high performance for a broad range of programs. They are, however, complex to program, especially because of their intricate memory hierarchies with multiple address spaces. In response, modern GPUs have widely adopted caches, hoping to providing smoother reductions in memory access traffic and latency. Unfortunately, GPU caches often have mixed or unpredictable performance impact due to cache contention that results from the high thread counts in GPUs. We propose the memory request prioritization buffer (MRPB) to ease GPU programming and improve GPU performance. This hardware structure improves caching efficiency of massively parallel workloads by applying two prioritization methods-request reordering and cache bypassing-to memory requests before they access a cache. MRPB then releases requests into the cache in a more cache-friendly order. The result is drastically reduced cache contention and improved use of the limited per-thread cache capacity. For a simulated 16KB L1 cache, MRPB improves the average performance of the entire PolyBench and Rodinia suites by 2.65× and 1.27× respectively, outperforming a state-of-the-art GPU cache management technique.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Instruction sets",
+                "Hardware",
+                "Throughput",
+                "Pipelines",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Memory Requests",
+                "Graphics Processing Unit",
+                "Content Caching",
+                "Rodinia",
+                "L2 Cache",
+                "Hardware Structure",
+                "Per Cycle",
+                "Final Design",
+                "Finite Length",
+                "Caching",
+                "Buffer Size",
+                "Access Patterns",
+                "System Throughput",
+                "Queue Length",
+                "Prior Section",
+                "Data Cache",
+                "Pipeline Stages",
+                "Memory Address",
+                "Shared Memory",
+                "Cache Misses",
+                "Cache Hit",
+                "Block Identification",
+                "Graphics Processing Unit Memory",
+                "Baseline Configuration",
+                "Simple Hardware",
+                "Memory Stage"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -298,7 +445,36 @@
                 "firstName": "Gabriel H.",
                 "lastName": "Loh"
             }
-        ]
+        ],
+        "abstract": "The steadily increasing sizes of main memory capacities require corresponding increases in the processor's translation lookaside buffer (TLB) resources to avoid performance bottlenecks. Large operating system page sizes can mitigate the bottleneck with a smaller TLB, but most OSs and applications do not fully utilize the large-page support in current hardware. Recent work has shown that, while not guaranteed, some virtual-to-physical page mappings exhibit “contiguous” spatial locality in which consecutive virtual pages map to consecutive physical pages. Such locality provides opportunities to coalesce “adjacent” TLB entries for increased reach. We observe that beyond simple adjacent-entry coalescing, many more translations exhibit “clustered” spatial locality in which a group or cluster of nearby virtual pages map to a similarly clustered set of physical pages. In this work, we provide a detailed characterization of the spatial locality among the virtual-to-physical translations. Based on this characterization, we present a multi-granular TLB organization that significantly increases its effective reach and reduces miss rates substantially while requiring no additional OS support. Our evaluation shows that the multi-granular design outperforms conventional TLBs and the recently proposed coalesced TLBs technique.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Virtual private networks",
+                "Hardware",
+                "Organizations",
+                "Benchmark testing",
+                "Prefetching",
+                "Operating systems"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "System Configuration",
+                "Past Work",
+                "Unique Value",
+                "Memory System",
+                "Least Significant Bit",
+                "Most Significant Bit",
+                "Single Entry",
+                "Number Of Interpretations",
+                "Data Cache",
+                "Physical Address",
+                "Additional Bits",
+                "Virtual Memory",
+                "Simple Hardware",
+                "Hardware Changes",
+                "Replacement Policy"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -333,7 +509,44 @@
                 "firstName": "David A.",
                 "lastName": "Wood"
             }
-        ]
+        ],
+        "abstract": "Efficient memory sharing between CPU and GPU threads can greatly expand the effective set of GPGPU workloads. For increased programmability, this memory should be uniformly virtualized, necessitating compatible address translation support for GPU memory references. However, even a modest GPU might need 100s of translations per cycle (6 CUs * 64 lanes/CU) with memory access patterns designed for throughput more than locality. To drive GPU MMU design, we examine GPU memory reference behavior with the Rodinia benchmarks and a database sort to find: (1) the coalescer and scratchpad memory are effective TLB bandwidth filters (reducing the translation rate by 6.8x on average), (2) TLB misses occur in bursts (60 concurrently on average), and (3) postcoalescer TLBs have high miss rates (29% average). We show how a judicious combination of extant CPU MMU ideas satisfies GPU MMU demands for 4 KB pages with minimal overheads (an average of less than 2% over ideal address translation). This proof-of-concept design uses per-compute unit TLBs, a shared highly-threaded page table walker, and a shared page walk cache.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Memory management",
+                "Arrays",
+                "Resource management",
+                "Kernel",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Address Translation",
+                "Benchmark",
+                "Per Cycle",
+                "Computing Units",
+                "Graphics Processing Unit Memory",
+                "Operating System",
+                "Key Pathways",
+                "Multi-core",
+                "Programming Model",
+                "Virtual World",
+                "Work Settings",
+                "Energy Reduction",
+                "Major Faults",
+                "Multi-threaded",
+                "Memory Operations",
+                "Data Cache",
+                "Memory Allocation",
+                "Left Bar",
+                "Shared Memory",
+                "Virtual Memory",
+                "L2 Cache",
+                "Address Space",
+                "Virtual Support"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -358,9 +571,9 @@
             },
             {
                 "id": 38485695000,
-                "preferredName": "Daniel A. Jim\u00e9nez",
+                "preferredName": "Daniel A. Jiménez",
                 "firstName": "Daniel A.",
-                "lastName": "Jim\u00e9nez"
+                "lastName": "Jiménez"
             },
             {
                 "id": 37536480900,
@@ -380,7 +593,39 @@
                 "firstName": "Yuan",
                 "lastName": "Xie"
             }
-        ]
+        ],
+        "abstract": "Emerging Non-Volatile Memories (NVM) such as Spin-Torque Transfer RAM (STT-RAM) and Resistive RAM (RRAM) have been explored as potential alternatives for traditional SRAM-based Last-Level-Caches (LLCs) due to the benefits of higher density and lower leakage power. However, NVM technologies have long latency and high energy overhead associated with the write operations. Consequently, a hybrid STT-RAM and SRAM based LLC architecture has been proposed in the hope of exploiting high density and low leakage power of STT-RAM and low write overhead of SRAM. Such a hybrid cache design relies on an intelligent block placement policy that makes good use of the characteristics of both STT-RAM and SRAM technology.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Prefetching",
+                "Nonvolatile memory",
+                "Power demand",
+                "Phase change random access memory",
+                "Pattern analysis",
+                "Hybrid power systems"
+            ],
+            "Index Terms": [
+                "Migration Policy",
+                "Hybrid Cache",
+                "Power Consumption",
+                "Non-volatile Memory",
+                "Access Patterns",
+                "Resistive Random Access Memory",
+                "False Positive Rate",
+                "Set Of Lines",
+                "Low Overhead",
+                "Dynamic Power",
+                "Use Of Capacity",
+                "Written Back",
+                "Memory Technologies",
+                "Frequent Migration",
+                "Access Latency",
+                "Counter Value",
+                "Cache Misses",
+                "Power Overhead",
+                "Portion Of Line"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -451,7 +696,38 @@
                 "firstName": "Rajeev",
                 "lastName": "Balasubramonian"
             }
-        ]
+        ],
+        "abstract": "Memory latency is a major factor in limiting CPU performance, and prefetching is a well-known method for hiding memory latency. Overly aggressive prefetching can waste scarce resources such as memory bandwidth and cache capacity, limiting or even hurting performance. It is therefore important to employ prefetching mechanisms that use these resources prudently, while still prefetching required data in a timely manner. In this work, we propose a new mechanism to determine at run-time the appropriate prefetching mechanism for the currently executing program, called Sandbox Prefetching. Sandbox Prefetching evaluates simple, aggressive offset prefetchers at run-time by adding the prefetch address to a Bloom filter, rather than actually fetching the data into the cache. Subsequent cache accesses are tested against the contents of the Bloom filter to see if the aggressive prefetcher under evaluation could have accurately prefetched the data, while simultaneously testing for the existence of prefetchable streams. Real prefetches are performed when the accuracy of evaluated prefetchers exceeds a threshold. This method combines the ideas of global pattern confirmation and immediate prefetching action to achieve high performance. Sandbox Prefetching improves performance across the tested workloads by 47.6% compared to not using any prefetching, and by 18.7% compared to the Feedback Directed Prefetching technique. Performance is also improved by 1.4% compared to the Access Map Pattern Matching Prefetcher, while incurring considerably less logic and storage overheads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Prefetching",
+                "Accuracy",
+                "Radiation detectors",
+                "Bandwidth",
+                "Pattern matching",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "Pattern Matching",
+                "Memory Bandwidth",
+                "Bloom Filter",
+                "Long Memory",
+                "Accuracy Scores",
+                "Highest Performance",
+                "Evaluation Period",
+                "Evaluation Of Candidates",
+                "Access Patterns",
+                "Additional Confirmation",
+                "Test Configuration",
+                "Single Stream",
+                "Current Address",
+                "Memory Regions",
+                "Cache Size",
+                "L2 Cache",
+                "Cache Misses",
+                "Bandwidth Usage"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -492,7 +768,45 @@
                 "firstName": "Henri",
                 "lastName": "Bal"
             }
-        ]
+        ],
+        "abstract": "As modern GPUs rely partly on their on-chip memories to counter the imminent off-chip memory wall, the efficient use of their caches has become important for performance and energy. However, optimising cache locality system-atically requires insight into and prediction of cache behaviour. On sequential processors, stack distance or reuse distance theory is a well-known means to model cache behaviour. However, it is not straightforward to apply this theory to GPUs, mainly because of the parallel execution model and fine-grained multi-threading. This work extends reuse distance to GPUs by modelling: 1) the GPU's hierarchy of threads, warps, threadblocks, and sets of active threads, 2) conditional and non-uniform latencies, 3) cache associativity, 4) miss-status holding-registers, and 5) warp divergence. We implement the model in C++ and extend the Ocelot GPU emulator to extract lists of memory addresses. We compare our model with measured cache miss rates for the Parboil and PolyBench/GPU benchmark suites, showing a mean absolute error of 6% and 8% for two cache configurations. We show that our model is faster and even more accurate compared to the GPGPU-Sim simulator.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Graphics processing units",
+                "System-on-chip",
+                "Kernel",
+                "Computer architecture",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Caching Model",
+                "Reuse Distance",
+                "Benchmark",
+                "Divergence",
+                "Model Execution",
+                "On-chip Memory",
+                "Memory Address",
+                "Benchmark Suite",
+                "Cache Misses",
+                "Off-chip Memory",
+                "Memory Wall",
+                "Use Of Models",
+                "Hash Function",
+                "Single Thread",
+                "Single Entry",
+                "Half-normal",
+                "Data Cache",
+                "First-in-first-out",
+                "Model Of Latency",
+                "L2 Cache",
+                "Cache Hit",
+                "Replacement Policy",
+                "Cache Size",
+                "Binary Index"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -527,7 +841,44 @@
                 "firstName": "Kiyoung",
                 "lastName": "Choi"
             }
-        ]
+        ],
+        "abstract": "Spin-Transfer Torque RAM (STT-RAM) has been considered as a promising candidate for on-chip last-level caches, replacing SRAM for better energy efficiency, smaller die footprint, and scalability. However, it also introduces several new challenges into last-level cache design that need to be overcome for feasible deployment of STT-RAM caches. Among other things, mitigating the impact of slow and energy-hungry write operations is of the utmost importance. In this paper, we propose a new mechanism to reduce write activities of STT-RAM last-level caches. The key observation is that a significant amount of data written to last-level caches is not actually re-referenced again during the lifetime of the corresponding cache blocks. Such write operations, which we call dead writes, can bypass the cache without incurring extra misses by definition. Based on this, we propose Dead Write Prediction Assisted STT-RAM Cache Architecture (DASCA), which predicts and bypasses dead writes for write energy reduction. For this purpose, we first propose a novel classification of dead writes, which is composed of dead-on-arrival fills, dead-value fills, and closing writes, as a theoretical model for redundant write elimination. On top of that, we present a dead write predictor based on a state-of-the-art dead block predictor. Evaluations show that our architecture achieves an energy reduction of 68% (62%) in last-level caches and an additional energy reduction of 10% (16%) in main memory and even improves system performance by 6% (14%) on average compared to the STT-RAM baseline in a single-core (quad-core) system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Energy consumption",
+                "Magnetic tunneling",
+                "Computer architecture",
+                "System-on-chip",
+                "Radiation detectors",
+                "Scalability"
+            ],
+            "Index Terms": [
+                "Cache Architecture",
+                "Energy Reduction",
+                "Data Cache",
+                "Benchmark",
+                "Energy Consumption",
+                "Total Energy Consumption",
+                "Memory Consumption",
+                "Small Cell Sizes",
+                "Non-volatile Memory",
+                "Typical Signature",
+                "Access Patterns",
+                "Dynamic Energy",
+                "Selection Policy",
+                "Block A",
+                "Policy Update",
+                "Written Back",
+                "Read Operation",
+                "Memory Reduction",
+                "Memory Technologies",
+                "L2 Cache",
+                "Cache Misses",
+                "Replacement Policy",
+                "Extra Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -568,7 +919,47 @@
                 "firstName": "Al",
                 "lastName": "Davis"
             }
-        ]
+        ],
+        "abstract": "Memory compression has been proposed and deployed in the past to grow the capacity of a memory system and reduce page fault rates. Compression also has secondary benefits: it can reduce energy and bandwidth demands. However, most prior mechanisms have been designed to focus on the capacity metric and few prior works have attempted to explicitly reduce energy or bandwidth. Further, mechanisms that focus on the capacity metric also require complex logic to locate the requested data in memory. In this paper, we design a highly simple compressed memory architecture that does not target the capacity metric. Instead, it focuses on complexity, energy, bandwidth, and reliability. It relies on rank subsetting and a careful placement of compressed data and metadata to achieve these benefits. Further, the space made available via compression is used to boost other metrics - the space can be used to implement stronger error correction codes or energy-efficient data encodings. The best performing MemZip configuration yields a 45% performance improvement and 57% memory energy reduction, compared to an uncompressed non-sub-ranked baseline. Another energy-optimized configuration yields a 29.8% performance improvement and a 79% memory energy reduction, relative to the same baseline.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Bandwidth",
+                "DRAM chips",
+                "Encoding",
+                "Memory management",
+                "Reliability",
+                "Delays"
+            ],
+            "Index Terms": [
+                "Memory Compression",
+                "Source Code",
+                "Memory System",
+                "Uncompressed",
+                "Memory Data",
+                "Secondary Benefits",
+                "Bandwidth Demand",
+                "Data Transfer",
+                "Detailed Simulation",
+                "Transfer Time",
+                "Memory Control",
+                "Common Case",
+                "Masked Images",
+                "Critical Path",
+                "Compression Algorithm",
+                "Compressed Format",
+                "Compression Scheme",
+                "Entire Line",
+                "Bandwidth Efficiency",
+                "Physical Memory",
+                "Data Bus",
+                "End Of Row",
+                "Extra Bits",
+                "Cache Hit",
+                "Cache Misses",
+                "Benchmark Suite",
+                "Memory Bandwidth"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -603,7 +994,51 @@
                 "firstName": "G. Edward",
                 "lastName": "Suh"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a new memory controller design that enables secure sharing of main memory among mutually mistrusting parties by eliminating memory timing channels. This study demonstrates that shared memory controllers are vulnerable to both side channel and covert channel attacks that exploit memory interference as timing channels. To address this vulnerability, we identify the sources of interference in a conventional memory controller design, and propose a protection scheme to eliminate the interference across security domains through two main changes: (i) a per security domain based queueing structure, and (ii) static allocation of time slots in the scheduling algorithm. Multi-programmed workloads comprised of SPEC2006 benchmarks were used to evaluate the protection scheme. The results show that the proposed scheme completely eliminates the timing channels in the shared memory with small hardware and performance overheads.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Abstracts",
+                "Software",
+                "Virtual machining",
+                "Timing",
+                "Security",
+                "Tin"
+            ],
+            "Index Terms": [
+                "Memory Control",
+                "Shared Memory",
+                "Protection Scheme",
+                "Side-channel",
+                "Scheduling Algorithm",
+                "Interference Sources",
+                "Proactive Interference",
+                "Security Domain",
+                "Performance Overhead",
+                "Conventional Memory",
+                "Cloud Computing",
+                "Activation Domain",
+                "Arbitration",
+                "Number Of Domains",
+                "Dead Time",
+                "Secret Key",
+                "Virtual Machines",
+                "Open Policy",
+                "Software Module",
+                "Similar Logic",
+                "L2 Cache",
+                "Time Of Request",
+                "Memory Bandwidth",
+                "Network-on-chip",
+                "Hamming Weight",
+                "Sense Amplifier",
+                "Multiple Requests",
+                "Amazon EC2",
+                "Modulo Operation",
+                "Types Of Interference"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -656,7 +1091,51 @@
                 "firstName": "Srinivas",
                 "lastName": "Devadas"
             }
-        ]
+        ],
+        "abstract": "Oblivious RAM (ORAM) is an established cryptographic technique to hide a program's address pattern to an untrusted storage system. More recently, ORAM schemes have been proposed to replace conventional memory controllers in secure processor settings to protect against information leakage in external memory and the processor I/O bus.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cryptography",
+                "Random access memory",
+                "Program processors",
+                "System-on-chip",
+                "Monitoring",
+                "Timing",
+                "Abstracts"
+            ],
+            "Index Terms": [
+                "Information Leakage",
+                "Oblivious RAM",
+                "Dynamic Strategy",
+                "Access Patterns",
+                "External Memory",
+                "Performance Overhead",
+                "Cache Misses",
+                "Power Overhead",
+                "Static Scheme",
+                "Power Consumption",
+                "User Data",
+                "User Input",
+                "Energy Waste",
+                "Small Constant",
+                "Public Key",
+                "Symmetric Encryption",
+                "Program Execution",
+                "Malware",
+                "Terminal Time",
+                "Physical Attacks",
+                "Number Of Traces",
+                "Session Key",
+                "Data Cache",
+                "Replay Attacks",
+                "End Of Epoch",
+                "Threat Model",
+                "Epoch Length",
+                "Time Warping",
+                "Access Latency",
+                "User Privacy"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -685,7 +1164,51 @@
                 "firstName": "Mahmut T.",
                 "lastName": "Kandemir"
             }
-        ]
+        ],
+        "abstract": "Resource utilization is one of the emerging problems in many-chip SSDs. In this paper, we propose Sprinkler, a novel device-level SSD controller, which targets maximizing resource utilization and achieving high performance without additional NAND flash chips. Specifically, Sprinkler relaxes parallelism dependency by scheduling I/O requests based on internal resource layout rather than the order imposed by the device-level queue. In addition, Sprinkler improves flash-level parallelism and reduces the number of transactions (i.e., improves transactionallocality) by over-committing flash memory requests to specific resources. Our extensive experimental evaluation using a cycle-accurate large-scale SSD simulation framework shows that a many-chip SSD equipped with our Sprinkler provides at least 56.6% shorter latency and 1.8 -2.2 times better throughput than the state-of-the-art SSD controllers. Further, it improves overall resource utilization by 68.8% under different I/O request patterns and provides, on average, 80.2% more flash-level parallelism by reducing half of the flash memory requests at runtime.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Nonvolatile memory",
+                "Abstracts",
+                "Proposals",
+                "Portable computers",
+                "Flash memories",
+                "Single photon emission computed tomography",
+                "Layout"
+            ],
+            "Index Terms": [
+                "Resource Utilization",
+                "Maximize Resource Utilization",
+                "Shorter Latency",
+                "Internal Resources",
+                "Flash Memory",
+                "Extensive Experimental Evaluation",
+                "Parallelization",
+                "Load Data",
+                "Typical Scenario",
+                "Figure Bottom",
+                "Access Patterns",
+                "Scheduling Scheme",
+                "System Throughput",
+                "Level Of Parallelism",
+                "Physical Layout",
+                "High Parallelism",
+                "Sequential Execution",
+                "Degree Of Parallelism",
+                "Multiple Requests",
+                "Types Of Transactions",
+                "Number Of Chips",
+                "Single Transaction",
+                "Physical Address",
+                "Incoming Requests",
+                "Resource Contention",
+                "Single Flash",
+                "Strategy Execution",
+                "Multiple Memory",
+                "Multiple Chips",
+                "Time Sequence"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -720,7 +1243,40 @@
                 "firstName": "Huiyang",
                 "lastName": "Zhou"
             }
-        ]
+        ],
+        "abstract": "High throughput architectures rely on high thread-level parallelism (TLP) to hide execution latencies. In state-of-art graphics processing units (GPUs), threads are organized in a grid of thread blocks (TBs) and each TB contains tens to hundreds of threads. With a TB-level resource management scheme, all the resource required by a TB is allocated/released when it is dispatched to / finished in a streaming multiprocessor (SM). In this paper, we highlight that such TB-level resource management can severely affect the TLP that may be achieved in the hardware. First, different warps in a TB may finish at different times, which we refer to as `warp-level divergence'. Due to TB-level resource management, the resources allocated to early finished warps are essentially wasted as they need to wait for the longest running warp in the same TB to finish. Second, TB-level management can lead to resource fragmentation. For example, the maximum number of threads to run on an SM in an NVIDIA GTX 480 GPU is 1536. For an application with a TB containing 1024 threads, only 1 TB can run on the SM even though it has sufficient resource for a few hundreds more threads. To overcome these inefficiencies, we propose to allocate and release resources at the warp level. Warps are dispatched to an SM as long as it has sufficient resource for a warp rather than a TB. Furthermore, whenever a warp is completed, its resource is released and can accommodate a new warp. This way, we effectively increase the number of active warps without actually increasing the size of critical resources. We present our lightweight architectural support for our proposed warp-level resource management. The experimental results show that our approach achieves up to 76.0% and an average of 16.0% performance gains and up to 21.7% and an average of 6.7% energy savings at minor hardware overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Instruction sets",
+                "Resource management",
+                "Benchmark testing",
+                "Graphics processing units",
+                "Kernel",
+                "Clocks"
+            ],
+            "Index Terms": [
+                "Divergence",
+                "Graphics Processing Unit",
+                "Running",
+                "Resource Allocation",
+                "Resource Management",
+                "Energy Conservation",
+                "Performance Gain",
+                "Resource Requirements",
+                "Critical Resources",
+                "Dueling",
+                "Data Reuse",
+                "Underutilized Resource",
+                "Round Robin",
+                "Spatial Resources",
+                "Benchmark Suite",
+                "Shared Memory",
+                "Design Space Exploration",
+                "Cache Misses",
+                "Hardware Changes"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -785,7 +1341,43 @@
                 "firstName": "David A.",
                 "lastName": "Wood"
             }
-        ]
+        ],
+        "abstract": "Graphics processing units (GPUs) have specialized throughput-oriented memory systems optimized for streaming writes with scratchpad memories to capture locality explicitly. Expanding the utility of GPUs beyond graphics encourages designs that simplify programming (e.g., using caches instead of scratchpads) and better support irregular applications with finer-grain synchronization. Our hypothesis is that, like CPUs, GPUs will benefit from caches and coherence, but that CPU-style “read for ownership” (RFO) coherence is inappropriate to maintain support for regular streaming workloads. This paper proposes QuickRelease (QR), which improves on conventional GPU memory systems in two ways. First, QR uses a FIFO to enforce the partial order of writes so that synchronization operations can complete without frequent cache flushes. Thus, non-synchronizing threads in QR can re-use cached data even when other threads are performing synchronization. Second, QR partitions the resources required by reads and writes to reduce the penalty of writes on read performance. Simulation results across a wide variety of general-purpose GPU workloads show that QR achieves a 7% average performance improvement compared to a conventional GPU memory system. Furthermore, for emerging workloads with finer-grain synchronization, QR achieves up to 42% performance improvement compared to a conventional GPU memory system without the scalability challenges of RFO coherence. To this end, QR provides a throughput-oriented solution to provide fine-grain synchronization on GPUs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Synchronization",
+                "Instruction sets",
+                "Coherence",
+                "Protocols",
+                "Kernel",
+                "Throughput"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Memory System",
+                "Partial Order",
+                "Data Cache",
+                "Quick Release",
+                "Conventional Memory",
+                "Graphics Processing Unit Memory",
+                "Benchmark",
+                "Wavefront",
+                "Levels Of Hierarchy",
+                "Computing Units",
+                "Temporal Localization",
+                "Benchmark Test",
+                "Masked Images",
+                "Synchronous Events",
+                "Datapath",
+                "Memory Operations",
+                "Global Synchronization",
+                "Current Memory",
+                "L2 Cache",
+                "Replacement Policy",
+                "Traditional Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -826,7 +1418,43 @@
                 "firstName": "Xu",
                 "lastName": "Cheng"
             }
-        ]
+        ],
+        "abstract": "Applications running concurrently in CMP systems interfere with each other at DRAM memory, leading to poor system performance and fairness. Memory access scheduling reorders memory requests to improve system throughput and fairness. However, it cannot resolve the interference issue effectively. To reduce interference, memory partitioning divides memory resource among threads. Memory channel partitioning maps the data of threads that are likely to severely interfere with each other to different channels. However, it allocates memory resource unfairly and physically exacerbates memory contention of intensive threads, thus ultimately resulting in the increased slowdown of these threads and high system unfairness. Bank partitioning divides memory banks among cores and eliminates interference. However, previous equal bank partitioning restricts the number of banks available to individual thread and reduces bank level parallelism. In this paper, we first propose a Dynamic Bank Partitioning (DBP), which partitions memory banks according to threads' requirements for bank amounts. DBP compensates for the reduced bank level parallelism caused by equal bank partitioning. The key principle is to profile threads' memory characteristics at run-time and estimate their demands for bank amount, then use the estimation to direct our bank partitioning. Second, we observe that bank partitioning and memory scheduling are orthogonal in the sense; both methods can be illuminated when they are applied together. Therefore, we present a comprehensive approach which integrates Dynamic Bank Partitioning and Thread Cluster Memory scheduling (DBP-TCM, TCM is one of the best memory scheduling) to further improve system performance. Experimental results show that the proposed DBP improves system performance by 4.3% and improves system fairness by 16% over equal bank partitioning. Compared to TCM, DBP-TCM improves system throughput by 6.2% and fairness by 16.7%. When compared with MCP, DBP-TCM provides 5.3% better system throughput and 37% better system fairness. We conclude that our methods are effective in improving both system throughput and fairness.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Parallel processing",
+                "Throughput",
+                "Interference",
+                "Random access memory",
+                "System performance",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "System Throughput",
+                "Shared Memory",
+                "Improve System Throughput",
+                "System Performance",
+                "Memory Resources",
+                "Memory Characteristics",
+                "Improve System Performance",
+                "Partitional Clustering",
+                "Memory Bank",
+                "Design Considerations",
+                "Proportion Of Group",
+                "Memory Capacity",
+                "Access System",
+                "Memory System",
+                "Memory Control",
+                "Separate Channels",
+                "Single Thread",
+                "Random Shuffling",
+                "Memory Bandwidth",
+                "Throughput Improvement",
+                "System Performance Degradation",
+                "Cache Hit"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -867,7 +1495,40 @@
                 "firstName": "Lee-Sup",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "With rapid development of micro-processors, off-chip memory access becomes a system bottleneck. DRAM, a main memory in most computers, has concentrated only on capacity and bandwidth for decades to achieve high performance computing. However, DRAM access latency should also be considered to keep the development trend in multi-core era. Therefore, we propose NUAT which is a new memory controller focusing on reducing memory access latency without any modification of the existing DRAM structure. We only exploit DRAM's intrinsic phenomenon: electric charge variation in DRAM cell capacitors. Given the cost-sensitive DRAM market, it is a big advantage in terms of actual implementation. NUAT gives a score to every memory access request and the request with the highest score obtains a priority. For scoring, we introduce two new concepts: Partitioned Bank Rotation (PBR) and PBR Page Mode (PPM). First, PBR is a mechanism that draws information of access speed from refresh timing and position; the request which has faster access speed gains higher score. Second, PPM selects a better page mode between open- and close-page modes based on the information from PBR. Evaluations show that NUAT decreases memory access latency significantly for various environments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Capacitors",
+                "Timing",
+                "Sensors",
+                "Lead",
+                "Abstracts",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Access Time",
+                "Memory Control",
+                "Charge Variants",
+                "Speed Of Access",
+                "Access Latency",
+                "Additional Costs",
+                "Computer System",
+                "Time Parameters",
+                "Memory System",
+                "Parallel Model",
+                "Final Objective",
+                "Circuit Simulation",
+                "Binary Process",
+                "Total Execution Time",
+                "Mudline",
+                "Area Overhead",
+                "Hardware Overhead",
+                "Improvement In Latency",
+                "Sense Amplifier"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -908,7 +1569,50 @@
                 "firstName": "Timothy M.",
                 "lastName": "Pinkston"
             }
-        ]
+        ],
+        "abstract": "Power-gating is a promising technique to mitigate the increasing static power of on-chip routers. Clos networks are potentially good targets for power-gating because of their path diversity and decoupling between processing elements and most of the routers. While power-gated Clos networks can perform better than power-gated direct networks such as meshes, a significant performance penalty exists when conventional power-gating techniques are used. In this paper, we propose an effective power-gating scheme, called MP3 (Minimal Performance Penalty Power-gating), which is able to achieve minimal (i.e., near-zero) performance penalty and save more static energy than conventional power-gating applied to Clos networks. MP3 is able to completely remove the wakeup latency from the critical path, reduce long-term and transient contention, and actively steer network traffic to create increased power-gating opportunities. Full system evaluation using PARSEC benchmarks shows that the proposed approach can significantly reduce the performance penalty to less than 1% (as opposed to 38% with conventional power-gating) while saving more than 47% of router static energy, with only 2.5% additional area overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "System-on-chip",
+                "Ports (Computers)",
+                "Logic gates",
+                "Digital audio players",
+                "Network topology",
+                "Topology",
+                "Power demand"
+            ],
+            "Index Terms": [
+                "Performance Penalty",
+                "Network-on-chip",
+                "Critical Path",
+                "Directed Networks",
+                "Diverse Paths",
+                "Energy Conservation",
+                "Fundamental Limitation",
+                "Performance Issues",
+                "Mesh Network",
+                "Output Ports",
+                "Average Latency",
+                "Input Port",
+                "Network Load",
+                "Average Occupancy",
+                "Network Routing",
+                "Energy Issues",
+                "Routing Algorithm",
+                "Percentage Of Power",
+                "Net Savings",
+                "Performance Overhead",
+                "Indirect Network",
+                "Increase In Execution Time",
+                "Idle Period",
+                "Hardware Overhead",
+                "Virtual Channel",
+                "Static Power Consumption",
+                "Low Overhead",
+                "Multi-core",
+                "Resource Settings"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -955,7 +1659,50 @@
                 "firstName": "Vassos",
                 "lastName": "Soteriou"
             }
-        ]
+        ],
+        "abstract": "With increasing core counts in Chip Multi-Processor (CMP) designs, the size of the on-chip communication fabric and shared Last-Level Caches (LLC), which we term uncore here, is also growing, consuming as much as 30% of die area and a significant portion of chip power budget. In this work, we focus on improving the uncore energy-efficiency using dynamic voltage and frequency scaling. Previous approaches are mostly restricted to reactive techniques, which may respond poorly to abrupt workload and uncore utility changes. We find, however, there are predictable patterns in uncore utility which point towards the potential of a proactive approach to uncore power management. In this work, we utilize artificial intelligence principles to proactively leverage uncore utility pattern prediction via an Artificial Neural Network (ANN). ANNs, however, require training to produce accurate predictions. Architecting an efficient training mechanism without a priori knowledge of the workload is a major challenge. We propose a novel technique in which a simple Proportional Integral (PI) controller is used as a secondary classifier during ANN training, dynamically pulling the ANN up by its bootstraps to achieve accurate predictions. Both the ANN and the PI controller, then, work in tandem once the ANN training phase is complete. The advantage of using a PI controller to initially train the ANN is a dramatic acceleration of the ANN's initial learning phase. Thus, in a real system, this scenario allows quick power-control adaptation to rapid application phase changes and context switches during execution. We show that the proposed technique produces results comparable to those of pure offline training without a need for prerecorded training sets. Full system simulations using the PARSEC benchmark suite show that the bootstrapped ANN improves the energy-delay product of the uncore system by 27% versus existing state-of-the-art methodologies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Artificial neural networks",
+                "Training",
+                "Neurons",
+                "Tiles",
+                "Mathematical model",
+                "Multicore processing",
+                "Supervised learning"
+            ],
+            "Index Terms": [
+                "Artificial Neural Network",
+                "Multi-core",
+                "Power Management",
+                "Artificial Neural Network Learning",
+                "Training Set",
+                "PI Controller",
+                "Frequency Scale",
+                "Dynamic Scaling",
+                "Dynamic Frequency",
+                "Artificial Neural Network Training",
+                "Dynamic Voltage",
+                "Voltage Scaling",
+                "Supervised Learning",
+                "Energy Conservation",
+                "Average Error",
+                "Real Applications",
+                "Abrupt Changes",
+                "Online Training",
+                "Missing Rate",
+                "Control Decisions",
+                "Variable Gain",
+                "Offline Learning",
+                "Artificial Neural Network Output",
+                "Learning Gain",
+                "Target Frequency",
+                "Incremental Power",
+                "Computation Latency",
+                "Clock Cycles",
+                "Low Overhead"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -990,7 +1737,47 @@
                 "firstName": "Josep",
                 "lastName": "Torrellas"
             }
-        ]
+        ],
+        "abstract": "EDRAM cells require periodic refresh, which ends up consuming substantial energy for large last-level caches. In practice, it is well known that different eDRAM cells can exhibit very different charge-retention properties. Unfortunately, current systems pessimistically assume worst-case retention times, and end up refreshing all the cells at a conservatively-high rate. In this paper, we propose an alternative approach. We use known facts about the factors that determine the retention properties of cells to build a new model of eDRAM retention times. The model is called Mosaic. The model shows that the retention times of cells in large eDRAM modules exhibit spatial correlation. Therefore, we logically divide the eDRAM module into regions or tiles, profile the retention properties of each tile, and program their refresh requirements in small counters in the cache controller. With this architecture, also called Mosaic, we refresh each tile at a different rate. The result is a 20x reduction in the number of refreshes in large eDRAM modules - practically eliminating refresh as a source of energy consumption.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Transistors",
+                "Abstracts",
+                "Irrigation",
+                "Capacitors"
+            ],
+            "Index Terms": [
+                "Chromatography",
+                "Time In Cells",
+                "Large Modulation",
+                "Savings",
+                "Step Size",
+                "Fraction Of Cells",
+                "Lookup Table",
+                "Tail Of Distribution",
+                "Random Component",
+                "Forward Error Correction",
+                "Hardware Cost",
+                "Dynamic Energy",
+                "Memory Module",
+                "Ideal Design",
+                "Technology Node",
+                "Area Overhead",
+                "Baseline Design",
+                "Energy Leakage",
+                "Systematic Component",
+                "Tile Size",
+                "Bloom Filter",
+                "L2 Cache",
+                "Subthreshold Slope",
+                "Data Cache",
+                "Clear Trade-off",
+                "Peak Distribution",
+                "Normal Distribution",
+                "Finer Granularity"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1019,7 +1806,43 @@
                 "firstName": "Vijay",
                 "lastName": "Nagarajan"
             }
-        ]
+        ],
+        "abstract": "Traditional directory coherence protocols are designed for the strictest consistency model, sequential consistency (SC). When they are used for chip multiprocessors (CMPs) that support relaxed memory consistency models, such protocols turn out to be unnecessarily strict. Usually this comes at the cost of scalability (in terms of per core storage), which poses a problem with increasing number of cores in today's CMPs, most of which no longer are sequentially consistent. Because of the wide adoption of Total Store Order (TSO) and its variants in x86 and SPARC processors, and existing parallel programs written for these architectures, we propose TSO-CC, a cache coherence protocol for the TSO memory consistency model. TSO-CC does not track sharers, and instead relies on self-invalidation and detection of potential acquires using timestamps to satisfy the TSO memory consistency model lazily. Our results show that TSO-CC achieves average performance comparable to a MESI directory protocol, while TSO-CC's storage overhead per cache line scales logarithmically with increasing core count.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Abstracts",
+                "Rendering (computer graphics)",
+                "Coherence"
+            ],
+            "Index Terms": [
+                "Cache Coherence",
+                "Scalable",
+                "Multi-core",
+                "Relaxed Model",
+                "Stable State",
+                "Data Sharing",
+                "Implementation Of Protocol",
+                "High Level Of Confidence",
+                "Storage Requirements",
+                "Conventional Protocol",
+                "Basic Protocol",
+                "Litmus Test",
+                "Average Execution Time",
+                "Memory Operations",
+                "Data Cache",
+                "Data Messages",
+                "Shared Memory",
+                "Shared Reading",
+                "Reduction In Execution Time",
+                "Network-on-chip",
+                "L2 Cache",
+                "Extra Storage",
+                "Future Reading",
+                "Previous Epoch",
+                "Subsequent Reading"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1066,7 +1889,41 @@
                 "firstName": "Daniel A.",
                 "lastName": "Jimenezz"
             }
-        ]
+        ],
+        "abstract": "Cache read misses stall the processor if there are no independent instructions to execute. In contrast, most cache write misses are off the critical path of execution, since writes can be buffered in the cache or the store buffer. With few exceptions, cache lines that serve loads are more critical for performance than cache lines that serve only stores. Unfortunately, traditional cache management mechanisms do not take into account this disparity between read-write criticality. This paper proposes a Read-Write Partitioning (RWP) policy that minimizes read misses by dynamically partitioning the cache into clean and dirty partitions, where partitions grow in size if they are more likely to receive future read requests. We show that exploiting the differences in read-write criticality provides better performance over prior cache management mechanisms. For a single-core system, RWP provides 5% average speedup across the entire SPEC CPU2006 suite, and 14% average speedup for cache-sensitive benchmarks, over the baseline LRU replacement policy. We also show that RWP can perform within 3% of a new yet complex instruction-address-based technique, Read Reference Predictor (RRP), that bypasses cache lines which are unlikely to receive any read requests, while requiring only 5.4% of RRP's state overhead. On a 4-core system, our RWP mechanism improves system throughput by 6% over the baseline and outperforms three other state-of-the-art mechanisms we evaluate.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Buffer storage",
+                "Prediction algorithms",
+                "Resource management",
+                "Memory management",
+                "Educational institutions",
+                "Throughput"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Critical Path",
+                "Future Reading",
+                "Replacement Policy",
+                "Sample Set",
+                "Number Of Reads",
+                "Complex Mechanisms",
+                "Total Set",
+                "Lineaments",
+                "Clear Line",
+                "Non-volatile Memory",
+                "Critical Reading",
+                "Written Back",
+                "Subsequent Reading",
+                "Dynamic Policy",
+                "Number Of Writers",
+                "Partition Size",
+                "L2 Cache",
+                "Cache Misses",
+                "Cache Hit"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1101,7 +1958,49 @@
                 "firstName": "Xiaorui",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "Power shaving has recently been proposed to dynamically shave the power peaks of a data center with energy storage devices (ESD), such that more servers can be safely hosted. In addition to the reduction of capital investment (cap-ex), power shaving also helps cut the electricity bills (op-ex) of a data center by reducing the high utility tariffs related to peak power. However, existing work on power shaving focuses exclusively on electrical ESDs (e.g., UPS batteries) to shave the server-side power demand. In this paper, we propose TE-Shave, a generalized power shaving framework that exploits both UPS batteries and a new knob, thermal energy storage (TES) tanks equipped in many data centers. Specifically, TE-Shave utilizes stored cold water or ice to manipulate the cooling power, which accounts for 30-40% of the total power cost of a data center. Our extensive evaluation with real-world workload traces shows that TE-Shave saves cap-ex and op-ex up to $2,668/day and $825/day, respectively, for a data center with 17,920 servers. Even for future data centers that are projected to have more efficient cooling and thus a smaller portion of cooling power, e.g., a quarter of today's level, TE-Shave still leads to 28% more savings than existing work that focuses only on the server-side power. TE-Shave is also coordinated with traditional TES solutions for further reduced op-ex.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Uninterruptible power systems",
+                "Batteries",
+                "Cooling",
+                "Ice",
+                "Servers",
+                "Electrostatic discharges",
+                "Water heating"
+            ],
+            "Index Terms": [
+                "Data Center",
+                "Thermal Energy",
+                "Thermal Storage",
+                "Total Power",
+                "Cold Water",
+                "Peak Power",
+                "Power Demand",
+                "Energy Storage Devices",
+                "Storage Tank",
+                "Traditional Solutions",
+                "Heat Transfer",
+                "Power Consumption",
+                "Nighttime",
+                "Large Capacity",
+                "Heat Exchanger",
+                "Warm Water",
+                "Time Slot",
+                "Mass Flow Rate",
+                "Coefficient Of Performance",
+                "Depth Of Discharge",
+                "Threshold Power",
+                "Battery Capacity",
+                "Battery Lifetime",
+                "Energy Capacity",
+                "Power Infrastructure",
+                "Coolant",
+                "Power Facilities",
+                "Server Side"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1126,11 +2025,46 @@
             },
             {
                 "id": 37265543200,
-                "preferredName": "Andr\u00e9 Seznec",
-                "firstName": "Andr\u00e9",
+                "preferredName": "André Seznec",
+                "firstName": "André",
                 "lastName": "Seznec"
             }
-        ]
+        ],
+        "abstract": "Dedicating more silicon area to single thread performance will necessarily be considered as worthwhile in future - potentially heterogeneous - multicores. In particular, Value prediction (VP) was proposed in the mid 90's to enhance the performance of high-end uniprocessors by breaking true data dependencies. In this paper, we reconsider the concept of Value Prediction in the contemporary context and show its potential as a direction to improve current single thread performance. First, building on top of research carried out during the previous decade on confidence estimation, we show that every value predictor is amenable to very high prediction accuracy using very simple hardware. This clears the path to an implementation of VP without a complex selective reissue mechanism to absorb mispredictions. Prediction is performed in the in-order pipeline frond-end and validation is performed in the in-order pipeline back-end, while the out-of-order engine is only marginally modified. Second, when predicting back-to-back occurrences of the same instruction, previous context-based value predictors relying on local value history exhibit a complex critical loop that should ideally be implemented in a single cycle. To bypass this requirement, we introduce a new value predictor VTAGE harnessing the global branch history. VTAGE can seamlessly predict back-to-back occurrences, allowing predictions to span over several cycles. It achieves higher performance than previously proposed context-based predictors. Specifically, using SPEC'00 and SPEC'06 benchmarks, our simulations show that combining VTAGE and a stride based predictor yields up to 65% speedup on a fairly aggressive pipeline without support for selective reissue.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pipelines",
+                "History",
+                "Accuracy",
+                "Radiation detectors",
+                "Registers",
+                "Engines",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Benchmark",
+                "Predictive Value",
+                "Multi-core",
+                "Local History",
+                "Confidence Estimation",
+                "Simple Hardware",
+                "Predictive Validity",
+                "Computational Prediction",
+                "Performance Loss",
+                "Performance Benefits",
+                "Idealism",
+                "Correct Predictions",
+                "Performance Gain",
+                "Recovery Mechanisms",
+                "Perfect Prediction",
+                "Update Time",
+                "Step Of The Pipeline",
+                "Space Efficiency",
+                "Critical Operations",
+                "Benchmark Suite",
+                "Two-level Structure"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1177,7 +2111,51 @@
                 "firstName": "Haibo",
                 "lastName": "Chen"
             }
-        ]
+        ],
+        "abstract": "Virtual machine introspection, which provides tamperresistant, high-fidelity “out of the box” monitoring of virtual machines, has many prominent security applications including VM-based intrusion detection, malware analysis and memory forensic analysis. However, prior approaches are either intrusive in stopping the world to avoid race conditions between introspection tools and the guest VM, or providing no guarantee of getting a consistent state of the guest VM. Further, there is currently no effective means for timely examining the VM states in question. In this paper, we propose a novel approach, called TxIntro, which retrofits hardware transactional memory (HTM) for concurrent, timely and consistent introspection of guest VMs. Specifically, TxIntro leverages the strong atomicity of HTM to actively monitor updates to critical kernel data structures. Then TxIntro can mount introspection to timely detect malicious tampering. To avoid fetching inconsistent kernel states for introspection, TxIntro uses HTM to add related synchronization states into the read set of the monitoring core and thus can easily detect potential inflight concurrent kernel updates. We have implemented and evaluated TxIntro based on Xen VMM on a commodity Intel Haswell machine that provides restricted transactional memory (RTM) support. To demonstrate the effectiveness of TxIntro, we implemented a set of kernel rootkit detectors using TxIntro. Evaluation results show that TxIntro is effective in detecting these rootkits, and is efficient in adding negligible performance overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Monitoring",
+                "Educational institutions",
+                "Abstracts",
+                "Single photon emission computed tomography",
+                "Virtual machine monitors",
+                "Continuous wavelet transforms"
+            ],
+            "Index Terms": [
+                "Introspection",
+                "Virtual Machines",
+                "Hardware Transactional Memory",
+                "Data Structure",
+                "Critical Structures",
+                "Intrusion Detection",
+                "Prior Approaches",
+                "Race Conditions",
+                "Synchronized State",
+                "Performance Overhead",
+                "Negligible Overhead",
+                "False Positive",
+                "Running",
+                "False Negative",
+                "Operating System",
+                "Commercial Products",
+                "Direct Use",
+                "Work Settings",
+                "Hash Function",
+                "Disruption Of Services",
+                "Kernel Images",
+                "Tens Of Seconds",
+                "Multiple Cores",
+                "Passive Mode",
+                "Context Switching",
+                "Address Space",
+                "Security Evaluation",
+                "Security Checks",
+                "Physical Address",
+                "Abortion Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1206,7 +2184,48 @@
                 "firstName": "Christos",
                 "lastName": "Kozyrakis"
             }
-        ]
+        ],
+        "abstract": "Dynamic overclocking of CPUs, or TurboMode, is a feature recently introduced on all x86 multi-core chips. It leverages thermal and power headroom from idle execution resources to overclock active cores to increase performance. TurboMode can accelerate CPU-bound applications at the cost of additional power consumption. Nevertheless, naive use of TurboMode can significantly increase power consumption without increasing performance. Thus far, there is no strategy for managing TurboMode to optimize its use across all workloads and efficiency metrics. This paper analyzes the impact of TurboMode on a wide range of efficiency metrics (performance, power, cost, and combined metrics such as QPS/W and ED2) for representative server workloads on various hardware configurations. We determine that TurboMode is generally beneficial for performance (up to +24%), cost efficiency (QPS/$ up to +8%), energy-delay product (ED, up to +47%), and energy-delay-squared product (ED2, up to +68%). However, TurboMode is inefficient for workloads that exhibit interference for shared resources. We use this information to build and validate a model that predicts the optimal TurboMode setting for each efficiency metric. We then implement autoturbo, a background daemon that dynamically manages TurboMode in real time without any hardware changes. We demonstrate that autoturbo improves QPS/$, ED, and ED2 by 8%, 47%, and 68% respectively over not using TurboMode. At the same time, autoturbo virtually eliminates all the large drops in those same metrics (-12%, -25%, -25% for QPS/$, ED, and ED2) that occur when TurboMode is used naively (always on).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Servers",
+                "Interference",
+                "Bridges",
+                "Clocks",
+                "Quality of service"
+            ],
+            "Index Terms": [
+                "Dynamic Management",
+                "Power Consumption",
+                "Cost Efficiency",
+                "Hardware Configuration",
+                "Increased Power Consumption",
+                "Efficiency Metrics",
+                "Idle Resources",
+                "Heuristic",
+                "Classification Accuracy",
+                "Search Engine",
+                "Sampling Period",
+                "Energy Efficiency",
+                "Increase In Power",
+                "Performance Gain",
+                "Single Application",
+                "Hardware Platform",
+                "Clock Frequency",
+                "Proactive Interference",
+                "Metrics Of Interest",
+                "Quality Of Service Constraints",
+                "CPU Power",
+                "L2 Cache",
+                "Amount Of Interference",
+                "CPU Frequency",
+                "Cost Metrics",
+                "Data Center",
+                "Machine Configuration",
+                "Service Quality"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1235,7 +2254,39 @@
                 "firstName": "Hyesoon",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "More and more graph algorithms are being GPU enabled. Graph algorithm implementations on GPUs have irregular control flow and are memory-intensive with many irregular/data-dependent memory accesses. Due to these factors graph algorithms on GPUs have low execution efficiency. In this work we propose a mechanism to improve the execution efficiency of graph algorithms by improving their memory access latency tolerance. We propose a mechanism for prefetching data for load pairs that have one load dependent on the other - such pairs are common in graph algorithms. Our mechanism detects the target loads in hardware and injects instructions into the pipeline to prefetch data into spare registers that are not being used by any active threads. By prefetching data into registers, early eviction of prefetched data can be eliminated. We also propose a mechanism that uses the compiler to identify the target loads. Our mechanism improves performance over no prefetching by 10% on average and upto 51% for nine memory intensive graph algorithm kernels.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Prefetching",
+                "Registers",
+                "Graphics processing units",
+                "Indexes",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Graph Algorithms",
+                "Execution Efficiency",
+                "First Search",
+                "Waiting Time",
+                "Head And Tail",
+                "Random Graph",
+                "Subsequent Iterations",
+                "Access Patterns",
+                "Loop Iteration",
+                "Breadth-first Search",
+                "Input Graph",
+                "Iteration Count",
+                "End Of Loop",
+                "Data Cache",
+                "Neighbor List",
+                "Edge List",
+                "Shared Memory",
+                "Application Running",
+                "L2 Cache",
+                "Cache Hit"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1243,7 +2294,7 @@
         "publicationYear": "2014",
         "publicationDate": "15-19 Feb. 2014",
         "articleNumber": "6835957",
-        "articleTitle": "Improving in-memory database index performance with Intel\u00ae Transactional Synchronization Extensions",
+        "articleTitle": "Improving in-memory database index performance with Intel® Transactional Synchronization Extensions",
         "volume": null,
         "issue": null,
         "startPage": "476",
@@ -1294,7 +2345,50 @@
                 "firstName": "Wolfgang",
                 "lastName": "Lehner"
             }
-        ]
+        ],
+        "abstract": "The increasing number of cores every generation poses challenges for high-performance in-memory database systems. While these systems use sophisticated high-level algorithms to partition a query or run multiple queries in parallel, they also utilize low-level synchronization mechanisms to synchronize access to internal database data structures. Developers often spend significant development and verification effort to improve concurrency in the presence of such synchronization. The Intel<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">®</sup> Transactional Synchronization Extensions (Intel<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">®</sup> TSX) in the 4th Generation Core™ Processors enable hardware to dynamically determine whether threads actually need to synchronize even in the presence of conservatively used synchronization. This paper evaluates the effectiveness of such hardware support in a commercial database. We focus on two index implementations: a B+Tree Index and the Delta Storage Index used in the SAP HANA<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">®</sup> database system. We demonstrate that such support can improve performance of database data structures such as index trees and presents a compelling opportunity for the development of simpler, scalable, and easy-to-verify algorithms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Indexes",
+                "Hardware",
+                "Synchronization",
+                "Program processors",
+                "Sockets",
+                "Dictionaries"
+            ],
+            "Index Terms": [
+                "Synchronization",
+                "Index Database",
+                "Scalable",
+                "Data Structure",
+                "System Database",
+                "Commercial Database",
+                "4th Generation",
+                "Hardware Support",
+                "Tree Index",
+                "Internal Data Structure",
+                "Footprint",
+                "Tree Structure",
+                "Root Node",
+                "Tree Nodes",
+                "Modern Systems",
+                "Leaf Node",
+                "Numerical Implementation",
+                "Scaling Algorithm",
+                "Serialized",
+                "Abortion Rate",
+                "Insertion Operator",
+                "Spin-lock",
+                "Read Operation",
+                "Range Of Configurations",
+                "Data Cache",
+                "Critical Section",
+                "Binary Search",
+                "High Conflict",
+                "Memory Allocation",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1329,7 +2423,44 @@
                 "firstName": "Ahmed",
                 "lastName": "Louri"
             }
-        ]
+        ],
+        "abstract": "Network-on-Chips (NoCs) are quickly becoming the standard communication paradigm for the growing number of cores on the chip. While NoCs can deliver sufficient bandwidth and enhance scalability, NoCs suffer from high power consumption due to the router microarchitecture and communication channels that facilitate inter-core communication. As technology keeps scaling down in the nanometer regime, unpredictable device behavior due to aging, infant mortality, design defects, soft errors, aggressive design, and process-voltage-temperature variations, will increase and will result in a significant increase in faults (both permanent and transient) and hardware failures. In this paper, we propose QORE - a fault tolerant NoC architecture with Quad-Function Channel (QFC) buffers. The use of QFC buffers and their associated control (link and fault controllers) enhance fault-tolerance by allowing the NoC to dynamically adapt to faults at the link level and reverse propagation direction to avoid faulty links. Additionally, QFC buffers reduce router power and improve performance by eliminating in-router buffering. Our simulation results using real benchmarks and synthetic traffic mixes show that QORE improves speedup by 1.3× and throughput by 2.3× when compared to state-of-the art fault tolerant NoCs designs such as Ariadne and Vicis. Moreover, using Synopsys Design Compiler, we also show that network power in QORE is reduced by 21% with minimal control overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Buffer storage",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Transistors",
+                "Logic gates",
+                "Bandwidth"
+            ],
+            "Index Terms": [
+                "Fault-tolerant",
+                "Power Network",
+                "Real Applications",
+                "Field Direction",
+                "Forward Direction",
+                "Deadlock",
+                "Network Throughput",
+                "Conventional Design",
+                "Forward Propagation",
+                "Dynamic Power",
+                "Network Load",
+                "Backward Propagation",
+                "Traffic Demand",
+                "Total Bandwidth",
+                "Routing Algorithm",
+                "Area Overhead",
+                "Clock Period",
+                "Ring Topology",
+                "Link Bandwidth",
+                "Reverse Link",
+                "Power Breakdown",
+                "Opposite Sign",
+                "Traffic Load",
+                "Traffic Patterns"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1376,7 +2507,42 @@
                 "firstName": "Yuan",
                 "lastName": "Xie"
             }
-        ]
+        ],
+        "abstract": "As DRAM density keeps increasing, more rows need to be protected in a single refresh with the constant refresh number. Since no memory access is allowed during a refresh, the refresh penalty is no longer trivial and can result in significant performance degradation. To mitigate the refresh penalty, a Concurrent-REfresh-Aware Memory system (CREAM) is proposed in this work so that memory access and refresh can be served in parallel. The proposed CREAM architecture distinguishes itself with the following key contributions: (1) Under a given DRAM power budget, sub-rank-level refresh (SRLR) is developed to reduce refresh power and the saved power is used to enable concurrent memory access; (2) sub-array-level refresh (SALR) is also devised to effectively lower the probability of the conflict between memory access and refresh; (3) In addition, novel sub-array level refresh scheduling schemes, such as sub-array round-robin and dynamic scheduling, are designed to further improve the performance. A quasi-ROR interface protocol is proposed so that CREAM is fully compatible with JEDEC-DDR standard with negligible hardware overhead and no extra pin-out. The experimental results show that CREAM can improve the performance by 12.9% and 7.1% over the conventional DRAM and the Elastic-Refresh DRAM memory, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Erbium",
+                "Degradation",
+                "Standards",
+                "Arrays",
+                "Timing",
+                "Performance gain"
+            ],
+            "Index Terms": [
+                "DRAM Memory",
+                "Memory System",
+                "Dynamic Scheduling",
+                "Negligible Overhead",
+                "Chromatography",
+                "Benchmark",
+                "Performance Improvement",
+                "Refresh Rate",
+                "Time Parameters",
+                "Performance Gain",
+                "Data Sheet",
+                "Current Consumption",
+                "Window Width",
+                "Power Constraint",
+                "Idle Time",
+                "Most Significant Bit",
+                "Memory Operations",
+                "Area Overhead",
+                "Bloom Filter",
+                "Design Space Exploration",
+                "Sense Amplifier"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1417,7 +2583,51 @@
                 "firstName": "Tor M.",
                 "lastName": "Aamodt"
             }
-        ]
+        ],
+        "abstract": "Graphics processing units (GPUs) are increasingly used for non-graphics computing. However, applications with divergent control flow incur performance degradation on current GPUs. These GPUs implement the SIMT execution model by serializing the execution of different control flow paths encountered by a warp. This serialization can mask thread level parallelism among the scalar threads comprising a warp thus degrading performance. In this paper, we propose a novel branch divergence handling mechanism that enables interleaved execution of divergent paths within a warp while maintaining immediate postdominator reconvergence. This multi-path microarchitecture decouples divergence and reconvergence tracking by replacing the stack-based structure typically employed to support SIMT execution with two tables: a warp split table and a warp reconvergence table. It also enables reconvergence before the immediate postdominator which is important for efficient execution of unstructured control flow. Evaluated on a set of benchmarks with complex divergent control flow, our proposal achieves up to a 7× speedup with a harmonic mean of 32% over conventional single-path SIMT execution.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Proposals",
+                "Pipelines",
+                "Benchmark testing",
+                "Graphics processing units",
+                "Harmonic analysis",
+                "Convergence"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Flow Control",
+                "Microarchitecture",
+                "Benchmark",
+                "Harmonic Mean",
+                "Serialized",
+                "Model Execution",
+                "Flow Divergence",
+                "Divergent Paths",
+                "Increase In The Number",
+                "Decrease In The Number",
+                "Decoding",
+                "Increase In Power",
+                "Control Unit",
+                "Alternative Paths",
+                "Masked Images",
+                "Single Thread",
+                "Side Branches",
+                "Block A",
+                "Single Entry",
+                "Control Flow Graph",
+                "Table Entries",
+                "Cache Misses",
+                "Parallel Flow",
+                "Data Cache",
+                "Parallel Paths",
+                "Number Of Splits",
+                "Code Snippets",
+                "Written Back",
+                "Opportunistic"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1458,7 +2668,47 @@
                 "firstName": "Mary Lou",
                 "lastName": "Soffa"
             }
-        ]
+        ],
+        "abstract": "Memory bandwidth severely limits the scalability and performance of today's multi-core systems. Because of this limitation, many studies that focused on improving multi-core scalability rely on bandwidth usage predictions to achieve the best results. However, existing bandwidth prediction models have low accuracy, causing these studies to have inaccurate conclusions or perform sub-optimally. Most of these models make predictions based on the bandwidth usage samples of a few trial runs. Many factors that affect bandwidth usage and the complex DRAM operations are overlooked. This paper presents DraMon, a model that predicts bandwidth usages for multi-threaded programs with low overhead. It achieves high accuracy through highly accurate predictions of DRAM contention and DRAM concurrency, as well as by considering a wide range of hardware and software factors that impact bandwidth usage. We implemented two versions of DraMon: DraMon-T, a memory-trace based model, and DraMon-R, a run-time model which uses hardware performance counters. When evaluated on a real machine with memory-intensive benchmarks, DraMon-T has average accuracies of 99.17% and 94.70% for DRAM contention predictions and bandwidth predictions, respectively. DraMon-R has average accuracies of 98.55% and 93.37% for DRAM contention and bandwidth predictions respectively, with only 0.50% overhead on average.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Random access memory",
+                "Bandwidth",
+                "Accuracy",
+                "Predictive models",
+                "Concurrent computing",
+                "Instruction sets",
+                "Mathematical model"
+            ],
+            "Index Terms": [
+                "Single Thread",
+                "Low Overhead",
+                "Memory Bandwidth",
+                "Bandwidth Usage",
+                "Prediction Accuracy",
+                "Scalable",
+                "Low Accuracy",
+                "Wide Range Of Factors",
+                "Real Machine",
+                "Linear Model",
+                "Input Parameters",
+                "Data Transfer",
+                "Similar Reasons",
+                "Memory System",
+                "Probability Theory",
+                "Memory Control",
+                "Memory Trace",
+                "Average Latency",
+                "Hardware Configuration",
+                "Bandwidth Requirements",
+                "Data Bus",
+                "Hardware Parameters",
+                "Resource Contention",
+                "Content Caching",
+                "Regression-based Models",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1493,7 +2743,50 @@
                 "firstName": "Omer",
                 "lastName": "Khan"
             }
-        ]
+        ],
+        "abstract": "Next generation multicores will process massive data with varying degree of locality. Harnessing on-chip data locality to optimize the utilization of cache and network resources is of fundamental importance. We propose a locality-aware selective data replication protocol for the last-level cache (LLC). Our goal is to lower memory access latency and energy by replicating only high locality cache lines in the LLC slice of the requesting core, while simultaneously keeping the off-chip miss rate low. Our approach relies on low overhead yet highly accurate in-hardware run-time classification of data locality at the cache line granularity, and only allows replication for cache lines with high reuse. Furthermore, our classifier captures the LLC pressure at the existing replica locations and adapts its replication decision accordingly. The locality tracking mechanism is decoupled from the sharer tracking structures that cause scalability concerns in traditional coherence protocols. Moreover, the complexity of our protocol is low since no additional coherence states are created. On a set of parallel benchmarks, our protocol reduces the overall energy by 16%, 14%, 13% and 21% and the completion time by 4%, 9%, 6% and 13% when compared to the previously proposed Victim Replication, Adaptive Selective Replication, Reactive-NUCA and Static-NUCA LLC management schemes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Radiation detectors",
+                "Protocols",
+                "Coherence",
+                "Organizations",
+                "Multicore processing",
+                "System-on-chip",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Last-level Cache",
+                "Benchmark",
+                "Completion Time",
+                "Multi-core",
+                "Network Resources",
+                "Coherent State",
+                "Replication Strategy",
+                "High Reusability",
+                "Energy Consumption",
+                "Cluster Size",
+                "Data Privacy",
+                "Power Grid",
+                "Array Data",
+                "Work Settings",
+                "Performance Benefits",
+                "Memory System",
+                "Data Sharing",
+                "Types Of Messages",
+                "Home Location",
+                "L2 Cache",
+                "Cache Misses",
+                "Replacement Policy",
+                "Mode Of Replication",
+                "Additional Bits",
+                "Data Cache",
+                "Energy Benefits",
+                "Network-on-chip",
+                "Local Information",
+                "Baseline System"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1522,7 +2815,48 @@
                 "firstName": "Murali",
                 "lastName": "Annavaram"
             }
-        ]
+        ],
+        "abstract": "Cluster-level packing techniques have long been used to improve the energy proportionality of server clusters by masking the poor energy proportionality of individual servers. With the emergence of high energy proportional servers, we revisit whether cluster-level packing techniques are still the most effective way to achieve high cluster-wide energy proportionality. Our findings indicate that cluster-level packing techniques can eventually limit cluster-wide energy proportionality and it may be more beneficial to depend solely on server-level low power techniques. Server-level low power techniques generally require a high latency slack to be effective due to diminishing idle periods as server core count increases. In order for server-level low power techniques to be a viable alternative, the latency slack required for these techniques must be lowered. We found that server-level active low power modes offer the lowest latency slack, independent of server core count, and propose low power mode switching policies to meet the best-case latency slack under realistic conditions. By overcoming these major issues, we show that server-level low power modes can be a viable alternative to cluster-level packing techniques in providing high cluster-wide energy proportionality.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Abstracts",
+                "Program processors",
+                "Time factors",
+                "Power measurement"
+            ],
+            "Index Terms": [
+                "Proportion Of Energy",
+                "Mode Of Action",
+                "Real Conditions",
+                "High Latency",
+                "Idle Period",
+                "High Use",
+                "Energy Efficiency",
+                "Energy Conservation",
+                "Low Use",
+                "Power Consumption",
+                "Levels Of Use",
+                "Cluster Level",
+                "Conservation Policies",
+                "Load Balancing",
+                "Daily Patterns",
+                "Individual Energy",
+                "Scheduling Algorithm",
+                "Aggressive Policy",
+                "Performance Penalty",
+                "Autocorrelation Plots",
+                "Simple Policy",
+                "Data Center",
+                "Ideal Curve",
+                "Low Autocorrelation",
+                "Previous Epoch",
+                "Arrival Rate",
+                "Amount Of Time",
+                "Historical Period",
+                "Activity Curves"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1575,7 +2909,50 @@
                 "firstName": "Lieven",
                 "lastName": "Eeckhout"
             }
-        ]
+        ],
+        "abstract": "Recent many-core processors such as Intel's Xeon Phi and GPGPUs specialize in running highly scalable parallel applications at high performance while simultaneously embracing energy efficiency as a first-order design constraint. The traditional belief is that full utilization of all available cores also translates into the highest possible performance. In this paper, we study the effects of cache capacity conflicts and competition for shared off-chip bandwidth; and show that undersubscription, or not utilizing all cores, often yields significant increases in both performance and energy efficiency. Based on a detailed shared working set analysis we make the case for clustered cache architectures as an efficient design point for exploiting both data sharing and undersubscription, while providing low-latency and ease of implementation in many-core processors. We then propose ClusteR-aware Undersubscribed Scheduling of Threads (CRUST) which dynamically matches an application's working set size and off-chip bandwidth demands with the available on-chip cache capacity and off-chip bandwidth. CRUST improves application performance and energy efficiency by 15% on average, and up to 50%, for the NPB and SPEC OMP benchmarks. In addition, we make recommendations for the design of future many-core architectures, and show that taking the undersubscription usage model into account moves the optimum performance under the cores-versus-cache area tradeoff towards design points with more cores and less cache.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Benchmark testing",
+                "Computer architecture",
+                "Subscriptions",
+                "Bandwidth",
+                "Dynamic scheduling"
+            ],
+            "Index Terms": [
+                "Cache Architecture",
+                "High Performance",
+                "Energy Efficiency",
+                "Highest Performance",
+                "Work Settings",
+                "Detailed Work",
+                "Detailed Settings",
+                "Ease Of Implementation",
+                "Application Of This Work",
+                "Increase Energy Efficiency",
+                "Data Cache",
+                "Data Privacy",
+                "Prediction Algorithms",
+                "Average Performance",
+                "Low Latency",
+                "Maximum Performance",
+                "Data Partitioning",
+                "Improve Energy Efficiency",
+                "Missing Rate",
+                "Single Thread",
+                "Parallel Sections",
+                "Off-chip Memory",
+                "Cache Size",
+                "Technology Node",
+                "Cache Hit",
+                "Cache Misses",
+                "Bandwidth Utilization",
+                "Baseline Architecture",
+                "Clock Cycles",
+                "Calibration Phase"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1604,7 +2981,43 @@
                 "firstName": "Yan",
                 "lastName": "Solihin"
             }
-        ]
+        ],
+        "abstract": "Computer architects need a deep understanding of clients' workload in order to design and tune the architecture. Unfortunately, many important clients will not share their software to computer architects due to the proprietary or confidential nature of their software. One technique to mitigate this problem is producing synthetic traces (clone) that replicate the behavior of the original workloads. Unfortunately, today there is no universal cloning technique that can capture arbitrary memory access behavior of applications. Existing technique captures only temporal, but not spatial, locality. In order to study memory hierarchy organization beyond caches, such as including prefetchers and translation lookaside buffer (TLB), capturing only temporal locality is insufficient. In this paper, we propose a new memory access behavior cloning technique that captures both temporal and spatial locality. We abbreviate our scheme as Spatio-Temporal Memory (STM) cloning. We propose a new profiling method and statistics that capture stride patterns and transition probabilities. We show how the new statistics enable accurate clone generation that allow clones to be used in place of the original benchmarks for studying the L1/L2/TLB miss rates as we vary the L1 cache, L1 prefetcher, L2 cache, TLB, and page size configurations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cloning",
+                "History",
+                "Prefetching",
+                "Computers",
+                "Probability",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Memory Access Behavior",
+                "Transition Probabilities",
+                "Temporal Localization",
+                "Cloning Techniques",
+                "Generation Of Clones",
+                "Cache Size",
+                "L2 Cache",
+                "Memory Hierarchy",
+                "Monte Carlo Simulation",
+                "Reference Number",
+                "Average Accuracy",
+                "Block Size",
+                "Average Correlation",
+                "Hash Function",
+                "Access Patterns",
+                "Instruction Set Architecture",
+                "Average Absolute Error",
+                "Probability Table",
+                "Lossy Compression",
+                "Accurate Ranking",
+                "Cache Misses",
+                "Cache Hit",
+                "Design Space Exploration"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1645,7 +3058,44 @@
                 "firstName": "Josep",
                 "lastName": "Torrellas"
             }
-        ]
+        ],
+        "abstract": "On-chip networks are especially vulnerable to within-die parameter variations. Since they connect distant parts of the chip, they need to be designed to work under the most unfavorable parameter values in the chip. This results in energy-inefficient designs. To improve the energy efficiency of on-chip networks, this paper presents a novel approach that relies on monitoring the errors of messages as they traverse the network. Based on the observed errors of messages, the system dynamically decreases or increases the voltage (V<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">dd</sub>) of groups of network routers. With this approach, called Tangle, the different V<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">dd</sub> values applied to different groups of network routers progressively converge to their lowest, variation-aware, error-free values - always keeping the network frequency unchanged. This saves substantial network energy. In a simulated 64-router network with 4 V<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">dd</sub> domains, Tangle reduces the network energy consumption by an average of 22% with negligible performance impact. In a future network design with one V<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">dd</sub> domain per router, Tangle lowers the network V<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">dd</sub> by an average of 21%, reducing the network energy consumption by an average of 28% with negligible performance impact.",
+        "keywords": {
+            "IEEE Keywords": [
+                "System-on-chip",
+                "Tuning",
+                "Timing",
+                "Switches",
+                "Regulators",
+                "Steady-state",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "Energy Consumption",
+                "Energy Efficiency",
+                "Negligible Impact",
+                "Network Energy",
+                "Substantial Energy",
+                "Step Size",
+                "Energy Conservation",
+                "Power Consumption",
+                "Step Change",
+                "Error Detection",
+                "Voltage Regulation",
+                "Time Error",
+                "Steps Of Minimization",
+                "Error Control",
+                "Bit Error",
+                "Source Node",
+                "Critical Path",
+                "Destination Node",
+                "Pipeline Stages",
+                "Performance Overhead",
+                "Guard Band",
+                "Design Space Exploration",
+                "Negligible Overhead"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1674,7 +3124,42 @@
                 "firstName": "Sangyeun",
                 "lastName": "Cho"
             }
-        ]
+        ],
+        "abstract": "Maintaining coherence in large-scale chip multiprocessors (CMPs) embodies tremendous design trade-offs in meeting the area, energy and performance requirements. Sparse directory organizations represent the most energy-efficient and scalable approach towards many-core coherence. However, their limited associativity disallows the one-to-one correspondence of directory entries to cached blocks, rendering them inadequate in tracking all cached blocks. Unless the directory storage is generously over-provisioned, conflicts will force frequent invalidations of cached blocks, severely jeopardizing the system performance. As the chip area and power become increasingly precious with the growing core count, over-provisioning the directory storage becomes unsustainably costly. Stash Directory is a novel sparse directory design that allows directory entries tracking private blocks to be safely evicted without invalidating the corresponding cached blocks. By doing so, it improves system performance and increases the effective directory capacity, enabling significantly smaller directory designs. To ensure correct coherence under the new relaxed inclusion property, stash directory delegates to the last level cache the responsibility to discover hidden cached blocks when necessary, without however raising significant overhead concerns. Simulations on a 16-core CMP model show that Stash Directory can reduce space requirements to 1/8 of a conventional sparse directory, without compromising performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Coherence",
+                "Program processors",
+                "Protocols",
+                "Force",
+                "Pollution",
+                "Organizations",
+                "System performance"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "System Performance",
+                "Energy Requirements",
+                "Multi-core",
+                "Improve System Performance",
+                "Energy Consumption",
+                "Upper Bound",
+                "Energy System",
+                "Data Privacy",
+                "Levels Of Hierarchy",
+                "Private Life",
+                "Data Sharing",
+                "Storage Requirements",
+                "Missing Rate",
+                "Data Block",
+                "Bandwidth Requirements",
+                "Memory Block",
+                "Cache Size",
+                "Cache Misses",
+                "Extra Bits",
+                "All-to-all Communication"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1715,7 +3200,49 @@
                 "firstName": "Jangwoo",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "GPU programmers suffer from programmer-managed GPU memory because both performance and programmability heavily depend on GPU memory allocation and CPU-GPU data transfer mechanisms. To improve performance and programmability, programmers should be able to place only the data frequently accessed by GPU on GPU memory while overlapping CPU-GPU data transfers and GPU executions as much as possible. However, current GPU architectures and programming models blindly place entire data on GPU memory, requiring a significantly large GPU memory size. Otherwise, they must trigger unnecessary CPU-GPU data transfers due to an insufficient GPU memory size. In this paper, we propose GPUdmm, a novel GPU architecture to enable high-performance and memory-oblivious GPU programming. First, GPUdmm uses GPU memory as a cache of CPU memory to provide programmers a view of the CPU memory-sized programming space. Second, GPUdmm achieves high performance by exploiting data locality and dynamically transferring data between CPU and GPU memories while effectively overlapping CPU-GPU data transfers and GPU executions. Third, GPUdmm can further reduce unnecessary CPU-GPU data transfers by exploiting simple programmer hints. Our carefully designed and validated experiments (e.g., PCIe/DMA timing) against representative benchmarks show that GPUdmm can achieve up to five times higher performance for the same GPU memory size, or reduce the GPU memory size requirement by up to 75% while maintaining the same performance.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Graphics processing units",
+                "Memory management",
+                "Data transfer",
+                "Kernel",
+                "Programming",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Graphics Processing Unit",
+                "Dynamic Management",
+                "Dynamic Memory",
+                "Memory Management",
+                "Graphics Processing Units Architecture",
+                "High-performance Graphics Processing Unit",
+                "Dynamic Memory Management",
+                "Benchmark",
+                "High Performance",
+                "Data Transfer",
+                "Programming Model",
+                "Large Memory",
+                "Memory Size",
+                "CPU Memory",
+                "View Of Space",
+                "Unnecessary Data",
+                "Graphics Processing Unit Memory",
+                "Larger Space",
+                "Interconnected Network",
+                "Redundant Data",
+                "GPU Memory",
+                "L2 Cache",
+                "Data Chunks",
+                "Computing Units",
+                "Cache Misses",
+                "Memory Data",
+                "Data Cache",
+                "Physical Address",
+                "Local Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1750,7 +3277,51 @@
                 "firstName": "Mikko H.",
                 "lastName": "Lipasti"
             }
-        ]
+        ],
+        "abstract": "With the advent of general-purpose GPU computing, it is becoming increasingly desirable to protect GPUs from soft errors. For high computation throughout, GPUs must store a significant amount of state and have many execution units. The high power and area costs of full protection from soft errors make selective protection techniques attractive. Such approaches provide maximum error coverage within a fixed area or power limit, but typically treat all errors equally. We observe that for many floating-point-intensive GPGPU applications, small magnitude errors may have little effect on results, while large magnitude errors can be amplified to have a significant negative impact. We therefore propose a novel precision-aware protection approach for the GPU execution logic and register file to mitigate large magnitude errors. We also propose an architecture modification to optimize error coverage for integer computations. Our approach combines selective logic hardening, targeted checker circuits, and intelligent register file encoding for best error protection. We demonstrate that our approach can reduce the mean error magnitude by up to 87% compared to a traditional selective protection approach with the same overhead.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Logic gates",
+                "Graphics processing units",
+                "Registers",
+                "Vectors",
+                "Timing",
+                "Computer architecture",
+                "Error correction codes"
+            ],
+            "Index Terms": [
+                "Soft Errors",
+                "High Power",
+                "Large Errors",
+                "Magnitude Of Error",
+                "Protection Techniques",
+                "Benchmark",
+                "Integer Values",
+                "Negligible Impact",
+                "Partial Protection",
+                "Forward Error Correction",
+                "Floating-point Operations",
+                "High Overhead",
+                "Mean Relative Error",
+                "Parity-check",
+                "Combinational Logic",
+                "Option Pricing",
+                "Area Overhead",
+                "Synopsys",
+                "Storage Elements",
+                "Bitwise Operations",
+                "Sign Bit",
+                "Power Overhead",
+                "Floating-point Values",
+                "Transient Pulse",
+                "Extra Bits",
+                "Floating-point Numbers",
+                "Input Vector",
+                "Random Input",
+                "Scalable Technology",
+                "False Positive"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1791,7 +3362,41 @@
                 "firstName": "Daniel J.",
                 "lastName": "Sorin"
             }
-        ]
+        ],
+        "abstract": "The goal of this work is to design cache coherence protocols with many cores that can be verified with state-of-the-art automated verification methodologies. In particular, we focus on flat (non-hierarchical) coherence protocols, and we use a mostly-automated methodology based on parametric verification (PV). We propose several design guidelines that architects should follow if they want to design protocols that can be parametrically verified. We experimentally evaluate performance, storage overhead, and scalability of a protocol verified with PV compared to a highly optimized protocol that cannot be verified with PV.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Coherence",
+                "Concrete",
+                "Guidelines",
+                "Model checking",
+                "Parametric statistics",
+                "Manuals"
+            ],
+            "Index Terms": [
+                "Coherence Protocol",
+                "Protocol Design",
+                "Design Guidelines",
+                "Formal Verification",
+                "Model Parameters",
+                "Building Blocks",
+                "Transient State",
+                "System Architecture",
+                "Multi-core",
+                "Base Case",
+                "Simple Protocol",
+                "Type Of Protocol",
+                "Human Effort",
+                "Cut-and-paste",
+                "Coherent State",
+                "Design Options",
+                "Model Checking",
+                "Virtual Channel",
+                "L2 Cache",
+                "Extra State"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1862,7 +3467,51 @@
                 "firstName": "Jaime",
                 "lastName": "Moreno"
             }
-        ]
+        ],
+        "abstract": "In most 3D work to date, people have looked at two situations: 1) a case in which power density is not a problem, and the parts of a processor and/or entire processors can be stacked atop each other, and 2) a case in which power density is limited, and storage is stacked atop processors. In this paper, we consider the case in which power density is a limitation, yet we stack processors atop processors. We also will discuss some of the physical limitations today that render many of the good ideas presented in other work impractical, and what would be required in the technology to make them feasible. In the high-performance regime, circuits are not designed to be “power efficient;” they're designed to be fast. In power-efficient design, the speed and power of a processor should be nearly proportional. In the high-performance regime, the frequency is (ever progressingly) sublinear in power. Thus, when the power density is constrained - as it is in high-performance machines, there may be opportunities to selectively exploit parallelism in workloads by running processor-on-processor systems at the same power, yet at much greater than half speed.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Three-dimensional displays",
+                "Wiring",
+                "Throughput",
+                "Density measurement",
+                "Power system measurements",
+                "Stacking"
+            ],
+            "Index Terms": [
+                "High-performance Processors",
+                "Power Density",
+                "Power Efficiency",
+                "High Performance",
+                "Layer Thickness",
+                "Aspect Ratio",
+                "Hot Spots",
+                "Tungsten",
+                "Operation Mode",
+                "Good Yields",
+                "Thermal Expansion",
+                "Base Case",
+                "Access Time",
+                "3D System",
+                "Heat Sink",
+                "Single Processor",
+                "Thermal Issues",
+                "L2 Cache",
+                "Top Curve",
+                "Processor Chip",
+                "GHz Core",
+                "Half Power",
+                "Bottom Curve",
+                "Silicon",
+                "Thermal Conductivity",
+                "Chemical Vapor Deposition",
+                "Amount Of Power",
+                "Relative Performance",
+                "3D Configuration",
+                "Throughput"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1897,7 +3546,49 @@
                 "firstName": "Benjamin C.",
                 "lastName": "Lee"
             }
-        ]
+        ],
+        "abstract": "Heterogeneous design presents an opportunity to improve energy efficiency but raises a challenge in resource management. Prior design methodologies aim for performance and efficiency, yet a deployed system may miss these targets due to run-time effects, which we denote as risk. We propose design strategies that explicitly aim to mitigate risk. We introduce new processor selection criteria, such as the coefficient of variation in performance, to produce heterogeneous configurations that balance performance risks and efficiency rewards. Out of the tens of strategies we consider, risk-aware approaches account for more than 70% of the strategies that produce systems with the best service quality. Applying these risk-mitigating strategies to heterogeneous datacenter design can produce a system that violates response time targets 50% less often.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Abstracts",
+                "Chaos",
+                "Benchmark testing",
+                "Microarchitecture"
+            ],
+            "Index Terms": [
+                "Heterogeneous Systems",
+                "Heterogeneity In Design",
+                "Selection Criteria",
+                "Service Quality",
+                "Resource Management",
+                "Design Strategies",
+                "Performance Variables",
+                "Search Engine",
+                "Scaling Factor",
+                "Heterogeneous Results",
+                "Figure Of Merit",
+                "Systemic Risk",
+                "Design Space",
+                "Loss Of Efficiency",
+                "Microarchitecture",
+                "Small Core",
+                "Heterogeneous Process",
+                "Source Of Risk",
+                "Improve Service Quality",
+                "Core Type",
+                "Heterogeneous Resources",
+                "Application Running",
+                "Performance Penalty",
+                "Benchmark Suite",
+                "Heterogeneous Mix",
+                "Diverse Tasks",
+                "Design Flow",
+                "Strategy Framework",
+                "Similar Applications",
+                "Arrival Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1926,7 +3617,37 @@
                 "firstName": "Mikko H.",
                 "lastName": "Lipasti"
             }
-        ]
+        ],
+        "abstract": "Sequential consistency is arguably the most intuitive memory consistency model for shared-memory multi-threaded programming, yet it appears to be a poor fit for simple, in-order processors that are most attractive in the power-constrained many-core era. This paper proposes an intuitively appealing and straightforward framework for ensuring sequentially consistent execution. Prior schemes have enabled similar reordering, but in ways that are most naturally implemented in aggressive out-of-order processors that support speculative execution or that require pervasive and error-prone revisions to the already-complex coherence protocols. The proposed Atomic SC approach adds a light-weight scheme for enforcing mutual exclusion to maintain proper SC order for reordered references, works without any alteration to the underlying coherence protocol and consumes minimal silicon area and energy. On an in-order processor running multithreaded PARSEC workloads, Atomic SC delivers performance that is equal to or better than prior SC-compatible schemes, which require much greater energy and design complexity.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Coherence",
+                "Pipelines",
+                "Hardware",
+                "Buffer storage",
+                "Complexity theory",
+                "Protocols"
+            ],
+            "Index Terms": [
+                "Multi-threaded",
+                "False Positive",
+                "Performance Gain",
+                "Performance Gap",
+                "Memory System",
+                "Memory Model",
+                "Deadlock",
+                "Global Order",
+                "Relaxed Model",
+                "Memory Operations",
+                "Early Reference",
+                "Parallel Applications",
+                "Request Message",
+                "L2 Cache",
+                "Cache Misses",
+                "Cache Hit"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -1973,7 +3694,49 @@
                 "firstName": "John",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "A cost-efficient network-on-chip is needed in a scalable many-core systems. Recent multicore processors have leveraged a ring topology and hierarchical ring can increase scalability but presents different challenges, including higher hop count and global ring bottleneck. In this work, we describe a hierarchical ring topology that we refer to as a transportation-network-inspired network-on-chip (tNoC) that leverages principles from transportation network systems. In particular, we propose a novel hybrid flow control for hierarchical ring topology to scale the topology efficiently. The flow control is hybrid in that the channels are allocated on flit granularity while the buffers are allocated on packet granularity. The hybrid flow control enables a simplified router microarchitecture (to minimize per-hop latency) as router input buffers are minimized and buffers are pushed to the edges, either at the output ports or at the hub routers that interconnect the local rings to the global ring - while still supporting virtual channels to avoid protocol deadlock. We also describe a packet-quota-system (PQS) and a separate credit network that provide congestion management, support prioritized arbitration in the network, and provide support for multiflit packets. A detailed evaluation of a 64-core CMP shows that the tNoC improves performance by up to 21% compared with a baseline, buffered hierarchical ring topology while reducing NoC energy by 51%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Topology",
+                "Network topology",
+                "Microarchitecture",
+                "Roads",
+                "Ports (Computers)",
+                "Vehicles"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Flow Control",
+                "Arbitration",
+                "Transportation Network",
+                "Deadlock",
+                "Local Ring",
+                "Ring Topology",
+                "Virtual Channel",
+                "Hop Count",
+                "Highway",
+                "Light Signal",
+                "Channel Width",
+                "Energy Reduction",
+                "Example Of Problem",
+                "Terminal Nodes",
+                "Channel Network",
+                "Traffic Patterns",
+                "Critical Path",
+                "Amount Of Buffer",
+                "Channel Bandwidth",
+                "Alternative Topologies",
+                "Ring Road",
+                "Quota System",
+                "Channel Resources",
+                "Datapath",
+                "Parallel Network",
+                "Downstream Nodes",
+                "Packet Size",
+                "Hierarchical Design"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2002,7 +3765,50 @@
                 "firstName": "Karthikeyan",
                 "lastName": "Sankaralingam"
             }
-        ]
+        ],
+        "abstract": "This paper introduces a novel end-to-end platform called PERSim that allows FPGA accelerated full-system simulation of complete programs on prototype hardware with detailed fault injection that can capture gate delays and digital logic behavior of arbitrary circuits and provides full coverage. We use PERSim and report on five case studies spanning a diverse spectrum of reliability techniques including wearout prediction/detection (FIRST, Wearmon, TRIX), transient faults, and permanent faults (Sampling-DMR). PERSim provides unprecedented capability to study these techniques quantitatively when applied to a full processor and when running complete programs. These case studies demonstrate PERSim's robustness and flexibility - such a diverse set of techniques can be studied uniformly with common metrics like area overhead, power overhead, and detection latency. PERSim provides many new insights, of which two important ones are: i) We discover an important modeling “hole” - when considering the true logic delay behavior, non-critical paths can directly transition into logic faults, rendering insufficient delay-based detection/prediction mechanisms targeted at critical paths alone. ii) When Sampling-DMR was evaluated in a real system running full applications, detection latency is orders of magnitude lower than previously reported model-based worst-case latency - 107 seconds vs. 0.84 seconds, thus dramatically strengthening Sampling-DMR's effectiveness. The framework is released open source and runs on the Zync platform.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Circuit faults",
+                "Logic gates",
+                "Field programmable gate arrays",
+                "Delays",
+                "Integrated circuit modeling",
+                "Reliability",
+                "Virtual machine monitors"
+            ],
+            "Index Terms": [
+                "Physical Effects",
+                "Reliable Effect",
+                "Critical Path",
+                "Transient Faults",
+                "Behavior Change",
+                "Multi-core",
+                "Input Sequence",
+                "Operation Period",
+                "Microarchitecture",
+                "Fine Grain",
+                "Charge Accumulation",
+                "Defect Model",
+                "Prediction Techniques",
+                "Clock Frequency",
+                "Clock Cycles",
+                "Circuit Level",
+                "Delay Increases",
+                "Path Delay",
+                "Impact Of Defects",
+                "Clock Period",
+                "SPICE Simulations",
+                "Gating Behavior",
+                "ARM Processor",
+                "Oxidative Breakdown",
+                "Co-simulation",
+                "Frequent Testing",
+                "Hidden Markov Model",
+                "Benchmark",
+                "Propagation Delay"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2037,7 +3843,51 @@
                 "firstName": "Nam Sung",
                 "lastName": "Kim"
             }
-        ]
+        ],
+        "abstract": "While more cores can find place in the unit chip area every technology generation, excessive growth in power density prevents simultaneous utilization of all. Due to the lower operating voltage, Near-Threshold Voltage Computing (NTC) promises to fit more cores in a given power envelope. Yet NTC prospects for energy efficiency disappear without mitigating (i) the performance degradation due to the lower operating frequency; (ii) the intensified vulnerability to parametric variation. To compensate for the first barrier, we need to raise the degree of parallelism - the number of cores engaged in computation. NTC-prompted power savings dominate the power cost of increasing the core count. Hence, limited parallelism in the application domain constitutes the critical barrier to engaging more cores in computation. To avoid the second barrier, the system should tolerate variation-induced errors. Unfortunately, engaging more cores in computation exacerbates vulnerability to variation further. To overcome NTC barriers, we introduce Accordion, a novel, light-weight framework, which exploits weak scaling along with inherent fault tolerance of emerging R(ecognition), M(ining), S(ynthesis) applications. The key observation is that the problem size not only dictates the number of cores engaged in computation, but also the application output quality. Consequently, Accordion designates the problem size as the main knob to trade off the degree of parallelism (i.e. the number of cores engaged in computation), with the degree of vulnerability to variation (i.e. the corruption in application output quality due to variation-induced errors). Parametric variation renders ample reliability differences between the cores. Since RMS applications can tolerate faults emanating from data-intensive program phases as opposed to control, variation-afflicted Accordion hardware executes fault-tolerant data-intensive phases on error-prone cores, and reserves reliable cores for control.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Timing",
+                "Parallel processing",
+                "Fault tolerance",
+                "Fault tolerant systems",
+                "Error analysis",
+                "Transistors"
+            ],
+            "Index Terms": [
+                "Soft Computing",
+                "Near-threshold Voltage",
+                "Corruption",
+                "Energy Efficiency",
+                "Energy Conservation",
+                "Yield Quality",
+                "Fault-tolerant",
+                "Operating Frequency",
+                "Applicability Domain",
+                "Key Observation",
+                "Problem Size",
+                "Chip Area",
+                "Degree Of Parallelism",
+                "eCognition",
+                "Benchmark",
+                "Semantic",
+                "Error Rate",
+                "Input Parameters",
+                "Low Speed",
+                "Partial Differential Equations",
+                "Pareto Front",
+                "Safe Mode",
+                "Time Error",
+                "Large-sized Problems",
+                "Temperature Step",
+                "Problem Size Increases",
+                "Memory Block",
+                "Technological Parameters",
+                "Strong Scaling",
+                "Likelihood Of Errors"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2072,7 +3922,48 @@
                 "firstName": "Karsten",
                 "lastName": "Schwan"
             }
-        ]
+        ],
+        "abstract": "This paper explores the performance implications of using future byte addressable non-volatile memory (NVM) like PCM in end client devices. We explore how to obtain dual benefits - increased capacity and faster persistence - with low overhead and cost. Specifically, while increasing memory capacity can be gained by treating NVM as virtual memory, its use of persistent data storage incurs high consistency (frequent cache flushes) and durability (logging for failure) overheads, referred to as `persistence cost'. These not only affect the applications causing them, but also other applications relying on the same cache and/or memory hierarchy. This paper analyzes and quantifies in detail the performance overheads of persistence, which include (1) the aforementioned cache interference as well as (2) memory allocator overheads, and finally, (3) durability costs due to logging. Novel solutions to overcome such overheads include (1) a page contiguity algorithm that reduces interference-related cache misses, (2) a cache efficient NVM write aware memory allocator that reduces cache line flushes of allocator state by 8X, and (3) hybrid logging that reduces durability overheads substantially. With these solutions, experimental evaluations with different end user applications and SPEC2006 benchmarks show up to 12% reductions in cache misses, thereby reducing the total number of NVM writes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Nonvolatile memory",
+                "Random access memory",
+                "Abstracts",
+                "Benchmark testing",
+                "Microcontrollers",
+                "Computer crashes"
+            ],
+            "Index Terms": [
+                "End-users",
+                "Non-volatile",
+                "End-user Devices",
+                "Logistics",
+                "Memory Capacity",
+                "Non-volatile Memory",
+                "Data Cache",
+                "Memory Allocation",
+                "Performance Overhead",
+                "Memory Address",
+                "Number Of Writers",
+                "Cache Misses",
+                "Virtual Memory",
+                "Data Structure",
+                "Metadata",
+                "User Data",
+                "Data Logger",
+                "Hash Function",
+                "Energy Meter",
+                "Word Size",
+                "Software Stack",
+                "Written Back",
+                "Remote Memory",
+                "Memory Management",
+                "Multi-threaded",
+                "Entire Object",
+                "Impact Of Application",
+                "Prior Efforts"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2113,7 +4004,37 @@
                 "firstName": "Josep",
                 "lastName": "Torrellas"
             }
-        ]
+        ],
+        "abstract": "An IF-Condition Invariance Violation (ICIV) occurs when, after a thread has computed the control expression of an IF statement and while it is executing the THEN or ELSE clauses, another thread updates variables in the IF's control expression. An ICIV can be easily detected, and is likely to be a sign of a concurrency bug in the code. Typically, the ICIV is caused by a data race, which we call IF-Condition Data Race (ICR). In this paper, we analyze the data races reported in the bug databases of popular software systems and show that ICRs occur relatively often. Then, we present two techniques to handle ICRs dynamically. They rely on simple code transformations and, in one case, additional hardware help. One of them (SW-IF) detects the races, while the other (HW-IF) detects and prevents them. We evaluate SW-IF and HW-IF using a variety of applica- tions. We show that these new techniques are effective at finding new data race bugs and run with low overhead. Specifically, HW-IF finds 5 new (unreported) race bugs and SW-IF finds 3 of them. In addition, 8-threaded executions of SPLASH-2 codes show that, on average, SW-IF adds 2% execution overhead, while HW-IF adds less than 1%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer bugs",
+                "Instruction sets",
+                "Delays",
+                "Monitoring",
+                "Hardware",
+                "Synchronization",
+                "Databases"
+            ],
+            "Index Terms": [
+                "Low Overhead",
+                "Side Effects",
+                "False Positive",
+                "False Negative",
+                "Expression Values",
+                "Source Code",
+                "Production Run",
+                "Multiple Contexts",
+                "Debugging",
+                "Deadlock",
+                "Local Memory",
+                "Function Calls",
+                "Performance Overhead",
+                "Hardware Support",
+                "Cherokee",
+                "Critical Section"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2160,7 +4081,43 @@
                 "firstName": "Boris",
                 "lastName": "Grot"
             }
-        ]
+        ],
+        "abstract": "Instruction-grain monitoring is a powerful approach that enables a wide spectrum of bug-finding tools. As existing software approaches incur prohibitive runtime overhead, researchers have focused on hardware support for instruction-grain monitoring. A recurring theme in recent work is the use of hardware-assisted filtering so as to elide costly software analysis. This work generalizes and extends prior point solutions into a programmable filtering accelerator affording vast flexibility and at-speed event filtering. The pipelined microarchitecture of the accelerator affords a peak filtering rate of one application event per cycle, which suffices to keep up with an aggressive OoO core running the monitored application. A unique feature of the proposed design is the ability to dynamically resolve dependencies between unfilterable events and subsequent events, eliminating data-dependent stalls and maximizing accelerator's performance. Our evaluation results show a monitoring slowdown of just 1.2-1.8x across a diverse set of monitoring tools.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monitoring",
+                "Filtering",
+                "Software",
+                "Benchmark testing",
+                "Hardware",
+                "Runtime",
+                "Acceleration"
+            ],
+            "Index Terms": [
+                "Per Cycle",
+                "Runtime Overhead",
+                "Benchmark",
+                "Critical Conditions",
+                "Activity Monitor",
+                "Filter Unit",
+                "State Machine",
+                "Design Points",
+                "Processing Events",
+                "Security Vulnerabilities",
+                "Local Memory",
+                "Filtering Mechanism",
+                "High Overhead",
+                "Monitoring Task",
+                "Core Type",
+                "Function Calls",
+                "Filtering Stage",
+                "Pipeline Stages",
+                "Event Stream",
+                "Reference Count",
+                "Filtering Rules",
+                "Simple Hardware"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2195,7 +4152,34 @@
                 "firstName": "Mikko H.",
                 "lastName": "Lipasti"
             }
-        ]
+        ],
+        "abstract": "With the rise of mobile and cloud-based computing, modern processor design has become the task of achieving maximum power efficiency at specific performance targets. This trend, coupled with dwindling improvements in single-threaded performance, has led architects to predominately focus on energy efficiency. In this paper we note that for the majority of benchmarks, a substantial portion of execution time is spent executing simple loops. Capitalizing on the frequency of loops, we design an out-of-order processor architecture that achieves an aggressive level of performance while minimizing the energy consumed during the execution of loops. The Revolver architecture achieves energy efficiency during loop execution by enabling “in-place execution” of loops within the processor's out-of-order backend. Essentially, a few static instances of each loop instruction are dispatched to the out-of-order execution core by the processor frontend. The static instruction instances may each be executed multiple times in order to complete all necessary loop iterations. During loop execution the processor frontend, including instruction fetch, branch prediction, decode, allocation, and dispatch logic, can be completely clock gated. Additionally we propose a mechanism to preexecute future loop iteration load instructions, thereby realizing parallelism beyond the loop iterations currently executing within the processor core. Employing Revolver across three benchmark suites, we eliminate 20, 55, and 84% of all frontend instruction dispatches. Overall, we find Revolver maintains performance, while resulting in 5.3%- 18.3% energy-delay benefit over loop buffers or micro-op cache techniques alone.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Out of order",
+                "Registers",
+                "Arrays",
+                "Resource management",
+                "Pipelines",
+                "Rain",
+                "Clocks"
+            ],
+            "Index Terms": [
+                "Loop Execution",
+                "Future Iterations",
+                "Loop Iteration",
+                "Benchmark Suite",
+                "Flow Control",
+                "State Machine",
+                "Access Patterns",
+                "End Of Loop",
+                "Pipeline Stages",
+                "Energy Benefits",
+                "L2 Cache",
+                "Core Energy",
+                "Loop Detection"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2230,7 +4214,50 @@
                 "firstName": "Daniel J.",
                 "lastName": "Sorin"
             }
-        ]
+        ],
+        "abstract": "Dynamic power management (DPM) is critical to maximizing the performance of systems ranging from multicore processors to datacenters. However, one formidable challenge with DPM schemes is verifying that the DPM schemes are correct as the number of computational resources scales up. In this paper, we develop a DPM scheme such that it is scalably verifiable with fully automated formal tools. The key to the design is that the DPM scheme has fractal behavior; that is, it behaves the same at every scale. We show that the fractal design enables scalable formal verification and simulation shows that our scheme does not sacrifice much performance compared to an oracle DPM scheme that optimally allocates power to computational resources. We implement our scheme in a 2-socket 16-core x86 system and experimentally evaluate it.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fractals",
+                "Multicore processing",
+                "Program processors",
+                "Computers",
+                "Computational modeling",
+                "Automata",
+                "Abstracts"
+            ],
+            "Index Terms": [
+                "Power Management",
+                "Dynamic Management",
+                "Dynamic Power Management",
+                "Scalable",
+                "Computational Resources",
+                "Experimental Evaluation",
+                "Multi-core",
+                "Formal Verification",
+                "Benchmark",
+                "State Space",
+                "Large Systems",
+                "Power Level",
+                "Base Case",
+                "Changes In Power",
+                "Node Status",
+                "System Scale",
+                "State Machine",
+                "Power Set",
+                "Binary Tree",
+                "Left Child",
+                "Static Scheme",
+                "Model Checking",
+                "Table Entries",
+                "Clock Frequency",
+                "Induction Step",
+                "Reachable States",
+                "Resource Performance",
+                "Smallest Scale",
+                "Changes In Demand"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2283,7 +4310,51 @@
                 "firstName": "Tong",
                 "lastName": "Zhang"
             }
-        ]
+        ],
+        "abstract": "This paper presents a design strategy that enables aggressive use of flash memory chip I/O link over-clocking in solid-state drives (SSDs) without sacrificing storage reliability. The gradual wear-out and process variation of NAND flash memory makes the worst-case oriented error correction code (ECC) in SSDs largely under-utilized most of the time. This work proposes to opportunistically leverage under-utilized error correction strength to allow error-prone flash memory I/O link over-clocking. Its rationale and key design issues are presented and studied in this paper, and its potential effectiveness has been verified through hardware experiments and system simulations. Using sub-22nm NAND flash memory chips with I/O specs of 166MBps, we carried out extensive experiments and show that the proposed design strategy can enable SSDs safely operate with error-prone I/O link running at 275MBps. Trace-driven SSD simulations over a variety of workload traces show the system read response time can be reduced by over 20%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Reliability",
+                "Bit error rate",
+                "Abstracts",
+                "Hardware",
+                "Flash memories",
+                "Lead"
+            ],
+            "Index Terms": [
+                "Flash Memory",
+                "Solid-state Drives",
+                "Memory Chips",
+                "Flash Memory Chip",
+                "Response Time",
+                "Extensive Experiments",
+                "Forward Error Correction",
+                "Simulation Results",
+                "Data Rate",
+                "Data Storage",
+                "Transfer Rate",
+                "Data Transfer",
+                "Bit Error Rate",
+                "Physical Access",
+                "Speed Performance",
+                "Bit Error",
+                "Average Response Time",
+                "Clock Frequency",
+                "Scalable Technology",
+                "Gradual Degradation",
+                "Low-density Parity-check",
+                "Low-density Parity-check Codes",
+                "Data Page",
+                "Logic Unit",
+                "Average Bit Error Rate",
+                "Data Storage Devices",
+                "Data Storage System",
+                "Error Rate",
+                "Residual Strength",
+                "Design Framework"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2312,7 +4383,47 @@
                 "firstName": "Michael C.",
                 "lastName": "Huang"
             }
-        ]
+        ],
+        "abstract": "Despite the proliferation of multi-core and multi-threaded architectures, exploiting implicit parallelism for a single semantic thread is still a crucial component in achieving high performance. Look-ahead is a tried-and-true strategy in uncovering implicit parallelism, but a conventional, monolithic out-of-order core quickly becomes resource-inefficient when looking beyond a small distance. A more decoupled approach with an independent, dedicated look-ahead thread on a separate thread context can be a more flexible and effective implementation, especially in a multi-core environment. While capable of generating significant performance gains, the look-ahead agent often becomes the new speed limit. Fortunately, the look-ahead thread has no hard correctness constraints and presents new opportunities for optimizations. One such opportunity is to exploit “weak” dependences. Intuitively, not all dependences are equal. Some links in a dependence chain are weak enough that removing them in the look-ahead thread does not materially affect the quality of look-ahead but improves the speed. While there are some common patterns of weak dependences, they can not be generalized as heuristics in generating better code for the look-ahead thread. A primary reason is that removing a false weak dependence can be exceedingly costly. Nevertheless, a trial-and-error approach can reliably identify opportunities for improving the look-ahead thread and quantify the benefits. A framework based on genetic algorithm can help search for the right set of changes to the look-ahead thread. In the set of applications where the speed of look-ahead has become the new limit, this method is found to improve the overall system performance by up to 1.48x with a geometric mean of 1.14x over the baseline decoupled look-ahead system, while reducing energy consumption by 11%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Genetic algorithms",
+                "Skeleton",
+                "Parallel processing",
+                "Message systems",
+                "Instruction sets",
+                "Registers",
+                "Context"
+            ],
+            "Index Terms": [
+                "Weak Dependence",
+                "Metaheuristic Approaches",
+                "Heuristic",
+                "System Performance",
+                "Geometric Mean",
+                "Performance Gain",
+                "Speed Limit",
+                "Development Process",
+                "Population Size",
+                "Parallelization",
+                "Flow Control",
+                "Fit Test",
+                "Genetic Evolution",
+                "Performance Benefits",
+                "Microarchitecture",
+                "Masked Images",
+                "Fitness Score",
+                "Roulette Wheel",
+                "Real Question",
+                "Multigene Testing",
+                "L2 Cache",
+                "Coded Modulation",
+                "Cache Misses",
+                "Single Instruction",
+                "Hardware Support",
+                "Fusion Operation"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2353,7 +4464,39 @@
                 "firstName": "Dmitry",
                 "lastName": "Ponomarev"
             }
-        ]
+        ],
+        "abstract": "Protecting modern computer systems and complex software stacks against the growing range of possible attacks is becoming increasingly difficult. The architecture of modern commodity systems allows attackers to subvert privileged system software often using a single exploit. Once the system is compromised, inclusive permissions used by current architectures and operating systems easily allow a compromised high-privileged software layer to perform arbitrary malicious activities, even on behalf of other software layers. This paper presents a hardware-supported page permission scheme for the physical pages that is based on the concept of non-inclusive sets of memory permissions for different layers of system software such as hypervisors, operating systems, and user-level applications. Instead of viewing privilege levels as an ordered hierarchy with each successive level being more privileged, we view them as distinct levels each with its own set of permissions. Such a permission mechanism, implemented as part of a processor architecture, provides a common framework for defending against a range of recent attacks. We demonstrate that such a protection can be achieved with negligible performance overhead, low hardware complexity and minimal changes to the commodity OS and hypervisor code.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Virtual machine monitors",
+                "Permission",
+                "Hardware",
+                "Memory management",
+                "System software"
+            ],
+            "Index Terms": [
+                "Cross-layer Attacks",
+                "Operating System",
+                "Hardware Complexity",
+                "Current Architecture",
+                "Performance Overhead",
+                "Set Of Rules",
+                "Types Of Attacks",
+                "Virtual Machines",
+                "Malware",
+                "Access Rights",
+                "Threat Model",
+                "Protective Memory",
+                "Physical Memory",
+                "System Calls",
+                "Access Permissions",
+                "Hardware Support",
+                "Kernel Images",
+                "Address Space",
+                "L2 Cache",
+                "Linux Kernel"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2382,7 +4525,37 @@
                 "firstName": "Dean M.",
                 "lastName": "Tullsen"
             }
-        ]
+        ],
+        "abstract": "This paper presents CDTT, a compiler framework that takes C/C++ code and automatically generates a binary that eliminates dynamically redundant code without programmer intervention. It does so by exploiting underlying hardware or software support for the data-triggered threads (DTT) programming and execution model. With the help of idempotence analysis and inter-procedural name dependence analysis, CDTT identifies potential code regions and composes support thread functions that execute as soon as live-in data changes. CDTT can also use profile data to target the elimination of redundant computation. The compiled binary running on top of a software runtime system can achieve nearly the same level of performance as careful hand-coded modifications in most benchmarks. CDTT improves the performance of serial C SPEC benchmarks by as much as 57% (average 11%) on a Nehalem processor.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Computational modeling",
+                "Hardware",
+                "Runtime",
+                "Data structures",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Profiling Data",
+                "Idempotent",
+                "Model Execution",
+                "Hardware Support",
+                "State Variables",
+                "Data Generation",
+                "Performance Gain",
+                "Selective Regions",
+                "Global Variables",
+                "Candidate Regions",
+                "Memory Content",
+                "Function Calls",
+                "List Of Regions",
+                "Output Regions",
+                "Memory Address",
+                "Region R2",
+                "Threshold Mechanism"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2423,7 +4596,49 @@
                 "firstName": "G. Edward",
                 "lastName": "Suh"
             }
-        ]
+        ],
+        "abstract": "This paper presents an efficient hardware architecture that enables run-time data race detection with high coverage and minimal performance overhead. Run-time race detectors often rely on the happens-before vector clock algorithm for accuracy, yet suffer from either non-negligible performance overhead or low detection coverage due to a large amount of meta-data. Based on the observation that most of data races happen between close-by accesses, we introduce an optimization to selectively store meta-data only for recently shared memory locations and decouple meta-data storage from regular data storage such as caches. Experiments show that the proposed scheme enables run-time race detection with a minimal impact on performance (4.8% overhead on average) with very high detection coverage (over 99%). Furthermore, this architecture only adds a small amount of on-chip resources for race detection: a 13-KB buffer per core and a 1-bit tag per data cache block.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Instruction sets",
+                "Synchronization",
+                "Abstracts",
+                "Vectors"
+            ],
+            "Index Terms": [
+                "High Coverage",
+                "Local Memory",
+                "High Overhead",
+                "Hardware Architecture",
+                "Time Vector",
+                "Data Cache",
+                "Minimal Overhead",
+                "Performance Overhead",
+                "Shared Memory",
+                "Coverage Performance",
+                "False Positive",
+                "Rest Of The Paper",
+                "Real-world Applications",
+                "Local Time",
+                "Small Window",
+                "Detection Capability",
+                "Software Implementation",
+                "Static Approach",
+                "Program Execution",
+                "Low Overhead",
+                "Cache Size",
+                "L2 Cache",
+                "Context Switching",
+                "Local Clock",
+                "Critical Section",
+                "Memory Hierarchy",
+                "Cache Misses",
+                "Multiple Threads",
+                "Hardware Support",
+                "Hardware Overhead"
+            ]
+        }
     },
     {
         "publicationNumber": "6823235",
@@ -2439,7 +4654,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 IEEE 20th International Symposium on High Performance Computer Architecture (HPCA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose papers are published in the conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6823235",
@@ -2455,7 +4672,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 IEEE 20th International Symposium on High Performance Computer Architecture (HPCA)",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: caches; reliability and process variation; race detection and instruction monitoring; data centres; cache coherence and consistency; security and cloning; GPUs; interconnection networks; DRAM; nonvolatile memory; memory management; power management; and threading.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6823235",
@@ -2471,6 +4690,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 IEEE 20th International Symposium on High Performance Computer Architecture (HPCA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover or splash screen of the proceedings record.",
+        "keywords": {}
     }
 ]

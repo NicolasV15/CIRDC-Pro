@@ -32,7 +32,40 @@
                 "firstName": "Nele",
                 "lastName": "Mentens"
             }
-        ]
+        ],
+        "abstract": "In this paper, we push the limits in maximizing the throughput of side-channel-protected AES-GCM implementations on an FPGA. We present a fully unrolled and pipelined architecture that uses a Boolean masking countermeasure (specifically, threshold implementation) for first-order DPA resistance. Using a high-end Virtex-7 device, we obtain a throughput of 15.24 Gbit/s. Since masked implementations require a stream of random bits for each execution, a high-throughput masked implementation requires a high-throughput pseudorandom number generator as well. This work determines how fast random numbers should be generated in order for ultra-high throughput, threshold-protected AES-GCM implementations to be feasible on FPGAs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Throughput",
+                "Radiation detectors",
+                "Computer architecture",
+                "Field programmable gate arrays",
+                "Authentication",
+                "Ciphers",
+                "Encryption"
+            ],
+            "Index Terms": [
+                "Random Number",
+                "Pseudo-random Number Generator",
+                "Random Bits",
+                "High Throughput",
+                "Operation Mode",
+                "Lookup Table",
+                "Strict Requirements",
+                "Secret Key",
+                "Additional Cycles",
+                "Network Throughput",
+                "Message Authentication",
+                "Clock Frequency",
+                "Clock Cycles",
+                "Datapath",
+                "Pipelining",
+                "Counter Value",
+                "Message Authentication Code",
+                "Block Cipher",
+                "Masking Strategy"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -79,7 +112,38 @@
                 "firstName": "David",
                 "lastName": "Hely"
             }
-        ]
+        ],
+        "abstract": "Software attacks are commonly performed against embedded systems in order to access private data or to run restricted services. In this work, we demonstrate some vulnerabilities of commonly use processor which can be leveraged by hackers to attack a system. The targeted devices are based on open processor architectures OpenRISC and RISC-V. Several software exploits are discussed and demonstrated while a hardware countermeasure is proposed and validated on OpenRISC against Return Oriented Programming attack.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Security",
+                "Payloads",
+                "Embedded systems",
+                "Computer architecture",
+                "Computer bugs",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Red Team",
+                "Processing Architecture",
+                "Operating System",
+                "State Machine",
+                "Submodule",
+                "Program Execution",
+                "Software Defect",
+                "Malware",
+                "Mitigation Techniques",
+                "Area Overhead",
+                "Memory Organization",
+                "Buffer Overflow"
+            ],
+            "Author Keywords": [
+                "Embedded system security",
+                "processor architecture",
+                "trusted computing",
+                "memory corruption"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -102,7 +166,47 @@
                 "firstName": "Rachael J.",
                 "lastName": "Parker"
             }
-        ]
+        ],
+        "abstract": "We describe a minimum entropy justification for the metastable latch based nondeterministic random bit generator (NRBG) also known as an entropy source (ES). The NRBG, used for on-die generation of cryptographic keys in SOCs, is comprised of a CMOS latch with a continuously running offset cancellation loop. The offset cancellation allows for the resolution required to sample device noise at the expense of introducing serial correlation in the output data. Because the NRBG is embedded within SP 800-90 A/B/C and FIPs 140-2 compliant systems, it is critical that the loss of entropy due to serial correlation be known and bounded, and that there is a mechanism to detect loss of entropy during manufacturing test as well as normal operation. We demonstrate that a simplified one-dimensional stochastic model of the comparator in conjunction with a birth-death Markov chain model of the offset cancellation can be used to derive the minimum entropy of the NRBG and the probability of bit patterns used by entropy quality health test circuits. The result of this work compares excellently to measured data from an advanced FinFET process.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Entropy",
+                "Latches",
+                "Markov processes",
+                "Generators",
+                "Integrated circuit modeling",
+                "Manufacturing"
+            ],
+            "Index Terms": [
+                "Metastable",
+                "Random Generation",
+                "Random Bits",
+                "Autocorrelation",
+                "Markov Chain",
+                "Output Data",
+                "Entropy Loss",
+                "Minimum Entropy",
+                "Birth-death Model",
+                "Entropy Source",
+                "Feedback Loop",
+                "Step Size",
+                "Random Number",
+                "Transition Probabilities",
+                "Analog-to-digital Converter",
+                "Run Length",
+                "Least Significant Bit",
+                "Voltage Noise",
+                "Test Chip",
+                "Entropy Expression"
+            ],
+            "Author Keywords": [
+                "TRNG",
+                "NRBG",
+                "DRNG",
+                "Entropy",
+                "Metastability"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -131,7 +235,30 @@
                 "firstName": "Raylin",
                 "lastName": "Tso"
             }
-        ]
+        ],
+        "abstract": "In public key encryption with keyword search (PEKS) framework, see Figure 1(a), the cloud server stores index I<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">w</sub> and verifies the equivalence whether w = w' or not on receiving a keyword search request through a trapdoor T<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">w'</sub>. Aside from the traditional secrecy concerns over index, a new threat called inner keyword guessing attack which addressed the secrecy of trapdoors against off-line brute force attacks, was indicated by Chen et al. First, the index I<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">w</sub> is publicly computable; second, the domain of keywords is not big enough to resist brute force attacks; and third, the cloud server can verify the equivalence between keywords of index and trapdoors by itself. As a curious server, on input a trapdoor T<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">w'</sub>, the server can keep computing index with different keywords w and tests the equivalence by itself until finding the keyword w' hidden in the trapdoors. That is, the secrecy of trapdoors can be easily broken. Furthermore, the `hacked trapdoor' can be utilized to test all the index in the database, which indirectly impacts the secrecy of index. Chen et al. propose a dual-server PEKS (DS-PEKS) syntax to deal with this issue. There are a front server and a back server in their architecture (see Figure 1(b)) and the keyword search test is done by the co-operation of two servers. Assume that these two servers do not collude, the DS-PEKS scheme will be secure against off-line inner keyword guessing attacks (although that the on-line inner keyword guessing attacks still work). However, several flaws occur in Chen et al.'s works so that the secrecy of index and trapdoors are not well-protected even against outside adversaries. In this work, we propose a new DS-PEKS construction based on the Cramer Shoup encryption, whose index and trapdoors are provably indistinguishable against chosen keyword attacks based on the IND-CCA2 security of the Cramer Shoup encryption without random oracle model.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Servers",
+                "Indexes",
+                "Encryption",
+                "Keyword search",
+                "Public key"
+            ],
+            "Index Terms": [
+                "Public Key",
+                "Security Proof",
+                "Cloud Computing",
+                "Collusion",
+                "Index Database",
+                "Brute-force Attacks",
+                "Random Oracle",
+                "Random Oracle Model",
+                "Secure Channel",
+                "Notion Of Security",
+                "Backtesting"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -172,7 +299,33 @@
                 "firstName": "Bruno",
                 "lastName": "Rouzeyre"
             }
-        ]
+        ],
+        "abstract": "Many techniques have been proposed in literature to cope with transient, permanent and malicious faults in computing systems. Among these techniques for reliability improvement and fault tolerance, Control Flow Checking allows covering any fault affecting the part of the storing elements containing the executable program, as well as all the hardware components handling the program itself and its flow. In [1] the authors proposed a low-overhead solution implementing hardware based control flow monitoring technique. They suggested that control flow error detection could be also used as a solution for enhancing the security of a computing system, preventing the insertion of malicious code in an application. In this paper we present a technique to map a malicious program into another one without structure violation and thus bypassing the control flow detection method.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Trojan horses",
+                "Monitoring",
+                "Hardware",
+                "Security",
+                "Fault tolerance"
+            ],
+            "Index Terms": [
+                "Flow Control",
+                "Fault-tolerant",
+                "Program Execution",
+                "Malware",
+                "Transient Faults",
+                "Recursive Algorithm",
+                "Sequence Of Instructions",
+                "Number Of Jumps",
+                "Host Jump",
+                "Control Flow Graph"
+            ],
+            "Author Keywords": [
+                "Control Flow Checking",
+                "Trojan at Software Level"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -219,7 +372,48 @@
                 "firstName": "Magdy",
                 "lastName": "Abadir"
             }
-        ]
+        ],
+        "abstract": "Electromagnetic Crosstalk analysis is emerging as a fundamental necessity as a component of electronic system development. With the advent of advanced technologies and System on-Chip (SoC) architectures, ignoring electromagnetic crosstalk is highly risky resulting in significant delays in reaching the market on time as well significant cost over runs. This paper provides an overview of the state of the practice in electromagnetic crosstalk in the context of modern SoC designs, current industrial trends, and key adoption challenges.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Crosstalk",
+                "Couplings",
+                "Tools",
+                "Silicon",
+                "Clocks",
+                "Capacitance",
+                "Analytical models"
+            ],
+            "Index Terms": [
+                "Electromagnetic Crosstalk",
+                "Cost Overruns",
+                "System-on-chip",
+                "Electromagnetic Analysis",
+                "Magnetic Field",
+                "Data Rate",
+                "Coupling Coefficient",
+                "Ethernet",
+                "Capacitive Coupling",
+                "Potential Attacks",
+                "Clock Frequency",
+                "Potential Victims",
+                "Signet Ring",
+                "Packing Of Layers",
+                "Electronic Design Automation",
+                "SPICE Simulations",
+                "Complex Layout"
+            ],
+            "Author Keywords": [
+                "Electromagnetic (EM) Crosstalk",
+                "EM Jitter",
+                "EM coupling",
+                "EM analysis and signoff",
+                "post silicon debug",
+                "3D extraction",
+                "EM solvers",
+                "EM crosstalk EDA tools"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -244,8 +438,8 @@
             },
             {
                 "id": 37572441400,
-                "preferredName": "Lo\u00efc Lagadec",
-                "firstName": "Lo\u00efc",
+                "preferredName": "Loïc Lagadec",
+                "firstName": "Loïc",
                 "lastName": "Lagadec"
             },
             {
@@ -260,7 +454,41 @@
                 "firstName": "Ciprian",
                 "lastName": "Teodorov"
             }
-        ]
+        ],
+        "abstract": "ICs are subject to many causes of malfunction such as aging or aggressive environment, while avoiding unwanted behavior of critical applications is a key issue. Monitoring is a cornerstone of safety policies, as it supports triggering counter measures on demand. High Level Synthesis (HLS) allows to easily implement applications in hardware, and some HLS compliant solutions have been reported. These solutions monitor applications through asserting properties to variables. This paper extends this approach by proposing causal assertions, dedicated to monitoring the evolution of variables over time. Results demonstrate significant gains in term of reactivity and error coverage rate, while keeping the overhead low.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monitoring",
+                "Hardware",
+                "Registers",
+                "Delays",
+                "Integrated circuits",
+                "Resource management",
+                "Databases"
+            ],
+            "Index Terms": [
+                "High-level Synthesis",
+                "Causal Properties",
+                "Count Measurements",
+                "Values Of Variables",
+                "New Variables",
+                "Flow Control",
+                "Form Of Representation",
+                "Error Detection",
+                "State Machine",
+                "Discrete Cosine Transform",
+                "Hardware Accelerators",
+                "Area Overhead",
+                "Registration Type",
+                "State Path"
+            ],
+            "Author Keywords": [
+                "High-Level Synthesis",
+                "Hardware Accelerators",
+                "Hardware Monitoring",
+                "Causal Assertions"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -307,7 +535,34 @@
                 "firstName": "Viktor",
                 "lastName": "Fischer"
             }
-        ]
+        ],
+        "abstract": "With the scaling down of electronic devices and the boom of wireless communications, more and more smart devices are interconnected in what we call the Internet of Things. Connecting devices of everyday use can greatly improve our comfort, but it can also introduce unprecedented security problems. With billions of devices connected there is a huge risk of unauthorized use. In this context, Physical Unclonable Functions (PUFs) are a promising solution since they extract device intrinsic fingerprint that can be used for hardware identification and authentication. Here we present the first fully functional implementation of Oscillator based PUFs on Flash based FPGA. The implementation is presented for the Ring Oscillator based PUF and the Transient Effect Ring Oscillatory based PUF. After explaining those two PUF principles, we give all the necessary design practices to follow to obtain an efficient PUF implementation on Flash FPGA. Finally, we present the characterization of the PUFs and compare it to previous work. To the best of our knowledge, it is the first work which deals with the implementation of Oscillator based PUF on Flash FPGAs. Moreover, all design files are available online to ensure repeatability.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Oscillators",
+                "Radiation detectors",
+                "Delays",
+                "Logic gates",
+                "Security",
+                "Clocks"
+            ],
+            "Index Terms": [
+                "Physical Unclonable Functions",
+                "Internet Of Things",
+                "Efficient Implementation",
+                "Everyday Use",
+                "Design Files",
+                "Unauthorized Use",
+                "Global Network",
+                "Average Sample",
+                "Self-driving",
+                "Setup Time",
+                "Internet Of Things Applications",
+                "Block A",
+                "Exclusive Regions"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -330,7 +585,51 @@
                 "firstName": "Eli",
                 "lastName": "Weintraub"
             }
-        ]
+        ],
+        "abstract": "Organizations are exposed to various cyber-attacks. When a component is exploited, the overall computed damage is impacted by the number of components the network includes. This work is focuses on estimating the Target Distribution characteristic of an attacked network. According existing security assessment models, Target Distribution is assessed by using ordinal values based on users' intuitive knowledge. This work is aimed at defining a formula which enables measuring quantitatively the attacked components' distribution. The proposed formula is based on the real-time configuration of the system. Using the proposed measure, firms can quantify damages, allocate appropriate budgets to actual real risks and build their configuration while taking in consideration the risks impacted by components' distribution. The formula is demonstrated as part of a security continuous monitoring system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Security",
+                "Organizations",
+                "Computers",
+                "Computational modeling",
+                "Standards organizations",
+                "Databases",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "Target Distribution",
+                "Intuitive Understanding",
+                "Continuous Monitoring System",
+                "Accurate Measurement",
+                "Scoring System",
+                "Risk Management",
+                "Risk Score",
+                "Computer System",
+                "Environmental Parameters",
+                "Score Model",
+                "Reference State",
+                "Information Security",
+                "Distributed Computing",
+                "Security Risks",
+                "Computer Cluster",
+                "Software Components",
+                "Importance Weights",
+                "Temporal Parameters",
+                "Active Configuration",
+                "Qualitative Estimation",
+                "Risk Management Decisions",
+                "P2P Network",
+                "Realistic Configurations",
+                "Target System"
+            ],
+            "Author Keywords": [
+                "Information Security",
+                "Security Assessment",
+                "Vulnerability",
+                "Distributed Computing"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -365,7 +664,29 @@
                 "firstName": "Hao",
                 "lastName": "Jiang"
             }
-        ]
+        ],
+        "abstract": "New concepts for hardware security and 3D packaging/alignment are presented. The autonomous nano-structures can be inserted in any unused spaces on the silicon wafer or other medium, and can be divided on multiple layers for security, authentication, key function, and process control.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Authentication",
+                "Image color analysis",
+                "Plasmons",
+                "Nanostructures",
+                "Integrated optics",
+                "Nanoscale devices"
+            ],
+            "Index Terms": [
+                "Electronic System",
+                "Secure Authentication",
+                "Plasmonic",
+                "Color Images",
+                "QR Code",
+                "3D Software",
+                "Pixel Color",
+                "Structural Color",
+                "Physical Unclonable Functions"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -400,7 +721,43 @@
                 "firstName": "Ryan",
                 "lastName": "Kenny"
             }
-        ]
+        ],
+        "abstract": "In previous generations of Intel FPGAs, we employed design separation through the use of LogicLock in Cyclone IIILS and Arria V devices. In the past, this meant separation of design elements as well as designated protected design boundaries in different `Logic Lock' regions. Though separated logically, these regions have the same protection and risk if the key is revealed. Today, using Partition-Based Security, we can encrypt these regions with different keys thus fully supporting separation and allowing secure, encrypted regions of the FPGA fabric to exist. We demonstrate partition-based security using an Intel FPGA Arria 10 SoC Development Kit with two partial reconfiguration regions encrypted with two different keys.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Registers",
+                "Encryption",
+                "Fuses",
+                "Tools"
+            ],
+            "Index Terms": [
+                "Part Of Region",
+                "Decoding",
+                "Proof Of Concept",
+                "State Machine",
+                "Security Level",
+                "Submodule",
+                "Key Control",
+                "Side-channel",
+                "Usage In Applications",
+                "High Level Of Security",
+                "Stand-alone Tool",
+                "Flash Memory",
+                "Commercial Off-the-shelf",
+                "Message Authentication Code",
+                "External Interface",
+                "Serial Peripheral Interface",
+                "Physical Unclonable Functions"
+            ],
+            "Author Keywords": [
+                "FPGA",
+                "SoC",
+                "security",
+                "encryption",
+                "Arria"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -425,9 +782,9 @@
             },
             {
                 "id": 37087795676,
-                "preferredName": "Sebastian Strau\u00df",
+                "preferredName": "Sebastian Strauß",
                 "firstName": "Sebastian",
-                "lastName": "Strau\u00df"
+                "lastName": "Strauß"
             },
             {
                 "id": 37074230600,
@@ -459,7 +816,49 @@
                 "firstName": "Christof",
                 "lastName": "Paar"
             }
-        ]
+        ],
+        "abstract": "Hardware reverse engineering is a universal tool for both legitimate and illegitimate purposes. On the one hand, it supports confirmation of IP infringement and detection of circuit malicious manipulations, on the other hand it provides adversaries with crucial information to plagiarize designs, infringe on IP, or implant hardware Trojans into a target circuit. Although reverse engineering is commonplace in practice, the quantification of its complexity is an unsolved problem to date since both technical and human factors have to be accounted for. A sophisticated understanding of this complexity is crucial in order to provide a reasonable threat estimation and to develop sound countermeasures, i.e. obfuscation transformations of the target circuit, to mitigate risks for the modern IC landscape. The contribution of our work is threefold: first, we systematically study the current research branches related to hardware reverse engineering ranging from decapsulation to gate-level netlist analysis. Based on our overview, we formulate several open research questions to scientifically quantify reverse engineering, including technical and human factors. Second, we survey research on problem solving and on the acquisition of expertise and discuss its potential to quantify human factors in reverse engineering. Third, we propose novel directions for future interdisciplinary research encompassing both technical and psychological perspectives that hold the promise to holistically capture the complexity of hardware reverse engineering.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Reverse engineering",
+                "Hardware",
+                "Logic gates",
+                "Field programmable gate arrays",
+                "Human factors"
+            ],
+            "Index Terms": [
+                "Open Challenges",
+                "Reverse Engineering",
+                "Human Factor",
+                "Technical Factors",
+                "Research Design",
+                "Data Collection Methods",
+                "Reversible Process",
+                "Control Unit",
+                "State Machine",
+                "Research Expertise",
+                "Focused Ion Beam",
+                "Repetitive Tasks",
+                "Non-volatile Memory",
+                "Problem-solving Process",
+                "Future Attempts",
+                "Deliberate Practice",
+                "Reverse Technique",
+                "Knockoff",
+                "Static Random Access Memory",
+                "Human Analysts",
+                "Quantification Of Factors",
+                "Self-managing Teams",
+                "Hardware Security",
+                "Integrated Circuit",
+                "Scanning Electron Microscopy",
+                "Decoding",
+                "Challenge For Future Research"
+            ],
+            "Author Keywords": [
+                "Hardware Reverse Engineering"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -488,7 +887,45 @@
                 "firstName": "Steve",
                 "lastName": "McNeil"
             }
-        ]
+        ],
+        "abstract": "Recent deployments of FPGAs as compute resources in data centers have raised security concerns. One concern is how to prevent user-deployed logic in the FPGA from accessing privileged data such as physical addresses or raw network traffic. Addressing this issue uses the concept of `privileged' mode FPGA logic that is kept separate from `user' mode logic. Logical separation can be achieved with design restrictions, physical separation gives a stronger security guarantee. Physical separation can be implemented and enforced using the Xilinx Isolation Design Flow to isolate privileged shell logic from user application logic. A second security concern is the detection and handling of undesirable behavior of user logic. This undesirable behavior includes generation of current spikes, consumption of excessive power or overheating the FPGA or the system. These conditions can be addressed by design checking, and a thorough run-time solution leverages anti-tamper functionality in the FPGA that activates user logic to disable functions when voltage or temperature exceeds preset limits. A third concern is the need to ensure FPGA logic only changes when desired. This concern is addressed using both hard logic and IP that together ensure and verify that the programmable logic does not change during operation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Hardware",
+                "Random access memory",
+                "Authentication",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Data Center",
+                "Physical Separation",
+                "Undesirable Behaviors",
+                "Usage In Applications",
+                "Voltage Spikes",
+                "Design Flow",
+                "Programmable Logic",
+                "Physical Address",
+                "Cybersecurity",
+                "Sensitive Data",
+                "Ground Plane",
+                "Bitstream",
+                "Public Key",
+                "Space Usage",
+                "Unauthorized Access",
+                "Control Plane",
+                "Malicious Users",
+                "Safety-critical Applications",
+                "Shell Region",
+                "Context Switching"
+            ],
+            "Author Keywords": [
+                "FPGA",
+                "Data center",
+                "safety",
+                "security"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -519,9 +956,9 @@
             },
             {
                 "id": 37086152271,
-                "preferredName": "Moritz Schl\u00f6gel",
+                "preferredName": "Moritz Schlögel",
                 "firstName": "Moritz",
-                "lastName": "Schl\u00f6gel"
+                "lastName": "Schlögel"
             },
             {
                 "id": 37282655400,
@@ -529,7 +966,41 @@
                 "firstName": "Christof",
                 "lastName": "Paar"
             }
-        ]
+        ],
+        "abstract": "A massive threat to the modern and complex IC production chain is the use of untrusted off-shore foundries which are able to infringe valuable hardware design IP or to inject hardware Trojans causing severe loss of safety and security. Similarly, market dominating SRAM-based FPGAs are vulnerable to both attacks since the crucial gate-level netlist can be retrieved even in field for the majority of deployed device series. In order to perform IP infringement or Trojan injection, reverse engineering (parts of) the hardware design is necessary to understand its internal workings. Even though IP protection and obfuscation techniques exist to hinder both attacks, the security of most techniques is doubtful since realistic capabilities of reverse engineering are often neglected. The contribution of our work is twofold: first, we carefully review an IP watermarking scheme tailored to FPGAs and improve its security by using opaque predicates. In addition, we show novel reverse engineering strategies on proposed opaque predicate implementations that again enables to automatically detect and alter watermarks. Second, we demonstrate automatic injection of hardware Trojans specifically tailored for third-party cryptographic IP gate-level netlists. More precisely, we extend our understanding of adversary's capabilities by presenting how block and stream cipher implementations can be surreptitiously weakened.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Reverse engineering",
+                "Hardware",
+                "Trojan horses",
+                "Watermarking",
+                "Field programmable gate arrays",
+                "IP networks",
+                "Ciphers"
+            ],
+            "Index Terms": [
+                "Reverse Engineering",
+                "Intellectual Property Protection",
+                "Block Cipher",
+                "Internet Of Things",
+                "Lookup Table",
+                "Internet Of Things Devices",
+                "Bitstream",
+                "Depth-first",
+                "Boolean Function",
+                "Universal Serial Bus",
+                "Static Random Access Memory",
+                "NOR Gate"
+            ],
+            "Author Keywords": [
+                "Hardware Reverse Engineering",
+                "Hardware Trojans",
+                "FPGAs",
+                "Crypto Trojans",
+                "IP Infringement",
+                "IP watermarking"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -564,7 +1035,39 @@
                 "firstName": "Basel",
                 "lastName": "Halak"
             }
-        ]
+        ],
+        "abstract": "As technology scaling reaches nanometre scales, the error rate due to variations in temperature and voltage, single event effects and component degradation increases, making components less reliable. In order to ensure a system continues to function correctly while facing known reliability issues, it is imperative that the system should have the means to detect the occurrence of errors due to the presence of faults. A system that behaves normally (no error detected in the system) exhibits a profile, and any deviations from this profile indicate that there is an anomaly in the system. In this paper, we propose to use hardware performance counters (HPCs) to measure events that occur during the execution of the program. We explore the various counters available which could be use to identify the anomalous behaviour in the system and develop a methodology to observe the anomalies using HPCs by creating a fault-free pattern and observing any subsequent changes in that pattern. We evaluate the proposed technique using GemFI, an architectural simulator based on Gem5 with additional fault injection capabilities. We compare the results obtained at the end of the execution with data collected during a time interval. Our results show that HPCs can be used to identify anomalous behaviour in a system that would lead to failure.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Radiation detectors",
+                "Benchmark testing",
+                "Monitoring",
+                "Circuit faults",
+                "Hardware",
+                "Reliability",
+                "Load modeling"
+            ],
+            "Index Terms": [
+                "Hardware Performance Counters",
+                "Time Interval",
+                "Error Detection",
+                "Reliability Issues",
+                "Program Execution",
+                "Anomalous Behavior",
+                "Operating System",
+                "Power Consumption",
+                "Computer System",
+                "Yellow Line",
+                "Anomaly Detection",
+                "Virtual Machines",
+                "Defect Model",
+                "Intrinsic Function",
+                "Different Sets Of Data",
+                "Instruction Set Architecture",
+                "System Calls",
+                "Distributed Denial Of Service"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -599,7 +1102,51 @@
                 "firstName": "Mark",
                 "lastName": "Zwolinski"
             }
-        ]
+        ],
+        "abstract": "Building lightweight security for low-cost pervasive devices is a major challenge considering the design requirements of a small footprint and low power consumption. Physical Unclonable Functions (PUFs) have emerged as a promising technology to provide a low-cost authentication for such devices. By exploiting intrinsic manufacturing process variations, PUFs are able to generate unique and apparently random chip identifiers. Strong-PUFs represent a variant of PUFs that have been suggested for lightweight authentication applications. Unfortunately, many of the Strong-PUFs have been shown to be susceptible to modelling attacks (i.e., using machine learning techniques) in which an adversary has access to challenge and response pairs. In this study, we propose an obfuscation technique during post-processing of Strong-PUF responses to increase the resilience against machine learning attacks. We conduct machine learning experiments using Support Vector Machines and Artificial Neural Networks on two Strong-PUFs: a 32-bit Arbiter-PUF and a 2-XOR 32-bit Arbiter-PUF. The predictability of the 32-bit Arbiter-PUF is reduced to ≈ 70% by using an obfuscation technique. Combining the obfuscation technique with 2-XOR 32-bit Arbiter-PUF helps to reduce the predictability to ≈ 64%. More reduction in predictability has been observed in an XOR Arbiter-PUF because this PUF architecture has a good uniformity. The area overhead with an obfuscation technique consumes only 788 and 1080 gate equivalents for the 32-bit Arbiter-PUF and 2-XOR 32-bit Arbiter-PUF, respectively.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Delays",
+                "Authentication",
+                "Support vector machines",
+                "Resilience",
+                "Logic gates",
+                "Resistance"
+            ],
+            "Index Terms": [
+                "Physical Unclonable Functions",
+                "Obfuscation Techniques",
+                "Machine Learning",
+                "Support Vector Machine",
+                "Artificial Neural Network",
+                "Machine Learning Techniques",
+                "Low Power Consumption",
+                "Intrinsic Variability",
+                "Low-cost Devices",
+                "Good Uniformity",
+                "Predictor Of Reduction",
+                "Prediction Accuracy",
+                "Learning Algorithms",
+                "Random Generation",
+                "Hash Function",
+                "Types Of Attacks",
+                "Secret Key",
+                "Forward Error Correction",
+                "Train Machine Learning",
+                "Number Of Permutations",
+                "One-way Function",
+                "Threat Model",
+                "Hamming Weight",
+                "Smart Meters",
+                "Non-volatile Memory",
+                "String Length"
+            ],
+            "Author Keywords": [
+                "Physical Unclonable Function (PUF)",
+                "Arbiter-PUF",
+                "Machine-Learning"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -640,7 +1187,41 @@
                 "firstName": "Bruno",
                 "lastName": "Rouzeyre"
             }
-        ]
+        ],
+        "abstract": "Crypto-processors are vulnerable to scan attacks. Using the scan chain, an attacker is indeed able to observe intermediate encryption states and steal secret data closely-related to the key. However, scan design is the most powerful mean for test and diagnostic purpose. Several countermeasure approaches have thus been proposed for securing scan designs while preserving test efficiency, diagnosis and debugging abilities. One solution is to encrypt test patterns thanks to extra block ciphers preventing control and observation of plain texts in the scan chain. The goal of this paper is to experiment this scan chain encryption approach on different designs in order to evaluate test efficiency and costs in terms of area and test time.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Ciphers",
+                "Encryption",
+                "Registers",
+                "Circuit faults",
+                "Clocks"
+            ],
+            "Index Terms": [
+                "Scan Chain",
+                "Test Pattern",
+                "Block Cipher",
+                "Decoding",
+                "Testing Procedure",
+                "Number Of Patterns",
+                "Test Points",
+                "Key Policy",
+                "Random Data",
+                "Observation Points",
+                "Shift Operator",
+                "Side-channel",
+                "Testing Coverage",
+                "Clock Cycles",
+                "Area Overhead",
+                "Original Scan",
+                "Extra Bits"
+            ],
+            "Author Keywords": [
+                "Test and Security",
+                "Scan Attacks Countermeasure",
+                "Light Encryption"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -659,8 +1240,8 @@
         "authors": [
             {
                 "id": 37086077380,
-                "preferredName": "Gr\u00e9goire Gimenez",
-                "firstName": "Gr\u00e9goire",
+                "preferredName": "Grégoire Gimenez",
+                "firstName": "Grégoire",
                 "lastName": "Gimenez"
             },
             {
@@ -681,7 +1262,51 @@
                 "firstName": "Laurent",
                 "lastName": "Fesquet"
             }
-        ]
+        ],
+        "abstract": "Self-timed Ring based True Random Generators (STRNGs) extract randomness from the jitter of events evenly propagating in a Self-Timed Ring (STR) oscillator. Security of such generators is primarily based on an entropy assessment: an accurate model of the minimum entropy per output bit with physical measurement of the noise source. This assessment is reinforced with both entropy source monitoring and online testing of the output bits. This paper addresses the security of the STRNG. First we identify potential vulnerabilities on the generator and define a threat model. Based on this threat model, we analyze the effect of active attacks in analog simulations (in a 55 nm technology), and by emulating them in a high-level simulation model. Then, we propose simple and efficient countermeasures to thwart attacks focusing on the generator. Finally, we evaluate the output sequences before and after attacks to validate the proposed countermeasures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Entropy",
+                "Oscillators",
+                "Security",
+                "Propagation delay",
+                "Generators",
+                "Clocks",
+                "Jitter"
+            ],
+            "Index Terms": [
+                "Random Number",
+                "Random Generation",
+                "Threat Model",
+                "True Random Number Generator",
+                "Noise Sources",
+                "Online Assessment",
+                "Output Sequence",
+                "Parallel Simulator",
+                "High-level Model",
+                "Output Bits",
+                "Entropy Source",
+                "Lower Bound",
+                "Resonance Frequency",
+                "Phase Difference",
+                "Vibrational Modes",
+                "Unpredictability",
+                "Inverter",
+                "Oscillation Period",
+                "Types Of Attacks",
+                "Low Entropy",
+                "Self-managing Teams",
+                "Injection Attacks",
+                "Phase Resolution",
+                "Propagation Delay",
+                "Pseudo-random Number Generator",
+                "Ring Stage",
+                "Passive Attacks",
+                "Moment Of Sampling",
+                "Burst Mode",
+                "Clock Period"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -716,7 +1341,55 @@
                 "firstName": "Paolo",
                 "lastName": "Prinetto"
             }
-        ]
+        ],
+        "abstract": "Physically Unclonable Functions (PUFs) are emerging cryptographic primitives used to implement low-cost device authentication and secure secret key generation. While several solutions exist for classical CMOS devices, novel proposals have been recently presented which exploit emerging technologies like magnetic memories. The Spin-Transfer-Torque Magnetic Random Access Memory (STT-MRAM) is a promising choice for future PUFs due to the high variability affecting the electrical resistance of the Magnetic Tunnel Junction (MTJ) device in anti-parallel magnetization. Some papers showed that these devices could guarantee high levels of both unclonability and reliability. However, 100% reliability is not yet obtained in those proposals. In this paper we present an effective method to identify the unreliable cells in a PUF implementation. This information is then used to create a zero bit-error-rate PUF scheme.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Magnetic tunneling",
+                "Magnetization",
+                "Resistance",
+                "Reliability",
+                "Magnetic hysteresis",
+                "Switches",
+                "Perpendicular magnetic anisotropy"
+            ],
+            "Index Terms": [
+                "Spin Transfer Torque",
+                "Physical Unclonable Functions",
+                "Impedance",
+                "Secret Key",
+                "Key Generation",
+                "Tunnel Junction",
+                "Magnetic Memory",
+                "Memory Cells",
+                "Worst-case Scenario",
+                "Voltage Drop",
+                "Output Current",
+                "State Machine",
+                "Supply Voltage",
+                "Current Reference",
+                "Forward Error Correction",
+                "Magnetic Direction",
+                "Parallel Resistance",
+                "Read Operation",
+                "Area Overhead",
+                "Sense Amplifier",
+                "Memory Array",
+                "Perpendicular Magnetic Anisotropy",
+                "Free Layer",
+                "Hysteresis Characteristics",
+                "Logic State",
+                "Registration Phase",
+                "Current Flow",
+                "Best-case Scenario",
+                "Environmental Variables"
+            ],
+            "Author Keywords": [
+                "Weak PUF",
+                "STT-MRAM",
+                "Zero-Bit Error Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -741,20 +1414,20 @@
             },
             {
                 "id": 37086112023,
-                "preferredName": "Ange-Salom\u00e9 Messeng Ekossono",
-                "firstName": "Ange-Salom\u00e9 Messeng",
+                "preferredName": "Ange-Salomé Messeng Ekossono",
+                "firstName": "Ange-Salomé Messeng",
                 "lastName": "Ekossono"
             },
             {
                 "id": 37089045412,
-                "preferredName": "Jan Hor\u00e1\u010dek",
+                "preferredName": "Jan Horáček",
                 "firstName": "Jan",
-                "lastName": "Hor\u00e1\u010dek"
+                "lastName": "Horáček"
             },
             {
                 "id": 37086127100,
-                "preferredName": "Ma\u00ebl Gay",
-                "firstName": "Ma\u00ebl",
+                "preferredName": "Maël Gay",
+                "firstName": "Maël",
                 "lastName": "Gay"
             },
             {
@@ -781,7 +1454,36 @@
                 "firstName": "Ilia",
                 "lastName": "Polian"
             }
-        ]
+        ],
+        "abstract": "Fault attacks are a major threat for hardware-implemented security primitives, and algebraic techniques (equation-solving) are one of the most powerful building blocks for such attacks. We show that structural models obtained from a circuit implementation of the analyzed cipher can lead to more efficient attacks than the functional models used in literature. We also discuss possible synergies of the traditional functional and the proposed structural models and show first results on mixed models that combine structural and functional information. The overspecification provided by the mixed models creates an optimization potential through a partial mixed model with different filter rules for the combination of the two models.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Circuit faults",
+                "Mathematical model",
+                "Ciphers",
+                "Encryption",
+                "Integrated circuit modeling",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Fault Attack",
+                "Random Generation",
+                "New Variables",
+                "Mediator Variable",
+                "Mathematical Analysis",
+                "Sparse Representation",
+                "Functional Description",
+                "Types Of Attacks",
+                "Secret Key",
+                "Number Of Attacks",
+                "Word Size",
+                "Boolean Variable",
+                "Set Of Polynomials",
+                "Cryptographic Primitives",
+                "Logically Equivalent",
+                "Class Of Attacks"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -840,7 +1542,46 @@
                 "firstName": "Valeria",
                 "lastName": "Bertacco"
             }
-        ]
+        ],
+        "abstract": "In the continual battle between malware attacks and antivirus technologies, both sides strive to deploy their techniques at always lower layers in the software system stack. The goal is to monitor and control the software executing in the levels above their own deployment, to detect attacks or to defeat defenses. Recent antivirus solutions have gone even below the software, by enlisting hardware support. However, so far, they have only mimicked classic software techniques by monitoring software clues of an attack. As a result, malware can easily defeat them by employing metamorphic manifestation patterns. With this work, we propose a hardware-monitoring solution, SNIFFER, which tracks malware manifestations in system-level behavior, rather than code patterns, and it thus cannot be circumvented unless malware renounces its very nature, that is, to attack. SNIFFER leverages in-hardware feature monitoring, and uses machine learning to assess whether a system shows signs of an attack. Experiments with a virtual SNIFFER implementation, which supports 13 features and tests against five common network-based malicious behaviors, show that SNIFFER detects malware nearly 100% of the time, unless the malware aggressively throttle its attack. Our experiments also highlight the need for machine-learning classifiers employing a range of diverse system features, as many of the tested malware require multiple, seemingly disconnected, features for accurate detection.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Malware",
+                "Servers",
+                "Monitoring",
+                "Hardware",
+                "Feature extraction",
+                "Program processors"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Lower Layer",
+                "Machine Learning Classifiers",
+                "Metamorphic",
+                "False Positive",
+                "Learning Algorithms",
+                "Bayesian Model",
+                "Behavioral Analysis",
+                "K-nearest Neighbor",
+                "Duty Cycle",
+                "Bayesian Classifier",
+                "Attack Rate",
+                "False Alarm Rate",
+                "Static Analysis",
+                "Alarm Rate",
+                "Peak Rate",
+                "Virtual Machines",
+                "Denial Of Service",
+                "Low False Positive Rate",
+                "Bandwidth Requirements",
+                "Enterprise Network",
+                "Threat Model",
+                "Behavior Classification",
+                "Lower Attack Rate",
+                "Detection Capability",
+                "Analysis Server"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -881,7 +1622,31 @@
                 "firstName": "Zissis",
                 "lastName": "Poulos"
             }
-        ]
+        ],
+        "abstract": "Formal verification is one of the fastest growing fields in verification. The Boolean satisfiability-based unbounded model checking algorithm of IC3 has become widely applied in industry and is frequently used as a subroutine in other formal verification algorithms, such as FAIR and IICTL. Any improvement to IC3 can therefore yield substantial benefits in many areas of formal verification. Towards that end, this paper introduces the notion of a support graph, which is applied in IC3. Techniques are presented to compute the support graph by modifying the satisfiability queries used in IC3 at the cost of a modest increase in runtime. It is used to increase the re-use of information across runs of the model checker, thereby improving runtime performance in incremental model checking. It can also be applied within a single run of the model checker to avoid unnecessary queries to the satisfiability solver and accelerate the discovery of a proof. Experiments are presented on HWMCC'15 circuits demonstrating the benefits of the presented approaches.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Model checking",
+                "Runtime",
+                "Acceleration",
+                "Approximation algorithms",
+                "Industries",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Model Checking",
+                "Runtime Performance",
+                "Formal Verification",
+                "Directed Graph",
+                "Support Set",
+                "Safety Properties",
+                "Additional Capabilities",
+                "Constant Threshold",
+                "Simple Heuristics",
+                "Hybrid Methodology",
+                "Reachable States"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -912,9 +1677,9 @@
             },
             {
                 "id": 37086023587,
-                "preferredName": "Ivica Nikoli\u0107",
+                "preferredName": "Ivica Nikolić",
                 "firstName": "Ivica",
-                "lastName": "Nikoli\u0107"
+                "lastName": "Nikolić"
             },
             {
                 "id": 37411288700,
@@ -922,7 +1687,38 @@
                 "firstName": "Debdeep",
                 "lastName": "Mukhopadhyay"
             }
-        ]
+        ],
+        "abstract": "Modern FPGAs, due to its many advanced features, have become a popular implementation platform for various applications like aerospace, defence, automotive, cryptography and many more. Additionally, modern FPGAs are equipped with high performance hard-IPs which has reduced the performance gap between ASIC and FPGAs significantly. Dynamically Reconfigurable Look-up-Tables (RLUT) is an advanced feature of modern FPGAs whose content can be updated internally, even during run-time without requiring any bit-stream update. These RLUTs can be used to develop stealthy hardware Trojans with zero overhead payload designs. This phenomenon when combined with an efficient triggering methodology, can lead to the insertion of covert back-doors in cryptographic applications. Furthermore, RLUTs can be deployed for developing customizable S-Box and lightweight S-Box masking schemes. This lightweight S-Box masking scheme when combined with other non-efficient side channel countermeasures (like shuffling) can generate lightweight and efficient side channel countermeasure for lightweight cryptographic applications. Additionally, RLUTs can also be applied to solve long standing problem of FPGA based IP protection. FPGA vendors are making serious efforts for IP protection leading to standardization schemes like IEEE P1735. However, efficient techniques to prevent unauthorized overuse of IP still remain an open question. In this work, we have developed an efficient IP licensing scheme by combining RLUTs with physically unclonable functions (PUFs) and a lightweight cryptographic application. This work summarizes applications of RLUTs for different applications related with FPGA security. It shows applicability of RLUTs for security application on FPGA and its applicability on FPGA security by development of IP licensing protocols.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Trojan horses",
+                "Field programmable gate arrays",
+                "Table lookup",
+                "Hardware",
+                "Clocks",
+                "Encryption"
+            ],
+            "Index Terms": [
+                "Triggering",
+                "Lookup Table",
+                "Side-channel",
+                "Efficient Channel",
+                "Dynamic Reconfiguration",
+                "Physical Unclonable Functions",
+                "Focus Of This Work",
+                "Original Design",
+                "Analog-to-digital Converter",
+                "Inverter",
+                "Secret Key",
+                "Random Function",
+                "Trigger Signal",
+                "Clock Cycles",
+                "Encryption Scheme",
+                "Cyclic Shift",
+                "Area Overhead",
+                "Encryption Key"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -951,7 +1747,42 @@
                 "firstName": "Elisabeth",
                 "lastName": "Oswald"
             }
-        ]
+        ],
+        "abstract": "Implementing cryptography on Internet-of-Things (IoT) devices, that is resilient against side channel analysis, has so far been a task only suitable for specialist software designers in interaction with access to a sophisticated testing facility. Recently a novel tool has been developed, ELMO, which offers the potential to enable non-specialist software developers to evaluate their code w.r.t. power analysis for a popular IoT processor. We explain a crucial extension of ELMO, which enables a user to test higher-order masking schemes much more efficiently than so far possible as well as improve the ease and speed of diagnosing masking errors.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Tools",
+                "Power demand",
+                "Security",
+                "Testing",
+                "Thumb",
+                "Software",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Side-channel",
+                "Masking Strategy",
+                "Advantage Of Method",
+                "Power Consumption",
+                "Flow Data",
+                "Bootstrap Resampling",
+                "Type Of Education",
+                "Information Leakage",
+                "Random Data",
+                "Security Level",
+                "Masked Images",
+                "Word Size",
+                "Real Devices",
+                "Combination Of Points",
+                "Security Proof",
+                "Random Bits",
+                "Leak Detection",
+                "Number Of Traces",
+                "Trace Length",
+                "Real Traces",
+                "Leakage Point"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -980,7 +1811,56 @@
                 "firstName": "Amitabh",
                 "lastName": "Das"
             }
-        ]
+        ],
+        "abstract": "The state of art secure digital computing systems heavily rely on secure hardware as the Trusted Computing Base to build upon the chain of trust for trusted computing. Attack Protection Blocks are added to the hardware to prevent an adversary from bypassing the security provided by hardware using various side channel, voltage, frequency, temperature, and other attacks. However, attackers can target the security protection features by designing experiments to understand the underlying power distribution network and its possible weaknesses. This can be used to temporarily turn off or damage the protection features by manipulation of the digital and analog voltage lines if over- and/or under- voltage protection for protection blocks is not present. Usually, in designs, the necessity of such protection has been overlooked just by the assumption that the probability of bypassing the protection without losing the functionality of the system is low. In this context, we present a robust system design approach which will enable the system to transition to a security safe (instead of unsafe) failure mode by increasing resilience of protection blocks against over- and under- voltage attacks. We show by probabilistic modeling why such attacks are possible and why our mitigation approach works.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Security",
+                "Monitoring",
+                "Logic gates",
+                "Computer architecture",
+                "Voltage control",
+                "Digital systems",
+                "Detectors"
+            ],
+            "Index Terms": [
+                "Security Design",
+                "Robust Security",
+                "Digital Technologies",
+                "Probabilistic Model",
+                "Robust Design",
+                "Side-channel",
+                "Hardware Security",
+                "Cybersecurity",
+                "Power Network",
+                "Voltage Levels",
+                "Types Of Attacks",
+                "Supply Voltage",
+                "Monitoring Center",
+                "Security Requirements",
+                "Functional Blocks",
+                "Physical Attacks",
+                "Critical Path",
+                "Alarm Signal",
+                "2nd Phase",
+                "Digital Block",
+                "Switching Elements",
+                "Electronic Design Automation",
+                "Clock Network",
+                "1st Phase",
+                "Target Block",
+                "Digital Elements",
+                "Security Vulnerabilities",
+                "Voltage Regulation",
+                "Access Control"
+            ],
+            "Author Keywords": [
+                "Hardware Security",
+                "Robust Secure Design",
+                "Voltage Attacks",
+                "Attack Protection Blocks"
+            ]
+        }
     },
     {
         "publicationNumber": "8024489",
@@ -996,6 +1876,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2017 IEEE 2nd International Verification and Security Workshop (IVSW)",
-        "authors": []
+        "authors": [],
+        "abstract": "\"Conference proceedings front matter may contain various advertisements, welcome messages, committee or program information, and other miscellaneous conference information. This may in some cases also include the cover art, table of contents, copyright statements, title-page or half title-pages, blank pages, venue maps or other general information relating to the conference that was part of the original conference proceedings.\"",
+        "keywords": {}
     }
 ]

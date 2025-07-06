@@ -26,7 +26,51 @@
                 "firstName": "Takayuki",
                 "lastName": "Aoki"
             }
-        ]
+        ],
+        "abstract": "Billion of particles are required to describe fluid dynamics by using smoothed particle hydrodynamics (SPH), which computes short-range interactions among particles. In this study, we develop a novel code of large-scale SPH simulations on a multi-GPU platform by using the domain decomposition technique. The computational load of each decomposed domain is dynamically balanced by applying domain re-decomposition, which maintains the same number of particles in each decomposed domain. The performance scalability of the SPH simulation is examined on the GPUs of a TSUBAME 2.5 supercomputer by using two different techniques of dynamic load balance: the slice-grid method and the hierarchical domain decomposition method using the space-filling curve. The weak and strong scalabilities of a test case using 111 million particles are measured with 512 GPUs. In comparison with the slice-grid method, the performance keeps improving in proportion to the number of GPUs in the case of the space-filling curve. The Hilbert curve and the Peano curve show better performance scalabilities than the Morton curve in proportion to the increase in the number of GPUs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Graphics processing units",
+                "Two dimensional displays",
+                "Load modeling",
+                "Supercomputers",
+                "Scalability",
+                "Numerical models"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Dynamic Balance",
+                "Load Balancing",
+                "Large-scale Simulations",
+                "Smoothed Particle Hydrodynamics",
+                "Space-filling Curve",
+                "Dynamic Load Balancing",
+                "Smoothed Particle Hydrodynamics Simulations",
+                "Increase In The Number",
+                "Fluid Dynamics",
+                "Graphics Processing Unit",
+                "Domain Decomposition",
+                "Hierarchical Decomposition",
+                "Computational Cost",
+                "Computational Domain",
+                "Floating-point Operations",
+                "Coordinate Vector",
+                "Two-dimensional Method",
+                "Strong Scaling",
+                "Device Memory",
+                "Ideal Line",
+                "Radius Of Influence",
+                "Quadtree",
+                "Arrays Of Particles"
+            ],
+            "Author Keywords": [
+                "Smoothed Particle Hydrodynamics",
+                "Multi-GPU Computing",
+                "Dynamic Load Balance",
+                "Space-Filling Curve"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -67,7 +111,54 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "Incomplete Sparse Approximate Inverses (ISAI) have recently been shown to be an attractive alternative to exact sparse triangular solves in the context of incomplete factorization preconditioning. In this paper we propose a batched GPU-kernel for the efficient generation of ISAI matrices. Utilizing only thread-local memory allows for computing the ISAI matrix with very small memory footprint. We demonstrate that this strategy is faster than the existing strategy for generating ISAI matrices, and use a large number of test matrices to assess the algorithm's efficiency in an iterative solver setting.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sparse matrices",
+                "Kernel",
+                "Instruction sets",
+                "Linear systems",
+                "Jacobian matrices",
+                "Approximation algorithms",
+                "Context"
+            ],
+            "Index Terms": [
+                "Generator Matrix",
+                "Number Of Matrices",
+                "Iterative Solver",
+                "Parallelization",
+                "Linear System",
+                "Block Size",
+                "Sparse Matrix",
+                "Solution Process",
+                "System Matrix",
+                "Memory System",
+                "Distinct Systems",
+                "Test Suite",
+                "Triangular Matrix",
+                "Upper Triangular",
+                "Lower Triangular",
+                "Sparse Structure",
+                "Double Precision",
+                "Sparsity Pattern",
+                "Inverse Estimation",
+                "Single Kernel",
+                "End Of Row",
+                "Triangular Systems",
+                "Fixed-point Iteration",
+                "Extraction Step",
+                "Frobenius Norm",
+                "Diagonal",
+                "High-performance Computing"
+            ],
+            "Author Keywords": [
+                "Incomplete Sparse Approximate Inverses",
+                "Preconditioning",
+                "GPU",
+                "Batched routines"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -114,7 +205,57 @@
                 "firstName": "Toshiyuki",
                 "lastName": "Imamura"
             }
-        ]
+        ],
+        "abstract": "The left-preconditioned communication avoiding conjugate gradient (LP-CA-CG) method is applied to the pressure Poisson equation in the multiphase CFD code JUPITER. The arithmetic intensity of the LP-CA-CG method is analyzed, and is dramatically improved by loop splitting for inner product operations and for three term recurrence operations. Two LPCA-CG solvers with block Jacobi preconditioning and with underlap preconditioning are developed. The former is developed based on a hybrid CA approach, in which CA is applied only to global collective communications for inner product operations. The latter is a full CA approach, in which CA is applied also to local point-to-point communications in sparse matrix-vector (SpMV) operations and preconditioning. CA-SpMV requires additional computation for overlapping regions. CA-preconditiong is enabled by underlap preconditioning, which approximates preconditioning for overlapping regions by point Jacobi preconditioning. It is shown that on the K computer, the former is faster, because the performance of local point-to-point communications scales well, and the convergence property becomes worse with underlap preconditioning. The LP-CA-CG solver shows good strong scaling up to 30,000 nodes, where the LP-CA-CG solver achieved higher performance than the original CG solver by reducing the cost of global collective communications by 69 percent.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Jacobian matrices",
+                "Convergence",
+                "Program processors",
+                "Computational modeling",
+                "Jupiter",
+                "Computers",
+                "Computational fluid dynamics"
+            ],
+            "Index Terms": [
+                "Conjugate Gradient",
+                "Gradient Method",
+                "K Computer",
+                "Multiphase Computational Fluid Dynamics",
+                "Production Operations",
+                "Communication Cost",
+                "Poisson Equation",
+                "Global Communication",
+                "Good Scalability",
+                "Strong Scaling",
+                "Point-to-point Communication",
+                "Computational Cost",
+                "Solid Phase",
+                "Gas Phase",
+                "Parallelization",
+                "Increase In Costs",
+                "Vector-based",
+                "Test Problems",
+                "Outer Loop",
+                "Sustainability Performance",
+                "Gram Matrix",
+                "Additional Communication",
+                "Domain Decomposition",
+                "Krylov Subspace",
+                "Residual Vector",
+                "Indirect Access",
+                "Multiphase Flow",
+                "Error Accumulation",
+                "Boundary Data",
+                "Loop Iteration"
+            ],
+            "Author Keywords": [
+                "Sparse matrices",
+                "Gradient method",
+                "Optimization",
+                "Fluid dynamics"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -161,7 +302,47 @@
                 "firstName": "J.",
                 "lastName": "Ramanujam"
             }
-        ]
+        ],
+        "abstract": "One of the major challenges in parallelization is the difficulty of improving application scalability with conventional techniques. HPX provides efficient scalable parallelism by significantly reducing node starvation and effective latencies while controlling the overheads. In this paper, we present a new highly scalable parallel distributed N-Body application using a future-based algorithm, which is implemented with HPX. The main difference between this algorithm and prior art is that a future-based request buffer is used between different nodes and along each spatial direction to send/receive data to/from the remote nodes, which helps removing synchronization barriers. HPX provides an asynchronous programming model which results in improving the parallel performance. The results of using HPX for parallelizing Octree construction on one node and the force computation on the distributed nodes show the scalability improvement on an average by about 45% compared to an equivalent OpenMP implementation and 28% compared to a hybrid implementation (MPI+OpenMP) [1] respectively for one billion particles running on up to 128 nodes with 20 cores per each.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Octrees",
+                "Computational modeling",
+                "Scalability",
+                "Parallel processing",
+                "Instruction sets",
+                "Force",
+                "Load management"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Parallelization",
+                "Parallel Efficiency",
+                "Remote Nodes",
+                "Data Distribution",
+                "Time Step",
+                "Center Of Mass",
+                "Grain Size",
+                "Time Complexity",
+                "Hybrid Model",
+                "Gravitational Force",
+                "Remote Locations",
+                "Problem Size",
+                "Particle Position",
+                "Future Values",
+                "Load Balancing",
+                "Communication Overhead",
+                "Communication Latency",
+                "Strong Scaling"
+            ],
+            "Author Keywords": [
+                "HPX",
+                "High Performance Computing",
+                "Parallel Runtime Systems",
+                "N-Body Application",
+                "Asynchronous Task Execution"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -190,7 +371,58 @@
                 "firstName": "Hasan Metin",
                 "lastName": "Aktulga"
             }
-        ]
+        ],
+        "abstract": "Including atom polarizability in molecular dynamics (MD) simulations is important for high-fidelity simulations. Solvers for charge models that are used to dynamically determine atom polarizations constitute significant bottlenecks in terms of time-to-solution and the overall scalability of polarizable and reactive force fields. The objective of this work is to improve the performance of the charge equilibration (QEq) method on shared memory architectures. A number of parallel incomplete LU-based preconditioning techniques are explored to enhance the performance of the Krylov subspace methods used in the QEq model. Detailed analysis of how these techniques effect convergence rate and the overall solver performance is presented. ILU-based schemes which produce good quality factors with relatively low number of nonzeros have been observed to yield significant speedups over the diagonal inverse baseline preconditioner. These results are significant as they can enable efficient simulations of moderate-sized systems on a single node with several cores, and also because they can constitute the future building blocks for distributed memory parallel solvers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Convergence",
+                "Force",
+                "Linear systems",
+                "Parallel processing",
+                "Heuristic algorithms",
+                "Memory architecture"
+            ],
+            "Index Terms": [
+                "Molecular Dynamics",
+                "Fast Solver",
+                "Charge Equilibration",
+                "Application Of Molecular Dynamics",
+                "Dynamics Simulations",
+                "Molecular Dynamics Simulations",
+                "Force Field",
+                "Convergence Rate",
+                "Polarizability",
+                "Reaction Force",
+                "Charge Model",
+                "Shared Memory",
+                "Krylov Subspace",
+                "Computation Time",
+                "Computational Cost",
+                "Parallelization",
+                "Linear System",
+                "Sparse Matrix",
+                "Linear Solver",
+                "Original Matrix",
+                "Degree Of Parallelism",
+                "Good Initial Guess",
+                "LU Factorization",
+                "Atomic System",
+                "Iterative Solver",
+                "Scheduling Algorithm",
+                "Vector Operations",
+                "Load Balancing",
+                "Cholesky Decomposition",
+                "L2 Cache"
+            ],
+            "Author Keywords": [
+                "Shared memory parallel algorithms",
+                "molecular dynamics",
+                "charge equilibration",
+                "sparse linear algebra",
+                "preconditioning method"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -249,7 +481,61 @@
                 "firstName": "Fumiyoshi",
                 "lastName": "Shoji"
             }
-        ]
+        ],
+        "abstract": "An extremely scalable linear-algebraic algorithm was developed for quantum material simulation (electronic state calculation) with 108 atoms or 100-nm-scale materials. The mathematical foundation is generalized shifted linear equations ((zB - A)x = b), instead of conventional generalized eigenvalue equations. The method has a highly parallelizable mathematical structure. The benchmark shows an extreme strong scaling and a qualified time-to-solution on the full system of the K computer. The method was demonstrated in a real material research for ultra-flexible (organic) devices, key devices of next-generation Internet-of-Things (IoT) products. The present paper shows that an innovative scalable algorithm for a real research can appear by the co-design among application, algorithm and architecture.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mathematical model",
+                "Eigenvalues and eigenfunctions",
+                "Indexes",
+                "Sparse matrices",
+                "Computers",
+                "Atomic measurements",
+                "Plastics"
+            ],
+            "Index Terms": [
+                "Scaling Algorithm",
+                "K Computer",
+                "Benchmark",
+                "Linear Equation",
+                "Parallelization",
+                "Mathematical Foundation",
+                "Eigenvalue Equation",
+                "Extreme Scale",
+                "Hydrogenation",
+                "Dynamics Simulations",
+                "Carbon Atoms",
+                "Molecular Dynamics Simulations",
+                "Matrix Elements",
+                "Operational Costs",
+                "Present Method",
+                "Computer Technology",
+                "Density Matrix",
+                "Paragraph Of Section",
+                "Present Simulation",
+                "Communication Time",
+                "Electron Wave",
+                "Elapsed Time",
+                "Krylov Subspace",
+                "Eigenvalue Problem",
+                "Generalized Eigenvalue Problem",
+                "Load Imbalance",
+                "Form Of Eq",
+                "Potential Difficulties",
+                "Form Of Equation",
+                "Electron Wave Function"
+            ],
+            "Author Keywords": [
+                "Parallel algorithms",
+                "Scalability",
+                "Large-scale electronic state calculation",
+                "Generalized shifted linear equations",
+                "Krylov subspace",
+                "Organic semiconductors",
+                "Ultra-flexible device material",
+                "Condensed organic polymers"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -320,7 +606,54 @@
                 "firstName": "Xiaoqian",
                 "lastName": "Zhu"
             }
-        ]
+        ],
+        "abstract": "We present novel optimizations of the fusion plasmas simulation code, GTC on Tianhe-2 supercomputer. The simulation exhibits excellent weak scalability up to 3072 31S1P Xeon Phi co-processors. An unprecedented up to 5.8× performance improvement is achieved for the GTC on Tianhe-2. An efficient particle exchanging algorithm is developed that simplifies the original iterative scheme to a direct implementation, which leads to a 7.9× performance improvement in terms of MPI communications on 1024 nodes of Tianhe-2. A customized particle sorting algorithm is presented that delivers a 2.0× performance improvement on the co-processor for the kernel relating to the particle computing. A smart offload algorithm that minimizes the data exchange between host and co-processor is introduced. Other optimizations like the loop fusion and vectorization are also presented.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Supercomputers",
+                "Physics",
+                "Computational modeling",
+                "Scalability",
+                "Optimization",
+                "Plasmas"
+            ],
+            "Index Terms": [
+                "Fusion Plasma",
+                "Tianhe-2 Supercomputer",
+                "Gyrokinetic Simulations",
+                "Scalable",
+                "Sorting Algorithm",
+                "Particle Sorting",
+                "Parallelization",
+                "Iterative Algorithm",
+                "Grid Cells",
+                "Grid Points",
+                "Data Transfer",
+                "Fraction Of Particles",
+                "Poisson Equation",
+                "Parallel Algorithm",
+                "Radial Coordinate",
+                "Product Code",
+                "Symmetric Mode",
+                "Surface Fluxes",
+                "Arrays Of Particles",
+                "Larger Devices",
+                "Intermediate Particles",
+                "Strong Scaling",
+                "Global Array",
+                "Large Nodes",
+                "Advanced Computer",
+                "Small Blocks"
+            ],
+            "Author Keywords": [
+                "Fusion plasmas simulation",
+                "GTC",
+                "scalability",
+                "Tianhe-2",
+                "Xeon Phi"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -355,7 +688,56 @@
                 "firstName": "Petros",
                 "lastName": "Drineas"
             }
-        ]
+        ],
+        "abstract": "We present a fast randomized ridge regression solver for sparse overdetermined matrices in distributed-memory platforms. Our solver is based on the Blendenpik algorithm, but employs sparse random projection schemes to construct a sketch of the input matrix. These sparse random projection sketching schemes, and in particular the use of the Randomized Sparsity-Preserving Transform, enable our algorithm to scale the distributed memory vanilla implementation of Blendenpik and provide up to × 13 speedup over a state-of-the-art parallel Cholesky-like sparse-direct solver.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sparse matrices",
+                "Discrete cosine transforms",
+                "Approximation algorithms",
+                "Algorithm design and analysis",
+                "Standards",
+                "Software algorithms"
+            ],
+            "Index Terms": [
+                "Regression Problem",
+                "Ridge Regression",
+                "Sparse Matrix",
+                "Input Matrix",
+                "Random Projection",
+                "Column Vector",
+                "Random Noise",
+                "Approximate Solution",
+                "Random Matrix",
+                "Numerical Stability",
+                "Matrix Of Order",
+                "Independent Random Variables",
+                "Least Squares Problem",
+                "Upper Triangular",
+                "Dual Space",
+                "Discrete Cosine Transform",
+                "Regular Points",
+                "Unitary Transformation",
+                "Regularized Least Squares",
+                "Strong Scaling",
+                "Ill-conditioned Matrix",
+                "Augmented Matrix",
+                "Message Passing Interface",
+                "Augmented Vector",
+                "Number Of Nonzero Entries",
+                "Sample Matrix",
+                "Distribution Of Elements",
+                "Optimal Regularization",
+                "Regularization Parameter",
+                "Machine Precision"
+            ],
+            "Author Keywords": [
+                "Linear algebra",
+                "high performance computing",
+                "least-squares approximation",
+                "sparse matrices"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -426,7 +808,49 @@
                 "firstName": "B. J.",
                 "lastName": "Debusschere"
             }
-        ]
+        ],
+        "abstract": "We present a resilient task-based domain-decomposition preconditioner for partial differential equations (PDEs) built on top of User Level Fault Mitigation Message Passing Interface (ULFM-MPI). The algorithm reformulates the PDE as a sampling problem, followed by a robust regression-based solution update that is resilient to silent data corruptions (SDCs). We adopt a server-client model where all state information is held by the servers, while clients only serve as computational units. The task-based nature of the algorithm and the capabilities of ULFM complement each other to support missing tasks, making the application resilient to clients failing.We present weak and strong scaling results on Edison, National Energy Research Scientific Computing Center (NERSC), for a nominal and a fault-injected case, showing that even in the presence of faults, scalability tested up to 50k cores is within 90%. We then quantify the variability of weak and strong scaling due to the presence of faults. Finally, we discuss the performance of our application with respect to subdomain size, server/client configuration, and the interplay between energy and resilience.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resilience",
+                "Servers",
+                "Mathematical model",
+                "Reliability",
+                "Boundary conditions",
+                "Computational modeling",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Partial Differential Equations",
+                "Scalable",
+                "Presence Of Defects",
+                "Corrupted Data",
+                "Strong Scaling",
+                "Computational Cost",
+                "Voltage Drop",
+                "Fault-tolerant",
+                "Sample Stage",
+                "Problem Size",
+                "Source Term",
+                "Current Solution",
+                "Energy Gain",
+                "Robust Regression",
+                "Communication Cost",
+                "Defect Rate",
+                "Boundary Map",
+                "Trade-off Analysis",
+                "Transfer Layer",
+                "Voltage Scaling",
+                "Elliptic Partial Differential Equations"
+            ],
+            "Author Keywords": [
+                "Resilience",
+                "Fault tolerance",
+                "Partial differential equations",
+                "Client-server systems",
+                "Dynamic voltage scaling"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -445,9 +869,9 @@
         "authors": [
             {
                 "id": 37089733401,
-                "preferredName": "Diego D\u00e1vila",
+                "preferredName": "Diego Dávila",
                 "firstName": "Diego",
-                "lastName": "D\u00e1vila"
+                "lastName": "Dávila"
             },
             {
                 "id": 37086031017,
@@ -461,7 +885,54 @@
                 "firstName": "Oscar A.",
                 "lastName": "Esquivel-Flores"
             }
-        ]
+        ],
+        "abstract": "This paper presents an enhanced hybrid (e.g. stochastic/deterministic) method for Linear Algebra based on bulding an efficient stochastic s and then solving the corresponding System of Linear Algebraic Equations (SLAE) by applying an iterative method. This is a Monte Carlo preconditioner based on Markov Chain Monte Carlo (MCMC) methods to compute a rough approximate matrix inverse first. The above Monte Carlo preconditioner is further used to solve systems of linear algebraic equations thus delivering hybrid stochastic/deterministic algorithms. The advantage of the proposed approach is that the sparse Monte Carlo matrix inversion has a computational complexity linear of the size of the matrix, it is inherently parallel and thus can be obtained very efficiently for large matrices and can be used also as an efficient preconditioner while solving systems of linear algebraic equations. Several improvements, as well as the mixed MPI/OpenMP implementation, are carried out that enhance the scalability of the method and the efficient use of computational resources. A set of different test matrices from several matrix market collections were used to show the consistency of these improvements.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monte Carlo methods",
+                "Sparse matrices",
+                "Approximation algorithms",
+                "Algorithm design and analysis",
+                "Linear algebra",
+                "Iterative methods",
+                "Mathematical model"
+            ],
+            "Index Terms": [
+                "Linear Algebra",
+                "Monte Carlo Simulation",
+                "System Of Equations",
+                "Linear Equation",
+                "Invertible",
+                "Markov Chain Monte Carlo",
+                "Set Of Matrices",
+                "System Of Linear Equations",
+                "Large Matrix",
+                "System Of Algebraic Equations",
+                "Iterative Process",
+                "Reduction In Time",
+                "Parallelization",
+                "General Case",
+                "Sparse Matrix",
+                "Frobenius Norm",
+                "Input Matrix",
+                "Monte Carlo Algorithm",
+                "Communication Overhead",
+                "Matrix Case",
+                "Inverse Estimation",
+                "All-to-all Communication",
+                "Total Execution Time",
+                "Diagonally Dominant",
+                "Gaussian Elimination",
+                "Scalable Analysis",
+                "Parallel Implementation"
+            ],
+            "Author Keywords": [
+                "Monte Carlo",
+                "Hybrid Methods for Linear Algebra",
+                "Preconditioners",
+                "Parallelization"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -484,7 +955,55 @@
                 "firstName": "Cheng",
                 "lastName": "Liao"
             }
-        ]
+        ],
+        "abstract": "Performance of the PLASMA dense symmetric Eigensolver is optimized for large shared memory computer systems using multiple Householder domains for dense to band reduction and a communication reducing kernel for bulge chasing. The mr3-smp code by Petschow and Bientinesi is used for the tridiagonal eigensolution and the eigenvector back-transformations employ a 1D parallel decomposition. The input matrix, Householder vectors and scalars, are distributed among the CPU sockets with interleaved memory pages but the banded matrix, the eigenvectors, and temporary memory buffers are allocated and processed locally. Other considerations and optimization techniques also are presented. Numerical examples show the PLASMA eigensolver can out-perform ELPA and EIGENEXA significantly, for solving all the eigenpairs, if the problem size is sufficiently large, and the 2-stage eigensolution is generally better than its 1-stage counterpart on the latest x86_64 EP-4S CPUs with AVX2.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Plasmas",
+                "Distributed Bragg reflectors",
+                "Parallel processing",
+                "Sockets",
+                "Computational modeling",
+                "Computers"
+            ],
+            "Index Terms": [
+                "Memory System",
+                "Large Memory",
+                "Shared Memory",
+                "Eigensolver",
+                "Shared Memory Systems",
+                "Large Shared Memory",
+                "Sufficiently Large",
+                "Eigenvectors",
+                "Numerical Examples",
+                "Problem Size",
+                "Tridiagonal",
+                "Band Matrix",
+                "Parallelization",
+                "Local Factors",
+                "Multi-core",
+                "Vector Of Length",
+                "Block Diagonal",
+                "Number Of Domains",
+                "Current Task",
+                "Floating-point Operations",
+                "Tile Size",
+                "Large-sized Problems",
+                "Kernel Computation",
+                "Dynamic Scheduling",
+                "Data Cache",
+                "Round Robin",
+                "Blocking Factor",
+                "QR Decomposition",
+                "Degree Of Parallelism",
+                "Column Element"
+            ],
+            "Author Keywords": [
+                "High performance computing",
+                "Parallel algorithms"
+            ]
+        }
     },
     {
         "publicationNumber": "7835826",
@@ -500,7 +1019,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 7th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7835826",
@@ -516,7 +1037,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 7th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7835826",
@@ -532,7 +1055,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 7th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7835826",
@@ -548,7 +1073,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 7th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: large-scale SPH simulations; GPU-rich supercomputers; conjugate gradient methods; CFD simulations; gyrokinetic particle simulation; sparse ridge regression; linear algebra; and Monte Carlo hybrid methods.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7835826",
@@ -564,6 +1091,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2016 7th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]

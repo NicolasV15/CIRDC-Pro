@@ -32,7 +32,53 @@
                 "firstName": "Yaohang",
                 "lastName": "Li"
             }
-        ]
+        ],
+        "abstract": "In this paper, we investigate the implementation of the Block Conjugate Gradient (BCG) algorithm on CPU-GPU processors. By analyzing the performance of various matrix operations in BCG, we identify the main performance bottleneck in constructing new search direction matrices. Replacing the QR decomposition by eigendecomposition of a small matrix remedies the problem by reducing the computational cost of generating orthogonal search directions. Moreover, a hybrid (offload) computing scheme is designed to enables the BCG implementation to handle linear systems with large, sparse coefficient matrices that cannot fit in the GPU memory. The hybrid scheme offloads matrix operations to GPU processors while helps hide the CPU-GPU memory transaction overhead. We compare the performance of our BCG implementation with the one on CPU with Intel Xeon Phi coprocessors using the automatic offload mode. With sufficient number of right hand sides, the CPU-GPU implementation of BCG can reach speedup of 2.61 over the CPU-only implementation, which is significantly higher than that of the CPU-Intel Xeon Phi implementation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sparse matrices",
+                "Graphics processing units",
+                "Matrix decomposition",
+                "Data transfer",
+                "Clocks",
+                "Coprocessors"
+            ],
+            "Index Terms": [
+                "Conjugate Gradient",
+                "Right-hand Side",
+                "Linear System",
+                "Graphics Processing Unit",
+                "Coefficient Matrix",
+                "Hand Side",
+                "Intel Xeon",
+                "Sparse Matrix",
+                "Projection Matrix",
+                "Operational Performance",
+                "Search Direction",
+                "Eigendecomposition",
+                "Automatic Mode",
+                "QR Decomposition",
+                "Number Of Sides",
+                "Graphics Processing Unit Memory",
+                "Computation Time",
+                "Data Transfer",
+                "Singular Value Decomposition",
+                "Matrix Multiplication",
+                "Theoretical Peak",
+                "Theoretical Performance",
+                "Gradient Method",
+                "Xeon E5",
+                "Cholesky Decomposition",
+                "Symmetric Positive Definite Matrix",
+                "Linear Algebra",
+                "Clock Cycles",
+                "Positive Definite Matrix",
+                "Double Precision"
+            ],
+            "Author Keywords": [
+                "Block Conjugate Gradient; Multi-core CPU; Graphics Processing Unit; Intel Xeon Phi; Performance Evaluation"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -157,7 +203,50 @@
                 "firstName": "N.J.",
                 "lastName": "Wright"
             }
-        ]
+        ],
+        "abstract": "To achieve exascale computing, fundamental hardware architectures must change. This will significantly impact scientific applications that run on current high performance computing (HPC) systems, many of which codify years of scientific domain knowledge and refinements for contemporary computer systems. To adapt to exascale architectures, developers must be able to reason about new hardware and determine what programming models and algorithms will provide the best blend of performance and energy efficiency in the future. An abstract machine model is designed to expose to the application developers and system software only the aspects of the machine that are important or relevant to performance and code structure. These models are intended as communication aids between application developers and hardware architects during the co-design process. A proxy architecture is a parameterized version of an abstract machine model, with parameters added to elucidate potential speeds and capacities of key hardware components. These more detailed architectural models enable discussion among the developers of analytic models and simulators and computer hardware architects and they allow for application performance analysis, system software development, and hardware optimization opportunities. In this paper, we present a set of abstract machine models and show how they might be used to help software developers prepare for exascale. We then apply parameters to one of these models to demonstrate how a proxy architecture can enable a more concrete exploration of how well application codes map onto future architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multicore processing",
+                "Computational modeling",
+                "Hardware",
+                "Instruction sets",
+                "System-on-chip",
+                "Abstracts"
+            ],
+            "Index Terms": [
+                "Abstract Machine",
+                "Exascale Computing",
+                "High Performance",
+                "System Software",
+                "Computer System",
+                "Software Development",
+                "Development Of Applications",
+                "Programming Model",
+                "High-performance Computing",
+                "Hardware Architecture",
+                "Memory Capacity",
+                "Load Data",
+                "Memory System",
+                "Core Processes",
+                "Caching",
+                "Local Memory",
+                "Memory Space",
+                "Memory Component",
+                "Memory Module",
+                "Remote Memory",
+                "Network-on-chip",
+                "Single Memory",
+                "Memory Bandwidth",
+                "Memory Pool",
+                "Part Of Memory",
+                "Acceleration Model",
+                "Physical Address",
+                "Memory Technologies",
+                "Design Space Exploration",
+                "On-chip Memory"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -192,7 +281,39 @@
                 "firstName": "Vincent M.",
                 "lastName": "Weaver"
             }
-        ]
+        ],
+        "abstract": "A growing number of supercomputers are being built using processors with low-power embedded ancestry, rather than traditional high-performance cores. In order to evaluate this approach we investigate the energy and performance tradeoffs found with ten different 32-bit ARM development boards while running the HPL Linpack and STREAM benchmarks.Based on these results (and other practical concerns) we chose the Raspberry Pi as a basis for a power-aware embedded cluster computing testbed. Each node of the cluster is instrumented with power measurement circuitry so that detailed cluster-wide power measurements can be obtained, enabling power / performance co-design experiments.While our cluster lags recent x86 machines in performance, the power, visualization, and thermal features make it an excellent low-cost platform for education and experimentation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Power measurement",
+                "Program processors",
+                "Benchmark testing",
+                "Supercomputers",
+                "Universal Serial Bus",
+                "Random access memory",
+                "Servers"
+            ],
+            "Index Terms": [
+                "High-performance Computing",
+                "Power Measurements",
+                "Cluster Nodes",
+                "Raspberry Pi",
+                "Differences In Outcomes",
+                "Power Analysis",
+                "Memory Performance",
+                "Optimal Performance",
+                "Optimal Power",
+                "File System",
+                "Linear Algebra",
+                "External Devices",
+                "Ethernet",
+                "Switching Network",
+                "Message Passing Interface",
+                "ARM Processor",
+                "Head Node",
+                "USB Connection"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -245,7 +366,48 @@
                 "firstName": "Mike",
                 "lastName": "Ignatowski"
             }
-        ]
+        ],
+        "abstract": "Future exascale systems will require very aggressive memory systems simultaneously delivering huge storage capacities and multi-TB/s bandwidths. To achieve the bandwidth targets, in-package, die-stacked memory technologies will likely be necessary. However, these integrated memories do not provide enough capacity to achieve the overall per-node memory size requirements. As a result, conventional off-package memory (e.g., DIMMs) will still be needed. This creates a \"two-level memory\" (TLM) organization where a portion of the machine's memory space provides high bandwidth, and the remainder provides capacity at a lower level of performance. Effective use of such a heterogeneous memory organization may require the co-design of the software applications along with the advancements in memory architecture. In this paper, we explore the efficacy of programmer-driven approaches to managing a TLM system, using three Exascale proxy applications as case studies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory management",
+                "Random access memory",
+                "Bandwidth",
+                "Hardware",
+                "Time-varying systems",
+                "Time-domain analysis",
+                "Organizations"
+            ],
+            "Index Terms": [
+                "Memory Hierarchy",
+                "Exascale Computing",
+                "Memory System",
+                "High Bandwidth",
+                "Memory Technologies",
+                "Memory Organization",
+                "Heuristic",
+                "Data Structure",
+                "Operating System",
+                "Objective Data",
+                "Number Of Objects",
+                "Application Programming",
+                "Types Of Memory",
+                "Implementation Complexity",
+                "Access Patterns",
+                "Object Memory",
+                "Profiling Techniques",
+                "Object Placement",
+                "Written Back",
+                "Data Cache",
+                "Off-chip Memory",
+                "High Hit Rate",
+                "Different Types Of Memory",
+                "L2 Cache",
+                "Virtual Memory",
+                "List Of Objects",
+                "Low Hit Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -316,7 +478,34 @@
                 "firstName": "Jeffrey",
                 "lastName": "Vetter"
             }
-        ]
+        ],
+        "abstract": "Characterizing the behavior of a scientific application and its associated proxy application is essential for determining whether the proxy application actually does mimic the full application. To support our ongoing characterization activities, we have developed the Oxbow toolkit and an associated data store infrastructure for collecting, storing, and querying this characterization information. This paper presents recent updates to the Oxbow toolkit and introduces the Oxbow project's Performance Analytics Data Store (PADS). To demonstrate the possible insights when using the toolkit and data store, we compare the characterizations of several full and proxy applications, along with the High Performance Linpack (HPL) and High Performance Conjugate Gradient (HPCG) benchmarks. Using techniques such as cluster visualizations of PADS data across many experiments, we found that the results show unexpected similarities and differences between proxy applications, and a greater similarity of proxy applications to HPCG than to HPL along many dimensions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Benchmark testing",
+                "Portals",
+                "Databases",
+                "Computer architecture",
+                "Data models",
+                "Software"
+            ],
+            "Index Terms": [
+                "Infrastructure",
+                "Benchmark",
+                "Data Storage",
+                "Large Amount Of Data",
+                "High-performance Computing",
+                "Communication Behaviors",
+                "Web Portal",
+                "Communication Patterns",
+                "Application Server",
+                "Application Version",
+                "Extreme Scale",
+                "Application Behavior",
+                "Control Flow Graph"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -351,7 +540,53 @@
                 "firstName": "Laura",
                 "lastName": "Carrington"
             }
-        ]
+        ],
+        "abstract": "Exascale systems will have many-core nodes, less memory capacity per core than today's systems, and a large degree of performance variability between cores. All these conditions challenge bulk synchronous SPMD models in which execution is typically synchronous and communication is based on buffers and ghost regions.We explore the design of a multithreaded MD code to evaluate several tradeoffs that arise when converting an MPI application into a hybrid multithreaded application, to address the aforementioned constraints of future architectures.Using OpenMP and PThreads, we implemented several variants of CoMD, a molecular dynamics proxy application. We found that in CoMD, duplicating some of the work to avoid race conditions is an easier and more scalable solution than using atomic updates; that data allocation and placement can be controlled to some extent with a hybrid MPI+threads approach, though an explicit NUMA API to control locality may be desirable; and finally that dynamically scheduling the work within a process can mitigate the impact of performance variability among cores and preserve most of the performance, especially when compared to bulk synchronous implementations such as the MPI reference.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Force",
+                "Computational modeling",
+                "Instruction sets",
+                "Programming",
+                "Message systems",
+                "Multithreading"
+            ],
+            "Index Terms": [
+                "Synchronization",
+                "Molecular Dynamics",
+                "Memory Capacity",
+                "Scalable Solution",
+                "Dynamic Scheduling",
+                "Race Conditions",
+                "Increase In Time",
+                "Duty Cycle",
+                "Programming Model",
+                "US Government",
+                "Variable Speed",
+                "Set Of Cells",
+                "Problem Size",
+                "Data Sharing",
+                "Load Balancing",
+                "Middle Range",
+                "Lennard-Jones Potential",
+                "Memory Footprint",
+                "Maps Of Cells",
+                "Code Version",
+                "Model Execution",
+                "Static Version",
+                "Strong Scaling",
+                "Linearizable",
+                "Ghost Cells",
+                "Virtual Energy",
+                "Force Estimation",
+                "Computation Time",
+                "High Overhead",
+                "Core Processes"
+            ],
+            "Author Keywords": [
+                "computer architecture; parallel processing; parallel programming; performance analysis; parallel algorithms; multithreading"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -386,7 +621,49 @@
                 "firstName": "Yuzhong",
                 "lastName": "Shen"
             }
-        ]
+        ],
+        "abstract": "Molecular dynamics simulations are used extensively in science and engineering. Co-Design Molecular Dynamics (CoMD) is a proxy application that reflects the workload characteristics of production molecular dynamics software. In particular, CoMD is computationally intensive with 90+% of execution time spent to calculate inter-atomic force potentials. Hence, this application is an ideal candidate for acceleration with the Intel Xeon Phi because it has high theoretical computational performance with low energy consumption. In this work, the kernel computing Embedded Atom model (EAM) forces is adapted to utilize the Intel Xeon Phi acceleration. Performance and energy are measured in the experiments that vary thread affinity, thread count, problem size, node count, and the number of Xeon Phi's per node. Dynamic voltage and frequency scaling (DVFS) is used to reduce host-side power draw during Xeon Phi accelerated phases of the application. Test results are compared against the original (host-only) implementation that uses multithreading, and energy savings as high as 30% are observed.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Microwave integrated circuits",
+                "Instruction sets",
+                "Force",
+                "Message systems",
+                "Computational modeling",
+                "Coprocessors",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Intel Xeon",
+                "Xeon Phi",
+                "Intel Xeon Phi",
+                "Xeon Phi Coprocessor",
+                "Intel Xeon Phi Coprocessor",
+                "Energy Consumption",
+                "Molecular Dynamics",
+                "Molecular Dynamics Simulations",
+                "Energy Conservation",
+                "Problem Size",
+                "Frequency Scale",
+                "Dynamic Scaling",
+                "Dynamic Frequency",
+                "Dynamic Voltage",
+                "Interatomic Potential",
+                "Voltage Scaling",
+                "Cutoff Distance",
+                "Force Estimation",
+                "Atom Pairs",
+                "Parallel Data",
+                "Message Passing Interface",
+                "Memory Transfer",
+                "Xeon E5",
+                "Symmetric Model",
+                "Virtual Energy",
+                "Strong Scaling",
+                "Model Execution",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -433,7 +710,47 @@
                 "firstName": "K. Scott",
                 "lastName": "Hemmert"
             }
-        ]
+        ],
+        "abstract": "Disruptive changes to computer architecture are paving the way toward extreme scale computing. The co-design strategy of collaborative research and development among computer architects, system software designers, and application teams can help to ensure that applications not only cope but thrive with these changes. In this paper, we present a novel combined co-design approach of emulation and simulation in the context of investigating future Processing in Memory (PIM) architectures. PIM enables co-location of data and computation to decrease data movement, to provide increases in memory speed and capacity compared to existing technologies and, perhaps most importantly for extreme scale, to improve energy efficiency. Our evaluation of PIM focuses on three mini-applications representing important production applications. The emulation and simulation studies examine the effects of locality-aware versus locality-oblivious data distribution and computation, and they compare PIM to conventional architectures. Both studies contribute in their own way to the overall understanding of the application-architecture interactions, and our results suggest that PIM technology shows great potential for efficient computation without negatively impacting productivity.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer architecture",
+                "Computational modeling",
+                "Emulation",
+                "Clocks",
+                "Hardware",
+                "Sockets",
+                "Resource management"
+            ],
+            "Index Terms": [
+                "Co-design Approach",
+                "Research And Development",
+                "System Software",
+                "Memory Processes",
+                "Memory Capacity",
+                "Load Data",
+                "Memory Speed",
+                "Extreme Scale",
+                "Memory Architecture",
+                "Finite Difference",
+                "Finite Element Method",
+                "Multi-core",
+                "Programming Model",
+                "Per Cycle",
+                "Problem Size",
+                "Memory System",
+                "Core Processes",
+                "Grand Challenge",
+                "Local Memory",
+                "Clock Rate",
+                "Ratio Bandwidth",
+                "Memory Hierarchy",
+                "Local Configuration",
+                "Heterogeneous Integration",
+                "Simple Ring",
+                "L2 Cache"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -468,7 +785,51 @@
                 "firstName": "Andrew R.",
                 "lastName": "Siegel"
             }
-        ]
+        ],
+        "abstract": "Current Monte Carlo neutron transport applications use continuous energy cross section data to provide the statistical foundation for particle trajectories. This \"classical\" algorithm requires storage and random access of very large data structures. Recently, Forget et al.[1] reported on a fundamentally new approach, based on multipole expansions, that distills cross section data down to a more abstract mathematical format. Their formulation greatly reduces memory storage and improves data locality at the cost of also increasing floating point computation. In the present study we determine the hardware performance parameters, including power usage, of the multipole algorithm relative to the classical continuous energy algorithm. This study is done to guage the suitability of both algorithms for use on next-generation high performance computing platforms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Inductors",
+                "Neutrons",
+                "Materials",
+                "Data structures",
+                "Algorithm design and analysis",
+                "Computational modeling",
+                "Microscopy"
+            ],
+            "Index Terms": [
+                "Cross-sectional",
+                "Monte Carlo Simulation",
+                "Load Data",
+                "Power Profile",
+                "Neutron Cross-section",
+                "Reduce Data Movement",
+                "Data Structure",
+                "Performance Parameters",
+                "Use Of Algorithms",
+                "Power Usage",
+                "Octupole",
+                "Classical Energy",
+                "Power Consumption",
+                "Nuclear Reactors",
+                "Memory System",
+                "Particle Tracking",
+                "Array Elements",
+                "Floating-point Operations",
+                "Argonne National Laboratory",
+                "Energy Meter",
+                "Bandwidth Usage",
+                "Nuclides",
+                "Open Source Software Projects",
+                "Reactor Core",
+                "CPU Power",
+                "Transport Code",
+                "Microscopic Sections",
+                "Calculation Of Cross Sections",
+                "Binary Search",
+                "Cache Misses"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -503,7 +864,48 @@
                 "firstName": "Richard",
                 "lastName": "Barrett"
             }
-        ]
+        ],
+        "abstract": "The Piecewise Parabolic Method (PPM) was designed as a means of exploring compressible gas dynam-ics problems of interest in astrophysics, including super-sonic jets, compressible turbulence, stellar convection, and turbulent mixing and burning of gases in stellar interiors. Over time, the capabilities encapsulated in PPM have co-evolved with the availability of a series of high performance computing platforms. Implementation of the algorithm has adapted to and advanced with the architectural capabilities and characteristics of these machines. This adaptability of our PPM codes has enabled targeted astrophysical applica-tions of PPM to exploit these scarce resources to explore complex physical phenomena. Here we describe the means by which this was accomplished, and set a path forward, with a new miniapp, mPPM, for continuing this process in a diverse and dynamic architecture design environment. Adaptations in mPPM for the latest high performance machines are discussed that address the important issue of limited bandwidth from locally attached main memory to the microprocessor chip.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Vectors",
+                "Bandwidth",
+                "Algorithm design and analysis",
+                "Hardware",
+                "Fluids",
+                "Slabs",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "High Performance",
+                "Turbulent Mixing",
+                "Gas Dynamics",
+                "Footprint",
+                "Computer System",
+                "Grid Cells",
+                "Equation Of State",
+                "Production Line",
+                "Vector Of Length",
+                "Numerical Algorithm",
+                "Test Problems",
+                "Local Store",
+                "Computational Intensity",
+                "Los Alamos",
+                "Code Implementation",
+                "Remote Memory",
+                "Data Cache",
+                "Memory Bandwidth",
+                "Strong Shock",
+                "L2 Cache",
+                "Off-chip Memory",
+                "Processor Chip",
+                "Short Vector",
+                "Advection"
+            ],
+            "Author Keywords": [
+                "co-design; miniapp; memory bandwidth"
+            ]
+        }
     },
     {
         "publicationNumber": "7016286",
@@ -519,7 +921,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Hardware-Software Co-Design for High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7016286",
@@ -535,7 +939,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Hardware-Software Co-Design for High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: hardware-software codesign; high performance computing; and exascale computing.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7016286",
@@ -551,7 +957,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Hardware-Software Co-Design for High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright for this conference publication.",
+        "keywords": {}
     },
     {
         "publicationNumber": "7016286",
@@ -567,6 +975,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Hardware-Software Co-Design for High Performance Computing",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     }
 ]

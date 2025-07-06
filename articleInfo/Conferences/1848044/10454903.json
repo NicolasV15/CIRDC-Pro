@@ -32,7 +32,28 @@
                 "firstName": "Ole-Christoffer",
                 "lastName": "Granmo"
             }
-        ]
+        ],
+        "abstract": "This article describes how to export a model from a trained Convolutional Coalesced Tsetlin Machine (ConvCoTM). Specifically, the encoding of the literals, including the patch position information, and the exact sequence of the associated include/exclude bits in the software model, is described. The method was tested and verified in VHDL of a ConvCoTM inference-only hardware design.",
+        "keywords": {
+            "IEEE Keywords": [
+                "VHDL",
+                "Software",
+                "Hardware",
+                "Encoding"
+            ],
+            "Index Terms": [
+                "Patch Position",
+                "Text File",
+                "Vanilla",
+                "One-hot Encoding"
+            ],
+            "Author Keywords": [
+                "Tsetlin Machine",
+                "Convolutional",
+                "Coalesced",
+                "Machine learning model"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -85,7 +106,42 @@
                 "firstName": "Fei",
                 "lastName": "Xia"
             }
-        ]
+        ],
+        "abstract": "The learning automaton is the core element of Tsetlin Machines (TM) that is accessed and modified repeatedly over the course of training. It posits a crucial bottleneck to on-chip training as it requires either significant resources or memory to hold automata states depending on the implementation choice. In either scenario, reducing the size of each automaton will greatly benefit the overall resource, performance, and energy utilization. In this paper, we propose a single Three-Action (3-Action) automaton to compensate for two Two-Action (vanilla) automata that is used in the vanilla TM. In the 3-Action automaton, the two literals $\\{l, \\bar{l}\\}$ resulting from feature f are collectively represented using a single 3-Action automaton, hence, the include-exclude decisions for both are taken simultaneously. This work was inspired by $\\approx 36 \\%$ and $\\approx 39 \\%$ reduction in area and power, respectively, per 3-Action automaton compared to two vanilla automata obtained using Yosys and OpenSTA at 130nm process node. The most challenging part, however, is designing a feedback algorithm analogous to Vanilla TM so that 3-Action TM converges to high quality solution. In this paper, we propose two variations of automaton implementation along with a feedback mechanism that has lead to competitive classification accuracy vis-à-vis vanilla TM for MNIST, Fashion-MNIST and Kuzushiji-MNIST albeit at the cost of more clauses and learning time. The preliminary results presented in this paper aims to kickstart investigation on novel automata architectures and feedback methods.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Costs",
+                "Learning automata",
+                "Memory management",
+                "Automata",
+                "System-on-chip",
+                "Testing"
+            ],
+            "Index Terms": [
+                "Reduction In Area",
+                "Energy Utilization",
+                "Vanilla",
+                "Competitive Accuracy",
+                "Fashion-MNIST",
+                "Hyperparameters",
+                "Transition State",
+                "Function Of Type",
+                "Training Time",
+                "Test Accuracy",
+                "Metastable",
+                "State Value",
+                "Bound State",
+                "Update Cycle"
+            ],
+            "Author Keywords": [
+                "Tsetlin Machines",
+                "Multiaction Automata",
+                "On-chip training",
+                "MNIST",
+                "edge inference"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -144,7 +200,45 @@
                 "firstName": "Tor",
                 "lastName": "Tveit"
             }
-        ]
+        ],
+        "abstract": "A set of variables is the Markov blanket of a random variable if it contains all the information needed for predicting the variable. If the blanket cannot be reduced without losing useful information, it is called a Markov boundary. Identifying the Markov boundary of a random variable is advantageous because all variables outside the boundary are superfluous. Hence, the Markov boundary provides an optimal feature set. However, learning the Markov boundary from data is challenging for two reasons. If one or more variables are removed from the Markov boundary, variables outside the boundary may start providing information. Conversely, variables within the boundary may stop providing information. The true role of each candidate variable is only manifesting when the Markov boundary has been identified. In this paper, we propose a new Tsetlin Machine (TM) feedback scheme that supplements Type I and Type II feedback. The scheme introduces a novel Finite State Automaton — a Context-Specific Independence Automaton. The automaton learns which features are outside the Markov boundary of the target, allowing them to be pruned from the TM during learning. We investigate the new scheme empirically, showing how it is capable of exploiting context-specific independence to find Markov boundaries. Further, we provide a theoretical analysis of convergence. Our approach thus connects the field of Bayesian networks (BN) with TMs, potentially opening up for synergies when it comes to inference and learning, including TM-produced Bayesian knowledge bases and TM-based Bayesian inference.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Learning automata",
+                "Knowledge based systems",
+                "Bayes methods",
+                "Random variables",
+                "Convergence"
+            ],
+            "Index Terms": [
+                "Bayesian Model",
+                "Theoretical Analysis",
+                "State Machine",
+                "Feedback Scheme",
+                "Markov Blanket",
+                "Solid Line",
+                "Transition Probabilities",
+                "Conditional Independence",
+                "Average Probability",
+                "Target Variable",
+                "Increase In The Probability",
+                "Step Of The Study",
+                "Structure Learning",
+                "Positive Polarity",
+                "Directed Acyclic Graph",
+                "Type Of Feedback",
+                "Iterative Learning",
+                "Conditional Probability Distribution",
+                "Infinite Time Horizon"
+            ],
+            "Author Keywords": [
+                "Tsetlin Machine",
+                "Bayesian Networks",
+                "Context-Specific Independence",
+                "Context-Specific Markov Blankets",
+                "Markov Boundaries"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -163,9 +257,9 @@
         "authors": [
             {
                 "id": 514122146279212,
-                "preferredName": "Didrik K. Dr\u00f8sdal",
+                "preferredName": "Didrik K. Drøsdal",
                 "firstName": "Didrik K.",
-                "lastName": "Dr\u00f8sdal"
+                "lastName": "Drøsdal"
             },
             {
                 "id": 663831654055340,
@@ -191,7 +285,53 @@
                 "firstName": "Morten",
                 "lastName": "Goodwin"
             }
-        ]
+        ],
+        "abstract": "This paper aims to investigate the potential of model-free reinforcement learning using the Tsetlin Machine by evaluating its performance in widely recognized benchmark environments for reinforcement learning: Cartpole and Pong. Our study is divided into two primary objectives. First, we analyze the effectiveness of the Tsetlin Machine in learning from the actions of expert agents in the Cartpole environment. Second, we assess the ability of the multiclass Tsetlin Machine to learn to play both Cartpole and Pong environments from scratch.Our findings indicate that the Tsetlin Machine can successfully learn and solve the Cartpole environment. Although the Pong environment remains unsolved, the Tsetlin Machine demonstrates its learning capabilities by scoring a few points in multiple test runs. Through our empirical investigation, we conclude that the Tsetlin Machine exhibits promise in the field of reinforcement learning. Nonetheless, further research is needed to address the limitations observed in its performance in some of the examined environments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Video games",
+                "Reinforcement learning",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "Model-free Reinforcement Learning",
+                "Learning Process",
+                "Hyperparameters",
+                "State Space",
+                "Efficient Learning",
+                "Feedback Signal",
+                "Reward Function",
+                "Markov Decision Process",
+                "Policy Learning",
+                "Reinforcement Learning Algorithm",
+                "Hyperparameter Selection",
+                "Greedy Approach",
+                "Imitation Learning",
+                "Average Reward",
+                "Application Of Reinforcement Learning",
+                "Proximal Policy Optimization",
+                "Reinforcement Learning Task",
+                "Machine Capability",
+                "Propositional Logic",
+                "Performance In Learning Tasks",
+                "Machine Learning",
+                "Perfect Model",
+                "Multilayer Perceptron",
+                "Empirical Evaluation",
+                "Learning Algorithms",
+                "Field Of Artificial Intelligence"
+            ],
+            "Author Keywords": [
+                "Machine Learning",
+                "Tsetlin Machine",
+                "Reinforcement Learning",
+                "OpenAI Gym",
+                "Cartpole",
+                "Gynasium",
+                "Pong",
+                "Game Playing"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -238,7 +378,58 @@
                 "firstName": "Vladimir I.",
                 "lastName": "Zadorozhny"
             }
-        ]
+        ],
+        "abstract": "In this paper we introduce a framework that utilizes an architecture based on the Tsetlin Machine to output explainable rules for the prediction of political violence. The framework includes a data processing pipeline, modeling architecture, and visualization tools for early warning about notable events. We conducted an experimental study to explain and predict a one of the most notable events, - a civil war. We observed that the rules that we produced are consistent with theories that emphasize the continuing risks that accumulate from a history of conflict as well as the stickiness of civil war.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Pipelines",
+                "Sociology",
+                "Computer architecture",
+                "Data processing",
+                "History",
+                "Task analysis",
+                "Statistics"
+            ],
+            "Index Terms": [
+                "Political Violence",
+                "Data Visualization",
+                "Noticeable Effect",
+                "Early Warning",
+                "History Of Conflict",
+                "Interpretation Of Data",
+                "Human Rights",
+                "Negation",
+                "Patterns In Data",
+                "Output Variables",
+                "Precision And Recall",
+                "Model Interpretation",
+                "Rights Violations",
+                "Data Streams",
+                "Human Rights Violations",
+                "Load Data",
+                "Data Warehouse",
+                "Levels In Cohort",
+                "Truth Table",
+                "Gradient Backpropagation",
+                "Human Rights Reports",
+                "Basic Sense",
+                "Uncertain Predictions",
+                "Unit Of Interest",
+                "Export Revenues",
+                "Confusion Matrix",
+                "Time And Space",
+                "Characteristics Of Data",
+                "Previous Observations",
+                "OpenStreetMap"
+            ],
+            "Author Keywords": [
+                "tracking political violence",
+                "explainable prediction system",
+                "data streaming",
+                "data warehousing",
+                "logical interpretable learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -291,7 +482,43 @@
                 "firstName": "Linga Reddy",
                 "lastName": "Cenkeramaddi"
             }
-        ]
+        ],
+        "abstract": "The Tsetlin Machine is a novel and powerful algorithm for pattern recognition and decision-making tasks that has gained significant traction in recent years. Its features make it highly suitable for energy-efficient hardware implementations. This paper presents an FPGA design and implementation of an inference accelerator for a Multi Class Tsetlin Machine (MCTM). The proposed design aims at using the sparseness of the multi-class Tsetlin machine to optimize the inference algorithm implementation and provide a fast and resource-efficient implementation on Xilinx’s Zedboard. We train the multi-class Tsetlin Machine model in software on the MNIST dataset and subsequently port the model to hardware. Further, we demonstrate and evaluate the performance of the proposed design using test images. It is observed that our design uses $21.1 \\times$ less memory and is $30.8 \\times$ faster compared to a standard design, with slightly more resource utilization for a given set of parameters.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Memory management",
+                "Software algorithms",
+                "Inference algorithms",
+                "Hardware",
+                "Task analysis",
+                "Standards",
+                "Field programmable gate arrays"
+            ],
+            "Index Terms": [
+                "Standard Design",
+                "Inference Algorithm",
+                "MNIST Dataset",
+                "Traction In Recent Years",
+                "Learning Algorithms",
+                "Rest Of The Paper",
+                "Negation",
+                "Feedback Mechanism",
+                "Standard Algorithm",
+                "Class Comparison",
+                "Clock Cycles",
+                "OR Gate",
+                "Input Object",
+                "ARM Processor",
+                "Positive Vote"
+            ],
+            "Author Keywords": [
+                "Artificial Intelligence",
+                "Machine Learning",
+                "Interpretability",
+                "Tsetlin Machine",
+                "Field Programmable Gate Array"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -350,7 +577,50 @@
                 "firstName": "Lei",
                 "lastName": "Jiao"
             }
-        ]
+        ],
+        "abstract": "Modern Machine Learning (ML) models have a significant number of hyper-parameters that need adjusting to leverage performance and energy efficiency for a given model configuration during training. This becomes a considerable design challenge with increasing complexity requiring larger models. This paper explores the Tsetlin Machine (TM) - a new logic-based ML approach with only four hyper-parameters regardless of the problem space. Two of these hyper-parameters influence the TM architecture while the remaining two impact the learning efficacy. This work focuses on the systematic search for optimal hyper-parameters for the TM and aims to understand how hyper-parameter values affect performance and prediction accuracy using MNIST dataset as a case study.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Systematics",
+                "Sensitivity",
+                "Machine learning",
+                "Learning (artificial intelligence)",
+                "Energy efficiency",
+                "Complexity theory"
+            ],
+            "Index Terms": [
+                "Hyperparameter Tuning",
+                "MNIST Dataset",
+                "Hyperparameter Search",
+                "Square Root",
+                "Classification Accuracy",
+                "Rest Of The Paper",
+                "Artificial Neural Network",
+                "Deep Neural Network",
+                "Regression Equation",
+                "Training Time",
+                "Input Layer",
+                "Improvement In Accuracy",
+                "Global Optimization",
+                "Local Optimum",
+                "Class Prediction",
+                "Grid Search",
+                "Increase In Accuracy",
+                "Training Epochs",
+                "State Machine",
+                "Hardware Resources",
+                "Fashion-MNIST"
+            ],
+            "Author Keywords": [
+                "Machine learning",
+                "logic-based artificial intelligence",
+                "learning automaton",
+                "Tsetlin Machine",
+                "hyper-parameters",
+                "optimization"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -397,7 +667,54 @@
                 "firstName": "Morten",
                 "lastName": "Goodwin"
             }
-        ]
+        ],
+        "abstract": "Anomaly detection is pivotal in strengthening the security and reliability of Internet of Things (IoT) devices. This study delves into the capabilities of the Tsetlin Machine, an innovative machine learning algorithm, in the context of anomaly detection for IoT devices. Expanding upon existing research, we conduct comprehensive empirical investigations using five prominent network traffic datasets, including CICIDS2017, KDD99, NSL-KDD, UNSW-NB15, and UNSW Bot-IoT. Moreover, we assess the efficacy of Tsetlin Machines compared to an extensive array of algorithms that currently hold prominence in state-of-the-art network intrusion detection. Our research reveals that Tsetlin Machines emerged as a highly competitive and potent approach for anomaly detection in IoT devices, consistently delivering superior or comparable results compared to the previous methods. Notably, Tsetlin Machines afford on-device training capabilities, a distinct advantage not readily accessible with other methods. These insights suggest that the Tsetlin Machine holds significant promise as a robust and efficient tool for detecting anomalies in IoT devices, thereby strengthening IoT systems’ overall security and reliability. In summary, our paper highlights the potential of the Tsetlin Machine to address pressing IoT security challenges, paving the way for future advancements in this critical domain.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Machine learning algorithms",
+                "Telecommunication traffic",
+                "Internet of Things",
+                "Security",
+                "Reliability",
+                "Anomaly detection"
+            ],
+            "Index Terms": [
+                "Internet Of Things",
+                "Anomaly Detection",
+                "Machine Learning",
+                "Learning Algorithms",
+                "Internet Of Things Devices",
+                "Security Challenges",
+                "Intrusion Detection",
+                "Internet Of Things Systems",
+                "Internet Of Things Security",
+                "Random Forest",
+                "Model Assessment",
+                "Performance Metrics",
+                "F1 Score",
+                "Comprehensive Evaluation",
+                "Confusion Matrix",
+                "Scikit-learn",
+                "Hyperparameter Tuning",
+                "Numerical Algorithm",
+                "Heaviside Function",
+                "Intrusion Detection System",
+                "Normal Dataset",
+                "Radio Frequency Identification",
+                "Hyperparameter Search",
+                "Types Of Attacks"
+            ],
+            "Author Keywords": [
+                "artificial intelligence",
+                "machine learning",
+                "tsetlin machine",
+                "intrusion detection",
+                "anomaly detection",
+                "internet of things",
+                "cybersecurity"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -450,7 +767,43 @@
                 "firstName": "Alex",
                 "lastName": "Yakovlev"
             }
-        ]
+        ],
+        "abstract": "The logical proposition (clause) based underpinning and computationally minimal training procedure of Tsetlin Machines (TM) allows for exploration of on-chip training on resource limited FPGAs for edge applications. The core challenge is finding a suitable trade-off between memory, compute requirement and performance. The use of Coalesced Tsetlin Machines (CoTM) instead of vanilla TM can mitigate on-chip memory requirements by $\\approx(1 / M)$, thanks to clause sharing among the M classes in a multi-class classification problem. However, the stochastic learning procedure involved in training TMs continue to pose a significant compute bottleneck for on-chip implementations. It requires important design decisions concerning generation of billions of floating-point pseudo random numbers (PRNs) in real-time. This paper proposes a major breakthrough in utilizing existing on-chip Digital Signal Processing (DSP) blocks on FPGA to generate massive amounts of high-quality PRNs to train CoTM in real-time. In the proposed design, the entire computation is performed on-chip and the peripheral interactions include only the transfer of input features and the classification output. Compared to traditional linear feedback shift register (LFSR), this paper, for the first time, explores the use of Mid-Square and Weyl functions on DSP blocks interlinked with look-up table based XOR-shift method to generate PRNs. The interlink enables symbiotic generation of seeds when required by either the Mid-square, Weyl or XOR-shift. The proposed designs with either the Weyl or Mid-square generators outperform LFSRs by offering the same CoTM training behavior and similar accuracy when compared with software generated random numbers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Symbiosis",
+                "Real-time systems",
+                "Software",
+                "System-on-chip",
+                "Table lookup",
+                "Field programmable gate arrays"
+            ],
+            "Index Terms": [
+                "Symbiotic",
+                "Random Number",
+                "Random Generation",
+                "Lookup Table",
+                "Digital Signal Processing",
+                "Pseudo-random Number",
+                "Shift Register",
+                "Deep Neural Network",
+                "Resource Utilization",
+                "Training Epochs",
+                "Random Function",
+                "Pseudo-random Number Generator",
+                "Random Number Sequence",
+                "Throughput Requirements",
+                "Bit-shift"
+            ],
+            "Author Keywords": [
+                "Pseudo Random Number Generation",
+                "Tsetlin Machine",
+                "Xilinx FPGA",
+                "Machine Learning",
+                "On-Chip Training"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -509,7 +862,41 @@
                 "firstName": "Alex",
                 "lastName": "Yakovlev"
             }
-        ]
+        ],
+        "abstract": "In this paper, we introduce a sparse Tsetlin machine (TM) with absorbing Tsetlin Automata (TA) states. In brief, the TA of each clause literal has both an absorbing Exclude- and an absorbing Include state, making the learning scheme absorbing instead of ergodic. In brief, when a TA reaches an absorbing state, it will never leave that state again. If the absorbing state is an Exclude state, both the automaton and the literal can be removed from further consideration. The literal will as a result never participates in that clause. If the absorbing state is an Include state, on the other hand, the literal is stored as a permanent part of the clause while the TA is discarded. A novel sparse data structure supports these updates by means of three action lists: Absorbed Include, Include, and Exclude. By updating these lists, the TM gets smaller and smaller as the literals and their TA withdraw. In this manner, the computation accelerates during learning, leading to faster learning and less energy consumption.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Energy consumption",
+                "Learning automata",
+                "Data structures",
+                "Artificial intelligence"
+            ],
+            "Index Terms": [
+                "Energy Consumption",
+                "Concentration Conditions",
+                "Sparse Structure",
+                "Computation Time",
+                "Transition State",
+                "Training Time",
+                "Parallelization",
+                "Heaviside Function",
+                "Sparse Representation",
+                "Active Switches",
+                "Type Of Feedback",
+                "Digital Circuits",
+                "Memory Structure",
+                "Form Of Reward",
+                "Reduce Training Time"
+            ],
+            "Author Keywords": [
+                "Tsetlin Machine",
+                "Contracting Clause Structure",
+                "Absorbing Tsetlin Automata",
+                "Natural Language Processing",
+                "Interpretable AI"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -556,7 +943,59 @@
                 "firstName": "Mohamed",
                 "lastName": "Mamlouk"
             }
-        ]
+        ],
+        "abstract": "With the growing electrification of the transport sector, Electric Vehicles have attracted significant attention from both researchers and industry stakeholders. The state-of-charge (SOC) of Lithium-Ion batteries has a pivotal role in ensuring the safety of the batteries and alleviating range anxiety of EV drivers. The complex and nonlinear behaviour of the battery makes SOC estimation challenging. Recently, data-driven methods have been proposed as a viable solution due to the emergence of better quality data. One such method is Electrochemical Impedance Spectroscopy (EIS) which has shown promising performance in battery aging research and offers an opportunity for collecting and sharing high-quality data. Even though EIS is being used to estimate state-of-health (SOH) in recent years, there are but only a few studies using it for $S O C$ estimation. As a result, the quantity of data available with SOC annotations is critically low than that for SOH studies. This paper comprehensively explores the use of EIS for SOC estimation using eleven different machine learning methods treating it as both a regression and a classification problem. Different input feature representations have also been explored to mitigate the dearth of SOC annotated data. This paper finds that the full EIS range of frequency impedance when used as inputs to ML models results in better performance than individual EIS frequency-impedance pairs. In the regression analysis, the LSTM is found to outperform the rest with an RMSE and MAE $\\lt0.2$% and a $R^{2} \\approx 1$. In the classification analysis, ANN, DA, LSTM and TM are the best performing with accuracy, recall, precision and $F 1$ score values of $\\lt0.97$ with specificity $\\approx$ 1.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Estimation",
+                "Electric vehicles",
+                "State of charge",
+                "Impedance",
+                "Long short term memory",
+                "Electrochemical impedance spectroscopy",
+                "Vehicles"
+            ],
+            "Index Terms": [
+                "Electrochemical Impedance Spectroscopy",
+                "Regression Analysis",
+                "Machine Learning",
+                "Artificial Neural Network",
+                "Machine Learning Methods",
+                "Machine Learning Models",
+                "Class Analysis",
+                "Classification Problem",
+                "Electric Vehicles",
+                "Long Short-term Memory",
+                "Recall Values",
+                "Frequency Impedance",
+                "Neural Network",
+                "Support Vector Machine",
+                "Random Forest",
+                "Model In Order",
+                "K-nearest Neighbor",
+                "Recurrent Neural Network",
+                "Paper Analyses",
+                "Specific Range",
+                "Battery Management System",
+                "Kernel Regression",
+                "Regression Problem",
+                "Kriging",
+                "Electrochemical Impedance Spectroscopy Measurements",
+                "Battery Model",
+                "Equivalent Circuit Model",
+                "None Of The Models",
+                "Open-circuit Voltage",
+                "Data-driven Models"
+            ],
+            "Author Keywords": [
+                "Electric Vehicle",
+                "State-of-Charge",
+                "Electrochemical Impedance Spectroscopy",
+                "Lithium-ion Batteries",
+                "Machine Learning",
+                "Battery Modelling"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -593,9 +1032,9 @@
             },
             {
                 "id": 583344070109734,
-                "preferredName": "Cecilia Marie Futs\u00e6ther",
+                "preferredName": "Cecilia Marie Futsæther",
                 "firstName": "Cecilia Marie",
-                "lastName": "Futs\u00e6ther"
+                "lastName": "Futsæther"
             },
             {
                 "id": 37401908300,
@@ -615,7 +1054,48 @@
                 "firstName": "Lars Gustav",
                 "lastName": "Snipen"
             }
-        ]
+        ],
+        "abstract": "The Tsetlin machine (TM) is a logic-based machine learning model with the crucial advantages of transparency and hardware-friendliness. In TM, groups of Tsetlin Automata (TAs) produce Boolean expressions in the form of conjunctive clauses in AND-rules. In this work, we show that the DNA nucleotide sequence, coded using the four-letter alphabet A, C, G, T, is a perfect match to the Boolean logic-based TM. A coalesced integer-weighted TM is applied to the problem of prokaryote gene prediction demonstrating beyond state-of-the-art performance on reference genomes. This paves the way for highly efficient bioinformatic analysis in a large range of applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Learning automata",
+                "DNA",
+                "Genomics",
+                "Machine learning",
+                "Bioinformatics"
+            ],
+            "Index Terms": [
+                "Prokaryotic",
+                "Gene Prediction",
+                "Nucleotide Sequences",
+                "Alphabet",
+                "DNA Nucleotide Sequence",
+                "Boolean Expression",
+                "Reading Frame",
+                "Training Data",
+                "Open Reading Frames",
+                "Protein-coding Genes",
+                "Raw Sequencing",
+                "Potential Genes",
+                "Recurrent Neural Network",
+                "Multilayer Perceptron",
+                "TensorFlow",
+                "Deoxyribonucleic Acid",
+                "Reverse Complement",
+                "Memory Usage",
+                "RefSeq Database",
+                "Longest Open Reading Frame",
+                "Multilayer Perceptron Model",
+                "Multiple Threads"
+            ],
+            "Author Keywords": [
+                "Tsetlin Machine",
+                "DNA",
+                "nucleotide",
+                "gene prediction",
+                "prokaryotes"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -650,7 +1130,56 @@
                 "firstName": "L. Yi",
                 "lastName": "Edward"
             }
-        ]
+        ],
+        "abstract": "Machine learning is being widely used in various industries, and its impact varies based on the application. However, high-risk domains like autonomous vehicles and medical imaging require a higher level of accuracy and uncertainty estimation. Among other approaches, probabilistic deep learning methods have been developed to quantity both aleatoric and epistemic uncertainty by estimating probability distributions for aleatoric variables and fitting distributions to model parameters, respectively. Tsetlin Machines (TMs) are an emerging technology in machine learning known for their fast learning, low energy and memory consumption, high prediction accuracy, and interpretability. While previous research can be modified to identify epistemic and aleatoric uncertainty in classification tasks, it remains unclear how TMs can quantity aleatoric uncertainty in their regression predictions. In this research, we demonstrate how the Regression Tsetlin Machine (RTM) can be adapted to quantity uncertainty in regression tasks by modifying its structure and learning mechanism. Essentially, we divide the clauses into two groups where one group predicts the mean regression output while the other group learns to predict the variance associated with the predicted mean. Learning involves regular RTM learning, however with slight modifications to learn the variance where clauses in this group are trained based on the error of the predicted mean. We evaluate our proposed approach to estimate the uncertainty using artificial data, both when the variance is random and variance is a function of the input. We compare the performance of the proposed method against a deep learning model. The results demonstrate that RTM based model performs on par or better compared to the deep learning model.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Deep learning",
+                "Learning systems",
+                "Adaptation models",
+                "Uncertainty",
+                "Memory management",
+                "Predictive models",
+                "Task analysis"
+            ],
+            "Index Terms": [
+                "Prediction Uncertainty",
+                "Machine Learning",
+                "Deep Learning",
+                "Classification Task",
+                "Deep Learning Models",
+                "Autonomous Vehicles",
+                "Regression Prediction",
+                "Machine Learning Technology",
+                "Epistemic Uncertainty",
+                "Aleatoric Uncertainty",
+                "Negation",
+                "Classification Problem",
+                "Output Value",
+                "Original Features",
+                "Continuous Values",
+                "Learning Procedure",
+                "Integer Values",
+                "Positive Polarity",
+                "Actual Output",
+                "Uncertainty Quantification",
+                "Continuous Output",
+                "Classification Uncertainty",
+                "Wrong Predictions",
+                "Training Output",
+                "Type Ia",
+                "Target Output",
+                "Type Ib",
+                "Continuous Input",
+                "True Mean",
+                "Sum Of Outputs"
+            ],
+            "Author Keywords": [
+                "Uncertainty Quantification",
+                "Tsetlin Machine",
+                "Decision Support Systems"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -703,7 +1232,47 @@
                 "firstName": "Jivitesh",
                 "lastName": "Sharma"
             }
-        ]
+        ],
+        "abstract": "Tsetlin Machines (TsMs) are a promising and interpretable machine learning method which can be applied for various classification tasks. We present an exact encoding of TsMs into propositional logic and formally verify properties of TsMs using a SAT solver. In particular, we introduce in this work a notion of similarity of machine learning models and apply our notion to check for similarity of TsMs. We also consider notions of robustness and equivalence from the literature and adapt them for TsMs. Then, we show the correctness of our encoding and provide results for the properties: adversarial robustness, equivalence, and similarity of TsMs. In our experiments, we employ the MNIST and IMDB datasets for (respectively) image and sentiment classification. We discuss the results for verifying robustness obtained with TsMs with those in the literature obtained with Binarized Neural Networks on MNIST.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Neural networks",
+                "Machine learning",
+                "Robustness",
+                "Encoding",
+                "Task analysis",
+                "Optimization",
+                "Testing"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Image Classification",
+                "Sentiment Analysis",
+                "MNIST Dataset",
+                "Propositional Logic",
+                "Adversarial Robustness",
+                "Learning Algorithms",
+                "Positive Feedback",
+                "Negation",
+                "New Variables",
+                "Change Categories",
+                "Vector Representation",
+                "Auxiliary Variables",
+                "N-dimensional Space",
+                "Monomial",
+                "Boolean Variable",
+                "Test Instances",
+                "Formal Verification",
+                "Perturbation Values",
+                "Dimension Of The Input Vector",
+                "Input Label"
+            ],
+            "Author Keywords": [
+                "Tsetlin Machine",
+                "Binarized Neural Networks",
+                "Robustness Verification"
+            ]
+        }
     },
     {
         "publicationNumber": "10454903",
@@ -744,6 +1313,54 @@
                 "firstName": "Jonathan",
                 "lastName": "Hare"
             }
-        ]
+        ],
+        "abstract": "Federated Learning has been an exciting development in machine learning, promising collaborative learning without compromising privacy. However, the resource-intensive nature of Deep Neural Networks (DNN) has made it difficult to implement FL on edge devices. In a bold step towards addressing this challenge, we present FedTM, the first FL framework to utilize Tsetlin Machine, a low-complexity machine learning alternative. We proposed a two-step aggregation scheme for combining local parameters at the server which addressed challenges such as data heterogeneity, varying participating client ratio and bit-based aggregation. Compared to conventional Federated Averaging (FedAvg) with Convolutional Neural Networks (CNN), on average, FedTM provides a substantial reduction in communication costs by $30.5 \\times$ and $36.6 \\times$ reduction in storage memory footprint. Our results demonstrate that FedTM outperforms BiFL-BiML (SOTA) in every FL setting while providing $1.37-7.6 \\times$ reduction in communication costs and $2.93-7.2 \\times$ reduction in run-time memory on our evaluated datasets, making it a promising solution for edge devices.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Privacy",
+                "Costs",
+                "Federated learning",
+                "Scalability",
+                "Memory management",
+                "Convolutional neural networks",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Efficient Communication",
+                "Federated Learning",
+                "Efficient Federated Learning",
+                "Communication-efficient Federated Learning",
+                "Neural Network",
+                "Convolutional Neural Network",
+                "Deep Neural Network",
+                "Heterogeneous Data",
+                "Memory Storage",
+                "Communication Cost",
+                "Edge Devices",
+                "Federated Learning Framework",
+                "Substantial Cost Reduction",
+                "Global Model",
+                "Data Privacy",
+                "Stochastic Gradient Descent",
+                "State Machine",
+                "Memory Usage",
+                "Local Dataset",
+                "Central Server",
+                "Communication Rounds",
+                "MNIST Dataset",
+                "Memory Cost",
+                "Federated Learning Model",
+                "Feedback Modalities",
+                "Propositional Logic",
+                "Magnitude Of Weights",
+                "Client Participation"
+            ],
+            "Author Keywords": [
+                "Federated Learning",
+                "Tsetlin Machine",
+                "Communication-Efficient"
+            ]
+        }
     }
 ]

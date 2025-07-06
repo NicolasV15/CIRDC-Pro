@@ -50,7 +50,57 @@
                 "firstName": "Hartwig",
                 "lastName": "Anzt"
             }
-        ]
+        ],
+        "abstract": "This paper presents batched iterative solvers for GPU architectures. We elaborate on the design of the batched functionality aiming for optimal performance while still giving the user some flexibility in terms of choosing a sparse matrix format, a preconditioner optimized for the distinct items of the batch, and an application-specific stopping criterion that is evaluated for each problem in the batch, individually. Performance results for benchmark problems coming from PeleLM simulations reveal the potential of the batched iterative solvers for computational chemistry simulations, and their advantage compared to the current vendor-provided batched solutions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Chemistry",
+                "Computational modeling",
+                "Conferences",
+                "Graphics processing units",
+                "Computer architecture",
+                "Three-dimensional printing",
+                "Mathematical models"
+            ],
+            "Index Terms": [
+                "Iterative Solver",
+                "Sparse Solver",
+                "Sparse Matrix",
+                "Stopping Criterion",
+                "Sparse Format",
+                "Linear System",
+                "Ordinary Differential Equations",
+                "Convergence Criterion",
+                "Vector Matrix",
+                "Small Problems",
+                "System Of Ordinary Differential Equations",
+                "Computing Units",
+                "Caching",
+                "Sparse Vector",
+                "Sparsity Pattern",
+                "Residual Norm",
+                "Iteration Count",
+                "Single Kernel",
+                "Memory Bandwidth",
+                "Direct Solver",
+                "Shared Memory",
+                "L2 Cache",
+                "Cache Hit",
+                "Combustion Simulations",
+                "NVIDIA GPU",
+                "Eigenvalue Distribution",
+                "Factorization",
+                "Static Memory",
+                "Matrix Multiplication",
+                "Algorithm Execution"
+            ],
+            "Author Keywords": [
+                "Sparse linear systems",
+                "batched solvers",
+                "GPU",
+                "Ginkgo"
+            ]
+        }
     },
     {
         "publicationNumber": "9652790",
@@ -97,7 +147,51 @@
                 "firstName": "Pablo",
                 "lastName": "Ezzatti"
             }
-        ]
+        ],
+        "abstract": "The evolution of data science and machine learning has increased the applicability of the sparse matrix multiplication (SPGEMM) kernel. Unlike more well-known operations such as the SPMV, in the SPGEMM the nonzero pattern of the result is determined by the interaction between the nonzero patterns of the inputs, which impose serious challenges to the development of high-performance implementations for accelerators. Recent efforts in this subject aim to mitigate this irregularity through the use of block-based sparse storage formats, obtaining promissing results on accelerators such as GPUs. In this work we study the format bmSparse [1] and propose optimizations to attack the principal bottlenecks of the original SPGEMM implementation for Nvidia GPUs. We evaluate the proposal using nine sparse matrices of different sizes, showing remarkable speedups with respect to CUSPARSE&#x0027;s CSR variant.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Conferences",
+                "Machine learning",
+                "Data science",
+                "Large-scale systems",
+                "Sparse matrices",
+                "Proposals",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Matrix Multiplication",
+                "Sparse Matrix",
+                "Sparse Matrix Multiplication",
+                "Sparse Format",
+                "Unique Set",
+                "Experimental Evaluation",
+                "Multiple Stages",
+                "Hash Function",
+                "Nonzero Elements",
+                "Implementation Stage",
+                "Partial Order",
+                "Beginning Of Stage",
+                "Output Of Block",
+                "Breadth-first Search",
+                "Column Index",
+                "Balanced Way",
+                "Performance Bottleneck",
+                "Array Of Values",
+                "Stage Cost",
+                "Block Position",
+                "Row Block",
+                "Memory Hierarchy",
+                "Input Block"
+            ],
+            "Author Keywords": [
+                "bmSparse",
+                "spGemm",
+                "GPU",
+                "task list indexing",
+                "segmented sort"
+            ]
+        }
     },
     {
         "publicationNumber": "9652790",
@@ -144,7 +238,56 @@
                 "firstName": "N.",
                 "lastName": "Onodera"
             }
-        ]
+        ],
+        "abstract": "A new mixed-precision preconditioner based on the iterative refinement (IR) method is developed for the preconditioned conjugate gradient (P-CG) solver and the multigrid preconditioned conjugate gradient (MGCG) solver in the multiphase thermal-hydraulic CFD code JUPITER [1]. In the IR preconditioner, linear systems are approximately solved using a block Jacobi method, which is optimized using fine block decomposition with 2D tiles to facilitate SIMD operations and software pipelining. Mixed-precision computing is designed to avoid influences of the roundoff errors in computing ill-conditioned matrices with extreme contrast of coefficients. Linear systems are normalized so that it can be computed within the dynamic range of FP16. All data is stored in FP16 to reduce memory access, while all computation is performed in FP32. The hybrid FP16/32 implementation keeps the similar convergence property as FP32, while the computational performance is close to FP16. The robustness of the FP16/32 implementation was demonstrated by scanning data formats with different bit lengths of the significand. The developed solvers are optimized on Fugaku (A64FX), and applied to ill-conditioned matrices with 90 billion DOFs in JUPITER. The P-CG and MGCG solvers with the new IR preconditioner show excellent strong scaling up to 8,000 CPUs, where 5.7 &#x00D7; and 3.4 &#x00D7; speedups are respectively achieved from the conventional solvers on Oakforest-PACS (KNL).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linear systems",
+                "Jacobian matrices",
+                "Jupiter",
+                "Computational modeling",
+                "Software",
+                "Roundoff errors",
+                "Robustness"
+            ],
+            "Index Terms": [
+                "Linear System",
+                "Ill-conditioned Systems",
+                "Multiphase Simulation",
+                "Ill-conditioned Linear Systems",
+                "Multiphase Computational Fluid Dynamics",
+                "Conjugate Gradient",
+                "Computational Performance",
+                "Iterative Refinement",
+                "Bit Length",
+                "Strong Scaling",
+                "Preconditioned Conjugate Gradient",
+                "Ill-conditioned Matrix",
+                "Iterative Refinement Method",
+                "Computational Cost",
+                "Diagonal Matrix",
+                "Finite Difference",
+                "Approximate Solution",
+                "Normalization Factor",
+                "Sparse Matrix",
+                "High-performance Computing",
+                "Computing Nodes",
+                "Data Conversion",
+                "Kernel Computation",
+                "Main Cost",
+                "Benchmark Test",
+                "Large Benchmark",
+                "Ill-conditioned Problem",
+                "Finest Level",
+                "Reference Case",
+                "Standard Benchmark"
+            ],
+            "Author Keywords": [
+                "Mixed-precision computing",
+                "Iterative refinement method",
+                "Multi-phase CFD simulation"
+            ]
+        }
     },
     {
         "publicationNumber": "9652790",
@@ -173,7 +316,51 @@
                 "firstName": "Kengo",
                 "lastName": "Nakajima"
             }
-        ]
+        ],
+        "abstract": "High-performance computing research is entering the exascale computing era. Large-scale simulations have more than enough parallel resources but reach a saturation point in spatial parallelization due to the communication cost and synchronization overhead. Parallel-in-time (PinT) methods are a solution to the saturation problem. To date, many efficient PinT methods have been proposed, but most experiments focus on small problems with a large number of time steps. Applications that are solved by explicit time-marching schemes, especially, are highly scalable in the spatial domain. Therefore very few researchers use PinT methods on explicit time-marching schemes. Furthermore, PinT methods often require many processors to achieve faster computation than sequential code. This work proposes a PinT method for explicit schemes that provide efficient parallelization with few working processes. The numerical experiment of advection equation and compressible viscous flow simulation shows that the proposed method could achieve better parallel efficiency than spatial parallelization.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Program processors",
+                "Costs",
+                "Codes",
+                "Exascale computing",
+                "Computational modeling",
+                "Conferences",
+                "Mathematical models"
+            ],
+            "Index Terms": [
+                "Explicit Scheme",
+                "Explicit Time Marching",
+                "Time Step",
+                "Number Of Steps",
+                "Parallelization",
+                "Numerical Experiments",
+                "Viscous Flow",
+                "Number Of Time Steps",
+                "Large-scale Simulations",
+                "Compressible Flow",
+                "Parallel Efficiency",
+                "Advection Equation",
+                "Time Interval",
+                "Computation Time",
+                "Mesh Size",
+                "Partial Differential Equations",
+                "Shock Wave",
+                "Runge Kutta",
+                "Fine Mesh",
+                "Fine Grid",
+                "Explicit Method",
+                "Message Passing Interface",
+                "Coarse Grid",
+                "Discretization Error",
+                "Finite Volume Method",
+                "Multigrid Method",
+                "Hyperbolic Equation",
+                "Bicubic Interpolation",
+                "Discontinuity Point",
+                "Large Time Step"
+            ]
+        }
     },
     {
         "publicationNumber": "9652790",
@@ -202,7 +389,50 @@
                 "firstName": "Peter M.",
                 "lastName": "Kogge"
             }
-        ]
+        ],
+        "abstract": "Stochastic Gradient Descent (SGD) is a valuable algorithm for large-scale machine learning, but has proven difficult to parallelize on conventional architectures because of communication and memory access issues. The HogWild series of mixed logically distributed and physically multi-threaded algorithms overcomes these issues for problems with sparse characteristics by using multiple local model vectors with asynchronous atomic updates. While this approach has proven effective for several reported examples, there are others, especially very sparse cases, that do not scale as well. This paper discusses an SGD Support Vector Machine (SVM) on a cacheless migrating thread architecture using the Hogwild algorithms as a framework. Our implementations on this novel architecture achieved superior hardware efficiency and scalability over that of a conventional cluster using MPI. Furthermore these improvements were gained using naive data partitioning techniques and hardware with substantially less compute capability than that present in conventional systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Support vector machines",
+                "Machine learning algorithms",
+                "Instruction sets",
+                "Scalability",
+                "Memory management",
+                "Stochastic processes",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Partitioned Global Address Space",
+                "Support Vector Machine",
+                "Parallelization",
+                "Stochastic Gradient Descent",
+                "Conventional Architecture",
+                "Message Passing Interface",
+                "Conventional Clustering",
+                "Training Data",
+                "System Size",
+                "Error Function",
+                "Training Examples",
+                "Memory Control",
+                "Clock Rate",
+                "Additional Overhead",
+                "Shared Environment",
+                "Time Epochs",
+                "Single Issue",
+                "Remote Operation",
+                "Linearizable",
+                "Memory Bandwidth",
+                "Address Space",
+                "Conventional Implementation",
+                "Strong Scaling",
+                "Shared Memory"
+            ],
+            "Author Keywords": [
+                "emerging architectures",
+                "irregular applications",
+                "machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "9652790",
@@ -243,7 +473,52 @@
                 "firstName": "Vassil",
                 "lastName": "Alexandrov"
             }
-        ]
+        ],
+        "abstract": "In this paper, we present the results of our exploration of the applicability of preconditioners computed using the Markov Chain Monte Carlo Matrix Inversion ((MC)2MI) method to a variety of linear systems from the domain of quantum chromodynamics, plasma physics and engineering. The latter two are represented by matrices extracted from BOUT++ and Nektar++ codes with specific problem statements. Additionally, we present the scaling behaviour of our implementation for GPUs and CPUs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Linear systems",
+                "Monte Carlo methods",
+                "Quantum computing",
+                "Codes",
+                "Conferences",
+                "Markov processes",
+                "Plasmas"
+            ],
+            "Index Terms": [
+                "Preconditioning",
+                "Markov Chain",
+                "Linear System",
+                "Behavior Scale",
+                "Quantum Chromodynamics",
+                "Plasma Physics",
+                "Monte Carlo Simulation",
+                "Parallelization",
+                "Numerical Experiments",
+                "Transition Probabilities",
+                "Random Walk",
+                "Symmetric Matrix",
+                "Sparse Matrix",
+                "Input Matrix",
+                "Transition Probability Matrix",
+                "Additional Overhead",
+                "Monte Carlo Iterations",
+                "Advection Diffusion Equation",
+                "Inverse Estimation",
+                "Lattice QCD",
+                "Diagonally Dominant",
+                "GPU Implementation",
+                "Gaussian Elimination",
+                "Memory Management",
+                "L2 Cache",
+                "Complex Matrix"
+            ],
+            "Author Keywords": [
+                "Monte Carlo Matrix Inversion",
+                "Hybrid Algorithms for Linear Algebra",
+                "accelerators"
+            ]
+        }
     },
     {
         "publicationNumber": "9652790",
@@ -259,7 +534,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 12th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652790",
@@ -275,7 +552,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 12th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Novel scalable scientific algorithms are needed in order to enable key science applications to exploit the computational power of large-scale systems. This is especially true for the current tier of leading petascale machines and the road to exascale computing as HPC systems continue to scale up in compute node and processor core count. These extreme-scale systems require novel scientific algorithms to hide network and memory latency, have very high computation/communication overlap, have minimal communication, and have no synchronization points. With the advent of Big Data and AI in the past few years the need of such scalable mathematical methods and algorithms able to handle data and compute intensive applications at scale becomes even more important.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652790",
@@ -291,7 +570,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 12th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652790",
@@ -307,7 +588,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 12th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Copyright and Reprint Permissions: Abstracting is permitted with credit to the source. Libraries may photocopy beyond the limits of US copyright law, for private use of patrons, those articles in this volume that carry a code at the bottom of the first page, provided that the per-copy fee indicated in the code is paid through the Copyright Clearance Center, 222 Rosewood Drive, Danvers, MA 01923.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652790",
@@ -323,7 +606,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 12th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652790",
@@ -339,6 +624,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 12th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems (ScalA)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     }
 ]

@@ -32,7 +32,44 @@
                 "firstName": "Paul",
                 "lastName": "Kent"
             }
-        ]
+        ],
+        "abstract": "We introduce a new high-performance design for parallelism within the Quantum Monte Carlo code QMCPACK. We demonstrate that the new design is better able to exploit the hierarchical parallelism of heterogeneous architectures compared to the previous GPU implementation. The new version is able to achieve higher GPU occupancy via the new concept of crowds of Monte Carlo walkers, and by enabling more host CPU threads to effectively offload to the GPU. The higher performance is expected to be achieved independent of the underlying hardware, significantly improving developer productivity and reducing code maintenance costs. Scientific productivity is also improved with full support for fallback to CPU execution when GPU implementations are not available or CPU execution is more optimal.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Codes",
+                "Monte Carlo methods",
+                "Instruction sets",
+                "Graphics processing units",
+                "Computer architecture",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Hierarchical Parallelism",
+                "GPU Implementation",
+                "Parameter Space",
+                "Parallelization",
+                "Data Transfer",
+                "Multi-core",
+                "High-performance Computing",
+                "Local Energy",
+                "Problem Size",
+                "Load Balancing",
+                "Single Thread",
+                "Acceptance Ratio",
+                "Message Passing Interface",
+                "Single Instruction",
+                "Routine Calculation",
+                "Kernel Computation",
+                "Limited Memory Capacity",
+                "NVIDIA V100 GPU"
+            ],
+            "Author Keywords": [
+                "Heterogeneous computing",
+                "GPUs",
+                "Monte Carlo"
+            ]
+        }
     },
     {
         "publicationNumber": "10024590",
@@ -40,7 +77,7 @@
         "publicationYear": "2022",
         "publicationDate": "13-18 Nov. 2022",
         "articleNumber": "10024618",
-        "articleTitle": "OpenMP\u2019s Asynchronous Offloading for All-pairs Shortest Path Graph Algorithms on GPUs",
+        "articleTitle": "OpenMP’s Asynchronous Offloading for All-pairs Shortest Path Graph Algorithms on GPUs",
         "volume": null,
         "issue": null,
         "startPage": "1",
@@ -61,7 +98,52 @@
                 "firstName": "Vivek",
                 "lastName": "Kale"
             }
-        ]
+        ],
+        "abstract": "Numerical scientific computations, which are based on floating-point operations, have been sped up greatly via GPUs or other accelerators of supercomputers. However, combinatorial scientific computations, which are based on integer operations, do not use GPUs on a node well. The reason for this is that offloading of data and computation from the CPU (host) to a GPU (accelerator device) of a node of a supercomputer is by default synchronous. Synchronous offloading is costly if the host can do other meaningful computation or offload other independent tasks on the accelerator. To counter these costs, the capability of asynchronous offloading in GPU programming models is used by an application programmer to overlap data transfer and computation on the host when she deems it to be correct and performant. The OpenMP and CUDA programming models, and their respective vendor or platform HPC software, i.e., compiler suite, provide this capability to users in different ways. A challenge is in understanding the use of and assessing the effectiveness of this asynchronous offloading capability of OpenMP for scientific applications dominated by integer operations. This work shows and assesses the use of such a capability in the US Department of Energy LCF Floyd-Warshall benchmark implemented with OpenMP and with its vendor language counterparts (HIP and CUDA). By experimenting with our improved version of the benchmark using asynchronous OpenMP offloading, we found that using IBM’s xlc OpenMP on Summit was 1. 35x faster than using the NVIDIA’s nvcc CUDA, and using HPE’s cce OpenMP on Summit was l.llx faster than using the AMD’s hipcc HIP. These results provide insight on the use and the attainable performance of the asynchronous offload capabilities in OpenMP for such applications run on emerging supercomputers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "US Department of Energy",
+                "Codes",
+                "Computational modeling",
+                "Graphics processing units",
+                "Benchmark testing",
+                "Parallel processing",
+                "Data transfer"
+            ],
+            "Index Terms": [
+                "Shortest Path",
+                "Linear Graph",
+                "Graph Algorithms",
+                "All-pairs-shortest-path",
+                "Shortest Path Graph",
+                "Synchronization",
+                "Computer Science",
+                "Data Transfer",
+                "Computation Tasks",
+                "Running",
+                "Problem Size",
+                "Software Libraries",
+                "Department Of Energy",
+                "Code Version",
+                "Breadth-first Search",
+                "Open-source Community",
+                "Application Code",
+                "Reduction In Execution Time",
+                "L2 Cache",
+                "Application Execution",
+                "Cache Hit"
+            ],
+            "Author Keywords": [
+                "asynchronous offload",
+                "irregular parallelism",
+                "OpenMP",
+                "performance portability",
+                "overlapping computing and communication",
+                "GPUs",
+                "exascale supercomputers",
+                "shortest-path graph algorithms"
+            ]
+        }
     },
     {
         "publicationNumber": "10024590",
@@ -90,7 +172,57 @@
                 "firstName": "Preeti",
                 "lastName": "Malakar"
             }
-        ]
+        ],
+        "abstract": "Fast Fourier Transforms (FFT) are used to solve various scientific and engineering problems. For example, computational fluid dynamics (CFD) simulations employ a pseudospectral method to solve flow simulations using Fast Fourier transforms (FFT). FFT requires global communications among all parallel processes; this often increases communication times. We present FFTOpt, a communication optimization library that leverages hierarchical communications within a compute node and across nodes of a large-scale system. This is a generic library that may optimize any code or application that uses MPI Alltoall and MPI Sendrecv without any dependency on the system or application. FFTOpt also uses topology information and runtime details about node allocation to aggregate at node and switch levels to reduce communication times. We tested FFTOpt in our department cluster (uses MPICH MPI library and connected by Ethernet) and PARAM Sanganak supercomputer (uses Intel MPI library and connected by Infiniband) of IIT Kanpur using the FFTW, FFTK and P3DFFT libraries. FFTOpt reduces communication time by up to 63%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Fast Fourier transforms",
+                "Computational modeling",
+                "Computational fluid dynamics",
+                "Switches",
+                "Parallel processing",
+                "Libraries"
+            ],
+            "Index Terms": [
+                "Fast Fourier Transform",
+                "Hierarchical Communication",
+                "Fourier Transform",
+                "High-performance Computing",
+                "Communication Time",
+                "Topological Information",
+                "Node Level",
+                "Ethernet",
+                "Global Communication",
+                "Message Passing Interface",
+                "Pseudospectral Method",
+                "Time-variant",
+                "Reduction In Time",
+                "Network Topology",
+                "Data Transfer",
+                "Grid Size",
+                "Data Exchange",
+                "Waiting Time",
+                "Hierarchical Approach",
+                "Discrete Fourier Transform",
+                "High-performance Computing Systems",
+                "Multiple Communication",
+                "Multiple Leaders",
+                "Hop Count",
+                "Point-to-point Communication",
+                "Hierarchical Strategy",
+                "Number Of Leaders",
+                "All-to-all Communication",
+                "Message Size",
+                "Network Interface"
+            ],
+            "Author Keywords": [
+                "FFT",
+                "hierarchical communication",
+                "node-level aggregation",
+                "switch-level aggregation"
+            ]
+        }
     },
     {
         "publicationNumber": "10024590",
@@ -119,7 +251,45 @@
                 "firstName": "Evgenij",
                 "lastName": "Belikov"
             }
-        ]
+        ],
+        "abstract": "This paper presents CAMP, a Configurable App for Memory Probing that facilitates assessment of intra-node deep memory hierarchies through performance measurements of synthetic kernels. The open-source tool provides several different access patterns and allows to vary kernels’ operational intensities. We introduce the supported features, their design and implementation, and analyse measurements for a deep memory hierarchy on a compute node of ARCHER2, the UK national supercomputer and compare it to measurements on a compute node on NEXTGenIO. We report results of a strong scaling study of contiguous, strided and stencil access patterns for various operational intensities and explore several thread placement options and data sizes. The results confirm that bandwidth saturation can be achieved with a relatively small number of threads on AMD Rome and that underpopulation may be beneficial as performance drops when the node is fully populated for configurations with lower operational intensity, whilst the effect is less pronounced on the less hierarchical Intel Cascade Lake. Finally we discuss potential benefits of sub-NUMA-node awareness and mention several suggestions for extending CAMP.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Instruction sets",
+                "Memory management",
+                "Bandwidth",
+                "Lakes",
+                "Predictive models",
+                "Parallel processing",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Memory Hierarchy",
+                "Deep Hierarchy",
+                "Population Decline",
+                "Access Patterns",
+                "Strong Scaling",
+                "Benchmark",
+                "Prediction Model",
+                "Lowest Intensity",
+                "Core Complex",
+                "Array Elements",
+                "Floating-point Operations",
+                "Profiling Tool",
+                "Memory Bandwidth",
+                "Elementary Operations",
+                "L2 Cache"
+            ],
+            "Author Keywords": [
+                "Memory Hierarchy",
+                "Performance",
+                "Bandwidth",
+                "Benchmarking",
+                "NUMA",
+                "PAPI",
+                "ARCHER2"
+            ]
+        }
     },
     {
         "publicationNumber": "10024590",
@@ -135,7 +305,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover, title page, cover page, or splash screen of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024590",
@@ -151,7 +323,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference chairs.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024590",
@@ -167,7 +341,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the author index for the conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024590",
@@ -183,7 +359,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Lists the conference organizers, sponsors, patrons, speakers, and/or committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024590",
@@ -199,7 +377,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024590",
@@ -215,6 +395,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM International Workshop on Hierarchical Parallelism for Exascale Computing (HiPar)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the conference table of contents.",
+        "keywords": {}
     }
 ]

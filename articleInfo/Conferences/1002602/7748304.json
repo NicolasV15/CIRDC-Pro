@@ -26,7 +26,46 @@
                 "firstName": "John",
                 "lastName": "Collins"
             }
-        ]
+        ],
+        "abstract": "This paper introduces a model to track bees on 2D video with a 50Hz frame rate. The model detects bees using background subtraction and colour thresholding, producing a binary image showing the bees as blobs. The blobs are then analysed to estimate the bees' positions, which are then used to track the bees in successive video frames. However, in the 50Hz video, bees move a significant distance from one frame to the next. Assuming that a bee's velocity is constant over three succesive frames, the bee position in the third frame can be predicted from the positions in the previous two frames. To track multiple bees in each frame, the predictions and detections are paired using the Hungarian method, which minimises the distances between the predicted positions and the actual detected positions. However, in 2D video, when several bees merge into one blob, it is hard to track the bees correctly when they separate in following frames. The bounding box information from the blob analysis is used to track bees when they separate after merging in the video image. Experiments indicate that single bee tracking is about 99% accurate while merged bee tracking is about 72% accurate.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image color analysis",
+                "Tracking",
+                "Two dimensional displays",
+                "Cameras",
+                "Image segmentation",
+                "Mathematical model",
+                "Merging"
+            ],
+            "Index Terms": [
+                "Honey Bee",
+                "2D Video",
+                "Bounding Box",
+                "Binary Image",
+                "Video Frames",
+                "Single Tracking",
+                "Successive Frames",
+                "Position In Frame",
+                "Kalman Filter",
+                "Orange Color",
+                "Gaussian Mixture Model",
+                "Bee Colonies",
+                "Tracking Accuracy",
+                "Current Frame",
+                "Single Color",
+                "Previous Frame",
+                "Track Model",
+                "Predicted Bounding Box",
+                "Active Video"
+            ],
+            "Author Keywords": [
+                "Bee Tracking",
+                "Bee Detection",
+                "Object Tracking",
+                "Image Segmentation"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -55,7 +94,57 @@
                 "firstName": "Manoranjan",
                 "lastName": "Paul"
             }
-        ]
+        ],
+        "abstract": "In recent years, free viewpoint video (FVV) technology is increasing popularity for rendering intermediate views from existing adjacent views to avoid the large volume of video data transmission. For generating an intermediate view on a remote display, Depth Image Based Rendering (DIBR) techniques are normally used, however, sometimes it has some missing pixels due to inaccurate depth, low precision rounding error and occlusion problem. Inpainting and inverse mapping techniques are the two most effective techniques to recover missing pixels by exploiting spatial correlation. However, they are not effective for missing pixel, i.e. hole areas with foreground/background boundaries as they have a low spatial correlation. To address the issue, we propose a new hole filling technique using temporal correlation for better rendering image quality. In this paper Gaussian mixture based Dynamic Background Modelling (DBM) is used to exploit temporal correlation. The background and foreground pixels are identified through DBM and then modified depending on the Gaussian distribution. The experimental results show that the proposed rendering approach provides better image quality compared to the state-of-the-art methods using standard multi-view video sequences.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Rendering (computer graphics)",
+                "Correlation",
+                "Cameras",
+                "Three-dimensional displays",
+                "Filling",
+                "Gaussian distribution"
+            ],
+            "Index Terms": [
+                "Gaussian Mixture Model",
+                "Free Viewpoint Videos",
+                "Cylindrical",
+                "Temporal Correlation",
+                "Depth Images",
+                "Video Sequences",
+                "Background Pixels",
+                "Inverse Mapping",
+                "Error Problem",
+                "Foreground Pixels",
+                "Occlusion Problem",
+                "Pixel Intensity",
+                "Gaussian Model",
+                "Depth Map",
+                "Popular Technique",
+                "Submatrix",
+                "3D Point",
+                "Intermediate Position",
+                "Image Texture",
+                "Intrinsic Parameters",
+                "View Synthesis",
+                "Static Background",
+                "Scene Depth",
+                "Scene Geometry",
+                "Extrinsic Parameters",
+                "Warped Image",
+                "Original View",
+                "Video System",
+                "Common Frame",
+                "Scene Information"
+            ],
+            "Author Keywords": [
+                "free viewpoint video",
+                "depth image based rendering",
+                "spatial correlation",
+                "temporal correlation",
+                "Gaussian distribution"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -114,7 +203,36 @@
                 "firstName": "Yu",
                 "lastName": "Gao"
             }
-        ]
+        ],
+        "abstract": "Document scanning is a daily office work. However, traditional devices like flatbed scanners are not easy to carry for mobile work. In this paper, we present a new document image scanning method using a mobile device. With a clip of continuous video capturing, our approach first extracts several key-frames. A mobile GPU based image stitching method is adopted to generate a high resolution document image. Semi-automatic document image dewarping is then applied to rectify the perspective distortion and document page warping. For shadow and uneven environment lighting problem, we use Retinex theory based image enhancement method to remove those artifacts. Experimental results show that our results are outperforming existing commercial mobile applications.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Lighting",
+                "Mobile communication",
+                "Image resolution",
+                "Mobile handsets",
+                "Image enhancement",
+                "Cameras",
+                "Feature extraction"
+            ],
+            "Index Terms": [
+                "Mobile Devices",
+                "Document Images",
+                "Mobile App",
+                "Video Clips",
+                "Office Workers",
+                "Light Environment",
+                "Image Enhancement",
+                "Image Enhancement Methods",
+                "Perspective Distortion",
+                "Smartphone",
+                "Running Time",
+                "Human-computer Interaction",
+                "Cylindrical Surface",
+                "Mobile Camera",
+                "Distortion Problem"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -149,7 +267,51 @@
                 "firstName": "Manabu",
                 "lastName": "Hashimoto"
             }
-        ]
+        ],
+        "abstract": "We propose a novel feature description method called SHORT (Shell Histograms and Occupancy from Radial Transform) for fast 3D object recognition. In 3D object recognition for point cloud data, it is very important to detect keypoints and describe features rapidly because of the huge amount of data involved. The state-of-the-art keypoint detection methods calculate statistics including covariance matrices from the point cloud in local regions of the object. Then, the state-of-the-art method, which describe features such as normal vector distributions of the point cloud, use all points in the local regions. However, these methods involve high processing costs because they need to calculate the statistics needed for keypoint detection. They also need to use a lot of points in the regions for feature description. By contrast, the SHORT method consists of a fast keypoint detector that does not calculate statistics and a fast feature descriptor that uses only a small number of points in the restricted local regions. The keypoint detector uses occupancy estimated simply like counting the points in regions of outermost shells in spheres, and the feature descriptor uses estimated those and a small number of points including the spherical shell regions of multiple scales. Experimental results in 3D object recognition show that the processing speed of the proposed method is five times faster than that of a comparative method that had a nearly equal 99.4% recognition success rate.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Three-dimensional displays",
+                "Shape",
+                "Histograms",
+                "Object recognition",
+                "Feature extraction",
+                "Detectors",
+                "Gaussian distribution"
+            ],
+            "Index Terms": [
+                "Descriptive Characteristics",
+                "Shell Region",
+                "Occupancy In Regions",
+                "Histogram",
+                "Comparative Method",
+                "Processing Speed",
+                "Normal Vector",
+                "Object Recognition",
+                "Point Cloud",
+                "Points In Region",
+                "Point Cloud Data",
+                "Restricted Region",
+                "Spherical Region",
+                "Keypoint Detection",
+                "High Processing Cost",
+                "Fast Recognition",
+                "Processing Time",
+                "Unit Vector",
+                "Inflection Point",
+                "Convolution Operation",
+                "Convex Shape",
+                "Local Reference Frame",
+                "Dominant Vector",
+                "Planar Shape",
+                "Difference Of Gaussian",
+                "Recognition Performance",
+                "Local Cloud",
+                "3D Point",
+                "Low Occupancy",
+                "Input Point Cloud"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -184,7 +346,50 @@
                 "firstName": "Yongsheng",
                 "lastName": "Gao"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a novel method of recognizing plant leaf image using a combination of venation and contour features. In this method, the shape is cut into pieces under different scales to describe the leaf image in a multiscale way. Both leaf venation and contour features extracted from the cut pieces are utilized to provide comprehensive description under each scale. The performance of the proposed method has been evaluated on two leaf datasets. And the experimental results indicates that the proposed method can achieve higher (or similar) recognition accuracies than the state-of-the-art approaches with acceptable speed.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Shape",
+                "Feature extraction",
+                "Veins",
+                "Complexity theory",
+                "Image retrieval",
+                "Image recognition",
+                "Image segmentation"
+            ],
+            "Index Terms": [
+                "Leaf Images",
+                "Cut Pieces",
+                "Contour Features",
+                "Leaf Venation",
+                "Plant Species",
+                "Computational Complexity",
+                "End Point",
+                "Dynamic Programming",
+                "Point In Direction",
+                "Multi-scale Features",
+                "Discrete Fourier Transform",
+                "Arc Length",
+                "Recognition Rate",
+                "Sum Of Distances",
+                "Dissimilarity Measure",
+                "Leaf Shape",
+                "Fourier Coefficients",
+                "Leaf Veins",
+                "Retrieval Performance",
+                "Shape Context",
+                "Contour Points",
+                "Multi-scale Structure",
+                "Multi-scale Feature Extraction"
+            ],
+            "Author Keywords": [
+                "leaf image retrieval",
+                "shape description",
+                "combined features of venation and contour",
+                "shape matching"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -207,7 +412,51 @@
                 "firstName": "Jaco",
                 "lastName": "Cronje"
             }
-        ]
+        ],
+        "abstract": "The work in this paper address the problem of removing non-uniform motion blur from a single image. The motion vector for an image patch is estimated by using a convolutional neural network (CNN). All the predicted motion vectors are combined to form a dense non-uniform motion estimation map. Furthermore, a second CNN is trained to perform deblurring given a blurry image patch and the estimated motion vector. Combining the two trained networks result in a deep learning approach that can enhance degraded images. The results show that this approach can accurately determine non-uniform motion blur and restore blurred images.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Kernel",
+                "Training",
+                "Machine learning",
+                "Estimation",
+                "Deconvolution",
+                "Neural networks",
+                "Image restoration"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Convolutional Neural Network",
+                "Deep Convolutional Neural Network",
+                "Non-uniform Motion",
+                "Motion Deblurring",
+                "Deep Learning",
+                "Single Image",
+                "Network Training",
+                "Density Map",
+                "Deep Learning Approaches",
+                "Image Patches",
+                "Work In This Paper",
+                "Motion Estimation",
+                "Motion Blur",
+                "Blurred Images",
+                "Motion Vector",
+                "Blurry Images",
+                "Convolution",
+                "Training Dataset",
+                "Deconvolution",
+                "Single Input Image",
+                "Convolutional Neural Network Training",
+                "Blur Kernel",
+                "Convolutional Layers",
+                "Rectified Linear Unit Activation",
+                "Gabor Filters",
+                "Point Spread Function",
+                "Input Image",
+                "Max-pooling Layer",
+                "Real Motion"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -242,7 +491,55 @@
                 "firstName": "Terry",
                 "lastName": "Bossomaier"
             }
-        ]
+        ],
+        "abstract": "A novel coding framework using Spectral Prediction Modelling (SPM) in the latest High Efficiency Video Coding (HEVC) framework for Hyperspectral (HS) images is proposed in this paper. A HS image presents a wealth of data where every pixel is considered as a vector in a multidimensional space. By quantitative comparison and analysis of pixel vector's distribution along spectral bands, we can conclude that modelling can solve the distribution and correlation of pixel vectors in a certain range of bands. We estimate the current spectral band by extracting an instant spectral band of the HS image using Gaussian Mixture-based Modelling via the correlation of previous bands. The estimated current spectral band named as the common informatics wavelength (CIW) image is used as the additional reference to encode the residual of the current band with either the CIW or the previous band followed by the HEVC coding framework. Every spectral band of the HS image is treated like it is an individual frame of a video. In this paper, we compare the proposed method with mainstream HS encoders including JPEG2000, JPEG, PCA-DCT, HEVC-intra, Set Partitioning in Hierarchical Trees three dimensional (SPIHT-3D) and Adaptively Scanned Wavelet Difference Reduction (ASWDR). The experimental results fully justified by different types of HS datasets. The performance of the proposed method has outperformed the other encoding algorithms in terms of Rate- Distortion performance of HS image compression.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image coding",
+                "Reflectivity",
+                "Predictive models",
+                "Correlation",
+                "Standards",
+                "Hyperspectral imaging"
+            ],
+            "Index Terms": [
+                "Spectral Model",
+                "Coding Framework",
+                "Image Steganography",
+                "Spectral Prediction",
+                "Wavelet",
+                "Spectral Bands",
+                "Gaussian Model",
+                "Video Frames",
+                "Image Bands",
+                "Hierarchical Tree",
+                "Image Compression",
+                "Video Coding",
+                "Set Partitioning",
+                "Correlation Vector",
+                "Source Code",
+                "Pixel Intensity",
+                "Reference Image",
+                "Gaussian Mixture Model",
+                "Current Image",
+                "Bitrate",
+                "Adjacent Bands",
+                "Contiguous Bands",
+                "Background Model",
+                "Video Encoding",
+                "Spectral Reflectance",
+                "Average Bit",
+                "Still Images",
+                "Pixel Reflectance",
+                "Compression Algorithm",
+                "Hundreds Of Spectral Bands"
+            ],
+            "Author Keywords": [
+                "Hyperspectral images",
+                "HSI compression",
+                "Spectral Prediction Modelling (SPM)"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -261,9 +558,9 @@
         "authors": [
             {
                 "id": 37086204509,
-                "preferredName": "Rafael Guillermo Gonzalez Acu\u00f1a",
+                "preferredName": "Rafael Guillermo Gonzalez Acuña",
                 "firstName": "Rafael Guillermo Gonzalez",
-                "lastName": "Acu\u00f1a"
+                "lastName": "Acuña"
             },
             {
                 "id": 37087658732,
@@ -277,7 +574,47 @@
                 "firstName": "Reinhard",
                 "lastName": "Klette"
             }
-        ]
+        ],
+        "abstract": "In this paper we study ways to generalise Otsu's binarization method towards reduction of colour levels in colour images. Colour defines a multi-dimensional property vector at each pixel location, and this can be further generalised towards considering arbitrarily finite-dimensional property vectors at pixel locations. Otsu's binarization method, originally already briefly discussed by Otsu for multi-thresholding, was efficiently mapped earlier into a segmentation method for grey-level images by recursively applying the original binarization method. We generalise further by proposing a recursive algorithm for finite-dimensional property vectors at pixel locations. Experimental results demonstrate colour-level reduction by our method.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image segmentation",
+                "Histograms",
+                "Image color analysis",
+                "Partitioning algorithms",
+                "Gray-scale",
+                "Clustering algorithms",
+                "Algorithm design and analysis"
+            ],
+            "Index Terms": [
+                "Image Segmentation",
+                "Color Images",
+                "Color Image Segmentation",
+                "Otsu Binarization",
+                "Segmentation Method",
+                "Pixel Location",
+                "Recursive Algorithm",
+                "Binary Method",
+                "Otsu’s Method",
+                "Finite-dimensional Vector",
+                "Input Image",
+                "Time Complexity",
+                "Segmentation Algorithm",
+                "Iteration Step",
+                "Segmentation Results",
+                "Gaussian Mixture Model",
+                "Original Algorithm",
+                "Pixel Classification",
+                "Imaging Algorithm",
+                "Final Segmentation",
+                "Final Segmentation Results",
+                "Image Histogram",
+                "Label Matrix",
+                "Multichannel Images",
+                "Multiple Thresholds",
+                "Beginning Of Step"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -312,7 +649,41 @@
                 "firstName": "Farid",
                 "lastName": "Boussaid"
             }
-        ]
+        ],
+        "abstract": "In applications such as 3D face synthesis and animation, a prominent face landmark is required to enable 3D face normalization, pose correction, 3D face recognition and reconstruction. Due to variations in facial expressions, automatic 3D face landmark localization remains a challenge. Nose tip is one of the salient landmarks in a human face. In this paper, a novel nose tip localization technique is proposed. In the proposed approach, the rotation of the 3D vector field is analyzed for robust and efficient nose tip localization. The proposed technique has the following three characteristics: (1) it does not require any training; (2) it does not rely on any particular model; (3) it is very efficient, requiring an average time of only 1.9s for nose tip detection. We tested the proposed technique on BU3DFE and Shrec'10 datasets. Experimental results show that the proposed technique is robust to variations in facial expressions, achieving a 100% detection rate on these publicly available 3D face datasets.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Nose",
+                "Three-dimensional displays",
+                "Face",
+                "Shape",
+                "Support vector machines",
+                "Two dimensional displays",
+                "Training"
+            ],
+            "Index Terms": [
+                "Vector Field",
+                "3D Analysis",
+                "3D Face",
+                "Automatic Landmark",
+                "3D Vector Field",
+                "Facial Expressions",
+                "Human Faces",
+                "Tip Of The Nose",
+                "Support Vector Machine",
+                "Qualitative Results",
+                "3D Point",
+                "Direction Of Rotation",
+                "3D Techniques",
+                "3D Video",
+                "Mean Curvature",
+                "3D Detection",
+                "Right-hand Rule",
+                "2D Approach",
+                "Changes In Facial Expressions",
+                "Nose Region"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -347,7 +718,46 @@
                 "firstName": "C.",
                 "lastName": "Hollitt"
             }
-        ]
+        ],
+        "abstract": "Measuring distances accurately can be costly. To overcome complexity and cost of distance measurement equipment modified monocular optical system is proposed which uses only commonly available hardware. Pattern is printed on the marker to improve distance measurement accuracy. Results of simulations of proposed system show two orders of magnitude possible improvement in measurement precision.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cameras",
+                "Fourier transforms",
+                "Sensors",
+                "Frequency estimation",
+                "Distance measurement",
+                "Estimation"
+            ],
+            "Index Terms": [
+                "Distancing Measures",
+                "Accurate Measurement",
+                "Monocular",
+                "Fourier Transform",
+                "Effect Of Noise",
+                "Accuracy And Precision",
+                "Measurement Frequency",
+                "Image Sensor",
+                "Object Size",
+                "Frequency Estimation",
+                "Object Motion",
+                "Phase Measurements",
+                "Hilbert Transform",
+                "Short-time Fourier Transform",
+                "Instantaneous Frequency",
+                "Cramer-Rao Lower Bound",
+                "Gabor Filters",
+                "Web Camera",
+                "Quadrature Components",
+                "Spectral Leakage",
+                "Label Size",
+                "Achievable Accuracy",
+                "Central Finite Difference",
+                "Focal Length",
+                "Measurement Problem",
+                "Angular Frequency"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -382,7 +792,47 @@
                 "firstName": "Rudolf",
                 "lastName": "Mester"
             }
-        ]
+        ],
+        "abstract": "For evaluating or training different kinds of vision algorithms, a large amount of precise and reliable data is needed. In this paper we present a system to create extended synthetic sequences of traffic environment scenarios, associated with several types of ground truth data. By integrating vehicle dynamics in a configuration tool, and by using path-tracing in an external rendering engine to render the scenes, a system is created that allows ongoing and flexible creation of highly realistic traffic images. For all images, ground truth data is provided for depth, optical flow, surface normals and semantic scene labeling. Sequences that are produced with this system are more varied and closer to natural images than other synthetic datasets before.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Vehicles",
+                "Rendering (computer graphics)",
+                "Lighting",
+                "Force",
+                "Vehicle dynamics",
+                "Engines",
+                "Roads"
+            ],
+            "Index Terms": [
+                "Autonomous Vehicles",
+                "Natural Images",
+                "Optical Flow",
+                "Image Synthesis",
+                "Synthetic Sequences",
+                "Vehicle Dynamics",
+                "Traffic Environment",
+                "Surface Normals",
+                "Convolutional Neural Network",
+                "Source Material",
+                "Power Spectrum",
+                "Cubic Spline",
+                "Drag Force",
+                "Surface Wettability",
+                "Radius Of Curvature",
+                "Huge Amount Of Data",
+                "Synthetic Images",
+                "Image Statistics",
+                "Spatial Derivatives",
+                "Motion Blur",
+                "Computer Vision Algorithms",
+                "KITTI Dataset",
+                "Steering Angle",
+                "Vehicle Motion",
+                "Driver Assistance",
+                "Vehicle Weight"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -405,7 +855,34 @@
                 "firstName": "Michael J.",
                 "lastName": "Cree"
             }
-        ]
+        ],
+        "abstract": "We explore vectorised implementations, exploiting single instruction multiple data (SIMD) CPU instructions on commonly used architectures, of three efficient algorithms for morphological dilation and erosion. We discuss issues specific to SIMD implementation and describe how they guide algorithm choice. We compare our implementations to a commonly used opensource SIMD accelerated machine vision library and find orders of magnitude speed-ups can be achieved for erosions using two-dimensional structuring elements.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Acceleration",
+                "Neon",
+                "Morphology",
+                "Hardware",
+                "Memory management"
+            ],
+            "Index Terms": [
+                "Efficient Algorithm",
+                "Solid Line",
+                "Image Pixels",
+                "Vertical Line",
+                "Recursive Algorithm",
+                "Morphological Operations",
+                "Modern Computer",
+                "Images In Row",
+                "Native Architecture",
+                "Images In Column",
+                "Chord Length",
+                "Arbitrary Element",
+                "Memory Address",
+                "Compile Time"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -446,7 +923,48 @@
                 "firstName": "Norliza Mohd",
                 "lastName": "Noor"
             }
-        ]
+        ],
+        "abstract": "In this paper, we present the lumen coronary artery border detection using intravascular ultrasound (IVUS) images. The approach make used of texture analysis based on Binary Robust Independent Elementary Features (BRIEF) and Chi-square classification. This proposed method can detect the boundary and calculate the area within the lumen coronary artery border. This method was tested on thirty samples of IVUS images which were obtained from Computer Vision Centre, Bellaterra, Dept. Matemàtica Aplicada i Anàlisi, Universitat de Barcelona, Barcelona. The Bland Altman plot is used to show the variation between the proposed automatic segmentation method and ground truth when three different threshold were used. The segmentation performance of the proposed method is measured using Jaccard Index (JI), Hausdorff Distance (HD), Area Overlap Error (AOE), Percentage Area Difference (PAD) and Dice Similarity Index (DI). In this study, the results show that the border detection is better when threshold TH5 is used.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image segmentation",
+                "Arteries",
+                "High definition video",
+                "Feature extraction",
+                "Heart",
+                "Indexes",
+                "Diseases"
+            ],
+            "Index Terms": [
+                "Coronary Artery",
+                "Edge Detection",
+                "Texture Classification",
+                "Intersection Over Union",
+                "Robust Features",
+                "Automatic Segmentation",
+                "Segmentation Performance",
+                "Hausdorff Distance",
+                "Myocardial",
+                "Histogram",
+                "Coronary Artery Disease",
+                "Blood Vessels",
+                "Performance Measures",
+                "Patch Size",
+                "Image Patches",
+                "Binary String",
+                "Rheumatic Heart Disease",
+                "Lumen Area",
+                "Manual Tracing",
+                "Arterial Imaging"
+            ],
+            "Author Keywords": [
+                "Lumen Boundary",
+                "Intravascular Ultrasound",
+                "Binary Robust Independent Elementary Features",
+                "Coronary Artery Disease",
+                "Texture Analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -475,7 +993,45 @@
                 "firstName": "Bahbibi",
                 "lastName": "Rahmatullah"
             }
-        ]
+        ],
+        "abstract": "There has been an increasing push to develop objective quality evaluation that should imitate the evaluation of human visual system in predicting image quality. There are large scales of developed full-reference image quality assessment. This paper classified some typical full-reference quality metric into two different methods that are based on properties of human visual system (HVS) and principle of image structure. Both of these methods were able to accurately measure depending on the type of distortion imposed. In this paper, we compared the capabilities and behavior of the selected quality metrics in estimating the quality of image.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Distortion",
+                "Image quality",
+                "Distortion measurement",
+                "Observers",
+                "Visual systems",
+                "Image coding"
+            ],
+            "Index Terms": [
+                "Image Quality",
+                "Human Visual System",
+                "Structural Principles",
+                "Quality Metrics",
+                "Distortion Types",
+                "Pearson Correlation",
+                "Low Quality",
+                "Performance Measures",
+                "Prediction Algorithms",
+                "Subjective Evaluation",
+                "Reference Image",
+                "Peak Signal-to-noise Ratio",
+                "Human Observers",
+                "Image Scale",
+                "Subband",
+                "Image Database",
+                "Pooling Strategy",
+                "Image Quality Metrics",
+                "Mean Opinion Score"
+            ],
+            "Author Keywords": [
+                "image quality assessment",
+                "full-reference image quality assessment",
+                "human visual system",
+                "principle of image structure"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -504,7 +1060,38 @@
                 "firstName": "Han",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "This paper presents a new algorithm for image based obstacle detection from Unmanned Surface Vehicles (USV) by exploring the global sparseness of image patches. The horizon line is taken as the prior knowledge so as to process the algorithm within the sea area. Considering the geometric relation between the camera and the sea surface, the resolution of the observation that close to the horizon is smaller than that close to the image bottom, thus we adopt the variable size image windows to sample image patches for analysing their global spareness across the whole sampled patches set, in which the less spareness patches are clustered as sea surface, while the ones with high spareness scores are considered as candidates for obstacles. Finally, the candidates far from the mean of the sea surface patches are selected as obstacles. Experiments on our own dataset from the USV demonstrate the efficiency of the proposed algorithm, which shows higher accuracy than the traditional method as well as the state-of-the-art saliency detection method.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Sea surface",
+                "Sea measurements",
+                "Boats",
+                "Surface treatment",
+                "Feature extraction",
+                "Cameras",
+                "Image resolution"
+            ],
+            "Index Terms": [
+                "Sparsity",
+                "Obstacle Avoidance",
+                "Autonomous Surface Vehicles",
+                "Sea Surface",
+                "Image Patches",
+                "Sea Area",
+                "Saliency Detection",
+                "Variable Window",
+                "Resolution Of Observations",
+                "Centroid",
+                "Object Detection",
+                "Texture Features",
+                "Main Clusters",
+                "Scene Images",
+                "Expansion Rate",
+                "Clustering Process",
+                "Small Imaging"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -539,7 +1126,48 @@
                 "firstName": "Ahmed",
                 "lastName": "Al-Jumaily"
             }
-        ]
+        ],
+        "abstract": "This work presents an image-processing approach to determine the 2D skin strain field caused by motion. It is expected that quantifying this strain field will help eliminate motion artifacts due to skin stretch in ECG signal acquisition. The objective of this work was to quantify the stretch induced strain in terms of normal and shear components E<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">x</sub>, E<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">y</sub> and E<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">xy</sub>. These values were derived from video using feature detection and Euclidean distance feature matching. The stretching of skin has been emulated using a thin poly dimethyl siloxane (PDMS) film of dimensions 3cm × 3cm × 0.0254cm. Strain was induced using a uni-axial tensile-relaxation test. Results from the image processing algorithm were validated against a finite element simulation in SolidWorks® as well as tensile-test data. The overall values of strains- E<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">x</sub>, E<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">y</sub> and E<sub xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">xy</sub> found through point tracking and finite strain equation matched within acceptable limits of deviation. Simulation of thick films resulted in greater error, confirming expected limitations of the 2D strain model.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Strain",
+                "Tracking",
+                "Skin",
+                "Electrocardiography",
+                "Finite element analysis",
+                "Mathematical model"
+            ],
+            "Index Terms": [
+                "Motion Artifacts",
+                "Electrocardiogram Measurements",
+                "Image Processing",
+                "Finite Element",
+                "Polydimethylsiloxane",
+                "Strain Values",
+                "Image Processing Algorithms",
+                "Electrocardiogram Signals",
+                "SolidWorks",
+                "Finite Strain",
+                "Thin Films",
+                "Finite Element Analysis",
+                "Optical Sensors",
+                "Texture Analysis",
+                "Consecutive Frames",
+                "Identification Of Points",
+                "Motion Tracking",
+                "Displacement Of Point",
+                "Point In Frame",
+                "Euclidean Distance Method",
+                "Polydimethylsiloxane Film"
+            ],
+            "Author Keywords": [
+                "Motion artifact",
+                "Skin stretch",
+                "Euclidean point tracking",
+                "Finite strain theory",
+                "Texture Analyzer"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -574,7 +1202,35 @@
                 "firstName": null,
                 "lastName": "Zhangyuan Gu"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a new method to generate adaptive structuring elements (SEs) for building spatially-variant morphological operators. First, novel nonlocal SE is introduced as a new special case of spatially-variant morphological flat kernel. In the design of nonlocal SE, nonlocal patch distance is used to construct the neighborhood of SE. Indeed, the neighborhood of SE is divided into two parts: one is the kernel center, and another is the kernel boundary, by which the nonlocal patch distance and bilateral distance are both taken into consideration. Second, a new type of nonclassical connectivity is defined, where the connectivity rely on nonlocal patch-wise path connectedness relation. This definition means that the new connected operators are spatially-variant and can produce transforms having the properties of an algebraic opening (resp. closing). Then, we illustrate the nonlocal morphological operators for medical image restoration and target detection. Experimental results on real images show that our methods produce excellent results.",
+        "keywords": {
+            "Index Terms": [
+                "Mathematical Morphology",
+                "Types Of Connections",
+                "Morphological Operations",
+                "Magnetic Resonance Imaging",
+                "Denoising",
+                "Term In Equation",
+                "Binary Image",
+                "Plastic Surgery",
+                "Spatial Distance",
+                "Reconstruction Process",
+                "Adjacent Points",
+                "Algebraic Properties",
+                "Morphological Filtering",
+                "Clear-cut Distinction",
+                "Gray-level Values",
+                "Nonlocal Method"
+            ],
+            "Author Keywords": [
+                "spatially-variant morphology",
+                "connected operators",
+                "nonlocal patch distance",
+                "bilateral distance",
+                "nonlocal morphology"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -627,7 +1283,47 @@
                 "firstName": "Andrew",
                 "lastName": "Smith"
             }
-        ]
+        ],
+        "abstract": "Development and evaluation of Point of Care Ultrasound (PoCUS) skill is a resource intensive undertaking. Current practice involves expert supervision of trainees performing numerous practice scans in the clinical setting. Computer augmented training represents the potential for significant reduction in resources utilization. Multiple ultrasound training simulators exist however of unclear value in teaching image generation skills. This paper describes the concept of using a standard ultrasound machine and human subjects, combined with image processing and depth sensing technologies, to develop a realistic PoCUS training tool. In addition to the concept, we describe the initial data collection experiment and preliminary work integrating ultrasound imagery and probe movement. Operator assessment metrics explored in this paper include image quality, stability, and acquisition time, demonstrate good potential to differentiate between novice and experienced sonographers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Ultrasonic imaging",
+                "Probes",
+                "Image quality",
+                "Training",
+                "Stability analysis",
+                "Tracking",
+                "Cameras"
+            ],
+            "Index Terms": [
+                "Ultrasound Imaging",
+                "Image Generation",
+                "Point-of-care Ultrasound",
+                "Ultrasound Propagation",
+                "Ultrasound Skills",
+                "Image Quality",
+                "Depth Images",
+                "Probe Movement",
+                "Synchronization",
+                "Learning Algorithms",
+                "Target Region",
+                "Image Registration",
+                "Target Organs",
+                "Frame Rate",
+                "Simulated Patients",
+                "Experienced Operator",
+                "Depth Camera",
+                "Feature Matching",
+                "Good Image",
+                "Video Quality",
+                "Sonography For Trauma",
+                "Time-of-flight Sensors",
+                "Image Quality Evaluation",
+                "Software Development Kit",
+                "Ultrasound Data",
+                "World Coordinate"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -668,7 +1364,52 @@
                 "firstName": null,
                 "lastName": "Vu Duc Lung"
             }
-        ]
+        ],
+        "abstract": "This paper presents a solution for image/video quality enhancement, with inputs being low quality nighttime images/videos and outputs being high quality ones. The developed approach here relies on context-based fusion, a group of solutions that need one more background image to support them, and thus, obtaining high quality results in comparison with other solutions. However, the major downside of these context-based fusion methods is too complex to apply into real-time applications, especially with high-resolution images/videos. Since they need much more hardware resources and take more time to run, thereby being hard to deploy them into dedicated hardware platforms. Due to this, our proposed method attempts to decrease the algorithm complexity in which the quality of the output images/videos is still kept. The experimental results show that our proposed method achieves both high-quality output images and time-effective results. More specifically, almost all of important information of the input nighttime images/videos is not only kept, but also enhanced, which is observed better; the vision of many unimportant dark areas of surrounds is seemly more natural; and aliasing, ghosting and haloing effects, which normally exist in previous studies, are likely to disappear. Another advantage is that the proposed method here outperforms both the Denighting method [5] and the Enhancing Dynamic Scenes in Gradient Field method [2], which is demonstrated by a comparison between processing times of these three methods with different resolutions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "MATLAB",
+                "Context",
+                "Automobiles",
+                "Image color analysis",
+                "Hardware",
+                "Real-time systems",
+                "Image enhancement"
+            ],
+            "Index Terms": [
+                "Local Fusion",
+                "High-quality",
+                "Yield Quality",
+                "Fusion Method",
+                "Background Image",
+                "Dark Areas",
+                "Output Image",
+                "Solution Group",
+                "Hardware Resources",
+                "High-quality Output",
+                "Important Part",
+                "Advantage Of Method",
+                "Input Image",
+                "Visual Perception",
+                "Pixel Intensity",
+                "Image Intensity",
+                "Part Of The Image",
+                "Visual Quality",
+                "Important Details",
+                "Detailed Input",
+                "Night-time Images",
+                "Surveillance Cameras",
+                "Regions Of The Input Image",
+                "Image Enhancement",
+                "High Visual Quality",
+                "Low-quality Images"
+            ],
+            "Author Keywords": [
+                "Image/video enhancement",
+                "context-based fusion",
+                "gradient domain"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -709,7 +1450,53 @@
                 "firstName": "Kunal",
                 "lastName": "Sekhri"
             }
-        ]
+        ],
+        "abstract": "While capturing an image under flash light, we obtain a relatively sharp and noise-free image but the presence of sharp shadows at silhouettes is unwanted and sometimes it also reduces the overall visual appeal of the image. In this paper, we present a shadow detection as well as removal algorithm to detect and remove shadows at silhouettes from images captured under flash light. We use a pair of flash and no flash images for performing shadow detection and recover the shadow areas to produce an enhanced flash image. This problem has not been addressed explicitly before in literature with major emphasis on flash image enhancement. We compare the accuracy of proposed shadow detection algorithm with an existing method in literature. It is shown that proposed method of shadow detection gives more accurate results and the proposed shadow recovery method gives subjectively better results compared to pixel-wise recovery method.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cameras",
+                "Detection algorithms",
+                "Lighting",
+                "Noise measurement",
+                "Image edge detection",
+                "Image registration",
+                "Electronic mail"
+            ],
+            "Index Terms": [
+                "Shadow Regions",
+                "Shadow Detection",
+                "Flash Image",
+                "Image Capture",
+                "Flashlight",
+                "Recovery Method",
+                "Noise-free Image",
+                "Support Vector Machine",
+                "Image Registration",
+                "Detection Results",
+                "Precision And Recall",
+                "Detection In Images",
+                "Precision Rate",
+                "Recall Rate",
+                "Recall Values",
+                "Range Image",
+                "Ratio Images",
+                "Dark Background",
+                "Severe Artifacts",
+                "CIELAB Color Space",
+                "Image Inpainting",
+                "Penumbra Region",
+                "Low-intensity Regions",
+                "High-intensity Regions",
+                "Patch Matching",
+                "Patch-based Methods"
+            ],
+            "Author Keywords": [
+                "Flash image shadow detection and removal",
+                "flash-no flash images",
+                "flash image enhancement",
+                "patch-based image recovery"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -738,7 +1525,38 @@
                 "firstName": "Sebti",
                 "lastName": "Foufou"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose a denoising algorithm based on the Total Variation (TV) model. Specifically, we associate to the regularization term of the Rodin-Osher-Fatimi (ROF) functional a small weight whenever denoising is performed in edge and texture regions, which means less regularization and more details preservation. On the other hand, a large weight is associated if the region being filtered is smooth which means noise will be well suppressed. The weight computation is inspired from the fuzzy edge complement. Experiments on well-known images and comparison with state of the art denoising algorithms demonstrate that the proposed method not only presents good denoising performance but also is able to preserve edge information.",
+        "keywords": {
+            "IEEE Keywords": [
+                "TV",
+                "Image edge detection",
+                "Noise reduction",
+                "Detectors",
+                "Image denoising",
+                "Electronic mail",
+                "Imaging"
+            ],
+            "Index Terms": [
+                "Total Variance",
+                "Total Variation Regularization",
+                "Small Weight",
+                "Large Weight",
+                "Edge Region",
+                "Texture Regions",
+                "Scaling Factor",
+                "Edge Detection",
+                "Structural Similarity Index Measure",
+                "Amount Of Regularization",
+                "Edge Preservation"
+            ],
+            "Author Keywords": [
+                "denoising",
+                "total variation",
+                "edge detector",
+                "fuzzy complement"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -773,7 +1591,50 @@
                 "firstName": "William F.",
                 "lastName": "Turri"
             }
-        ]
+        ],
+        "abstract": "A no-reference image enhancement quality metric is proposed in this paper that uses three factors to score images: lightness, contrast, and noise. It has been shown in literature that certain ideal ranges for lightness and contrast exist, and image enhancement techniques tend to push an image towards these. The proposed metric gives each pixel in an image a score based on its neighborhood statistics, and these pixel scores are averaged to get an overall image quality score. An image fusion technique is also proposed that fuses multiple enhanced images into one based on the local scores obtained from the no-reference metric. It is shown that fused images score higher using the no-reference metric and also have superior visual quality.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Image enhancement",
+                "Image quality",
+                "Standards",
+                "Q-factor",
+                "Mathematical model",
+                "Visualization"
+            ],
+            "Index Terms": [
+                "Quality Metrics",
+                "Image Enhancement",
+                "Fusion Techniques",
+                "Image Fusion Techniques",
+                "Image Quality",
+                "Image Pixels",
+                "Visual Quality",
+                "Enhancement Techniques",
+                "Imagery",
+                "Quality Factor",
+                "Reference Image",
+                "Local Mean",
+                "Overall Variance",
+                "Position Weight Matrices",
+                "Local Neighborhood",
+                "Subjective Quality",
+                "Peak Signal-to-noise Ratio",
+                "Equivalent Factor",
+                "Histogram Equalization",
+                "Ideal Means",
+                "Image Quality Metrics",
+                "Local Standard Deviation",
+                "Adaptive Histogram Equalization",
+                "Image Enhancement Methods",
+                "Noise Factors",
+                "Ideal Reference",
+                "Small Amount Of Noise",
+                "Narrow Range Of Values",
+                "Ideal Image"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -808,7 +1669,51 @@
                 "firstName": null,
                 "lastName": "Jiali Wang"
             }
-        ]
+        ],
+        "abstract": "We have applied Latent Topic Models to facial expression recognition. We showed that the latent topic learned from a topic model is very similar to the Action Units defined by psychologists in the Facial Action Coding Systems (FACS). Furthermore, we noted that the topics thus obtained may be correlated with each other, and we tried to model this by the correlated topic model (CTM). Preliminary results showed that the model can be successfully applied by combining the STW and FAW features. Finally, a Bayes modeling approach was used to model the relationship between images in the expression sequence and an accuracy of 91.3% was achieved.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hidden Markov models",
+                "Face recognition",
+                "Databases",
+                "Support vector machines",
+                "Kernel",
+                "Muscles",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Facial Expressions",
+                "Face Recognition",
+                "Topic Modeling",
+                "Facial Expression Recognition",
+                "Correlated Topic Model",
+                "Action Units",
+                "Facial Action Coding System",
+                "Latent Topics",
+                "Lognormal",
+                "Disrespect",
+                "Disgust",
+                "Temporal Information",
+                "Graphical Model",
+                "Facial Features",
+                "Face Images",
+                "Recognition Rate",
+                "Temporal Model",
+                "Muscle Movement",
+                "Facial Muscles",
+                "Latent Dirichlet Allocation",
+                "Facial Appearance",
+                "Lot Of Similarities",
+                "Facial Muscle Movements",
+                "Facial Movements",
+                "Word Type"
+            ],
+            "Author Keywords": [
+                "Facial Expression Recognition",
+                "Correlated Topic Models",
+                "Bayes Modeling"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -837,7 +1742,46 @@
                 "firstName": "John",
                 "lastName": "Lewis"
             }
-        ]
+        ],
+        "abstract": "Symmetry is an omnipresent transformation in both nature and man-made objects. It is remarkable how human beings are capable of detecting and recognizing symmetries in the surrounding world without hesitation and without much apparent mental effort. On the other hand, teaching a machine to perform the same task has been challenging, resulting in a variety of approaches and algorithms. In this paper we appeal to information theory to obtain a novel and general principle for symmetry detection. Folding an image in half along a line that coincides with an axis of reflectional symmetry preserves the statistics of the image, whereas folding along any other line alters these statistics to become more Gaussian. Symmetric transforms can thus be detected as those that have the largest negentropy. Experimental evaluation shows that our algorithm properly detects the symmetry axes within synthetic and natural images and is applicable for reflectional symmetry of an arbitrary order.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Probability distribution",
+                "Entropy",
+                "Random variables",
+                "Transforms",
+                "Information theory",
+                "Image coding",
+                "Robustness"
+            ],
+            "Index Terms": [
+                "Information Theory",
+                "Mirror Symmetry",
+                "Symmetry Detection",
+                "Natural Images",
+                "Symmetry Axis",
+                "Synthetic Images",
+                "Symmetry Of Order",
+                "Fourier Transform",
+                "Random Variables",
+                "Independent Component Analysis",
+                "Grayscale Images",
+                "Continuous Distribution",
+                "Regular Grid",
+                "Tilt Angle",
+                "Rotational Symmetry",
+                "Differential Entropy",
+                "Gaussian Variables",
+                "Image Compression",
+                "Image Histogram",
+                "Axis Angle"
+            ],
+            "Author Keywords": [
+                "symmetry detection",
+                "negentropy",
+                "angle of reflection"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -878,7 +1822,36 @@
                 "firstName": "Steven",
                 "lastName": "Mills"
             }
-        ]
+        ],
+        "abstract": "A novel system for adapting generic trackers for long-term face tracking in unconstrained videos is proposed. The system treats the tracker as a black box. The only requirement is that the tracker can be reinitialized when needed. The system consists of a generic face detector trained offline and a validator trained online which helps to distinguish the target face from other people's faces and the background. We demonstrate this method on three state-of-the-art generic trackers: OpenTLD, Struck and MIL. For the experiments we use public face videos as well as our own dataset. In all our experiments our face tracking adaptation method shows superior results in comparison with the original trackers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Target tracking",
+                "Detectors",
+                "Videos",
+                "Cameras",
+                "Image sequences",
+                "Computer science"
+            ],
+            "Index Terms": [
+                "Black Box",
+                "People Face",
+                "Face Detection",
+                "Target Face",
+                "Field Of View",
+                "Posterior Probability",
+                "Public Datasets",
+                "Highest Probability",
+                "Bounding Box",
+                "Structural Constraints",
+                "Area Under Curve",
+                "True Target",
+                "Tracking Algorithm",
+                "Optical Tracking",
+                "Face View",
+                "Positive Candidates"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -907,7 +1880,49 @@
                 "firstName": "Richard D.",
                 "lastName": "Green"
             }
-        ]
+        ],
+        "abstract": "In this paper we propose a Hidden Markov Model for modeling and extracting vine structure from images. We built up from previous research to infer connectivity of cane segments extracted from binary images. We use skeletonisation and polylines to model cane segments and we use simulated annealing to optimize an energy function defined in terms of attributes observed for each connection. We formulate our proposed solution in the context of MAP inference which is a state-of-the-art framework for inference in computer vision. We show comparative results of our method against state-of-the-art methods used for the same tasks, and our model generalizes and improves precision over prior research.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Markov processes",
+                "Hidden Markov models",
+                "Image segmentation",
+                "Skeleton",
+                "Computational modeling",
+                "Random variables",
+                "Context"
+            ],
+            "Index Terms": [
+                "Structural Images",
+                "Vine Structure",
+                "Computer Vision",
+                "Energy Function",
+                "Binary Image",
+                "Simulated Annealing",
+                "Polyline",
+                "Skeletonization",
+                "Random Variables",
+                "End Point",
+                "Energy Minimization",
+                "Precision And Recall",
+                "Branch Points",
+                "Tree Structure",
+                "Energy Model",
+                "Gibbs Sampling",
+                "Posterior Mode",
+                "Markov Random Field",
+                "Inference Problem",
+                "Hidden Variables",
+                "Connection Probability",
+                "Segment Endpoints",
+                "Segmentation Points",
+                "Occluded Regions",
+                "Connectivity States",
+                "Single Endpoint",
+                "Set Of Connections",
+                "Set Of Segments"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -942,7 +1957,48 @@
                 "firstName": "Dhafer",
                 "lastName": "Malouche"
             }
-        ]
+        ],
+        "abstract": "In this paper, we consider the problem of segmenting volumetric medical images. Our non-supervised approach uses a tetrahedral mesh representation of volumetric data. The segmentation is formulated as a non-linear optimization of an energy function defined over a graph. The main contribution of the proposed approach is the introduction of a novel geometric descriptor, called the Volume Radius Function (VRF). The new descriptor is a scalar function representing the position of a given point within the tetrahedral mesh relatively to the image boundaries. The VRF is used to compute the energy function during the segmentation step. To demonstrate the efficiency of our approach, we applied our approach on different medical images. The obtained results show the discriminative power of our descriptor.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image segmentation",
+                "Three-dimensional displays",
+                "Labeling",
+                "Medical diagnostic imaging",
+                "Image edge detection",
+                "Radio frequency"
+            ],
+            "Index Terms": [
+                "Medical Imaging",
+                "Volumetric Medical Images",
+                "Energy Function",
+                "Volumetric Imaging",
+                "Volumetric Data",
+                "Geometric Description",
+                "Tetrahedral Mesh",
+                "Soft Tissue",
+                "Grayscale",
+                "Cartilage",
+                "Bone Tissue",
+                "3D Reconstruction",
+                "Geometric Features",
+                "Intersection Point",
+                "Position Of Point",
+                "3D Surface",
+                "Scale-invariant",
+                "Gaussian Mixture Model",
+                "Segmentation Approach",
+                "Boundary Surface",
+                "Pairwise Terms",
+                "Number Of Rays",
+                "Scale-invariant Feature Transform",
+                "Reconstruction Of Structure",
+                "Histogram Of Oriented Gradients",
+                "Surface Reconstruction",
+                "Gray-level Intensity",
+                "Part Of Bone"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -971,7 +2027,44 @@
                 "firstName": "John",
                 "lastName": "Lewis"
             }
-        ]
+        ],
+        "abstract": "Edit propagation is a class of algorithms that propagates user-specified color adjustments across an image or video. The user-specified adjustments take the form of sparse paint strokes that give examples of the desired alterations. Existing edit propagation (EP) algorithms are based on color similarity, and thus will alter all objects that have a similar color. In this work, we describe an EP algorithm that also considers texture, so that only objects with similar textural properties are edited. Since the method requires a high dimensional feature space, we also consider a random projection approach to reduce the effects of the curse of dimensionality.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image color analysis",
+                "Interpolation",
+                "Kernel",
+                "Image edge detection",
+                "Linear systems",
+                "Erbium",
+                "Image segmentation"
+            ],
+            "Index Terms": [
+                "Nonparametric Regression",
+                "Curse Of Dimensionality",
+                "Similar Color",
+                "Dimensional Feature Space",
+                "Random Projection",
+                "Dimensionality Reduction",
+                "Linear System",
+                "Texture Features",
+                "Radial Basis Function",
+                "Use Of Features",
+                "Random Matrix",
+                "Similar Appearance",
+                "Color Channels",
+                "Number Of Filters",
+                "Natural Colorants",
+                "Number Of Directions",
+                "Single Color",
+                "Locally Linear Embedding",
+                "Non-negativity Constraints",
+                "Pixel Color",
+                "Gabor Filters",
+                "Gabor Features",
+                "Brush Strokes"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1012,7 +2105,40 @@
                 "firstName": "Yizhou",
                 "lastName": "Yu"
             }
-        ]
+        ],
+        "abstract": "Superpixel over-segment image into meaningful clusters so that pixels in each cluster belong to one object. Many state-of-art superpixel algorithms have to make trade-offs between different concerns. As a result, algorithms that can produce good result in some situations fail in another. In order to take advantage of different algorithms and at the same time avoid their limitation, we propose a new fusion approach based on an efficient lazy greedy optimization. It incorporates two different superpixel algorithms as its ancestors and produces a hybrid result. The result is then refined based on a novel energy function that consists of two terms. The region term uses histogram diffusion distance and enforces intra-region similarity from an overall perspective; the boundary term models interregion dissimilarity from a local perspective. In experiments, the result of proposed algorithm matches the best superpixel algorithm and shows outstanding performance over its ancestor algorithms in all the standard evaluation metrics.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Merging",
+                "Image edge detection",
+                "Histograms",
+                "Clustering algorithms",
+                "Image segmentation",
+                "Diffusion processes",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Energy Function",
+                "Standard Metrics",
+                "Local Perspectives",
+                "Pixel Clusters",
+                "Boundary Term",
+                "Standard Evaluation Metrics",
+                "Diffusion Process",
+                "Image Regions",
+                "Undirected",
+                "Edge Weights",
+                "Vision Tasks",
+                "Distribution Histogram",
+                "Vertices",
+                "Conditional Random Field",
+                "Neighborhood Relationship",
+                "Graph-based Methods",
+                "Merging Process",
+                "Entropy Rate",
+                "Achievable Accuracy"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1047,7 +2173,36 @@
                 "firstName": "Zeinab",
                 "lastName": "Esmaeilpour"
             }
-        ]
+        ],
+        "abstract": "In this paper a high-level parametric formulation for surface reconstruction is introduced that avoids any explicit low-level parametric formulations. First we generate surfaces for a wide category of sample point clouds, including many convex, concave and flat structures, using progressive sweep algorithm, then we train regularized logistic regression algorithm based on these generated surfaces for the given sample point clouds. Finally, the achieved high-level parameters, after the termination of training procedure, will be used for reconstructing surfaces for any given test point clouds. Simulations show that, compared to the low-level parametric formulations, its high-level counterpart is less accurate for surface reconstruction purposes since this type of formulation is just implicitly imitating the manner of low-level parametric equations and is deprived of the vast advantages of forming velocity fields which plays a crucial role in low-level parametric formulations. Thus at the current time, it can be reasonable to see the mean squared error between the desired surface for a given point cloud, and the reconstructed surface by high-level parametric formulation is not satisfactorily low, in general yet. It should be added that, high-level parametric formulation is usually very fast in act and can open a new era in the field of computer vision and graphics.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Surface reconstruction",
+                "Three-dimensional displays",
+                "Image reconstruction",
+                "Training",
+                "Machine learning algorithms",
+                "Logistics",
+                "Shape"
+            ],
+            "Index Terms": [
+                "Mean Square Error",
+                "Flow Velocity",
+                "Computer Vision",
+                "Training Procedure",
+                "Point Cloud",
+                "Field Of Computer Vision",
+                "Surface Reconstruction",
+                "Flat Structure",
+                "Type Of Formulation",
+                "Convex Structure",
+                "Concave Structure",
+                "Root Mean Square Error",
+                "3D Reconstruction",
+                "Iterative Procedure",
+                "Learnable Parameters"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1088,7 +2243,39 @@
                 "firstName": "Christopher",
                 "lastName": "Hollitt"
             }
-        ]
+        ],
+        "abstract": "In robotics, vision based navigation techniques are desirable as cameras are relatively cheap sensors that provide a rich range of information about an environment. However, visual based navigation is still hindered by place recognition performance in long time navigation situations. For example, the comparison of locations between day and night or sun and rain are tasks where common feature extraction techniques fail. Humans are considered capable of long term visual navigation. As part of this system humans fixate on various locations to gather salient visual information from a scene. It is hypothesised by mimicking human fixation, place recognition performance can be improved. This paper presents the initial investigation towards utilising a state-of-the-art vision attention model to locate salient regions within an image useful for place recognition performance. The preliminary results demonstrate that the visual attention model can reduce the total amount of the image used by 18% and still achieve similar place recognition performance to utilising the whole image. The results have also shown good place recognition performance with only 45% of the image, achieving 53% accuracy compared with the best performance of existing techniques 60% with 100% of the image.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Visualization",
+                "Computational modeling",
+                "Simultaneous localization and mapping",
+                "Navigation"
+            ],
+            "Index Terms": [
+                "Navigation",
+                "Attention Model",
+                "Visual Attention",
+                "Visual Model",
+                "Salient Regions",
+                "Place Recognition",
+                "Differences In Scores",
+                "Processing Time",
+                "Computer Vision",
+                "Object Detection",
+                "Standard Light",
+                "Saliency Map",
+                "Matching Performance",
+                "Unknown Environment",
+                "Simultaneous Localization And Mapping",
+                "Human Attention",
+                "Salient Object",
+                "Recognition Region",
+                "Sum Of Absolute Differences",
+                "Advances In Computer Vision",
+                "Night-time Images"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1135,7 +2322,40 @@
                 "firstName": "Austen",
                 "lastName": "Ganley"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a novel approach to comparing cell colony images taken at different times on a Petri dish. The objective is to provide an assistive tool for microbiologists to quantify the loss of cell colonies on two Petri dishes, by mapping cell colonies between a pair of images. This problem is highly non-trivial, as the shape, size and position of the corresponding colonies vary randomly. In addition, the cell colony images for comparison are taken at different times and from slightly different perspectives (i.e. effects of shearing), and this amplifies the complexity of the problem. Experiments show that approaches purely based on SIFT or SURF, or algorithms used in astronomy, do not perform well on the problem domain. We therefore introduce a new approach to addressing these problems. A novel iterative technique that combines triangulation algorithms with the RANSAC alignment algorithm is proposed. Through hundreds of experiments, we demonstrate the efficacy of the new algorithm in comparison to existing ones found in the literature.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Astronomy",
+                "Shape",
+                "Image segmentation",
+                "Feature extraction",
+                "Biology",
+                "Euclidean distance",
+                "Transforms"
+            ],
+            "Index Terms": [
+                "Petri Dishes",
+                "Cell Colony",
+                "Image Pairs",
+                "Problem Domain",
+                "Random Sample Consensus",
+                "Shear Effects",
+                "Colony Shape",
+                "Least-squares",
+                "Error Rate",
+                "Transformation Matrix",
+                "Closest Neighbors",
+                "Otsu’s Method",
+                "Triangulation Method",
+                "Neighbor List",
+                "False Matches",
+                "Side Of The Triangle",
+                "Brute-force Method",
+                "User-specified Parameters",
+                "Whale Shark"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1164,7 +2384,44 @@
                 "firstName": "Julian",
                 "lastName": "Maclaren"
             }
-        ]
+        ],
+        "abstract": "At IVCNZ in 2005, we presented “Correcting motion artifacts in magnetic resonance images”. In that paper we described a new algorithm, TRELLIS, which our group had developed to detect and correct bulk motion in certain types of magnetic resonance (MR) images. A similar algorithm, PROPELLER, has become the method of choice in MR imaging, but a lot more work has occurred since 2005 in the area. The paper briefly recaps on PROPELLER and TRELLIS and then reviews the methods that have been proposed in the intervening period. It is clear that much work remains in the area of motion detection and correction as other aspects of MR imaging continue to improve. Researchers with a range of expertise are needed to collaborate in this work.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Navigation",
+                "Strips",
+                "Magnetic resonance imaging",
+                "Fats",
+                "Propellers",
+                "Motion measurement"
+            ],
+            "Index Terms": [
+                "Magnetic Resonance Imaging",
+                "Method Of Choice",
+                "Motion Artifacts",
+                "Motion Correction",
+                "Motion Detection",
+                "Range Of Expertise",
+                "Degrees Of Freedom",
+                "Magnetic Field",
+                "Rigid Body",
+                "Parallel Lines",
+                "Magnetic Field Strength",
+                "Object Motion",
+                "Motion Information",
+                "Motion Measurements",
+                "Magnetic Field Gradient",
+                "Respiratory Motion",
+                "Fat Suppression",
+                "Improvements In Hardware",
+                "K-space Data"
+            ],
+            "Author Keywords": [
+                "magnetic resonance imaging",
+                "motion detection",
+                "motion correction"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1199,7 +2456,49 @@
                 "firstName": "Seth",
                 "lastName": "Hall"
             }
-        ]
+        ],
+        "abstract": "A real-time feature point matching algorithm is introduced. It extracts vector-based ColourFAST feature strength and direction measures from the colour channels of the pixels in an image. This information is combined with the relative locations of the feature points to provide frame-by-frame scale and rotation invariant matching. The resulting algorithm is specifically designed for high throughput and optimised for GPU pipelining on embedded devices. Results are given showing high-framerate matching is achieved on 720p resolution images.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Image color analysis",
+                "Graphics processing units",
+                "Mobile handsets",
+                "Databases",
+                "Object recognition",
+                "Algorithm design and analysis"
+            ],
+            "Index Terms": [
+                "Feature Points",
+                "Feature Point Matching",
+                "Image Pixels",
+                "Graphics Processing Unit",
+                "Color Channels",
+                "Rotation Invariance",
+                "Pipelining",
+                "Mobile Devices",
+                "Scaling Factor",
+                "Descriptive Characteristics",
+                "Object Detection",
+                "Object Recognition",
+                "Target Image",
+                "Target Object",
+                "R-squared Values",
+                "Complex Image",
+                "Feature Matching",
+                "Objects In The Scene",
+                "Matching Accuracy",
+                "Feature Tracking",
+                "Speeded Up Robust Features",
+                "Scale-invariant Feature Transform",
+                "Object Database",
+                "Feature Point Detection",
+                "Histogram Of Oriented Gradients",
+                "Root Mean Square Error Of Cross-validation",
+                "Object Matching",
+                "High-resolution Images"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1240,7 +2539,58 @@
                 "firstName": null,
                 "lastName": "Dengsheng Zhang"
             }
-        ]
+        ],
+        "abstract": "Binary road images can be obtained from remotely sensed images with the aid of classification and segmentation techniques. Extracting road centrelines from these binary images are crucial to update a Geographic Information System (GIS) database. A current state of art method of centreline extraction needs to remove road junctions and depends on the accuracy of the endpoints, leading to three main limitations: (1) causing small gaps in the roads, (2) wrongly treating short non-road segments as roads, and (3) producing centrelines of low accuracy around the road end regions. To overcome these limitations, we propose to use an iteratively searching scheme to obtain the longest geodesic line in the preprocessed road skeleton images. Several image pixels at each end of the geodesic lines were removed to avoid noise, and the remaining parts were optimized using a dynamic programming snake model. The proposed method is applied to three types of binary road images and compared with the state of art method. It shows that the proposed method is less affected by the end regions of the roads, and is effective in filling the gaps in the roads. It also has an advantage on processing short non-road segments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Roads",
+                "Image segmentation",
+                "Junctions",
+                "Skeleton",
+                "Data mining",
+                "Remote sensing",
+                "Geographic information systems"
+            ],
+            "Index Terms": [
+                "Road Extraction",
+                "Road Centerline",
+                "Road Images",
+                "Geodesic Line",
+                "Geographic Information System",
+                "Dynamic Programming",
+                "Binary Image",
+                "Short Segments",
+                "End Of Region",
+                "End Of Line",
+                "State Of The Art Methods",
+                "Geographic Information System Database",
+                "Road Junctions",
+                "Objective Function",
+                "Limitations Of Methods",
+                "Image Segmentation",
+                "Line Segment",
+                "Blue Circles",
+                "Optimization Step",
+                "Distance Map",
+                "Road Boundary",
+                "Road Segments",
+                "Road Section",
+                "Preprocessing Stage",
+                "Similar Direction",
+                "Large Threshold",
+                "Length Threshold",
+                "Ridgeline",
+                "Yellow Rectangle",
+                "Benchmark Methods"
+            ],
+            "Author Keywords": [
+                "remotely sensed imagery",
+                "road extraction",
+                "road centreline extraction",
+                "geodesic line",
+                "snake model"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1275,7 +2625,49 @@
                 "firstName": "Mike",
                 "lastName": "Paulin"
             }
-        ]
+        ],
+        "abstract": "In this work we present a technique for estimating the pose of an articulated object with only a simple shape model and no appearance model. We use a generative technique to propose, for a pair of stereo cameras, hypothesised correspondences for object pixels in two images. The feature space for each camera is a set of two-dimensional points, where each point consists of an intensity value and a flux value for a given pixel. The flux measures the volume of gradient flow at a pixel. For any pose we compute the mutual information between the feature set from one view and the feature set from another. The mutual information measures the degree to which hypothesised correspondences are supported by the data. Computing the mutual information of points containing both the image flux and intensity is more accurate than using intensity or flux alone. We demonstrate the results of a short tracking sequence using particle swarm optimisation to estimate the pose in every frame.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mutual information",
+                "Pose estimation",
+                "Computational modeling",
+                "Three-dimensional displays",
+                "Cameras",
+                "Random variables",
+                "Entropy"
+            ],
+            "Index Terms": [
+                "Mutual Information",
+                "Image Intensity",
+                "Pose Estimation",
+                "Image Gradient",
+                "Flux Gradient",
+                "Feature Space",
+                "Particle Swarm Optimization",
+                "Shape Model",
+                "Stereo Camera",
+                "Pair Of Cameras",
+                "Random Variables",
+                "Density Estimation",
+                "Point Cloud",
+                "Singular Value Decomposition",
+                "Velocity Vector",
+                "Vector Field",
+                "Monocular",
+                "Uncertainty Reduction",
+                "Statistical Dependence",
+                "Cartesian Product",
+                "Structure From Motion",
+                "Discrete Random Variable",
+                "Stick Figure",
+                "Joint Entropy",
+                "Object Pose",
+                "Limb Segments",
+                "Current Pose",
+                "Left Camera"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1322,7 +2714,58 @@
                 "firstName": null,
                 "lastName": "Chia-Chen Kuo"
             }
-        ]
+        ],
+        "abstract": "This paper proposes a method to improve egomotion determination using latent semantic indexing for feature description and enhancing feature matching via an adaptive procedure. Binocular stereo images are processed using SURF to obtain feature descriptors, which are analyzed semantically using SVD to generate new feature descriptors. Matching criteria for image pairs are established based on epipolar geometry; the criteria are then adaptively adjusted between successive image pairs to achieve more reliable matches. Four types of experiments have been conducted to evaluate the proposed method. Experiment results demonstrated the effectiveness of the proposed approach in providing smaller numbers of initial match candidates with higher probability of correct matches, thus improving the efficiency and accuracy of ego-motion estimation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Large scale integration",
+                "Estimation",
+                "Standards",
+                "Three-dimensional displays",
+                "Cameras",
+                "Tracking"
+            ],
+            "Index Terms": [
+                "Feature Tracking",
+                "Epipolar Geometry",
+                "Ego-motion Estimation",
+                "Semantic",
+                "Descriptive Characteristics",
+                "Typical Experiment",
+                "Image Pairs",
+                "Feature Matching",
+                "Adaptive Procedure",
+                "Matching Criteria",
+                "Stereo Images",
+                "Correct Matches",
+                "Adaptive Adjustment",
+                "Speeded Up Robust Features",
+                "Candidate Matches",
+                "3D Reconstruction",
+                "Global Optimization",
+                "Light Detection And Ranging",
+                "Feature Detection",
+                "Feature Points",
+                "Left Image",
+                "Random Sample Consensus",
+                "Partial Reconstruction",
+                "Scale-invariant Feature Transform",
+                "Structure From Motion",
+                "Stereo Matching",
+                "Yellow Line",
+                "Visual Odometry",
+                "Incorrect Matches",
+                "Matching Stage"
+            ],
+            "Author Keywords": [
+                "Ego-motion",
+                "feature tracking",
+                "epipolar geometry",
+                "epipole",
+                "LSI"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1345,7 +2788,51 @@
                 "firstName": "Bernardt",
                 "lastName": "Duvenhage"
             }
-        ]
+        ],
+        "abstract": "Turbulent pockets of air in the atmosphere blur and disrupt the Point Spread Function (PSF) of a surveillance system. The PSF peak is offset in location, changed in size and in short exposures (or mild conditions) noticeably fragmented or speckled. These effects result in what is called heat shimmer or scintillation. The turbulence also causes the effective PSF convolution kernel to vary over time as well as across the image. When doing long range surveillance even mild turbulence can significantly degrade the surveillance system performance. This paper discusses an image processing method that tracks the behaviour of the PSF and then de-warps the image to reduce the disruptive effects of turbulence. Optical flow, an average image filter and a simple unsharp mask is employed to respectively track the centre of the PSF, de-speckle the image and regain the sharpness of the image. The algorithm is efficient enough to process 720p video at 10 frames per second on low power CPU-only platforms such as an Intel i5 NUC.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical imaging",
+                "Image enhancement",
+                "Surveillance",
+                "Adaptive optics",
+                "Optical variables control",
+                "System performance",
+                "Graphics processing units"
+            ],
+            "Index Terms": [
+                "Image Enhancement",
+                "Image Processing",
+                "System Performance",
+                "Surveillance System",
+                "Optical Flow",
+                "Point Spread Function",
+                "Average Image",
+                "Effect Of Turbulence",
+                "Input Image",
+                "Image Pixels",
+                "Graphics Processing Unit",
+                "Benchmark Datasets",
+                "Image Frames",
+                "Light Changes",
+                "Output Image",
+                "Scale Space",
+                "Enhancement Method",
+                "Image Gradient",
+                "Motion Blur",
+                "Optical Information",
+                "Optical Flow Estimation",
+                "Optical Flow Algorithm",
+                "Image Enhancement Methods",
+                "C++ Code",
+                "Infinite Impulse Response"
+            ],
+            "Author Keywords": [
+                "Long range surveillance",
+                "scintillation",
+                "de-warp"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1353,7 +2840,7 @@
         "publicationYear": "2015",
         "publicationDate": "23-24 Nov. 2015",
         "articleNumber": "7761532",
-        "articleTitle": "\u2018Affordance\u2019 detection by mid-level physical parts",
+        "articleTitle": "‘Affordance’ detection by mid-level physical parts",
         "volume": null,
         "issue": null,
         "startPage": "1",
@@ -1374,7 +2861,47 @@
                 "firstName": "Anuja",
                 "lastName": "Dharmaratne"
             }
-        ]
+        ],
+        "abstract": "Derived from ecological psychology, the term `affordance' refers to the functional classification of objects. It simply means the set of actions a subject (i.e. humans and anthropomorphic agents) can possibly perform with an object. There are several paradigms in the researches regarding the approaches of affordance detection. These approaches include considering other contexts like the subject, ambient environment, scene etc. along with the object to detect the affordance. But the core challenge, which is to identify the affordance of an object with mere its visual features is still open ended. The orthodox approaches often used the fine level image features (i.e. HOG, SIFT) and perform bottom up processing to detect affordance. In this paper, we propose an effective methodology of using `mid-level physical parts' of objects as features for affordance detection. It is a multi-layered detection problem, where the simple image features are used to detect mid-level physical parts of an object and subsequently those parts are used to detect affordance. Our experiment results show the effectiveness of our method over the current affordance detection techniques. Moreover since the parts may be shared between different object classes, the method is also proficient in generality.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Visualization",
+                "Context",
+                "Psychology",
+                "Object recognition",
+                "Robots",
+                "Training"
+            ],
+            "Index Terms": [
+                "Physical Part",
+                "Image Features",
+                "Visual Features",
+                "Object Classification",
+                "Feature Detection",
+                "Bottom-up Processes",
+                "Simple Features",
+                "Object Parts",
+                "Core Challenge",
+                "Ecological Psychology",
+                "Object Affordances",
+                "Support Vector Machine",
+                "K-means",
+                "Object Detection",
+                "Feature Points",
+                "Image Patches",
+                "Means Clustering",
+                "Base Line",
+                "Distinct Parts",
+                "Nearest Neighbor Algorithm",
+                "SIFT Features"
+            ],
+            "Author Keywords": [
+                "Affordance",
+                "Mid-level Physical Parts",
+                "Visual Features"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1415,7 +2942,47 @@
                 "firstName": "Taehyun",
                 "lastName": "Rhee"
             }
-        ]
+        ],
+        "abstract": "This paper presents a novel method to synthesise a high dynamic range (HDR) spherical radiance map (RM) from a single low dynamic range (LDR) legacy photograph of an outdoor scene. The synthesised HDR RM is then used for real-time image based lighting (IBL) to render 3D virtual objects with plausible illumination matching with the background outdoor scene. Seam Carving (SC) is utilised to extend the legacy photograph to a panoramic image having a wider field of view for both backdrop and RM. Since SC is a content-aware image resizing technique, it effectively preserves important details such as shape and location of the sun in the outdoor scene and minimises distortion while expanding. The boundary of the 360-degree panoramic image used as RM is refined to minimise the seam. The extended LDR RM is then converted into a HDR RM using our novel inverse tone mapping (ITM) that provides fine tuning to simulate sunlight fall-off for sunny outdoor scenes. The synthesised HDR RM provides believable real-world lighting for IBL. With the combination of extended backdrop and real-time IBL, our pipeline can provide a potential solution for augmented reality (AR) rendering via head mounted displays (HMDs), only from a single legacy photograph.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Lighting",
+                "Three-dimensional displays",
+                "Dynamic range",
+                "Shape",
+                "Sun",
+                "Real-time systems",
+                "Cameras"
+            ],
+            "Index Terms": [
+                "Head-mounted Display",
+                "Radiance Map",
+                "Field Of View",
+                "Dynamic Range",
+                "High Dynamic Range",
+                "Virtual Objects",
+                "Inverse Mapping",
+                "Outdoor Scenes",
+                "Panoramic Images",
+                "Low Dynamic Range",
+                "Light Source",
+                "Type Material",
+                "Input Image",
+                "Single Image",
+                "Energy Function",
+                "Real-world Environments",
+                "Human Vision",
+                "Pixel Coordinates",
+                "Image Lines",
+                "Oculus Rift",
+                "High Dynamic Range Image",
+                "Original Photographs",
+                "Position Of The Sun",
+                "Composition Of Objects",
+                "Limited Dynamic Range",
+                "Lowest Energy Value"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1444,7 +3011,37 @@
                 "firstName": "Rick P.",
                 "lastName": "Millane"
             }
-        ]
+        ],
+        "abstract": "Protein X-ray crystallography, the determination of three-dimensional structures of protein molecules from crystal X-ray diffraction data, requires determining the phases of the diffraction signal, since only the amplitude is measured. This so-called phase problem is a key component of protein X-ray crystallography. Most current methods for phasing are experimentally based and utilise either additional diffraction data from modified crystals or knowledge of the structure of a related protein. Ab initio phasing refers to computational methods that utilise only the measured diffraction amplitudes and some a priori information on protein electron densities, and potentially offer a dramatic reduction in effort over experimental methods. A key question in ab initio phasing is whether the diffraction amplitudes and the a priori information are sufficient to uniquely define the phases. The question of uniqueness is examined here for the case of a priori information on the molecular envelope.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Proteins",
+                "X-ray diffraction",
+                "Diffraction",
+                "Crystallography",
+                "Convergence",
+                "Shape"
+            ],
+            "Index Terms": [
+                "X-ray Diffraction",
+                "Phase Retrieval",
+                "Macromolecular Crystallography",
+                "Macromolecular X-ray Crystallography",
+                "Ab Initio Phase",
+                "Electron Density",
+                "Reduction Efforts",
+                "Crystal X-ray Diffraction Data",
+                "Unique Questions",
+                "Diffraction Patterns",
+                "Protein Data Bank",
+                "Reconstruction Algorithm",
+                "Reciprocal Space",
+                "Molecular Volume",
+                "Protein Shape",
+                "Volume Constraint",
+                "Protein Crystallography"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1473,7 +3070,40 @@
                 "firstName": "Reinhard",
                 "lastName": "Klette"
             }
-        ]
+        ],
+        "abstract": "Video analysis, whether in computer graphics or in computer vision, is often confronted with the task to evaluate frame quality or to identify changes in scenes, or changes in frame properties. In this paper we consider sharpness and contrast of frames. Both properties are often used in an intuitive way for single images, and there are also various definitions available. In this paper we specify definitions for both properties (inspired by related definitions found elsewhere) which can be calculated very time-efficiently, and which provide generic ways of specifying sharpness or contrast, without depending, for example, on identifying an “object” versus a “background”. We verify that our proposed simple measures relate well to operations such as blurring, sharpening, or histogram equalisation. We also show that such measures provide a way for identifying scene or frame quality changes in recorded video.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Videos",
+                "Histograms",
+                "Real-time systems",
+                "Electronic mail",
+                "Standards",
+                "Motion measurement",
+                "Computer graphics"
+            ],
+            "Index Terms": [
+                "Sharpe Ratio",
+                "Video Analysis",
+                "Histogram Equalization",
+                "Scene Changes",
+                "Video Frames",
+                "Color Space",
+                "Time Efficiency",
+                "Video Data",
+                "Pixel Location",
+                "Still Images",
+                "Contrast Values",
+                "Motion Blur",
+                "Local Contrast"
+            ],
+            "Author Keywords": [
+                "Image sharpness",
+                "image contrast",
+                "saliency",
+                "image sequence analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1496,7 +3126,46 @@
                 "firstName": "M.J.",
                 "lastName": "Collett"
             }
-        ]
+        ],
+        "abstract": "An alternative linear method of estimating camera parameters from an image of a known object is presented. It has the immediate advantages over the commonly recommended direct linear transform that it does not require prior normalisation of the data and gives an unbiased estimate of the focal length even for noisy data. Furthermore, the method can be extended to include constraints on the internal camera matrix (e.g. square pixels), without the need for numerically expensive nonlinear iterative error minimisation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cameras",
+                "Eigenvalues and eigenfunctions",
+                "Covariance matrices",
+                "Fitting",
+                "Standards",
+                "Transforms",
+                "Noise measurement"
+            ],
+            "Index Terms": [
+                "Focal Length",
+                "Length Estimation",
+                "Square Pixels",
+                "Nonlinear Error",
+                "Iterative Minimization",
+                "Gold Standard",
+                "Covariance Matrix",
+                "Identity Matrix",
+                "Eigenvectors",
+                "Random Error",
+                "Lagrange Multiplier",
+                "Nonlinear Least Squares",
+                "Presence Of Noise",
+                "Image Point",
+                "Pseudo-inverse",
+                "Interval Estimates",
+                "Eigenvalue Problem",
+                "Scattering Matrix",
+                "Constraint Conditions",
+                "Form Of Constraints",
+                "Reprojection Error",
+                "Object Point",
+                "Smallest Eigenvalue",
+                "Principal Plane",
+                "Generalized Eigenvalue Problem"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1525,7 +3194,38 @@
                 "firstName": "Navjyoti",
                 "lastName": "Singh"
             }
-        ]
+        ],
+        "abstract": "While the ability to see colours is innate, their perception is a guided process. Varying across languages and cultures, linguistic vocabulary is one such influence that guides our perception. In colour specifically, the names of colours in a language act as verbal cues that help us memorize and later recognize colours of the spectrum. This makes colour a cultural and local phenomenon. This paper presents a novel method to perform colour transfer, given an image and an elaborate colour palette as inputs. Image segmentation is employed, followed by a region based colour transfer to ensure accurate local colour mapping. The method is used to bias the given image with colours that are perceptually closest to it in a reference language. This is done in an attempt to make the colour transfer reflect the changes in colour vocabularies of people from different languages and cultures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image color analysis",
+                "Image segmentation",
+                "Pragmatics",
+                "Vocabulary",
+                "Lighting",
+                "Standards",
+                "Cognition"
+            ],
+            "Index Terms": [
+                "Image Segmentation",
+                "Color Transfer",
+                "Color Map",
+                "Color Word",
+                "Color Palette",
+                "Input Image",
+                "Target Image",
+                "Intermediate Results",
+                "Color Space",
+                "Reference Image",
+                "Transfer Method",
+                "Standard Deviation Of Distribution",
+                "Russian Language",
+                "Basic Terms",
+                "RGB Color Space",
+                "Basic Color",
+                "Histogram Matching"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1560,7 +3260,46 @@
                 "firstName": "Jeremiah D.",
                 "lastName": "Deng"
             }
-        ]
+        ],
+        "abstract": "The increasing number of medical images of various imaging modalities is challenging the accuracy and efficiency of radiologists. In order to retrieve the images from medical databases, radiologists will confine their search to the image modality. In this paper, we present an improved image feature to represent medical images for image modality classification. The proposed image descriptor is an ensemble descriptor that combines the Harris Corner encoded by the SIFT algorithm fused with Local Binary Pattern. Furthermore, we propose an ensemble classifier with surrogate splits to be used in medical image modality classification in order to improve the performance. It is shown that the proposed ensemble classifier with surrogate splits and ensemble descriptor encoded with bag-of-visual-words representation outperforms other conventional approaches applied in medical image modality classification.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Medical diagnostic imaging",
+                "Visualization",
+                "Support vector machines",
+                "Histograms"
+            ],
+            "Index Terms": [
+                "Medical Imaging",
+                "Imaging Modalities",
+                "Scale-invariant Feature Transform",
+                "Image Classification",
+                "Image Descriptors",
+                "Classical Mode",
+                "Medical Classification",
+                "Training Set",
+                "Classification Accuracy",
+                "Support Vector Machine",
+                "Direction Of Change",
+                "Dimensional Vector",
+                "Training Stage",
+                "Number Of Trees",
+                "Individual Classes",
+                "Natural Images",
+                "Single Class",
+                "Testing Stage",
+                "Scale-invariant",
+                "Textual Descriptions",
+                "Medical Image Classification",
+                "Cross-validation Error",
+                "Shift In Direction",
+                "Medical Imaging Data",
+                "Image Gradient",
+                "Scale Space",
+                "Representation For Classification"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1601,7 +3340,51 @@
                 "firstName": null,
                 "lastName": "Bing Xue"
             }
-        ]
+        ],
+        "abstract": "Image classification is a crucial task in Computer Vision. Feature detection represents a key component of the image classification process, which aims at detecting a set of important features that have the potential to facilitate the classification task. In this paper, we propose a Genetic Programming (GP) approach to image feature detection. The proposed method uses the Speeded Up Robust Features (SURF) method to extract features from regions automatically selected by GP, and adopts a wrapper approach combined with a voting scheme to perform image classification. The proposed approach is evaluated using three datasets of increasing difficulty, and is compared to five popularly used machine learning methods: Support Vector Machines, Random Forest, Naive Bayes, Decision Trees, and Adaptive Boosting. The experimental results show the proposed approach has achieved comparable or better performance than the five existing methods on all three datasets, and reveal its capability to automatically detect good regions from a large image from which good features are automatically constructed.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Support vector machines",
+                "Training",
+                "Robustness",
+                "Decision trees",
+                "Histograms",
+                "Genetic algorithms"
+            ],
+            "Index Terms": [
+                "Gene Regulatory Networks",
+                "Image Classification",
+                "Feature Detection",
+                "Genetic Programming Approach",
+                "Support Vector Machine",
+                "Random Forest",
+                "Decision Tree",
+                "Robust Features",
+                "Voting Scheme",
+                "Adaptive Boosting",
+                "Speeded Up Robust Features",
+                "Training Set",
+                "Learning Algorithms",
+                "Local Features",
+                "Facial Expressions",
+                "Fitness Function",
+                "Global Features",
+                "Class Labels",
+                "Image Object",
+                "Support Vector Machine Classifier",
+                "Scale-invariant Feature Transform",
+                "Baseline Methods",
+                "Survival Of The Fittest",
+                "Difference Of Gaussian",
+                "Selective Regions",
+                "AdaBoost",
+                "Two-tiered Approach",
+                "Range Of Datasets",
+                "Pre-defined Regions",
+                "Domain Experts"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1642,7 +3425,55 @@
                 "firstName": "Vinod",
                 "lastName": "Chandran"
             }
-        ]
+        ],
+        "abstract": "Periocular recognition promises attractive trade-off between iris recognition and face recognition because it provides a longer range of imaging than iris and could achieve a higher recognition performance than face. This benefit is critical to the success of a biometric system under unconstrained and less cooperative operating conditions. A number of feature encoding techniques have been proposed for periocular recognition including global features (SIFT, HOG) and local features (LBP). However, these features perform poorly for images captured in non-ideal conditions with the presence of facial expressions. In this paper, we investigate periocular recognition dealing with the deformation caused by facial expressions. In addition, we also investigate a novel feature encoding technique, called Higher Order Spectral features, on periocular images. We show that our proposed approach toward features for the periocular recognition under facial expressions using Higher Order Spectra is effective in encoding discriminant features. The proposed approach is validated on the JAFFE dataset.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Iris recognition",
+                "Feature extraction",
+                "Face recognition",
+                "Image recognition",
+                "Two dimensional displays",
+                "Face"
+            ],
+            "Index Terms": [
+                "Higher Order Spectral Features",
+                "Periocular Recognition",
+                "Local Features",
+                "Facial Expressions",
+                "Global Features",
+                "Face Recognition",
+                "Recognition Performance",
+                "Scale-invariant Feature Transform",
+                "Histogram Of Gradients",
+                "Window Size",
+                "K-nearest Neighbor",
+                "2D Images",
+                "Recognition Accuracy",
+                "Face Images",
+                "Scale-invariant",
+                "Discrete Fourier Transform",
+                "Regional Use",
+                "Training Subsets",
+                "Local Descriptors",
+                "Rotation Invariance",
+                "Speeded Up Robust Features",
+                "Eyelashes",
+                "Shift Invariance",
+                "Eye Center",
+                "Fusion Approach",
+                "Invariance Property",
+                "Eye Region",
+                "Test Subset",
+                "Recognition Problem"
+            ],
+            "Author Keywords": [
+                "biometrics",
+                "periocular recognition",
+                "Higher Order Spectra",
+                "uncooperative recognition"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1689,7 +3520,56 @@
                 "firstName": "Poul M. F.",
                 "lastName": "Nielsen"
             }
-        ]
+        ],
+        "abstract": "Measuring the deformation of skin in vivo is useful in a number of applications. For example, the response of skin to a variety of mechanical loadings can provide information about the health of the underlying tissue. A number of devices have been developed for measuring the surface deformation of in vivo skin. However, existing devices are typically incapable of covering large areas of skin, or are expensive. To address these issues, we present the design and evaluation of a hand-held low-cost stereoscopic device for in vivo measurement of the dynamic surface deformation of skin. A camera rig with sufficient mechanical strength was designed to hold four high-speed synchronised cameras. The field of view (FOV) of the cameras is approximately 20 mm × 20 mm. A sample 2D deformation measurement of the surface of skin was performed to show the application of this device.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cameras",
+                "Skin",
+                "Universal Serial Bus",
+                "Stereo image processing",
+                "In vivo",
+                "Lenses",
+                "Data transfer"
+            ],
+            "Index Terms": [
+                "Mobile Devices",
+                "Dynamic Deformation",
+                "Vivo Skin",
+                "Synchronization",
+                "Skin Area",
+                "Surface Deformation",
+                "Sufficient Strength",
+                "Deformation Measurement",
+                "Sufficient Mechanical Strength",
+                "Skin Deformation",
+                "Imaging Data",
+                "Data Rate",
+                "Body Parts",
+                "Data Transfer",
+                "Focal Length",
+                "Camera Images",
+                "Viewing Angle",
+                "Recording Time",
+                "Camera System",
+                "Image Distortion",
+                "Focal Length Of Lens",
+                "Biaxial Testing",
+                "Frame Grabber",
+                "Depth Of Field",
+                "3D Deformation",
+                "Solid-state Drives",
+                "Motion Capture System",
+                "Properties Of Skin",
+                "Good Image"
+            ],
+            "Author Keywords": [
+                "Stereoscopic device",
+                "in vivo skin",
+                "surface deformation measurement",
+                "hand-held device"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1730,7 +3610,50 @@
                 "firstName": "A. K.",
                 "lastName": "Qin"
             }
-        ]
+        ],
+        "abstract": "Computer vision based road detection is an indispensable and challenging task in many real-world applications such as obstacle detection in autonomous driving. Low-level image features (e.g., color and texture) and pre-trained models are commonly used for this task. In this paper, we propose a simple yet effective approach to detect roads from a single image, which avoids the supervised model training that typically relies on a considerable number of labeled images. The key idea is to leverage unsupervised feature learning to obtain good road representations. Specifically, we first represent an input road image as a set of image patches. The K-means clustering algorithm is then applied to these image patches (after pre-processing) to generate K cluster centroids. Thus obtained centroids will be used together with a nonlinear mapping function and a bag-of-words projection to derive the image's feature representation in pixel and region levels respectively. All pixels (of the input image) using the former mapping will be clustered by Density Peaks algorithm into several regions, and the regions represented by the latter feature will be grouped by a graph cut method into two classes: road and non-road. Experimental results on several complicated road images demonstrate the effectiveness of our proposed method.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Roads",
+                "Feature extraction",
+                "Training",
+                "Image color analysis",
+                "Clustering algorithms",
+                "Testing",
+                "Image segmentation"
+            ],
+            "Index Terms": [
+                "Feature Learning",
+                "Unsupervised Feature Learning",
+                "Road Detection",
+                "Image Features",
+                "Input Image",
+                "Image Pixels",
+                "Single Image",
+                "Feature Representation",
+                "Unsupervised Learning",
+                "Image Patches",
+                "Pixel Level",
+                "Cluster Centroids",
+                "Obstacle Avoidance",
+                "Nonlinear Mapping Function",
+                "Low-level Image Features",
+                "Random Sampling",
+                "Feature Maps",
+                "Sampling Density",
+                "Training Images",
+                "Road Area",
+                "Color Information",
+                "Previous Phase",
+                "Codeword",
+                "Unsupervised Methods",
+                "Onboard Camera",
+                "Unlabeled Data",
+                "Small Blocks",
+                "Edge Weights",
+                "Road Region"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1759,7 +3682,51 @@
                 "firstName": "Chu-Song",
                 "lastName": "Chen"
             }
-        ]
+        ],
+        "abstract": "Pedestrian detection attracts lots of attentions in the field of computer vision in recent years. It is difficult to handle data imbalance between positive and negative examples and easy-to-confused negative samples for pedestrian detection when training a single deep convolutional neural network (CNN) model. In this paper, we present a deep learning approach that combines two parallel deep CNN models for pedestrian detection. We propose using two deep CNNs, and each of which is capable of solving a particular mission-oriented task to form parallel classification models. Then, the models are integrated to build a more robust pedestrian detector. Experimental results on the Caltech dataset demonstrate the effectiveness of our approach for pedestrian detection compared to other state-of-the-art deep CNN methods.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Training",
+                "Neural networks",
+                "Detectors",
+                "Training data",
+                "Computational modeling",
+                "Object detection"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Convolutional Neural Network",
+                "Deep Convolutional Neural Network",
+                "Pedestrian Detection",
+                "Deep Learning",
+                "Deep Neural Network",
+                "Deep Models",
+                "Negative Samples",
+                "Convolutional Neural Network Model",
+                "Field Of Computer Vision",
+                "Single Convolutional Neural Network",
+                "Positive Samples",
+                "Object Detection",
+                "ImageNet",
+                "Bounding Box",
+                "Middle Layer",
+                "Deep Architecture",
+                "Final Layer",
+                "Optical Flow",
+                "AlexNet",
+                "Early Layers",
+                "Deformation Model",
+                "Bounding Box Regression",
+                "Object Proposals",
+                "Content Model",
+                "Restricted Boltzmann Machine",
+                "Lower Row",
+                "Parallel Network",
+                "Object Detection Task",
+                "Interclass Correlation Coefficient"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1788,7 +3755,50 @@
                 "firstName": "Russel",
                 "lastName": "Pears"
             }
-        ]
+        ],
+        "abstract": "In this research we propose a novel method for face recognition based on Anthropometric features gathered from landmark points on a face over time. Age invariant face recognition enables matching of an image obtained at a point in time against an image of the same individual obtained at an earlier point in time and thus has important applications, notably in law enforcement. We investigate four different types of models built on different levels of data granularity. At the global level a model is built on training data that encompasses the entire set of available individuals, whereas at the local level data from homogeneous sub-populations are used and finally at the individual level a personalized model is built for each individual. Our empirical results show that the local and personalized models perform best when rated on Rank-1 accuracy and recognition time.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mathematical model",
+                "Face",
+                "Aging",
+                "Face recognition",
+                "Indexes",
+                "Extraterrestrial measurements",
+                "Time series analysis"
+            ],
+            "Index Terms": [
+                "Face Recognition",
+                "Age-invariant Face Recognition",
+                "Training Data",
+                "Anthropometric Characteristics",
+                "Level Of Granularity",
+                "Model Of Personality",
+                "Recognition Time",
+                "Different Levels Of Granularity",
+                "Time Series",
+                "Image Features",
+                "Global Model",
+                "K-nearest Neighbor",
+                "Image Recognition",
+                "Face Images",
+                "Imaging Probes",
+                "Gaussian Mixture Model",
+                "Local Approach",
+                "Human Faces",
+                "Human Experts",
+                "Age Bands",
+                "Large Number Of Images",
+                "Dynamic Time Warping",
+                "Facial Age",
+                "Discrete Cosine Transform",
+                "Time Series Problems",
+                "Aging Trajectories",
+                "Geometric Ratio",
+                "Feature Values",
+                "Support Vector Machine"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1829,7 +3839,51 @@
                 "firstName": null,
                 "lastName": "Shuzhi Sam Ge"
             }
-        ]
+        ],
+        "abstract": "Place recognition has been intensively studied in the context of robot vision. BoW-based approach gains its popularity for its efficiency and robustness using features extracted from images. Many features have been examined in the past for place recognition purpose. However, there is no such feature that can outperform others in all environments. Each feature has its own advantage, thus, they should be carefully chosen depending on the context and environments. In this paper, we propose a modified vocabulary tree with the ability of merging multiple kinds of features such that it allows users to customize different combination of features for better place recognition performance. The system is tested in real-time on real-world datasets and the experiments demonstrates the advantage of our system compared to existing approaches.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Vocabulary",
+                "Visualization",
+                "Robustness",
+                "Databases",
+                "Quantization (signal)",
+                "Robots"
+            ],
+            "Index Terms": [
+                "Typical Features",
+                "Place Recognition",
+                "Multiple Types Of Features",
+                "Vocabulary Tree",
+                "Different Combinations Of Features",
+                "Urban Environments",
+                "Descriptive Characteristics",
+                "Ceiling",
+                "Number Of Images",
+                "Line Segment",
+                "Feature Points",
+                "Scale-invariant",
+                "Distance Threshold",
+                "Image Database",
+                "Scale Space",
+                "Line Features",
+                "Local Frame",
+                "Scale-invariant Feature Transform",
+                "Combination Of Points",
+                "Query Results",
+                "Query Image",
+                "KITTI Dataset",
+                "Descriptor Vector",
+                "Sum Of Absolute Differences",
+                "Fast Feature",
+                "Diagonal Line",
+                "Indoor Environments",
+                "Means Clustering",
+                "Loop Closure",
+                "Tree Structure"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1864,7 +3918,51 @@
                 "firstName": "Patricia",
                 "lastName": "Riddle"
             }
-        ]
+        ],
+        "abstract": "Markov random field models of textures describe images by statistics of local image features and identify conditional dependencies between pixels. To account for higher-order inter-dependencies between multiple pixels, most common high-order modelling follows the well-known FRAME or Fields of Experts (FoE) frameworks in using marginals of the responses of various filters as descriptive statistics. The filters are nearly always square, relatively small, and fixed in number. However, large sparse (non-contiguous) texture-specific filters can model long range and large-scale interactions much more simply and cheaply than large square filters, multiple scales or layers of filters. We learn models with an extension of `model nesting' and merge the FRAME and FoE models, using histograms of the responses of sparse linear filters as sufficient statistics together with marginals of long-range pairwise signal differences (which are linear filters of size 2).We give a simple algorithm for learning both the shapes and coefficients of the sparse linear filters. Nested models are built by adding filters or other features iteratively to a base model to rectify statistical differences from the training data. The models are applied to texture modelling, specifically synthesis and inpainting, which demonstrates their effectiveness.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Data models",
+                "Training data",
+                "Maximum likelihood estimation",
+                "Histograms",
+                "Shape",
+                "Visualization"
+            ],
+            "Index Terms": [
+                "Texture Model",
+                "Descriptive Statistics",
+                "Training Data",
+                "Random Fields",
+                "Experts In The Field",
+                "Filter Size",
+                "Markov Random Field",
+                "Linear Filter",
+                "Filter Response",
+                "Sufficient Statistics",
+                "Large Square",
+                "Random Field Model",
+                "Large Filter",
+                "Objective Function",
+                "Convolutional Neural Network",
+                "Maximum Likelihood Estimation",
+                "Grayscale",
+                "Latent Variables",
+                "Probabilistic Model",
+                "Markov Chain Monte Carlo",
+                "Exponential Family Distribution",
+                "Hidden Variables",
+                "Laplacian Of Gaussian",
+                "Kullback-Leibler",
+                "Maximum Entropy",
+                "Boltzmann Machine",
+                "Unimodal",
+                "Pairwise Interactions",
+                "Exponential Distribution",
+                "Gaussian Random Field"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1893,7 +3991,41 @@
                 "firstName": null,
                 "lastName": "Chee Kit Wong"
             }
-        ]
+        ],
+        "abstract": "This article describes an approach to artificial perception for farm-based applications. The technological setup aims at extracting information about fruits in a tree through estimating position and visual features -using color/depth vision system- and robustly asserting this information for localization and manipulation tasks, through the build of a graph-based model. The scientific contribution is the implementation of a detection/ extraction algorithm, using 2 cameras -monocular-color (RGB) and time-of-flight (ToF)- for data acquisition; GPS and IMU for global localization; and a set of Machine Vision (MV) algorithms for feature detection and extraction. The algorithm fuses the sensors' data, and Machine Learning (ML) for point-matching and tracking features. The extracted features are stored in a graph representation for fast search/traversal/retrieval and update purposes. This in turn will feed learning and recognition schemes promoting dynamic monitoring and off-line manipulation processes. Tree-mapping is performed globally using NAV-sensor data, and locally using color/depth imaging and feature localization. Whilst the preliminary experimental results in- and outdoors -based on a fixed setup- demonstrated the usefulness and simplicity of this approach, further outdoors testing using the mobile platform is required to determine the system ability to cope with the naturally uncertain and varying environment.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Cameras",
+                "Vegetation",
+                "Robot vision systems",
+                "Image color analysis"
+            ],
+            "Index Terms": [
+                "Agricultural Applications",
+                "Graphical Representation",
+                "Visual Features",
+                "Feature Detection",
+                "Mobile Platform",
+                "Image Features",
+                "Fixed Point",
+                "Object Detection",
+                "Image Object",
+                "RGB Images",
+                "Number Of Objects",
+                "Data Fusion",
+                "Pattern Matching",
+                "Crop Management",
+                "Perceptual System",
+                "Yield Estimation",
+                "Output Map",
+                "Circular Pattern",
+                "Robot Navigation",
+                "Separate Objects",
+                "Iterative Closest Point",
+                "Tangerine"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1922,7 +4054,40 @@
                 "firstName": "Zenon",
                 "lastName": "Chaczko"
             }
-        ]
+        ],
+        "abstract": "Steganography is the process of concealing data to protect the carrier file data from intruders. One of the main challenges of steganography is to maintain optimum visual quality while increasing hiding capacity. This can be resolved by incorporating the human visual systems weaknesses in steganography, which results in a good quality of the algorithm. Additionally, steganography is considered as an optimization problem to obtain optimum embedding rate. For this reason, this paper presents a novel method aimed towards a selection of perceptual embedding threshold in Discrete Wavelet Transform using human visual system characteristics and Genetic Algorithm. This method included an introduction of an optimization model by maintaining a correlation between neighboring areas of the image and the different parts of the object. The results of the experiment involving a variety of two thousand images show the differences between the various methods and the HVS in relation to accuracy. Furthermore, higher levels of detectability and comprehensiveness were seen. Lastly, the method has a high tendency to maintain image quality as well as the transparency when subjected to steganography.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Discrete wavelet transforms",
+                "Genetic algorithms",
+                "Sensitivity",
+                "Visualization",
+                "Adaptation models",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Human Visual System",
+                "Perception Threshold",
+                "Embedding Rate",
+                "Image Quality",
+                "Wavelet Transform",
+                "Evolutionary Algorithms",
+                "Fitness Function",
+                "Discrete Fourier Transform",
+                "Information Security",
+                "Imperceptible",
+                "Contrast Sensitivity",
+                "Lowest Weight",
+                "Candidate Solutions",
+                "Discrete Cosine Transform",
+                "Decomposition Level",
+                "Cover Image",
+                "Just Noticeable Difference",
+                "Structural Similarity Index Measure",
+                "Secret Message",
+                "Payload Capacity"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1957,7 +4122,41 @@
                 "firstName": "Patrice",
                 "lastName": "Delmas"
             }
-        ]
+        ],
+        "abstract": "Local ordinal signal relations, such as local binary or ternary patterns (LBP/LTPs) are invariant to frequent in practice spatially variant contrast/offset deviations that preserve image appearance. Our prior work extended this conventional LBP/LTP-based classifiers towards learning, rather than pre-scribing characteristic shapes, sizes, and numbers of such patterns. The learned LTPs showed more accurate image query based texture retrieval. But the disadvantage is that the short-range local structures disappeared for some textures. In this paper, we propose to overcome it by combining both the fixed circular LBP/LTP structure and the long-range learned LTPs as texture descriptors and improved performance has been obtained for texture retrieval.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Shape",
+                "Databases",
+                "Training",
+                "Histograms",
+                "Feature extraction",
+                "Lighting",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Texture Recognition",
+                "Ternary Pattern",
+                "Local Structure",
+                "Textual Descriptions",
+                "Interaction Energy",
+                "Energy Distribution",
+                "Training Images",
+                "Empirical Distribution",
+                "Number Of Families",
+                "Left Column",
+                "Source Images",
+                "Part Of Energy",
+                "Central Pixel",
+                "Circular Structure",
+                "Image Descriptors",
+                "Sensor Noise",
+                "Higher-order Model",
+                "Retrieval Accuracy",
+                "Long-range Structure",
+                "Texture Structure"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -1998,7 +4197,53 @@
                 "firstName": "Heide",
                 "lastName": "Friedrich"
             }
-        ]
+        ],
+        "abstract": "Proprietary high-frequency industrial stereo-vision systems can be used for close range applications in dynamic environments. Those systems incorporate faster computation and real-time processing. Alternatively, Tsai's calibration method is well suited for high-frequency applications using non-proprietary stereo-vision systems. In this paper, we study and compare the performance of using low-cost cameras for close range applications in dynamic environments. The camera configurations tested had substantial lens distortion, and we show how the corner detection method can be adjusted to be better suited for our specific application. We show that using Tsai's calibration results in accurate representation of close range objects relevant for hydraulic engineering applications. We discuss in detail the effect of camera to target distance and image coverage for the various camera configurations used in this study. Depth resolution, surface accuracy and efficiency of the acquisition process are used as our recommendation criteria for future application of Tsai's calibration in hydraulic engineering research.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Cameras",
+                "Calibration",
+                "Distortion",
+                "Lenses",
+                "Pipelines",
+                "Three-dimensional displays",
+                "Image resolution"
+            ],
+            "Index Terms": [
+                "Hydraulic Engineering",
+                "Dynamic Environment",
+                "Calibration Method",
+                "Image Distortion",
+                "Calibration Results",
+                "Close Range",
+                "Cover Image",
+                "Substantial Distortion",
+                "3D Reconstruction",
+                "Digital Elevation Model",
+                "Image Pairs",
+                "Depth Map",
+                "Acceptable Performance",
+                "Left Image",
+                "Large Field Of View",
+                "Pixel Coordinates",
+                "Stereo Camera",
+                "Calibration Target",
+                "Frame Acquisition",
+                "Reprojection Error",
+                "GoPro Camera",
+                "Stereo Matching",
+                "Theoretical Accuracy",
+                "Distortion Model",
+                "Projection Error",
+                "Pixel Units"
+            ],
+            "Author Keywords": [
+                "Tsai",
+                "calibration",
+                "distortion",
+                "pipeline"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2033,7 +4278,43 @@
                 "firstName": "Patrice",
                 "lastName": "Delmas"
             }
-        ]
+        ],
+        "abstract": "Accurate and fast approximate global energy minimisation with semi-global matching (SGM) reconstructs a single visible 3D surface from a stereo pair of images by combining surface cross-sections, or profiles, found in multiple directions using 1D belief propagation (BP). Each energy measures a mismatch between corresponding signals in the images, which is appended with a weighted unevenness of the surface. To account for frequent in practice perceptive (contrast and offset) image deviations, the mismatch is evaluated in terms of mutual information (MI). However, to closely approximate the MI, the deviations have to be spatially uniform and relatively small. Moreover, this conventional two-term energy does not guarantee a unique minimiser; the weight is often hand-picked and may unpredictably affect the minimiser(s), and both the terms cannot be modified independently. Sequential and separate minimisation of these terms partially overcomes the above drawbacks, excludes the weighting, and allows to account for possible spatially variant and large perceptive deviations. For each conjugate pair of epipolar lines in the input images, the first stage employs a symmetric concurrent propagation stereo (SCPS) to build the space of all least-mismatch epipolar profiles of the goal surface. The CP fuses the BP and dynamic programming (DP) energy minimisation and allows for adapting directly to a wide range of perceptive image deviations. The second stage selects the approximately least-uneven surface in the union of the least-mismatch profile-wise spaces using semi-global smoothing (SGS). The latter follows the SGM framework, but to only find the least-uneven cross-sections of the united space in multiple directions and combine them into the final output surface. Experiments with the SCPS-SGS and MI-SGM confirmed efficiency of the proposed two-stage reconstruction under strong perceptive deviations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Surface reconstruction",
+                "Minimization",
+                "Benchmark testing",
+                "Three-dimensional displays",
+                "Smoothing methods",
+                "Image reconstruction",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Stereo Matching",
+                "Energy Minimization",
+                "Mutual Information",
+                "Dynamic Programming",
+                "Uneven Surface",
+                "Global Minimum",
+                "Image Signal",
+                "Image Lines",
+                "Conventional Energy",
+                "Stereo Pairs",
+                "Stereo Image Pairs",
+                "Relative Weight",
+                "Random Noise",
+                "Energy Function",
+                "Solution Space",
+                "Markov Random Field",
+                "Stereo Images",
+                "Random Field Model",
+                "Incoming Messages",
+                "Markov Random Field Model",
+                "Disparity Map",
+                "Energy In Eq"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2068,7 +4349,42 @@
                 "firstName": "Richard",
                 "lastName": "Green"
             }
-        ]
+        ],
+        "abstract": "The concept of detecting symmetry within 3D models has received an extensive amount of research within the past decade. Numerous algorithms have been proposed to identify reflective symmetry within 3D meshes and to extract a quantitative measure for the model's level of symmetry. Much of the early work focuses on identifying symmetry in noiseless 3D models with most existing methods unable to work effectively on models distorted by noise, such as those commonly obtained when scanning objects in the real world. This report details the design and implementation of two robust and fast algorithms, which can be used on a wide variety of models to identify global approximate reflective symmetry. These methods are also able to identify likely planes of symmetry in models that have been distorted with noise or contain minor imperfections, making them ideal for scanned models of real world objects. The hypothesis planes are determined by principal component analysis, after which the proposed algorithms give each plane a numerical value corresponding to its likelihood of being a plane of global approximate reflective symmetry. The first algorithm uses the Hausdorff distance between vertices to estimate symmetry, whilst the second uses an approach based on ray casting.",
+        "keywords": {
+            "Index Terms": [
+                "Mirror Symmetry",
+                "Symmetry Detection",
+                "Scanned 3D Models",
+                "Fast Algorithm",
+                "3D Mesh",
+                "Local Symmetry",
+                "Hausdorff Distance",
+                "Approximate Symmetry",
+                "Ray Casting",
+                "Level Of Symmetry",
+                "Detection Accuracy",
+                "Similarity Measure",
+                "Eigenvectors",
+                "Bounding Box",
+                "Intersection Point",
+                "Total Difference",
+                "Volume Model",
+                "Sum Of Distances",
+                "Distance Method",
+                "Perfect Symmetry",
+                "Symmetry Measures",
+                "Number Of Rays",
+                "Pre-determined Threshold"
+            ],
+            "Author Keywords": [
+                "symmetry",
+                "detection",
+                "scanned",
+                "models",
+                "reflective"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2109,7 +4425,49 @@
                 "firstName": "Patrice",
                 "lastName": "Delmas"
             }
-        ]
+        ],
+        "abstract": "This paper introduces a fast and reliable Belief Propagation based stereo matching algorithm to be equipped with mobile real-time stereo vision applications; such as autonomous navigation of robots, vehicles, UAVs and drones, mobility aid for visually impaired, and more.. The algorithm approximates the minimum energy solution on graphical Markov Chains based on intensities of consecutive stereo image scanlines. It can achieve real-time performance (30 frames per seconds) while maintaining accurate results. This algorithm can also produce reliable results under non-ideal environments. It is obtained by estimating unknown factors to deal with brightness, color offsets, and vertical misalignments between two images. These factors are the ones to minimize the energy passed through the Markov chain model at the centers of stereo images.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Belief propagation",
+                "Markov processes",
+                "Robots",
+                "Real-time systems",
+                "Reliability",
+                "Image reconstruction",
+                "Stereo vision"
+            ],
+            "Index Terms": [
+                "3D Reconstruction",
+                "Belief Propagation",
+                "Markov Chain",
+                "Real-time Performance",
+                "Line Scan",
+                "Stereopsis",
+                "Fast Generation",
+                "Stereo Images",
+                "Stereo Matching",
+                "Differences In Intensity",
+                "Intel Core",
+                "Color Difference",
+                "Cognitive Map",
+                "Matching Model",
+                "Mobile Robot",
+                "Height Images",
+                "Markov Random Field",
+                "Left Image",
+                "Line Positions",
+                "Disparity Map",
+                "Visual Point",
+                "Vertical Shift",
+                "OpenCV Library",
+                "Incoming Messages",
+                "Message Passing",
+                "Matching Cost",
+                "Disparate Levels",
+                "Images In Row"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2144,7 +4502,58 @@
                 "firstName": "Manzur",
                 "lastName": "Murshed"
             }
-        ]
+        ],
+        "abstract": "High Efficiency Video Coding (HEVC) could not provide real time facilities to the limited processing and battery powered electronic devices as its encoding time complexity increases multiple times compared to its predecessor. Numerous researchers contribute to address this limitation by reducing a number of motion estimation (ME) modes where they analyze homogeneity, residual and statistical correlation among different modes. Although their approaches save some encoding time, however, could not reach the similar rate-distortion (RD) performance with HEVC encoder as they merely depend on existing Lagrangian cost function (LCF) within HEVC framework. To overcome this limitation, in this paper, we capture visual attentive Foreground motion and salient region (FMSR) which are sensitive to human visual system for quality assessment. The FMSR features captured by visual attentive and dynamic background modeling are adaptively synthesized to determine a subset of candidate modes. This preprocessing phase is independent from LCF. Since the proposed technique can avoid exhaustive exploration of all modes with simple criteria, it can reduce 27% encoding time on average. With efficient selection of FMSR-based appropriate block partitioning modes, it can also improve up to 1.0dB peak signal-to-noise ratio (PSNR).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Encoding",
+                "Correlation",
+                "Visualization",
+                "Copper",
+                "Cost function",
+                "Standards",
+                "Image quality"
+            ],
+            "Index Terms": [
+                "Coding Efficiency",
+                "Video Coding",
+                "Foreground Motion",
+                "Cost Function",
+                "Lagrange Multiplier",
+                "Selective Modulators",
+                "Statistical Correlation",
+                "Peak Signal-to-noise Ratio",
+                "Background Model",
+                "Motion Estimation",
+                "Simple Criterion",
+                "Australian Research Council",
+                "Regional Motion",
+                "Salient Regions",
+                "Preprocessing Phase",
+                "Encoding Time",
+                "Computation Time",
+                "Image Quality",
+                "Modeling Techniques",
+                "Visual Features",
+                "Coding Unit",
+                "Motion Features",
+                "Binary Matrix",
+                "Phase Correlation",
+                "Yellow Circles",
+                "Salient Features",
+                "Object Parts",
+                "Pixel Block",
+                "Discrete Cosine Transform",
+                "Motion Information"
+            ],
+            "Author Keywords": [
+                "Background modelling",
+                "Fast mode decision",
+                "Foreground motion",
+                "HEVC",
+                "Spatial Saliency"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2173,7 +4582,48 @@
                 "firstName": null,
                 "lastName": "Guojun Lu"
             }
-        ]
+        ],
+        "abstract": "Building boundary identification is an essential prerequisite in building outline generation from point cloud data. In this problem, boundary edges that constitute the building boundary are identified. The existing solutions to the identification of boundary edges from the input point set have one or more of the following problems: ineffective in finding appropriate edges in a concave shape, incapable of determining a ‘hole’ or ‘concavity’ inside the shape separately, dependant on additional information such as the scan direction that may be unavailable, and incompetent in determining the boundary of a point set from the boundaries of two or more subsets of the point set. This paper proposes a new solution to the identification of building boundary by using the maximum point-to-point distance in the input data. It properly detects the boundary edges for any type of shape and separately recognises holes, if any, inside the shape. The unique feature of the proposed solution is that it can identify the boundary of a point set from the boundaries of two or more subsets of the point set. It does not require any additional information other than the input point set. Experimental results show that the proposed solution can preserve details along the building boundary and offer high area-based completeness and quality, even in low density input data.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Buildings",
+                "Three-dimensional displays",
+                "Shape",
+                "Laser radar",
+                "Data mining",
+                "Image color analysis",
+                "Image edge detection"
+            ],
+            "Index Terms": [
+                "Point Cloud",
+                "Point Cloud Data",
+                "Identification Of Boundaries",
+                "Building Boundaries",
+                "Low Density",
+                "Concavity",
+                "Subset Of Set",
+                "Input Point",
+                "Scanning Direction",
+                "Boundary Edges",
+                "Triangular",
+                "Light Detection And Ranging",
+                "Convex Hull",
+                "Photogrammetry",
+                "Digital Image Processing",
+                "Direct Extraction",
+                "Delaunay Triangulation",
+                "Small Buildings",
+                "High Cloud",
+                "High Point Density",
+                "Inside Edge",
+                "Interior Boundary",
+                "Edge Removal",
+                "Input Point Cloud",
+                "Current Boundaries",
+                "Building Footprints",
+                "Building Extraction"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2214,7 +4664,49 @@
                 "firstName": "Michael",
                 "lastName": "Albert"
             }
-        ]
+        ],
+        "abstract": "Hashing, which encodes data points into binary codes, has become a popular approach for approximate nearest neighbor searching tasks because of its storage and retrieval efficiency. Given a pool of bits, we propose to select a set of bits according to a quality measurement directly related to the large scale approximate nearest neighbor searching problem. An alternating greedy optimization method is proposed to find a locally optimal solution. The experimental results show this optimization method is efficient and effective.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Encoding",
+                "Hamming distance",
+                "Computer science",
+                "Optimization methods",
+                "Binary codes"
+            ],
+            "Index Terms": [
+                "Optimization Method",
+                "Binary Code",
+                "Nearest Neighbor Search",
+                "Efficient Retrieval",
+                "Training Dataset",
+                "Selection Method",
+                "Performance Of Algorithm",
+                "Selection Algorithm",
+                "Simulated Annealing",
+                "Selection Problem",
+                "Hash Function",
+                "Original Space",
+                "Part Of Dataset",
+                "Nearest Point",
+                "Hamming Distance",
+                "Mean Average Precision",
+                "Selection Task",
+                "Combinatorial Optimization Problem",
+                "Retrieval Performance",
+                "True Point",
+                "Simulated Annealing Method",
+                "Nearest Neighbor Points",
+                "Random Normal Distribution",
+                "Query Dataset",
+                "Information Retrieval",
+                "Alternating Optimization",
+                "Image Retrieval",
+                "Performance Of Different Algorithms",
+                "Quantization Error"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2261,7 +4753,34 @@
                 "firstName": "Zhiyi",
                 "lastName": "Huang"
             }
-        ]
+        ],
+        "abstract": "Many computer vision tasks rely on correspondence between features. SIFT and related descriptors represent features as high-dimensional vectors, which are used to compute a distance between features for matching. Calculating these distances is expensive in large datasets, so approximate nearest neighbour (ANN) approaches are used. ANN schemes that can be efficiently parallelised have been proposed, some of which divide up high-dimensional vectors into lower-dimensional subspaces. However, the feature descriptors computed by SIFT and similar methods are not computed in a homogeneous manner. There are clear statistical patterns within and between the components of feature vectors, and in this work we show that these patterns can have a strong effect on approximate nearest neighbor searching algorithms that are based on space subdivision.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clustering algorithms",
+                "Clustering methods",
+                "Estimation",
+                "Silicon",
+                "Computer science",
+                "Computer vision",
+                "Approximation algorithms"
+            ],
+            "Index Terms": [
+                "Subdivision Of Space",
+                "Descriptive Characteristics",
+                "Filtration Rate",
+                "Feature Space",
+                "Clustering Method",
+                "Clustering Results",
+                "Means Clustering",
+                "Distance Estimation",
+                "Feature Distance",
+                "Real Distance",
+                "Query Features",
+                "SIFT Features",
+                "Subspace Clustering"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2296,7 +4815,50 @@
                 "firstName": "Monia",
                 "lastName": "Turki-Hadj Alouane"
             }
-        ]
+        ],
+        "abstract": "Active Appearance Models (AAM), have been widely used for the segmentation of anatomical structures in 3D medical images. Building the AAM usually requires the manual segmentation of a training set. In this paper, we propose to reduce this manual segmentation by building a volumetric AAM (vAAM) from MR images. These images are converted to a tetrahedral mesh representation rather than a voxel representation. Tetrahedral meshes are generated so that they represent the underlying image structures. The vAAM is iteratively built using the minimum description length principle (MDL). The generated model provides an anatomical correspondence between the tetrahedral meshes that are generated from MR images within the training set. Thus any manual segmentation performed on a single MR image can be mapped to other MR images. The segmentation of a query image is performed automatically by adapting the vAAM to this image. After the segmentation step, the 3D reconstruction of the knee surface is simply performed by extracting faces that are shared by adjacent regions.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image segmentation",
+                "Training",
+                "Active appearance model",
+                "Three-dimensional displays",
+                "Shape",
+                "Manuals",
+                "Bones"
+            ],
+            "Index Terms": [
+                "Magnetic Resonance Imaging",
+                "3D Reconstruction",
+                "Training Set",
+                "3D Images",
+                "Structural Images",
+                "Image Segmentation",
+                "Segmentation Step",
+                "Query Image",
+                "Tetrahedral Mesh",
+                "Minimum Description Length",
+                "Statistical Models",
+                "Low Resolution",
+                "Grayscale",
+                "Cost Function",
+                "Image Regions",
+                "Shape Parameter",
+                "Reference Image",
+                "Images In Set",
+                "Training Step",
+                "Affine Transformation",
+                "Statistical Shape Model",
+                "Shape Model",
+                "Sum Of Absolute Differences",
+                "Mean Shape",
+                "Non-rigid Registration",
+                "Knee Cartilage",
+                "Registration Step",
+                "Texture Parameters",
+                "Registration Algorithm"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2325,7 +4887,49 @@
                 "firstName": "Paul",
                 "lastName": "Cockshott"
             }
-        ]
+        ],
+        "abstract": "Stereo matching deals with recovering quantitative depth information from a set of input images, based on the visual disparity between corresponding points. Generally most of the algorithms assume that the processed images are rectified. As robotics becomes popular, conducting stereo matching in the context of cloth manipulation, such as obtaining the disparity map of the garments from the two cameras of the cloth folding robot, is useful and challenging. This is resulted from the fact of the high efficiency, accuracy and low memory requirement under the usage of high resolution images in order to capture the details (e.g. cloth wrinkles) for the given application (e.g. cloth folding). Meanwhile, the images can be unrectified. Therefore, we propose to adapt guided filtering algorithm into the pyramidical stereo matching framework that works directly for unrectified images. To evaluate the proposed unrectified stereo matching in terms of accuracy, we present three datasets that are suited to especially the characteristics of the task of cloth manipulations. By comparing the proposed algorithm with two baseline algorithms on those three datasets, we demonstrate that our proposed approach is accurate, efficient and requires low memory. This also shows that rather than relying on image rectification, directly applying stereo matching through the unrectified images can be also quite effective and meanwhile efficient.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Image resolution",
+                "Context",
+                "Cameras",
+                "Robot vision systems",
+                "Memory management",
+                "Approximation algorithms"
+            ],
+            "Index Terms": [
+                "Stereo Matching",
+                "High-resolution",
+                "High-resolution Images",
+                "Wrinkles",
+                "Filtering Algorithm",
+                "Low Memory",
+                "Images In Order",
+                "Image Correction",
+                "Baseline Algorithms",
+                "Binocular Disparity",
+                "Disparity Map",
+                "Low Memory Requirements",
+                "Root Mean Square Error",
+                "Mean Square Error",
+                "Root Mean",
+                "Computer Vision",
+                "Image Size",
+                "Top Surface",
+                "Reference Image",
+                "Depth Map",
+                "Guided Filter",
+                "Left Image",
+                "Matching Algorithm",
+                "Stereo Images",
+                "Changes In Depth",
+                "Real Scenes",
+                "Local Algorithm",
+                "Original Image Size",
+                "Height Estimation"
+            ]
+        }
     },
     {
         "publicationNumber": "7748304",
@@ -2341,6 +4945,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2015 International Conference on Image and Vision Computing New Zealand (IVCNZ)",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: image processing; computer vision; and robot applications.",
+        "keywords": {}
     }
 ]

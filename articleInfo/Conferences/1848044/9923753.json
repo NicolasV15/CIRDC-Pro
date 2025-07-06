@@ -44,7 +44,47 @@
                 "firstName": "Shidhartha",
                 "lastName": "Das"
             }
-        ]
+        ],
+        "abstract": "The logic based underpinning of the Tsetlin Machine (TM) offers substantial benefits for compute-efficient inference. The caveat to this is the large memory footprint of the TM growing substantially as problem complexity increases. This paper presents a novel automated approach to find an optimum model complexity in terms of number of clauses for a given application. It proposes a run-time pruning system which interfaces with the TM model between training cycles and determines the inconsequential clauses. The clauses are iteratively removed till no degradation of accuracy is observed before commencing the next training cycle. Our approach retains important clause propositions developed at a higher model complexity and translates it to a smaller clause-sparse model while retaining the learning efficacy. We validate our approach using MNIST, Fashion-MNIST, Kuzushiji-MNIST and KWS6 where we demonstrate that compared to large model size, a similar accuracy gain can be achieved with fewer clauses resulting in significantly smaller training time. We demonstrate up to 63% compression in model size for the chosen training parameters.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Degradation",
+                "Source coding",
+                "Computational modeling",
+                "Robustness",
+                "Complexity theory",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Optimal Paradigm",
+                "Complex Models",
+                "Training Time",
+                "Model Size",
+                "Training Cycle",
+                "Memory Footprint",
+                "High Model Complexity",
+                "Neural Network",
+                "Deterministic",
+                "Hyperparameters",
+                "Multi-label",
+                "Correct Classification",
+                "Training Epochs",
+                "Automata",
+                "Inference Accuracy",
+                "Compression Ratio",
+                "MNIST Dataset",
+                "Training Data Points"
+            ],
+            "Author Keywords": [
+                "Machine Learning",
+                "Clause pruning",
+                "Logic Propositions",
+                "Tsetlin Machines",
+                "Compression",
+                "MNIST"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -97,7 +137,42 @@
                 "firstName": "Alex",
                 "lastName": "Yakovlev"
             }
-        ]
+        ],
+        "abstract": "This paper presents an asynchronous Tsetlin Automaton (TA) architecture based on non-volatile memory technology. The use of non-volatile local storage in TA states aims to reduce the data movement and improve system robustness through data retention. Adopting asynchronous TA designs helps to eliminate the need for clock trees with the potential to improve performance and energy efficiency. The proposed design features non-volatile TA cell circuits and includes asynchronous controls together with their interfacing subsystems. The presented TA in this paper is the first attempt at designing TAs with non-volatile memory cells and asynchronous control mechanism. The cell designs can be used as modular libraries to construct Tsetlin Machines (TMs) for machine learning applications, in particular for AI at the edge, where data retention is important in the face of unpredictable power supplies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Nonvolatile memory",
+                "Power supplies",
+                "Microprocessors",
+                "Pipelines",
+                "Memory architecture",
+                "Computer architecture",
+                "Machine learning"
+            ],
+            "Index Terms": [
+                "Non-volatile Memory",
+                "Machine Learning",
+                "Memory Cells",
+                "Data Retention",
+                "Asynchronous Control",
+                "Transition State",
+                "Control Unit",
+                "State Machine",
+                "Hot Electrons",
+                "Transition In Response",
+                "Flash Memory",
+                "Combinational Logic",
+                "Boolean Algebra",
+                "Gray Code",
+                "Sense Amplifier"
+            ],
+            "Author Keywords": [
+                "Machine learning",
+                "Tsetlin Automaton",
+                "Non-volatile Storage",
+                "Asynchronous Control Logic"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -150,7 +225,38 @@
                 "firstName": "Andrew",
                 "lastName": "Brown"
             }
-        ]
+        ],
+        "abstract": "This work proposes an alternative feedback mechanism for the Tsetlin Machine, a nascent machine learning algorithm that accepts binarized input data and uses propositional logic to identify and accumulate sub-patterns from a given entropy. The proposed method monitors and limits the included literals that contribute to the sub-patterns. This permits the algorithm to converge without requiring the class sum, the primary hurdle of a fully parallelized implementation. Empirical results from a custom RISC-V NoC cluster demonstrate up to a 36X reduction in wall-clock runtime for a 2.5% reduction in accuracy using the MNIST dataset. The proposed method outperforms the original feedback mechanism by 2% when the number of accumulated sub-patterns (clauses) are tightly constrained for the same dataset. This is achieved with a 1.8X reduction in wall-clock runtime.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Runtime",
+                "Machine learning algorithms",
+                "Limiting",
+                "Clustering algorithms",
+                "Entropy",
+                "Parallel architectures",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "Parallelization",
+                "Feedback Mechanism",
+                "Reduction In Accuracy",
+                "MNIST Dataset",
+                "Reduction In Runtime",
+                "Propositional Logic",
+                "Training Data",
+                "Automata",
+                "Accuracy Loss",
+                "Original Algorithm",
+                "Multicast",
+                "Feedback Behavior"
+            ],
+            "Author Keywords": [
+                "Tsetlin Machine",
+                "Parallel Architectures",
+                "RISC-V"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -197,7 +303,52 @@
                 "firstName": "Ole-Christoffer",
                 "lastName": "Granmo"
             }
-        ]
+        ],
+        "abstract": "This paper presents a Field Programmable Gate Array (FPGA) implementation of an image classification accelerator based on the Convolutional Tsetlin Machine (CTM). The work is a concept design, and the solution demonstrates recognition of two classes in 4 × 4 images with a 2 × 2 convolution window. More specifically, there are two sub-Tsetlin Machines (TMs), one per class. A single sub-TM employs 40 clauses, each controlled by 20 Tsetlin Automata. The accelerator features random patch selection, in parallel for all clauses, based on reservoir sampling. The design is implemented in a Xilinx Zync XC7Z020 FPGA. With an operating clock speed of 30 MHz, the accelerator is capable of inferring at the rate of 3.3 million images per second with an additional power consumption of 20 mW from idle mode. The average test accuracy is 96.7% when trained on data with 10% noise. A training session with 100 epochs and 8192 examples takes 1.5 seconds. Due to the limited hardware resources required, the CTM accelerator represents a promising concept for online learning in energy-frugal systems. The solution can be scaled to multi-class systems and larger images.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Power demand",
+                "Image recognition",
+                "Convolution",
+                "Training data",
+                "Logic gates",
+                "Reservoirs"
+            ],
+            "Index Terms": [
+                "Image Classification",
+                "Power Consumption",
+                "Random Selection",
+                "Test Accuracy",
+                "Average Accuracy",
+                "Online Learning",
+                "Large Image",
+                "Hardware Resources",
+                "Sample Reservoir",
+                "Idle Mode",
+                "Neural Network",
+                "Training Data",
+                "Convolutional Neural Network",
+                "Random Number",
+                "Parallelization",
+                "Random Generation",
+                "Clock Cycles",
+                "MNIST Dataset",
+                "Target Class",
+                "Sliding Window",
+                "Type Ib",
+                "Training Epochs",
+                "Boolean Variable",
+                "Type Ia",
+                "Propositional Logic"
+            ],
+            "Author Keywords": [
+                "Convolutional Tsetlin Machine",
+                "FPGA",
+                "Image classification",
+                "Machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -250,7 +401,56 @@
                 "firstName": "Anis",
                 "lastName": "Yazidi"
             }
-        ]
+        ],
+        "abstract": "With the increasing popularity of deep learning, researchers and practitioners seem to prefer deep neural networks (DNN) in Natural Language Processing (NLP) owing to the superior performance compared with classical machine learning techniques. However, the black box nature of deep learning poses transparency and explainability barriers and reduces their trustworthiness. Recently, a newly mentioned model, Tsetlin Machine (TM), offered reliable performance and human-level interpretability in many natural language processing (NLP) tasks. However, the related work is concentrated on English language, while the research on Chinese datasets is still open. In this paper, we employ the TM model for sentiment analysis for Chinese datasets, where the learning process is transparent and easily-understandable. More specifically, the clauses of TM make it capable of learning semantic information of Chinese vocabulary. Experiment results have shown that TM can provide similar or even higher accuracy and F1 score than more complex but non-transparent deep learning models.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Deep learning",
+                "Sentiment analysis",
+                "Analytical models",
+                "Vocabulary",
+                "Semantics",
+                "Neural networks",
+                "Bit error rate"
+            ],
+            "Index Terms": [
+                "Sentiment Analysis",
+                "Chinese Dataset",
+                "Machine Learning",
+                "Deep Learning",
+                "Learning Models",
+                "Deep Neural Network",
+                "F1 Score",
+                "Deep Learning Models",
+                "Natural Language Processing Tasks",
+                "Language Processing Tasks",
+                "Black-box Nature",
+                "Negation",
+                "Public Datasets",
+                "Original Paper",
+                "Long Short-term Memory",
+                "Attention Mechanism",
+                "Score Categories",
+                "Chinese Language",
+                "Fake News",
+                "Input Modalities",
+                "Short-term Memory Network",
+                "Bag-of-words",
+                "Traditional Machine Learning Models",
+                "Gated Recurrent Unit",
+                "Chinese Text",
+                "Output Of Module",
+                "BERT Model",
+                "Type Of Feedback",
+                "English Dataset",
+                "Pre-training Method"
+            ],
+            "Author Keywords": [
+                "Tsetlin Machine",
+                "Chinese Sentiment Analysis",
+                "Interpretability Analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -309,7 +509,52 @@
                 "firstName": "Shidhartha",
                 "lastName": "Das"
             }
-        ]
+        ],
+        "abstract": "The incorporation of Machine Learning (ML) models into smart devices and wearables has increased design focus on scalability and energy efficiency considerations. To transition towards on-device training, there must be a balance between data compaction to reduce ML complexity and data significance to maintain high learning efficacy. In this paper we examine a novel approach towards low-energy booleanization (i.e. Boolean encoding of raw data, which is different from binarization with positional significance used for encoding raw data) for a recently proposed machine learning method — the Tsetlin Machine. The approach in this paper offers a unique synergy between quantile binning for initial data encoding and logic minimization for significance-driven compaction of the dataset. Through this approach, the paper demonstrates how energy-frugal Tsetlin Machine models can be created with, for some datasets, up to 38.8x less energy consumption per datapoint during training. The proposed method offers significantly better energy efficiency with similar performance when compared with Binary Neural Network counterparts.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Wearable computers",
+                "Machine learning",
+                "Minimization",
+                "Energy efficiency",
+                "Encoding",
+                "Compaction"
+            ],
+            "Index Terms": [
+                "Energy Efficiency",
+                "Neural Network",
+                "Machine Learning",
+                "Scalable",
+                "Efficacy Of Learning",
+                "Breast Cancer",
+                "Training Data",
+                "Feature Space",
+                "Data Pre-processing",
+                "Random Generation",
+                "Number Of Data Points",
+                "Data Space",
+                "State Machine",
+                "Iterative Optimization",
+                "Classification Output",
+                "Learning Rule",
+                "Energy Gain",
+                "Adaptive Threshold",
+                "Accuracy Drop",
+                "MNIST Dataset",
+                "ESPRESSO",
+                "Feature Column",
+                "Propositional Logic",
+                "Longer Training Time"
+            ],
+            "Author Keywords": [
+                "Tsetlin machine",
+                "machine learning",
+                "quantile binning",
+                "booleanization",
+                "logic minimization"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -338,7 +583,43 @@
                 "firstName": "Sander",
                 "lastName": "Jyhne"
             }
-        ]
+        ],
+        "abstract": "Legal text contains various challenges in automated processing, compounded by the lack of detailed resources available for them. However, the ability of process such texts automatically is highly sought after. In this paper we try to parse a set of contract documents and identify key legal terminologies present in them, with the help of four text processing methods from different backgrounds: Tsetlin Machines, BERT, CNNBiLSTM and FastText. We show that the TM based approach works at par with other popular methods, with the added benefit of making available important clause literals that can act as specific linguistic cues to legal terminology.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Law",
+                "Terminology",
+                "Text recognition",
+                "Text categorization",
+                "Bit error rate",
+                "Linguistics",
+                "Contracts"
+            ],
+            "Index Terms": [
+                "Legal Agreements",
+                "Legal Documentation",
+                "Legal Texts",
+                "Linguistic Cues",
+                "Neural Network",
+                "Machine Learning",
+                "Deep Learning",
+                "Natural Language",
+                "Language Model",
+                "Heaviside Function",
+                "Lack Of Expertise",
+                "Bidirectional Long Short-term Memory",
+                "Mechanistic Reasoning",
+                "BERT Model",
+                "Legal Domain",
+                "Tokenized"
+            ],
+            "Author Keywords": [
+                "Tsetlin machine",
+                "pattern recognition",
+                "interpretable AI",
+                "legal document analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -397,7 +678,47 @@
                 "firstName": "Andrew",
                 "lastName": "Brown"
             }
-        ]
+        ],
+        "abstract": "The black-box approach towards machine learning models is not helpful for creating fast and efficient implementations. optimization of these models requires a clear understanding of every aspect of the system, including the architecture, algorithms, and dynamics of the training process. This paper presents a range of visualizations for investigating the dynamics of the Tsetlin Machine, which is a new machine-learning algorithm with logic underpinning. These include static visualizations such as architecture and algorithm diagrams and dynamic visualizations such as plotting the evolution of the internal state of the machine. The workflow that supports the visualizations is generalized into an extendable open-source development kit that can be used with future generations of Tsetlin Machines. The example visualization diagrams from the MNIST dataset are discussed from the viewpoint of parallel implementation, hardware acceleration, and opportunities for architectural optimization.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Visualization",
+                "Machine learning algorithms",
+                "Heuristic algorithms",
+                "Machine learning",
+                "Optimization",
+                "Hardware acceleration"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Dynamic Visualization",
+                "Efficient Implementation",
+                "Development Kit",
+                "MNIST Dataset",
+                "Parallel Implementation",
+                "Hardware Accelerators",
+                "Neural Network",
+                "Learning Process",
+                "Decision Tree",
+                "Parallelization",
+                "Input Vector",
+                "Automata",
+                "Type Of Feedback",
+                "Set Of Tables",
+                "Domino Effect",
+                "Classification Confidence",
+                "Measurement Window",
+                "CSV File"
+            ],
+            "Author Keywords": [
+                "Tsetlin machine",
+                "Tsetlin automata",
+                "visualization",
+                "development kit",
+                "API"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -432,7 +753,46 @@
                 "firstName": "Linga Reddy",
                 "lastName": "Cenkeramaddi"
             }
-        ]
+        ],
+        "abstract": "The activity classification for aerial vehicles plays a vital role in privacy monitoring and security surveillance applications, which is crucial and valuable in modern times. This paper presents the Tsetlin Machine model for aerial vehicle’s activity classification using the mm-Wave frequency modulated continuous wave (FMCW) Radar data. The proposed Tsetlin Machine (TM) model is based on propositional logic, which is much more transparent and lighter than the existing models. It can also be easily transferred to hardware, making it more useful even in practical circumstances. Furthermore, the model has a 92.5% accuracy in activity classification, which is close to other lightweight classification models like logistic regression, light gradient boosting machine (GBM) and support vector machine (SVM). Furthermore, the proposed model’s accuracy is much better than the pre-trained models such as VGG16, ResNet50, and InceptionResNet with at least $98 \\times$ reduction in memory size.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Support vector machines",
+                "Privacy",
+                "Surveillance",
+                "Radar",
+                "Autonomous aerial vehicles",
+                "Security",
+                "Task analysis"
+            ],
+            "Index Terms": [
+                "Aerial Vehicles",
+                "Unmanned Aerial Vehicles",
+                "Support Vector Machine",
+                "Machine Model",
+                "Memory Size",
+                "Frequency Modulated Continuous Wave",
+                "Gradient Boosting Machine",
+                "Propositional Logic",
+                "Hyperparameters",
+                "Artificial Neural Network",
+                "Markov Chain",
+                "Negation",
+                "Hyperparameter Tuning",
+                "Target Class",
+                "Automata",
+                "Most Significant Bit",
+                "Pre-processing Techniques",
+                "Mb In Size",
+                "Sentence Condition"
+            ],
+            "Author Keywords": [
+                "Propositional logic",
+                "Tsetlin Machine",
+                "Binary Classification",
+                "Artificial Intelligence"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -473,7 +833,53 @@
                 "firstName": "Christian",
                 "lastName": "Webersik"
             }
-        ]
+        ],
+        "abstract": "Unlike typical machine learning algorithms such as Artificial Neural Networks, the Tsetlin Machine (TM) is based on propositional logic instead of arithmetic operations, promoting it as a novel machine learning paradigm with interpretable learning outcomes. To this end, this paper proposes a self-supervised learning scheme inspired by the self-correction and interpretability provided by a standard TM. The proposed architecture uses a twin of Label-Critic Tsetlin Automata (TAs). The Label-TA learns the individual samples’ correct labels guided by a self-corrected TM logical clause. At the same time, the Critic-TA validates the learning and approves the Label-TA reward. Our empirical results on synthetic and real data show promising capabilities for self-supervised learning and interpretable clustering. Furthermore, the Label-Critic TM architecture demonstrates how propositional logic-based learning provides self-correction with the absence of the ground truths in data.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Machine learning algorithms",
+                "Learning automata",
+                "Training data",
+                "Self-supervised learning",
+                "Computer architecture",
+                "Machine learning",
+                "Learning (artificial intelligence)"
+            ],
+            "Index Terms": [
+                "Self-supervised Learning",
+                "Self-supervised Learning Scheme",
+                "Artificial Neural Network",
+                "Empirical Results",
+                "Correct Label",
+                "Machine Learning Paradigm",
+                "Propositional Logic",
+                "Training Data",
+                "Tertiary Education",
+                "Characteristics Of Data",
+                "Negation",
+                "Supervised Learning",
+                "Feature Values",
+                "Clustering Method",
+                "Single Class",
+                "State Machine",
+                "Labeled Samples",
+                "Learning Rule",
+                "Inference Rules",
+                "Pretext Task",
+                "MNIST Dataset",
+                "Supervisory Signal",
+                "Sample Xi",
+                "Win Probability",
+                "Self-supervised Task"
+            ],
+            "Author Keywords": [
+                "Self-supervised machine learning",
+                "tsetlin machines",
+                "clustering",
+                "interpretable AI",
+                "reinforcement learning"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -538,7 +944,60 @@
                 "firstName": "Oliver",
                 "lastName": "Tomic"
             }
-        ]
+        ],
+        "abstract": "Tabular data with few observations and many features are common in the healthcare domain. With its rule-based approach to data modelling, the Tsetlin Machine has considerable potential to be a valuable tool in healthcare data analysis by providing interpretability to medical personnel. However, the performance of Tsetlin Machine models may be hampered by the presence of noise, which may often be the case with healthcare data due to individual differences across patients. This study shows that intelligent pre-filtering of healthcare measurement data using so-called component-based methods, such as Principal Component Analysis or Partial Least Squares Regression, can be beneficial for the performance of Tsetlin Machines. Modelling four healthcare data sets shows that the Tsetlin Machine achieved better predictive performance on pre-filtered data for data sets with high features-to-observations ratios.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Systematics",
+                "Medical services",
+                "Predictive models",
+                "Data models",
+                "Noise measurement",
+                "Prostate cancer"
+            ],
+            "Index Terms": [
+                "Basic Components",
+                "Noisy Data",
+                "Model Performance",
+                "Least-squares",
+                "Predictive Performance",
+                "Least Squares Regression",
+                "Partial Least Squares",
+                "Presence Of Noise",
+                "Partial Least Squares Regression",
+                "Partial Least",
+                "Healthcare Domain",
+                "Squares Regression",
+                "Random Forest",
+                "Observational Data",
+                "Performance Metrics",
+                "Corresponding Points",
+                "Cancer Data",
+                "Heaviside Function",
+                "Model Setup",
+                "Cancer Datasets",
+                "High-dimensional Datasets",
+                "Prostate Cancer Dataset",
+                "Lung Cancer Datasets",
+                "Loading Matrix",
+                "Underdetermined System",
+                "Improve Prediction Performance",
+                "Prostate Cancer Data",
+                "Combination Of Hyperparameters",
+                "Leukemia Cancer"
+            ],
+            "Author Keywords": [
+                "pre-processing",
+                "pre-filtering",
+                "Tsetlin Machine",
+                "Partial Least Squares Regression",
+                "PLSR",
+                "Principal Component Analysis",
+                "PCA",
+                "healthcare data"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -561,7 +1020,51 @@
                 "firstName": "Christian D.",
                 "lastName": "Blakely"
             }
-        ]
+        ],
+        "abstract": "We propose a Convolutional Tsetlin Machine approach for the problem of detecting and analysing regime changing in multivariate time series generated by financial limit orderbooks. Such time series comprise of multiple time series exhibiting changing behaviors at different time intervals and contain different nonlinear noise and signal characteristics over time. Learning and predicting these changing regime behaviors has several challenges: (1) failure to take relationships between time series into consideration for discovering regimes in multiple time series; (2) lack of an effective approach that models time-dependent behaviors exhibited by series; (3) difficulties in handling outliers or discontinuities which may be informative. We show that our adapted approach of Convolutional Tsetlin Machines to multivariate time series regime classification enjoys many properties of traditional Tsetlin Machines while providing informative insights to regime detection in limit orderbooks while aiming to overcome these challenges.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Adaptation models",
+                "Convolution",
+                "Time series analysis",
+                "Predictive models",
+                "Behavioral sciences"
+            ],
+            "Index Terms": [
+                "Limit Order Book",
+                "Time Series",
+                "Regime Change",
+                "Multivariate Time Series",
+                "Machine Learning",
+                "Convolutional Neural Network",
+                "Window Size",
+                "Supply And Demand",
+                "Accuracy And Precision",
+                "Global Features",
+                "Index Set",
+                "Image Patches",
+                "Price Level",
+                "Labeling Strategy",
+                "Local Translation",
+                "Log Difference",
+                "Future Supply",
+                "Boolean Variable",
+                "Optimal Portfolio",
+                "Bid Price",
+                "Propositional Logic",
+                "Global Strength",
+                "Sharpe Ratio",
+                "Temporal Dimension",
+                "Regime Type",
+                "Daily Data",
+                "Market Participants"
+            ],
+            "Author Keywords": [
+                "tsetlin machine",
+                "orderbook",
+                "supervised learning"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -608,7 +1111,51 @@
                 "firstName": "Alex",
                 "lastName": "Yakovlev"
             }
-        ]
+        ],
+        "abstract": "Existing machine learning (ML) algorithms, such as Neural Networks (NNs), typically consist of complex data encoding and preprocessing on real-world data followed by extensive arithmetic. As such when implemented in hardware or software they incur high energy consumption as well as increased data-to-decision latency. Recently, the Tsetlin Machine (TM) was proposed as a promising new alternative which takes advantage of logic propositions founded on the principle of Tsetlin Automata, leading to higher energy efficiency, faster training convergence and lower latency. However, TM interfaces require complex data encoding procedures which can add significant overheads.In this paper, we propose a new machine learning approach that is built on the principle of fuzzy clusterization of decision boundaries directly from analog data. This approach effectively excludes the usual booleanization or analog-to-digital (A2D) conversion necessary in conventional approaches, thus offering low-complexity and potentially energy efficiency gains. Fundamental to this algorithm is a team of Learning Automata constituting a clusterization unit termed Clause that act as an Analog-to-Boolean classifier. Depending on the complexity of the ML dataset, a team of clauses derive the classification rules with minimal algorithmic and arithmetic complexities. The software implementation of the algorithm is tested against several problems. Experiments show that the proposed algorithm manages to achieve comparable accuracy as the Tsetlin Machine with fewer clauses. To study the impact of noise in the input features, we subsequently validate our algorithm with a few variants of noisy XOR datasets. Experiments with these datasets show that our approach is capable of mitigating noise effectively due to fuzzy classification boundaries.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Machine learning algorithms",
+                "Protocols",
+                "Learning automata",
+                "Software algorithms",
+                "Clustering algorithms",
+                "Machine learning",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Automata",
+                "Learning Automata",
+                "Neural Network",
+                "Learning Algorithms",
+                "Software Implementation",
+                "Surrogate Data",
+                "Test Accuracy",
+                "Multi-label",
+                "Input Vector",
+                "Class Distribution",
+                "Real-world Problems",
+                "Training Algorithm",
+                "Classification Output",
+                "Training Examples",
+                "Input Space",
+                "Hardware Implementation",
+                "Single Round",
+                "Performance Of Protocol",
+                "Input Point",
+                "Training Round",
+                "Training Batch",
+                "Amplitude Shift",
+                "Input Elements"
+            ],
+            "Author Keywords": [
+                "Machine learning",
+                "learning automata",
+                "clustering",
+                "model classification"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -667,7 +1214,39 @@
                 "firstName": "Rohan Kumar",
                 "lastName": "Yadav"
             }
-        ]
+        ],
+        "abstract": "Tsetlin Machines learn from input data by creating patterns in propositional logical, using the literals available in the data. These patterns vote for the classes in a classification task. Despite their simplistic premise, Tsetlin machine (TM)s have been performing at with other popular machine learning methods across various benchmarks. Not only accuracy, TMs also perform well in terms of energy efficiency and learning speed. The general TM scheme works best when there is sufficient discriminatory information available between two classes. In this paper, we explore the use of focused negative sampling (FNS) to discriminate between classes which are not easily distinguishable from each other. We carry out experiments across diverse classification tasks ranging over natural language processing, image processing, reinforcement learning to show that this approach forces the TM to arrive at patterns that can successfully tell apart two classes that are correlated. Further, we show that the proposed method achieves accuracy comparable to a vanilla Tsetlin Machine approach but in approximately 42% less number of epochs on average.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Image processing",
+                "Text categorization",
+                "Focusing",
+                "Reinforcement learning",
+                "Natural language processing",
+                "Energy efficiency"
+            ],
+            "Index Terms": [
+                "Negative Samples",
+                "Classification Task",
+                "Natural Language",
+                "Binary Classification",
+                "Image Classification",
+                "Multi-label",
+                "Class I",
+                "Airplane",
+                "Target Class",
+                "Heaviside Function",
+                "Positive Polarity",
+                "Text Classification",
+                "Self-supervised Learning",
+                "Class Boundaries",
+                "Contrastive Loss",
+                "Board Games",
+                "Input Pair",
+                "Reduce Training Time"
+            ]
+        }
     },
     {
         "publicationNumber": "9923753",
@@ -683,7 +1262,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Lists the conference organizers, sponsors, patrons, and/or committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9923753",
@@ -699,7 +1280,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the message from the conference chairs.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9923753",
@@ -715,7 +1298,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover, title page, or splash screen of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9923753",
@@ -731,7 +1316,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover, title page, or splash screen of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9923753",
@@ -747,7 +1334,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents information on conference keynote speeches.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9923753",
@@ -763,7 +1352,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the message from the conference chairs.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9923753",
@@ -779,7 +1370,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9923753",
@@ -795,7 +1388,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Lists the conference organizers, sponsors, patrons, and/or committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9923753",
@@ -811,7 +1406,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the author index for the conference.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9923753",
@@ -827,6 +1424,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 International Symposium on the Tsetlin Machine (ISTM)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the conference table of contents.",
+        "keywords": {}
     }
 ]

@@ -56,7 +56,48 @@
                 "firstName": "Mehdi",
                 "lastName": "Saligane"
             }
-        ]
+        ],
+        "abstract": "Current approaches to Analog Layout Automation apply ML techniques such as Graph Convolutional Neural Networks (GCN) to translate netlist to layout. While these ML approaches have proven to be effective, they lack the powerful reasoning capabilities, an intuitive human interface, and standard evaluation benchmarks that have been improving at a rapid development pace in Large Language Models (LLMs). The GLayout framework introduced in this work translates analog layout into an expressive, technology generic, compact text representation. Then, an LLM is taught to understand analog layout through fine-tuning and in-context learning using Retrieval Augmented Generation (RAG). The LLM is able to successfully layout unseen circuits based on new information provided in-context. We train 3.8, 7, and 22 Billion parameter quantized LLMs on a dataset of less than 50 unique circuits, and text documents providing layout knowledge. The 22B parameter model is tuned in 2 hours on a single NVIDIA A100 GPU. The open-source evaluation set is proposed as an automation benchmark for LLM layout automation tasks, and ranges from 2-transistor circuits to a ΔΣ ADC. The 22B model completes 70% of the tasks in the evaluation set, and passes DRC and LVS verification on 44% of evaluations with verified correct blocks up to 4 transistors in size.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Adaptation models",
+                "Automation",
+                "Layout",
+                "Circuits",
+                "Graphics processing units",
+                "Benchmark testing",
+                "Data models",
+                "Transistors",
+                "Integrated circuit modeling"
+            ],
+            "Index Terms": [
+                "Human Language",
+                "Analog Layout",
+                "Rate Set",
+                "Graph Convolutional Network",
+                "Model Size",
+                "Noisy Data",
+                "Performance Gain",
+                "Formal Description",
+                "Parallel Design",
+                "Specific Layer",
+                "Python Code",
+                "Operational Amplifier",
+                "Final Layout",
+                "Python Function",
+                "Python API"
+            ],
+            "Author Keywords": [
+                "Analog Layout Automation",
+                "Open Source",
+                "GLayout",
+                "Retrieval Augmented Generation (RAG)",
+                "Parameter Efficient Fine Tuning",
+                "Large Language Model",
+                "Quantized Low Rank Adaptation (QLORA)"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -79,7 +120,55 @@
                 "firstName": "Srinivas",
                 "lastName": "Jallepalli"
             }
-        ]
+        ],
+        "abstract": "Monte Carlo simulations have been the gold standard for assessing parametric yields of analog, mixed signal, and RF circuits as they offer one of the most direct representations of the variation induced by semiconductor manufacturing. However, Monte Carlo analyses are often too expensive for understanding high sigma yields with fewer defects than 1000ppm. To quantify the impact of rare events on circuit yield, we need insights into their probability densities. All rare event sampling techniques that seek to provide this insight employ a machine learning flow of some kind. The various implementations of importance sampling and statistical blockade, for example, try to locate the rare event populations in parametric space through input domain mapping. Despite their popularity, they can sometimes pose a significant challenge, especially when the dimensionality of the input variation space is high, as both feature selection and machine learning can be non-trivial. A good alternative to machine learning in the input parametric domain is the innovative scaled sigma sampling technique that leverages machine learning of the probability density differences produced by scaling input standard deviations. This paper reviews these key approaches for determining the high sigma yields of analog circuits. CCS Concepts • Computing methodologies $\\rightarrow$ Machine learning $\\rightarrow$ Machine learning algorithms • Computing methodologies $\\rightarrow$ Machine learning $\\rightarrow$ Machine learning approaches • Mathematics of computing $\\rightarrow$ Probability and statistics $\\rightarrow$ Statistical paradigms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Radio frequency",
+                "Monte Carlo methods",
+                "Machine learning algorithms",
+                "Reviews",
+                "Machine learning",
+                "Probability",
+                "Semiconductor device manufacture",
+                "Analog circuits",
+                "Feature extraction",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Parallel Design",
+                "High Yield",
+                "Monte Carlo Simulation",
+                "Rare Events",
+                "Semiconductor Industry",
+                "Mixed Signals",
+                "Analog Circuits",
+                "Input Domain",
+                "Radio Frequency Devices",
+                "Statistical Approach",
+                "Machine Learning Models",
+                "Input Parameters",
+                "Process Parameters",
+                "Processing Technology",
+                "Analog-to-digital Converter",
+                "Dependence Of Parameters",
+                "Curse Of Dimensionality",
+                "Yield Estimation",
+                "Dimension Increases",
+                "SPICE Simulations",
+                "Phase Noise",
+                "Cumulative Density Function"
+            ],
+            "Author Keywords": [
+                "high sigma",
+                "parametric yield",
+                "Monte Carlo: machine learning",
+                "importance sampling",
+                "statistical blockade",
+                "scaled sigma sampling"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -108,7 +197,42 @@
                 "firstName": "Keni",
                 "lastName": "Qiu"
             }
-        ]
+        ],
+        "abstract": "The traditional manual drawing method of creating schematic symbols in current PCB EDA software is tedious and time-consuming. To address this problem, this paper proposes an ML-aided approach that can generate schematic symbols automatically and quickly. The approach effectively addresses the critical challenges of pin number-name pairing and direction recognition in package diagrams. Currently, the proposed approach supports both double-side and four-side symbol generation with high accuracy and efficiency. Compared to the traditional manual method taking several minutes to hours, the proposed ML-aided approach can generate a schematic symbol within one to two minutes. CCS Concepts: • Hardware → Software tools for EDA.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Accuracy",
+                "Symbols",
+                "Manuals",
+                "Machine learning",
+                "Hardware",
+                "Pins",
+                "Software tools"
+            ],
+            "Index Terms": [
+                "Automatic Generation",
+                "Electronic Design Automation",
+                "Electronic Design Automation Tools",
+                "Pairing",
+                "Experimental Group",
+                "Deep Learning",
+                "Error Rate",
+                "Image Segmentation",
+                "Types Of Errors",
+                "Bounding Box",
+                "Recognition Accuracy",
+                "Optical Character Recognition",
+                "Recognition Errors",
+                "Direct Classification",
+                "Segmentation-based Methods"
+            ],
+            "Author Keywords": [
+                "Component symbol packaging",
+                "OCR technology",
+                "Text detection",
+                "Text direction recognition"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -155,7 +279,51 @@
                 "firstName": "Bing",
                 "lastName": "Li"
             }
-        ]
+        ],
+        "abstract": "In digital circuit design, testbenches (TBs) constitute the cornerstone of simulation-based hardware verification. Traditional methodologies for testbench generation during simulation-based hardware verification still remain partially manual, resulting in inefficiencies in testing various scenarios and requiring expensive time from designers. Large Language Models (LLMs) have demonstrated their potential in automating the circuit design flow. However, directly applying LLMs to generate testbenches suffers from a low pass rate. To address this challenge, we introduce AutoBench, the first LLM-based testbench generator for digital circuit design, which requires only the description of the design under test (DUT) to automatically generate comprehensive testbenches. In AutoBench, a hybrid testbench structure and a self-checking system are realized using LLMs. To validate the generated testbenches, we also introduce an automated testbench evaluation framework to evaluate the quality of generated testbenches from multiple perspectives. Experimental results demonstrate that AutoBench achieves a 57% improvement in the testbench pass@1 ratio compared with the baseline that directly generates testbenches using LLMs. For 75 sequential circuits, AutoBench successfully has a 3.36 times testbench pass@1 ratio compared with the baseline. The source codes and experimental results are open-sourced at this link: https://github.com/AutoBench/AutoBench. Artifact DOI: 10.5281/zenodo.13325723.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Source coding",
+                "Large language models",
+                "Manuals",
+                "Machine learning",
+                "Hardware",
+                "Sequential circuits",
+                "Integrated circuit modeling",
+                "Digital circuits",
+                "Testing"
+            ],
+            "Index Terms": [
+                "Test Bench",
+                "Large Language Models",
+                "Evaluation Framework",
+                "Language Model",
+                "Circuit Design",
+                "Digital Circuits",
+                "Integrated Circuit Design",
+                "Stage 2",
+                "Evaluation Criteria",
+                "Low Coverage",
+                "Hallucinations",
+                "Reference Signal",
+                "Computer Code",
+                "Test Scenarios",
+                "Test Stimuli",
+                "Debugging",
+                "Complete Coding",
+                "Python Code",
+                "Previous Time Point",
+                "Benchmark Suite",
+                "Syntax Errors",
+                "Txt File"
+            ],
+            "Author Keywords": [
+                "Large Language Model",
+                "Hardware Simulation",
+                "Testbench Generation"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -184,7 +352,54 @@
                 "firstName": "Sheldon X.-D.",
                 "lastName": "Tan"
             }
-        ]
+        ],
+        "abstract": "This paper presents a comprehensive set of datasets containing transient thermal maps of commercial multi/many-core CPU, GPU, and TPU processors. These thermal maps were obtained using a thermal IR imaging system and include data from a range of processors: Intel i5-3337U dual-core CPU, Intel i7-8650U quad-core CPU, AMD Ryzen 7 4800U 8-core CPU, NVIDIA GeForce RTX 4060 GPU, and Google Coral M. 2 TPU. Additionally, we review recently proposed thermal map estimation methods developed using various Deep Neural Network (DNN) techniques, including Long Short-Term Memory (LSTM), Generative Adversarial Networks (GAN), and transformer-based models. We provide a detailed discussion and comparison of these models trained on the thermal map datasets. These datasets aim to support and stimulate advanced research in thermal map estimation and modeling within the research community.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Graphics processing units",
+                "Estimation",
+                "Imaging",
+                "Transformer cores",
+                "Generative adversarial networks",
+                "Transformers",
+                "Internet",
+                "Transient analysis",
+                "Long short term memory"
+            ],
+            "Index Terms": [
+                "Thermal Function",
+                "Neural Network",
+                "Deep Neural Network",
+                "Research Community",
+                "Short-term Memory",
+                "Infrared Imaging",
+                "Long Short-term Memory",
+                "Generative Adversarial Networks",
+                "Thermal Method",
+                "Mapping Model",
+                "Thermal Model",
+                "Thermal Infrared",
+                "AMD Ryzen",
+                "Thermal Infrared Images",
+                "CPU Processor",
+                "Machine Learning",
+                "Root Mean Square Error",
+                "Transformer",
+                "Network Model",
+                "Convolutional Neural Network",
+                "Artificial Neural Network",
+                "Transformer-based Methods",
+                "Performance Metrics",
+                "Hot Spots",
+                "Time Series Data",
+                "Recurrent Neural Network",
+                "Load Operation",
+                "Zero-sum",
+                "Hyperparameters",
+                "Deep Neural Network Model"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -231,7 +446,58 @@
                 "firstName": "Farimah",
                 "lastName": "Farahmandi"
             }
-        ]
+        ],
+        "abstract": "As the complexity of System-on-Chips (SoCs) increases, ensuring their security presents escalating challenges. Formal property verification is one of the most robust methods to model and check security behaviors using model checkers. However, the generation of these security properties is a labor-intensive endeavor. Large language models (LLMs) have been applied in multiple fields due to their excellent ability to understand natural language. Hence, this paper presents a novel framework that utilizes LLMs to automate the generation of security properties directly from Register Transfer Level (RTL) designs. By extracting critical features and security assets from both the design specifications and RTL, the framework systematically produces tailored security properties for specific hardware designs. These properties are systematically cataloged in a security property database, providing an essential resource for ongoing and future hardware verification efforts. The effectiveness of this innovative framework is validated through its application to various open-source hardware designs, confirming its ability to significantly improve SoC security verification by efficiently generating robust security properties.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Threat modeling",
+                "Solid modeling",
+                "Databases",
+                "Hardware security",
+                "Static analysis",
+                "Feature extraction",
+                "System-on-chip",
+                "Registers",
+                "Open source hardware",
+                "Security"
+            ],
+            "Index Terms": [
+                "Large Language Models",
+                "Natural Language",
+                "Design Specifications",
+                "Model Checking",
+                "Formal Verification",
+                "Transition State",
+                "Control Signal",
+                "Design Features",
+                "Flow Data",
+                "Natural Properties",
+                "State Machine",
+                "Static Analysis",
+                "Design Of Components",
+                "Direct Conversion",
+                "Security Analysis",
+                "Verification Process",
+                "Security Vulnerabilities",
+                "Potential Vulnerability",
+                "Threat Model",
+                "Unauthorized Access",
+                "Number Of Assets",
+                "Hardware Security",
+                "Understanding Of Design",
+                "Attack Vector",
+                "Comprehensive Security",
+                "Information Leakage",
+                "Security Measures",
+                "Submodule"
+            ],
+            "Author Keywords": [
+                "System-on-Chip Security",
+                "Formal Property Verification",
+                "Large Language Models",
+                "Security Property Generation"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -278,7 +544,46 @@
                 "firstName": "Austin",
                 "lastName": "Rovinski"
             }
-        ]
+        ],
+        "abstract": "Large language models (LLMs) have shown significant potential in serving as domain-specific chatbots. Recently, these models have emerged as powerful tools for chip design, providing both natural language responses and script generation for domain-specific inquiries. Previous work has demonstrated the effectiveness of LLMs in assisting with physical design automation; however, these approaches often rely on proprietary tools, APIs, technologies, and designs. As a result, access to these models is extremely limited, particularly for new chip designers who could greatly benefit from a design assistant. This paper introduces OpenROAD-Assistant, an open-source chatbot for OpenROAD that relies only on public data and responds to queries in either prose or Python script using the OpenROAD APIs. OpenROAD-Assistant leverages the Llama3-8B foundation model and employs retrieval-aware fine-tuning (RAFT) to respond to physical design-specific questions for OpenROAD. Notably, OpenROAD-Assistant outperforms other foundational models such as ChatGPT3.5, ChatGPT4, Code Llama, Claude3, and other ablation study baselines on the measured metrics (pass@ k for scripting and BERTScore/BARTScore for question-answering). OpenROAD-Assistant achieves a 77% pass@1 score, 80% pass@3 score for scripting, and it achieves a 98% BERTScore and 96% BARTScore on question-answering.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Knowledge engineering",
+                "Solid modeling",
+                "Large language models",
+                "Natural languages",
+                "Machine learning",
+                "Chatbots",
+                "Hardware",
+                "Physical design",
+                "Software development management"
+            ],
+            "Index Terms": [
+                "Task Design",
+                "Physical Tasks",
+                "Physical Design",
+                "Large Language Models",
+                "Foundation Model",
+                "Chip Design",
+                "Semantic",
+                "Training Set",
+                "Training Data",
+                "Large Amount Of Data",
+                "Correct Responses",
+                "F1 Score",
+                "Paraphrase",
+                "Relevant Context",
+                "Vector Graphics",
+                "Traditional Metrics",
+                "Task Planning",
+                "Electronic Design Automation",
+                "High-level Synthesis",
+                "Physical Flow",
+                "Text Generation",
+                "Training Methodology"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -325,7 +630,54 @@
                 "firstName": "Cheng",
                 "lastName": "Zhuo"
             }
-        ]
+        ],
+        "abstract": "Subcircuit identification finds wide applications in logic synthesis, physical design, and design verification. With the continuous increase in the scale of integrated circuits, the exploration of efficient identification algorithms has become a key issue. By modeling circuits as graphs, subcircuit identification can be formulated as a subgraph isomorphism problem. Previous efforts either use combinatorial methods to search for isomorphic subgraphs node-by-node, or perform learning-based methods by extracting the structural graph features using vanilla graph neural networks (GNNs). These methods either suffer from slow matching speeds or low accuracy, failing to meet the requirements of large-scale tasks. In this work, we propose a fast and accurate subgraph matching framework for large-scale circuit identification. Firstly, we propose a hypergraph representation method to capture the structure and device attributes of the circuit efficiently. Secondly, we develop an approximate matching method based on a hypergraph convolutional network (HGCN), enhanced with multiple techniques to improve the accuracy and matching speed. Finally, the potential isomorphic subgraphs identified by our HGCN method are further verified by an exact matching method. Our framework outperforms previous graph learning methods by achieving a 16.46% improvement in accuracy. Compared to exact matching methods, our identification framework demonstrates over a $20.29 \\times$ speedup in matching time while maintaining high accuracy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Learning systems",
+                "Accuracy",
+                "Runtime",
+                "Machine learning",
+                "Feature extraction",
+                "Object recognition",
+                "Logic",
+                "Integrated circuit modeling",
+                "Testing",
+                "Physical design"
+            ],
+            "Index Terms": [
+                "Design Framework",
+                "Subgraph Matching",
+                "Neural Network",
+                "Estimation Method",
+                "Low Accuracy",
+                "Learning-based Methods",
+                "Exact Match",
+                "Exact Method",
+                "Graph Neural Networks",
+                "Increase In Scale",
+                "Matching Accuracy",
+                "Large-scale Identification",
+                "Approximate Matching",
+                "Large-scale Circuits",
+                "Training Set",
+                "Validation Set",
+                "Convolutional Layers",
+                "Multilayer Perceptron",
+                "Training Stage",
+                "Latent Space",
+                "Neighboring Nodes",
+                "Electrostatic Discharge",
+                "Nodes In The Graph",
+                "Graph Attention Network",
+                "Embedding Vectors",
+                "Early Stage Of Training",
+                "Node Features",
+                "Incidence Matrix",
+                "Graph Convolution",
+                "Multigraph"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -360,7 +712,53 @@
                 "firstName": "Sachin S.",
                 "lastName": "Sapatnekar"
             }
-        ]
+        ],
+        "abstract": "Engineering change orders (ECOs) in late stages make minimal design fixes to recover from timing shifts due to excessive IR drops. This paper integrates IR-drop-aware timing analysis and ECO timing optimization using reinforcement learning (RL). The method operates after physical design and power grid synthesis, and rectifies IR-drop-induced timing degradation through gate sizing. It incorporates the Lagrangian relaxation (LR) technique into a novel RL framework, which trains a relational graph convolutional network (R-GCN) agent to sequentially size gates to fix timing violations. The R-GCN agent outperforms a classical LR-only algorithm: in an open 45 nm technology, it (a) moves the Pareto front of the delay-power tradeoff curve to the left (b) saves runtime over the prior approaches by running fast inference using trained models, and (c) reduces the perturbation to placement by sizing fewer cells. The RL model is transferable across timing specifications and to unseen designs with fine tuning.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Training",
+                "Solid modeling",
+                "Runtime",
+                "Biological system modeling",
+                "Reinforcement learning",
+                "Logic gates",
+                "Timing",
+                "Optimization",
+                "Tuning"
+            ],
+            "Index Terms": [
+                "Engineering Change Order",
+                "Power Grid",
+                "Voltage Drop",
+                "Graph Convolutional Network",
+                "Prior Approaches",
+                "Reinforcement Learning Model",
+                "Reinforcement Learning Framework",
+                "State Space",
+                "Lagrange Multiplier",
+                "Nodes In The Graph",
+                "Single Instance",
+                "Reward Function",
+                "Deep Reinforcement Learning",
+                "Markov Decision Process",
+                "Target Network",
+                "Constrained Optimization Problem",
+                "Bellman Equation",
+                "Update Strategy",
+                "Critical Path",
+                "Beginning Of Episode",
+                "Choice Problem",
+                "Deep Q-network",
+                "Large Perturbations",
+                "Reinforcement Learning Agent",
+                "Incoming Edges",
+                "Early Design Stages",
+                "Weight Matrix",
+                "Supply Voltage",
+                "Penalty Function"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -389,7 +787,56 @@
                 "firstName": "Takashi",
                 "lastName": "Sato"
             }
-        ]
+        ],
+        "abstract": "Electrical testing of semiconductor devices is a critical process for ensuring their quality and reliability. Despite the existence of the standard dynamic part average test (DPAT), the detection of outliers that deviate from the spatial trend within a wafer remains challenging because the distinction between good and defective devices is not always clear. This paper presents an overview of two recently proposed outlier detection methods utilizing Gaussian process regression (GPR) in the context of electrical device testing. Experiments on real wafers show that even a simple application of GPR can outperform DPAT in terms of detection performance. The integration of GPR and ensemble learning further facilitates the development of outlier detection methods, enhancing detection performance and reducing computation time.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Performance evaluation",
+                "Training",
+                "Semiconductor devices",
+                "Semiconductor device reliability",
+                "Market research",
+                "Ensemble learning",
+                "Probes",
+                "Anomaly detection",
+                "Standards",
+                "Testing"
+            ],
+            "Index Terms": [
+                "Computation Time",
+                "Detection Performance",
+                "Kriging",
+                "Outlier Detection",
+                "Semiconductor Devices",
+                "Spatial Trends",
+                "Reduce Computation Time",
+                "Outlier Detection Methods",
+                "Training Data",
+                "Test Data",
+                "Learning Algorithms",
+                "Training Dataset",
+                "Test Method",
+                "Test Performance",
+                "Measurement Data",
+                "Test Dataset",
+                "Yield Losses",
+                "Graphics Processing Unit",
+                "Kernel Function",
+                "Gaussian Process Regression Model",
+                "Credible Interval",
+                "Test Items",
+                "Theoretical Line",
+                "Large-scale Integration",
+                "Number Of Chips",
+                "Rejection Rate",
+                "Power Devices"
+            ],
+            "Author Keywords": [
+                "Electrical testing",
+                "Outlier detection",
+                "Gaussian process regression"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -442,7 +889,44 @@
                 "firstName": "Longxing",
                 "lastName": "Shi"
             }
-        ]
+        ],
+        "abstract": "With technology scaling progressing well into deep nanometer region, the number of technology corners surges from dozens to hundreds. Timing closure at Engineering Change Orders (ECO) stage is becoming increasingly challenging and time-consuming. Existing methodologies mainly focus on improving efficiency by predicting the full-corner timing metrics based on known corners. However, the escalating demand of known corners essential for complete timing deductions significantly prolongs the application of these methods. In this work, we propose a framework called FACT, to fast and accurately predict full-corner timing metrics for timing closure optimization circle. Our approach simplifies the process by necessitating timing analysis under only one known corner. Moreover, our framework seamlessly integrates with commercial EDA design flows, making it practical in industrial environments. Experimental results on open-source designs indicate superior stability of our method. Additionally, our approach achieves a significant runtime speed-up over previous ML-based timing ECO flows. CCS CONCEPTS • Hardware → Methodologies for EDA; Static timing analysis.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Accuracy",
+                "Runtime",
+                "Machine learning",
+                "Transformers",
+                "Stability analysis",
+                "Hardware",
+                "Timing",
+                "Surges",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Prediction Accuracy",
+                "Time Metrics",
+                "Commercial Flow",
+                "Convolutional Neural Network",
+                "Prediction Methods",
+                "Graphics Processing Unit",
+                "Lookup Table",
+                "Kriging",
+                "Critical Path",
+                "Set Of Layers",
+                "Technology Node",
+                "Path Delay",
+                "ML-based Methods",
+                "Sequence Embedding"
+            ],
+            "Author Keywords": [
+                "Engineering change orders",
+                "Full-corner timing metrics",
+                "Timing closure",
+                "Commercial EDA design flows"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -477,7 +961,54 @@
                 "firstName": "Jiang",
                 "lastName": "Hu"
             }
-        ]
+        ],
+        "abstract": "Flip-flops are simultaneously endpoints of combinational logic timing paths and leaf nodes of clock networks. Hence, flip-flop placement significantly affects both circuit timing and clock network power. Previous works on flip-flop clustering/placement are mostly based on geometric models, which have limited accuracy for timing and power estimation. Moreover, these methods cannot account for the impact of clock tree synthesis parameters. In order to overcome this drawback, we develop CNN-based circuit timing and clock network power models. The CNN models are further applied to guide flip-flop centric incremental placement for simultaneous timing and clock network power optimization. Experimental results on benchmark circuits show that our method outperforms state-of-the-art previous works on timing, power, and computation runtime. CCS Concepts • Hardware → Electronic design automation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Runtime",
+                "Computational modeling",
+                "Machine learning",
+                "Timing",
+                "Logic",
+                "Integrated circuit modeling",
+                "Optimization",
+                "Clocks",
+                "Flip-flops"
+            ],
+            "Index Terms": [
+                "Optimal Power",
+                "Clock Network",
+                "Convolutional Neural Network",
+                "Time Estimation",
+                "Convolutional Neural Network Model",
+                "Geometric Model",
+                "Power Estimation",
+                "Combinational Logic",
+                "Computational Runtime",
+                "Electronic Design Automation",
+                "Training Data",
+                "Step Size",
+                "Support Vector Machine",
+                "Test Dataset",
+                "Machine Learning Models",
+                "Weighting Factor",
+                "Fully-connected Layer",
+                "K-means Algorithm",
+                "Reduction In Power",
+                "Max-pooling Layer",
+                "Data For Model Training",
+                "Conservative Manner",
+                "Batch Normalization Layer",
+                "Chain Rule"
+            ],
+            "Author Keywords": [
+                "Clock network power",
+                "timing performance",
+                "co-optimization",
+                "placement"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -506,7 +1037,61 @@
                 "firstName": "Steven",
                 "lastName": "Wilton"
             }
-        ]
+        ],
+        "abstract": "Machine learning (ML) has proved useful across a wide range of applications in the very-large-scale integration computer-aided design (VLSI CAD) domain. To avoid overestimating ML models’ generalization capabilities for real-world deployments, best practices utilize realistic data and avoid test set information leakage during ML model preparation. In this paper we identify a further consideration, atomic data groups, which are sets of very highly correlated data that may also lead to such overestimation if not accounted for in train-test splits during model evaluation. We investigate the potential impact of atomic data groups in experimental design through a case study of field-programmable gate array (FPGA) routing. Our investigations show that model performance in deployment is overestimated by 38% in this case study when atomic data groups are ignored. We hope that these results motivate other ML CAD practitioners to be critical of their train-test splits and identify when atomic data groups are relevant to their model evaluations.CCS Concepts• Hardware → Reconfigurable logic and FPGAs; Best practices for EDA; • Computing methodologies → Machine learning.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Design automation",
+                "Computational modeling",
+                "Supervised learning",
+                "Machine learning",
+                "Very large scale integration",
+                "Routing",
+                "Data models",
+                "Field programmable gate arrays",
+                "Best practices"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Atoms Of Groups",
+                "Experimental Design",
+                "Model Evaluation",
+                "Machine Learning Models",
+                "Information Leakage",
+                "Generalization Capability",
+                "Realistic Data",
+                "Train-test Split",
+                "Real-world Deployment",
+                "Training Set",
+                "Training Data",
+                "Test Data",
+                "Overfitting",
+                "Decision Tree",
+                "Supervised Learning",
+                "Performance Metrics",
+                "Mean Absolute Error",
+                "Circuit Design",
+                "Matthews Correlation Coefficient",
+                "Routing Problem",
+                "Benchmark Suite",
+                "Resources Of Nodes",
+                "Test Metrics",
+                "Deployment Scenarios",
+                "Data Split",
+                "Implementation Group",
+                "Multiple Data Points"
+            ],
+            "Author Keywords": [
+                "VLSI",
+                "CAD",
+                "FPGA",
+                "routing",
+                "supervised learning",
+                "information leakage",
+                "machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -577,7 +1162,60 @@
                 "firstName": "Cheng",
                 "lastName": "Zhuo"
             }
-        ]
+        ],
+        "abstract": "Power grid analysis is essential for integrated circuit design, especially as the scale extends to billions of nodes, making precise calculations across the entire spatial domain prohibitively expensive. Domain decomposition methods (DDM) facilitate block-wise parallel analysis of power distribution networks (PDN) through segmentation, yet they still face bottlenecks in computational load balance during parallel processing. Considering the vastness of PDN structures and the emphasis on verifying areas prone to significant IR drop (i.e., hotspot) rather than those less affected, our research introduces a machine learning (ML)-based method for detecting PDN hotspots. This method focuses on accurately identifying areas within sub-blocks where the hotspot intensity is high. We then propose a novel parallel approximation computing approach that integrates hotspot detection, enabling approximations in regions not marked as hotspots. This strategy optimizes computational resources and effectively accelerates analysis. Our experimental results demonstrate that the hotspot detection model achieves an average accuracy of 94.39%. The approximation strategy for non-hotspot sub-blocks results in 0.56-1.4% mean relative error, while achieving an average computational speedup of 3.21× over the CK-TSO parallel solver and 2.21× over the conventional DDM-based solver. CCS Concepts • Hardware → Power and thermal analysis; • Computing methodologies → Machine learning; Parallel computing methodologies.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Integrated circuit synthesis",
+                "Solid modeling",
+                "Computational modeling",
+                "Pipelines",
+                "Machine learning",
+                "Parallel processing",
+                "Power grids",
+                "Hardware",
+                "Thermal analysis",
+                "Integrated circuit modeling"
+            ],
+            "Index Terms": [
+                "Power Grid",
+                "Power Grid Analysis",
+                "Machine Learning",
+                "Computational Resources",
+                "Parallelization",
+                "Voltage Drop",
+                "Circuit Design",
+                "Mean Relative Error",
+                "Domain Decomposition",
+                "Power Distribution Network",
+                "Integrated Circuit Design",
+                "Computation Time",
+                "Convolutional Neural Network",
+                "Streamline",
+                "Machine Learning Models",
+                "Feature Maps",
+                "Linear System",
+                "Mean Absolute Error",
+                "Data Augmentation",
+                "Current Distribution",
+                "Convolutional Neural Network Model",
+                "Average Relative Error",
+                "Parallel Efficiency",
+                "Schur Complement",
+                "Direct Solver",
+                "Parallel Framework",
+                "Identification Of Hotspots",
+                "Critical Blocks",
+                "Noise Power",
+                "Graph Partitioning"
+            ],
+            "Author Keywords": [
+                "Power grid",
+                "parallel",
+                "hotspot",
+                "machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -612,7 +1250,48 @@
                 "firstName": "Haoxing",
                 "lastName": "Ren"
             }
-        ]
+        ],
+        "abstract": "Exploding predictive AI has enabled fast yet effective evaluation and decision-making in modern chip physical design flows. State-of-the-art frameworks typically include the objective of minimizing the mean square error (MSE) between the prediction and the ground truth. We argue the averaging effect of MSE induces limitations in both model training and deployment, and good MSE behavior does not guarantee the capability of these models to assist physical design flows which are likely sabotaged due to a small portion of prediction error. To address this, we propose mini-pixel batch gradient descent (MPGD), a plug-and-play optimization algorithm that takes the most informative entries into consideration, offering probably faster and better convergence. Experiments on representative benchmark suits show the significant benefits of MPGD on various physical design prediction tasks using CNN or Graph-based models.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Solid modeling",
+                "Mean square error methods",
+                "Machine learning",
+                "Predictive models",
+                "Prediction algorithms",
+                "Cost function",
+                "Reliability",
+                "Physical design",
+                "Convergence"
+            ],
+            "Index Terms": [
+                "Gradient Descent",
+                "Physical Design",
+                "Design Flow",
+                "Physical Flow",
+                "Batch Gradient Descent",
+                "Mean Square Error",
+                "Prediction Error",
+                "Prediction Task",
+                "Graph-based Models",
+                "Prediction Model",
+                "Cost Function",
+                "Data Entry",
+                "Training Stage",
+                "Prediction Rate",
+                "Aerial Images",
+                "Training Algorithm",
+                "Optimization Step",
+                "Largest Error",
+                "Fully Convolutional Network",
+                "Mean Square Error Loss",
+                "Large Prediction Errors",
+                "Stable Convergence",
+                "Early Stage Of Training",
+                "Chip Design"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -671,7 +1350,58 @@
                 "firstName": "Jason",
                 "lastName": "Cong"
             }
-        ]
+        ],
+        "abstract": "In recent years, domain-specific accelerators (DSAs) have gained popularity for applications such as deep learning and autonomous driving. To facilitate DSA designs, programmers use high-level synthesis (HLS) to compile a high-level description written in C/C++ into a design with low-level hardware description languages that eventually synthesize DSAs on circuits. However, creating a high-quality HLS design still demands significant domain knowledge, particularly in microarchitecture decisions expressed as pragmas. Thus, it is desirable to automate such decisions with the help of machine learning for predicting the quality of HLS designs, requiring a deeper understanding of the program that consists of original code and pragmas. Naturally, these programs can be considered as sequence data. In addition, these programs can be compiled and converted into a control data flow graph (CDFG). But existing works either fail to leverage both modalities or combine the two in shallow or coarse ways. We propose PROGSG, a model that allows interaction between the source code sequence modality and the graph modality in a deep and fine-grained way. To alleviate the scarcity of labeled designs, a pre-training method is proposed based on a suite of compiler’s data flow analysis tasks. Experimental results show that PROGSG reduces the RMSE of design performance predictions by up to 22%, and identifies designs with an average of 1.10× and 1.26× (up to 8.17× and 13.31×) performance improvement in design space exploration (DSE) task compared to HARP and AutoDSE, respectively. CCS Concepts • Hardware → High-level and register-transfer level synthesis; • Computing methodologies → Neural networks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Representation learning",
+                "Solid modeling",
+                "Codes",
+                "Source coding",
+                "Design methodology",
+                "Transformer cores",
+                "Transformers",
+                "Hardware",
+                "Space exploration",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Representation Learning",
+                "High-level Synthesis",
+                "Electronic Design Automation",
+                "Root Mean Square Error",
+                "Source Code",
+                "Microarchitecture",
+                "Design Quality",
+                "Design Space Exploration",
+                "Pre-training Method",
+                "Semantic",
+                "Mean Square Error",
+                "Parallelization",
+                "Representative Sequences",
+                "Large Model",
+                "Multilayer Perceptron",
+                "Language Model",
+                "Transformer Model",
+                "Circuit Design",
+                "Design Points",
+                "Graph Neural Networks",
+                "Node Embeddings",
+                "Multimodal Learning",
+                "Integrated Circuit Design",
+                "Cross-modal Interactions",
+                "Graph Neural Network Model",
+                "Graphical Summary",
+                "Hierarchical Representation",
+                "Graphical Representation"
+            ],
+            "Author Keywords": [
+                "GNN",
+                "Language Model",
+                "HLS",
+                "FPGA"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -724,7 +1454,60 @@
                 "firstName": "Runsheng",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "Device modeling is essential for circuit simulations and designs in terms of constructing the circuit matrix equations of KCL and KVL. While there are classical methodologies, machine learning techniques are promising to bring innovations in the landscape of device modeling. This work reviews the device modeling from a top-down perspective, covering two different interpretations of modeling. Then the recent process in the domain-specific machine learning approaches is briefly summarized for logic and memory devices. The challenges ahead, for the machine learning model to support the industry’s practical needs, are analyzed. A concept of fusion model, by deeply merging device physics and neural networks, is also explained. CCS CONCEPTS • Hardware $\\rightarrow$ Electronic design automation $\\rightarrow$ Modeling and parameter extraction.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Analytical models",
+                "Technological innovation",
+                "Reviews",
+                "Scalability",
+                "Machine learning",
+                "Mathematical models",
+                "Integrated circuit modeling",
+                "Physics",
+                "Parameter extraction"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Device Model",
+                "Neural Network",
+                "Machine Learning Techniques",
+                "Machine Learning Approaches",
+                "Circuit Design",
+                "Extraction Parameters",
+                "Memory Devices",
+                "Circuit Simulation",
+                "Top-down Perspective",
+                "Device Physics",
+                "Electronic Design Automation",
+                "Model Parameters",
+                "Artificial Neural Network",
+                "Paradigm Shift",
+                "Alternative Models",
+                "Parameter Space",
+                "Global Model",
+                "Long Short-term Memory",
+                "Latent Space",
+                "Artificial Neural Network Model",
+                "SPICE Simulations",
+                "Physics-based Models",
+                "Application Of Machine Learning Algorithms",
+                "Switching States",
+                "Machine Learning Applications",
+                "Semiconductor Industry",
+                "Newton Method",
+                "Memory Model",
+                "Stringent Requirements"
+            ],
+            "Author Keywords": [
+                "device modeling",
+                "compact model",
+                "artificial neural network",
+                "machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -765,7 +1548,46 @@
                 "firstName": "Siddharth",
                 "lastName": "Garg"
             }
-        ]
+        ],
+        "abstract": "Large Language Models (LLMs) are effective in computer hardware synthesis via hardware description language (HDL) generation. However, LLM-assisted approaches for HDL generation struggle when handling complex tasks. We introduce a suite of hierarchical prompting techniques which facilitate efficient stepwise design methods, and develop a generalizable automation pipeline for the process. To evaluate these techniques, we present a benchmark set of hardware designs which have solutions with or without architectural hierarchy. Using these benchmarks, we compare various open-source and proprietary LLMs, including our own fine-tuned Code Llama-Verilog model. Our hierarchical methods automatically produce successful designs for complex hardware modules that standard flat prompting methods cannot achieve, allowing smaller open-source LLMs to compete with large proprietary models. Hierarchical prompting reduces HDL generation time and yields savings on LLM costs. Our experiments detail which LLMs are capable of which applications, and how to apply hierarchical methods in various modes. We explore case studies of generating complex cores using automatic scripted hierarchical prompts, including the first-ever LLM-designed processor with no human feedback.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Measurement",
+                "Solid modeling",
+                "Codes",
+                "Design methodology",
+                "Pipelines",
+                "Benchmark testing",
+                "Hardware",
+                "Hardware design languages",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Feedback Loop",
+                "Training Dataset",
+                "Deep Neural Network",
+                "Human Intervention",
+                "State Machine",
+                "Submodule",
+                "Test Bench",
+                "Code Generation",
+                "Complex Modulation",
+                "Financial Savings",
+                "Unit Tests",
+                "Error Handling",
+                "Sequence Of Tokens",
+                "High-level Synthesis",
+                "Multiple Hours",
+                "Output Length"
+            ],
+            "Author Keywords": [
+                "LLM",
+                "Hardware design",
+                "Hierarchy",
+                "Automation"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -806,7 +1628,62 @@
                 "firstName": "Krishnendu",
                 "lastName": "Chakrabarty"
             }
-        ]
+        ],
+        "abstract": "Integrated circuits at advanced technology nodes are prone to process variations and early life failures due to aging. Variations in transistor parameters lead to a degraded on-current which, in turn, results in increasing gate-level propagation delay. Similarly, threshold voltage shifts due to aging effects result in increased path delays and erstwhile latent defects manifesting as early life failures (ELFs). We propose ML-TIME, a novel machine learning-based framework to simulate path delays in an integrated circuit in the presence of process variations and aging effects. While conventional static timing analysis (STA) tools can only compute path delays at well-defined process-voltage-temperature corners, ML-TIME can be used to obtain a statistical distribution of the path delays under user-defined process variations and aging specifications. Such distributions can be used to identify paths that are susceptible to either process variations or aging effects or both and can enable designers to make remedial changes. Simulation results across multiple benchmarks and standard cell libraries demonstrate that the MLTIME can accurately predict critical path delays under variations and aging, with an error margin of less than 1.7%, all without the need for computationally expensive circuit simulations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Integrated circuits",
+                "Simulation",
+                "Statistical distributions",
+                "Aging",
+                "Logic gates",
+                "Threshold voltage",
+                "Delays",
+                "Transistors",
+                "Standards",
+                "Propagation delay"
+            ],
+            "Index Terms": [
+                "Effect Of Age",
+                "Presence Of Effects",
+                "Integrated Circuit",
+                "Presence Of Process Variations",
+                "Benchmark",
+                "Prediction Accuracy",
+                "Presence Of Variants",
+                "Margin Of Error",
+                "Threshold Voltage",
+                "Propagation Delay",
+                "Critical Path",
+                "Technology Node",
+                "Path Delay",
+                "Delay Distribution",
+                "Threshold Voltage Shift",
+                "Confidence Level",
+                "Transit Time",
+                "Multilayer Perceptron",
+                "Inverter",
+                "Operating Frequency",
+                "ML Models",
+                "Lower Mean Square Error",
+                "Hot Electrons",
+                "Presence Of Shifts",
+                "Total Delay",
+                "Presence Of Delay",
+                "Random Scenario",
+                "Gate Dielectric",
+                "Fin Height",
+                "Machine Learning-based Approaches"
+            ],
+            "Author Keywords": [
+                "Timing Analysis",
+                "Process Variations",
+                "Early Life Failures",
+                "Path Delay",
+                "Machine Learning",
+                "Aging"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -853,7 +1730,59 @@
                 "firstName": "Longxing",
                 "lastName": "Shi"
             }
-        ]
+        ],
+        "abstract": "With more advanced technology nodes and stringent robustness requirements, fast, accurate, and universal yield analysis for custom circuits in the early design stage becomes a key bottleneck for manufacturing. In this paper, we propose a sparse representation-based classification framework KSRC using the Log-Euclidean kernel function for the Riemannian manifold, which makes it extremely promising for yield analysis for long-tailed distribution in high-dimensional parameter space. Experiments on SRAM read and write paths validate that the proposed KSRC method outperforms other state-of-the-art approaches in terms of accuracy and efficiency.CCS Concepts• Hardware $\\rightarrow$ Robustness; Process variations;",
+        "keywords": {
+            "IEEE Keywords": [
+                "Manifolds",
+                "Solid modeling",
+                "Accuracy",
+                "Runtime",
+                "Sparse approximation",
+                "Tail",
+                "Feature extraction",
+                "Robustness",
+                "Stability analysis",
+                "Kernel"
+            ],
+            "Index Terms": [
+                "Long-tailed Distribution",
+                "Kernel Function",
+                "Riemannian Manifold",
+                "Early Design Stages",
+                "Technology Node",
+                "High-dimensional Parameter Space",
+                "Static Random Access Memory",
+                "Training Set",
+                "Covariance Matrix",
+                "Classification Methods",
+                "Probability Density Function",
+                "Low Voltage",
+                "Sampling Region",
+                "Shape Parameter",
+                "Sufficient Sample",
+                "Object Classification",
+                "Positive Definite Matrix",
+                "Hash Function",
+                "Probability Of Failure",
+                "Tail Region",
+                "Generalized Pareto Distribution",
+                "Stable Fraction",
+                "Tail Samples",
+                "Sense Amplifier",
+                "Norm Minimization",
+                "Dynamic Metrics",
+                "Reproducing Kernel Hilbert Space",
+                "Face Recognition",
+                "Symmetric Positive Definite Matrix",
+                "Circuit Design"
+            ],
+            "Author Keywords": [
+                "Process Variation",
+                "Yield Analysis",
+                "Sparse Representation"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -882,7 +1811,55 @@
                 "firstName": "Srini",
                 "lastName": "Arikati"
             }
-        ]
+        ],
+        "abstract": "The complexity in design rule description and coding is drastically increasing as technology nodes advance. This complexity makes the process of implementing the physical verification (PV) rule checks more time-consuming and susceptible to human error, creating the need to explore alternate methods to improve the runset creation process. The work presented proposes a generative AI solution that uses Large Language Models (LLMs) to interpret rule descriptions and generate design rule check decks (runsets) in a language that a PV tool can interpret. The LLM is fine-tuned with existing design rule manuals and runsets. After post-processing the LLM output, the presented solution can generate rules implementation with up to 97% accuracy. The proposed solution can be used as a runset writer Co-Pilot to help develop the new physical verification runsets. CCS Concepts • Hardware $\\rightarrow$ Software tools for EDA; Best practices for EDA; Design rules; • Computing methodologies $\\rightarrow$ Natural language processing.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Generative AI",
+                "Large language models",
+                "Manuals",
+                "Machine learning",
+                "Natural language processing",
+                "Hardware",
+                "Generators",
+                "Encoding",
+                "Complexity theory",
+                "Software tools"
+            ],
+            "Index Terms": [
+                "Physical Verification",
+                "Large Language Models",
+                "Natural Language",
+                "Language Model",
+                "Implementation Of Rules",
+                "Technology Node",
+                "Electronic Design Automation",
+                "Semantic",
+                "Training Data",
+                "Horizontal Plane",
+                "Probabilistic Model",
+                "Formal Structures",
+                "Test Pattern",
+                "Matching Score",
+                "Internal Layer",
+                "Code Generation",
+                "Manual Coding",
+                "Similar Rules",
+                "Complex Rules",
+                "Electrostatic Discharge",
+                "Syntax Errors",
+                "Layer Operation",
+                "Tokenized"
+            ],
+            "Author Keywords": [
+                "AI",
+                "GenAI",
+                "LLMs",
+                "Physical Verification",
+                "Design Rule Checking",
+                "Runset Creation"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -953,7 +1930,60 @@
                 "firstName": "Rishikesh",
                 "lastName": "Ranade"
             }
-        ]
+        ],
+        "abstract": "A large on-chip peak temperature and thermal gradient, caused by localized hotspots and cross-die thermal coupling, can severely impact transistor performance, stress, aging, electromigration (EM), voltage drops, and timing. Generating static and transient chip thermal profiles with traditional FEM/CFD methods have prohibitively expensive computational requirements, especially for three-dimensional integrated circuits (3DIC). Even though data driven based deep learning approaches can significantly improve the efficiency of obtaining accurate thermal profiles, large amounts of high-quality and diverse training data are required. Therefore, there is an urgent need for improving the data/training efficiency and generalizability of deep learning-based models for thermal applications. This investigation leverages the “linear superposition principle” for linear systems and divides a complex power pattern into “per-tile activation” scenarios. The predictions from machine learning (ML) model trained on per-tile activation data, which consists of power and thermal response pairs, are then linearly combined to generate the total thermal response for a given arbitrary power pattern. This novel approach can substantially reduce the infinite design space of the power patterns to a small finite design space, and it has been validated that it can significantly improve the generalizability and training efficiency of deep learning models. The proposed approach can be applied to static and transient chip thermal simulation for 3DIC.CCS CONCEPTS• Computing methodologies • Applied computing • Mathematics of computing",
+        "keywords": {
+            "IEEE Keywords": [
+                "Deep learning",
+                "Training",
+                "Solid modeling",
+                "Accuracy",
+                "Voltage",
+                "Predictive models",
+                "Transistors",
+                "Transient analysis",
+                "Integrated circuit modeling",
+                "Thermal stresses"
+            ],
+            "Index Terms": [
+                "Thermal Response",
+                "Superposition Principle",
+                "Power Pattern",
+                "Thermal Simulation",
+                "Arbitrary Patterns",
+                "Machine Learning Models",
+                "Deep Models",
+                "High-quality Data",
+                "Deep Learning Models",
+                "Linear System",
+                "Efficient Model",
+                "Voltage Drop",
+                "Design Space",
+                "Infinite Space",
+                "Diversity Of Training Data",
+                "Electromigration",
+                "Heat Transfer",
+                "Parameter Space",
+                "Thermal Analysis",
+                "Tile Size",
+                "Heat Transfer Coefficient",
+                "Ground Plane",
+                "Distinct Power",
+                "Latin Hypercube Sampling",
+                "System-on-chip",
+                "Finite Element Analysis",
+                "Empirical Experiments",
+                "Partial Differential Equations",
+                "Data Generation"
+            ],
+            "Author Keywords": [
+                "Chip thermal",
+                "Deep learning",
+                "Superposition principle",
+                "FEA",
+                "3DIC"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -994,7 +2024,45 @@
                 "firstName": "Abdel-Hameed A.",
                 "lastName": "Badawy"
             }
-        ]
+        ],
+        "abstract": "The Hardware Trojan (HT) problem can be thought of as a continuous game between attackers and defenders, each striving to outsmart the other by leveraging any available means for an advantage. Machine Learning (ML) has recently played a key role in advancing HT research. Various novel techniques, such as Reinforcement Learning (RL) and Graph Neural Networks (GNNs), have shown HT insertion and detection capabilities. HT insertion with ML techniques, specifically, has seen a spike in research activity due to the shortcomings of conventional HT benchmarks and the inherent human design bias that occurs when we create them. This work continues this innovation by presenting a tool called “TrojanForge”, capable of generating HT adversarial examples that defeat HT detectors; demonstrating the capabilities of GAN-like adversarial tools for automatic HT insertion. We introduce an RL environment where the RL insertion agent interacts with HT detectors in an insertion-detection loop where the agent collects rewards based on its success in bypassing HT detectors. Our results show that this process helps inserted HTs evade various HT detectors, achieving high attack success percentages. This tool provides insight into why HT insertion fails in some instances and how we can leverage this knowledge in defense.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Technological innovation",
+                "Detectors",
+                "Reinforcement learning",
+                "Games",
+                "Benchmark testing",
+                "Hardware",
+                "Graph neural networks",
+                "Trojan horses",
+                "Security",
+                "Payloads"
+            ],
+            "Index Terms": [
+                "Hardware Trojan",
+                "Benchmark",
+                "Graph Neural Networks",
+                "Adversarial Examples",
+                "Triggering",
+                "Functional Independence",
+                "Generative Adversarial Networks",
+                "Heuristic Approach",
+                "Primary Input",
+                "Positive Reward",
+                "Reinforcement Learning Agent",
+                "Switching Probability",
+                "Proximal Policy Optimization",
+                "Jaccard Similarity Index",
+                "Logic Level"
+            ],
+            "Author Keywords": [
+                "Hardware Trojan",
+                "Hardware Security",
+                "Reinforcement Learning",
+                "Adversarial Examples"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1065,7 +2133,60 @@
                 "firstName": "Jason",
                 "lastName": "Cong"
             }
-        ]
+        ],
+        "abstract": "High-level synthesis (HLS) is an automated design process that transforms high-level code into optimized hardware designs, enabling rapid development of efficient hardware accelerators for various applications such as image processing, machine learning, and signal processing. To achieve optimal performance, HLS tools rely on pragmas, which are directives inserted into the source code to guide the synthesis process, and these pragmas can have various settings and values that significantly impact the resulting hardware design. State-of-the-art ML-based HLS methods, such as HARP, first train a deep learning model, typically based on graph neural networks (GNNs) applied to graph-based representations of the source code and its pragmas. They then perform design space exploration (DSE) to explore the pragma design space, rank candidate designs using the trained model, and return the top designs as the final designs. However, traditional DSE methods face challenges due to the highly nonlinear relationship between pragma settings and performance metrics, along with complex interactions between pragmas that affect performance in non-obvious ways. To address these challenges, we propose compareXplore, a novel approach that learns to compare hardware designs for effective HLS optimization. COMPAREXPLORE introduces a hybrid loss function that combines pairwise preference learning with pointwise performance prediction, enabling the model to capture both relative preferences and absolute performance values. Moreover, we introduce a novel Node Difference Attention module that focuses on the most informative differences between designs, enhancing the model’s ability to identify critical pragmas impacting performance. compareXPLORE adopts a two-stage DSE approach, where a pointwise prediction model is used for the initial design pruning, followed by a pairwise comparison stage for precise performance verification. Experimental results demonstrate that comPAREXPLORE achieves significant improvements in ranking metrics and generates high-quality HLS results for the selected designs, outperforming the existing state-of-the-art method. CCS CONCEPTS • Hardware $\\rightarrow$ High-level and register-transfer level synthesis; • Computing methodologies $\\rightarrow$ Neural networks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Solid modeling",
+                "Source coding",
+                "Image processing",
+                "Transforms",
+                "Predictive models",
+                "Signal processing",
+                "Space exploration",
+                "Optimization",
+                "Hardware acceleration"
+            ],
+            "Index Terms": [
+                "High-level Synthesis",
+                "Prediction Model",
+                "Machine Learning",
+                "Pairwise Comparisons",
+                "Complex Interactions",
+                "Signal Processing",
+                "Performance Metrics",
+                "Relative Performance",
+                "Design Space",
+                "Final Design",
+                "Two-stage Approach",
+                "Identification Of Candidates",
+                "Graph Neural Networks",
+                "Relative Preference",
+                "ML-based Methods",
+                "Design Space Exploration",
+                "Learning Algorithms",
+                "Stage 2",
+                "Time Complexity",
+                "Attention Mechanism",
+                "Node Embeddings",
+                "High-quality Design",
+                "Pairwise Method",
+                "Attention Scores",
+                "Metric Learning",
+                "Paired Design",
+                "Multilayer Perceptron",
+                "Pooling Operation",
+                "Language Model",
+                "Regression Residuals"
+            ],
+            "Author Keywords": [
+                "High-Level Synthesis",
+                "Design Space Exploration",
+                "Graph Neural Networks",
+                "Electronic Design Automation"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1100,7 +2221,60 @@
                 "firstName": "Peng",
                 "lastName": "Cao"
             }
-        ]
+        ],
+        "abstract": "The composite current source (CCS) model has been adopted as an advanced timing model that represents the current behavior of cells for improved accuracy and better capability than traditional non-linear delay models (NLDM) to model complex dynamic effects and interactions under advanced process nodes. However, the high accuracy requirement, large amount of data and extensive simulation cost pose severe challenges to CCS characterization. To address these challenges, we introduce a novel Gaussian Process Regression(GPR) model with active learning(AL) to establish the characterization framework efficiently and accurately. Our approach significantly outperforms conventional commercial tools as well as learning based approaches by achieving an average absolute error of 2.05 ps and a relative error of 2.27% for current waveform of 57 cells under 9 process, voltage, temperature (PVT) corners with TSMC 22 nm process. Additionally, our model drastically reduces the runtime to 27% and the storage by up to $19.5 \\times$ compared with that required by commercial tools.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Accuracy",
+                "Costs",
+                "Runtime",
+                "Gaussian processes",
+                "Voltage",
+                "Machine learning",
+                "SPICE",
+                "Libraries",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Active Learning",
+                "Gaussian Process",
+                "Kriging",
+                "Source Model",
+                "Cell Library",
+                "Current Source Model",
+                "Current Waveforms",
+                "Commercial Tools",
+                "Processing Nodes",
+                "Gaussian Process Regression Model",
+                "Root Mean Square Error",
+                "Alternative Models",
+                "Simulation Time",
+                "Mean Absolute Error",
+                "Linear Interpolation",
+                "Number Of Simulations",
+                "Computational Overhead",
+                "Ridge Regression",
+                "Current Point",
+                "Voltage Waveforms",
+                "Sampling Uncertainty",
+                "Simulated Waveforms",
+                "Mean Absolute Percentage Error",
+                "Gaussian Process Model",
+                "Candidate Samples",
+                "Acquisition Function",
+                "SPICE Simulations",
+                "Driver Model",
+                "Output Load",
+                "Reduced-order Model"
+            ],
+            "Author Keywords": [
+                "Standard Cell",
+                "Current Source Models",
+                "Gaussian Process Regression",
+                "Active Learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1153,7 +2327,56 @@
                 "firstName": "Seokhyeong",
                 "lastName": "Kang"
             }
-        ]
+        ],
+        "abstract": "In the face of challenges posed by semiconductor scaling, 3D integration technology has emerged as a crucial solution to overcome the constraints of traditional 2D Integrated Circuits (ICs). Recent advancements in 3D vertical interconnection technology have enabled 3D interconnections with reduced area overhead, potentially enhancing 3D IC performance in terms of timing, power, yield, and cost. However, despite the increased inter-die connection capacity enabled by fine-pitch 3D vias, research on 3D IC partitioning methods for timing improvement remains insufficient. This paper proposes a partitioning and placement method that optimizes the timing of 3D ICs by leveraging the increased inter-die connection capacity provided by fine pitch 3D vias. By using the Leiden algorithm and unsupervised GNN, we achieve optimal partitioning without relying on the results of 2D placement or additional training data. Our method employs balanced COP-KMeans to incorporate critical path optimization into partitioning, while ensuring balanced cell allocation across dies, thereby maximizing the area benefits of 3D ICs. Additionally, we optimize the timing of 3D ICs through 3D cell placement with critical net weight adjustments and a novel 3D via placement approach that differs from traditional 3D Half-Perimeter Wire Length (HPWL) optimization perspectives.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Three-dimensional displays",
+                "Training data",
+                "Integrated circuit interconnections",
+                "Timing",
+                "Pins",
+                "Partitioning algorithms",
+                "Wire",
+                "Resource management",
+                "Optimization",
+                "Three-dimensional integrated circuits"
+            ],
+            "Index Terms": [
+                "Critical Path",
+                "3D Placement",
+                "Graph Neural Networks",
+                "Partitioning Method",
+                "Net Weight",
+                "Additional Training Data",
+                "Critical Weight",
+                "Traditional 3D",
+                "Total Power",
+                "Modularity",
+                "Edge Weights",
+                "High Connectivity",
+                "Hyperbolic Tangent",
+                "Place Cells",
+                "Neighboring Nodes",
+                "Sum Of Weights",
+                "Depth-first",
+                "Synopsys",
+                "Numerous Connections",
+                "Partitioning Results",
+                "Sum Of Edge Weights",
+                "Electronic Design Automation",
+                "Large Pitch"
+            ],
+            "Author Keywords": [
+                "Electronic Design Automation (EDA)",
+                "3D ICs",
+                "GNN",
+                "K-Means",
+                "Timing-Aware Partitioning",
+                "3D IC Partitioning",
+                "3D IC Placement"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1242,7 +2465,53 @@
                 "firstName": "Ehsan",
                 "lastName": "Degan"
             }
-        ]
+        ],
+        "abstract": "Large Language Models (LLMs) have become widely used across diverse NLP tasks and domains, demonstrating their adaptability and effectiveness. In the realm of Electronic Design Automation (EDA), LLMs show promise for tasks like Register-Transfer Level (RTL) code generation and summarization. However, despite the proliferation of LLMs for general code-related tasks, there’s a dearth of research focused on evaluating and refining these models for hardware description languages (HDLs), notably VHDL. In this study, we evaluate the performance of existing code LLMs for VHDL code generation and summarization using various metrics and two datasets - VHDL-Eval and VHDL-Xform. The latter, an in-house dataset, aims to gauge LLMs’ understanding of functionally equivalent code. Our findings reveal consistent underperformance of these models across different metrics, underscoring a significant gap in their suitability for this domain. To address this challenge, we propose Chain-of-Descriptions (CoDes), a novel approach to enhance the performance of LLMs for VHDL code generation and summarization tasks. CoDes involves generating a series of intermediate descriptive steps based on: (i) the problem statement for code generation, and (ii) the VHDL code for summarization. These steps are then integrated with the original input prompt (problem statement or code) and provided as input to the LLMs to generate the final output. Our experiments demonstrate that the CoDes approach significantly surpasses the standard prompting strategy across various metrics on both datasets. This method not only improves the quality of VHDL code generation and summarization but also serves as a framework for future research aimed at enhancing code LLMs for VHDL. CCS Concepts •Computing methodologies $\\rightarrow$ Natural language generation; •Hardware $\\rightarrow$ Hardware description languages and compilation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Solid modeling",
+                "Codes",
+                "VHDL",
+                "Design automation",
+                "Systematics",
+                "Large language models",
+                "Refining",
+                "Hardware",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Code Generation",
+                "Large Language Models",
+                "Code Summarization",
+                "VHDL Code",
+                "Natural Language",
+                "Problem Statement",
+                "Intermediate Step",
+                "Series Of Steps",
+                "Language Model",
+                "Text Generation",
+                "In-house Dataset",
+                "Electronic Design Automation",
+                "Rate Set",
+                "Planform",
+                "Test Bench",
+                "Chip Design",
+                "Strategy Execution",
+                "Code Snippets",
+                "Clone Detection",
+                "Abstract Syntax Tree"
+            ],
+            "Author Keywords": [
+                "VHDL Code Generation",
+                "VHDL Code Summarization",
+                "Chain-of-Descriptions",
+                "LLM",
+                "VHDL",
+                "VHDL-Eval",
+                "VHDL-Xform"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1265,7 +2534,45 @@
                 "firstName": "Li-C.",
                 "lastName": "Wang"
             }
-        ]
+        ],
+        "abstract": "The emergence of Large Language Models (LLMs) has impacted our perspective on applying Machine Learning (ML) in semiconductor test. This paper shares our experience in leveraging the power of LLMs to build an AI agent for test data analytics. We advocate for an end-to-end approach where the Knowledge Graph (KG) plays a central role. Using wafermap analytics as an example, we highlight the key ideas behind developing the LLM-assisted AI agent named IEA-Plot, and discuss its practical applications.CCS Concepts• Hardware → Hardware test; • Computing methodologies → Artificial intelligence.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Analytical models",
+                "Data analysis",
+                "Grounding",
+                "Large language models",
+                "Machine learning",
+                "Knowledge graphs",
+                "Hardware",
+                "Data models",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Language Model",
+                "Specific Context",
+                "Cognitive Domains",
+                "Natural Language",
+                "Exploratory Data",
+                "Paraphrase",
+                "Background Knowledge",
+                "Decision Problem",
+                "Description Task",
+                "Typical Plot",
+                "Manual Effort",
+                "User Instructions",
+                "Follow-up Steps",
+                "Workflow Execution",
+                "Processing Workflow"
+            ],
+            "Author Keywords": [
+                "Test Data Analytics",
+                "Large Language Model",
+                "Knowledge Graph",
+                "Machine Learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1306,7 +2613,41 @@
                 "firstName": "Farinaz",
                 "lastName": "Koushanfar"
             }
-        ]
+        ],
+        "abstract": "This paper presents AutoMarks, an automated and transferable watermarking framework that leverages graph neural networks to reduce the watermark search overheads during the placement stage. AutoMarks’s novel automated watermark search is accomplished by (i) constructing novel graph and node features with physical, semantic, and design constraint-aware representation; (ii) designing a data-efficient sampling strategy for watermarking fidelity label collection; and (iii) leveraging a graph neural network to learn the connectivity between cells and predict the watermarking fidelity on unseen layouts. Extensive evaluations on ISPD’15 and ISPD’19 benchmarks demonstrate that our proposed automated methodology: (i) is capable of finding quality-preserving watermarks in a short time; and (ii) is transferable across various designs, i.e., AutoMarks trained on one layout is generalizable to other benchmark circuits. AutoMarks is also resilient against potential watermark removal and forging attacks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Layout",
+                "Semantics",
+                "Circuits",
+                "Watermarking",
+                "Machine learning",
+                "Benchmark testing",
+                "Graph neural networks",
+                "Physical design"
+            ],
+            "Index Terms": [
+                "Graph Neural Networks",
+                "Physical Design",
+                "Semantic",
+                "Extensive Evaluation",
+                "Node Features",
+                "Cell Size",
+                "Supply Chain",
+                "Cells In Region",
+                "Intellectual Property",
+                "Quality Metrics",
+                "ReLU Activation",
+                "Quality Degradation",
+                "Graph Construction",
+                "Design Constraints",
+                "Attack Target",
+                "Physical Layout",
+                "Design Firms",
+                "Regional Constraints",
+                "Integrated Circuit Design"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1353,7 +2694,44 @@
                 "firstName": "Brucek",
                 "lastName": "Khailany"
             }
-        ]
+        ],
+        "abstract": "Embedding hardware design frameworks within Python is a promising technique to improve the productivity of hardware engineers. At the same time, there is significant interest in using large-language models (LLMs) to improve key chip design tasks. This paper describes PyHDL-Eval, a new framework for evaluating LLMs on specification-to-RTL tasks in the context of Python-embedded domainspecific languages (DSLs). The framework includes 168 problems, Verilog reference solutions, Verilog test benches, Python test scripts, and workflow orchestration scripts. We use the framework to conduct a detailed case study comparing five LLMs (CodeGemma 7B, Llama3 8B/70B, GPT4, and GPT4 Turbo) targeting Verilog and five Python-embedded DSLs (PyMTL3, PyRTL, MyHDL, Migen, and Amaranth). Our results demonstrate the promise of in-context learning when applied to smaller models (e.g.,pass rate for CodeGemma 7B improves from 14.9% to 32.7% on Verilog) and Python-embedded DSLs (e.g., pass rate for LLama3 70B improves from 0.6% to 33.0% on PyMTL3). We find LLMs perform better when targeting Verilog as compared to Python-embedded DSLs (e.g., pass rate for GPT4 Turbo is 72.2% on Verilog and 29.8–62.0% on the Python-embedded DSLs) despite using a popular general-purpose host language. PyHDL-Eval will serve as a useful framework for future research at the intersection of Python-embedded DSLs and LLMs. CCS Concepts • Hardware → Hardware description languages and compilation; • Computing methodologies → Machine learning.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Productivity",
+                "Solid modeling",
+                "Machine learning",
+                "Hardware",
+                "DSL",
+                "Hardware design languages",
+                "Chip scale packaging"
+            ],
+            "Index Terms": [
+                "Domain-specific Languages",
+                "Large Language Models",
+                "Pass Rate",
+                "Chip Design",
+                "Framework For Future Research",
+                "Training Data",
+                "Function Tests",
+                "Python Code",
+                "Sequence Of Problems",
+                "Category Names",
+                "Clock Signal",
+                "Combinational Logic",
+                "Truth Table",
+                "Categories Of Problems",
+                "Bit-width",
+                "Ontological Approach",
+                "Logical Problem",
+                "Rising Edge"
+            ],
+            "Author Keywords": [
+                "hardware description languages",
+                "Python-embedded domain-specific languages",
+                "large language models"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1382,7 +2760,52 @@
                 "firstName": "Azadeh",
                 "lastName": "Davoodi"
             }
-        ]
+        ],
+        "abstract": "Automatic Test Pattern Generation (ATPG) algorithms such as FAN and PODEM heavily rely on a backtracing step to explore the search space. Conventional implementations often use a single metric such as a testability measure to guide backtracing. Recently, Neural Network (NN) models were proposed which combine multiple metrics to make a better backtrace decision. This paper identifies two fundamental, unresolved issues for effective and efficient use of NNs for ATPG: (1) portability of the NN model across different levels of a combinational circuit; (2) significant runtime overhead when using the NN model in backtrace decisions of each gate. To address these issues, a hybrid approach is proposed which builds and applies the NN model to only selected levels of the circuit. Guidelines to select the level and to train circuits are also discussed in this context. Also, a lookup technique is proposed to reuse the results of prior inferences at each gate to further accelerate the runtime. CCS Concepts • Hardware $\\rightarrow$ Test-pattern generation and fault simulation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Measurement",
+                "Solid modeling",
+                "Runtime",
+                "Artificial neural networks",
+                "Automatic test pattern generation",
+                "Logic gates",
+                "Space exploration",
+                "Circuit faults",
+                "Integrated circuit modeling",
+                "Guidelines"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Test Pattern",
+                "Test Pattern Generator",
+                "Automatic Test Pattern Generation",
+                "Artificial Neural Network",
+                "Search Space",
+                "Use Of Neural Networks",
+                "Circuit Level",
+                "Runtime Overhead",
+                "Values Of Variables",
+                "Training Data",
+                "Positive Samples",
+                "Decision Tree",
+                "Supervised Learning",
+                "Hidden Layer",
+                "Negative Samples",
+                "Input Features",
+                "Lookup Table",
+                "Neural Network Training",
+                "Training Error",
+                "Reduction In Runtime",
+                "Number Of Improvements",
+                "Single Neural Network"
+            ],
+            "Author Keywords": [
+                "Automatic Test Pattern Generation",
+                "Machine Learning",
+                "Backtracing"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1423,7 +2846,63 @@
                 "firstName": "Steven",
                 "lastName": "Wilton"
             }
-        ]
+        ],
+        "abstract": "Machine Learning (ML) models sometimes make inaccurate predictions for the routability of field-programmable gate array (FPGA) circuit designs. This risks time wasted attempting to route an unroutable design or the premature termination of a routable design’s compilation. While improving model accuracy is beneficial, we explore a complementary approach to mitigate the risk of inaccurate predictions by assessing the confidence of ML models. This approach could allow individuals to customize their own trade-off for the competing risks of wasted time and premature compilation termination. In this paper, we introduce a novel mixture of experts ML system for FPGA routability prediction and further quantify the confidence calibration of this system to determine its suitability as a risk management tool. We evaluate our prediction system for the purpose of enabling user risk management in FPGA routability prediction, comparing against a baseline inspired by prior work. Our evaluation finds our approach to achieve almost $2 \\times$ the precision in risk trade-off between time wasted on unroutable designs and premature termination of routable designs. CCS Concepts • Hardware $\\rightarrow$ Reconfigurable logic and FPGAs; Physical design (EDA); • Computing methodologies $\\rightarrow$ Machine learning",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Machine learning",
+                "Reconfigurable logic",
+                "Predictive models",
+                "Routing",
+                "Hardware",
+                "Risk management",
+                "Integrated circuit modeling",
+                "Field programmable gate arrays",
+                "Physical design"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Risk Management",
+                "Machine Learning Models",
+                "Prediction System",
+                "Circuit Design",
+                "Machine Learning Systems",
+                "Inaccurate Predictions",
+                "Risk Management Tools",
+                "Training Data",
+                "Training Dataset",
+                "Multilayer Perceptron",
+                "Prediction Quality",
+                "Lookup Table",
+                "Computer-aided Design",
+                "Matthews Correlation Coefficient",
+                "Prediction Confidence",
+                "Confidence Value",
+                "Training Subsets",
+                "Gradient Boosting Decision Tree",
+                "Legal Solutions",
+                "Iteration Limit",
+                "Time Budget",
+                "Early Trigger",
+                "Confidence Estimation",
+                "Tree-based Machine Learning",
+                "Risk Management Approach",
+                "Actual Accuracy",
+                "Train-test Split",
+                "Negative Log-likelihood"
+            ],
+            "Author Keywords": [
+                "ML",
+                "confidence",
+                "uncertainty",
+                "CAD",
+                "FPGA",
+                "routing",
+                "early exit",
+                "risk"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1470,7 +2949,55 @@
                 "firstName": "Longxing",
                 "lastName": "Shi"
             }
-        ]
+        ],
+        "abstract": "During the integrated circuit design process, the maximum IR drop value is often given more attention. The frequency of the maximum IR drop in the actual circuits presents an uneven dispersion, i.e., long-tail distribution. To address this problem, this paper introduces ICDaIR, a distribution-aware static IR drop prediction flow based on image classification. ICDaIR first utilizes a random forest classifier to categorize sub-regions, obtained from segmentation, into three groups. There are small differences in sub-regional samples within each category. Then, a U-Net-based prediction model is used to obtain the IR drop map for each class of sub-region. The overall IR drop map is derived by combining the values from these sub-regions. On the dataset with a maximum layout area of $0.69 \\ \\mu \\mathrm{m}^{2}$, compared with SOTA and the model without classification, the MAE of our model decreases by 50.5% and 14.4% respectively, with the prediction error controlled within 0.2029 mV. CCS CONCEPTS • Hardware $\\rightarrow$ Physical design (EDA).",
+        "keywords": {
+            "IEEE Keywords": [
+                "Integrated circuit synthesis",
+                "Solid modeling",
+                "Circuits",
+                "Layout",
+                "Predictive models",
+                "Magnetic heads",
+                "Integrated circuit modeling",
+                "Random forests",
+                "Image classification",
+                "Physical design"
+            ],
+            "Index Terms": [
+                "Image Classification",
+                "Voltage Drop",
+                "State Prediction",
+                "Static Drop",
+                "Prediction Model",
+                "Random Forest",
+                "Maximum Area",
+                "Long-tailed Distribution",
+                "Maximum Drop",
+                "Integrated Circuit Design",
+                "Kruskal Wallis Test",
+                "Classification Model",
+                "High-dimensional",
+                "Convolutional Neural Network",
+                "Convolutional Layers",
+                "Spatial Information",
+                "Feature Maps",
+                "Feature Information",
+                "Number Of Trees",
+                "Class I",
+                "Gini Coefficient",
+                "Conversion Method",
+                "Skip Connections",
+                "Convolution Kernel",
+                "Electrical Characteristics"
+            ],
+            "Author Keywords": [
+                "Static IR drop",
+                "U-Net",
+                "Random forest",
+                "Long-tail distribution"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1523,7 +3050,54 @@
                 "firstName": "Somdeb",
                 "lastName": "Majumdar"
             }
-        ]
+        ],
+        "abstract": "The initial steps of logic synthesis of digital designs involve finding minimized representations of Boolean logic functions. Existing optimization methods rely on iterative minimization operations that can result in a rapid increase in the runtime when the number of variables and terms of the Boolean functions increase. We propose a graph attention network (GAT) based logic minimization approach called MinBLoG, to narrow down the solution search space for Boolean functions. Our approach achieves more than 96% accuracy in identifying implicants that are a part of the minimized solution and ensures functional equivalency through correctness checking procedures. Experiments show that MinBLoG delivers minimization results for a wide range of Boolean functions significantly faster than well-known existing methods. CCS Concepts • Hardware $\\rightarrow$ Circuit optimization.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Runtime",
+                "Minimization methods",
+                "Circuit optimization",
+                "Machine learning",
+                "Logic functions",
+                "Hardware",
+                "Logic",
+                "Iterative methods",
+                "Integrated circuit modeling"
+            ],
+            "Index Terms": [
+                "Boolean Logic",
+                "Graph Attention Network",
+                "Boolean Logic Functions",
+                "Functional Equation",
+                "Representation Of Function",
+                "Boolean Function",
+                "Increase In Runtime",
+                "Solution Search Space",
+                "Machine Learning",
+                "Computational Complexity",
+                "Optimization Algorithm",
+                "Machine Learning Models",
+                "Binary Classification",
+                "Quality Of Outcomes",
+                "Nodes In The Graph",
+                "Heuristic Algorithm",
+                "Minimum Coverage",
+                "Advanced Machine Learning",
+                "Node Features",
+                "Node Classification",
+                "Third Power",
+                "Training Pipeline",
+                "Nodal Expression",
+                "Node Labels",
+                "Influence Diagram"
+            ],
+            "Author Keywords": [
+                "Boolean Logic Minimization",
+                "Graph Attention Network",
+                "Machine Learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1600,7 +3174,54 @@
                 "firstName": "Cong",
                 "lastName": "Hao"
             }
-        ]
+        ],
+        "abstract": "Machine learning (ML) techniques have been applied to high-level synthesis (HLS) flows for quality-of-result (QoR) prediction and design space exploration (DSE). Nevertheless, the scarcity of accessible high-quality HLS datasets and the complexity of building such datasets present great challenges to FPGA and ML researchers. Existing datasets either cover only a subset of previously published benchmarks, provide no way to enumerate optimization design spaces, are limited to a specific vendor, or have no reproducible and extensible software for dataset construction. Many works also lack user-friendly ways to add more designs to existing datasets, limiting wider adoption and sustainability of such datasets. In response to these challenges, we introduce HLSFactory, a comprehensive framework designed to facilitate the curation and generation of high-quality HLS design datasets. HLSFactory has three main stages: 1) a design space expansion stage to elaborate single HLS designs into large design spaces using various optimization directives across multiple vendor tools, 2) a design synthesis stage to execute HLS and FPGA tool flows concurrently across designs, and 3) a data aggregation stage for extracting standardized data into packaged datasets for ML usage. This tripartite architecture not only ensures broad coverage of data points via design space expansion but also supports interoperability with tools from multiple vendors. Users can contribute to each stage easily by submitting their own HLS designs or synthesis results via provided user APIs. The framework is also flexible, allowing extensions at every step via user APIs with custom frontends, synthesis tools, and scripts. To demonstrate the framework functionality, we include an initial set of built-in base designs from PolyBench, MachSuite, Rosetta, CHStone, Kastner et al.’s Parallel Programming for FPGAs, and curated kernels from existing open-source HLS designs. We report the statistical analyses and design space visualizations to demonstrate the completed end-to-end compilation flow, and to highlight the effectiveness of our design space expansion beyond the initial base dataset, which greatly contributes to dataset diversity and coverage. In addition to its evident application in ML, we showcase the versatility and multi-functionality of our framework through seven case studies: I) Building an ML model for post-implementation QoR prediction; II) Using design space sampling in stage 1 to expand the design space covered from a small base set of HLS designs; III) Demonstrating the speedup from the fine-grained design parallelism backend; IV) Extending HLSFactory to target Intel’s HLS flow across all stages; V) Adding and running new auxiliary designs using HLSFactory; VI) Integration of previously published HLS data in stage 3; VII) Using HLSFactory to perform HLS tool version regression benchmarking. Code available at https://github.com/sharc-lab/HLSFactory.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Statistical analysis",
+                "Buildings",
+                "Machine learning",
+                "Benchmark testing",
+                "Software",
+                "Space exploration",
+                "Sustainable development",
+                "Field programmable gate arrays",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "High-level Synthesis",
+                "Benchmark",
+                "Machine Learning Models",
+                "Aggregate Data",
+                "Machine Learning Techniques",
+                "Parallelization",
+                "Tool Version",
+                "Machine Learning Applications",
+                "Design Space",
+                "Design Setting",
+                "High-quality Dataset",
+                "Synthesis Tool",
+                "Design Space Exploration",
+                "Multiple Vendors",
+                "Standard Form",
+                "Stage 2",
+                "Entry Point",
+                "Latent Space",
+                "Fundamental Limitation",
+                "Collection Of Datasets",
+                "Concrete Design",
+                "Train Machine Learning",
+                "Design Points",
+                "Resource Usage",
+                "Electronic Design Automation",
+                "Graph Neural Networks",
+                "Domain-specific Languages",
+                "Multiple Design",
+                "Clock Frequency",
+                "Clock Rate"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1647,7 +3268,43 @@
                 "firstName": "Haoxin",
                 "lastName": "Ren"
             }
-        ]
+        ],
+        "abstract": "Design houses manage extensive collections of legacy synthesis data containing valuable knowledge crucial for enhancing synthesis efficiency and performance. Effectively encapsulating and transferring this knowledge is a pressing research challenge. Previous methods incorporate synthesis knowledge into neural networks trained on legacy data, often necessitating retraining for updated databases and fine-tuning for new designs. This study introduces ReLS, a retrieval-powered logic synthesis framework that integrates network weight-captured knowledge with information stored in dynamic synthesis databases. ReLS employs a graph neural network-based And-Inverter Graphs (AIGs) encoder to convert new AIGs into vector representations for similarity searches against legacy AIGs. Top-ranked recipes from similar AIGs are retrieved and reranked to offer initial solutions for advanced synthesis optimization algorithms. ReLS serves as an initialization tool to streamline efficient knowledge transfer without the requirement for fine-tuning. Utilizing the OpenABC-D database with 61,500 synthesis samples and limiting to 50 synthesis runs for each design, ReLS enhances the quality-of-results improvements of various existing methods over handcrafted recipes by 8.6% to 196% on 10 unseen designs. Furthermore, experimental results showcase ReLS’s ability to harness databases not used during training.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Knowledge engineering",
+                "Training",
+                "Databases",
+                "Neural networks",
+                "Pressing",
+                "Machine learning",
+                "Vectors",
+                "Logic",
+                "Knowledge transfer",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Knowledge Transfer",
+                "Logic Synthesis",
+                "Efficient Knowledge Transfer",
+                "Neural Network",
+                "Optimization Algorithm",
+                "Quality Of Outcomes",
+                "Advanced Algorithms",
+                "Advanced Optimization",
+                "Supervised Learning",
+                "Evolutionary Algorithms",
+                "Hyperparameter Tuning",
+                "Sampling Efficiency",
+                "Test Design",
+                "Graph Neural Networks",
+                "Embedding Vectors",
+                "Bayesian Optimization",
+                "Retrieval Results",
+                "Reinforcement Learning Agent",
+                "Database Retrieval"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1712,7 +3369,63 @@
                 "firstName": "Yogesh Singh",
                 "lastName": "Chauhan"
             }
-        ]
+        ],
+        "abstract": "The on-going pursuit of exploring novel materials for potential future device applications continues to strengthen the vital role of Technology Computer-Aided Design (TCAD) simulations within the device community. However, its computationally intensive and time-consuming nature necessitates novel methodologies to overcome the limitations. Machine learning (ML) is a potential remedy in our contemporary data-driven society. In this work, we present a unique approach based on Neural Networks (NNs) to generate an efficient potential profile guess. The predicted ML potential enhances the convergence of the coupled Schrodinger and Poisson equation and speeds up the simulation process, $\\sim$ 2.5 x, by reducing the number of self-consistent iterations at each bias point. Moreover, our method demonstrates versatility by providing reasonable prediction capacity and accuracy for grid reduction, doping, and channel material variations.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Solid modeling",
+                "Adaptation models",
+                "Poisson equations",
+                "Machine learning algorithms",
+                "Computational modeling",
+                "Machine learning",
+                "Mathematical models",
+                "Nanoscale devices",
+                "Semiconductor process modeling",
+                "Load modeling"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Quantum Transport",
+                "Quantum Transport Simulations",
+                "Neural Network",
+                "Simulation Process",
+                "Potential Profile",
+                "Poisson Equation",
+                "Bias Point",
+                "Schrodinger Equation",
+                "Science And Technology",
+                "Training Dataset",
+                "Artificial Neural Network",
+                "Machine Learning Models",
+                "Computational Resources",
+                "First-principles",
+                "Grid Points",
+                "Department Of Science",
+                "Transmission Coefficient",
+                "Generalized Gradient Approximation",
+                "Transfer Characteristics",
+                "Non-equilibrium Green’s Function",
+                "Low-dimensional Materials",
+                "Device Simulation",
+                "Fermi Dirac",
+                "Comprehensive Algorithm",
+                "Quantum Simulation",
+                "Bloch Wave",
+                "3D Grid",
+                "Output Label",
+                "Potential Predictors"
+            ],
+            "Author Keywords": [
+                "Density functional theory (DFT)",
+                "machine learning (ML)",
+                "maximally localized Wannier functions (MLWFs)",
+                "NanoTCAD",
+                "nonequilibrium Green’s function (NEGF)",
+                "novel 2-D materials",
+                "quantum transport simulations"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1759,7 +3472,52 @@
                 "firstName": "He",
                 "lastName": "Li"
             }
-        ]
+        ],
+        "abstract": "Recently, the scale of IC designs has been growing rapidly. Due to the popularity of untrusted third-party EDA tools and IP cores, IC designs face the risk of being infected by hardware Trojans (HT), highlighting the increasing importance of EDA for hardware security. RTL designs offer higher flexibility and abstraction level than gate-level netlists, with the potential for faster and more accurate localization of HTs. However, existing HT localization techniques on RTL often exhibit high complexity and low localization resolution, hindering the HT detection and code correction of large-scale applications. To overcome these limitations, we propose an ML-based HT localization framework. We innovatively transform RTL codes into signal transfer graph (STG), reducing the number of digraph nodes by 81%. Additionally, we propose an HT feature description method based on circuit structure and graph centrality, according to which we can achieve signal-level HT localization. Our results show that this method achieves an average of 98% recall, 100% TNR, 99% precision, and 98% F1-measure, outperforming the existing HT localization methods based on RTL analysis. CCS Concepts • Hardware;",
+        "keywords": {
+            "IEEE Keywords": [
+                "Location awareness",
+                "Codes",
+                "Hardware security",
+                "Transforms",
+                "Machine learning",
+                "Logic gates",
+                "Trojan horses",
+                "IP networks",
+                "Signal resolution",
+                "Faces"
+            ],
+            "Index Terms": [
+                "Hardware Trojan",
+                "Electronic Design Automation",
+                "Hardware Security",
+                "Benchmark",
+                "Detection Methods",
+                "Learning Algorithms",
+                "Support Vector Machine",
+                "Binary Classification",
+                "Characteristic Signals",
+                "Flow Control",
+                "Model Inference",
+                "Detection Conditions",
+                "Gradient Boosting",
+                "XGBoost",
+                "Graph Convolutional Network",
+                "Recall Rate",
+                "Test Pattern",
+                "Graph Neural Networks",
+                "Gradient Boosting Decision Tree",
+                "Nodal Signaling",
+                "Integrated Circuit Design",
+                "Dataset Creation",
+                "Code Snippets"
+            ],
+            "Author Keywords": [
+                "Hardware security",
+                "Hardware Trojan localization",
+                "Machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1812,7 +3570,43 @@
                 "firstName": "Bing",
                 "lastName": "Li"
             }
-        ]
+        ],
+        "abstract": "In High-Level Synthesis (HLS), converting a regular C/C++ program into its HLS-compatible counterpart (HLS-C) still requires tremendous manual effort. Various program scripts have been introduced to automate this process. But the resulting codes usually contain many issues that should be manually repaired by developers. Since Large Language Models (LLMs) have the ability to automate code generation, they can also be used for automated program repair in HLS. However, due to the limited training of LLMs considering hardware and software simultaneously, hallucinations may occur during program repair using LLMs, leading to compilation failures. Besides, using LLMs for iterative repair also incurs a high cost. To address these challenges, we propose an LLM-driven program repair framework that takes regular $\\mathrm{C} / \\mathrm{C}++$ code as input and automatically generates its corresponding HLS-C code for synthesis while minimizing human repair effort. To mitigate the hallucinations in LLMs and enhance the prompt quality, a Retrieval-Augmented Generation (RAG) paradigm is introduced to guide the LLMs toward correct repair. In addition, we use LLMs to create a static bit width optimization program to identify the optimized bit widths for variables. Moreover, LLM-driven HLS optimization strategies are introduced to add/tune pragmas in HLS-C programs for circuit optimization. Experimental results demonstrate that the proposed LLM-driven automated framework can achieve much higher repair pass rates in 24 real-world applications compared with the traditional scripts and the direct application of LLMs for program repair. The codes are open-sourced at this link: https://github.com/code-source1/catapult.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Codes",
+                "Costs",
+                "Large language models",
+                "Manuals",
+                "Machine learning",
+                "Maintenance engineering",
+                "Software",
+                "Iterative methods",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "High-level Synthesis",
+                "Large Language Models",
+                "Optimal Strategy",
+                "Hallucinations",
+                "Pass Rate",
+                "Bit-width",
+                "Maximum And Minimum",
+                "Efficient Design",
+                "Minimum Period",
+                "Successful Repair",
+                "Performance Bottleneck",
+                "C++ Programming",
+                "Domain-specific Languages",
+                "Simple Error",
+                "Clock Period",
+                "Syntax Errors",
+                "Input Tokens",
+                "Task Scenarios",
+                "Incompatibility Types"
+            ]
+        }
     },
     {
         "publicationNumber": "10740164",
@@ -1828,7 +3622,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10740164",
@@ -1844,6 +3640,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2024 ACM/IEEE 6th Symposium on Machine Learning for CAD (MLCAD)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

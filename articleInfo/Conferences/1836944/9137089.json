@@ -32,7 +32,51 @@
                 "firstName": "Bei",
                 "lastName": "Yu"
             }
-        ]
+        ],
+        "abstract": "The design complexity is increasing as the technology node keeps scaling down. As a result, the electronic design automation (EDA) tools also become more and more complex. There are lots of parameters involved in EDA tools, which results in a huge design space. What's worse, the runtime cost of the EDA flow also goes up as the complexity increases, thus exhaustive exploration is prohibitive for modern designs. Therefore, an efficient design space exploration methodology is of great importance in advanced designs. In this paper we target at an automatic flow for reducing manual tuning efforts to achieve high quality circuits synthesis outcomes. It is based on Bayesian optimization which is a promising technique for optimizing black-box functions that are expensive to evaluate. Gaussian process regression is leveraged as the surrogate model in Bayesian optimization framework. In this work, we use 64-bit prefix adder design as a case study. We demonstrate that the Bayesian optimization is efficient and effective for performing design space exploration on EDA tool parameters, which has great potential for accelerating the design flow in advanced technology nodes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Bayes methods",
+                "Tools",
+                "Solid modeling",
+                "Space exploration",
+                "Gaussian processes",
+                "Adders"
+            ],
+            "Index Terms": [
+                "Design Space",
+                "Bayesian Optimization",
+                "Design Space Exploration",
+                "CAD Tools",
+                "Alternative Models",
+                "Gaussian Process",
+                "Kriging",
+                "Advanced Design",
+                "Design Flow",
+                "Technology Node",
+                "Efficient Exploration",
+                "Huge Space",
+                "Exhaustive Exploration",
+                "Black-box Function",
+                "Electronic Design Automation",
+                "Normal Distribution",
+                "Large Values",
+                "Objective Function",
+                "Process Model",
+                "Support Vector Machine",
+                "Upper Confidence Bound",
+                "Acquisition Function",
+                "Gaussian Process Model",
+                "Gaussian Process Regression Model",
+                "High-level Synthesis",
+                "Final Performance",
+                "Pareto Optimal",
+                "Regular Structure",
+                "Physical Design",
+                "Multi-objective Optimization"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -85,7 +129,39 @@
                 "firstName": "Bei",
                 "lastName": "Yu"
             }
-        ]
+        ],
+        "abstract": "Machine learning-based lithography hotspot detection has been deeply studied recently, from varies feature extraction techniques to efficient learning models. It has been observed that such machine learning-based frameworks are providing satisfactory metal layer hotspot prediction results on known public metal layer benchmarks. In this work, we seek to evaluate how these machine learning-based hotspot detectors generalize to complicated patterns. We first introduce a automatic layout generation tool that can synthesize varies layout patterns given a set of design rules. The tool currently supports both metal layer and via layer generation. As a case study, we conduct hotspot detection on the generated via layer layouts with representative machine learning-based hotspot detectors, which shows that continuous study on model robustness and generality is necessary to prototype and integrate the learning engines in DFM flows. The source code of the layout generation tool will be available at https://github.com/phdyang007/layout-generation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Metals",
+                "Layout",
+                "Wires",
+                "Shape",
+                "Detectors",
+                "Tools",
+                "Machine learning"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "E-learning",
+                "Automatic Generation",
+                "Layout Generation",
+                "Machine Learning Engineers",
+                "Automatic Layout",
+                "Automatic Layout Generation",
+                "Metal Layer",
+                "Public Benchmark",
+                "Loss Function",
+                "Neural Network",
+                "Enclosure",
+                "Mutual Information",
+                "False Alarm",
+                "Center-to-center Distance",
+                "Shallow Neural Network",
+                "Technology Node",
+                "Number Of Clips"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -126,7 +202,49 @@
                 "firstName": "Avi",
                 "lastName": "Ziv"
             }
-        ]
+        ],
+        "abstract": "Early identification of areas that are at-risk in a design under development can help design and verification teams take early preventive and corrective measures. We propose a novel system that predicts which files are at risk of being buggy. Our simple, machine learning-based, regression system receives data from various sources, including the version control and defect tracking tools. After automatically labeling historic data and training sets, the system predicts the risk level of each file. Experimental results show that the proposed system has fairly high positive precision and recall and that its predictions are better than trivial predictions, such as files that recently changed or had bugs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computer bugs",
+                "History",
+                "Stability analysis",
+                "Training",
+                "Feature extraction",
+                "Learning systems",
+                "Computational modeling"
+            ],
+            "Index Terms": [
+                "Risk Analysis",
+                "Source Control",
+                "High Precision",
+                "Recent Changes",
+                "Precision And Recall",
+                "Design Team",
+                "Positive Recall",
+                "Learning Algorithms",
+                "F1 Score",
+                "Stability Analysis",
+                "Column Vector",
+                "False Alarm",
+                "Learning System",
+                "Previous Period",
+                "Historical Changes",
+                "Current Period",
+                "Feature Engineering",
+                "File System",
+                "Design Area",
+                "Entire Project",
+                "Complex Code",
+                "High-level Description",
+                "Bug Fixes",
+                "Testing Policy",
+                "Verification Tool",
+                "Weak Learners",
+                "Code Changes",
+                "Hyperparameters"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -167,7 +285,51 @@
                 "firstName": "Geoff V.",
                 "lastName": "Merrett"
             }
-        ]
+        ],
+        "abstract": "Inference for Deep Neural Networks is increasingly being executed locally on mobile and embedded platforms due to its advantages in latency, privacy and connectivity. Since modern System on Chips typically execute a combination of different and dynamic workloads concurrently, it is challenging to consistently meet inference time/energy budget at runtime because of the local computing resources available to the DNNs vary considerably. To address this challenge, a variety of dynamic DNNs were proposed. However, these works have significant memory overhead, limited runtime recoverable compression rate and narrow dynamic ranges of performance scaling. In this paper, we present a dynamic DNN using incremental training and group convolution pruning. The channels of the DNN convolution layer are divided into groups, which are then trained incrementally. At runtime, following groups can be pruned for inference time/energy reduction or added back for accuracy recovery without model retraining. In addition, we combine task mapping and Dynamic Voltage Frequency Scaling (DVFS) with our dynamic DNN to deliver finer trade-off between accuracy and time/power/energy over a wider dynamic range. We illustrate the approach by modifying AlexNet for the CIFAR10 image dataset and evaluate our work on two heterogeneous hardware platforms: Odroid XU3 (ARM big.LITTLE CPUs) and Nvidia Jetson Nano (CPU and GPU). Compared to the existing works, our approach can provide up to 2.36× (energy) and 2.73× (time) wider dynamic range with a 2.4× smaller memory footprint at the same compression rate. It achieved 10.6× (energy) and 41.6× (time) wider dynamic range by combining with task mapping and DVFS.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Runtime",
+                "Convolution",
+                "Computational modeling",
+                "Dynamic range",
+                "Task analysis",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Deep Neural Network",
+                "Performance Of Deep Neural Networks",
+                "Group Convolution",
+                "Incremental Training",
+                "Dynamic Range",
+                "AlexNet",
+                "Small Footprint",
+                "Hardware Platform",
+                "Compression Rate",
+                "Channel Layer",
+                "System-on-chip",
+                "Map Tasks",
+                "Model Retraining",
+                "Image Classification",
+                "Training Group",
+                "Training Images",
+                "Confidence Score",
+                "Model Configuration",
+                "Accuracy Loss",
+                "Training Step",
+                "Deep Neural Network Architecture",
+                "Time Budget",
+                "Static Compression",
+                "Pre-defined Set",
+                "Limited Dynamic Range"
+            ],
+            "Author Keywords": [
+                "Embedded Deep Learning",
+                "Dynamic Deep Neural Network",
+                "Runtime Performance Trade-off"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -196,7 +358,49 @@
                 "firstName": "Vaughn",
                 "lastName": "Betz"
             }
-        ]
+        ],
+        "abstract": "Developing new or improved optimization heuristics for Computer Aided Design (CAD) tools is challenging and time consuming, relying on empirical experimentation and researcher experience. In this work we study how this process can be improved by using Reinforcement Learning (RL) to learn effective and adaptive heuristics. Applying these techniques to Field Programmable Gate Array (FPGA) placement, we show our RL-enhanced algorithm outperforms the standard VTR 8 placer, achieving a better run-time & quality trade-off (up to 2× faster for equivalent quality). RL enables the placer to more efficiently explore the solution space and enables it to dynamically adapt to the specific problem instance being solved. We expect further application of advanced RL methods will improve these results, which motivates further exploration of how RL could be applied in the CAD flow.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Optimization",
+                "Annealing",
+                "Learning (artificial intelligence)",
+                "Design automation",
+                "Machine learning algorithms",
+                "Generators"
+            ],
+            "Index Terms": [
+                "Solution Space",
+                "Computer-aided Design",
+                "Empirical Experiments",
+                "Actual Values",
+                "Quality Of Outcomes",
+                "Online Learning",
+                "Simulated Annealing",
+                "Single State",
+                "Changes In Costs",
+                "Reward Function",
+                "Reinforcement Learning Algorithm",
+                "Block Type",
+                "Learning Agent",
+                "Greedy Approach",
+                "Reinforcement Learning Agent",
+                "Reinforcement Learning Techniques",
+                "Reinforcement Learning Problem",
+                "Negative Reward",
+                "Placement Algorithm",
+                "Low Runtime",
+                "Bandit Problem"
+            ],
+            "Author Keywords": [
+                "Field Programmable Gate Array (FPGA)",
+                "Electronic Design Automation (EDA)",
+                "Computer Aided Design (CAD)",
+                "Machine Learning (ML)",
+                "Reinforcement Learning (RL)"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -261,7 +465,42 @@
                 "firstName": "Andre",
                 "lastName": "Ivanov"
             }
-        ]
+        ],
+        "abstract": "The routing stage is one of the most time-consuming steps in System on Chip (SoC) physical design. For large designs, it can take days of effort to find a complete routing solution, and the result directly affects the circuit performance. In this paper, we present a routing strategy that decomposes global routing into three stages, with different objectives associated with each stage. This is in contrast to conventional approaches, which usually use a single global optimization objective for driving the entire process. Furthermore, we propose to use generative adversarial networks (GAN) to predict the congestion heatmap. This deep learning method has been used to successfully improve image recognition results. We adapt its use to global routing by converting data between the router and the image-based model. This model needs only placement and netlist information as input to make the forecast. Our GAN-based congestion estimator produces congestion heatmaps that show good fidelity with actual heatmaps produced by state-of-the-art global routers. Using this heatmap along with our modified routing flow, we achieve comparable global routing quality in terms of the total overflow and wirelength, but the runtime speedup on hard-to-route designs is significant.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Routing",
+                "Generative adversarial networks",
+                "Gallium nitride",
+                "Prediction algorithms",
+                "Estimation",
+                "Generators",
+                "Training"
+            ],
+            "Index Terms": [
+                "Generative Adversarial Networks",
+                "Global Routing",
+                "Physical Design",
+                "System-on-chip",
+                "Prediction Model",
+                "Convolutional Layers",
+                "Cost Function",
+                "Latent Space",
+                "Global Processing",
+                "Total Run Time",
+                "Red Channel",
+                "Output Image",
+                "Congested",
+                "Multi-objective Algorithm",
+                "Processing Routes",
+                "Global Algorithm",
+                "Fully Convolutional Network",
+                "User-defined Parameters",
+                "Routing Algorithm",
+                "Net Density",
+                "3rd Stage"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -302,7 +541,50 @@
                 "firstName": "Laleh",
                 "lastName": "Behjat"
             }
-        ]
+        ],
+        "abstract": "Advances in Electronic Design Automation(EDA) methods have made the designers and programmers to search for new ways to solve the complex problems seen in today's Very Large Scale Integration circuits. Machine learning (ML), especially supervised learning, has been used to predict design rule violations. However, supervised learning requires large amount of labeled data. With the competitive nature of EDA based companies, there is limited access to benchmarks and labeled data. In this work, we propose a data-independent reinforcement learning (RL) based routing model called Alpha-PD-Router, which learns to route a circuit and correct short violations. The Alpha-PD-Router is based on a two-player collaborative game model that has been trained on a small circuit and successfully resolves 75 violations in 99 cases of 2 pins net arrangements in the testing phase. The proposed model has the potential to be used as a framework to develop RL based routing techniques untethered by the scarce availability of large routing data samples or designer expertise.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Routing",
+                "Games",
+                "Collaboration",
+                "Physical design",
+                "Machine learning",
+                "Integrated circuit modeling",
+                "Pins"
+            ],
+            "Index Terms": [
+                "Routing Problem",
+                "Physical Design",
+                "Absence Of Problems",
+                "Machine Learning",
+                "Supervised Learning",
+                "Collaborative Model",
+                "Two-player Game",
+                "Electronic Design Automation",
+                "Neural Network",
+                "Large Datasets",
+                "Artificial Neural Network",
+                "Proof Of Concept",
+                "Search Algorithm",
+                "Active Layer",
+                "Gameplay",
+                "Processing Power",
+                "Reward Function",
+                "Tree Search",
+                "Local Grid",
+                "Problematic Gaming",
+                "Monte Carlo Tree Search",
+                "Minimax Game"
+            ],
+            "Author Keywords": [
+                "Physical design",
+                "routing",
+                "machine learning",
+                "reinforcement learning",
+                "collaborative min-max game theory"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -331,7 +613,56 @@
                 "firstName": "Andreas",
                 "lastName": "Gerstlauer"
             }
-        ]
+        ],
+        "abstract": "With the end of Dennard scaling, energy efficiency has become an important metric driving future processor architectures, particularly in the fields of mobile and embedded devices. To support rapid, power-aware micro-architectural design space exploration, it is important to accurately quantify the power consumption of the processors early in the design flow and at a high level of abstraction. Existing CPU power models rely on either generic analytical power models or simple regression-based techniques that suffer from large inaccuracies. More recently, machine learning techniques have been proposed to build accurate power models. However, existing approaches still require slow RTL simulations or have only been demonstrated for fixed-function accelerators at higher levels.In this work, we present a machine learning-based approach for power modeling of programmable CPUs at the micro-architecture level. Our models provide cycle-accurate and hierarchical power estimates down to sub-block granularity. Using only high-level information that can be obtained from micro-architecture simulations, we extract representative features and develop low-complexity learning formulations that require a small number of gate-level simulations for training. Results show that our hierarchically composed model predicts cycle-by-cycle power consumption of RISC-V processor core within 2.2% of a gate-level power estimation on average.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Feature extraction",
+                "Predictive models",
+                "Analytical models",
+                "Integrated circuit modeling",
+                "Hamming distance",
+                "Logic gates",
+                "Power demand"
+            ],
+            "Index Terms": [
+                "Model Analysis",
+                "Machine Learning",
+                "Accuracy Of Model",
+                "Power Consumption",
+                "Level Of Abstraction",
+                "Power Estimation",
+                "Higher Level Of Abstraction",
+                "Accurate Power",
+                "Design Space Exploration",
+                "Extract Representative Features",
+                "Learning Formulation",
+                "Learning Models",
+                "Convolutional Neural Network",
+                "Deep Neural Network",
+                "Decision Tree",
+                "Hierarchical Model",
+                "Mean Absolute Error",
+                "Total Power",
+                "Core Level",
+                "Gradient Boosting",
+                "Low Overhead",
+                "Regression-based Models",
+                "Hamming Distance",
+                "Power Reference",
+                "Machine Learning Regression",
+                "Memory Block",
+                "Datapath",
+                "Feature Selection Techniques",
+                "Regression-based Approach",
+                "Prediction Phase"
+            ],
+            "Author Keywords": [
+                "Machine learning",
+                "power modeling",
+                "micro-architecture simulation"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -368,11 +699,62 @@
             },
             {
                 "id": 37277243700,
-                "preferredName": "J\u00f6rg Henkel",
-                "firstName": "J\u00f6rg",
+                "preferredName": "Jörg Henkel",
+                "firstName": "Jörg",
                 "lastName": "Henkel"
             }
-        ]
+        ],
+        "abstract": "Resource management in many-core processors, housing tens to hundreds of cores on a single die, becomes more and more challenging due to the ever-increasing number of possible management decisions (e.g., task mapping). Machine learning (ML) techniques emerge as promising solutions to support resource management algorithms in taking the best decisions due to their adaptability. However, there are several challenges with ML-based solutions. We discuss two key challenges in detail. Firstly, ML-based techniques often suffer from high computational complexity for the inference at run-time - which is especially critical when it comes to the embedded system domain. Secondly, employing ML techniques as a “black box” may result in deriving models that fail in reflecting the reality.We take a task migration technique that maximizes the performance of a thermally-constrained many-core as a case study. This technique selects the migration to execute next with the support of a neural network (NN) that predicts the performance impact of a migration. We demonstrate the abovementioned challenges in this case study and discuss potential remedies. To lower the run-time overhead, we discuss overhead-aware design of the NN and using already existing accelerators in smartphone SoCs. Finally we also demonstrate how existing domain knowledge can be introduced into the models to ensure that models are consistent with the reality and experimentally show the potential.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Artificial neural networks",
+                "Resource management",
+                "Adaptation models",
+                "Predictive models",
+                "Machine learning",
+                "Prediction algorithms"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Resource Management",
+                "Machine Learning Techniques",
+                "Neural Network",
+                "Cognitive Domains",
+                "Black Box",
+                "Management Algorithm",
+                "Potential Remedy",
+                "Map Tasks",
+                "Runtime Overhead",
+                "Prediction Model",
+                "Mean Square Error",
+                "Activation Function",
+                "Training Data",
+                "Power Consumption",
+                "Image Classification",
+                "Properties Of Systems",
+                "Input Features",
+                "Model Design",
+                "Fully-connected Layer",
+                "Impact Of Migration",
+                "Training Examples",
+                "Training Data Augmentation",
+                "Imitation Learning",
+                "Reward Function",
+                "Neural Network Training",
+                "Optimal Action",
+                "Relative Accuracy",
+                "SqueezeNet",
+                "Peak Voltage"
+            ],
+            "Author Keywords": [
+                "Resource Management",
+                "Machine Learning",
+                "Gray Box Modeling",
+                "Neural Network Design",
+                "Accelerator"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -403,11 +785,57 @@
             },
             {
                 "id": 37276355800,
-                "preferredName": "J\u00fcrgen Teich",
-                "firstName": "J\u00fcrgen",
+                "preferredName": "Jürgen Teich",
+                "firstName": "Jürgen",
                 "lastName": "Teich"
             }
-        ]
+        ],
+        "abstract": "Applications with highly input-dependent workload and execution behavior cannot be optimally executed by a single mapping of application tasks to a heterogeneous multi-core target architecture. Albeit mapping a task to a resource with high computational power may be suitable for input triggering a high workload of this task, it may be more efficient to map another task to the resource in case of input providing low workload for the former and high workload for the latter. As a remedy, we propose to group inputs evoking similar workload and execution characteristics into so-called workload scenarios for which specialized mappings targeted at the common workload distribution in the scenario are provided. Optimized mappings for each scenario can be determined by a scenario-based design space exploration at design time.At run time, applications process a stream of input data whose scenario affiliation is a priori unknown. This entails two coupled tasks: First, we have to identify the scenario of the current input data based on its execution characteristics. Second, we have to choose an application mapping for processing the current input prior to its execution on the basis of the concluded scenarios of the past input and the currently active scenario-associated mapping. Note that switching between scenarios may come at a non-negligible reconfiguration cost that could decrease the advantage gained by a more suitable mapping.Both tasks are tackled by a proposed run-time reconfiguration manager, which is built on machine learning models. These models learn a strategy for identifying scenarios and selecting adequate mappings by design-time training. Here, different machine learning models are compared for their applicability.An evaluation of the run-time manager based on a ray tracing and stitching application shows significant latency improvements compared to an approach with a single mapping optimized for the average-case input.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Training",
+                "Machine learning",
+                "Switches",
+                "History",
+                "Neurons",
+                "Decision trees"
+            ],
+            "Index Terms": [
+                "Machine Learning Models",
+                "Running Time",
+                "Activation Maps",
+                "Single Map",
+                "Ray Tracing",
+                "Map Tasks",
+                "Heterogeneous Architecture",
+                "Design Space Exploration",
+                "Decision Tree",
+                "Gene Regulatory Networks",
+                "Hidden Layer",
+                "Training Time",
+                "Evolutionary Algorithms",
+                "Long Short-term Memory",
+                "Subsequent Data",
+                "Element Of Vector",
+                "Low Latency",
+                "Leaf Node",
+                "Long Short-term Memory Network",
+                "Proximal Policy Optimization",
+                "Optimal Mapping",
+                "Set Of Maps",
+                "Number Of Scenarios",
+                "Training Sequences",
+                "Perfect Identity"
+            ],
+            "Author Keywords": [
+                "scenario-based dse",
+                "heterogeneous architecture",
+                "data-driven mapping",
+                "run-time manager",
+                "machine learning model"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -448,7 +876,57 @@
                 "firstName": "Partha Pratim",
                 "lastName": "Pande"
             }
-        ]
+        ],
+        "abstract": "The growing needs of emerging big data applications has posed significant challenges for the design of optimized manycore systems. Network-on-Chip (NoC) enables the integration of a large number of processing elements (PEs) in a single die. To design optimized manycore systems, we need to establish suitable trade-offs among multiple objectives including power, performance, and thermal. Therefore, we consider multi-objective design space exploration problems arising in the design of NoC-enabled manycore systems: placement of PEs and communication links to optimize two or more objectives (e.g., latency, energy, and throughput). Existing algorithms suffer from scalability and accuracy challenges as size of the design space and the number of objectives grow. In this paper, we propose a novel framework referred as Guided Design Space Exploration (Guided-DSE) that performs adaptive design space exploration using a data-driven model to improve the speed and accuracy of multi-objective design optimization process. We provide two concrete instantiations of guided-DSE and present results to show their efficacy for designing 3D heterogeneous manycore systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Space exploration",
+                "Optimization",
+                "Machine learning",
+                "Three-dimensional displays",
+                "Adaptation models",
+                "Search problems",
+                "System analysis and design"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Multi-objective Optimization",
+                "Design Optimization",
+                "Design Space",
+                "Design Space Exploration",
+                "Multi-objective Design",
+                "Many-core Systems",
+                "System Design",
+                "Optimization Process",
+                "Multiple Objects",
+                "Number Of Objects",
+                "3D System",
+                "Size Of Space",
+                "Heterogeneous Systems",
+                "Communication Links",
+                "Data-driven Models",
+                "Big Data Applications",
+                "Optimization Problem",
+                "Local Search",
+                "Forms Of Knowledge",
+                "Pareto Set",
+                "Local Search Procedure",
+                "Resistive Random Access Memory",
+                "Multi-objective Optimization Problem",
+                "Physical Constraints",
+                "Starting State",
+                "Increasing System Size",
+                "Local Procedures",
+                "Candidate Solutions"
+            ],
+            "Author Keywords": [
+                "Machine learning",
+                "Manycore systems",
+                "Heterogeneity",
+                "Network-on-chip",
+                "Big data computing"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -501,7 +979,50 @@
                 "firstName": "Wolfgang",
                 "lastName": "Ecker"
             }
-        ]
+        ],
+        "abstract": "With the advancement of Internet of Things, the cost of System-on-Chips (in terms of area, performance, etc.) becomes increasingly relevant for realizing affordable as well as performant devices. Although System-on-Chips are very diverse with respect to specifications and requirements, some components are ubiquitous. One of them is the Hardware/Software Interface, which serves for controlling communication and interconnected functionalities between Hardware and Software. Motivated by their common use, the implementation of optimized interfaces towards certain costs (in terms of area, performance, etc.) becomes a central problem in the design of embedded systems. In this work we introduce a novel optimization method for minimizing the cost of Hardware/Software Interfaces using Convolutional Neural Networks coupled with Evolutionary Algorithms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optimization",
+                "Hardware",
+                "Estimation",
+                "Machine learning",
+                "Evolutionary computation",
+                "Software",
+                "Task analysis"
+            ],
+            "Index Terms": [
+                "Deep Learning",
+                "Evolutionary Algorithms",
+                "Neural Network",
+                "Convolutional Neural Network",
+                "Optimization Method",
+                "Internet Of Things",
+                "Learning Algorithms",
+                "Estimation Method",
+                "Mutation Rate",
+                "Design Process",
+                "Convolutional Layers",
+                "Computer Vision",
+                "Field Work",
+                "3D Images",
+                "Fitness Function",
+                "Image Formation",
+                "Previous Generations",
+                "Step Rate",
+                "Industrial Environment",
+                "Optimal Cost",
+                "Mutational Steps",
+                "Configuration Design",
+                "Design Objectives"
+            ],
+            "Author Keywords": [
+                "Hardware/Software Interface Optimization",
+                "Machine Learning",
+                "Deep Learning",
+                "Evolutionary Algorithms"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -538,9 +1059,9 @@
             },
             {
                 "id": 37085745557,
-                "preferredName": "Georg von der Br\u00fcggen",
+                "preferredName": "Georg von der Brüggen",
                 "firstName": "Georg",
-                "lastName": "von der Br\u00fcggen"
+                "lastName": "von der Brüggen"
             },
             {
                 "id": 37280675200,
@@ -550,9 +1071,9 @@
             },
             {
                 "id": 37086265012,
-                "preferredName": "Sebastian Buschj\u00e4ger",
+                "preferredName": "Sebastian Buschjäger",
                 "firstName": "Sebastian",
-                "lastName": "Buschj\u00e4ger"
+                "lastName": "Buschjäger"
             },
             {
                 "id": 37992366400,
@@ -580,11 +1101,46 @@
             },
             {
                 "id": 37277243700,
-                "preferredName": "J\u00f6rg Henkel",
-                "firstName": "J\u00f6rg",
+                "preferredName": "Jörg Henkel",
+                "firstName": "Jörg",
                 "lastName": "Henkel"
             }
-        ]
+        ],
+        "abstract": "Emerging non-volatile memory (NVM) technologies, such as Phase Change Memory (PCM), have been considered as a replacement for DRAM and storage due to their low power consumption, fast access speed, and low unit cost. Even so, some NVMs have a significantly lower write endurance and hence in-memory wear leveling is an important requirement for practical applicability. Since writes to the stack often target a small and dense memory region, generic, coarse-grained wear-leveling mechanisms (e.g. virtual memory page remapping) are not sufficient. An alternative solution is to relocate the stack memory regularly, which involves copying of the stack content. As the stack content changes in size during the execution of an application, the copy overhead can be significantly mitigated by performing the relocation when the stack size is small.In this paper, we investigate two approaches to determine points in time when the stack is small. First, we analyze the possibility to fit simple machine-learning models to the stack usage function. Precise predictions of this function enable the identification of the minimum stack size during execution. In our evaluation, the tested models provide accurate estimates of the future stack usage function for a subset of common applications.As a second approach, we analyze applications a priori and determine potential optimal points to perform relocation in the instruction stream. In detail, we deploy the application in an analysis environment, which determines a rating for each executed instruction. Based on this rating, we apply a genetic algorithm to identify the best points in the instruction stream to perform the stack relocation. This approach allows to save up to 85% of the write overhead for wear-leveling in our experiments.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Machine learning",
+                "Benchmark testing",
+                "Nonvolatile memory",
+                "Memory management",
+                "Analytical models",
+                "Genetic algorithms",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Non-volatile Memory",
+                "Wear Level",
+                "Machine Learning Models",
+                "Execution Of Operations",
+                "Application Execution",
+                "Virtual Memory",
+                "Lower Unit Costs",
+                "Analytical Framework",
+                "Decision Tree",
+                "Source Code",
+                "Functional Class",
+                "Program Execution",
+                "Target Frequency",
+                "Hardware Control",
+                "Random Time Points"
+            ],
+            "Author Keywords": [
+                "Non-Volatile Memory",
+                "Wear-Leveling",
+                "Genetic Algorithm",
+                "Decision-Tree"
+            ]
+        }
     },
     {
         "publicationNumber": "9137089",
@@ -613,6 +1169,47 @@
                 "firstName": "Ioannis",
                 "lastName": "Savidis"
             }
-        ]
+        ],
+        "abstract": "An evolving on-chip power delivery method is developed for the adaptive voltage assignment of a given voltage domain. The reference voltages of the on-chip voltage regulators (OCVRs) are determined and set through particle swarm optimization (PSO) to negate the effects of transistor aging, process variation, and power supply noise induced variation in the load circuit, OCVRs, and on-chip timing sensors. The on-line learning of the optimum voltages that evolve with time reduces the static voltage guard-band added during the design of the power delivery network for worst case process, temperature, and aging induced timing variation of a digital circuit. Applying the proposed PSO based on-chip power management technique ensures a minimal voltage assignment without incurring any timing violations on the critical paths, which also evolve with time. The run-time adaptive voltage delivery technique is applicable to any processor architecture as demonstrated through simulation of a four core multi-processor implemented in a 7 nm PTM FinFET technology. Results indicate an average reduction of 35% and 38% in, respectively, the dynamic power consumption and transistor aging.",
+        "keywords": {
+            "Index Terms": [
+                "Particle Swarm Optimization",
+                "Power Delivery",
+                "On-chip Power",
+                "Power Consumption",
+                "Online Learning",
+                "Voltage Regulation",
+                "Power Management",
+                "Critical Path",
+                "Dynamic Power",
+                "Dynamic Power Consumption",
+                "Temporal Variation",
+                "Learning Algorithms",
+                "Multi-core",
+                "Voltage Drop",
+                "Discrete Variables",
+                "Lookup Table",
+                "Operating Frequency",
+                "Threshold Voltage",
+                "Open Voltage",
+                "Algorithm Execution",
+                "Particle Position",
+                "Power Supply Voltage",
+                "Circuit Characteristics",
+                "Delay Line",
+                "Gate Oxide",
+                "Variable Delay",
+                "Start In Life",
+                "Network-on-chip",
+                "Technology Node"
+            ],
+            "Author Keywords": [
+                "particle swarm optimization",
+                "machine learning",
+                "power supply noise",
+                "on-chip voltage regulators",
+                "transistor aging"
+            ]
+        }
     }
 ]

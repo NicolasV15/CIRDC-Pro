@@ -32,7 +32,56 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "The multi-precision methods commonly follow approximate-iterate scheme by first obtaining the approximate solution from a low-precision factorization and solve. Then, they iteratively refine the solution to the desired accuracy that is often as high as what is possible with traditional approaches. While targeting symmetric and Hermitian eigenvalue problems of the form Ax = λx, we revisit the SICE algorithm proposed by Dongarra et al. By applying the Sherman-Morrison formula on the diagonally-shifted tridiagonal systems, we propose an updated SICE-SM algorithm. By incorporating the latest two-stage algorithms from the PLASMA and MAGMA software libraries for numerical linear algebra, we achieved up to 3.6× speedup using the mixed-precision eigensolver with the blocked SICE-SM algorithm for iterative refinement when compared with full double complex precision solvers for the cases with a portion of eigenvalues and eigenvectors requested.<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">1</sup>",
+        "keywords": {
+            "IEEE Keywords": [
+                "Software libraries",
+                "Symmetric matrices",
+                "Runtime",
+                "Software algorithms",
+                "Linear algebra",
+                "Parallel processing",
+                "Eigenvalues and eigenfunctions"
+            ],
+            "Index Terms": [
+                "Symmetric Matrix",
+                "Hermitian Matrix",
+                "Mixed-precision",
+                "Linear Solver",
+                "Real Matrices",
+                "Eigenvalue Problem",
+                "Iterative Refinement",
+                "Linear Algebra",
+                "Double Precision",
+                "Two-stage Algorithm",
+                "Eigensolver",
+                "Numerical Results",
+                "Experimental Section",
+                "Parallelization",
+                "Matrix Size",
+                "Transformation Matrix",
+                "Matrix Multiplication",
+                "Newton Method",
+                "Jacobian Matrix",
+                "Nonzero Elements",
+                "Single Precision",
+                "Original Algorithm",
+                "Divide-and-conquer",
+                "Input Matrix",
+                "Eigenvalue Spectrum",
+                "Updated System",
+                "Geometric Distribution",
+                "Reductive Cycle",
+                "Reduction In Precision",
+                "Largest Eigenvalue"
+            ],
+            "Author Keywords": [
+                "mixed-precision algorithms",
+                "eigenvalue solver",
+                "hardware accelerators"
+            ]
+        }
     },
     {
         "publicationNumber": "10024508",
@@ -85,7 +134,55 @@
                 "firstName": "Yasuhiro",
                 "lastName": "Idomura"
             }
-        ]
+        ],
+        "abstract": "The ensemble data assimilation of computational fluid dynamics simulations based on the lattice Boltzmann method (LBM) and the local ensemble transform Kalman filter (LETKF) is implemented and optimized on a GPU supercomputer based on NVIDIA A100 GPUs. To connect the LBM and LETKF parts, data transpose communication is optimized by overlapping computation, file I/O, and communication based on data dependency in each LETKF kernel. In two dimensional forced isotropic turbulence simulations with the ensemble size of M = 64 and the number of grid points of N<inf xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">x</inf> = 128<sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">2</sup>, the optimized implementation achieved ×3.80 speedup from the naive implementation, in which the LETKF part is not parallelized. The main computing kernel of the local problem is the eigenvalue decomposition (EVD) of M×M real symmetric dense matrices, which is computed by a newly developed batched EVD in EigenG. The batched EVD in EigenGoutperforms that in cuSOLVER, and ×65.3 speedup was achieved.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Symmetric matrices",
+                "Computational modeling",
+                "Graphics processing units",
+                "Transforms",
+                "Supercomputers",
+                "Matrix decomposition",
+                "Kalman filters"
+            ],
+            "Index Terms": [
+                "Kalman Filter",
+                "Lattice Boltzmann",
+                "Lattice Boltzmann Method",
+                "Parallelization",
+                "Grid Points",
+                "High-performance Computing",
+                "Local Problems",
+                "Ensemble Size",
+                "Ensemble Data",
+                "Naive Implementation",
+                "Root Mean Square Error",
+                "Computational Cost",
+                "Observational Data",
+                "Space Model",
+                "Linear Solver",
+                "Observation Points",
+                "Cutoff Distance",
+                "Communication Cost",
+                "Local Observations",
+                "Boltzmann Equation",
+                "Forecast Data",
+                "Ensemble Kalman Filter",
+                "Single GPU",
+                "Parallel Implementation",
+                "Ensemble Members",
+                "Ensemble Simulations",
+                "Multiple GPUs",
+                "Calculation Of Eigenvalues",
+                "Density Case"
+            ],
+            "Author Keywords": [
+                "Ensemble data assimilation",
+                "Local ensemble transform Kalman filter",
+                "Eigenvalue decomposition"
+            ]
+        }
     },
     {
         "publicationNumber": "10024508",
@@ -120,7 +217,43 @@
                 "firstName": "George",
                 "lastName": "Bosilca"
             }
-        ]
+        ],
+        "abstract": "The datatype engine in Message Passing Interface (MPI) libraries supports the communication layer by handling the transfer of non-contiguous datatypes. Basic datatypes (integer, float, etc.) serve as building blocks for more complex, and potentially non-contiguous, derived datatypes. In this context, the datatype engine facilitates the description of complex datatypes and provides an efficient and portable interface between complex types and the network communication layer. In this paper, we focus on the Open MPI datatype engine with its compact type representations and pipeline techniques used to hide communication latency. We identified cases where the current datatype representation is sub-optimal and provide an alternative based on range descriptions and Memory Access Rearrangements (MARs) for more efficient pack/unpack operations. As a result, we obtain a performance improvement between 1.2x and 3.2x compared to the current datatype description in Open MPI.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Costs",
+                "Message passing",
+                "Conferences",
+                "Pipelines",
+                "Software algorithms",
+                "Memory management",
+                "Software"
+            ],
+            "Index Terms": [
+                "Message Passing Interface",
+                "Communication Layer",
+                "Data Elements",
+                "High-performance Computing",
+                "Single Element",
+                "Real Function",
+                "Load Data",
+                "Compact Form",
+                "Cost Model",
+                "Segment Size",
+                "Data Block",
+                "Access Patterns",
+                "Cache Size",
+                "L2 Cache",
+                "Cache Misses",
+                "Network Hardware"
+            ],
+            "Author Keywords": [
+                "HPC",
+                "MPI",
+                "Open MPI",
+                "Datatype"
+            ]
+        }
     },
     {
         "publicationNumber": "10024508",
@@ -161,7 +294,51 @@
                 "firstName": "Hartwig",
                 "lastName": "Anzt"
             }
-        ]
+        ],
+        "abstract": "Computation on architectures that feature fine-grained parallelism requires algorithms that overcome load imbalance, inefficient memory access, serialization, and excessive synchronization. In this paper, we explore an algorithm for iteratively solving systems of linear equations that allows for asynchronous updates by different execution units and completely removes the need for synchronization. Methods of this type have been identified as potentially competitive for computations on Exascale machines, but practical implementations for GPU platforms have scarcely been studied. We present an asynchronous Jacobi iteration optimized for high-end GPUs, demonstrate the superiority of the algorithm over a highly tuned synchronous Jacobi iteration, and deploy the algorithm as production-ready implementation in the Ginkgo open source library. The ideas presented here on the algorithm design, implementation and performance can help guide the design of other asynchronous iterative methods on GPUs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Jacobian matrices",
+                "Schedules",
+                "Runtime",
+                "Three-dimensional displays",
+                "Software algorithms",
+                "Graphics processing units",
+                "Parallel processing"
+            ],
+            "Index Terms": [
+                "Jacobi Method",
+                "Serialized",
+                "Performance Measures",
+                "Reproducibility Of Results",
+                "Parallelization",
+                "Linear System",
+                "Grid Points",
+                "Grid Size",
+                "Types Of Connections",
+                "Load Balancing",
+                "Single Thread",
+                "Practical Standpoint",
+                "Updated Values",
+                "Update Time",
+                "Relaxation Method",
+                "Convergence Characteristics",
+                "Level Of Parallelism",
+                "Global Synchronization",
+                "L2 Cache",
+                "Update Cycle",
+                "Multigrid Method",
+                "Iteration Limit",
+                "Computing Units",
+                "Context Switching"
+            ],
+            "Author Keywords": [
+                "asynchronous",
+                "Jacobi",
+                "GPUs",
+                "iterative methods"
+            ]
+        }
     },
     {
         "publicationNumber": "10024508",
@@ -220,7 +397,55 @@
                 "firstName": "Naonori",
                 "lastName": "Ueda"
             }
-        ]
+        ],
+        "abstract": "Targeting viscoelastic crustal deformation analysis, we develop a scalable unstructured implicit finite-element solver accelerated by a data-driven method. Here, we combine a datadriven predictor, that uses past time step data for estimating high-accuracy initial solutions, and a multi-grid based conjugate gradient solver for efficient solving of the remaining errors. When compared to using a standard initial solution predictor on a block Jacobi-preconditioned conjugate gradient solver, a 3.19fold speedup was attained by using the data-driven predictor, and combination with a multi-grid solver attained a total speedup of 76.8-fold on Fugaku. Furthermore, as the computation of the data-driven predictor is localized and can be conducted without communication between computation nodes, the solver attained high weak scalability efficiency of 78.5% up to 73728 compute nodes of Fugaku, leading to 6.88% FP64 peak efficiency for the whole application. Such development is also expected to be useful for accelerating other PDE-based time evolution problems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Jacobian matrices",
+                "Scalability",
+                "Conferences",
+                "Prediction algorithms",
+                "Finite element analysis",
+                "Computational efficiency",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Scalable",
+                "Data-driven Methods",
+                "Orogenic",
+                "Viscoelastic Deformation",
+                "Viscoelastic Analysis",
+                "Time Step",
+                "Time Evolution",
+                "High Scalability",
+                "Computing Nodes",
+                "Finite Element Solver",
+                "Weak Efficiency",
+                "Data-driven Prediction",
+                "Degrees Of Freedom",
+                "Reduction In The Number",
+                "Development Of Methods",
+                "Seismic",
+                "Parallelization",
+                "Finite Element Method",
+                "Computer System",
+                "Iterative Solver",
+                "Multigrid Method",
+                "Loop Level",
+                "Matrix-vector Product",
+                "Finite Element Model",
+                "Fault Zone",
+                "Sparse Matrix",
+                "Load Balancing",
+                "Memory Footprint",
+                "Implicit Method"
+            ],
+            "Author Keywords": [
+                "unstructured finite-element method",
+                "data-driven predictor",
+                "viscoelastic crustal deformation analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "10024508",
@@ -261,7 +486,37 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "LU factorization is a key approach for solving large, dense systems of linear equations. Partial row pivoting is commonly used to ensure numerical stability; however, the data movement needed for the row interchanges can reduce performance. To improve this, we propose using threshold pivoting to find pivots almost as good as those selected by partial pivoting but that result in less data movement. Our theoretical analysis bounds the element growth similarly to partial pivoting; however, it also shows that the growth of threshold pivoting for a given matrix cannot be bounded by that of partial pivoting and vice versa. Additionally, we experimentally tested the approach on the Summit supercomputer. Threshold pivoting improved performance by up to 32% without a significant effect on accuracy. For a more aggressive configuration with up to one digit of accuracy lost, the improvement was as high as 44%.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Conferences",
+                "Supercomputers",
+                "Numerical stability"
+            ],
+            "Index Terms": [
+                "LU Factorization",
+                "Load Data",
+                "Numeric",
+                "Diagonal Elements",
+                "Energy Usage",
+                "Random Matrix",
+                "Linear Algebra",
+                "Reduction In Accuracy",
+                "Upper Triangular",
+                "Largest Element",
+                "Root Process",
+                "Memory Bandwidth",
+                "Maximum Element",
+                "Gaussian Elimination",
+                "Diagonally Dominant",
+                "Schur Complement"
+            ],
+            "Author Keywords": [
+                "Linear systems",
+                "Parallel algorithms"
+            ]
+        }
     },
     {
         "publicationNumber": "10024508",
@@ -277,7 +532,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Latest Advances in Scalable Algorithms for Large-Scale Heterogeneous Systems (ScalAH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024508",
@@ -293,7 +550,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Latest Advances in Scalable Algorithms for Large-Scale Heterogeneous Systems (ScalAH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024508",
@@ -309,7 +568,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Latest Advances in Scalable Algorithms for Large-Scale Heterogeneous Systems (ScalAH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024508",
@@ -325,7 +586,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Latest Advances in Scalable Algorithms for Large-Scale Heterogeneous Systems (ScalAH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024508",
@@ -341,7 +604,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Latest Advances in Scalable Algorithms for Large-Scale Heterogeneous Systems (ScalAH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     },
     {
         "publicationNumber": "10024508",
@@ -357,6 +622,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2022 IEEE/ACM Workshop on Latest Advances in Scalable Algorithms for Large-Scale Heterogeneous Systems (ScalAH)",
-        "authors": []
+        "authors": [],
+        "abstract": "",
+        "keywords": {}
     }
 ]

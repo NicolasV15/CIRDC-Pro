@@ -32,7 +32,48 @@
                 "firstName": "Debdeep",
                 "lastName": "Mukhopadhyay"
             }
-        ]
+        ],
+        "abstract": "In 2013, the US National Security Agency proposed two new families of lightweight block ciphers: SIMON and SPECK. Currently, linear and differential cryptanalytic results for SIMON are available in the literature but no fault attacks have been reported so far on these two cipher families. In this paper, we show that these families of ciphers are vulnerable to differential fault attacks. Specifically, we demonstrate two fault attacks on SIMON and one fault attack on SPECK. The first attack on SIMON assumes a bit-flip fault model and recovers the n-bit last round key of SIMON using n/2 bit faults. The second attack on SIMON uses a more practical, random byte fault model and requires n/8 faults on average to retrieve the last round key. The attack presented on SPECK also assumes a bit-flip fault model and recovers the n-bit last round key of SPECK using n/3 bit faults on average.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Ciphers",
+                "Equations",
+                "Hamming weight",
+                "Mathematical model",
+                "Fault diagnosis",
+                "National security"
+            ],
+            "Index Terms": [
+                "Differential Fault Analysis",
+                "Defect Model",
+                "US National Security",
+                "Block Cipher",
+                "Differential Attacks",
+                "Set Of Equations",
+                "Precise Control",
+                "Intermediate Results",
+                "Secret Key",
+                "Public Key",
+                "Attack Complex",
+                "Least Significant Bit",
+                "Most Significant Bit",
+                "Cryptosystem",
+                "OR Operation",
+                "Fault Position",
+                "Input Bits",
+                "Random Attack",
+                "Hamming Weight",
+                "Value Of Bit",
+                "Round Function"
+            ],
+            "Author Keywords": [
+                "Differential Fault Analysis",
+                "Fault Attack",
+                "Lightweight Block Ciphers",
+                "SIMON",
+                "SPECK"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -73,7 +114,50 @@
                 "firstName": "Patrick",
                 "lastName": "Schaumont"
             }
-        ]
+        ],
+        "abstract": "Recent research has demonstrated that there is no sharp distinction between passive attacks based on side-channel leakage and active attacks based on fault injection. Fault behavior can be processed as side-channel information, offering all the benefits of Differential Power Analysis including noise averaging and hypothesis testing by correlation. This paper introduces Differential Fault Intensity Analysis, which combines the principles of Differential Power Analysis and fault injection. We observe that most faults are biased - such as single-bit, two-bit, or three-bit errors in a byte - and that this property can reveal the secret key through a hypothesis test. Unlike Differential Fault Analysis, we do not require precise analysis of the fault propagation. Unlike Fault Sensitivity Analysis, we do not require a fault sensitivity profile for the device under attack. We demonstrate our method on an FPGA implementation of AES with a fault injection model. We find that with an average of 7 fault injections, we can reconstruct a full 128-bit AES key.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Circuit faults",
+                "Clocks",
+                "Cryptography",
+                "Hamming distance",
+                "Mathematical model",
+                "Field programmable gate arrays",
+                "Registers"
+            ],
+            "Index Terms": [
+                "Differential Analysis",
+                "Fault Intensity",
+                "Hypothesis Testing",
+                "Secret Key",
+                "Experimental Setup",
+                "State Variables",
+                "Output Value",
+                "External Signals",
+                "Fault Location",
+                "Defect Model",
+                "Hamming Distance",
+                "Multiple Defects",
+                "Key Values",
+                "Number Of Injections",
+                "Random Changes",
+                "Clock Frequency",
+                "Secretor Status",
+                "Clock Signal",
+                "Key Hypothesis",
+                "Block Cipher",
+                "External Clock",
+                "Accurate Injection",
+                "Source Leakage"
+            ],
+            "Author Keywords": [
+                "Fault Analysis",
+                "AES",
+                "Fault Injection",
+                "Fault Intensity"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -114,7 +198,55 @@
                 "firstName": "Ilia",
                 "lastName": "Polian"
             }
-        ]
+        ],
+        "abstract": "We propose two extremely stealthy hardware Trojans that facilitate fault-injection attacks in cryptographic blocks. The Trojans are carefully inserted to modify the electrical characteristics of predetermined transistors in a circuit by altering parameters such as doping concentration and do pant area. These Trojans are activated with very low probability under the presence of a slightly reduced supply voltage (0.001 for 20% Vdd reduction). We demonstrate the effectiveness of the Trojans by utilizing them to inject faults into an ASIC implementation of the recently introduced lightweight cipher PRINCE. Full circuit-level simulation followed by differential cryptanalysis demonstrate that the secret key can be reconstructed after around 5 fault-injections.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Trojan horses",
+                "Circuit faults",
+                "Logic gates",
+                "Inverters",
+                "Transistors",
+                "Testing",
+                "Cryptography"
+            ],
+            "Index Terms": [
+                "Fault Injection Attacks",
+                "Cryptographic Hardware",
+                "Electrical Characteristics",
+                "Doping Concentration",
+                "Supply Voltage",
+                "Secret Key",
+                "Differential Attacks",
+                "Function Tests",
+                "Center Frequency",
+                "Inverter",
+                "Exhaustive Search",
+                "Plaintext",
+                "Trigger Factor",
+                "Actual Probability",
+                "Hot Electrons",
+                "Detector Voltage",
+                "Threat Model",
+                "Clock Cycles",
+                "User-defined Threshold",
+                "Block Cipher",
+                "Optical Inspection",
+                "Beginning Of Each Round",
+                "Encryption And Decryption",
+                "Threshold Switching",
+                "Key Exchange",
+                "Percentage Of Defects",
+                "Test Pattern",
+                "Random Generation",
+                "Synopsys"
+            ],
+            "Author Keywords": [
+                "fault-based cryptanalysis",
+                "fault injection",
+                "hardware Trojans"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -143,7 +275,56 @@
                 "firstName": "Michael",
                 "lastName": "Hoefler"
             }
-        ]
+        ],
+        "abstract": "Forcing faulty outputs of devices implementing cryptographic primitives in order to reveal some secret information is a well-known attack strategy. Tampering with the clock signal or the supply voltage are two popular techniques for generating erroneous behaviour. In this work we perform an in-depth analysis of the vulnerability of two different microcontroller platforms on clock and supply voltage tampering. The influence on three different groups of instructions is discussed in detail: arithmetical/logical instructions, branch instructions and memory instructions. A novel approach, combining short-time under powering with clock glitches, is applied in order to increase the reproducibility of the fault and the probability for the fault to occur. Results show that the fetch stage and the execution stage of the instruction pipeline are mainly affected by clock glitches, leading to skipped or duplicated execution or faulty calculation results. One sample per platform is used for the experiments, but for each fault type an interval for the parameters leading to the fault with a probability of 100% is given. The values in the middle of this interval are less sensitive to sample distribution as well as environmental influences. This knowledge allows to efficiently attack software implementations of cryptographic primitives implemented on one of the evaluated platforms.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Microcontrollers",
+                "Pipelines",
+                "Computers",
+                "Timing",
+                "Registers",
+                "Cryptography"
+            ],
+            "Index Terms": [
+                "Microcontroller Platform",
+                "Supply Voltage",
+                "Software Implementation",
+                "Clock Signal",
+                "Secret Information",
+                "Pipeline Stages",
+                "Cryptographic Primitives",
+                "Execution Stage",
+                "Deep Pipeline",
+                "Middle Interval",
+                "Voltage Drop",
+                "Interval Values",
+                "Triggering Event",
+                "Test Scenarios",
+                "Secret Key",
+                "Educational Stages",
+                "Erroneous Results",
+                "Attack Target",
+                "Clock Frequency",
+                "Physical Attacks",
+                "Clock Cycles",
+                "Block Cipher",
+                "Execution Of Operations",
+                "Electromagnetic Pulses",
+                "Single Clock",
+                "Memory Address",
+                "Clock Period",
+                "Decoding Stage",
+                "Attack Scenarios",
+                "Microcontroller Unit"
+            ],
+            "Author Keywords": [
+                "microcontroller",
+                "clock glitch",
+                "power glitch"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -184,7 +365,59 @@
                 "firstName": "Lejla",
                 "lastName": "Batina"
             }
-        ]
+        ],
+        "abstract": "Fault attacks have been widely studied in the past but most of the literature describes only individual fault-injection techniques such as power/clock glitches, EM pulses, optical inductions, or heating/cooling. In this work, we investigate combined fault attacks by performing clock-glitch attacks under the impact of heating. We performed practical experiments on an 8-bit AVR microcontroller which resulted in the following findings. First, we identified that the success rate of glitch attacks performed at an ambient temperature of 100°C is higher than under room temperature. We were able to induce more faults and significantly increase the time frame when the device is susceptible to glitches which makes fault attacks easier to perform in practice. Second, and independently of the ambient temperature, we demonstrate that glitches cause individual instructions to repeat, we are able to add new random instructions, and we identified that opcode gets modified such that address registers of individual instructions get changed. Beside these new results, this is the first work that reports results of combined glitch and thermo attacks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Microcontrollers",
+                "Heating",
+                "Registers",
+                "Circuit faults",
+                "Performance evaluation",
+                "Field programmable gate arrays"
+            ],
+            "Index Terms": [
+                "Presence Of Heat",
+                "Presence Of Attacks",
+                "Individual Teachers",
+                "Attack Rate",
+                "Electromagnetic Pulses",
+                "Attack Success Rate",
+                "Attack Performance",
+                "Types Of Defects",
+                "Impact Of Temperature",
+                "Triggering Event",
+                "Supply Voltage",
+                "Secret Key",
+                "Trigger Signal",
+                "Heating Plate",
+                "Digital Oscilloscope",
+                "Attack Success",
+                "Clock Frequency",
+                "Clock Cycles",
+                "Unpredictable Ways",
+                "Clock Signal",
+                "Kinds Of Defects",
+                "Positive Edges",
+                "Execution Of Operations",
+                "Different Types Of Defects",
+                "Block Cipher",
+                "Junction Temperature",
+                "Reference Clock",
+                "Output Of Block",
+                "Combinational Logic"
+            ],
+            "Author Keywords": [
+                "Fault attacks",
+                "temperature",
+                "heating",
+                "non-invasive",
+                "glitches",
+                "AVR",
+                "ATmega"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -213,7 +446,43 @@
                 "firstName": "Sylvain",
                 "lastName": "Guilley"
             }
-        ]
+        ],
+        "abstract": "In this paper we study the existing CRT-RSA countermeasures against fault-injection attacks. In an attempt to classify them we get to achieve deep understanding of how they work. We show that the many countermeasures that we study (and their variations) actually share a number of common features, but optimize them in different ways. We also show that there is no conceptual distinction between test-based and infective countermeasures and how either one can be transformed into the other. Furthermore, we show that faults on the code (skipping instructions) can be captured by considering only faults on the data. These intermediate results allow us to improve the state of the art in several ways: (a) we fix an existing and that was known to be broken countermeasure (namely the one from Shamir), (b) we drastically optimize an existing countermeasure (namely the one from Vigilant) which we reduce to 3 tests instead of 9 in its original version, and prove that it resists not only one fault but also an arbitrary number of randomizing faults, (c) we also show how to upgrade countermeasures to resist any given number of faults: given a correct first-order countermeasure, we present a way to design a provable high-order countermeasure (for a well-defined and reasonable fault model). Finally, we pave the way for a generic approach against fault attacks for any modular arithmetic computations, and thus for the automatic insertion of countermeasures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Computational modeling",
+                "Resists",
+                "Cryptography",
+                "Acceleration",
+                "Transforms",
+                "Equations"
+            ],
+            "Index Terms": [
+                "Fault Injection Attacks",
+                "Intermediate Results",
+                "Defect Model",
+                "Recombination",
+                "Exponent",
+                "Worst-case Scenario",
+                "Types Of Attacks",
+                "Secret Key",
+                "Separation Procedure",
+                "Big Number",
+                "Fault Occurrence",
+                "Cryptosystem",
+                "Original Message",
+                "Subring",
+                "Signature Verification",
+                "Integrity Checking"
+            ],
+            "Author Keywords": [
+                "RSA",
+                "CRT",
+                "fault injection",
+                "BellCoRe attack",
+                "high order"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -232,9 +501,9 @@
         "authors": [
             {
                 "id": 37085535855,
-                "preferredName": "Johannes Bl\u00f6mer",
+                "preferredName": "Johannes Blömer",
                 "firstName": "Johannes",
-                "lastName": "Bl\u00f6mer"
+                "lastName": "Blömer"
             },
             {
                 "id": 37087612449,
@@ -244,15 +513,15 @@
             },
             {
                 "id": 37085369209,
-                "preferredName": "Peter G\u00fcnther",
+                "preferredName": "Peter Günther",
                 "firstName": "Peter",
-                "lastName": "G\u00fcnther"
+                "lastName": "Günther"
             },
             {
                 "id": 37863889500,
-                "preferredName": "Juliane Kr\u00e4mer",
+                "preferredName": "Juliane Krämer",
                 "firstName": "Juliane",
-                "lastName": "Kr\u00e4mer"
+                "lastName": "Krämer"
             },
             {
                 "id": 37587366800,
@@ -260,7 +529,49 @@
                 "firstName": "Jean-Pierre",
                 "lastName": "Seifert"
             }
-        ]
+        ],
+        "abstract": "Several fault attacks against pairing-based cryptography have been described theoretically in recent years. Interestingly, none of these has been practically evaluated. We accomplish this task and prove that fault attacks against pairing-based cryptography are indeed possible and even practical - thus posing a serious threat. Moreover, we successfully conduct a second-order fault attack against an open source implementation of the eta pairing on an AVR XMEGA A1. We inject the first fault into the computation of the Miller Algorithm and apply the second fault to completely skip the final exponentiation. We introduce a low-cost setup that allows us to generate multiple independent faults in one computation. The setup implements these faults by clock glitches which induce instruction skips. With this setup we conducted the first practical fault attack against a complete pairing computation.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Synchronization",
+                "Elliptic curve cryptography",
+                "Elliptic curves",
+                "Field programmable gate arrays",
+                "Circuit faults"
+            ],
+            "Index Terms": [
+                "Fault Attack",
+                "Inverse Problem",
+                "Host System",
+                "Calculation Steps",
+                "Secret Key",
+                "Wireless Sensor Networks",
+                "Public Key",
+                "Elliptic Curve",
+                "Finite Field",
+                "Attack Success",
+                "Single Fault",
+                "Loop Iteration",
+                "Clock Cycles",
+                "Smart Card",
+                "Secret Information",
+                "Concrete Implementation",
+                "Cryptanalysis",
+                "Key Agreement",
+                "Univariate Polynomial",
+                "MHz Clock",
+                "Clock Signal",
+                "Mathematical Analysis",
+                "Bilinear Map",
+                "Corruption"
+            ],
+            "Author Keywords": [
+                "Pairing-Based Cryptography",
+                "Fault Attacks",
+                "eta Pairing"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -295,7 +606,49 @@
                 "firstName": "David",
                 "lastName": "Naccache"
             }
-        ]
+        ],
+        "abstract": "This paper presents a novel fault attack against Substitution Permutation Networks. The main advantage of the method is an absence of necessity to know the exact cipher's input and output values. The attack relies only on the number of faulty cipher texts originated from the same unknown plaintext. The underlying model is a multiple bit-set or bit-reset faults injected several times at the same intermediate round state. This method can be applied against any round thus any round key can be extracted. The attack was shown to be efficient by simulation against several SPN block ciphers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hamming weight",
+                "Ciphers",
+                "Circuit faults",
+                "Encryption",
+                "Equations",
+                "Entropy",
+                "Mathematical model"
+            ],
+            "Index Terms": [
+                "Fault Attack",
+                "Permutation",
+                "Intermediate State",
+                "Block Cipher",
+                "Uniform Distribution",
+                "State Value",
+                "Input Size",
+                "Nonlinear Transformation",
+                "Cosmic Rays",
+                "Defect Model",
+                "Multiple Defects",
+                "Key Values",
+                "Side-channel",
+                "Attack Target",
+                "Key Operations",
+                "Linear Diffusion",
+                "Hamming Weight",
+                "Output Bits"
+            ],
+            "Author Keywords": [
+                "SPN",
+                "AES",
+                "LED",
+                "SAFER++",
+                "Block cipher",
+                "Differential Fault Analysis",
+                "Collision Fault Analysis",
+                "Side Channel Analysis"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -326,11 +679,48 @@
             },
             {
                 "id": 37662108000,
-                "preferredName": "Tim G\u00fcneysu",
+                "preferredName": "Tim Güneysu",
                 "firstName": "Tim",
-                "lastName": "G\u00fcneysu"
+                "lastName": "Güneysu"
             }
-        ]
+        ],
+        "abstract": "Previous works have shown that the combinatorial path delay of a cryptographic function, e.g., The AES S-box, depends on its input value. Since the relation between critical path delay and input value seems to be relatively random and highly dependent on the routing of the circuit, up to now only template or some collision attacks could reliably extract the used secret key of implementations not protected against fault attacks. Here we present a new attack which is based on the fact that, because of the zero-to-zero mapping of the AES Sbox inversion circuit, the critical path when processing the zero input is notably shorter than for all other inputs. Applying the attack to an AES design protected by an state-of-the-art fault detection scheme, we are able to fully recover the secret key in less than eight hours. Note that we neither require a known key measurement step (template case) nor a high similarity between different S-box instances (collision case). The only information gathered from the device is whether a fault occurred when processing a chosen plaintext.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Clocks",
+                "Circuit faults",
+                "Redundancy",
+                "Delays",
+                "Computer architecture",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Fault Sensitivity",
+                "Detection Scheme",
+                "Secret Key",
+                "Critical Path",
+                "Known Key",
+                "Error Rate",
+                "Zero Values",
+                "Calculation Steps",
+                "Types Of Attacks",
+                "Function Generator",
+                "Clock Cycles",
+                "Permutation Matrix",
+                "Datapath",
+                "Evaluation Platform",
+                "Key Space",
+                "Hamming Weight",
+                "Concurrent Detection"
+            ],
+            "Author Keywords": [
+                "Fault Attack",
+                "Fault Sensitivity",
+                "Fault Collision",
+                "Zero Value",
+                "AES"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -389,7 +779,42 @@
                 "firstName": "Dawu",
                 "lastName": "Gu"
             }
-        ]
+        ],
+        "abstract": "GOST is a well-known block cipher as the official encryption standard for the Russian Federation. A special feature of GOST is that its eight S-boxes can be secret. However, most of the researches on GOST assume that the design of these S-boxes is known. In this paper, the security of GOST against side-channel attacks is examined with algebraic fault analysis (AFA), which combines the algebraic cryptanalysis with the fault attack. Three AFAs on GOST, which have different attack goals in different scenarios, are investigated. The results show that 8 fault injections are required to recover the secret key when the full design of GOST is known, which is less than 64 fault injections required in previous work. 64 fault injections are required to recover the eight unknown S-boxes assuming the key is known. 270 fault injections are required to recover the key and the eight S-boxes when both are unknown. The results prove that AFA is very effective and keeping some components in a cipher secret cannot guarantee its security against fault attacks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Equations",
+                "Mathematical model",
+                "Ciphers",
+                "Encryption",
+                "Standards",
+                "Reverse engineering"
+            ],
+            "Index Terms": [
+                "Reverse Engineering",
+                "Algebraic Analysis",
+                "Secret Key",
+                "Cryptanalysis",
+                "Block Cipher",
+                "Central Bank",
+                "Output Function",
+                "Fault Location",
+                "Algebraic Equations",
+                "Defect Model",
+                "Equation Solver",
+                "Automatic Tool",
+                "Half Of The Data",
+                "Key Size",
+                "Left Rotation"
+            ],
+            "Author Keywords": [
+                "algebraic cryptanalysis",
+                "differential fault analysis",
+                "GOST",
+                "key recovery",
+                "reverse engineering"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -436,7 +861,43 @@
                 "firstName": "Louis",
                 "lastName": "Goubin"
             }
-        ]
+        ],
+        "abstract": "Pairing based cryptography (PBC) is touted as an efficient approach to address usability and privacy issues in the cyberspace. Like most cryptographic algorithms, PBC must be robust not only against theoretical cryptanalysis but also against practical physical attacks such as fault injections. The computation of the Tate pairing can be divided into two parts, the Miller Algorithm and the Final Exponentiation. In this paper, we describe practical implementations of fault attacks against the Miller Algorithm validating common fault models used against pairings. In the light of the implemented fault attacks, we show that some blinding techniques proposed to protect the algorithm against Side-Channels Analyses cannot be used as countermeasures against the implemented fault attacks.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Algorithm design and analysis",
+                "Cryptography",
+                "Circuit faults",
+                "Mathematical model",
+                "Radiation detectors",
+                "Elliptic curves",
+                "Equations"
+            ],
+            "Index Terms": [
+                "Fault Attack",
+                "Privacy Issues",
+                "Defect Model",
+                "Side-channel",
+                "Blind Technique",
+                "Quotient",
+                "Injection Time",
+                "Random Values",
+                "Pulse Amplitude",
+                "Efficient Implementation",
+                "Divisor",
+                "Elliptic Curve",
+                "Bilinear Map",
+                "Electromagnetic Pulses",
+                "Double Step"
+            ],
+            "Author Keywords": [
+                "Pairing",
+                "Miller algorithm",
+                "fault attacks",
+                "blinding countermeasures",
+                "EM fault injection"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -455,14 +916,14 @@
         "authors": [
             {
                 "id": 37087609573,
-                "preferredName": "H\u00e9l\u00e8ne Le Bouder",
-                "firstName": "H\u00e9l\u00e8ne Le",
+                "preferredName": "Hélène Le Bouder",
+                "firstName": "Hélène Le",
                 "lastName": "Bouder"
             },
             {
                 "id": 37085493294,
-                "preferredName": "Ga\u00ebl Thomas",
-                "firstName": "Ga\u00ebl",
+                "preferredName": "Gaël Thomas",
+                "firstName": "Gaël",
                 "lastName": "Thomas"
             },
             {
@@ -477,7 +938,41 @@
                 "firstName": "Assia",
                 "lastName": "Tria"
             }
-        ]
+        ],
+        "abstract": "In this paper, we propose a generic method to assess the vulnerability to Differential Fault Analysis of generalized Feistel networks (GFN). This method is based on an in-depth analysis of the GFN properties. First the diffusion of faults is studied, both at the block level and at the S-box level, in order to have a fault which maximizes the number of S-boxes impacted by a fault. Then the number of faults in an S-box required to find the key is evaluated. By combining these results, a precise assessment of the vulnerability to fault attacks of GFN can be made. This method is then used on several examples of Feistel ciphers.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Circuit faults",
+                "Bismuth",
+                "Ciphers",
+                "Indexes",
+                "Algorithm design and analysis",
+                "Encryption"
+            ],
+            "Index Terms": [
+                "Feistel Network",
+                "Solution Of Equation",
+                "Form Of Equation",
+                "Encryption",
+                "Internal State",
+                "Behavior In Order",
+                "Matrix Representation",
+                "Idempotent",
+                "Output Of Block",
+                "Attitude Matrix",
+                "Key Size",
+                "Input Bits",
+                "Output Bits",
+                "Block Index",
+                "Block Cipher",
+                "Differential Attacks"
+            ],
+            "Author Keywords": [
+                "Fault injections attack",
+                "differential fault analysis",
+                "Generalized Feistel Networks"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -496,15 +991,15 @@
         "authors": [
             {
                 "id": 37085535855,
-                "preferredName": "Johannes Bl\u00f6mer",
+                "preferredName": "Johannes Blömer",
                 "firstName": "Johannes",
-                "lastName": "Bl\u00f6mer"
+                "lastName": "Blömer"
             },
             {
                 "id": 37085369209,
-                "preferredName": "Peter G\u00fcnther",
+                "preferredName": "Peter Günther",
                 "firstName": "Peter",
-                "lastName": "G\u00fcnther"
+                "lastName": "Günther"
             },
             {
                 "id": 37085537665,
@@ -512,7 +1007,33 @@
                 "firstName": "Gennadij",
                 "lastName": "Liske"
             }
-        ]
+        ],
+        "abstract": "In the last decade pairings have become an important, and often indispensable, ingredient in the construction of identity-based and attribute-based cryptosystems, as well as group signatures and credential systems. Consequently, the applicability of timing, power, or fault attacks to implementations of pairings is an important research topic. We will review some of the known results in this area.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Elliptic curves",
+                "Elliptic curve cryptography",
+                "Resistance",
+                "Concrete",
+                "Jacobian matrices",
+                "Algorithm design and analysis"
+            ],
+            "Index Terms": [
+                "Pairing-based Cryptography",
+                "Tampering Attacks",
+                "Exponent",
+                "Coordinates Of Points",
+                "Functional Coordination",
+                "Extensive Field",
+                "Secret Key",
+                "Arithmetic Operations",
+                "Side-channel",
+                "Elliptic Curve",
+                "Rational Function",
+                "Bilinear Map",
+                "Cryptographic Primitives"
+            ]
+        }
     },
     {
         "publicationNumber": "6975317",
@@ -528,7 +1049,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides general information on various non-technical conference events.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -544,7 +1067,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -560,7 +1085,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -576,7 +1103,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -592,7 +1121,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -608,7 +1139,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -624,7 +1157,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference offers a note of thanks and lists its reviewers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -640,7 +1175,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -656,7 +1193,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the front cover of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -672,7 +1211,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: fault diagnosis; fault tolerance; cryptography; IC design security; differential fault analysis; algebraic fault analysis; fault models; fault countermeasures; experimental attacks and simulated attacks.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -688,7 +1229,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6975317",
@@ -704,6 +1247,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2014 Workshop on Fault Diagnosis and Tolerance in Cryptography",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference organizers greatly appreciate the support of the various corporate sponsors listed.",
+        "keywords": {}
     }
 ]

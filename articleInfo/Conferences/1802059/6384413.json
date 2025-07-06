@@ -26,7 +26,44 @@
                 "firstName": "Yasuo",
                 "lastName": "Okabe"
             }
-        ]
+        ],
+        "abstract": "We propose a method to control Packet-In messages in OpenFlow switches for reducing CPU and network utilization of switches and controllers. In OpenFlow network, controllers setup flow entries to switches in response to Packet-In messages from switches. When a host suddenly starts to send many packets of a flow without any negotiation in advance, like a video stream on UDP, the control traffic and CPU utilization of switches and controllers become high until the flow entries are inserted into switches, and this high utilization would make network control unstable. In this paper, we propose a method to filter out unimportant Packet-In messages to reduce CPU utilization and the control traffic in OpenFlow switches and controllers. We categorize Packet-In messages into three groups, State Change, Flow Setup and Forward. Controllers process these messages to change the internal state of controllers, to trigger inserting flow entries, and to forward packets to other switches, respectively. Forward type of messages are less important than State Change and Flow Setup messages in terms of network control, because State Change and Flow Setup messages change states of network such as flow entries but Forward messages do not. We propose a method to identify Forward messages in switches by recording the header of Flow Setup packets and by matching packets with recorded flows. We have implemented our method into Open vSwitch to limit the bandwidth of Forward type of messages, and our evaluation shows that our method can control Packet-In messages with little CPU utilization overhead in the switch.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Control systems",
+                "Bandwidth",
+                "Process control",
+                "Software",
+                "Generators",
+                "Delay",
+                "Quality of service"
+            ],
+            "Index Terms": [
+                "OpenFlow Switches",
+                "Packet-In Message",
+                "Changes In Conditions",
+                "Control Network",
+                "Types Of Messages",
+                "CPU Utilization",
+                "Flow Setup",
+                "Packet Forwarding",
+                "Intel Core",
+                "Network Technology",
+                "Network Bandwidth",
+                "General Flow",
+                "Normal Flow",
+                "Expiratory Time",
+                "Control Plane",
+                "Flow Table",
+                "Packet Arrival",
+                "Intel Core 2"
+            ],
+            "Author Keywords": [
+                "OpenFlow",
+                "Packet Transmission",
+                "Rate Limit"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -61,7 +98,56 @@
                 "firstName": "Jennifer",
                 "lastName": "Rexford"
             }
-        ]
+        ],
+        "abstract": "Existing cellular networks suffer from inflexible and expensive equipment, complex control-plane protocols, and vendor-specific configuration interfaces. In this position paper, we argue that software defined networking (SDN) can simplify the design and management of cellular data networks, while enabling new services. However, supporting many subscribers, frequent mobility, fine-grained measurement and control, and real-time adaptation introduces new scalability challenges that future SDN architectures should address. As a first step, we propose extensions to controller platforms, switches, and base stations to enable controller applications to (i) express high-level policies based on subscriber attributes, rather than addresses and locations, (ii) apply real-time, fine-grained control through local agents on the switches, (iii)perform deep packet inspection and header compression on packets, and (iv)remotely manage shares of base-station resources.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Base stations",
+                "Control systems",
+                "Quality of service",
+                "Protocols",
+                "Real-time systems",
+                "IP networks",
+                "Scalability"
+            ],
+            "Index Terms": [
+                "Cellular Networks",
+                "Base Station",
+                "Local Agencies",
+                "Policy Based",
+                "Control Applications",
+                "Scale Of The Challenge",
+                "Control Plane",
+                "Fine-grained Control",
+                "Fine-grained Measures",
+                "Packet Header",
+                "Wireless Networks",
+                "Time Slot",
+                "Traffic Flow",
+                "Access Control",
+                "Parental Control",
+                "User Location",
+                "User Equipment",
+                "Roaming",
+                "Network Devices",
+                "Intrusion Detection",
+                "Middlebox",
+                "Radio Resource",
+                "Radio Resource Management",
+                "Mobility Management",
+                "Radio Resource Allocation",
+                "Admission Control",
+                "Cellular Technology",
+                "Intrusion Detection System",
+                "Network Equipment",
+                "Peak-to-average Power Ratio"
+            ],
+            "Author Keywords": [
+                "CellSDN",
+                "software defined networks (SDN)",
+                "local control agent"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -102,7 +188,55 @@
                 "firstName": "Sergio",
                 "lastName": "Palazzo"
             }
-        ]
+        ],
+        "abstract": "The software defined networking (SDN) paradigm promises to dramatically simplify network configuration and resource management. Such features are extremely valuable to network operators and therefore, the industrial (besides the academic) research and development community is paying increasing attention to SDN. Although wireless equipment manufacturers are increasing their involvement in SDN-related activities, to date there is not a clear and comprehensive understanding of what are the opportunities offered by SDN in most common networking scenarios involving wireless infrastructureless communications and how SDN concepts should be adapted to suit the characteristics of wireless and mobile communications. This paper is a first attempt to fill this gap as it aims at analyzing how SDN can be beneficial in wireless infrastructureless networking environments with special emphasis on wireless personal area networks (WPAN). Furthermore, a possible approach (called SDWN) for such environments is presented and some design guidelines are provided.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Wireless communication",
+                "Peer to peer computing",
+                "Software",
+                "Topology",
+                "Wireless personal area networks",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Wireless Networks",
+                "Research Community",
+                "Network Operators",
+                "Mobile Communication",
+                "Network Environment",
+                "Network Scenarios",
+                "Actual Values",
+                "Control Network",
+                "Sensor Networks",
+                "Type Of Action",
+                "Wireless Sensor",
+                "Wireless Sensor Networks",
+                "Network Management",
+                "Topological Information",
+                "Management Solutions",
+                "OpenFlow",
+                "Turn Off",
+                "Embedded System",
+                "Received Signal Strength Indicator",
+                "Sink Node",
+                "Definition Of Rules",
+                "Flow Table",
+                "Aggregation Layer",
+                "Neighbor List",
+                "List Of Nodes",
+                "Battery Level",
+                "Implementation Details",
+                "Time Instants"
+            ],
+            "Author Keywords": [
+                "Software Defined Networking",
+                "Wireless Networks",
+                "Flexibility",
+                "Reconfigurability"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -155,7 +289,59 @@
                 "firstName": "Mario",
                 "lastName": "Pickavet"
             }
-        ]
+        ],
+        "abstract": "Worldwide mobile network operators have to spend billions to upgrade their own network to the latest standards for wireless communication of high-speed data for mobile phones (e.g. Long Term Evolution, LTE). This is in contrast with the decline in average revenue per user and threatens: (1) their profitability and (2) the fast adaptation of new standards. Investigating new mechanisms that can decrease the capital expenditures (capex) and operational expenditures (opex) of a mobile network is therefore essential. Enabling multiple mobile network operators on a common infrastructure is one such mechanism. Software defined networks can overcome this problem and a solution based on exploring OpenFlow (OF) as architecture for mobile network virtualization has been proposed. We investigate two network scenarios based on this OF solution in a techno-economic analysis: (scenario 1) software-defined, non-shared networks and (scenario 2) virtualized, shared networks and compare it against the current situation. By doing so, this paper provides insights on the relative cost savings that a mobile network operator can reach through Software Defined Networking (SDN) and network sharing. The techno-economic analysis indicates that SDN and virtualization of the first aggregation stage and second aggregation stage network infrastructure leads to substantial capex cost reductions for the mobile network operator. As a consequence, mobile network infrastructure virtualization through the use of OpenFlow could be one of the problem solvers to tackle the issue of rising costs and decreasing profitability. Still, we did not take into account the direct effect on operational expenditures and the indirect effect that network sharing can adversely affect the ability of the operators to differentiate themselves.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Mobile communication",
+                "Mobile computing",
+                "Software",
+                "Computer architecture",
+                "Base stations",
+                "Control systems"
+            ],
+            "Index Terms": [
+                "Mobile Network",
+                "Techno-economic Analysis",
+                "Network Operators",
+                "Substantial Costs",
+                "Network Infrastructure",
+                "Capital Expenditure",
+                "Term Evolution",
+                "Mobile Operators",
+                "Stages Of Aggregation",
+                "Operational Expenditure",
+                "Average Revenue",
+                "Mobile Network Operators",
+                "Substantial Cost Reduction",
+                "Control Network",
+                "Base Station",
+                "Network Design",
+                "Inner Core",
+                "Actual Demand",
+                "Physical Infrastructure",
+                "Core Network",
+                "Core Location",
+                "Control Logic",
+                "Network Devices",
+                "Classical Scenario",
+                "Control Plane",
+                "Ring Topology",
+                "Business Hours",
+                "Network Equipment",
+                "Communication Interface",
+                "Market Requirements"
+            ],
+            "Author Keywords": [
+                "Software Defined Networking",
+                "Capital Expenditures",
+                "Operational Expenditures",
+                "Techno-economic",
+                "Network sharing",
+                "OpenFlow",
+                "Virtualization"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -196,7 +382,40 @@
                 "firstName": "Rastin",
                 "lastName": "Pries"
             }
-        ]
+        ],
+        "abstract": "Software defined networking (SDN) promises a way to more flexible networks that can adapt to changing demands. At the same time these networks should also benefit from simpler management mechanisms. This is achieved by moving the network control out of the forwarding devices to purpose-tailored software-applications on top of a \"networking operating system\". Currently, the most notable representative of this approach is OpenFlow. In the OpenFlow architecture the operating system is represented by the OpenFlow controller. As the key component of the OpenFlow ecosystem, the behavior and performance of the controller are significant for the entire network. Therefore, it is important to understand these influence factors, when planning an OpenFlow-based SDN deployment. In this work, we introduce a tool to help achieving just that - a flexible OpenFlow controller benchmark. The benchmark creates a set of message-generating virtual switches, which can be configured independently from each other to emulate a certain scenario and also keep their own statistics. This way a granular controller performance analysis is possible.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Control systems",
+                "Message systems",
+                "Operating systems",
+                "Computer architecture",
+                "Sockets"
+            ],
+            "Index Terms": [
+                "Operating System",
+                "Control Performance",
+                "Throughput",
+                "Performance Metrics",
+                "Modularity",
+                "Multi-core",
+                "Design Goals",
+                "Single Thread",
+                "Number Of Switches",
+                "Benchmark Results",
+                "Round-trip Time",
+                "Packet Size",
+                "Performance Bottleneck",
+                "Benchmark System",
+                "Standalone Mode"
+            ],
+            "Author Keywords": [
+                "OpenFlow",
+                "controller",
+                "performance evaluation"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -243,7 +462,45 @@
                 "firstName": "Elio",
                 "lastName": "Salvadori"
             }
-        ]
+        ],
+        "abstract": "In this paper we present Vertigo (Virtual Topologies Generalization in OpenFlow networks), a Software–defined networking platform designed for network virtualization. Based on the OpenFlow original network slicing system Flow Visor, the Vertigo platform aims at covering all flavors of network virtualization: in particular, it is able to expose a simple abstract node on one extreme, and to deliver a logically fully connected network at the very opposite end. In this work, we first introduce the Vertigo system architecture and its design choices, then we report on a prototypical implementation deployed over an OpenFlow-enabled test bed. Experimental results show that Vertigo can deliver flexible and reliable network virtualization services to a wide range of use cases in spite of failure and/or congestion at the underlying physical network.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Abstracts",
+                "Topology",
+                "Computer architecture"
+            ],
+            "Index Terms": [
+                "Physical Network",
+                "Network Slicing",
+                "Network Topology",
+                "Business Model",
+                "Control Network",
+                "Single Node",
+                "Real Networks",
+                "Network Resources",
+                "Physical Infrastructure",
+                "Physical Link",
+                "Packet Loss",
+                "Control Channel",
+                "Network Congestion",
+                "Control Plane",
+                "Node Failure",
+                "Access Port",
+                "Virtual Nodes",
+                "Link Failure",
+                "Reconfiguration Process",
+                "Infrastructure Provider",
+                "Virtual Link",
+                "Arbitrary Topology"
+            ],
+            "Author Keywords": [
+                "Network Virtualization",
+                "OpenFlow",
+                "Software Defined Network"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -302,7 +559,39 @@
                 "firstName": "Leandros",
                 "lastName": "Tassiulas"
             }
-        ]
+        ],
+        "abstract": "The areas of Software-Defined Networking (SDN) and Information-Centric Networking (ICN) have gained increasing attention in the wider research community, while gaining credibility through corporate interest and investment. With the promise of SDN to simplify the deployment of alternative network architectures, the question arises how SDN and ICN could concretely be combined, deployed and tested. In this paper, we address this very question within a particular architectural context for ICN. We outline a possible realization in a novel design for ICN solutions and point to possible test bed deployments for future testing.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Topology",
+                "Switches",
+                "Network topology",
+                "Context",
+                "Protocols"
+            ],
+            "Index Terms": [
+                "Information-centric Networking",
+                "Wider Research Community",
+                "Prototype",
+                "Efficient Way",
+                "Functional Networks",
+                "Local Control",
+                "Nodes In The Graph",
+                "Network Graph",
+                "Separate Functions",
+                "Service Model",
+                "Dissemination Strategies",
+                "Datapath",
+                "Information Packets",
+                "Forward Activity",
+                "Physical Nodes"
+            ],
+            "Author Keywords": [
+                "Information-Centric Network",
+                "Software defined network",
+                "Openflow"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -367,7 +656,47 @@
                 "firstName": "Syed Ali",
                 "lastName": "Khayam"
             }
-        ]
+        ],
+        "abstract": "In this paper, we empirically quantify inherent limitations of merchant switching silicon, which constrain SDNs' innovation potential. To overcome these limitations, we propose a Split SDN Data Plane (SSDP) architecture -- anew switch architecture which allows rapid network innovation by complementing a cost-effective, yet inflexible, front end merchant silicon switch chip with a deeply programmable co-processor subsystem. We implemented SSDP on a prototype Dell Power Connect platform with a programmable multi-core data plane subsystem. To demonstrate SSDP's potential, we developed diverse real-world cases on the prototype platform. Benchmarking results show that, while delivering on its rapid innovation promise (with significantly shorter turn-around time), a SSDP architecture also provides reasonably high switching rates on deep flow tables.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Silicon",
+                "Benchmark testing",
+                "Computer architecture",
+                "Hardware",
+                "Bandwidth",
+                "Software"
+            ],
+            "Index Terms": [
+                "Innovation Network",
+                "Rapid Innovation",
+                "Silicon",
+                "Prototype",
+                "Innovation Potential",
+                "Switching Rate",
+                "Flow Table",
+                "Focus Of This Paper",
+                "Software Implementation",
+                "Data Packets",
+                "Intrusion Detection",
+                "Hardware Accelerators",
+                "Packet Size",
+                "Intrusion Detection System",
+                "Control Bandwidth",
+                "Fast Path",
+                "Traffic Detection"
+            ],
+            "Author Keywords": [
+                "Software Defined Networking",
+                "SDN",
+                "OpenFlow",
+                "Network Processor",
+                "MIPS",
+                "macroflow",
+                "microflow"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -426,7 +755,38 @@
                 "firstName": "Gábor",
                 "lastName": "Vaszkun"
             }
-        ]
+        ],
+        "abstract": "OpenFlow is the most promising architecture for future Software Defined Networks (SDNs). However, from the aspects of large-scale or carrier-grade networks, it still lacks some key components. For example, QoS (Quality of Service) provisioning is an indispensable part of such production networks. During the evolution of the OpenFlow standard, some QoS capabilities have been added to the protocol, however, even the latest version has only a limited and not well-defined QoS framework. Hence, integrated QoS support is missing in current OpenFlow experimental test beds including Ofelia. This paper describes a possible architectural extension to Ofelia in order to make it capable of running QoS related experiments. We summarize the initial tasks regarding the survey of QoS features and limitations of OpenFlow switches deployed in Ofelia islands and the performance tests needed to characterize these devices. For extending the feature palette of Ofelia, we propose a QoS management platform with full integration into the existing management framework. By means of this envisioned extension, QoS settings of the whole Ofelia test bed can be adjusted easily, in a user friendly fashion. Moreover, we walk through the main steps needed not only towards an integrated OpenFlow test bed with QoS support but towards a QoS architecture to OpenFlow.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Quality of service",
+                "Protocols",
+                "Computer architecture",
+                "Software",
+                "Internet",
+                "Performance evaluation",
+                "Standards"
+            ],
+            "Index Terms": [
+                "Service Quality",
+                "Quality Of Service Support",
+                "Management Framework",
+                "Research And Development",
+                "Open-source",
+                "Standard Management",
+                "Quality Of Experience",
+                "Version Of Protocol",
+                "Network Management",
+                "Quality Of Service Requirements",
+                "Network Packets"
+            ],
+            "Author Keywords": [
+                "OpenFlow",
+                "QoS",
+                "configuration",
+                "network management"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -467,7 +827,56 @@
                 "firstName": "Sergio Takeo",
                 "lastName": "Kofuji"
             }
-        ]
+        ],
+        "abstract": "Internet core protocols were designed in the seventies and after four decades and a huge success, most of that initial design is still in place. As stated by Moore's law, current digital devices offer a huge processing capacity when compared to the computational resources of the early Internet. Moreover, physical links, wired or not, offer great connectivity and high throughput capacity. New applications bring a new set of requirements that the Internet is not able to satisfy in a proper way. The Internet architecture must be reviewed and several research groups are engaged in this design. Software Defined Networking (SDN), currently materialized in OpenFlow, represents an extraordinary opportunity to rethink computer networks, enabling the design and deployment of a future Internet. This paper presents SDN based technologies available, describes some research initiatives and discusses how the research community can use them to shape future Internet architecture.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Internet",
+                "Computer architecture",
+                "Switches",
+                "Protocols",
+                "Software",
+                "Routing"
+            ],
+            "Index Terms": [
+                "Future Internet",
+                "Future Internet Architecture",
+                "Research Group",
+                "Research Community",
+                "Digital Networks",
+                "Proper Way",
+                "Physical Link",
+                "Set Of Requirements",
+                "Moore’s Law",
+                "Huge Success",
+                "High-throughput Capacity",
+                "Prototype",
+                "Workspace",
+                "National Science Foundation",
+                "Network Infrastructure",
+                "Switching Behavior",
+                "Directed Acyclic Graph",
+                "Production Networks",
+                "Network Elements",
+                "Flow Table",
+                "Multicast",
+                "Clean Slate",
+                "Matching Field",
+                "Control Plane",
+                "Protocol Stack",
+                "Class Citizens",
+                "Data Delivery",
+                "Communication Requirements"
+            ],
+            "Author Keywords": [
+                "Networking",
+                "Architecture",
+                "Software Defined Networking",
+                "Openflow",
+                "Future Internet",
+                "Experimentation"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -502,7 +911,43 @@
                 "firstName": "Dejan",
                 "lastName": "Kostic"
             }
-        ]
+        ],
+        "abstract": "Software-defined networking and OpenFlow in particular enable independent development of network devices and software that controls them. Such separation of concerns eases the introduction of new network functionality, however, it leads to distributed responsibility for bugs. Despite the common interface, separate development entails the need to test an integrated network before deployment. In this work-in-progress paper, we identify the challenges of creating an environment that simplifies and systematically conducts such tests. We discuss optimizations required for efficient and reliable OpenFlow switch black-box testing and present a possible approach to address other challenges. In our preliminary prototype, we combine systematic state-space exploration techniques with real switches execution to explore an integrated network behavior. Our initial results show that such methods help detect previously unrevealed inconsistencies in the network.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Testing",
+                "Software",
+                "Reliability",
+                "Computer bugs",
+                "Process control"
+            ],
+            "Index Terms": [
+                "Open Flow Networks",
+                "Network Behavior",
+                "Systematic Exploration",
+                "Test System",
+                "Communication Channels",
+                "Testing Process",
+                "Control Applications",
+                "Control Software",
+                "Testing Tools",
+                "Debugging",
+                "Switching Behavior",
+                "Switching States",
+                "Real Devices",
+                "Model Checking",
+                "Switching Model",
+                "Network Events",
+                "Controlled Fashion",
+                "Multiple Switching",
+                "Standard Interface",
+                "Flow Table",
+                "Packet Processing",
+                "Order Of Arrival",
+                "Software Defect"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -549,7 +994,33 @@
                 "firstName": "Nerea",
                 "lastName": "Toledo"
             }
-        ]
+        ],
+        "abstract": "Novel approaches for network virtualization at Layer 2 which are not based on VLAN have became a real possibility since the appearance of Software Defined Networking and OpenFlow in particular. We have deployed our own network virtualization facility based on Layer 2 prefixes using OpenFlow: the EHU OpenFlow Enabled Facility (EHU-OEF). We have implemented a solution that allows research and production traffic to share the same infrastructure without interfering with each other. It requires minimum configuration in the case of researchers and none in the case of non-technical users. In our deployment we found several challenges with Layer 2 protocols that use broadcast/multicast addresses due to the use of OpenFlow. In order to solve those challenges, we developed several custom modules for the OpenFlow controller and made some changes in the Flow Visor. Finally, the design of the EHU-OEF facility as well as some configuration details are described.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Protocols",
+                "Servers",
+                "Production",
+                "IP networks"
+            ],
+            "Index Terms": [
+                "Real Possibility",
+                "Cloud Computing",
+                "Network Resources",
+                "Virtual Machines",
+                "Control Plane",
+                "Network Equipment",
+                "All-to-all Communication"
+            ],
+            "Author Keywords": [
+                "SDN",
+                "network virtualization",
+                "link layer",
+                "OpenFlow",
+                "FlowVisor"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -596,7 +1067,40 @@
                 "firstName": "Joel",
                 "lastName": "Halpern"
             }
-        ]
+        ],
+        "abstract": "Software-Defined Networking (SDN) is an emerging network architecture where the network control plane is decoupled from the forwarding plane and is programmable via an open protocol. Forwarding and Control Element Separation (Forces) first and OpenFlow later are the prevailing protocols that enable this separation. The differences between the two stem from the underlying models they are defined upon. While OpenFlow is widely used, its capability for adding new functionality of the Forwarding plane is questionable, a fact that is attributed to a restricted model. In contrast, Forces has a very dynamic model that makes its protocol quite powerful but has known little spread due to lack of industry adoption and in the academic world due to lack of open source availability for experimentation. In this paper we first investigate ways of possible confluence or convergence of Forces and OpenFlow and later we explore a real-life service use case for applying a Enabled-enabled OpenFlow switch.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Protocols",
+                "Switches",
+                "Iron",
+                "Computer architecture",
+                "Convergence",
+                "Heart beat"
+            ],
+            "Index Terms": [
+                "OpenFlow Protocol",
+                "Control Plane",
+                "Industrial Adoption",
+                "Service Quality",
+                "Business Model",
+                "Flexible Model",
+                "Fine Details",
+                "Switching Function",
+                "Datapath",
+                "Flow Table",
+                "Service Architecture",
+                "Matching Field",
+                "Packet Processing",
+                "Home Users"
+            ],
+            "Author Keywords": [
+                "ForCES",
+                "OpenFlow",
+                "Software-Defined Networking",
+                "IETF"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -655,7 +1159,41 @@
                 "firstName": "Gábor",
                 "lastName": "Vaszkun"
             }
-        ]
+        ],
+        "abstract": "Due to its simplicity, transparency and performance, Flow Visor takes it all in today's virtualization tools for OpenFlow networks. We argue that this effectiveness comes at the price of intolerance towards diverse OpenFlow versions used simultaneously and also limited switch functionality. What is more Flow Visor based management frameworks cannot run and configure the network controllers. In this paper we present an integrated OpenFlow virtualization framework, that is capable of (i) running and managing multiple instances of OpenFlow switches with different forwarding capabilities and OpenFlow versions, (ii) running and configuring full controllers or network applications designed for controlling a virtual network under the management of the proposed framework, and (iii) configuring QoS in the network. Besides introducing the architecture we share implementation and deployment details in our prototype system.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Quality of service",
+                "Protocols",
+                "Data models",
+                "Containers"
+            ],
+            "Index Terms": [
+                "Virtualization Framework",
+                "Management Framework",
+                "Prototype System",
+                "Open-source",
+                "Data Model",
+                "Service Quality",
+                "Network Topology",
+                "Version Of Protocol",
+                "Network Management",
+                "Datapath",
+                "Switching Network",
+                "Network Packets",
+                "Infrastructure Provider",
+                "Virtual Link"
+            ],
+            "Author Keywords": [
+                "OpenFlow",
+                "virtualization",
+                "FlowVisor",
+                "QoS",
+                "configuration",
+                "network management"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -690,7 +1228,56 @@
                 "firstName": "Pontus",
                 "lastName": "Sköldström"
             }
-        ]
+        ],
+        "abstract": "The concept of software-defined networking (SDN) recently gained huge momentum in the industry, driven mainly by IT companies interested in data center applications. In this paper, however, we apply SDN to the carrier domain, which poses additional requirements in terms of network management functions. As a specific use-case we take a virtualized carrier network shared by multiple customers. We consider the current SDN model as defined by the Open Networking Foundation (ONF), including the OpenFlow and OF-config protocols. Through a step-by-step discussion of the rocedures required to configure and manage the virtualized network, we analyze the applicability of the current SDN model as specified by the ONF. As a result, we identify shortcomings and propose necessary extensions to the ONF SDN model. The highlighted extensions include control network bootstrapping considerations, updates to the SDN and NOS model, and most importantly extensions of the OF-config management data model.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Protocols",
+                "Topology",
+                "Network topology",
+                "Monitoring"
+            ],
+            "Index Terms": [
+                "Network Management",
+                "Open Networking Foundation",
+                "Control Network",
+                "Network Operators",
+                "IT Companies",
+                "Operating System",
+                "Network Topology",
+                "Network Applications",
+                "Physical Resources",
+                "Performance Monitoring",
+                "Physical Infrastructure",
+                "Network Bandwidth",
+                "Memory Resources",
+                "Physical Link",
+                "Physical Capability",
+                "Network Elements",
+                "Physical Network",
+                "Device Configuration",
+                "Datapath",
+                "Control Plane",
+                "Flow Table",
+                "Switching Logic",
+                "CPU Resources",
+                "Virtual Link",
+                "Authentication Service",
+                "List Of Tools",
+                "Upper Limit",
+                "Monitoring Period",
+                "Number Of Switches"
+            ],
+            "Author Keywords": [
+                "SDN",
+                "OpenFlow",
+                "OF-config",
+                "Network management",
+                "Carrier network",
+                "Network virtualization"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -731,7 +1318,37 @@
                 "firstName": "Andrea",
                 "lastName": "Biancini"
             }
-        ]
+        ],
+        "abstract": "Software Defined Networking and OpenFlow are enabling a new range of applications and services for tomorrow networks. At the same time, reducing the energy impact of datacentres and carrier networks will be an important topic in next years. The article presents Green MST, a simple OpenFlowcontroller that creates a loop-free layer2 topology according to application specified metrics and permits to reduce the network electric energy consumption. The design and the implementation on a virtual test bed of the controller's prototype are presented as well as the results of initial measurements.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Switches",
+                "Topology",
+                "Network topology",
+                "Green products",
+                "Software",
+                "Protocols",
+                "Prototypes"
+            ],
+            "Index Terms": [
+                "Spanning Tree",
+                "Open Flow Networks",
+                "Energy Consumption",
+                "Impact Of Networks",
+                "Electric Power",
+                "Network Topology",
+                "Changes In Connectivity",
+                "Reduce Energy Consumption",
+                "Mesh Network",
+                "Routing Algorithm",
+                "Priority Queue"
+            ],
+            "Author Keywords": [
+                "OpenFlow controller",
+                "MST",
+                "energy efficiency"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -778,7 +1395,46 @@
                 "firstName": "Mallik",
                 "lastName": "Tatipamula"
             }
-        ]
+        ],
+        "abstract": "Even though software-defined networking (SDN) and the OpenFlow protocol have demonstrated great practicality in the packet domain, there has been some hesitance in extending the OpenFlow specification to circuit and optical switched domains that constitute wide area multi-layer transport networks. This paper presents an overview of various proposals with regards to extending OpenFlow to support circuit switched multi-layer networks. The goal is to shed light on these ideas and propose a way forward. This paper favors a top-down approach, which relies on transport network's main SDN use case: packet-optical integration, to help identify the sufficient extensions for OpenFlow to support circuit/optical switching.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Optical switches",
+                "Proposals",
+                "Protocols",
+                "Switching circuits",
+                "Optical packet switching",
+                "Optical fiber networks"
+            ],
+            "Index Terms": [
+                "Transportation Network",
+                "Multilayer Network",
+                "Infrastructure",
+                "Data Center",
+                "Center For Control",
+                "Application Programming Interface",
+                "Network Applications",
+                "Data Packets",
+                "Optical Switching",
+                "Need For Integration",
+                "Optical Networks",
+                "Table Entries",
+                "Wavelength Division Multiplexing",
+                "Control Plane",
+                "Network Packets",
+                "Operational Point Of View",
+                "Switching Circuit",
+                "Backward Compatibility",
+                "Network Equipment"
+            ],
+            "Author Keywords": [
+                "OpenFlow",
+                "Transport",
+                "SDN",
+                "Multi-Layer",
+                "Packet-Optical"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -825,7 +1481,53 @@
                 "firstName": "Faisal",
                 "lastName": "Mir"
             }
-        ]
+        ],
+        "abstract": "Software Defined Networking (SDN in short) is reshaping the future of computer networks. By decoupling control and data planes, SDN technologies allow a more flexible management of network infrastructures, whose resources may be operated by means of a well defined programming interface. Several approaches have been recently proposed to implement the SDN concept. OpenFlow is maybe the most prominent SDN component, having been supported by several device vendors. This paper discusses a practical experience in designing an OpenFlowcontroller for a Mobile Cloud Management system. We present the programming model and the designed abstraction and discuss the lesson learned.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Control systems",
+                "Programming",
+                "Manganese",
+                "Scalability",
+                "Object oriented modeling",
+                "Software",
+                "Data models"
+            ],
+            "Index Terms": [
+                "OpenFlow Controller",
+                "Programming Model",
+                "Digital Networks",
+                "Control Plane",
+                "Mobile Cloud",
+                "Scalable",
+                "Network Model",
+                "Local Effects",
+                "Hierarchical Structure",
+                "Global Level",
+                "Programming Language",
+                "High-level Functions",
+                "Network State",
+                "Control Logic",
+                "Switching Function",
+                "Base Classes",
+                "Network Devices",
+                "Network View",
+                "Model Checking",
+                "Network Events",
+                "Network Packets",
+                "Control Nodes",
+                "General-purpose Computer",
+                "Home Network",
+                "Distributed Architecture",
+                "Functional Networks"
+            ],
+            "Author Keywords": [
+                "Software-Defined Networking",
+                "OpenFlow controller",
+                "scalability",
+                "programming model"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -854,7 +1556,44 @@
                 "firstName": "Ivano",
                 "lastName": "Cerrato"
             }
-        ]
+        ],
+        "abstract": "While OpenFlow enables the customization of the control plane of a router, currently no solutions are available for the customization of the data plane. This paper presents a prototype that offers to third parties (even end-users) the possibility to install their own applications on the data plane of a router, particularly the ones operating at the edge of the network. This paper presents the motivation of the idea, the reason why we use OpenFlow even if it does not seem appropriate for the data plane, the architecture and the implementation of our prototype, and a first characterization of the system running in our lab.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Prototypes",
+                "Control systems",
+                "Process control",
+                "Software",
+                "Hardware",
+                "Servers"
+            ],
+            "Index Terms": [
+                "Edge Router",
+                "End-users",
+                "Control Plane",
+                "Multi-core",
+                "Network Applications",
+                "Real Networks",
+                "Parental Control",
+                "Multiple Actors",
+                "Performance Issues",
+                "Virtual Machines",
+                "Caching",
+                "Edge Nodes",
+                "User Control",
+                "Network Devices",
+                "Horizontal Slices",
+                "Multicast",
+                "Network Slicing",
+                "Network Service Providers",
+                "HTTP Requests"
+            ],
+            "Author Keywords": [
+                "Openflow",
+                "Software Defined Networking",
+                "Data plane processing"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -895,7 +1634,49 @@
                 "firstName": "V.",
                 "lastName": "Maglaris"
             }
-        ]
+        ],
+        "abstract": "The Passive Flow Monitoring (PaFloMon) framework aims at enriching OpenFlow (OF) platforms with user-aware passive monitoring tools. It thus complements user-oriented network programming of OF controllers with measurement capabilities offered to advanced users (slice owners), e.g. Future Internet researchers. PaFloMon provides per-slice monitoring plane isolation, extending control-plane slice isolation features of OF infrastructures, while it empowers users with monitoring toolsets, e.g. sFlow, Net Flow, widely employed in legacy networking systems. It is based on slice-centric statistics unilaterally described through an XML based Resource Specification schema (RSpec) and collected across Future Internet experimental facilities. The feasibility of slice-based monitoring is verified via sFlow trials in OpenFlow S/W (Open vSwitch) and H/W (NEC IP8800) platforms. PaFoMon can be easily integrated within OF control frameworks, notably the OFELIA framework being developed by the Future Internet Research & Experimentation program of the European Union.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Monitoring",
+                "Extraterrestrial measurements",
+                "Software",
+                "Internet",
+                "Hardware",
+                "Radiation detectors"
+            ],
+            "Index Terms": [
+                "Experimental Facility",
+                "Infrastructure",
+                "Control Plane",
+                "Passive Monitoring",
+                "Measurement Of Activity",
+                "Sampling Rate",
+                "Wireless",
+                "Measurement System",
+                "Data Repository",
+                "Monitoring Data",
+                "Feedback Control",
+                "Monitoring Methods",
+                "Types Of Agents",
+                "Set Of Metrics",
+                "Network Elements",
+                "Services For Users",
+                "Monitoring Protocols",
+                "Measurement Framework",
+                "Combination Of Metrics",
+                "CPU Usage"
+            ],
+            "Author Keywords": [
+                "OpenFlow",
+                "sFlow",
+                "Future Internet",
+                "OFELIA",
+                "Slice Flow Monitoring",
+                "Network Virtualization",
+                "RSpec"
+            ]
+        }
     },
     {
         "publicationNumber": "6384413",
@@ -911,7 +1692,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 European Workshop on Software Defined Networking",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6384413",
@@ -927,7 +1710,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 European Workshop on Software Defined Networking",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6384413",
@@ -943,7 +1728,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 European Workshop on Software Defined Networking",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the welcome message from the conference proceedings.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6384413",
@@ -959,7 +1746,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 European Workshop on Software Defined Networking",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6384413",
@@ -975,7 +1764,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 European Workshop on Software Defined Networking",
-        "authors": []
+        "authors": [],
+        "abstract": "The following topics are dealt with: wireless, cellular, and multilayer; virtualization; network peformance, testing, and development; and second OFELIA Open Call.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6384413",
@@ -991,7 +1782,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 European Workshop on Software Defined Networking",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6384413",
@@ -1007,7 +1800,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 European Workshop on Software Defined Networking",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6384413",
@@ -1023,7 +1818,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 European Workshop on Software Defined Networking",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "6384413",
@@ -1039,6 +1836,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2012 European Workshop on Software Defined Networking",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents of the 2012 European Workshop on Software Defined Networking proceedings record.",
+        "keywords": {}
     }
 ]

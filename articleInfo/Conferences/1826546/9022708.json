@@ -32,7 +32,45 @@
                 "firstName": "Heechul",
                 "lastName": "Yun"
             }
-        ]
+        ],
+        "abstract": "NVDLA is an open-source deep neural network (DNN) accelerator which has received a lot of attention by the community since its introduction by Nvidia. It is a full-featured hardware IP and can serve as a good reference for conducting research and development of SoCs with integrated accelerators. However, an expensive FPGA board is required to do experiments with this IP in a real SoC. Moreover, since NVDLA is clocked at a lower frequency on an FPGA, it would be hard to do accurate performance analysis with such a setup. To overcome these limitations, we integrate NVDLA into a real RISC-V SoC on the Amazon cloud FPGA using FireSim, a cycle-exact FPGA-accelerated simulator. We then evaluate the performance of NVDLA by running YOLOv3 object-detection algorithm. Our results show that NVDLA can sustain 7.5 fps when running YOLOv3. We further analyze the performance by showing that sharing the last-level cache with NVDLA can result in up to 1.56x speedup. We then identify that sharing the memory system with the accelerator can result in unpredictable execution time for the real-time tasks running on this platform. We believe this is an important issue that must be addressed in order for on-chip DNN accelerators to be incorporated in real-time embedded systems.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Field programmable gate arrays",
+                "Open source software",
+                "Random access memory",
+                "Rockets",
+                "Clocks",
+                "Protocols",
+                "Hardware"
+            ],
+            "Index Terms": [
+                "Deep Neural Network",
+                "Memory System",
+                "Running",
+                "Multi-core",
+                "Block Size",
+                "Target Model",
+                "Memory Model",
+                "Inference System",
+                "Amazon Web Services",
+                "Chip Area",
+                "Titan Xp",
+                "Frames Per Second",
+                "Shared Memory",
+                "L2 Cache",
+                "Memory Hierarchy"
+            ],
+            "Author Keywords": [
+                "NVDLA",
+                "FireSim",
+                "RISC-V",
+                "FPGA",
+                "Cloud",
+                "DNN",
+                "Embedded Systems"
+            ]
+        }
     },
     {
         "publicationNumber": "9022708",
@@ -85,7 +123,36 @@
                 "firstName": "Robert",
                 "lastName": "Mullins"
             }
-        ]
+        ],
+        "abstract": "The Winograd or Cook-Toom class of algorithms help to reduce the overall compute complexity of many modern deep convolutional neural networks (CNNs). Although there has been a lot of research done on models and algorithmic optimizations of CNN, little attention has been paid to the efficient implementation of these algorithms on embedded CPUs, which usually have very limited memory and low power budget. This paper aims to fill this gap and focuses on the efficient implementation of Winograd or Cook-Toom based convolution on modern Arm Cortex-A CPUs, widely used in mobile devices today. Specifically, we demonstrate a reduction in inference latency by using a set of optimization strategies that improve the utilization of computational resources, and by effectively leveraging the ARMv8-A NEON SIMD instruction set. We evaluated our proposed region-wise multi-channel implementations on Arm Cortex-A73 platform using several representative CNNs. The results show significant performance improvements in full network, up to 60%, over existing im2row/im2col based optimization techniques.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Registers",
+                "Transforms",
+                "Tensile stress",
+                "Convolution",
+                "Cloud computing",
+                "Convolutional neural networks",
+                "Optimization"
+            ],
+            "Index Terms": [
+                "Convolutional Neural Network",
+                "Deep Convolutional Neural Network",
+                "Lot Of Research",
+                "Size Of Region",
+                "Transformation Matrix",
+                "Matrix Multiplication",
+                "Channel Data",
+                "Hadamard Product",
+                "Input Regions",
+                "Input Tensor",
+                "Output Tensor",
+                "SqueezeNet"
+            ],
+            "Author Keywords": [
+                "CNN, Winograd, Cook-Toom, Embedded CPU"
+            ]
+        }
     },
     {
         "publicationNumber": "9022708",
@@ -132,7 +199,47 @@
                 "firstName": "Matthew",
                 "lastName": "Mattina"
             }
-        ]
+        ],
+        "abstract": "Recurrent neural networks can be large and compute-intensive, yet many applications that benefit from RNNs run on small devices with very limited compute and storage capabilities while still having run-time constraints. As a result, there is a need for compression techniques that can achieve significant compression without negatively impacting inference run-time and task accuracy. This paper explores a new compressed RNN cell implementation called Hybrid Matrix Decomposition (HMD) that achieves this dual objective. HMD creates dense matrices that results in output features where the upper sub-vector has \"richer\" features while the lower sub vector has \"constrained\" features\". On the benchmarks evaluated in this paper, this results in faster inference runtime than pruning and better accuracy than matrix factorization for compression factors of 2-4x.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Resists",
+                "Matrix decomposition",
+                "Sparse matrices",
+                "Task analysis",
+                "Matrix converters",
+                "Artificial neural networks"
+            ],
+            "Index Terms": [
+                "Edge Devices",
+                "Neural Network",
+                "Source Code",
+                "Recurrent Neural Network",
+                "Matrix Factorization",
+                "Need For Techniques",
+                "Compression Factor",
+                "Network Parameters",
+                "Element Of Vector",
+                "Language Model",
+                "Softmax Layer",
+                "Rank Of Matrix",
+                "Perplexity",
+                "Human Activity Recognition",
+                "Tensor Decomposition",
+                "Compression Scheme",
+                "Small Baseline",
+                "Reduction In Storage",
+                "Superior Technique",
+                "Network Pruning",
+                "Good Compression"
+            ],
+            "Author Keywords": [
+                "Matrix factorization",
+                "pruning",
+                "model compression",
+                "NN inference"
+            ]
+        }
     },
     {
         "publicationNumber": "9022708",
@@ -167,7 +274,50 @@
                 "firstName": "Chu-Song",
                 "lastName": "Chen"
             }
-        ]
+        ],
+        "abstract": "When deploying two or more well-trained deep-learningmodels on a system, we would hope to unify them into asingle deep model for the execution in the inference stage, sothat the computation time can be increased and the energyconsumption can be saved. This paper presents an effective method to build a single deep neural network that canexecute multiple tasks. Our approach can merge two well-trained feed-forward neural networks of the same architecture into a single one, where the required on-line storageis reduced and the inference speed is enhanced. We evalu-ate our approach by using MobileNets and show that ourapproach can improve both compression ratio and speedup. The experimental results demonstrate the satisfactory per-formance and verify the feasibility of the method.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Task analysis",
+                "Merging",
+                "Convolution",
+                "Neural networks",
+                "Feature extraction",
+                "Computational modeling",
+                "Machine learning"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Deep Learning",
+                "Deep Neural Network",
+                "Deep Learning Models",
+                "Feed-forward Network",
+                "Single Network",
+                "Multiple Tasks",
+                "Compression Ratio",
+                "Inference Stage",
+                "Well-trained Model",
+                "Test Samples",
+                "Convolutional Layers",
+                "Image Classification",
+                "Feature Representation",
+                "ImageNet",
+                "TensorFlow",
+                "Object Classification",
+                "Classification Categories",
+                "Multi-task Learning",
+                "Mass Calibration",
+                "Compact Network",
+                "Depthwise Separable Convolution",
+                "Pointwise Convolution",
+                "Multi-task Model"
+            ],
+            "Author Keywords": [
+                "Deep learning",
+                "CNNs",
+                "Model compression"
+            ]
+        }
     },
     {
         "publicationNumber": "9022708",
@@ -202,7 +352,48 @@
                 "firstName": "Saman",
                 "lastName": "Amarasinghe"
             }
-        ]
+        ],
+        "abstract": "Training deep convolutional neural networks such as VGG and ResNet by gradient descent is an expensive exercise requiring specialized hardware such as GPUs. Recent works have examined the possibility of approximating the gradient computation while maintaining the same convergence properties. While promising, the approximations only work on relatively small datasets such as MNIST. They also fail to achieve real wall-clock speedups due to lack of efficient GPU implementations of the proposed approximation methods. In this work, we explore three alternative methods to approximate gradients, with an efficient GPU kernel implementation for one of them. We achieve wall-clock speedup with ResNet-20 and VGG-19 on the CIFAR-10 dataset upwards of 7 percent, with a minimal loss in validation accuracy.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Approximation methods",
+                "Graphics processing units",
+                "Schedules",
+                "Gradient methods",
+                "Kernel",
+                "Convolution"
+            ],
+            "Index Terms": [
+                "Convolutional Neural Network",
+                "Neural Network",
+                "Estimation Method",
+                "Deep Neural Network",
+                "Deep Convolutional Neural Network",
+                "Minimal Loss",
+                "Accuracy Loss",
+                "Efficient Implementation",
+                "Validation Accuracy",
+                "Gradient Calculation",
+                "Convolutional Layers",
+                "Training Time",
+                "Random Method",
+                "Convolution Operation",
+                "TensorFlow",
+                "Gradient Method",
+                "Output Channels",
+                "Layer Height",
+                "Training Batch",
+                "Width Of Layer",
+                "Random Gradient",
+                "Full Calculation"
+            ],
+            "Author Keywords": [
+                "gradient approximation",
+                "CNN",
+                "accelerated training"
+            ]
+        }
     },
     {
         "publicationNumber": "9022708",
@@ -261,7 +452,50 @@
                 "firstName": "Timothy",
                 "lastName": "Sherwood"
             }
-        ]
+        ],
+        "abstract": "As Machine Learning (ML) applications become pervasive and computer architects further integrate hardware support, the need to rapidly explore trade-offs between algorithms and hardware becomes pressing. While prior work on hardware accelerators has led to tremendous performance and energy improvements, it can be difficult to generalize these approaches without resorting to special purpose tools or even languages. Through object-oriented design principles we describe a general and reusable approach for generating parameterized neural network hardware. Specifically, we describe our experiences with high-level hardware design objects for building neural network hardware based on the open-source Python HDL, PyRTL. By thinking at a higher level of abstraction than simple \"hardware modules\", we open the door to a process by which hardware can be developed with software engineering principles. This creates new opportunities for a tight feedback loop between machine learning algorithm innovation and hardware design reality. Future works considering hardware development for ML applications can benefit from our work analyzing the costs and benefits of abstraction.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Hardware",
+                "Adders",
+                "Neural networks",
+                "Clocks",
+                "Machine learning",
+                "Python"
+            ],
+            "Index Terms": [
+                "Design Patterns",
+                "Object-oriented Design",
+                "Machine Learning Accelerators",
+                "Neural Network",
+                "Machine Learning",
+                "Learning Algorithms",
+                "Rational Design",
+                "Machine Learning Applications",
+                "Higher Level Of Abstraction",
+                "Hardware Accelerators",
+                "Hardware Modules",
+                "Modularity",
+                "Input Vector",
+                "Block Size",
+                "Matrix Multiplication",
+                "Design Software",
+                "Block Diagonal",
+                "Algorithm Design",
+                "Projection Matrix",
+                "Advanced Design",
+                "High-level Synthesis",
+                "Bit-width",
+                "Clock Frequency",
+                "Hardware Implementation",
+                "Weights Of Layer",
+                "Cross-cutting Issues"
+            ],
+            "Author Keywords": [
+                "machine learning accelerators",
+                "hardware design patterns"
+            ]
+        }
     },
     {
         "publicationNumber": "9022708",
@@ -314,7 +548,45 @@
                 "firstName": "Yuan",
                 "lastName": "Xie"
             }
-        ]
+        ],
+        "abstract": "The tremendous impact of deep learning algorithms over a wide range of application domains has encouraged a surge of neural network (NN) accelerator research. Prior NN accelerator research reveals that the software-hardware co-design method is promising to achieve significant performance improvement and energy savings. To guide future co-designs, an evolving benchmark suite and its associated benchmark method are needed to characterize NN workloads and incorporate emerging NN compression techniques. However, the co-design method has not been well covered by existing NN benchmark work. In this paper, we propose a novel benchmarking methodology, which decouples the benchmarking process into three stages. First, we select the most representative applications from a user-customized candidate pool by analyzing their performance features. Second, we compress selected applications according to customized model compression techniques to generate a benchmark suite. Finally, we evaluate a variety of accelerator designs on the generated benchmark suite. To demonstrate the effectiveness of our benchmarking methodology, we conduct a case study of designing a general NN benchmark from TensorFlow Model Zoo and with various NN compression methods. We finally evaluate the benchmark on various representative architectures.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Benchmark testing",
+                "Artificial neural networks",
+                "Hardware",
+                "Tensile stress",
+                "Computer architecture",
+                "Feature extraction",
+                "Analytical models"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Accelerator Design",
+                "Benchmarking Methodology",
+                "Source Code",
+                "Applicability Domain",
+                "Benchmark Methods",
+                "Wide Range Of Domains",
+                "General Neural Network",
+                "Benchmark Suite",
+                "Artificial Neural Network",
+                "Sparsity",
+                "Matrix Multiplication",
+                "Architectural Design",
+                "Memory System",
+                "Application Of Neural Networks",
+                "Class Of Operators",
+                "Computational Graph",
+                "Natural Language Processing Applications",
+                "Cluster Operator",
+                "System-level Simulation",
+                "Tensor Operations"
+            ],
+            "Author Keywords": [
+                "Neural Network, Workload Characterization, Benchmark"
+            ]
+        }
     },
     {
         "publicationNumber": "9022708",
@@ -349,7 +621,49 @@
                 "firstName": "Jesse",
                 "lastName": "Hostetler"
             }
-        ]
+        ],
+        "abstract": "Complex image processing and computer vision systems often consist of a processing pipeline of functional modules. We intend to replace parts or all of a target pipeline with deep neural networks to achieve benefits such as increased accuracy or reduced computational requirement. To acquire a large amount of labeled data necessary to train the deep neural network, we propose a workflow that leverages the target pipeline to create a significantly larger labeled training set automatically, without prior domain knowledge of the target pipeline. We show experimentally that despite the noise introduced by automated labeling and only using a very small initially labeled data set, the trained deep neural networks can achieve similar or even better performance than the components they replace, while in some cases also reducing computational requirements.",
+        "keywords": {
+            "IEEE Keywords": [
+                "5G mobile communication",
+                "Conferences",
+                "Energy efficiency",
+                "Machine learning",
+                "Cognitive systems"
+            ],
+            "Index Terms": [
+                "Neural Network",
+                "Image Processing",
+                "Deep Network",
+                "Deep Neural Network",
+                "Processing Pipeline",
+                "Computer Vision",
+                "Neural Network Training",
+                "Computational Requirements",
+                "Image Processing System",
+                "Computer Vision System",
+                "Structural Similarity",
+                "Training Data",
+                "Image Quality",
+                "Denoising",
+                "Black Box",
+                "Image Classification",
+                "Labeled Data",
+                "Ground Truth Labels",
+                "Amount Of Training Data",
+                "Ratio Data",
+                "Unlabeled Data",
+                "Noisy Labels",
+                "Conditional Random Field",
+                "Semi-supervised Learning",
+                "Part Of The Pipeline",
+                "Noisy Images",
+                "Learning Component"
+            ],
+            "Author Keywords": [
+                "Deep learning, bootstrapping, approximate computing, learning with less labels"
+            ]
+        }
     },
     {
         "publicationNumber": "9022708",
@@ -365,7 +679,42 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 2nd Workshop on Energy Efficient Machine Learning and Cognitive Computing for Embedded Applications (EMC2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides an abstract for each of theinvited presentations and may include a brief professional biography of each presenter. The complete presentations were not made available for publication as part of the conference proceedings.",
+        "keywords": {
+            "Index Terms": [
+                "Neural Network",
+                "Machine Learning",
+                "Deep Learning",
+                "Convolutional Neural Network",
+                "Deep Neural Network",
+                "Energy Efficiency",
+                "Machine Learning Models",
+                "Speech Recognition",
+                "Autonomous Vehicles",
+                "Cadence",
+                "Advanced Machine Learning",
+                "Mobile Platform",
+                "Smart Home",
+                "Hardware Accelerators",
+                "Modern Machine Learning",
+                "Low Energy Efficiency",
+                "Bit-width",
+                "Machine Learning Architectures",
+                "Learning Algorithms",
+                "Deep Network",
+                "Large Batch Size",
+                "Efficient Acceleration",
+                "Computational Memory",
+                "Synaptic Plasticity",
+                "Load Data",
+                "Computational Biology",
+                "Computational Efficiency",
+                "Systematic Approach",
+                "Matrix Multiplication",
+                "Machine Learning Systems"
+            ]
+        }
     },
     {
         "publicationNumber": "9022708",
@@ -381,7 +730,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 2nd Workshop on Energy Efficient Machine Learning and Cognitive Computing for Embedded Applications (EMC2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the introductory welcome message from the conference proceedings. May include the conference officers' congratulations to all involved with the conference event and publication of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9022708",
@@ -397,7 +748,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 2nd Workshop on Energy Efficient Machine Learning and Cognitive Computing for Embedded Applications (EMC2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9022708",
@@ -413,7 +766,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 2nd Workshop on Energy Efficient Machine Learning and Cognitive Computing for Embedded Applications (EMC2)",
-        "authors": []
+        "authors": [],
+        "abstract": "The conference offers a note of thanks and lists its reviewers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9022708",
@@ -429,7 +784,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 2nd Workshop on Energy Efficient Machine Learning and Cognitive Computing for Embedded Applications (EMC2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9022708",
@@ -445,7 +802,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 2nd Workshop on Energy Efficient Machine Learning and Cognitive Computing for Embedded Applications (EMC2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9022708",
@@ -461,7 +820,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 2nd Workshop on Energy Efficient Machine Learning and Cognitive Computing for Embedded Applications (EMC2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9022708",
@@ -477,6 +838,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2019 2nd Workshop on Energy Efficient Machine Learning and Cognitive Computing for Embedded Applications (EMC2)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     }
 ]

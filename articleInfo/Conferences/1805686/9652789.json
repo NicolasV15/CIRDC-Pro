@@ -50,7 +50,56 @@
                 "firstName": "Min",
                 "lastName": "Si"
             }
-        ]
+        ],
+        "abstract": "According to recent performance analyses, MPI collective operations make up a quarter of the execution time on production systems. Machine learning (ML) autotuners use supervised learning to select collective algorithms, significantly improving collective performance. However, we observe two barriers preventing their adoption over the default heuristic-based autotuners. First, a user may find it difficult to compare autotuners because we lack a methodology to quantify their performance. We call this the performance quantification challenge. Second, to obtain the advertised performance, ML model training requires benchmark data from a vast majority of the feature space. Collecting such data regularly on large scale systems consumes far too much time and resources, and this will only get worse with exascale systems. We refer to this as the training data collection challenge. To address these challenges, we contribute (1) a performance evaluation framework to compare and improve collective au-totuner designs and (2) the Feature scaling, Active learning, Converge, Tune hyperparameters (FACT) approach, a three-part methodology to minimize the training data collection time (and thus maximize practicality at larger scale) without sacrificing accuracy. In the methodology, we first preprocess feature and output values based on domain knowledge. Then, we use active learning to iteratively collect only necessary training data points. Lastly, we perform hyperparameter tuning to further improve model accuracy without any additional data. On a production scale system, our methodology produces a model of equal accuracy using 6.88x less training data collection time.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Training",
+                "Performance evaluation",
+                "Production systems",
+                "Supervised learning",
+                "Training data",
+                "Machine learning",
+                "Data models"
+            ],
+            "Index Terms": [
+                "Machine Learning",
+                "Exascale Systems",
+                "Training Data",
+                "Production Systems",
+                "Active Learning",
+                "Machine Learning Models",
+                "Feature Values",
+                "Feature Space",
+                "Large Systems",
+                "Output Value",
+                "Characteristic Scale",
+                "Hyperparameter Tuning",
+                "Large-scale Systems",
+                "Trained Data Collectors",
+                "Improve Model Accuracy",
+                "Message Passing Interface",
+                "Training Set",
+                "Differences In Performance",
+                "Classification Accuracy",
+                "Random Forest",
+                "Message Size",
+                "Alternative Models",
+                "Active Learning Process",
+                "Scikit-learn Package",
+                "Number Of Trees",
+                "Hyperparameter Values",
+                "Selection Algorithm",
+                "XGBoost",
+                "Scaling Algorithm",
+                "Set Of Metrics"
+            ],
+            "Author Keywords": [
+                "MPI",
+                "collective communication",
+                "machine learning"
+            ]
+        }
     },
     {
         "publicationNumber": "9652789",
@@ -87,9 +136,9 @@
             },
             {
                 "id": 37089213339,
-                "preferredName": "Martin R\u00fcfenacht",
+                "preferredName": "Martin Rüfenacht",
                 "firstName": "Martin",
-                "lastName": "R\u00fcfenacht"
+                "lastName": "Rüfenacht"
             },
             {
                 "id": 37347707700,
@@ -97,7 +146,42 @@
                 "firstName": "Anthony",
                 "lastName": "Skjellum"
             }
-        ]
+        ],
+        "abstract": "ExaMPI is a modern, C++17+ Mpi implementation designed for modularity, extensibility, and understandability. In this work, we overview functionality new to ExaMPI since its initial release, including Libfabric-based network transport support. We also explain our rationale for why and how we choose to add new MPI features (and defer others). Lastly, we measured the latency of the aforementioned transports in ExaMPI and found that ExaMPI, while having slightly higher latency than other production MPI's, is competitive. It is no longer uncommon to see MPI applications using extra MPI calls during non-blocking MPI operations to coax MPI's progress engine. Strong, asynchronous progress (aka application bypass) in MPI is instead based on the premise that an application asks MPI to perform a non-blocking communication in the background and MPI completes said communication without requiring any additional MPI calls from the application to advance the underlying transport. Strong progress often requires an additional background thread, but with the current trend in exascale computing, cores appear to be in excess. Indeed, for earlier MPI implementations that supported it well, strong progress enabled overlap and reduced time to completion for some MPI applications. However, enabling or adding strong progress to existing MPI implementations is not straightforward; changing such implementations is cumbersome, difficult, invasive, and time-consuming-a key motivation for our research MPI implementation, ExaMPI. Specifically, we tested the ability for ExaMPI's strong progress engine to enable overlap communication and computation, finding that considerable overlap is achieved without needing additional MPI “helper” calls such as MPI Test.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Exascale computing",
+                "Conferences",
+                "Computational modeling",
+                "Production",
+                "C++ languages",
+                "Programming",
+                "Market research"
+            ],
+            "Index Terms": [
+                "Overlapping Communication",
+                "Modern C++",
+                "Rational Design",
+                "Transfer Rate",
+                "Original Design",
+                "Communication Performance",
+                "Fault-tolerant",
+                "Single Thread",
+                "Fortran",
+                "Open-source Implementation",
+                "Refactoring",
+                "Message Size",
+                "Transportation Support",
+                "University Of Tennessee"
+            ],
+            "Author Keywords": [
+                "MPI",
+                "middleware architecture",
+                "parallel programming models",
+                "overlap",
+                "performance portability"
+            ]
+        }
     },
     {
         "publicationNumber": "9652789",
@@ -162,7 +246,32 @@
                 "firstName": "Derek",
                 "lastName": "Schafer"
             }
-        ]
+        ],
+        "abstract": "Partitioned point-to-point communication and persistent collective communication were both recently standardized in MPI-4.0. Each offers performance and scalability advantages over MPI-3.1-based communication when planned transfers are feasible in an MPI application. Their merger into a generalized, persistent collective communication with partitions is a logical next step, with significant advantages for performance portability. Non-trivial decisions about the syntax and semantics of such operations need to be addressed, including scope of knowledge of partitioning choices by members of the communicator's group(s). This paper introduces and motivates proposed interfaces for partitioned collective communication. Partitioned collectives will be particularly useful for multithreaded, accelerator-offloaded, and/or hardware-collective-enhanced MPI implementations driving suitable applications, as well as for pipelined collective communication (e.g., partitioned allreduce) with single consumers and producers per MPI process. These operations also provide load imbalance mitigation. Halo exchange codes arising from regular and irregular grid/mesh applications are a key candidate class of applications for this functionality. Generalizations of lightweight notification procedures MPI_Parrived and MPI_Pready are considered. Generalization of MPIX_Pbuf_prepare, a procedure proposed for MPI-4.1 for point-to-point partitioned communication, are also considered, shown in context of supporting ready-mode send semantics for the operations. The option of providing local and incomplete modes for initialization procedures is mentioned (which could also apply to persistent collective operations); these semantics interact with the MPIX_Pbuf_prepare concept and the progress rule. Last, future work is outlined, indicating prerequisites for formal consideration for the MPI-5 standard.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Codes",
+                "Corporate acquisitions",
+                "Scalability",
+                "Conferences",
+                "Semantics",
+                "Prototypes",
+                "Syntactics"
+            ],
+            "Index Terms": [
+                "Multi-threaded",
+                "Initialization Procedure",
+                "Point-to-point Communication",
+                "Synchronization",
+                "Fast Fourier Transform",
+                "Multi-core",
+                "Load Data",
+                "Partitioning Scheme",
+                "Optimal Opportunity",
+                "Pipelining",
+                "Output Buffer"
+            ]
+        }
     },
     {
         "publicationNumber": "9652789",
@@ -209,7 +318,40 @@
                 "firstName": "Jack",
                 "lastName": "Dongarra"
             }
-        ]
+        ],
+        "abstract": "Today largest and most powerful supercomputers in the world are built on heterogeneous platforms; and using the combined power of multi-core CPUs and GPUs, has had a great impact accelerating large-scale applications. However, on these architectures, parallel algorithms, such as the Fast Fourier Transform (FFT), encounter that inter-processor communication become a bottleneck and limits their scalability. In this paper, we present techniques for speeding up multi-process communication cost during the computation of FFTs, considering hybrid network connections as those expected on upcoming exascale machines. Among our techniques, we present algorithmic tuning, making use of phase diagrams; parametric tuning, using different FFT settings; and MPI distribution tuning based on FFT size and computational resources available. We present several experiments obtained on Summit supercomputer at Oak Ridge National Laboratory, using up to 40,960 IBM Power9 cores and 6,144 NVIDIA V-100 GPUs.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Fast Fourier transforms",
+                "Scalability",
+                "Graphics processing units",
+                "Supercomputers",
+                "Software",
+                "Libraries",
+                "Slabs"
+            ],
+            "Index Terms": [
+                "Fast Fourier Transform",
+                "Graphics Processing Unit",
+                "Phase Diagram",
+                "Parallel Algorithm",
+                "Oak Ridge National Laboratory",
+                "Software Development",
+                "Hybrid System",
+                "Load Balancing",
+                "Local Computing",
+                "Decomposition Approach",
+                "Double Precision",
+                "Communication Framework",
+                "Efficient Tuning"
+            ],
+            "Author Keywords": [
+                "Exascale FFT",
+                "Hybrid systems",
+                "Scalability",
+                "MPI tuning"
+            ]
+        }
     },
     {
         "publicationNumber": "9652789",
@@ -244,7 +386,42 @@
                 "firstName": "Qingwei",
                 "lastName": "Zhang"
             }
-        ]
+        ],
+        "abstract": "Resource sharing between job allocations on production supercomputers often leads to traffic interference between MPI applications. Network congestion, a side effect of such resource sharing, results in substantial MPI latency degradation, making application performance unpredictable. We consider the traffic isolation capabilities of modern RDMA interconnects and propose a generic Priority Assignment algorithm that associates a priority with each network Send operation using information about the network latency in the past. Our implementation of Priority Assignment algorithm in UCX framework shows up to the 22 x GPCNeT benchmark improvement on 64 node cluster with InfiniBand EDR and OpenMPI in comparison to the reference UCX implementation. Packet-level simulation shows that proposed Priority Assignment algorithm helps to mitigate the effects of network congestion scaling up to the 512 nodes.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Degradation",
+                "Conferences",
+                "Clustering algorithms",
+                "Quality of service",
+                "Production",
+                "Interference",
+                "Benchmark testing"
+            ],
+            "Index Terms": [
+                "MPI Communication",
+                "High-performance Computing",
+                "Network Congestion",
+                "Assignment Algorithm",
+                "Mapping Process",
+                "Average Latency",
+                "Traffic Patterns",
+                "Current Priorities",
+                "Datapath",
+                "Job Scheduling",
+                "Message Sender",
+                "Message Size",
+                "Transport Protocol",
+                "Datagram",
+                "Priority Number"
+            ],
+            "Author Keywords": [
+                "MPI",
+                "network congestion",
+                "QoS",
+                "RDMA"
+            ]
+        }
     },
     {
         "publicationNumber": "9652789",
@@ -297,7 +474,43 @@
                 "firstName": "Andrew",
                 "lastName": "Lumsdaine"
             }
-        ]
+        ],
+        "abstract": "The C++ programming language has made significant strides in improving performance and productivity across a broad spectrum of applications and hardware. The C++ language bindings to MPI had been deleted since MPI 3.0 (circa 2009) because it reportedly added only minimal functionality over the existing C bindings relative to modern C++ practice while incurring significant amount of maintenance to the MPI standard specification. Two years after the MPI C++ interface was eliminated, the ISO C++ 11standard was published, which paved the way for modern C++ through numerous improvements to the core language. Since then, there has been continuous enthusiasm among application developers and the MPI Forum for modern C++ bindings to MPI. In this paper, we discuss ongoing efforts of the recently formed MPI working group on language bindings in the context of providing modern C++(C++11 and beyond) support to MPI. Because of the lack of standardized bindings, C++-based MPI applications will often layer their own custom subsets of C++ Mpi functionality on top of lower-level C; application- and/or domain-specific abstractions are subsequently layered on this custom subset. From such efforts, it is apparently a challenge to devise a compact set of C++ bindings over MPI with the &#x201C;right&#x201D; level of abstractions to support a variety of application uses cases under the expected performance/memory constraints. However, we are convinced that it is possible to identify and eventually standardize a normative set of C++ bindings to MPI that can provide the basic functionality required by distributed-memory applications. To engage with the broader MPI and C++ communities, we discuss a prototypical interface derived from mpl, an open-source C++ 17message passing library based on MPI.",
+        "keywords": {
+            "IEEE Keywords": [
+                "Multiprotocol label switching",
+                "Productivity",
+                "C++ languages",
+                "Maintenance engineering",
+                "Libraries",
+                "Synchronization",
+                "Middleware"
+            ],
+            "Index Terms": [
+                "C++ Language",
+                "Modern C++",
+                "Programming Language",
+                "Development Of Applications",
+                "C++ Programming",
+                "Broad Spectrum Of Applications",
+                "C++ Programming Language",
+                "Machine Learning",
+                "Load Data",
+                "Linear Order",
+                "Benchmark Test",
+                "Communication Scenarios",
+                "Code Snippets",
+                "Point-to-point Communication"
+            ],
+            "Author Keywords": [
+                "Message Passing",
+                "MPI",
+                "Communication",
+                "Modern C++",
+                "C++17",
+                "C++20"
+            ]
+        }
     },
     {
         "publicationNumber": "9652789",
@@ -313,7 +526,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Provides a listing of current committee members and society officers.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652789",
@@ -329,7 +544,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "ExaMPI is a long-standing workshop at Supercomputing, 2021 representing its 8th iteration. We had strong submissions this year, resulting in six papers and one extended abstract to be presented at the workshop. In addition, the workshop features a keynote by Dr. DK Panda. Overall, we expect approximately 120 attendees this year, making ExaMPI one of the largest gatherings of MPI focused researchers in the world in 2021.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652789",
@@ -345,7 +562,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the copyright information for the conference. May include reprint permission information.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652789",
@@ -361,7 +580,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the title page of the proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652789",
@@ -377,7 +598,9 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents an index of the authors whose articles are published in the conference proceedings record.",
+        "keywords": {}
     },
     {
         "publicationNumber": "9652789",
@@ -393,6 +616,8 @@
         "publisher": "IEEE",
         "articleContentType": "Conferences",
         "publicationTitle": "2021 Workshop on Exascale MPI (ExaMPI)",
-        "authors": []
+        "authors": [],
+        "abstract": "Presents the table of contents/splash page of the proceedings record.",
+        "keywords": {}
     }
 ]
