@@ -57,8 +57,8 @@ echo -e "${BLUE}[STEP 3] Starting Git operations...${NC}"
 # Check if there are changes in the specified directories and files
 CONFERENCES_STATUS=$(git status --porcelain -- ./publicationInfo/Conferences/)
 JOURNALS_STATUS=$(git status --porcelain -- ./publicationInfo/Journals/)
-ALL_CONFERENCES_JSON_STATUS=$(git status --porcelain -- ./all_conferences.json)
-ALL_JOURNALS_JSON_STATUS=$(git status --porcelain -- ./all_journals.json)
+ALL_CONFERENCES_JSON_STATUS=$(git status --porcelain -- ./publicationInfo/all_conferences.json)
+ALL_JOURNALS_JSON_STATUS=$(git status --porcelain -- ./publicationInfo/all_journals.json)
 
 # Check if any of the targeted files/directories have changes
 if [ -z "$CONFERENCES_STATUS" ] && [ -z "$JOURNALS_STATUS" ] && [ -z "$ALL_CONFERENCES_JSON_STATUS" ] && [ -z "$ALL_JOURNALS_JSON_STATUS" ]; then
