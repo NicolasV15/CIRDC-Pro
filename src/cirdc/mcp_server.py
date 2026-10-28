@@ -6,6 +6,12 @@ server = FastMCP('cirdc')
 
 
 @server.tool(structured_output=True)
+def check_database() -> dict[str, Any]:
+    """Read-only validation of required tables, columns, indexes, schema version, and database identity."""
+    return invoke('db-check')
+
+
+@server.tool(structured_output=True)
 def doctor(network: bool = False) -> dict[str, Any]:
     """Inspect storage, database readiness, and optionally metadata source access."""
     return invoke('doctor', network=network)
@@ -18,9 +24,14 @@ def plan_update(publication: str | None = None, year: int | None = None) -> dict
 
 
 @server.tool(structured_output=True)
-def start_update(publication: str | None = None, year: int | None = None) -> dict[str, Any]:
+def start_update(publication: str | None = None, year: int | None = None,
+                 stage: str = 'all', workers: int | None = None, max_tasks: int | None = None,
+                 skip_import: bool = False, skip_catalog: bool = False) -> dict[str, Any]:
     """Start or reuse a resumable bibliographic, abstract, and keyword update job."""
-    return invoke('update', publication=publication, year=year)
+    if stage not in ('all', 'catalog', 'metadata', 'enrich'):
+        return result({'status': 'error', 'code': 'invalid_stage'})
+    return invoke('update', publication=publication, year=year, stage=stage, workers=workers,
+                  max_tasks=max_tasks, skip_import=skip_import, skip_catalog=skip_catalog)
 
 
 @server.tool(structured_output=True)
@@ -30,15 +41,15 @@ def run_status(run_id: str | None = None) -> dict[str, Any]:
 
 
 @server.tool(structured_output=True)
-def resume_update(run_id: str) -> dict[str, Any]:
+def resume_update(run_id: str, workers: int | None = None) -> dict[str, Any]:
     """Resume an interrupted or paused job from persisted checkpoints."""
-    return invoke('resume', run_id=run_id)
+    return invoke('resume', run_id=run_id, workers=workers)
 
 
 @server.tool(structured_output=True)
-def retry_update(run_id: str) -> dict[str, Any]:
+def retry_update(run_id: str, workers: int | None = None) -> dict[str, Any]:
     """Retry failed work within its bounded task-attempt limit."""
-    return invoke('retry', run_id=run_id)
+    return invoke('retry', run_id=run_id, workers=workers)
 
 
 @server.tool(structured_output=True)

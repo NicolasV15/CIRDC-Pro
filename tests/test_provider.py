@@ -54,14 +54,16 @@ def test_valid_empty_response_is_distinct(tmp_path, monkeypatch):
 
 
 def test_source_no_data_only_after_valid_document(tmp_path, monkeypatch):
-    p, _ = client(tmp_path, monkeypatch, [response(text='xplGlobal.document.metadata={"articleNumber":"7"};')])
+    p, _ = client(tmp_path, monkeypatch, [response(text='<html>Search</html>'),
+                                        response(text='xplGlobal.document.metadata={"articleNumber":"7"};')])
     data, states = p.document('7')
     assert data['keywords'] == {}
     assert states == {'abstract': 'no_data', 'keywords': 'no_data'}
 
 
 def test_challenge_page_not_source_absence(tmp_path, monkeypatch):
-    p, _ = client(tmp_path, monkeypatch, [response(text='<html>Try again</html>')])
+    p, _ = client(tmp_path, monkeypatch, [response(text='<html>Search</html>'),
+                                        response(text='<html>Try again</html>')])
     with pytest.raises(UpstreamError) as error:
         p.document('7')
     assert error.value.code == 'parse_failed'
@@ -71,7 +73,8 @@ def test_keyword_categories_and_order(tmp_path, monkeypatch):
     value = {'articleNumber': '7', 'abstract': 'Summary',
              'keywords': [{'type': 'Author Keywords', 'kwd': ['a', 'b']},
                           {'type': 'IEEE Keywords', 'kwd': ['c']}]}
-    p, _ = client(tmp_path, monkeypatch, [response(text='xplGlobal.document.metadata = ' + json.dumps(value) + ';')])
+    p, _ = client(tmp_path, monkeypatch, [response(text='<html>Search</html>'),
+                                        response(text='xplGlobal.document.metadata = ' + json.dumps(value) + ';')])
     data, states = p.document('7')
     assert data['keywords'] == {'Author Keywords': ['a', 'b'], 'IEEE Keywords': ['c']}
     assert states == {'abstract': 'complete', 'keywords': 'complete'}

@@ -4,6 +4,12 @@ from .provider import IEEE
 def analyze(config, number, direction, depth=3, max_nodes=100):
     if not str(number).isdigit() or direction not in ('references', 'citations', 'tree'):
         raise ValueError('Invalid analysis request')
+    from .store import Store
+    store = Store(config)
+    try:
+        store.require_schema(force=True)
+    finally:
+        store.close()
     provider = IEEE(config)
     seen = set()
     def visit(n, level):

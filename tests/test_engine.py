@@ -1,6 +1,5 @@
 import json
 import os
-from pathlib import Path
 import uuid
 import pytest
 from cirdc.config import Config
@@ -17,6 +16,12 @@ def setup(tmp_path):
     c = Config(tmp_path / 'collection', tmp_path / 'state', current.mysql)
     c.data_root.mkdir()
     s = Store(c)
+    # Connection-local tables isolate fixtures from the existing metadata corpus and jobs.
+    for table in ['schema_migrations', 'venues', 'papers', 'paper_files', 'manifests',
+                  'sync_cursors', 'runs', 'tasks', 'exports', 'cirdc_identity']:
+        definition = s.execute('SHOW CREATE TABLE ' + table)[0]['Create Table']
+        with s.db.cursor() as cursor:
+            cursor.execute(definition.replace('CREATE TABLE', 'CREATE TEMPORARY TABLE', 1))
     s.migrate()
     token = str(int(uuid.uuid4().hex[:12], 16))
     numbers = ['99000000' + token + str(i) for i in range(2)]
@@ -35,18 +40,7 @@ def setup(tmp_path):
     context = {'config': c, 'store': s, 'service': service, 'rows': rows,
                'numbers': numbers, 'relative': relative, 'publication': publication, 'runs': []}
     yield context
-    # Remove only the synthetic rows and jobs created by this fixture.
-    for run in context['runs']:
-        for table in ['tasks', 'exports']:
-            s.execute('DELETE FROM ' + table + ' WHERE run_id=%s', (run,))
-        s.execute('DELETE FROM runs WHERE id=%s', (run,))
-    for n in numbers:
-        s.execute('DELETE FROM paper_files WHERE number=%s', (n,))
-        s.execute('DELETE FROM papers WHERE number=%s', (n,))
-    s.execute('DELETE FROM manifests WHERE path=%s', (relative,))
-    s.execute('DELETE FROM sync_cursors WHERE path=%s', (relative,))
-    s.execute('DELETE FROM venues WHERE number=%s', (publication,))
-    s.db.commit()
+    # All test tables are connection-local, including deliberately malformed schemas.
     s.close()
 
 

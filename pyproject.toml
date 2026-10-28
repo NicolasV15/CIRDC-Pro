@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cirdc-pro"
-version = "0.2.0"
+version = "0.4.0"
 description = "Resumable IEEE publication and article metadata maintenance"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
@@ -20,7 +20,7 @@ cirdc = "cirdc.cli:main"
 packages = ["src/cirdc"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src/cirdc", "pyproject.toml", "README*.md", "LICENSE", "AGENTS.md", "CLAUDE.md", ".agents", ".claude", ".codex", ".mcp.json", "config.example.json", "tools", "script", "requirements.txt", "tests"]
+include = ["src/cirdc", "pyproject.toml", "README*.md", "LICENSE", "AGENTS.md", "CLAUDE.md", ".agents", ".claude", ".codex", ".mcp.json", "config.example.json", "config.ssh.example.json", "tools", "database", "script", "requirements.txt", "tests"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

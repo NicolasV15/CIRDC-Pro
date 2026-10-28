@@ -1,0 +1,501 @@
+{
+  "application": "cirdc-pro",
+  "schema_version": 4,
+  "tables": {
+    "schema_migrations": {
+      "columns": {
+        "version": {
+          "type": "int",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "applied_at": {
+          "type": "timestamp",
+          "nullable": true,
+          "auto_increment": false,
+          "default": "current_timestamp",
+          "nullable_variants": [
+            true,
+            false
+          ]
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "version"
+          ],
+          "prefixes": [
+            null
+          ]
+        }
+      }
+    },
+    "venues": {
+      "columns": {
+        "kind": {
+          "type": "varchar(20)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "number": {
+          "type": "varchar(64)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "data": {
+          "type": "longtext",
+          "nullable": false,
+          "auto_increment": false
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "kind",
+            "number"
+          ],
+          "prefixes": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    "papers": {
+      "columns": {
+        "number": {
+          "type": "varchar(64)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "data": {
+          "type": "longtext",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "abstract_state": {
+          "type": "varchar(24)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "keywords_state": {
+          "type": "varchar(24)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "updated_at": {
+          "type": "timestamp",
+          "nullable": true,
+          "auto_increment": false,
+          "default": "current_timestamp",
+          "nullable_variants": [
+            true,
+            false
+          ]
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "number"
+          ],
+          "prefixes": [
+            null
+          ]
+        },
+        "field_coverage": {
+          "unique": false,
+          "columns": [
+            "abstract_state",
+            "keywords_state",
+            "number"
+          ],
+          "prefixes": [
+            null,
+            null,
+            null
+          ]
+        }
+      }
+    },
+    "paper_files": {
+      "columns": {
+        "path": {
+          "type": "varchar(512)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "number": {
+          "type": "varchar(64)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "ordinal": {
+          "type": "int",
+          "nullable": false,
+          "auto_increment": false
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "path",
+            "number"
+          ],
+          "prefixes": [
+            null,
+            null
+          ]
+        },
+        "by_number": {
+          "unique": false,
+          "columns": [
+            "number"
+          ],
+          "prefixes": [
+            null
+          ]
+        }
+      }
+    },
+    "manifests": {
+      "columns": {
+        "path": {
+          "type": "varchar(512)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "digest": {
+          "type": "char(64)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "checked_at": {
+          "type": "timestamp",
+          "nullable": true,
+          "auto_increment": false,
+          "default": "current_timestamp",
+          "nullable_variants": [
+            true,
+            false
+          ]
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "path"
+          ],
+          "prefixes": [
+            null
+          ]
+        }
+      }
+    },
+    "sync_cursors": {
+      "columns": {
+        "path": {
+          "type": "varchar(512)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "source_count": {
+          "type": "int",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "checked_at": {
+          "type": "timestamp",
+          "nullable": true,
+          "auto_increment": false,
+          "default": "current_timestamp",
+          "nullable_variants": [
+            true,
+            false
+          ]
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "path"
+          ],
+          "prefixes": [
+            null
+          ]
+        }
+      }
+    },
+    "runs": {
+      "columns": {
+        "id": {
+          "type": "char(32)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "status": {
+          "type": "varchar(24)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "params": {
+          "type": "longtext",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "stats": {
+          "type": "longtext",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "error": {
+          "type": "longtext",
+          "nullable": true,
+          "auto_increment": false
+        },
+        "pid": {
+          "type": "int",
+          "nullable": true,
+          "auto_increment": false
+        },
+        "heartbeat": {
+          "type": "timestamp",
+          "nullable": true,
+          "auto_increment": false,
+          "default": "current_timestamp",
+          "nullable_variants": [
+            true,
+            false
+          ]
+        },
+        "created_at": {
+          "type": "timestamp",
+          "nullable": true,
+          "auto_increment": false,
+          "default": "current_timestamp",
+          "nullable_variants": [
+            true,
+            false
+          ]
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "id"
+          ],
+          "prefixes": [
+            null
+          ]
+        }
+      }
+    },
+    "tasks": {
+      "columns": {
+        "id": {
+          "type": "bigint",
+          "nullable": false,
+          "auto_increment": true
+        },
+        "run_id": {
+          "type": "char(32)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "kind": {
+          "type": "varchar(24)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "task_key": {
+          "type": "varchar(512)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "payload": {
+          "type": "longtext",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "status": {
+          "type": "varchar(24)",
+          "nullable": false,
+          "auto_increment": false,
+          "default": "pending"
+        },
+        "attempts": {
+          "type": "int",
+          "nullable": false,
+          "auto_increment": false,
+          "default": "0"
+        },
+        "error": {
+          "type": "longtext",
+          "nullable": true,
+          "auto_increment": false
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "id"
+          ],
+          "prefixes": [
+            null
+          ]
+        },
+        "unique_task": {
+          "unique": true,
+          "columns": [
+            "run_id",
+            "kind",
+            "task_key"
+          ],
+          "prefixes": [
+            null,
+            null,
+            null
+          ]
+        },
+        "task_queue": {
+          "unique": false,
+          "columns": [
+            "run_id",
+            "status",
+            "id"
+          ],
+          "prefixes": [
+            null,
+            null,
+            null
+          ]
+        }
+      }
+    },
+    "exports": {
+      "columns": {
+        "id": {
+          "type": "bigint",
+          "nullable": false,
+          "auto_increment": true
+        },
+        "run_id": {
+          "type": "char(32)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "path": {
+          "type": "varchar(512)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "staged_path": {
+          "type": "text",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "digest": {
+          "type": "char(64)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "status": {
+          "type": "varchar(24)",
+          "nullable": false,
+          "auto_increment": false,
+          "default": "pending"
+        },
+        "error": {
+          "type": "longtext",
+          "nullable": true,
+          "auto_increment": false
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "id"
+          ],
+          "prefixes": [
+            null
+          ]
+        },
+        "unique_export": {
+          "unique": true,
+          "columns": [
+            "run_id",
+            "path"
+          ],
+          "prefixes": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    "cirdc_identity": {
+      "columns": {
+        "singleton": {
+          "type": "tinyint",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "application": {
+          "type": "varchar(64)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "schema_version": {
+          "type": "int",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "instance_id": {
+          "type": "char(36)",
+          "nullable": false,
+          "auto_increment": false
+        },
+        "created_at": {
+          "type": "timestamp",
+          "nullable": true,
+          "auto_increment": false,
+          "default": "current_timestamp",
+          "nullable_variants": [
+            true,
+            false
+          ]
+        }
+      },
+      "indexes": {
+        "PRIMARY": {
+          "unique": true,
+          "columns": [
+            "singleton"
+          ],
+          "prefixes": [
+            null
+          ]
+        },
+        "unique_instance": {
+          "unique": true,
+          "columns": [
+            "instance_id"
+          ],
+          "prefixes": [
+            null
+          ]
+        }
+      }
+    }
+  }
+}

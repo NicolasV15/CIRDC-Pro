@@ -1,6 +1,7 @@
 import json
 import re
 import time
+import threading
 import requests
 from .model import keywords, merge, normalize
 
@@ -11,32 +12,57 @@ class UpstreamError(RuntimeError):
         super().__init__(message)
 
 
+class RequestLimiter:
+    """One shared start-time budget across all fetch threads in a worker."""
+    def __init__(self, interval, clock=None, sleep=None):
+        self.interval = interval
+        self.clock = clock or time.monotonic
+        self.sleep = sleep or time.sleep
+        self.last = None
+        self.lock = threading.Lock()
+
+    def wait(self):
+        with self.lock:
+            if self.last is not None:
+                self.sleep(max(0, self.interval - (self.clock() - self.last)))
+            self.last = self.clock()
+
+
 class IEEE:
     BASE = 'https://ieeexplore.ieee.org'
+    JSON_ACCEPT = 'application/json,text/plain,*/*'
+    HTML_ACCEPT = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
 
-    def __init__(self, config, session=None):
+    def __init__(self, config, session=None, limiter=None):
         self.config = config
         self.session = session or requests.Session()
         self.session.headers.update({
-            'Accept': 'application/json,text/plain,*/*', 'Content-Type': 'application/json',
+            'Accept': self.JSON_ACCEPT,
             'Referer': self.BASE + '/search/searchresult.jsp',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
                           '(KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.46',
         })
         self.last_request = 0.0
+        self._document_session_ready = False
+        self.limiter = limiter or RequestLimiter(config.interval)
 
     def request(self, method, path, payload=None, html=False):
         last = None
         for attempt in range(self.config.retries):
-            time.sleep(max(0, self.config.interval - (time.monotonic() - self.last_request)))
+            self.limiter.wait()
             self.last_request = time.monotonic()
             try:
                 response = self.session.request(method, self.BASE + path,
                                                 data=json.dumps(payload) if payload is not None else None,
+                                                headers={'Accept': self.HTML_ACCEPT if html else self.JSON_ACCEPT,
+                                                         'Content-Type': 'application/json' if payload is not None else None},
                                                 timeout=(self.config.connect_timeout, self.config.read_timeout))
                 if response.status_code != 200:
                     code = 'access_restricted' if response.status_code in (202, 401, 403, 418, 429) else 'http_error'
-                    raise UpstreamError(code, f'Upstream returned HTTP {response.status_code}')
+                    message = f'Upstream returned HTTP {response.status_code}'
+                    if response.headers.get('x-amzn-waf-action') == 'challenge':
+                        message += ' (AWS WAF challenge)'
+                    raise UpstreamError(code, message)
                 if html:
                     return response.text
                 try:
@@ -111,6 +137,11 @@ class IEEE:
     def document(self, article_number):
         if not str(article_number).isdigit():
             raise ValueError('articleNumber must be numeric')
+        if not self._document_session_ready:
+            # Establish the site's normal session before opening a document directly.
+            # Requests keeps server-issued cookies in memory for this worker only.
+            self.request('GET', '/search/searchresult.jsp', html=True)
+            self._document_session_ready = True
         html = self.request('GET', '/document/' + str(article_number), html=True)
         match = re.search(r'xplGlobal\.document\.metadata\s*=\s*(\{)', html)
         if not match:
@@ -128,22 +159,52 @@ class IEEE:
             'keywords': 'complete' if any(terms.values()) else 'no_data',
         }
 
+    @staticmethod
+    def _publication_page(data):
+        if any(data.get(key) for key in ('error', 'errors', 'errorCode', 'errorMessage', 'challenge', 'captcha')):
+            raise UpstreamError('parse_failed', 'Publication endpoint returned an error object')
+
+        def count(key):
+            value = data.get(key)
+            if value is None:
+                return None
+            if isinstance(value, bool) or not str(value).isdigit():
+                raise UpstreamError('parse_failed', 'Publication coverage count is not a non-negative integer')
+            return int(value)
+
+        total, pages = count('totalRecords'), count('totalPages')
+        records = data.get('records')
+        # The endpoint omits records for an explicitly confirmed zero-result query.
+        # A missing count, HTML response, or error object is never evidence of absence.
+        if total == 0:
+            if records not in (None, []) or pages not in (None, 0, 1):
+                raise UpstreamError('coverage_incomplete', 'Zero-result publication response is inconsistent')
+            return 0, 0, []
+        if total is None or pages is None or not isinstance(records, list):
+            raise UpstreamError('parse_failed', 'Publication response lacks coverage fields')
+        if pages == 0 or any(not isinstance(row, dict) for row in records):
+            raise UpstreamError('coverage_incomplete', 'Publication response has invalid page coverage')
+        return total, pages, records
+
     def publication_year(self, kind, year):
+        if kind not in ('Journals', 'Conferences') or isinstance(year, bool) or not str(year).isdigit():
+            raise ValueError('Invalid publication kind or year')
         rows = []
         page = 1
         expected = None
+        expected_pages = None
         while True:
             data = self.request('POST', '/rest/publication', {
                 'contentType': 'periodicals' if kind == 'Journals' else 'conferences',
                 'tabId': 'title', 'ranges': [f'{year}_{year}_Year'], 'pageNumber': page,
             })
-            if not all(k in data for k in ('records', 'totalRecords', 'totalPages')):
-                raise UpstreamError('parse_failed', 'Publication response lacks coverage fields')
-            expected = int(data['totalRecords']) if expected is None else expected
-            if int(data['totalRecords']) != expected:
+            total, pages, records = self._publication_page(data)
+            expected = total if expected is None else expected
+            expected_pages = pages if expected_pages is None else expected_pages
+            if total != expected or pages != expected_pages:
                 raise UpstreamError('coverage_incomplete', 'Publication counts changed during pagination')
-            rows.extend(data['records'])
-            if page >= int(data['totalPages']):
+            rows.extend(records)
+            if page >= expected_pages:
                 break
             page += 1
         if len(rows) != expected:
