@@ -77,6 +77,7 @@ def configure_target(host, remote_config, output, workers=4, local_port=33307):
         raise ValueError('Target configuration already exists; select a new output path')
     profile = {'data_root': values['data_root'],
                'state_dir': str(Path.home() / '.local/state/cirdc-targets' / destination.stem),
+               'database_id': values.get('database_id'),
                'mysql': database, 'ssh_tunnel': tunnel,
                'storage': {'ssh_host': host, 'state_dir': values['state_dir'], 'python': 'python3.12'},
                'workers': workers, 'interval': max(1, values.get('interval', 1)),

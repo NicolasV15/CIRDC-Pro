@@ -10,12 +10,12 @@ from cirdc.ssh import SSH, configure_target
 
 def test_target_import_keeps_credentials_private_and_never_overwrites(tmp_path, monkeypatch):
     monkeypatch.setattr(Path, 'home', lambda: tmp_path)
-    private = {'data_root': '/srv/library', 'state_dir': '/srv/runtime',
+    private = {'data_root': '/srv/library', 'state_dir': '/srv/runtime', 'database_id': 'test-instance',
                'mysql': {'host': '127.0.0.1', 'database': 'cirdc', 'user': 'app', 'password': 'fixture-private-value'}}
     monkeypatch.setattr(SSH, 'python', lambda *a, **k: json.dumps(private).encode())
     class CheckedStore:
         def __init__(self, config):
-            pass
+            assert config.database_id == private['database_id']
         def inspect_schema(self):
             return {'compatible': True, 'identity': {'instance_id': 'test-instance'}}
         def close(self):
