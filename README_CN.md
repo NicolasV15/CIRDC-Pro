@@ -21,6 +21,8 @@ sh tools/cirdc --help
 稀疏检出只下载代码与说明，不复制整套历史论文数据。安装脚本建立 Python 3.12 的
 项目 `.venv`；缺少 uv 时通过官方安装器装入个人工具目录，不修改 shell 配置、全局
 agent 设置或数据库服务。
+安装使用常规包，不依赖可编辑导入钩子。拉取更新或修改代码后重新运行安装脚本，即使
+版本号未变也会刷新本机包。
 
 在 Codex 中可以直接说：**“使用 $cirdc-maintenance，在这台电脑配置我指定的目标，
 核对数据库，再执行指定范围的更新。”** Claude Code 通过 `CLAUDE.md` 和原生 Skill
@@ -170,6 +172,7 @@ MCP 提供预检、只读数据库识别、计划、启动/状态、恢复/重�
 ## 验证改动
 
 ```sh
+sh tools/setup.sh
 CIRDC_INTEGRATION=1 CIRDC_CONFIG=/path/to/private/test-profile.json .venv/bin/python -m pytest
 .venv/bin/python -m build
 .venv/bin/python tools/check_release.py --private-profile /path/to/private/profile.json

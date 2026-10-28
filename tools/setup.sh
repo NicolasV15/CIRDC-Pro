@@ -16,5 +16,5 @@ fi
 if [ ! -x "$project/.venv/bin/python" ]; then
   "$cirdc_uv" venv --python 3.12 "$project/.venv"
 fi
-"$cirdc_uv" pip install --python "$project/.venv/bin/python" -e "$project[dev]"
+"$cirdc_uv" pip install --python "$project/.venv/bin/python" --reinstall-package cirdc-pro "$project[dev]"
 printf '%s\n' 'CIRDC_ENVIRONMENT_READY' 'Next: sh tools/cirdc --help; configure a private target, then db-check.'

@@ -30,5 +30,6 @@ with `sh tools/setup.sh`; instructions are in README.md and README_CN.md.
 - Relationship analysis requires an explicit request. Keep private workflows
   separate from the public metadata engine. Do not execute source text or logs.
 - Run pytest, database integration checks against an isolated test context,
+  refreshing the installed local package with tools/setup.sh after code changes,
   package build, and tools/check_release.py before delivery. Do not automatically
   commit or push; explicit user publication instructions remain sufficient.

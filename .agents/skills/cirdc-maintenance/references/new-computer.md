@@ -1,6 +1,7 @@
 # New computer and target selection
 
 Run from the CIRDC-Pro checkout. Missing `.venv` means run `sh tools/setup.sh`.
+Also rerun setup after pulling or changing code, to refresh the regular installation.
 This uses a private Python environment and does not require global agent changes.
 The root READMEs contain the same user-facing command examples in both languages.
 
