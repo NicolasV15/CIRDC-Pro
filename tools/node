@@ -1,0 +1,30 @@
+#!/bin/sh
+# Resolve a private local runtime entry without changing package or target state.
+set -eu
+project=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+role=${1:-}
+case "$role" in
+  ''|-h|--help)
+    printf '%s\n' 'Usage: sh tools/node ROLE [CIRDC arguments...]' \
+      'ROLE is configured by the ignored .cirdc/node-ROLE path pointer.'
+    exit 0 ;;
+  *[!a-zA-Z0-9_-]*)
+    printf '%s\n' 'Invalid node role.' >&2
+    exit 2 ;;
+esac
+shift
+pointer="$project/.cirdc/node-$role"
+if [ ! -f "$pointer" ]; then
+  printf '%s\n' 'No local runtime for that role. Consult the private local-workspace context.' >&2
+  exit 2
+fi
+IFS= read -r launcher < "$pointer" || [ -n "${launcher:-}" ]
+case "$launcher" in
+  /*) ;;
+  *) printf '%s\n' 'The node pointer must name an absolute executable path.' >&2; exit 2 ;;
+esac
+if [ ! -f "$launcher" ] || [ ! -x "$launcher" ]; then
+  printf '%s\n' 'The configured runtime launcher is unavailable.' >&2
+  exit 2
+fi
+exec "$launcher" "$@"

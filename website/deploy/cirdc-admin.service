@@ -1,0 +1,16 @@
+[Unit]
+Description=CIRDC admin service
+After=network-online.target
+[Service]
+Type=simple
+WorkingDirectory=@CIRDC_WEB_ROOT@/current
+Environment=CIRDC_WEB_STATE=@CIRDC_WEB_STATE@
+ExecStart=@CIRDC_WEB_ROOT@/.venv/bin/cirdc web serve --interface admin --host 127.0.0.1 --port 18089
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:@CIRDC_WEB_STATE@/cirdc-admin.log
+StandardError=append:@CIRDC_WEB_STATE@/cirdc-admin.log
+UMask=0077
+NoNewPrivileges=true
+[Install]
+WantedBy=default.target

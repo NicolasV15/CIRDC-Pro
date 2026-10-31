@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cirdc-pro"
+version = "0.3.0"
+description = "Resumable IEEE publication and article metadata maintenance"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = ["requests>=2.32,<3", "beautifulsoup4>=4.12,<5", "lxml>=5,<7", "PyMySQL>=1.1,<2", "mcp>=1.12,<2"]
+
+[project.optional-dependencies]
+web = ["starlette>=0.46,<1", "uvicorn>=0.34,<1", "argon2-cffi>=23,<26"]
+dev = ["pytest>=8,<10", "build>=1.2", "ruff>=0.11"]
+
+[project.scripts]
+cirdc = "cirdc.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cirdc"]
+artifacts = ["src/cirdc/web/static/**"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/cirdc", "web", "docs", "deploy", "pyproject.toml", "README*.md", "LICENSE", "AGENTS.md", "CLAUDE.md", ".agents", ".claude", ".codex", ".mcp.json", "config.example.json", "tools", "script", "requirements.txt", "tests"]
+exclude = ["web/node_modules", "web/.vite"]
+artifacts = ["src/cirdc/web/static/**"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 110

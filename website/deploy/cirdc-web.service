@@ -1,0 +1,16 @@
+[Unit]
+Description=CIRDC reader service
+After=network-online.target
+[Service]
+Type=simple
+WorkingDirectory=@CIRDC_WEB_ROOT@/current
+Environment=CIRDC_WEB_STATE=@CIRDC_WEB_STATE@
+ExecStart=@CIRDC_WEB_ROOT@/.venv/bin/cirdc web serve --interface reader --host 0.0.0.0 --port 18088
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:@CIRDC_WEB_STATE@/cirdc-web.log
+StandardError=append:@CIRDC_WEB_STATE@/cirdc-web.log
+UMask=0077
+NoNewPrivileges=true
+[Install]
+WantedBy=default.target

@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+project=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+if [ ! -x "$project/.venv/bin/python" ]; then
+  printf '%s\n' 'Run sh tools/setup.sh first.' >&2
+  exit 2
+fi
+if [ -z "${CIRDC_CONFIG:-}" ] && [ -f "$project/.cirdc/active-target" ]; then
+  IFS= read -r CIRDC_CONFIG < "$project/.cirdc/active-target"
+  export CIRDC_CONFIG
+fi
+exec "$project/.venv/bin/cirdc" "$@"

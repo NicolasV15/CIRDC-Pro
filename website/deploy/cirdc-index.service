@@ -1,0 +1,17 @@
+[Unit]
+Description=CIRDC index service
+After=network-online.target
+[Service]
+Type=simple
+WorkingDirectory=@CIRDC_WEB_ROOT@/current
+Environment=CIRDC_WEB_STATE=@CIRDC_WEB_STATE@
+ExecStart=@CIRDC_WEB_ROOT@/.venv/bin/cirdc web index
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:@CIRDC_WEB_STATE@/index.log
+StandardError=append:@CIRDC_WEB_STATE@/index.log
+Nice=5
+UMask=0077
+NoNewPrivileges=true
+[Install]
+WantedBy=default.target

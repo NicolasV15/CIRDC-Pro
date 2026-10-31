@@ -1,0 +1,40 @@
+#!/bin/sh
+# Website development from the unified repository root.
+set -eu
+project=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+site="$project/website"
+environment="$site/.venv-dev"
+action=${1:-help}
+if [ "$#" -gt 0 ]; then shift; fi
+case "$action" in
+  help|--help|-h)
+    printf '%s\n' 'Usage: sh tools/web {setup|test|build|serve|deploy} [arguments]' \
+      'setup: install the isolated website development environment and frontend dependencies' \
+      'test: run frontend and website API tests (remaining arguments go to pytest)' \
+      'build: build frontend assets, wheel and source distribution' \
+      'serve: run the development server (arguments follow cirdc web serve)' \
+      'deploy: publish to the existing target selected by CIRDC_WEB_ROOT'
+    exit 0 ;;
+esac
+test -f "$site/pyproject.toml" || { printf '%s\n' 'Website source is missing; use the unified source checkout.' >&2; exit 2; }
+cd "$site"
+case "$action" in
+  setup)
+    test ! -f "$environment/.cirdc-runtime-protected" || { printf '%s\n' 'Protected runtime; choose a development environment.' >&2; exit 2; }
+    if [ ! -x "$environment/bin/python" ]; then uv venv --python 3.12 "$environment"; fi
+    uv pip install --python "$environment/bin/python" --reinstall-package cirdc-pro '.[dev,web]'
+    npm --prefix web ci --no-audit --no-fund ;;
+  test)
+    test -x "$environment/bin/python" || { printf '%s\n' 'Run sh tools/web setup first.' >&2; exit 2; }
+    npm --prefix web test
+    exec "$environment/bin/python" -m pytest "$@" ;;
+  build)
+    npm --prefix web run build
+    exec uv build --project "$site" --out-dir "$site/dist" "$@" ;;
+  serve)
+    test -x "$environment/bin/python" || { printf '%s\n' 'Run sh tools/web setup first.' >&2; exit 2; }
+    exec "$environment/bin/python" -m cirdc.cli web serve "$@" ;;
+  deploy)
+    exec bash "$site/tools/deploy_web.sh" "$@" ;;
+  *) printf '%s\n' "Unknown website action: $action" >&2; exit 2 ;;
+esac
