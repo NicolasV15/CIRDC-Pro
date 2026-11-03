@@ -40,9 +40,12 @@ For consumers installing the research Skill from this source checkout, run
 `sh tools/install-skill --agent codex`, `--agent claude-code`, or `--agent all`.
 This uses Python's standard library and links the canonical
 `website/.agents/skills/cirdc-research/` directory into the selected user's native
-Skill directory. Installation is offline and requires no backend environment,
-database or site configuration. `--base-url` optionally saves the site origin;
-otherwise resolve it on first use. Run the installer on the computer where the
+Skill directory. No backend environment or database is required. Complete site
+selection during installation: reuse explicit/environment/saved configuration,
+otherwise prompt in a terminal with the local reader default. Verify and save the
+site before reporting success; do not defer URL questions to research use.
+`--configure` updates site settings only. Offline setup requires an explicit or
+saved address plus `--skip-check`. Run the installer on the computer where the
 AI host discovers Skills. For a checkout accessed only over SSH, copy that
 self-contained Skill directory to the host computer and install from that copy;
 a remote user's home directory does not configure the local AI application.

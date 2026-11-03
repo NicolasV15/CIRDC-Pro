@@ -26,7 +26,7 @@ CIRDC-Pro 将 IEEE 科研元数据采集与论文检索网站整合在一个项�
 ## 从源码安装研究 Skill
 
 仓库自带 `cirdc-research`，提供论文检索、正文阅读、原始文献获取和资源请求续查流程。
-开发者可以直接从源码安装到 Codex 或 Claude Code；安装只需要 Python 3.10+，可离线执行：
+开发者可以直接从源码安装到 Codex 或 Claude Code；只需要 Python 3.10+，站点配置在安装阶段完成：
 
 ```sh
 sh tools/install-skill --agent codex
@@ -41,8 +41,11 @@ sh tools/install-skill --agent all
 通过链接生效，因此需保留该 checkout 的路径。在其他目录也可运行
 `sh /path/to/CIRDC-Pro/tools/install-skill --agent all`。
 
-安装时无需配置站点地址，首次使用 Skill 时再提供即可；也可附加
-`--base-url https://papers.example.org` 将地址保存到本机。Codex 新会话使用
+首次在终端安装时选择站点，默认 `http://127.0.0.1:18088`；远程站点或脚本安装可附加
+`--base-url https://papers.example.org`。安装程序检查研究 API，并将地址保存到
+`~/.config/cirdc/research.json`，使用 Skill 时不再询问 URL；后续更新复用已保存配置。
+更换地址运行 `sh tools/install-skill --configure`；有意离线安装时显式指定地址并加 `--skip-check`。
+Codex 新会话使用
 `$cirdc-research`；Claude Code 运行 `/reload-skills` 后使用 `/cirdc-research`。
 在同一安装命令后加 `--uninstall`，只移除其对应的软链接。
 

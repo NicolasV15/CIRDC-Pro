@@ -5,12 +5,19 @@ description: Search CIRDC-Pro papers and retrieve full text, figures or original
 
 # CIRDC research access
 
-Resolve the CIRDC site origin from the user's explicit address, `CIRDC_BASE_URL`,
-then the local installer's `~/.config/cirdc/research.json` (`base_url`), or the origin
-from which this online Skill was read. Resolve relative instruction/helper paths
-from this Skill's actual folder (follow its symlink), not the current project. No archive, local adapter, account, API key or database is required.
-If the site address is neither configured nor present in the task/document URL,
-ask for it; do not guess a host.
+Site configuration is completed by the installer, not during research use. For a
+native installation, use the user's explicit override, `CIRDC_BASE_URL`, then
+`~/.config/cirdc/research.json` (`base_url`). Run the helper without `--base-url` to
+use that saved configuration. Connected MCP tools already select their site; when
+reading this Skill online, its origin supplies the site address.
+
+Do not ask the user for a URL when using this Skill. If local configuration is
+missing or invalid, report incomplete installation and the `install_skill.py
+--configure` setup command. If a configured site is unreachable, report the
+connection problem and that same reconfiguration entrypoint; do not silently
+switch sites or open a configuration conversation inside the research task.
+Resolve helper/reference paths from this Skill's actual folder (follow its
+symlink), not the current project. No archive, account, API key or database is required.
 
 Prefer connected `cirdc-research` tools. The running reader hosts MCP directly at
 `/api/agent/v1/mcp` using Streamable HTTP. Without an MCP connection, call the

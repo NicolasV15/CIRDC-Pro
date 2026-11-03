@@ -25,7 +25,10 @@ explicitly configured provider and available files/content. Missing resources ar
 reported separately. Author identity browsing uses the existing index; optional
 profile acquisition is an explicit single-author operation.
 
-When the reader is running, open `/developers/ai` for the live connection addresses.
+When the reader is running, open `/developers/ai` for two copyable Agent prompts:
+install the online Skill bound to the current site, or open an Agent conversation
+in the intended working directory for cloning, local deployment and Skill installation
+bound to that new instance. No directory input is required on the page.
 AI hosts can connect directly to `/api/agent/v1/mcp`; HTTP-capable agents can read
 `/api/agent/v1/skills/cirdc-research/SKILL.md`. These endpoints share the website
 process and port. No Skill archive or local MCP adapter installation is required.
