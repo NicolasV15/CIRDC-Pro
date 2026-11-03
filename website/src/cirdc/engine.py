@@ -81,8 +81,15 @@ class Service:
                 run['observed_status'] = 'interrupted'
         return run
 
+    def require_ordinary_scope(self,params):
+        if params.get("stage","all") not in ("all","catalog","metadata","enrich") or params.get("mode"):
+            raise ValueError("Relationship tasks require the coordinator queue; the ordinary worker cannot resume them")
+        if self.config.web.get("maintenance",{}).get("enabled"):
+            raise ValueError("Maintenance is managed by the coordinator; use the collection panel")
+
     def start(self, params=None, foreground=False):
         params = {'stage': 'all', **{k: v for k, v in (params or {}).items() if v is not None and v is not False}}
+        self.require_ordinary_scope(params)
         if params.get('max_tasks') is not None and params['max_tasks'] <= 0:
             raise ValueError('Task budget must be positive')
         if params.get('publication') and not str(params['publication']).isdigit():
@@ -123,6 +130,7 @@ class Service:
         self.store.set_run(run_id, pid=process.pid)
 
     def resume(self, run_id, retry=False, foreground=False):
+        self.require_ordinary_scope(self.store.run(run_id)['params'])
         with self.store.lock('submit'):
             active = self.store.execute("SELECT id,pid,status FROM runs WHERE status IN ('queued','running')")
             for current in active:
@@ -364,6 +372,7 @@ class Service:
         stats['source_no_data_fields'] = stats.get('source_no_data_fields', 0) + sum(v == 'no_data' for v in states.values())
 
     def work(self, run_id):
+        self.require_ordinary_scope(self.store.run(run_id)['params'])
         stopping = [False]
         previous = {}
         for sig in (signal.SIGTERM, signal.SIGINT):

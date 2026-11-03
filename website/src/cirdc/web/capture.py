@@ -5,6 +5,15 @@ from datetime import datetime
 from .index import save_meta
 
 
+def require_ready(store):
+    """Validate installed capture state without requiring schema-change privileges."""
+    versions = {row['version'] for row in store.execute('SELECT version FROM web_schema_migrations')}
+    enabled = store.execute("SELECT value FROM web_settings WHERE name='index_enabled'")
+    if 2 not in versions or not enabled or enabled[0]['value'] != '1':
+        raise RuntimeError('Website indexing is not initialized; run cirdc web init-index with setup credentials')
+    store.execute('SELECT number,token,changed_at FROM web_index_queue LIMIT 0')
+
+
 def install(store):
     store.execute('CREATE TABLE IF NOT EXISTS web_schema_migrations ('
                   'version INT PRIMARY KEY,applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)')

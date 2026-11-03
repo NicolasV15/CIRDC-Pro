@@ -18,11 +18,21 @@ the website's existing administration workflows.
 | Presentation | Chinese/English UI, six appearance presets and system mode, responsive layouts and KaTeX titles |
 | Administration | Account management, update plans/jobs/logs, index status and preflight, optional resource settings |
 | Optional reading resources | Provider-supplied cached bodies, chapter navigation, local PDFs and verified batch archives |
+| AI and application access | Public HTTP API, hosted Streamable HTTP MCP and online Skill instructions |
 
 The public installation supplies metadata browsing. Reading resources require an
 explicitly configured provider and available files/content. Missing resources are
 reported separately. Author identity browsing uses the existing index; optional
 profile acquisition is an explicit single-author operation.
+
+When the reader is running, open `/developers/ai` for the live connection addresses.
+AI hosts can connect directly to `/api/agent/v1/mcp`; HTTP-capable agents can read
+`/api/agent/v1/skills/cirdc-research/SKILL.md`. These endpoints share the website
+process and port. No Skill archive or local MCP adapter installation is required.
+To make the Skill available across local Codex or Claude Code projects, use the
+[native symlink installer](docs/agent-api.md#native-skill-installation). It downloads
+one local Skill copy and links it into the selected host.
+See [direct integration](docs/agent-api.md) for API examples and resource requests.
 
 ## How the website fits together
 
@@ -75,11 +85,11 @@ the website's configuration loader; provide the reachable endpoint or an existin
 tunnel explicitly.
 
 ```sh
-export CIRDC_CONFIG=/path/to/private/website.json
+export CIRDC_CONFIG=/path/to/private/reader.json
 export CIRDC_WEB_STATE="$HOME/.local/state/cirdc-web-dev"
 ```
 
-Use the same values in each terminal below. Keep state on local storage; it contains
+Use the same website state in each terminal; select the per-service profile shown below. Keep state on local storage; it contains
 the account/session database, search index and indexer checkpoints. Initial search
 backfill requires at least 20 GiB free on the index volume.
 
@@ -99,10 +109,19 @@ Further accounts are managed by the authenticated administrator.
 Existing accounts are preserved; website accounts are independent of OS accounts,
 and first login requires a password change.
 
+Prepare indexing explicitly with setup credentials, then run the indexer using
+its restricted account. See [database access roles](docs/database-access.md) for
+the grants and per-service profiles.
+
+```sh
+CIRDC_CONFIG=/path/to/private/setup.json \
+  website/.venv-dev/bin/python -m cirdc.cli web init-index
+```
+
 Run the indexer in its own terminal:
 
 ```sh
-website/.venv-dev/bin/python -m cirdc.cli web index
+CIRDC_CONFIG=/path/to/private/indexer.json website/.venv-dev/bin/python -m cirdc.cli web index
 ```
 
 It builds/resumes the index and then continues consuming changes. `--max-rows N`
@@ -113,14 +132,14 @@ support but does not start IEEE collection.
 
 ### 4. Start the reader and administrator
 
-In separate terminals, with the same private profile and state:
+In separate terminals, with the same website state and separate database profiles:
 
 ```sh
-sh tools/web serve --interface reader --host 127.0.0.1 --port 18090
+CIRDC_CONFIG=/path/to/private/reader.json sh tools/web serve --interface reader --host 127.0.0.1 --port 18090
 ```
 
 ```sh
-sh tools/web serve --interface admin --host 127.0.0.1 --port 18091
+CIRDC_CONFIG=/path/to/private/writer.json sh tools/web serve --interface admin --host 127.0.0.1 --port 18091
 ```
 
 Open [the reader](http://127.0.0.1:18090/) and
@@ -169,6 +188,7 @@ not start or resume metadata maintenance.
 - [Project overview and metadata backend](../README.md)
 - [Shared development/runtime workflow](../docs/LOCAL_REMOTE_WORKFLOW.md)
 - [Website behavior, search consistency and deployment](docs/web.md)
+- [Direct Agent API, hosted MCP and online Skill](docs/agent-api.md)
 - [Explicit single-author profiles](docs/authors.md)
 - [CC BY 4.0 license](LICENSE) and [upstream attribution](../README.md#attribution)
 

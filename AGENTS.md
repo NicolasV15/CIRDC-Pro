@@ -36,6 +36,18 @@
   progress documents. Source changes move between nodes through Git/versioned
   packages, with a task-specific primary checkout.
 
+For consumers installing the research Skill from this source checkout, run
+`sh tools/install-skill --agent codex`, `--agent claude-code`, or `--agent all`.
+This uses Python's standard library and links the canonical
+`website/.agents/skills/cirdc-research/` directory into the selected user's native
+Skill directory. Installation is offline and requires no backend environment,
+database or site configuration. `--base-url` optionally saves the site origin;
+otherwise resolve it on first use. Run the installer on the computer where the
+AI host discovers Skills. For a checkout accessed only over SSH, copy that
+self-contained Skill directory to the host computer and install from that copy;
+a remote user's home directory does not configure the local AI application.
+See README.md / README_CN.md for source installation and update commands.
+
 Set up and maintain IEEE metadata using `sh tools/cirdc` or project stdio MCP.
 Use the `cirdc-maintenance` Skill at `.agents/skills/cirdc-maintenance/SKILL.md`.
 Claude Code imports this file and delegates to the same Skill. Start missing environments

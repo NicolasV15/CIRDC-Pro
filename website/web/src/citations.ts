@@ -15,10 +15,11 @@ export function decodeTextEntities(value:string):string {
    return number>0&&number<=0x10ffff&&!(number>=0xd800&&number<=0xdfff)?String.fromCodePoint(number):original;
   });
 }
-export function citationText(value: unknown,trim=true): string {
+export function citationText(value: unknown,trim=true,preserveWhitespace=false): string {
  const text=decodeTextEntities((typeof value === 'string' || typeof value === 'number' ? String(value) : '')
-  .replace(/<\/?[a-z][\w:.-]*(?:\s[^<>]*?)?\s*\/?>/gi,'')).replace(/[\s\u0000-\u001f]+/g,' ');
- return trim?text.trim():text;
+  .replace(/<\/?[a-z][\w:.-]*(?:\s[^<>]*?)?\s*\/?>/gi,''));
+ const normalized=preserveWhitespace?text:text.replace(/[\s\u0000-\u001f]+/g,' ');
+ return trim?normalized.trim():normalized;
 }
 function tex(value: string): string {
  const replacements: Record<string,string> = {'\\':'\\textbackslash{}','{':'\\{','}':'\\}','%':'\\%','&':'\\&','#':'\\#','_':'\\_','$':'\\$','~':'\\textasciitilde{}','^':'\\textasciicircum{}','μ':'\\ensuremath{\\mu}','µ':'\\ensuremath{\\mu}','°':'\\ensuremath{^{\\circ}}','Ω':'\\ensuremath{\\Omega}','Δ':'\\ensuremath{\\Delta}','α':'\\ensuremath{\\alpha}','β':'\\ensuremath{\\beta}','γ':'\\ensuremath{\\gamma}','π':'\\ensuremath{\\pi}','σ':'\\ensuremath{\\sigma}','×':'\\ensuremath{\\times}','±':'\\ensuremath{\\pm}','−':'-','<':'\\textless{}','>':'\\textgreater{}','≤':'\\ensuremath{\\leq}','≥':'\\ensuremath{\\geq}'};

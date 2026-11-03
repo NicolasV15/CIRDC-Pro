@@ -225,6 +225,15 @@ class IEEE:
             raise UpstreamError('parse_failed', 'Document metadata could not be decoded') from None
         if not isinstance(data, dict) or str(data.get('articleNumber', article_number)) != str(article_number):
             raise UpstreamError('parse_failed', 'Document identity did not match')
+        if not isinstance(data.get('sections'), dict):
+            sections = re.search(r'xplGlobal\.document\.sections\s*=\s*(\{)', html)
+            if sections:
+                try:
+                    value, _ = json.JSONDecoder().raw_decode(html[sections.start(1):])
+                    if isinstance(value, dict):
+                        data['sections'] = value
+                except ValueError:
+                    pass
         return data
 
     def bibliography(self, article_number):

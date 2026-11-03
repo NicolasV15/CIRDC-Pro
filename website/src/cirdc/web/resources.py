@@ -82,3 +82,14 @@ class ResourceProviders:
                         'label_i18n': {'zh': '阅读资料覆盖率', 'en': 'Reading coverage'}}
             result.append(item)
         return result
+
+    def agent_provider(self, resource):
+        """Optional public resource protocol. Never discovers or installs plugins."""
+        matches = []
+        for provider in self.providers:
+            capabilities = getattr(provider, 'agent_capabilities', None)
+            if callable(capabilities) and capabilities().get(resource):
+                matches.append(provider)
+        if len(matches) > 1:
+            raise RuntimeError('Ambiguous Agent resource provider')
+        return matches[0] if matches else None

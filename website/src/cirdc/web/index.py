@@ -183,6 +183,21 @@ def consume(store, db, limit=500):
     return len(events)
 
 
+def initialize_indexing(config):
+    """Prepare capture using setup credentials, without starting an index worker."""
+    from ..store import Store
+    from .capture import install, require_ready
+    with closing(Store(config)) as store:
+        store.migrate()
+        install(store)
+        store.execute("INSERT INTO web_settings(name,value) VALUES('index_enabled','1') "
+                      "ON DUPLICATE KEY UPDATE value='1'")
+        store.db.commit()
+        require_ready(store)
+        store.db.commit()
+    return {'status': 'ready', 'capture_version': 2}
+
+
 def run_index(config, max_rows=None, once=False):
     from ..store import Store
     lock = (state_dir() / 'index.lock').open('a')
@@ -194,12 +209,10 @@ def run_index(config, max_rows=None, once=False):
     db = connect('search.sqlite')
     try:
         db.execute('PRAGMA cache_size=-524288')
-        initialize(db)
-        store.migrate()
-        from .capture import install, seed_missed
-        install(store)
-        store.execute("INSERT INTO web_settings(name,value) VALUES('index_enabled','1') ON DUPLICATE KEY UPDATE value='1'")
+        from .capture import require_ready, seed_missed
+        require_ready(store)
         store.db.commit()
+        initialize(db)
         meta = metadata(db)
         seed_missed(config, store, db, meta)
         meta = metadata(db)
@@ -279,8 +292,12 @@ def run_index(config, max_rows=None, once=False):
 
 
 def _search_uncached(params):
+    totals = params.get('totals', 'include')
+    if totals not in ('include', 'defer', 'only'):
+        raise ValueError('Invalid totals mode')
     years = validate_year_range(params)
     with closing(connect('search.sqlite')) as db:
+        db.execute('BEGIN')
         meta = metadata(db)
         query = str(params.get('q') or '').strip()
         if len(query) > 200:
@@ -327,7 +344,8 @@ def _search_uncached(params):
             if key in years:
                 clauses.append('d.year' + op + '?'); args.append(years[key])
         ranked = use_fts and order == 'relevance'
-        fingerprint = hashlib.sha256(json.dumps({k: str(v) for k, v in sorted(params.items()) if k != 'cursor'}, sort_keys=True).encode()).hexdigest()[:16]
+        count_clauses, count_args = list(clauses), tuple(args)
+        fingerprint = hashlib.sha256(json.dumps({k: str(v) for k, v in sorted(params.items()) if k not in ('cursor', 'totals')}, sort_keys=True).encode()).hexdigest()[:16]
         if params.get('cursor'):
             try:
                 cursor = json.loads(base64.urlsafe_b64decode(str(params['cursor']) + '==='))
@@ -370,7 +388,11 @@ def _search_uncached(params):
                'h.score AS rank,h.id AS index_id FROM hits h CROSS JOIN docs d ON d.id=h.id ORDER BY ' + outer_sort)
         started = time.monotonic()
         db.set_progress_handler(lambda: int(time.monotonic() - started > 4), 10000)
-        rows = [] if impossible else [dict(r) for r in db.execute(sql, (*args, size + 1))]
+        count_source = 'search' if use_fts and not filtered else source
+        count_sql = ('SELECT COUNT(*) FROM ' + count_source
+                     + (' WHERE ' + ' AND '.join(count_clauses) if count_clauses else ''))
+        total = None if totals == 'defer' else 0 if impossible else db.execute(count_sql, count_args).fetchone()[0]
+        rows = [] if impossible or totals == 'only' else [dict(r) for r in db.execute(sql, (*args, size + 1))]
         cursor = None
         if len(rows) > size:
             rows = rows[:size]
@@ -380,7 +402,7 @@ def _search_uncached(params):
             stale = time.time() - datetime.fromisoformat(meta['checked_at']).timestamp() > 120
         except (KeyError, TypeError, ValueError):
             stale = True
-        return {'items': rows, 'next_cursor': cursor, 'index': meta,
+        return {'items': rows, 'total': total, 'next_cursor': cursor, 'index': meta,
                 'partial': meta.get('phase') != 'ready' or bool(meta.get('error')) or stale or
                            (author_filtered and meta.get('authors_phase') != 'ready')}
 
@@ -392,6 +414,11 @@ _RESULT_LOCK = threading.Lock()
 
 def search(params):
     """Share repeated reads; any committed index change invalidates cached results."""
+    if params.get('totals', 'include') not in ('include', 'defer', 'only'):
+        raise ValueError('Invalid totals mode')
+    if params.get('totals') == 'only':
+        # A count depends on the match set, not the page size, cursor or ordering.
+        params = {k: v for k, v in params.items() if k not in ('limit', 'cursor', 'sort')}
     path = state_dir() / 'search.sqlite'
     if not path.exists():
         return _search_uncached(params)

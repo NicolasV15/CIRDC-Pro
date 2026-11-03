@@ -25,6 +25,37 @@ Author profiles are optional and acquired only through an explicit single-author
 operation. Browsing author identities does not fetch profiles. Document resources
 are separate from the public metadata engine.
 
+## Install the research Skill from source
+
+The repository includes `cirdc-research` for paper search, full-text reading,
+original document retrieval and resuming resource requests. Developers can install
+it directly from a checkout with Python 3.10+; the installation works offline:
+
+```sh
+sh tools/install-skill --agent codex
+sh tools/install-skill --agent claude-code
+# Or install both native discovery links:
+sh tools/install-skill --agent all
+```
+
+The command finds `website/.agents/skills/cirdc-research/` automatically and creates
+`~/.agents/skills/cirdc-research` for Codex or `~/.claude/skills/cirdc-research` for
+Claude Code as symlinks to that one canonical source. It also works from another
+folder as `sh /path/to/CIRDC-Pro/tools/install-skill --agent all`. Source changes
+are visible through the links, so keep the checkout at its installed path.
+
+A site address can be supplied when the Skill is first used. To save it during
+installation, add `--base-url https://papers.example.org`. Open a new Codex session
+and use `$cirdc-research`; in Claude Code run `/reload-skills`, then `/cirdc-research`.
+Use the same command with `--uninstall` to remove only its matching links.
+
+Run installation on the computer where the AI host discovers Skills. If the
+checkout is accessed over SSH from a different computer, copy the self-contained
+Skill folder to that computer and install from the local copy. See the
+[source and SSH installation reference](website/.agents/skills/cirdc-research/references/api.md#install-from-source-or-an-ssh-checkout)
+for exact commands. Metadata administration continues to use the separate
+repository-scoped `cirdc-maintenance` workflow.
+
 ## Architecture and source tree
 
 ```mermaid
@@ -183,6 +214,15 @@ failures remain distinct. Incomplete pagination or access challenges never count
 as empty success. See [field sources and stages](docs/METADATA_STAGES.md) and
 [maintenance lifecycle](docs/MAINTENANCE_LIFECYCLE.md). Explicit relationship analysis
 is available through `sh tools/cirdc analyze` and is outside ordinary maintenance.
+Persistent references and website on-demand requests use the separate
+[`references` extension](docs/REFERENCES.md). It accepts explicit article IDs,
+without publication discovery or periodic backfills.
+The optional [paper citations extension](docs/CITATIONS.md) collects IEEE and
+other-publisher citing papers by explicit ID or reader demand. Its seven-day
+cache and independent empty-state checks do not add a periodic collection job.
+The optional [patent citations extension](docs/PATENT_CITATIONS.md) has its own
+counts, snapshots and seven-day reader-triggered refresh. It preserves paper
+totals and links patent publication numbers to Google Patents.
 
 ## Website frontend and API
 
@@ -247,6 +287,12 @@ checks inspect the maintenance source and distributions for deployment leaks and
 schema-template consistency; inspect website distributions separately.
 
 ## Agents and further documentation
+
+To consume papers and reading resources from an existing site, use the website's
+[research Agent API and Skill](website/docs/agent-api.md). The workflow below
+maintains metadata and is separate from application access.
+The running reader directly serves HTTP, hosted MCP and online workflow instructions;
+callers do not need an archive or a local adapter installation.
 
 The root CLI and project stdio MCP use the same maintenance engine and selected
 private target. Agent instructions live in [AGENTS.md](AGENTS.md) and the

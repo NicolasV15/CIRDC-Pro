@@ -44,6 +44,14 @@ rm -rf -- "$task_destination/web/node_modules"
 task_wheels=("$task_destination"/dist/cirdc_pro-*.whl)
 [[ ${#task_wheels[@]} -eq 1 ]] || { echo 'Exactly one candidate wheel is required.' >&2; exit 1; }
 task_wheel=${task_wheels[0]}
+if [[ -n "${CIRDC_WEB_EXPECTED_WHEEL_SHA256:-}" ]]; then
+    task_digest=$(sha256sum -- "$task_wheel")
+    task_digest=${task_digest%% *}
+    [[ "$task_digest" = "$CIRDC_WEB_EXPECTED_WHEEL_SHA256" ]] || {
+        echo 'Candidate wheel differs from the checked artifact; services were not stopped.' >&2
+        exit 1
+    }
+fi
 # Check installed dependencies before stopping any service. Publication does not
 # resolve or upgrade dependencies and does not reinstall private providers.
 uv pip check --python "$task_python"

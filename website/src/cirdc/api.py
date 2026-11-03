@@ -47,9 +47,11 @@ def _invoke(action, config=None, **params):
     config = config or Config.load()
     if action == 'doctor':
         return doctor(config, params.get('network', False))
+    if action in ("update","resume","retry") and config.web.get("maintenance",{}).get("enabled"):
+        raise ValueError("Maintenance is managed by the coordinator; use the collection panel")
     store = Store(config)
     try:
-        if action in ('db-init', 'update'):
+        if action == 'db-init':
             store.migrate()
         service = Service(config, store=store)
         if action == 'db-init':

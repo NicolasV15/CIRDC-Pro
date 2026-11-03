@@ -1,0 +1,6 @@
+#!/bin/sh
+# Install the research Skill directly from this source checkout; no backend setup.
+set -eu
+project=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+skill="$project/website/.agents/skills/cirdc-research"
+exec python3 "$skill/scripts/install_skill.py" --source "$skill" "$@"

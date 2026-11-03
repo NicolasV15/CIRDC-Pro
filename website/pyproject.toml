@@ -21,6 +21,12 @@ cirdc = "cirdc.cli:main"
 packages = ["src/cirdc"]
 artifacts = ["src/cirdc/web/static/**"]
 
+[tool.hatch.build.targets.wheel.force-include]
+".agents/skills/cirdc-research/SKILL.md" = "cirdc/web/agent_instructions/SKILL.md"
+".agents/skills/cirdc-research/references/api.md" = "cirdc/web/agent_instructions/references/api.md"
+".agents/skills/cirdc-research/scripts/cirdc_client.py" = "cirdc/web/agent_instructions/scripts/cirdc_client.py"
+".agents/skills/cirdc-research/scripts/install_skill.py" = "cirdc/web/agent_instructions/scripts/install_skill.py"
+
 [tool.hatch.build.targets.sdist]
 include = ["src/cirdc", "web", "docs", "deploy", "pyproject.toml", "README*.md", "LICENSE", "AGENTS.md", "CLAUDE.md", ".agents", ".claude", ".codex", ".mcp.json", "config.example.json", "tools", "script", "requirements.txt", "tests"]
 exclude = ["web/node_modules", "web/.vite"]

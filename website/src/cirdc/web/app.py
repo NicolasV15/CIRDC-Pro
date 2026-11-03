@@ -2,7 +2,6 @@ import json
 import re
 import secrets
 import sqlite3
-import time
 from contextlib import closing
 from datetime import datetime, timezone
 from pathlib import Path
@@ -17,6 +16,7 @@ from .access import authentication_required, SearchRateLimiter
 from .index import metadata, publication_year_range, search, validate_year_range
 from .settings import connect
 from .resources import ResourceProviders
+from .http_cache import CatalogCache, PublicTextCompression
 from .authors import author_references, find_authors, get_author, attach_author_references
 from .venues import parse_venue_any, attach_series
 from .. import __version__
@@ -44,6 +44,7 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
     class Guard(BaseHTTPMiddleware):
         async def dispatch(self, request, call_next):
             path = request.url.path
+            agent_request = interface == 'reader' and path.startswith('/api/agent/v1/')
             if interface == 'reader' and (path.startswith('/admin') or path.startswith('/api/admin')):
                 return response({'error': 'not_found'}, 404)
             if interface == 'admin' and request.url.hostname not in ('localhost', '127.0.0.1', '::1'):
@@ -55,6 +56,26 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                 status = getattr(error, 'status', 503)
                 return response({'error': getattr(error, 'code', 'resource_unavailable')}, status)
             policy = policy or {}
+            if agent_request:
+                mcp_request = path == '/api/agent/v1/mcp'
+                policy = {'machine': True, 'write': mcp_request or bool(re.fullmatch(r'/api/agent/v1/papers/[0-9]{1,64}/ensure', path)),
+                          'body_limit': 65536 if mcp_request else 4096}
+            from .references import enabled as references_enabled
+            from .paper_citations import enabled as citations_enabled
+            from .patent_citations import enabled as patent_citations_enabled
+            if (interface == 'reader' and request.method == 'POST' and references_enabled(config)
+                    and re.fullmatch(r'/api/papers/[0-9]{1,64}/references/ensure', path)):
+                policy = {**policy, 'write': True, 'body_limit': 1024}
+            if (interface == 'reader' and request.method == 'POST' and citations_enabled(config)
+                    and re.fullmatch(r'/api/papers/[0-9]{1,64}/citations/ensure', path)):
+                policy = {**policy, 'write': True, 'body_limit': 1024}
+            if (interface == 'reader' and request.method == 'POST' and patent_citations_enabled(config)
+                    and re.fullmatch(r'/api/papers/[0-9]{1,64}/patent-citations/ensure', path)):
+                policy = {**policy, 'write': True, 'body_limit': 1024}
+            from .maintenance import enabled as maintenance_enabled
+            if (interface == 'reader' and request.method == 'POST' and maintenance_enabled(config)
+                    and re.fullmatch(r'/api/papers/[0-9]{1,64}/metadata/ensure', path)):
+                policy = {**policy, 'write': True, 'body_limit': 1024}
             machine = policy.get('machine', False)
             if public_reader and path.startswith('/api/'):
                 if path.startswith('/api/auth/') and path != '/api/auth/session':
@@ -71,7 +92,7 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                 length = request.headers.get('content-length', '0')
                 if not length.isdigit() or int(length) > policy.get('body_limit', 32768):
                     return response({'error': 'request_too_large'}, 413)
-            user = None if public_reader else await run_in_threadpool(accounts.session, request.cookies.get(cookie), interface)
+            user = None if public_reader or agent_request else await run_in_threadpool(accounts.session, request.cookies.get(cookie), interface)
             request.state.user = user
             request.state.public_reader = public_reader
             if path.startswith('/api/') and path not in ('/api/auth/session', '/api/auth/login'):
@@ -83,8 +104,8 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                     return response({'error': 'administrator_required'}, 403)
                 if not public_reader and not machine and request.method in ('POST', 'PUT', 'PATCH', 'DELETE') and not secrets.compare_digest(request.headers.get('x-csrf-token', ''), user['csrf']):
                     return response({'error': 'csrf_rejected'}, 403)
-                if path == '/api/papers':
-                    key = ('ip', request.client.host if request.client else 'unknown') if public_reader else ('account', user['username'])
+                if path in ('/api/papers', '/api/agent/v1/papers'):
+                    key = ('ip', request.client.host if request.client else 'unknown') if public_reader or agent_request else ('account', user['username'])
                     if not search_limit.allow(key):
                         return response({'error': 'rate_limited'}, 429)
             try:
@@ -155,6 +176,9 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
         return result
 
     def papers(request):
+        totals = request.query_params.get('totals', 'include')
+        if totals not in ('include', 'defer', 'only'):
+            return response({'error': 'invalid_query'}, 422)
         try:
             years = validate_year_range(request.query_params)
         except (ValueError, TypeError):
@@ -178,7 +202,7 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                 item['snippet'] = item.pop('abstract')[:400]
                 attach_series([item])
                 if venue_any and not set(venue_any).intersection([item['venue'], *item['venue_series']]):
-                    return response({'items': [], 'next_cursor': None, 'direct': True, 'partial': False})
+                    return response({'items': [], 'total': 0, 'next_cursor': None, 'direct': True, 'partial': False})
                 for name in ['kind', 'venue', 'abstract_state', 'keywords_state']:
                     value = request.query_params.get(name)
                     if name == 'kind' and value == 'Journals' and item[name] in ('Early Access Articles', 'Magazines'):
@@ -190,20 +214,23 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                         if matches:
                             continue
                     if value and value != str(item[name]):
-                        return response({'items': [], 'next_cursor': None, 'direct': True, 'partial': False})
+                        return response({'items': [], 'total': 0, 'next_cursor': None, 'direct': True, 'partial': False})
                 for name, before in [('year_from', True), ('year_to', False)]:
                     if name in years:
                         if (before and item['year'] < years[name]) or (not before and item['year'] > years[name]):
-                            return response({'items': [], 'next_cursor': None, 'direct': True, 'partial': False})
+                            return response({'items': [], 'total': 0, 'next_cursor': None, 'direct': True, 'partial': False})
                 raw = rows[0]['data']
+                if totals == 'only':
+                    return response({'items': [], 'total': 1, 'next_cursor': None, 'direct': True, 'partial': False})
                 item['author_refs'] = author_references(json.loads(raw) if isinstance(raw, str) else raw)
                 resources.attach([item])
-                return response({'items': [item], 'next_cursor': None, 'direct': True, 'partial': False})
+                return response({'items': [item], 'total': 1, 'next_cursor': None, 'direct': True, 'partial': False})
         try:
             value = search(dict(request.query_params))
-            attach_series(value['items'])
-            attach_author_references(value['items'])
-            resources.attach(value['items'])
+            if value['items']:
+                attach_series(value['items'])
+                attach_author_references(value['items'])
+                resources.attach(value['items'])
             return response(value)
         except (ValueError, TypeError):
             return response({'error': 'invalid_query', 'message': '查询参数无效，请检查搜索词、年份或翻页链接。'}, 422)
@@ -227,18 +254,18 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
         resources.attach([item])
         return response({'paper': item, 'read_at': datetime.now(timezone.utc).isoformat()})
 
-    venues_cache = {'at': 0, 'value': []}
+    venues_cache = CatalogCache()
 
     def venues(request):
-        if time.monotonic() - venues_cache['at'] > 60:
+        def build():
             with closing(Store(config)) as store:
                 rows = store.execute('SELECT kind,number,data FROM venues ORDER BY kind,number')
             values = []
             for row in rows:
                 data = json.loads(row['data'])
                 values.append({'kind': row['kind'], 'number': row['number'], 'title': str(data.get('title') or data.get('parentTitle') or data.get('publicationTitle') or row['number'])})
-            venues_cache.update(at=time.monotonic(), value=values)
-        return response({'items': venues_cache['value']})
+            return response({'items': values}).body
+        return venues_cache.response(request, build)
 
     def overview(request):
         with closing(connect('search.sqlite')) as db:
@@ -284,16 +311,30 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
     def health(request):
         return response({'status': 'ok', 'interface': interface})
 
+    research_mcp = None
     routes = [Route('/healthz', health), Route('/api/auth/session', session),
               Route('/api/auth/login', login, methods=['POST']),
               Route('/api/auth/logout', logout, methods=['POST']),
               Route('/api/auth/password', password, methods=['POST'])]
+    from .maintenance import routes as maintenance_routes
+    routes += maintenance_routes(config,response,interface)
     if interface == 'reader':
+        from .references import routes as reference_routes
+        routes += reference_routes(config, response)
+        from .paper_citations import routes as citation_routes
+        routes += citation_routes(config, response)
+        from .patent_citations import routes as patent_citation_routes
+        routes += patent_citation_routes(config, response)
         routes += [Route('/api/papers', papers), Route('/api/papers/{number}', paper),
                    Route('/api/venues', venues), Route('/api/overview', overview),
                    Route('/api/author-profiles/{source}/{author_id}', author_profile),
                    Route('/api/authors', authors), Route('/api/authors/{source}/{author_id}', author)]
         routes += resources.routes()
+        from .agent import AgentAPI
+        routes += AgentAPI(resources, papers, paper).routes()
+        from .agent_mcp import ResearchMCP, MCP_PATH
+        research_mcp = ResearchMCP()
+        routes.append(Route(MCP_PATH, research_mcp))
     else:
         def runs(request):
             with closing(Store(config)) as store:
@@ -409,10 +450,19 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
     routes += [Route('/', shell), Route('/login', shell), Route('/papers/{number}', shell)]
     if interface == 'reader':
         routes.append(Route('/authors/{source}/{author_id}', shell))
+        routes.append(Route('/developers/ai', shell))
     if interface == 'admin':
         routes.append(Route('/admin/', shell))
-    app = Starlette(routes=routes)
+    app = Starlette(routes=routes, lifespan=research_mcp.lifespan if research_mcp else None)
+    from .task_origins import enable_task_origins
+    enable_task_origins(app,interface)
+    app.add_middleware(PublicTextCompression)
     app.add_middleware(Guard)
+    if interface == 'reader':
+        from .agent import AgentCORS
+        app.add_middleware(AgentCORS)
+    from .visits import enable_reader_visits
+    enable_reader_visits(app,interface)
     app.state.accounts = accounts
     app.state.resources = resources
     return app

@@ -74,8 +74,26 @@ Repeated queries share a bounded 30-second in-process result cache and a single
 in-flight computation. A committed index-file version change immediately
 invalidates cached pages; detail reads are never cached. Health and coverage
 metadata are refreshed for every response.
+The browser requests `totals=defer` for the first result page (`total: null`),
+paints the rows, then requests `totals=only` for the exact match count without
+reading another page. Count-only results share the same bounded index-version
+cache across page sizes, ordering and cursors. Omitting `totals` keeps the
+existing combined response. Counts that fail remain unavailable, never zero.
+The publication catalog is fetched when the venue input is used. Its response
+has a 60-second private browser cache, representation-specific ETags and gzip;
+authentication is checked before any conditional response. Compression also
+applies to search JSON and JS/CSS/SVG assets, excluding Range requests. Resource,
+PDF, authentication and administrator API responses keep their existing behavior.
 Search projections and counts have separate synchronization timestamps; field
 content is not proof that the latest maintenance run fetched it.
+
+`GET /api/papers` returns `total`, the number of matching records before the
+page size and cursor are applied. It uses the same query and filters as the
+result list, including author identities and venue families. Each page reports
+the full total; the reader separately displays the rows currently loaded.
+Counts and rows share one index snapshot. When `partial` is true, the total
+describes current index coverage. Exact article-number lookups return 0 or 1
+after applying their filters.
 
 `GET /api/overview` includes `index.year_range` (`min` and `max`, nullable),
 read from the current search index with indexed boundary lookups. The reader's
@@ -131,6 +149,18 @@ performance before marking deployment accepted.
 
 ## Optional related-reading providers
 
+Applications and research agents use the public `/api/agent/v1` resource API and
+the `/developers/ai` integration guide. See [Agent access](agent-api.md) for the
+provider protocol, durable requests, versioned reading, hosted MCP and online Skill.
+
+When an enabled PDF acquisition capability is advertised, a completed body can
+trigger one silent original-PDF attempt. Failed automatic attempts do not interrupt
+reading or repeat on page reload. An explicit Get PDF action requests a fresh
+attempt; a deferred failure explains that the paper is on the follow-up list.
+The administrator's existing resource diagnostics show pending papers. Operators
+control later retrieval, and successful publication restores the normal PDF reader
+link. This behavior does not start full-library work.
+
 `CIRDC_WEB_RESOURCE_PROVIDERS` is an explicit comma-separated allowlist of local
 entry-point names from `cirdc.web_resources`. No provider is loaded by default,
 even if additional packages are installed. Providers add related-resource links
@@ -181,10 +211,9 @@ database is not required for current identity-based discovery.
 
 ## Display-only circuit publication families
 
-The browser's `web/src/venueFamilies.ts` is the only source of abbreviations,
-full names, source IDs, aliases and historical label rules. Its 22 families cover
-11 journal IDs and 14 conference series from the existing selected-publication
-folders. They describe publication sources, not an article's technical topic or
+The browser's `web/src/data/circuit-scope.json` and `web/src/venueFamilies.ts`
+define abbreviations, full names, source IDs, aliases and historical label rules.
+There are 22 curated filter families covering 25 publication/series IDs. They describe publication sources, not an article's technical topic or
 quality. The old article lists and their year ranges never limit the selection.
 
 - Journal families: JSSC, LSSC (SSCL alias), TCAS, TCAS-I, TCAS-II, TVLSI, TCAD,
@@ -225,6 +254,10 @@ in addition to the frontend build and browser checks.
 Reader and administrator pages provide Chinese and English UI text through the
 header language buttons. The browser remembers the preference for the current
 origin in `localStorage["cirdc.ui.language"]`; other open tabs update too.
+Without a saved preference, the first supported Chinese or English browser
+language selects the UI; Chinese remains the fallback when neither is supported.
+Detected defaults are not stored. Manual choices take precedence across reloads
+and browser language changes; removing the preference restores automatic selection.
 Switching retains the current page, drafts, filters, venue selections, session
 and expanded abstracts. Paper titles, abstracts, author names, keywords,
 publication names, raw JSON and technical logs retain their source content.
@@ -350,6 +383,77 @@ Scientific notation in paper-list titles, detail headings and citation-dialog he
 
 ## Citation export
 
+### References
+
+Paper details display an independent References section after the document reader
+and before keywords. It also works without a cached body. Opening an existing
+paper can enqueue its missing references when the installation explicitly enables
+`web.references.enabled`. Completed results are reused; failed, restricted and
+source-unavailable attempts are not retried by refreshing the page.
+
+Entries preserve source order and full citation text. Numeric IEEE document IDs
+always open this website's paper page; missing metadata produces the existing
+not-found page without importing metadata or redirecting to the publisher.
+Entries without an IEEE ID offer a Google Scholar search using DOI, title, then
+citation text. Scholar is opened only by a reader action.
+
+Explicit publisher citation anchors reveal the matching entry, including entries
+outside the currently loaded page, and allow returning to the citation. Converted
+plain text is not heuristically linked. Pagination and item lookup pin the same
+snapshot version; the existing citation-format export remains independent.
+
+The metadata maintenance package owns the optional references schema, queue and
+source collector. Private website configuration supplies `read_command` and
+`enqueue_command` argv arrays for its fixed executable and target profile. The
+read helper uses a READ ONLY database transaction; the reader service's existing
+database grants do not change. Source requests use the existing coordinator and
+its shared exit budget. Installing or publishing does not create a backfill.
+
+### Incoming paper citations
+
+The optional Citations section follows References with one collapsed heading and
+**By Papers** / **By Patents** tabs. Each tab keeps its independent count; the
+counts are never added together. Both views remain mounted, so changing tabs
+retains pagination and does not submit another ensure request. IEEE and
+other-publisher paper groups have separate counts, source
+order and snapshot-pinned paging. Numeric IEEE IDs open local paper pages;
+other entries use backend-created Scholar searches. Inline bibliography anchors
+remain associated with References.
+
+Opening a paper ensures missing or seven-day-old citations asynchronously.
+Confirmed empties are checked again after expiry. Failed updates preserve the
+previous snapshot and enter a seven-day cooldown; explicit Update may run earlier.
+Refresh status is read-only. Absence of a publisher section, confirmed zero,
+unknown availability and source failures have distinct presentation. Both headings
+remain visible independently, including papers without a cached body.
+
+Private `web.citations.read_command` and `enqueue_command` select the fixed
+maintenance executable and target. The read helper uses a READ ONLY transaction;
+reader database privileges stay unchanged. Source HTTP uses the current shared
+coordinator budget and only protocol-compatible nodes. Setup and publication
+never start a citations history scan or periodic job.
+
+### Incoming patent citations
+
+The **By Patents** tab contains patent citations. Its counts,
+snapshot version, pagination and seven-day on-demand refresh are independent of
+paper citations; patent counts never enter paper totals. The existing paper-group
+switch remains visible only when both paper groups have records.
+
+Configure private `web.patent_citations` with `enabled`, `read_command` and
+`enqueue_command`. `GET /api/papers/{number}/patent-citations` supports offset,
+limit (1–100) and a pinned version. Its ensure endpoint accepts an empty object
+or `refresh: true`, using the same authentication/origin policy and bounded
+maintenance bridge. New work requires `paper_patent_citations_v1`; legacy nodes
+continue their previous queues. Publication does not create a history scan.
+
+Known patent publication numbers open Google Patents; other entries open a
+Google Patents title/text search only when clicked. Source absence and unknown
+availability differ from an explicit zero, which means zero records in IEEE
+Xplore's current index. Failed reads stop polling and preserve visible data.
+
+### Citation formats
+
 Each paper in the browsing results has a **Cite** button. The dialog reads the existing paper detail record and generates BibTeX, IEEE plain text, or GB/T 7714-2025 (numeric order). It does not mount the document reader or request content collection. Copy the current format or download it as a UTF-8 `.bib` / `.txt` file. Direct HTTP readers use the selected-text clipboard fallback; if the browser rejects copying, the dialog keeps the text selected for manual copying.
 
 Author order and source titles are preserved. Missing fields are identified rather than invented. Early Access references omit provisional volume `PP`, issue `99`, and provisional pages; a missing online publication date remains visibly incomplete. IEEE Xplore document numbers are used only for the citation key and source URL, never as publisher article numbers. Plain-text entries omit reference-list numbering.
@@ -370,7 +474,7 @@ The record row above the paper title groups **Cite** and **Read PDF** together. 
 
 Paper details use the same 1800 px maximum workspace width and responsive outer padding as the search page, including full available width for the paper title.
 
-Search results offer 25, 50, 100 or a custom 1–100 records per page. Presets apply immediately; custom values apply on Enter or with Apply. The setting is stored in the browser and the `limit` URL parameter, survives returning from a paper, and remains when other filters are cleared. A size change replaces the current result batch and resets its cursor and clears row selections. Load more continues to append the chosen batch size. The existing API limit and schema remain unchanged.
+Search results offer a dropdown with 25, 50 or 100 records per page, applied immediately. The setting is stored in the browser and the `limit` URL parameter, survives returning from a paper, and remains when other filters are cleared. Historical custom sizes in saved preferences or URLs fall back to an available preset. A size change replaces the current result batch, resets its cursor and clears row selections. Load more continues to append the chosen batch size. The existing API limit and schema remain unchanged.
 
 
 ## Appearance themes
@@ -383,3 +487,56 @@ builds `/assets/themes.css` and the blocking, independent `/assets/theme-init.js
 Related reading pages may load these same resources without loading the React app;
 the initializer never changes document titles. Document bytes and source images retain
 their original colors. Stable theme assets use revalidation caching.
+
+### Converted-document reading
+
+The existing document reader supports provider-managed local document conversion.
+The provider returns `job.kind` to distinguish `ieee_html` retrieval from `pdf_parse`
+conversion, while retaining the existing queued/fetching/ready/failed states.
+Readers see the content source, conversion progress and an explicit retry action
+for failed conversions. Cached documents are read without starting new work.
+
+Opening a prior `source_no_body` result makes one bounded ensure request so the
+provider can check newly available local material. An access failure is not a
+publisher-absence signal. Conversion eligibility and durable jobs remain the
+provider's responsibility. The optional ensure payload `{ "retry": true }` requests
+an explicit conversion retry; ordinary polling never retries a failed conversion.
+Body and asset URLs may carry a version query parameter, which image retry preserves.
+The website contains no parser endpoint or service credentials.
+
+Cached IEEE equation source controls are restored only when a standalone
+`View Source` label and its plain TeX sibling exactly match the adjacent
+`doc-math` formula. Source starts collapsed and uses the existing disclosure
+button style; keyboard activation and language changes retain its state.
+The original TeX text is shown verbatim. Source viewers have their own selection
+copy scope so copying body text does not include the duplicate formula source;
+selecting inside an open viewer can copy that equation in the existing formats.
+Unmatched structures remain unchanged. No cached HTML or scientific content is rewritten.
+
+The overview renders all registered provider coverage metrics independently.
+Each metric uses its own declared scope denominator and sampling time; missing
+or unavailable statistics display an unknown rate instead of zero. Multiple
+coverage cards remain visible alongside the catalog totals, and do not change
+with the current search filters. Reading these statistics never ensures content.
+
+## Optional anonymous visit-source records
+
+A reader deployment can set `CIRDC_WEB_VISITS_FILE` to an absolute private SQLite filename. Without that setting the feature is disabled; administrators are never tracked by this reader-only middleware. Successful reader-page and selected metadata API GET requests record the actual peer IP, first/last observed request times and a request count. Accepted single-article task requests additionally retain a server-generated request ID, article number, request type, time, HTTP outcome and verified queue identities. These are website request records, not account login sessions or a count of people. Cookies, accounts, user agents, query strings, credentials and passive reading-page history are not stored. Directory probes, health, assets and machine-worker requests are excluded.
+
+`CIRDC_WEB_TASK_RESOLVER` may hold a JSON command-argument list for a privately configured read-only queue-identity resolver. It accepts a JSON object with `kind` and `paper`, and returns `available` plus `tasks` containing `id`, `run_id`, `kind`, `paper` and `state`. Resolver failure leaves the request recorded without inventing a queue identity. Canonical pointer attestations are appropriate only when the resolver verifies the exact queue pointer used by a state-only API. Reading and enqueue bridges preserve their existing permissions and behavior; the resolver must never queue work. Explicit resource-job references in accepted adapter responses can be associated without a resolver. Request bodies, response payloads and resolver output are not persisted.
+
+Each merged task may retain requests from multiple peers; association does not claim that every requester created the task. Only explicit durable task identities may carry associations into follow-up or retry views; matching by article or nearby time is insufficient. Historical and automatic work without a recorded reader request must remain unattributed. Browsers do not reveal the client computer's real hostname through ordinary HTTP. Operators may associate peer addresses with registered names or forward-confirmed reverse DNS; unknown names remain unknown, and NAT/proxy addresses are not authenticated individuals. Storage/configuration failures leave task behavior unchanged. This state stays outside source control and corpus databases.
+
+## General publication abbreviation badges
+
+`web/src/data/publication-venues.json` is an independent snapshot of the supplied
+Papers by Venue map (15,236 normalized-name entries). It is not the curated
+family list. List and detail pages prefer the existing source-ID-based curated
+badge; otherwise they use the general exact-name map, then explicit acronym and
+small display fallback rules. No match produces no invented abbreviation.
+The full publication name and original metadata remain unchanged. These badges
+are non-clickable and never create filter entries, rankings or data classifications.
+The map loads once, only when a non-curated publication needs it, after the first
+painted frame. It is emitted as a separate compressed JSON asset rather than
+being embedded in the main JavaScript bundle. Failed loads retain light display
+fallbacks. Asset compression still excludes Range and resource/PDF requests.

@@ -4,6 +4,8 @@ description: Locate the maintained metadata engine from the website subdirectory
 ---
 
 This website package is part of the parent CIRDC-Pro repository. Metadata
+consumption and on-demand reading use [cirdc-research](../cirdc-research/SKILL.md).
+Metadata
 maintenance uses the root engine, not the website's compatibility package.
 Read the root [maintenance skill](../../../../.agents/skills/cirdc-maintenance/SKILL.md)
 and follow its target, lifecycle and verification instructions. Run its commands

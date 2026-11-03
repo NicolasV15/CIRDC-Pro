@@ -1,0 +1,63 @@
+/* Fixture-only equation source acceptance. Set PLAYWRIGHT_MODULE, optionally
+ * PLAYWRIGHT_CHROMIUM_EXECUTABLE, CIRDC_DOCUMENT_FIXTURE, CIRDC_EXPECTED_SOURCES,
+ * and CIRDC_BROWSER_OUTPUT. No real source, PDF or collection requests are made. */
+const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict'),ts=require('typescript');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const root=path.resolve(__dirname,'../../src/cirdc/web/static'),src=path.resolve(__dirname,'../src'),origin='http://equation-source.test',aid='83000803';
+const tex=String.raw`\begin{equation*} FoM_{RFE} = \frac {P_{RFE,CH}}{FR \cdot N}. \tag {11}\end{equation*}`;
+const synthetic='<section id="sec1"><h2>SECTION I. Source fixture</h2><p id="equation">Before <span class="doc-math">\\['+tex+'\\]</span><span id="source-box"><span>View Source</span><span>'+tex+'\n</span></span> after.</p><p id="plain">View Source is a phrase in ordinary text.</p><p><span class="doc-math">\\[x+y\\]</span><span id="mismatched"><span>View Source</span><span>x-y</span></span></p><p><a id="target">Target</a><a href="#target">Local reference</a></p></section>';
+const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
+async function moduleURL(name,imports={}){let js=ts.transpileModule(await fs.readFile(path.join(src,name),'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;for(const [key,url] of Object.entries(imports))js=js.replaceAll("'"+key+"'",JSON.stringify(url));return 'data:text/javascript;base64,'+Buffer.from(js).toString('base64');}
+async function main(){
+ const body=process.env.CIRDC_DOCUMENT_FIXTURE?await fs.readFile(process.env.CIRDC_DOCUMENT_FIXTURE,'utf8'):synthetic,expected=Number(process.env.CIRDC_EXPECTED_SOURCES||1);
+ const sources=await moduleURL('documentMathSources.ts'),citations=await moduleURL('citations.ts'),titles=await moduleURL('titleMath.ts',{'./citations.ts':citations}),formats=await moduleURL('selectionFormats.ts'),copy=await moduleURL('selectionContent.ts',{'./titleMath':titles,'./selectionFormats':formats});
+ const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})}),reports=[];
+ try{
+  // DOM-only negative cases and exact source preservation, including repeated initialization.
+  const dom=await browser.newPage();await dom.route('**/*',route=>route.abort());
+  const domResult=await dom.evaluate(async({sources,copy,body,expected})=>{
+   const {restoreDocumentMathSources,labelDocumentMathSources}=await import(sources),{captureSelection}=await import(copy);const root=document.createElement('main');root.dataset.copyScope='';root.innerHTML=body;document.body.append(root);
+   const formulaText=Array.from(root.querySelectorAll('.doc-math'),e=>e.textContent),links=Array.from(root.querySelectorAll('a'),e=>[e.id,e.getAttribute('href'),e.textContent]),images=Array.from(root.querySelectorAll('img'),e=>e.outerHTML);
+   const originals=[];const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while(n=walk.nextNode())if(n.textContent.trim()==='View Source'){const label=n.parentElement,wrapper=label.parentElement,source=label.nextElementSibling,formula=wrapper.previousElementSibling;const raw=source?.textContent||'',math=formula?.textContent||'';if(formula?.matches('.doc-math')&&math.slice(2,-2).trim()===raw.trim())originals.push({wrapper,raw});}
+   const prose=()=>{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let text='',node;while(node=w.nextNode())if(!node.parentElement.closest('.doc-math')&&!originals.some(x=>x.wrapper.contains(node)))text+=node.textContent;return text;};const before=prose();
+   const restored=restoreDocumentMathSources(root,'查看公式源码');if(restored!==expected)throw Error('Restored '+restored+' instead of '+expected);
+   if(restoreDocumentMathSources(root,'查看公式源码')!==0)throw Error('Double initialization');
+   const codes=Array.from(root.querySelectorAll('.document-math-source-code'));if(codes.some((el,i)=>el.textContent!==originals[i].raw||!el.hidden))throw Error('Source changed or exposed by default');
+   if(prose()!==before||JSON.stringify(formulaText)!==JSON.stringify(Array.from(root.querySelectorAll('.doc-math'),e=>e.textContent))||JSON.stringify(links)!==JSON.stringify(Array.from(root.querySelectorAll('a'),e=>[e.id,e.getAttribute('href'),e.textContent]))||JSON.stringify(images)!==JSON.stringify(Array.from(root.querySelectorAll('img'),e=>e.outerHTML)))throw Error('Scientific body changed');
+   labelDocumentMathSources(root,'View Source');const button=root.querySelector('.document-math-source-toggle'),code=root.querySelector('.document-math-source-code');button.click();if(code.hidden||button.getAttribute('aria-expanded')!=='true')throw Error('Toggle failed');labelDocumentMathSources(root,'查看公式源码');if(code.hidden)throw Error('Language change reset disclosure');
+   const range=document.createRange();range.selectNodeContents(root);const all=captureSelection(range,root,'https://example.test/papers/1').values.text;
+   const sourceRange=document.createRange();sourceRange.selectNodeContents(code);const sourceValue=captureSelection(sourceRange,code.parentElement,'https://example.test/papers/1').values.latex;if(sourceValue!==originals[0].raw.trim())throw Error('Source selection did not preserve original TeX');
+   if(all.includes('查看公式源码'))throw Error('Source button leaked into body copy');
+   const negative=document.createElement('section');negative.innerHTML='<p>View Source <span>ordinary text</span></p><p><span class="doc-math">\\[x+y\\]</span><span><span>View Source</span><span>x-y</span></span></p><p><span class="doc-math">\\[x\\]</span><span>Prose<span>View Source</span><span>x</span></span></p><p><span class="doc-math">\\[x\\]</span><span><span>View Source</span><span><b>x</b></span></span></p>';root.append(negative);const saved=negative.innerHTML;if(restoreDocumentMathSources(negative,'View Source')!==0||negative.innerHTML!==saved)throw Error('Uncertain structure was changed');
+   // A single matched equation and an open utility viewer must still export once.
+   const isolated=document.createElement('div');isolated.dataset.copyScope='';const value='\\begin{equation*}a_1=b^2\\end{equation*}';isolated.innerHTML='<p><span class="doc-math">\\['+value+'\\]</span><span><span>View Source</span><span>'+value+'</span></span></p>';root.append(isolated);restoreDocumentMathSources(isolated,'View Source');isolated.querySelector('button').click();range.selectNodeContents(isolated);const exported=captureSelection(range,isolated,'https://example.test/').values.text;if(exported!==value)throw Error('Open source duplicated in body copy');
+   return {restored,sourceTextExact:true,formulasUnchanged:formulaText.length,linksAndImagesUnchanged:true,proseUnchanged:true,idempotent:true,uncertainStructuresUnchanged:true,openViewerExcludedFromBodyCopy:true,sourceCopyPreserved:true};
+  },{sources,copy,body,expected});await dom.close();
+  for(const profile of [{name:'desktop',width:1440,height:1000},{name:'mobile',width:390,height:844,touch:true},{name:'narrow-dark',width:320,height:760,touch:true,dark:true}]){
+   const context=await browser.newContext({viewport:{width:profile.width,height:profile.height},locale:'zh-CN',isMobile:!!profile.touch,hasTouch:!!profile.touch,colorScheme:profile.dark?'dark':'light'}),blocked=[],posts=[],errors=[];
+   await context.addInitScript(()=>localStorage.setItem('cirdc.ui.language','zh'));
+   await context.route('**/*',async route=>{
+    const req=route.request(),url=new URL(req.url()),p=url.pathname;if(req.method()!=='GET'){posts.push(p);return route.abort();}if(url.origin!==origin){blocked.push(req.url());return route.abort();}
+    if(p==='/'||p.startsWith('/papers/'))return route.fulfill({contentType:'text/html',body:await fs.readFile(root+'/index.html')});
+    if(p.startsWith('/assets/'))return route.fulfill({contentType:types[path.extname(p)]||'application/octet-stream',body:await fs.readFile(root+p)});
+    if(p==='/api/auth/session')return route.fulfill({json:{interface:'reader',authentication_required:false,user:null,csrf:''}});
+    if(p==='/api/overview')return route.fulfill({json:{index:{phase:'ready',year_range:{min:1884,max:2027},overview:{papers:1,venues:[],field_states:[]}}}});
+    if(p==='/api/papers/'+aid)return route.fulfill({json:{paper:{number:aid,record:{articleTitle:'Equation source fixture',abstract:'Cached abstract.',authors:[],keywords:{}},resources:[{kind:'document',href:'/api/fixture-content'}]}}});
+    if(p==='/api/fixture-content')return route.fulfill({json:{state:'ready',document:{source:'ieee_html',state:'ready',version:'v1',body_url:'/api/fixture-body',toc:[],assets_ready:0,assets_total:0}}});
+    if(p==='/api/fixture-body')return route.fulfill({contentType:'text/html',body});
+    if((p.startsWith('/api/resources/')||p.startsWith('/api/content/'))&&p.includes('/assets/'))return route.fulfill({contentType:'image/png',body:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j8gAAAABJRU5ErkJggg==','base64')});
+    if(p.endsWith('/metadata/status'))return route.fulfill({json:{state:'disabled'}});
+    if(p.endsWith('/references')||p.endsWith('/citations')||p.endsWith('/patent-citations'))return route.fulfill({json:{number:aid,state:'disabled',items:[],total:0,version:null,next_offset:null,source_presence:'unknown',counts:{ieee:null,nonIeee:null,total:null},stored_counts:{ieee:0,nonIeee:0,total:0}}});
+    blocked.push(p);return route.abort();
+   });
+   const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));await page.goto(origin+'/papers/'+aid,{waitUntil:'networkidle'});const buttons=page.locator('.document-math-source-toggle'),codes=page.locator('.document-math-source-code');await buttons.first().waitFor();assert.equal(await buttons.count(),expected);assert.equal(await page.locator('.document-math-source-code:not([hidden])').count(),0);await page.locator('.document-body .katex').first().waitFor();
+   if(profile.touch)await buttons.first().tap();else{await buttons.first().focus();await page.keyboard.press('Enter');}assert(await codes.first().isVisible());const raw=await codes.first().textContent();assert(raw.includes('\\begin{'));await buttons.first().focus();await page.keyboard.press('Space');assert(!await codes.first().isVisible());await buttons.first().click();
+   await codes.first().evaluate(el=>{document.activeElement?.blur();const range=document.createRange();range.selectNodeContents(el);getSelection().removeAllRanges();getSelection().addRange(range);document.dispatchEvent(new Event('selectionchange'));});await page.getByRole('toolbar',{name:'选区复制',exact:true}).getByRole('button',{name:'复制 LaTeX',exact:true}).click();await page.getByRole('dialog').waitFor();assert.equal(await page.getByRole('textbox',{name:'格式源码',exact:true}).inputValue(),raw.trim());await page.getByRole('button',{name:'关闭复制预览',exact:true}).click();
+   await page.getByRole('button',{name:'English',exact:true}).click();assert.equal(await buttons.first().textContent(),'View Source');assert(await codes.first().isVisible());await page.getByRole('button',{name:'收起正文',exact:true}).count();const toggle=page.locator('.document-reader .references-heading .reference-toggle');await toggle.click();assert(!await page.locator('.document-body').isVisible());await toggle.click();assert(await codes.first().isVisible());
+   if(process.env.CIRDC_BROWSER_OUTPUT){await buttons.last().scrollIntoViewIfNeeded();if(await buttons.last().getAttribute('aria-expanded')!=='true')await buttons.last().click();await page.screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,'equation-source-'+profile.name+'.png')});}
+   assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));assert.deepEqual(posts,[]);assert.deepEqual(blocked,[]);assert.deepEqual(errors,[]);reports.push({profile:profile.name,sources:expected,defaultCollapsed:true,touchOrKeyboardToggle:true,sourceCopy:true,languageAndBodyTogglePreserveState:true,realSourceRequests:0,pdfConversions:0});console.log(JSON.stringify(reports.at(-1)));await context.close();
+  }
+  if(process.env.CIRDC_BROWSER_OUTPUT)await fs.writeFile(path.join(process.env.CIRDC_BROWSER_OUTPUT,'equation-source-result.json'),JSON.stringify({dom:domResult,reports},null,2)+'\n');
+ }finally{await browser.close();}
+}
+main().catch(error=>{console.error(error);process.exitCode=1});

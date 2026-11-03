@@ -13,7 +13,7 @@ def parser():
     p.add_argument('--json', action='store_true')
     sub = p.add_subparsers(dest='command', required=True)
     for name in ['doctor', 'db-check', 'db-init', 'config-init', 'target-init', 'target-bind', 'target-select',
-                 'plan', 'update', 'status', 'resume', 'retry', 'paper', 'analyze', 'mcp', '_worker']:
+                 'plan', 'update', 'status', 'resume', 'retry', 'paper', 'analyze', 'references', 'citations', 'patent-citations', 'mcp', '_worker']:
         child = sub.add_parser(name)
         child.add_argument('--config', default=argparse.SUPPRESS)
         child.add_argument('--json', action='store_true', default=argparse.SUPPRESS)
@@ -58,6 +58,18 @@ def parser():
             child.add_argument('number')
             child.add_argument('--depth', type=int, default=3)
             child.add_argument('--max-nodes', type=int, default=100)
+        if name in ('references', 'citations', 'patent-citations'):
+            child.add_argument('action', choices=['init', 'enqueue', 'read', 'status', 'publish'])
+            child.add_argument('numbers', nargs='*')
+            child.add_argument('--retry', action='store_true')
+            child.add_argument('--offset', type=int, default=0)
+            child.add_argument('--limit', type=int, default=50)
+            child.add_argument('--version')
+            if name == 'references':
+                child.add_argument('--order', type=int)
+                child.add_argument('--check-availability', action='store_true')
+            elif name == 'citations':
+                child.add_argument('--group', choices=['ieee', 'nonIeee'], default='ieee')
     return p
 
 
@@ -98,7 +110,16 @@ def main(argv=None):
             finally:
                 service.store.close()
             return 0
-        if command == 'analyze':
+        if command == 'patent-citations':
+            from .patent_citations import cli
+            value = result(cli(config, **args))
+        elif command == 'citations':
+            from .citations import cli
+            value = result(cli(config, **args))
+        elif command == 'references':
+            from .references import cli
+            value = result(cli(config, **args))
+        elif command == 'analyze':
             from .analysis import analyze
             value = result(analyze(config, **args))
         else:

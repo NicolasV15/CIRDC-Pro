@@ -1,5 +1,6 @@
 """Exercise publication failure boundaries with isolated fake services."""
 import json
+import hashlib
 import os
 from pathlib import Path
 import shutil
@@ -91,6 +92,21 @@ def test_build_failure_never_stops_the_running_release(deployment):
     assert publish(FAIL_BUILD='1').returncode != 0
     assert (target / 'current').readlink() == Path('releases/previous')
     assert not any(e[0] == 'systemctl' for e in events())
+
+
+@pytest.mark.parametrize('matches', [True, False])
+def test_publication_can_require_the_checked_wheel(deployment, matches):
+    target, publish, events = deployment
+    digest = hashlib.sha256(b'candidate' if matches else b'different artifact').hexdigest()
+    result = publish(CIRDC_WEB_EXPECTED_WHEEL_SHA256=digest)
+    if matches:
+        assert result.returncode == 0, result.stderr
+        assert (target / 'current').readlink() == Path('releases/candidate')
+    else:
+        assert result.returncode != 0
+        assert 'checked artifact' in result.stderr
+        assert (target / 'current').readlink() == Path('releases/previous')
+        assert not any(e[0] == 'systemctl' for e in events())
 
 
 def test_unavailable_startup_configuration_never_stops_services(deployment):

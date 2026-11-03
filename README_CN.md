@@ -23,6 +23,34 @@ CIRDC-Pro 将 IEEE 科研元数据采集与论文检索网站整合在一个项�
 作者资料库是可选功能，仅在明确指定单个作者时采集；浏览作者身份不会触发资料抓取。
 文献正文和文件资源由独立资源能力提供。
 
+## 从源码安装研究 Skill
+
+仓库自带 `cirdc-research`，提供论文检索、正文阅读、原始文献获取和资源请求续查流程。
+开发者可以直接从源码安装到 Codex 或 Claude Code；安装只需要 Python 3.10+，可离线执行：
+
+```sh
+sh tools/install-skill --agent codex
+sh tools/install-skill --agent claude-code
+# 或一次安装两个工具的发现入口：
+sh tools/install-skill --agent all
+```
+
+命令自动定位 `website/.agents/skills/cirdc-research/`，向 Codex 的
+`~/.agents/skills/cirdc-research` 或 Claude Code 的
+`~/.claude/skills/cirdc-research` 建立软链接。两个工具读取同一份源码；源码更新后
+通过链接生效，因此需保留该 checkout 的路径。在其他目录也可运行
+`sh /path/to/CIRDC-Pro/tools/install-skill --agent all`。
+
+安装时无需配置站点地址，首次使用 Skill 时再提供即可；也可附加
+`--base-url https://papers.example.org` 将地址保存到本机。Codex 新会话使用
+`$cirdc-research`；Claude Code 运行 `/reload-skills` 后使用 `/cirdc-research`。
+在同一安装命令后加 `--uninstall`，只移除其对应的软链接。
+
+安装命令应在 AI 工具发现技能的电脑上执行。若源码仅通过 SSH 位于另一台服务器，
+可将自包含的 Skill 目录复制到该电脑后安装，具体命令见
+[源码及 SSH 安装说明](website/.agents/skills/cirdc-research/references/api.md#install-from-source-or-an-ssh-checkout)。
+数据库管理继续使用仓库内独立的 `cirdc-maintenance` 流程。
+
 ## 整体架构与源码
 
 ```mermaid
@@ -170,6 +198,12 @@ sh tools/cirdc paper ARTICLE_NUMBER --json
 字段来源见[维护阶段说明](docs/METADATA_STAGES.md)，任务边界见
 [维护生命周期](docs/MAINTENANCE_LIFECYCLE.md)。
 引用、参考文献和引用树仅通过 `sh tools/cirdc analyze` 显式调用。
+参考文献持久化与网页按需获取使用独立的 `references` 扩展，见[接口与运行说明](docs/REFERENCES.md)。
+它只接收明确的论文编号，不执行目录扫描或周期性全库补全。
+另有独立的 [Citations 被引论文扩展](docs/CITATIONS.md)，覆盖 IEEE 与其他出版社两组，
+按阅读需求补缺并更新过期缓存；两项分别检测官网存在性与空原因，不新增批量扫描。
+另可启用[专利被引扩展](docs/PATENT_CITATIONS.md)，独立计数、保存快照并按访问七天复查，
+专利编号跳转 Google Patents，不改变论文被引总数。
 
 ## 网站前端与 API
 
@@ -227,6 +261,10 @@ CIRDC_INTEGRATION=1 CIRDC_CONFIG=/path/to/private/test-profile.json \
 网站安装包单独检查。
 
 ## Agent 与文档导航
+
+在其他项目中使用站点的论文与阅读资源，请使用网站的
+[研究 Agent API 与 Skill](website/docs/agent-api.md)。下方维护入口负责元数据管理。
+网站运行后直接提供 HTTP、站点 MCP 和在线调用说明，调用者无需下载压缩包或安装本地适配器。
 
 根目录 CLI 和项目 stdio MCP 使用同一元数据引擎与私有目标。
 Agent 入口为 [AGENTS.md](AGENTS.md) 和

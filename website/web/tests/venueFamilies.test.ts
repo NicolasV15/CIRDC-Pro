@@ -8,6 +8,12 @@ test('25 publication IDs form exactly 22 disjoint families',()=>{
  assert.equal(venueNumbers(venueFamilies.map(f=>f.key).join(',')).length,25);
  assert.equal(matchingVenueFamilies('SSCL')[0].key,'lssc');assert.equal(matchingVenueFamilies('ASSCC')[0].key,'a-sscc');
 });
+test('general abbreviations do not create curated filter families',()=>{
+ assert.deepEqual(venueNumbers('vlsid,mwscas'),[]);
+ assert.deepEqual(matchingVenueFamilies('VLSID'),[]);assert.deepEqual(matchingVenueFamilies('MWSCAS'),[]);
+ assert.deepEqual(paperVenueTags({kind:'Conferences',venue:'edition',venue_series:['1000799'],publication:'VLSID'}),[]);
+ assert.deepEqual(paperVenueTags({kind:'Conferences',venue:'edition',venue_series:['1000090'],publication:'MWSCAS'}),[]);
+});
 const tag=(venue:string,kind:string,publication='')=>paperVenueTags({venue,kind,publication});
 test('current and old journals stay in one family; similarly named TCAD journals remain separate',()=>{
  assert.deepEqual(tag('81','Journals').map(t=>[t.family.key,t.old]),[['tcas-i',true]]);

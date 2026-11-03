@@ -20,7 +20,10 @@ def bootstrap_users(config, username=None):
 
 
 def run(config, action, interface='reader', host=None, port=None, username=None, max_rows=None, once=False):
-    if action == 'index':
+    if action == 'init-index':
+        from .index import initialize_indexing
+        print(json.dumps(initialize_indexing(config)))
+    elif action == 'index':
         if max_rows is not None and max_rows <= 0:
             raise ValueError('Index row budget must be positive')
         from .index import run_index

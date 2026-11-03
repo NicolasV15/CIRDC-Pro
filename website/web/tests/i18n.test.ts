@@ -6,8 +6,29 @@ const memory=new Map<string,string>();
 const events=new Map<string,(event:any)=>void>();
 const storage={getItem:(key:string)=>memory.get(key)||null,setItem:(key:string,value:string)=>{memory.set(key,value)}};
 Object.assign(globalThis,{localStorage:storage,document:{documentElement:{lang:''},title:''},window:{addEventListener:(key:string,callback:(event:any)=>void)=>events.set(key,callback)}});
-const {t,setLanguage,locale,errorMessage,localizedText,stageLabel,auditLabel,keywordGroupLabel,contentTypeLabel}=await import('../src/i18n.ts');
+const {t,setLanguage,locale,errorMessage,localizedText,stageLabel,auditLabel,keywordGroupLabel,contentTypeLabel,resolveLanguagePreference}=await import('../src/i18n.ts');
 beforeEach(()=>{setLanguage('zh');});
+test('browser language matching uses the first supported locale and honors explicit preferences',()=>{
+ for(const [languages,expected] of [
+  [['zh-CN'],'zh'],[['zh-TW'],'zh'],[['ZH_Hant_HK','en-US'],'zh'],
+  [['en-US'],'en'],[['en-GB','zh-CN'],'en'],[['ja-JP','en-CA','zh-CN'],'en'],
+  [['fr-FR','zh-Hans'],'zh'],[['ja-JP'],'zh'],[[],'zh']
+ ] as const)assert.equal(resolveLanguagePreference(null,languages),expected);
+ assert.equal(resolveLanguagePreference('zh',['en-US']),'zh');
+ assert.equal(resolveLanguagePreference('en',['zh-CN']),'en');
+ assert.equal(resolveLanguagePreference('invalid',['en-US']),'en');
+});
+test('system language changes apply only without a manual preference and clearing storage restores automatic selection',()=>{
+ const original=Object.getOwnPropertyDescriptor(globalThis,'navigator');let languages=['en-US'];
+ Object.defineProperty(globalThis,'navigator',{configurable:true,value:{get languages(){return languages},get language(){return languages[0]}}});
+ try{
+  events.get('storage')!({key:'cirdc.ui.language',newValue:null});assert.equal(locale(),'en-US');
+  languages=['zh-TW'];events.get('languagechange')!({});assert.equal(locale(),'zh-CN');
+  setLanguage('en');languages=['zh-CN'];events.get('languagechange')!({});assert.equal(locale(),'en-US');
+  events.get('storage')!({key:'unrelated',newValue:'zh'});assert.equal(locale(),'en-US');
+  events.get('storage')!({key:null,newValue:null});assert.equal(locale(),'zh-CN');
+ }finally{if(original)Object.defineProperty(globalThis,'navigator',original);else Reflect.deleteProperty(globalThis,'navigator');}
+});
 test('switching localizes labels, document language and dates while persisting preference',()=>{
  assert.equal(t('关键词'),'关键词');setLanguage('en');assert.equal(t('关键词'),'Keywords');assert.equal(document.documentElement.lang,'en');assert.equal(document.title,'CIRDC Pro · Literature database');assert.equal(locale(),'en-US');assert.equal(memory.get('cirdc.ui.language'),'en');setLanguage('zh');assert.equal(t('Keywords'),'关键词');assert.equal(document.documentElement.lang,'zh-CN');
 });
@@ -23,7 +44,11 @@ test('storage events update open tabs and disabled browser storage still permits
 test('source content and technical identifiers are preserved',()=>{
  for(const lang of ['en','zh'] as const){setLanguage(lang);assert.equal(t('RF & AI / 5G+'),'RF & AI / 5G+');assert.equal(t('37089502274'),'37089502274');assert.equal(localizedText(undefined,'Unknown provider label'),'Unknown provider label');}
 });
+test('citations keep the approved Chinese paper wording and the English Citations title',()=>{
+ assert.equal(t('被引论文'),'被引论文');assert.equal(t('更新被引论文'),'更新被引论文');
+ setLanguage('en');assert.equal(t('被引论文'),'Citations');assert.equal(t('展开被引论文'),'Expand citations');assert.equal(t('更新被引论文'),'Update citations');
+});
 test('all Chinese UI literals are localized and all static translation calls have English values',()=>{
- setLanguage('en');const missing:string[]=[];let count=0;for(const file of ['ScientificTitle.tsx','TitleFormula.tsx','ReaderLayoutControls.tsx','ThemeControl.tsx','PageSizeControl.tsx','PaperSelectionToolbar.tsx','BatchDownloadDialog.tsx','CitationDialog.tsx','main.tsx','VenueTags.tsx','AuthorSearch.tsx','AuthorProfile.tsx','DocumentReader.tsx','ResourceSettings.tsx']){const source=ts.createSourceFile(file,fs.readFileSync(new URL('../src/'+file,import.meta.url),'utf8'),ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+ setLanguage('en');const missing:string[]=[];let count=0;for(const file of ['AdditionalVenueTag.tsx','SelectionCopyToolbar.tsx','PaperSearchBar.tsx','BackToTop.tsx','CitationPanel.tsx','PaperCitations.tsx','PaperReferences.tsx','AbstractPreview.tsx','ScientificTitle.tsx','TitleFormula.tsx','ReaderLayoutControls.tsx','ThemeControl.tsx','PageSizeControl.tsx','PaperSelectionToolbar.tsx','BatchDownloadDialog.tsx','CitationDialog.tsx','main.tsx','VenueTags.tsx','AuthorSearch.tsx','AuthorProfile.tsx','DocumentReader.tsx','PdfAcquisition.tsx','ResourceSettings.tsx']){const source=ts.createSourceFile(file,fs.readFileSync(new URL('../src/'+file,import.meta.url),'utf8'),ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
  function walk(node:ts.Node){if(ts.isJsxText(node)&&/[\u3400-\u9fff]/.test(node.text))missing.push(node.text);if(ts.isJsxAttribute(node)&&node.initializer&&ts.isStringLiteral(node.initializer)&&/[\u3400-\u9fff]/.test(node.initializer.text))missing.push(node.initializer.text);if(ts.isCallExpression(node)&&node.expression.getText(source)==='t'&&node.arguments[0]&&ts.isStringLiteral(node.arguments[0])){count++;const key=node.arguments[0].text;if(key.trim()!=='中文'&&/[\u3400-\u9fff]/.test(key)&&/[\u3400-\u9fff]/.test(t(key)))missing.push(key);}ts.forEachChild(node,walk)}walk(source);}assert(count>200);assert.deepEqual(missing,[]);
 });

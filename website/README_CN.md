@@ -16,9 +16,17 @@
 | 显示体验 | 中英文界面，六套外观预设与跟随系统，响应式布局，KaTeX 标题公式 |
 | 管理功能 | 账户管理、更新计划／任务／日志、索引状态与预检、可选资源配置 |
 | 可选阅读资源 | 资源插件提供的缓存正文、章节导航、本地 PDF 和经可用性检查的批量打包 |
+| AI 与项目接入 | 公开 HTTP API、站点 Streamable HTTP MCP 和在线 Skill 调用说明 |
 
 公开安装提供元数据浏览；阅读资源需要显式配置插件，并具备相应文件或正文数据。
 资源缺失会单独显示。作者身份浏览使用已有索引，可选作者资料采集则需要明确指定单个作者。
+
+读者站点运行后，打开 `/developers/ai` 即可获得当前站点的接入地址。
+AI 工具可以直接连接 `/api/agent/v1/mcp`；具备 HTTP 能力的 AI 可以读取
+`/api/agent/v1/skills/cirdc-research/SKILL.md`。这些入口与网站共用进程和端口，
+无需下载 Skill 压缩包或安装本地 MCP 适配器。若希望在本机各项目中使用，可用
+[原生 Skill 软链接安装](docs/agent-api.md#native-skill-installation)，选择 Codex 或 Claude Code；
+安装器保存一份本地 Skill，并链接到所选工具的技能目录。调用示例及资源补齐流程见[直接接入说明](docs/agent-api.md)。
 
 ## 网站内部结构
 
@@ -65,11 +73,11 @@ MySQL 地址、可访问的数据目录与运行路径。网站配置加载器�
 SSH 目标配置；应显式提供可达端点或既有隧道。
 
 ```sh
-export CIRDC_CONFIG=/path/to/private/website.json
+export CIRDC_CONFIG=/path/to/private/reader.json
 export CIRDC_WEB_STATE="$HOME/.local/state/cirdc-web-dev"
 ```
 
-后续各终端使用相同的变量值。状态目录使用本机存储，保存账户／会话数据库、
+后续各终端使用相同的网站状态目录，并选择对应服务的数据库配置。状态目录使用本机存储，保存账户／会话数据库、
 搜索索引与索引器检查点。首次搜索回填要求索引卷至少有 20 GiB 可用空间。
 
 ### 3. 初始化账户并运行索引器
@@ -86,10 +94,18 @@ website/.venv-dev/bin/python -m cirdc.cli web init-users --username admin
 实际服务器账户名单保留在私有配置中，后续账户由已认证的管理员维护。
 既有账户会保留；网站账户独立于系统账户，首次登录需要修改密码。
 
+先用初始化账号显式准备索引，再使用受限账号运行索引器。
+授权范围与独立服务配置见[数据库权限说明](docs/database-access.md)。
+
+```sh
+CIRDC_CONFIG=/path/to/private/setup.json \
+  website/.venv-dev/bin/python -m cirdc.cli web init-index
+```
+
 单独打开终端运行索引器：
 
 ```sh
-website/.venv-dev/bin/python -m cirdc.cli web index
+CIRDC_CONFIG=/path/to/private/indexer.json website/.venv-dev/bin/python -m cirdc.cli web index
 ```
 
 索引器构建或恢复索引，然后持续消费变更。`--max-rows N` 限制初始回填数量；
@@ -99,14 +115,14 @@ website/.venv-dev/bin/python -m cirdc.cli web index
 
 ### 4. 启动读者端与管理端
 
-在使用相同私有配置与状态目录的不同终端分别运行：
+在使用相同网站状态目录、不同数据库角色配置的终端分别运行：
 
 ```sh
-sh tools/web serve --interface reader --host 127.0.0.1 --port 18090
+CIRDC_CONFIG=/path/to/private/reader.json sh tools/web serve --interface reader --host 127.0.0.1 --port 18090
 ```
 
 ```sh
-sh tools/web serve --interface admin --host 127.0.0.1 --port 18091
+CIRDC_CONFIG=/path/to/private/writer.json sh tools/web serve --interface admin --host 127.0.0.1 --port 18091
 ```
 
 打开[读者端](http://127.0.0.1:18090/)和[管理端](http://127.0.0.1:18091/admin/)。
@@ -151,6 +167,7 @@ CIRDC_WEB_ROOT=/path/to/existing/deployment sh tools/web deploy RELEASE_ID
 - [项目总览与元数据后端](../README_CN.md)
 - [统一开发与运行流程](../docs/LOCAL_REMOTE_WORKFLOW.md)
 - [网站行为、搜索一致性与部署](docs/web.md)
+- [直接调用 Agent API、站点 MCP 与在线 Skill](docs/agent-api.md)
 - [显式单作者资料库](docs/authors.md)
 - [CC BY 4.0 许可](LICENSE)与[上游署名](../README_CN.md#来源与许可)
 

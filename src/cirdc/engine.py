@@ -19,6 +19,8 @@ from .storage import Dataset
 def require_maintenance_scope(params):
     """Do not reinterpret a frozen historical repair as an ordinary update."""
     params = params or {}
+    if params.get('stage') in ('references', 'citations', 'patent_citations'):
+        raise ValueError('Relationships use the explicit references queue or citations queue, not ordinary maintenance')
     repair_keys = ('article_list', 'refresh_existing', 'selection_digest',
                    'selected_articles', 'manifest', 'manifests', 'packets', 'parts')
     if params.get('mode') or any(params.get(key) for key in repair_keys):
@@ -346,7 +348,7 @@ class Service:
                         path = f'articleInfo/Journals/{number}/{year}.json'
                         # Historic complete snapshots are retained; missing snapshots and recent years are refreshed.
                         checked = [] if params.get('verify_all') else self.store.execute('SELECT path FROM sync_cursors WHERE path=%s '
-                                                     'AND checked_at > CURRENT_TIMESTAMP - INTERVAL 30 DAY', (path,))
+                                                     'AND checked_at > CURRENT_TIMESTAMP - INTERVAL 7 DAY', (path,))
                         if not params.get('year') and year < now - 1 and checked:
                             continue
                         items.append((path, {'kind': kind, 'number': str(number), 'year': year, 'path': path}))
@@ -358,7 +360,7 @@ class Service:
                             continue
                         path = f'articleInfo/Conferences/{number}/{child}.json'
                         checked = [] if params.get('verify_all') else self.store.execute('SELECT path FROM sync_cursors WHERE path=%s '
-                                                     'AND checked_at > CURRENT_TIMESTAMP - INTERVAL 30 DAY', (path,))
+                                                     'AND checked_at > CURRENT_TIMESTAMP - INTERVAL 7 DAY', (path,))
                         if not params.get('year') and year.isdigit() and int(year) < now - 1 and checked:
                             continue
                         items.append((path, {'kind': kind, 'number': child, 'year': None, 'path': path}))

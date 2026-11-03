@@ -54,6 +54,7 @@ def test_multi_publication_filter_combines_with_fulltext_author_and_existing_fac
 def test_multi_publication_pagination_has_no_missing_or_duplicate_records(publications):
     params={'venue_any':'4,1000708','limit':'2','sort':'year'}
     first=search(params);second=search({**params,'cursor':first['next_cursor']})
+    assert first['total'] == second['total'] == 3
     assert [p['number'] for p in first['items']+second['items']]==['105','104','101']
     with pytest.raises(ValueError):
         search({**params,'venue_any':'81','cursor':first['next_cursor']})
@@ -94,8 +95,10 @@ def test_all_paper_endpoints_return_series_and_exact_lookup_respects_scope(publi
         assert {p['number'] for p in result['items']}=={'101','104','105'}
         assert next(p for p in result['items'] if p['number']=='105')['venue_series']==['1000708']
         assert client.get('/api/papers/105').json()['paper']['venue_series']==['1000708']
-        assert client.get('/api/papers?q=105&venue_any=1000708').json()['items'][0]['venue_series']==['1000708']
-        assert client.get('/api/papers?q=105&venue_any=4').json()['items']==[]
+        direct=client.get('/api/papers?q=105&venue_any=1000708').json()
+        assert direct['items'][0]['venue_series']==['1000708'] and direct['total']==1
+        excluded=client.get('/api/papers?q=105&venue_any=4').json()
+        assert excluded['items']==[] and excluded['total']==0
         assert client.get('/api/papers?q=105&venue=1000708&venue_any=4,1000708').json()['items']
         assert client.get('/api/papers?q=105&venue_any=4,,5').status_code==422
 

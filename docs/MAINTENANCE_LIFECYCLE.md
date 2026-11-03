@@ -20,3 +20,15 @@ failed, blocked or deferred tasks; all JSON obligations are acknowledged; and sh
 leases are released. Keep canonical results and failure history. Machine-specific
 job identities, paths and the retirement guard belong in private runtime records,
 outside the source tree. A blocked or exhausted batch is not a completed batch.
+
+
+## Basic metadata shard freshness
+
+Normal maintenance rechecks complete historical journal and conference shards seven
+days after their last successful check (`sync_cursors.checked_at`). Before seven days,
+they remain skipped; at exactly seven days they are due. Only a successful complete
+fetch advances that timestamp. Missing shards, recent years and per-article Early
+Access checks retain their existing rules. This interval does not change abstract,
+keyword, relationship or private-resource refresh policies. A resident scheduler may
+dispatch due work at its configured daily time; dispatch does not bypass queues,
+exceptions or source request budgets.

@@ -119,7 +119,7 @@ def test_disk_full_keeps_index_and_checkpoint(website,monkeypatch):
         def close(self): pass
     monkeypatch.setattr(cirdc.store,'Store',Source)
     monkeypatch.setattr(module,'refresh_overview',lambda *args:None)
-    monkeypatch.setattr(cirdc.web.capture,'install',lambda *args:None)
+    monkeypatch.setattr(cirdc.web.capture,'require_ready',lambda *args:None)
     monkeypatch.setattr(cirdc.web.capture,'seed_missed',lambda *args:None)
     monkeypatch.setattr(module.shutil,'disk_usage',lambda *args:SimpleNamespace(free=0))
     with pytest.raises(OSError,match='20 GiB'):

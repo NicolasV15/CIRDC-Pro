@@ -43,3 +43,19 @@ def test_failed_optional_coverage_does_not_replace_a_valid_overview_with_zero(we
         assert body['overview']['papers']==100
         assert body['overview']['resource_coverage'][0]['numerator'] is None
         assert body['overview']['resource_coverage'][0]['status']=='unavailable'
+
+
+def test_independent_provider_statistics_are_both_exposed_and_sanitized(website):
+    class Body(Provider):
+        identifier = 'body-fixture'
+        def coverage(self):
+            return {'id':self.identifier,'label_i18n':{'zh':'精选正文覆盖率','en':'Curated full-text coverage'},
+                    'numerator':3,'denominator':50,'status':'ready','private_path':'must-not-be-exposed'}
+    providers=ResourceProviders(website);providers.providers=[Provider(),Body()]
+    with closing(connect('search.sqlite')) as db:
+        save_meta(db,overview={'papers':100,'venues':[],'field_states':[]});db.commit()
+    with TestClient(create_app(website,resource_providers=providers,reader_auth='public')) as client:
+        metrics=client.get('/api/overview').json()['overview']['resource_coverage']
+        assert [item['numerator'] for item in metrics]==[25,3]
+        assert [item['denominator'] for item in metrics]==[50,50]
+        assert all('private_path' not in item and 'configuration_secret' not in item for item in metrics)

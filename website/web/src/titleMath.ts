@@ -1,6 +1,6 @@
 import {citationText,decodeTextEntities} from './citations.ts';
 
-export type TitlePart={type:'text';value:string}|{type:'math';value:string;raw:string};
+export type TitlePart=({type:'text';value:string}|{type:'math';value:string;raw:string})&{script?:'sub'|'sup'};
 const delimiters=[['$$','$$'],['\\(','\\)'],['\\[','\\]'],['$','$']] as const;
 function endOfMath(source:string,start:number,right:string){
  let braces=0;
@@ -14,13 +14,25 @@ function endOfMath(source:string,start:number,right:string){
 }
 
 /** Split explicit source math only; ordinary text never becomes executable HTML. */
-export function titleParts(value:unknown):TitlePart[]{
+export function titleParts(value:unknown,preserveWhitespace=false,preserveScripts=false):TitlePart[]{
  if(typeof value!=='string')return [];
  const source=value.replace(/<tex-math\b[^>]*>([\s\S]*?)<\/tex-math\s*>/gi,(_,text:string)=>{
   const tex=text.replace(/^\s*<!\[CDATA\[|\]\]>\s*$/g,'').trim();
   return delimiters.some(([left,right])=>tex.startsWith(left)&&tex.endsWith(right))?tex:'\\('+tex+'\\)';
  }).trim(),parts:TitlePart[]=[];
- const plain=(text:string)=>{const value=citationText(text,false).replace(/\\\$/g,'$');if(value)parts.push({type:'text',value});};
+ const scripts:('sub'|'sup')[]=[];
+ const context=()=>scripts.length?{script:scripts.at(-1)}:{};
+ const addText=(text:string)=>{const value=citationText(text,false,preserveWhitespace).replace(/\\\$/g,'$');if(value)parts.push({type:'text',value,...context()});};
+ const plain=(text:string)=>{
+  if(!preserveScripts){addText(text);return;}
+  let start=0;
+  for(const match of text.matchAll(/<(\/?)(sub|sup)\b[^<>]*>/gi)){
+   addText(text.slice(start,match.index));const tag=match[2].toLowerCase() as 'sub'|'sup';
+   if(match[1]){const index=scripts.lastIndexOf(tag);if(index>=0)scripts.splice(index);}else scripts.push(tag);
+   start=match.index!+match[0].length;
+  }
+  addText(text.slice(start));
+ };
  let start=0,index=0;
  while(index<source.length){
   const pair=delimiters.find(([left])=>source.startsWith(left,index));
@@ -28,7 +40,7 @@ export function titleParts(value:unknown):TitlePart[]{
    const end=endOfMath(source,index+pair[0].length,pair[1]);
    if(end>=0&&source.slice(index+pair[0].length,end).trim()){
     plain(source.slice(start,index));const next=end+pair[1].length;
-    parts.push({type:'math',value:decodeTextEntities(source.slice(index+pair[0].length,end)),raw:decodeTextEntities(source.slice(index,next))});
+    parts.push({type:'math',value:decodeTextEntities(source.slice(index+pair[0].length,end)),raw:decodeTextEntities(source.slice(index,next)),...context()});
     index=next;start=next;continue;
    }
   }
