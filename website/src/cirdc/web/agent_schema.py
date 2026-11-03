@@ -11,7 +11,7 @@ def specification():
         if binary and binary.startswith('text/'):
             response['content'][binary]['schema'] = {'type': 'string'}
         value = {'operationId': name, 'parameters': list(parameters), 'responses': {'200': response}}
-        for code, description in [('202', 'Pending; follow status_url and Retry-After'), ('404', 'Not indexed or unknown request/version'),
+        for code, description in [('401', 'Authentication required'), ('403', 'Access denied'), ('202', 'Pending; follow status_url and Retry-After'), ('404', 'Not indexed or unknown request/version'),
                                   ('409', 'Resource not ready'), ('422', 'Invalid request or cursor'),
                                   ('429', 'Rate limited'), ('503', 'Resource service unavailable')]:
             value['responses'][code] = {'description': description, 'content': {'application/json': {'schema': {'type': 'object'}}}}
@@ -69,7 +69,7 @@ def specification():
                     'parent_id': string, 'updated': {'type': 'number'}}, ['id', 'kind', 'state']),
         'ResourceStatus': obj({'state': {'type': 'string', 'enum': ['missing', 'pending', 'ready', 'partial', 'unavailable', 'failed']},
             'phase': nullable_string, 'reason': nullable_string, 'retryable': {'type': 'boolean'},
-            'message': string, 'next_action': {'type': 'string', 'enum': ['wait', 'contact_administrator']},
+            'retry_after_seconds': integer, 'message': string, 'next_action': {'type': 'string', 'enum': ['wait', 'contact_administrator', 'stop']},
             'retry_attempts': integer, 'max_retry_attempts': integer, 'next_retry_at': {'type': ['number', 'null']},
             'transient': {'type': 'boolean'}, 'source': nullable_string, 'version': nullable_string,
             'url': string, 'media_type': string, 'bytes': {'type': ['integer', 'null']},
@@ -98,7 +98,10 @@ def specification():
             'openapi_url': string, 'skill_url': string, 'mcp_url': string, 'mcp_transport': {'const': 'streamable-http'},
             'guide_url': string, 'instructions_url': string,
             'scope': {'const': 'indexed_papers_only'}}, ['authentication', 'resources', 'formats', 'limits']),
-        'Error': obj({'api_version': string, 'error': string}, ['error'])}}
+        'Error': obj({'api_version': string, 'error': string, 'message': string,
+            'next_action': {'type': 'string', 'enum': ['wait', 'ensure', 'stop', 'contact_administrator']},
+            'retry_after_seconds': integer, 'accepted': {'type': ['boolean', 'null']},
+            'request_id': string, 'status_url': string}, ['error'])}}
     shapes = {'capabilities': 'Capabilities', 'search_papers': 'SearchResult', 'get_paper': 'PaperDetail',
               'ensure_resources': 'Receipt', 'get_request': 'Receipt', 'read_content': 'ContentPage'}
     for path in spec['paths'].values():
@@ -108,9 +111,11 @@ def specification():
             shape = shapes.get(op['operationId'])
             if shape:
                 op['responses']['200']['content']['application/json']['schema'] = ref(shape)
-            for code in ('404', '409', '422', '429', '503'):
+            for code in ('401', '403', '404', '409', '422', '429', '503'):
                 # A service outage can retain a durable receipt and per-resource errors.
-                op['responses'][code]['content']['application/json']['schema'] = {'oneOf': [ref('Error'), ref('Receipt')]} if code == '503' else ref('Error')
+                op['responses'][code]['content']['application/json']['schema'] = {'anyOf': [ref('Error'), ref('Receipt')]} if code == '503' else ref('Error')
+            for code in ('429', '503'):
+                op['responses'][code]['headers'] = {'Retry-After': {'schema': integer}}
             if op['operationId'] in ('ensure_resources', 'get_request'):
                 op['responses']['202']['content']['application/json']['schema'] = ref('Receipt')
                 op['responses']['202']['headers'] = {'Retry-After': {'schema': integer, 'description': 'Suggested poll interval in seconds'}}

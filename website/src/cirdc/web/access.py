@@ -39,3 +39,9 @@ class SearchRateLimiter:
                 return False
             timestamps.append(now)
             return True
+
+    def retry_after(self, key):
+        import math
+        with self.lock:
+            values = self.entries.get(key)
+            return max(1, math.ceil(values[0] + self.interval - time.monotonic())) if values else 1

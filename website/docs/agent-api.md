@@ -48,8 +48,8 @@ the same receipt for each article/resource set. Explicit retry updates that rece
 while retaining prior references; it does not replace the underlying failure history.
 
 Receipts live in `agent-requests.sqlite` under the existing private website state
-directory. The application serializes submissions with a SQLite transaction; the
-provider must also deduplicate active jobs and preserve failure state, including
+directory. The application serializes submissions using a nonblocking per-article file lock;
+provider calls run outside short SQLite transactions. The provider must also deduplicate active jobs and preserve failure state, including
 when an HTTP response or receipt commit is interrupted. No new worker queue,
 source crawler, scheduler or metadata schema is introduced. Keep this state file
 with existing website state during upgrades and rollback.
@@ -171,3 +171,30 @@ See the [installation, update and uninstall reference](../.agents/skills/cirdc-r
 for exact commands and paths. The installer preserves unrelated host entries and
 never changes global agent settings, services or collection state. Online Skill
 reading, native Skill discovery and remote MCP connection remain separate choices.
+
+## Busy responses and time budgets
+
+Read cached content first. Only `409 content_not_ready` permits ensure; if the
+response supplies a receipt, query that receipt instead. A 503 is a service error,
+not evidence of missing content. Preserve `message`, `next_action`,
+`retry_after_seconds`, `request_id` and `status_url`. HTTP `Retry-After` matches
+the JSON interval. A 429 interval reflects the remaining rate-limit window.
+Stop on `next_action=stop` or `contact_administrator`.
+
+Ensure's processing budget is `wait_seconds + 2` seconds from validated parameters,
+including metadata lookup and submission; `wait_seconds=0` has a two-second budget
+and does not wait for resource completion. Receipt/capabilities reads have a
+two-second budget; content JSON has ten seconds. These budgets exclude network
+transfer and do not limit PDF/image streaming. Capabilities reports budgets and
+per-process concurrency (four submissions, eight reads). The 120/minute allowance
+is an admission limit, not a source throughput guarantee.
+
+On ensure errors, `accepted=true` means submission was confirmed, `false` means
+not submitted, and `null` means unknown. Only a committed receipt is returned as a
+receipt. When submission times out, the synchronous hook can still finish and save
+its receipt; it retains its execution slot until completion. Without a receipt,
+back off, read first, then resume an ordinary ensure with `retry=false` if needed.
+Never automatically repeat `retry=true`. Polling never submits work or resets the
+backend recovery budget. Preserve usable content and original failure history.
+
+`/healthz` checks website liveness; it does not report resource worker capacity.

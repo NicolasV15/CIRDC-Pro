@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import re
 import tempfile
+import socket
 import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urljoin, urlsplit, quote
@@ -47,27 +48,40 @@ class Client:
                     for key, item in value.items()}
         return value
 
-    def request(self, path, data=None, params=None, method=None):
+    def request(self, path, data=None, params=None, method=None, timeout=45):
         url = self.base_url + PREFIX + path
         if params:
             url += '?' + urlencode({k: v for k, v in params.items() if v is not None and v != ''})
         body = None if data is None else json.dumps(data, allow_nan=False).encode()
         request = Request(url, data=body, method=method, headers={'Accept': 'application/json', **({'Content-Type': 'application/json'} if body is not None else {})})
         try:
-            with urlopen(request, timeout=45) as response:
+            with urlopen(request, timeout=timeout) as response:
                 if method == 'HEAD':
                     if response.headers.get_content_type() != 'application/pdf' or int(response.headers.get('Content-Length', '0')) <= 5:
                         raise ClientError({'error': 'invalid_pdf_response'})
                     return {'url': url, 'bytes': int(response.headers['Content-Length']), 'media_type': 'application/pdf'}
                 result = json.load(response)
+                result['http_status'] = response.status
+                if response.headers.get('Retry-After', '').isdigit():
+                    result['retry_after_seconds'] = int(response.headers['Retry-After'])
         except HTTPError as error:
             try:
                 value = json.load(error)
             except (ValueError, UnicodeError):
                 value = {'error': 'http_error', 'status': error.code}
+            value['http_status'] = error.code
+            if error.headers.get('Retry-After', '').isdigit():
+                value['retry_after_seconds'] = int(error.headers['Retry-After'])
             raise ClientError(self.absolute(value), error.code) from None
-        except (URLError, TimeoutError, OSError):
-            raise ClientError({'error': 'connection_failed', 'message': 'The request may have been accepted. Repeating ensure without retry reuses existing work.'}) from None
+        except (URLError, TimeoutError, OSError) as error:
+            operation = request.get_method()
+            reason = getattr(error, 'reason', error)
+            raise ClientError({'error': 'connection_failed', 'method': operation,
+                'failure_kind': 'timeout' if isinstance(reason, (TimeoutError, socket.timeout)) else 'connection',
+                'next_action': 'wait', 'retry_after_seconds': 5,
+                **({'accepted': None} if operation == 'POST' else {}),
+                'message': 'Submission status is unknown; back off, read first, then resume without retry.' if operation == 'POST'
+                           else 'Read failed; back off before reading again.'}) from None
         return self.absolute(result)
 
     def capabilities(self):
@@ -96,7 +110,11 @@ class Client:
             raise ClientError({'error': 'invalid_wait_seconds'})
         deadline = time.monotonic() + wait_seconds
         while True:
-            value = self.request('/requests/' + request_id)
+            try:
+                value = self.request('/requests/' + request_id, timeout=max(0.001, deadline-time.monotonic()) if wait_seconds else 3)
+            except ClientError as error:
+                error.value.update(request_id=request_id, status_url=self.base_url+PREFIX+'/requests/'+request_id)
+                raise
             if not value.get('pending') or time.monotonic() >= deadline:
                 return value
             time.sleep(min(value.get('retry_after_seconds') or 2, max(0, deadline - time.monotonic())))

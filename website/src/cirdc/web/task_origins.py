@@ -142,6 +142,7 @@ class TaskSourceRecords:
             nonlocal status, content_type, overflow
             if message['type'] == 'http.response.start':
                 status = message['status']
+                context['response_status'] = status
                 content_type = next((v.decode('latin1') for k, v in message.get('headers', []) if k.lower() == b'content-type'), '')
             if message['type'] == 'http.response.body' and 'application/json' in content_type:
                 chunk = message.get('body', b'')

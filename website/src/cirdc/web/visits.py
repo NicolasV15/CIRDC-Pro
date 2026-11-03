@@ -61,13 +61,16 @@ class VisitStore:
 
     def record_task(self,event,links):
         with self.lock,closing(sqlite3.connect(self.path,timeout=0.25)) as db,db:
-            db.execute('INSERT INTO task_requests VALUES(?,?,?,?,?,?,?)',
-                       (event['id'],event['ip'],event['at'],event['kind'],event['paper'],event['status'],event['outcome']))
+            inserted = db.execute('INSERT OR IGNORE INTO task_requests VALUES(?,?,?,?,?,?,?)',
+                       (event['id'],event['ip'],event['at'],event['kind'],event['paper'],event['status'],event['outcome'])).rowcount
+            db.execute("UPDATE task_requests SET status=?,outcome=CASE WHEN outcome='associated' THEN outcome ELSE ? END WHERE id=?",
+                       (event['status'], event['outcome'], event['id']))
             db.executemany('INSERT OR IGNORE INTO task_links VALUES(?,?,?,?,?,?)',
                            [(event['id'],v['queue'],v['kind'],v['task_id'],v['run_id'],v['binding']) for v in links])
-            db.execute('INSERT INTO visitors(ip,first_seen,last_seen,requests) VALUES(?,?,?,1) '
-                       'ON CONFLICT(ip) DO UPDATE SET first_seen=MIN(first_seen,excluded.first_seen),'
-                       'last_seen=MAX(last_seen,excluded.last_seen),requests=requests+1',(event['ip'],event['at'],event['at']))
+            if inserted:
+                db.execute('INSERT INTO visitors(ip,first_seen,last_seen,requests) VALUES(?,?,?,1) '
+                           'ON CONFLICT(ip) DO UPDATE SET first_seen=MIN(first_seen,excluded.first_seen),'
+                           'last_seen=MAX(last_seen,excluded.last_seen),requests=requests+1',(event['ip'],event['at'],event['at']))
 
 
 class ReaderVisitRecords:

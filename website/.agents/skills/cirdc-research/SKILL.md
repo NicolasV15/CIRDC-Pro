@@ -28,7 +28,10 @@ The MCP server supplies this workflow as the `cirdc://research/skill` resource.
 1. Read capabilities once to identify available resource types. Search by the user's
    terms, DOI or article number; preserve search filters and partial-index notices.
    Confirm article identity from its title, DOI and ordered author metadata.
-2. Reading metadata does not fetch documents. For requested full text or PDF, use
+2. Read cached full text first with `read_content` or HTTP GET content. A cache hit
+   needs no ensure. Only `content_not_ready` permits ensure; a service error means
+   back off and read again. An existing receipt means poll that receipt.
+   Reading metadata does not fetch documents. For missing requested resources, use
    `ensure_resources` or HTTP POST ensure with only the needed resource types. Missing
    metadata returns `not_found`; do not start maintenance or external discovery.
 3. Cached resources return immediately. A pending response is a receipt, not a

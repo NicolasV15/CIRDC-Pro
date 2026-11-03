@@ -373,9 +373,11 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                    Route('/api/authors', authors), Route('/api/authors/{source}/{author_id}', author)]
         routes += resources.routes()
         from .agent import AgentAPI
-        routes += AgentAPI(resources, papers, paper).routes()
+        agent_api = AgentAPI(resources, papers, paper)
+        routes += agent_api.routes()
         from .agent_mcp import ResearchMCP, MCP_PATH
         research_mcp = ResearchMCP()
+        research_mcp.agent_api = agent_api
         routes.append(Route(MCP_PATH, research_mcp))
     else:
         def runs(request):

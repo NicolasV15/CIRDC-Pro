@@ -117,6 +117,14 @@ def test_hosted_mcp_real_http_workflow(agent_site, tmp_path, monkeypatch):
                     assert pdf['download']['url'].startswith(origin)
                     assert len(provider.calls) == 2
                     assert (await call('get_paper', {'number': '../../admin/users'}))['error'] == 'invalid_number'
+                    original_document = provider.agent_document
+                    def broken_document(*args):
+                        raise RuntimeError('private failure detail')
+                    provider.agent_document = broken_document
+                    failure = await call('read_content', {'number': '100'})
+                    assert failure['http_status'] == 503 and failure['next_action'] == 'wait'
+                    assert failure['retry_after_seconds'] == 5 and 'private failure detail' not in str(failure)
+                    provider.agent_document = original_document
             # A new MCP connection can resume the same durable CIRDC receipt.
             async with httpx.AsyncClient(trust_env=False) as http_client, streamable_http_client(
                     origin + '/api/agent/v1/mcp', http_client=http_client) as (read, write, _):
