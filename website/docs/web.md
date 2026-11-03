@@ -159,12 +159,29 @@ cataloged bodies and pending work; the interface shows this scope with every
 full-text result and never implies that all papers have searchable bodies.
 
 The paragraph index is `fulltext.sqlite` in the website state directory. Run
-`cirdc web fulltext-index [--max-rows N] [--once]` with the reader's resource
+`cirdc web fulltext-index [--max-rows N] [--once] [--retry-failed]` with the reader's resource
 providers enabled; it requires one provider implementing `agent_document_catalog`
 (see [Agent access](agent-api.md)). The indexer reads cached documents through
 `agent_document`, stores passages with their version, ordinal and nearest heading,
 and resumes from its saved catalog cursor. It never calls ensure hooks and never
 starts acquisition, conversion or collection.
+
+Discovery is committed before reading bodies. Missing or stale versions remain in
+the local catalog after its cursor advances, including failures from older indexer
+versions. Each cycle processes new documents and due retries, even if the provider
+has no new catalog events. Failed cached-body reads or writes back off for 30, 60,
+120 and 240 seconds; five failed attempts pause that version until an explicit
+`--retry-failed` invocation or a new catalog version. Restarting does not reset the
+budget. Failure history is retained in `index_retries`, including after success
+or an explicit reset. Replacement passages and FTS entries commit atomically;
+failed updates leave the previous searchable version intact.
+
+`--once` consumes the catalog to its end and processes currently due work; it does
+not sleep until future retries. Run it again later or use the resident indexer.
+`--max-rows` counts attempted documents, including failures, and stops at a batch
+boundary (up to 100 documents). Coverage reports `pending`, `failed`, `blocked`
+and `next_retry_at`; `phase=ready` means catalog synchronization is complete, not
+that every body was indexed. Pending work also marks search results as partial.
 
 Reader links carry `passage`, `v` and `q`. The reader finds the passage by ordinal
 in the displayed version, confirms its first words, and otherwise relocates it by

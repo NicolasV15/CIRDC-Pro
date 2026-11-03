@@ -19,7 +19,10 @@ def bootstrap_users(config, username=None):
     return users
 
 
-def run(config, action, interface='reader', host=None, port=None, username=None, max_rows=None, once=False):
+def run(config, action, interface='reader', host=None, port=None, username=None, max_rows=None, once=False,
+        retry_failed=False):
+    if retry_failed and action != 'fulltext-index':
+        raise ValueError('--retry-failed is only supported by fulltext-index')
     if action == 'init-index':
         from .index import initialize_indexing
         print(json.dumps(initialize_indexing(config)))
@@ -32,7 +35,7 @@ def run(config, action, interface='reader', host=None, port=None, username=None,
         if max_rows is not None and max_rows <= 0:
             raise ValueError('Index document budget must be positive')
         from .fulltext import run_fulltext_index
-        print(json.dumps(run_fulltext_index(config, max_rows=max_rows, once=once), default=str))
+        print(json.dumps(run_fulltext_index(config, max_rows=max_rows, once=once, retry_failed=retry_failed), default=str))
     elif action in ('init-users', 'passwd'):
         from .auth import Accounts
         users = bootstrap_users(config, username) if action == 'init-users' else None

@@ -24,6 +24,7 @@ def parser():
     web.add_argument('--username')
     web.add_argument('--max-rows', type=int)
     web.add_argument('--once', action='store_true')
+    web.add_argument('--retry-failed', action='store_true', help='Retry failed cached-body indexing; fulltext-index only')
     for name in ['doctor', 'db-init', 'plan', 'update', 'status', 'resume', 'retry', 'paper', 'analyze', 'mcp', '_worker']:
         child = sub.add_parser(name)
         child.add_argument('--config', default=argparse.SUPPRESS)

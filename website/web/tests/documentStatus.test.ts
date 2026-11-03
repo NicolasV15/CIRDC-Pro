@@ -67,3 +67,14 @@ test('confirmed institutional PDF denial is an availability outcome rather than 
  assert.equal(contentLabel({state:'unavailable',job:{kind:'ieee_pdf',state:'unavailable',error:'pdf_not_entitled'}}),'PDF 不可获取（机构未授权）');
  assert.equal(contentPending({state:'unavailable',job:{kind:'ieee_pdf',state:'unavailable'}}),false);
 });
+
+
+test("automatic recovery waits without manual retry and exhaustion directs to administrator",()=>{
+ const waiting={state:"failed",next_action:"wait",message:"后台服务繁忙，请求高峰期，请重新尝试获取",job:{kind:"ieee_pdf",state:"failed",error:"source_route_mismatch"}};
+ assert.equal(contentPending(waiting),true);assert.equal(contentCurrentError(waiting),"");
+ assert.equal(shouldEnsureContent(waiting),false);assert.equal(contentReason(waiting),waiting.message);
+ const exhausted={...waiting,next_action:"contact_administrator",message:"后台服务繁忙，请求高峰期，请重新尝试获取"};
+ assert.equal(contentPending(exhausted),false);assert.equal(contentLabel(exhausted),exhausted.message);
+ assert.equal(shouldEnsureContent(exhausted),false);assert.equal(pdfRetryable(exhausted),false);
+ assert.equal(assetsRetryable({...exhausted,state:"partial",document:{source:"ieee_html"}}),false);
+});

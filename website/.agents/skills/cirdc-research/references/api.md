@@ -26,8 +26,8 @@ the equivalent configuration is:
 Use the URL field provided by the particular host; configuration formats vary.
 Tools: `capabilities`, `search_papers`, `get_paper`,
 `ensure_resources`, `get_request`, `read_content`, `get_pdf`. Only resource ensure
-and PDF acquisition can create work. Explicit retry is an additional attempt;
-ordinary tools do not automatically retry failures.
+and PDF acquisition can create work. The backend may automatically recover execution failures. Follow `next_action` and the existing receipt;
+ordinary client polling does not create additional attempts or reset retry limits.
 
 The server supplies its workflow in initialization instructions and the
 `cirdc://research/skill` resource. Resource requests are durable CIRDC receipts,
@@ -44,6 +44,13 @@ Skill into the AI host. Native installation is optional; the installer below sup
 checkout or a download from the running site, without an archive.
 
 ## Direct API
+
+The capabilities response advertises rate limits: searches allow 50 requests per
+second per peer IP and resource ensure allows 120 requests per 60 seconds per peer
+IP. HTTP and MCP share these allowances across articles; repeated ensure calls
+also count. Excess calls return HTTP 429. Use GET receipt polling after submission;
+it does not consume the ensure allowance. Upstream acquisition keeps its separate
+request spacing and queue policy.
 
 ```sh
 curl "$CIRDC_BASE_URL/api/agent/v1/papers?q=ring%20amplifier&limit=20"
@@ -64,7 +71,12 @@ Resources have independent `missing`, `pending`, `ready`, `partial`, `unavailabl
 or `failed` states. `complete=true` means every requested resource is ready.
 `202` carries a durable `request_id`, `status_url` and `Retry-After`; continue with
 GET, not repeated POST. A partial body can be read even when images or PDF fail.
-`200` with `complete=false` is not full success. `404` means the paper, request or
+`200` with `complete=false` is not full success. Recovery responses include `message`, `next_action`,
+`retry_attempts`, `max_retry_attempts` and `next_retry_at`. `wait` means continue
+GET polling without resubmission; `contact_administrator` means the backend recovery
+budget is exhausted. Internal attempt errors remain in administrator logs.
+Confirmed `institution_not_licensed` is an unavailable outcome and never retried.
+An explicit retry flag does not reset an exhausted automatic budget. `404` means the paper, request or
 version is unknown; `409` means content/file is not ready; `422` is invalid input;
 `429` asks you to reduce request frequency; `503` is a service/storage problem.
 

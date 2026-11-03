@@ -30,7 +30,7 @@ def specification():
         'retry': {'type': 'boolean', 'default': False}}}
     spec = {'openapi': '3.1.0', 'info': {'title': 'CIRDC-Pro Research API', 'version': '1.0.0',
             'description': 'Public access to indexed papers and on-demand resources. GET is read-only. '
-                           'Resource requests return durable receipts; retries are explicit. No credentials required.'},
+                           'Resource requests return durable receipts; follow next_action during bounded backend recovery. No credentials required.'},
             'servers': [{'url': '/api/agent/v1'}], 'security': [], 'paths': {
                 '/capabilities': {'get': operation('capabilities')},
                 '/papers': {'get': operation('search_papers', search)},
@@ -69,6 +69,8 @@ def specification():
                     'parent_id': string, 'updated': {'type': 'number'}}, ['id', 'kind', 'state']),
         'ResourceStatus': obj({'state': {'type': 'string', 'enum': ['missing', 'pending', 'ready', 'partial', 'unavailable', 'failed']},
             'phase': nullable_string, 'reason': nullable_string, 'retryable': {'type': 'boolean'},
+            'message': string, 'next_action': {'type': 'string', 'enum': ['wait', 'contact_administrator']},
+            'retry_attempts': integer, 'max_retry_attempts': integer, 'next_retry_at': {'type': ['number', 'null']},
             'transient': {'type': 'boolean'}, 'source': nullable_string, 'version': nullable_string,
             'url': string, 'media_type': string, 'bytes': {'type': ['integer', 'null']},
             'sha256': nullable_string, 'assets_ready': {'type': ['integer', 'null']},

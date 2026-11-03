@@ -29,6 +29,9 @@ COVERAGE = 0.6
 APPROXIMATE_LIMIT = 5000
 TOP_CANDIDATES = 300
 INDEXABLE = ('ready', 'partial')
+MAX_ATTEMPTS = 5
+RETRY_DELAY = 30
+PENDING = "c.state IN ('ready','partial') AND (d.version IS NULL OR d.version IS NOT c.version)"
 
 
 def now():
@@ -44,6 +47,9 @@ def initialize(db):
     CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY,value TEXT NOT NULL);
     CREATE TABLE IF NOT EXISTS catalog(number TEXT PRIMARY KEY,version TEXT,state TEXT NOT NULL,source TEXT,
       seen_at TEXT NOT NULL,error TEXT);
+    CREATE TABLE IF NOT EXISTS index_retries(number TEXT NOT NULL,version TEXT NOT NULL,
+      attempts INTEGER NOT NULL DEFAULT 0,next_retry_at REAL,error TEXT,
+      failures TEXT NOT NULL DEFAULT '[]',resolved_at TEXT,PRIMARY KEY(number,version));
     CREATE TABLE IF NOT EXISTS documents(number TEXT PRIMARY KEY,version TEXT NOT NULL,source TEXT,
       passages INTEGER NOT NULL,indexed_at TEXT NOT NULL);
     CREATE TABLE IF NOT EXISTS passages(id INTEGER PRIMARY KEY,number TEXT NOT NULL,version TEXT NOT NULL,
@@ -57,6 +63,14 @@ def initialize(db):
     CREATE TRIGGER IF NOT EXISTS passages_ad AFTER DELETE ON passages BEGIN
       INSERT INTO passage_search(passage_search,rowid,text) VALUES('delete',old.id,old.text); END;
     ''')
+    # Older indexes retained only the last catalog error. Keep that evidence when
+    # introducing a retry budget; the previous attempt count is unknown.
+    legacy = db.execute('SELECT c.* FROM catalog c LEFT JOIN index_retries r '
+                        'ON r.number=c.number AND r.version=c.version '
+                        "WHERE c.error IS NOT NULL AND c.version IS NOT NULL AND c.version<>'' AND r.number IS NULL").fetchall()
+    db.executemany('INSERT INTO index_retries(number,version,error,failures) VALUES(?,?,?,?)',
+                   [(row['number'], row['version'], row['error'],
+                     json.dumps([{'at': row['seen_at'], 'error': row['error'], 'legacy': True}])) for row in legacy])
     db.commit()
 
 
@@ -169,7 +183,51 @@ def remove_document(db, number):
     db.execute('DELETE FROM documents WHERE number=?', (number,))
 
 
-def run_fulltext_index(config, max_rows=None, once=False, providers=None):
+def index_pending(db, provider, limit=100):
+    """Retry durable missing/stale versions, even when the catalog has no changes."""
+    rows = db.execute('SELECT c.number,c.version,COALESCE(r.attempts,0) AS attempts,'
+                      "COALESCE(r.failures,'[]') AS failures FROM catalog c "
+                      'LEFT JOIN documents d ON d.number=c.number '
+                      'LEFT JOIN index_retries r ON r.number=c.number AND r.version=c.version '
+                      'WHERE ' + PENDING + " AND c.version IS NOT NULL AND c.version<>'' "
+                      'AND COALESCE(r.attempts,0)<? AND COALESCE(r.next_retry_at,0)<=? '
+                      'ORDER BY COALESCE(r.next_retry_at,0),c.number LIMIT ?',
+                      (MAX_ATTEMPTS, time.time(), limit)).fetchall()
+    for row in rows:
+        number, version = row['number'], row['version']
+        # A failed replacement must not commit the DELETE or any partial FTS inserts.
+        db.execute('SAVEPOINT index_document')
+        try:
+            document = provider.agent_document(number, version)
+            if str(document.get('version')) != version:
+                raise ValueError('version_mismatch')
+            html = document.get('html')
+            if not isinstance(html, str) or not html.strip():
+                raise ValueError('missing_document_html')
+            store_document(db, number, version, document.get('source'), passages(html))
+        except Exception as failure:
+            db.execute('ROLLBACK TO index_document')
+            error = getattr(failure, 'code', None) or type(failure).__name__
+            attempts = row['attempts'] + 1
+            failures = json.loads(row['failures']) + [{'at': now(), 'error': error}]
+            due = time.time() + min(1800, RETRY_DELAY * 2 ** (attempts - 1)) if attempts < MAX_ATTEMPTS else None
+            db.execute('INSERT INTO index_retries(number,version,attempts,next_retry_at,error,failures) '
+                       'VALUES(?,?,?,?,?,?) ON CONFLICT(number,version) DO UPDATE SET '
+                       'attempts=excluded.attempts,next_retry_at=excluded.next_retry_at,error=excluded.error,'
+                       'failures=excluded.failures,resolved_at=NULL',
+                       (number, version, attempts, due, error, json.dumps(failures)))
+            db.execute('UPDATE catalog SET error=? WHERE number=?', (error, number))
+        else:
+            db.execute('UPDATE catalog SET error=NULL WHERE number=?', (number,))
+            db.execute('UPDATE index_retries SET next_retry_at=NULL,resolved_at=? WHERE number=? AND version=?',
+                       (now(), number, version))
+        finally:
+            db.execute('RELEASE index_document')
+        db.commit()
+    return len(rows)
+
+
+def run_fulltext_index(config, max_rows=None, once=False, providers=None, retry_failed=False):
     """Follow the provider's catalog of cached documents; never asks for new acquisition."""
     if providers is None:
         from .resources import ResourceProviders
@@ -183,6 +241,10 @@ def run_fulltext_index(config, max_rows=None, once=False, providers=None):
     db = connect('fulltext.sqlite')
     try:
         initialize(db)
+        if retry_failed:
+            # Explicit operator retry grants a new bounded budget but retains failure history.
+            db.execute('UPDATE index_retries SET attempts=0,next_retry_at=0 WHERE resolved_at IS NULL')
+            db.commit()
         meta = metadata(db)
         cursor, processed = meta.get('catalog_cursor'), 0
         if meta.get('phase') != 'ready':
@@ -198,31 +260,29 @@ def run_fulltext_index(config, max_rows=None, once=False, providers=None):
                 state = str(item.get('state') or '')
                 if not re.fullmatch(r'[0-9]{1,64}', number):
                     continue
-                error = None
-                if state in INDEXABLE and version:
-                    current = db.execute('SELECT version FROM documents WHERE number=?', (number,)).fetchone()
-                    if not current or current['version'] != version:
-                        try:
-                            document = provider.agent_document(number, version)
-                            if str(document.get('version')) != version:
-                                raise ValueError('version_mismatch')
-                            store_document(db, number, version, document.get('source'), passages(document.get('html') or ''))
-                            processed += 1
-                        except Exception as failure:
-                            error = getattr(failure, 'code', None) or type(failure).__name__
-                else:
+                error = 'missing_version' if state in INDEXABLE and not version else None
+                if state not in INDEXABLE:
                     remove_document(db, number)
                 db.execute('INSERT INTO catalog(number,version,state,source,seen_at,error) VALUES(?,?,?,?,?,?) '
                            'ON CONFLICT(number) DO UPDATE SET version=excluded.version,state=excluded.state,'
-                           'source=excluded.source,seen_at=excluded.seen_at,error=excluded.error',
+                           'source=excluded.source,seen_at=excluded.seen_at,error=CASE '
+                           "WHEN catalog.version IS excluded.version AND excluded.state IN ('ready','partial') "
+                           'THEN catalog.error ELSE excluded.error END',
                            (number, version or None, state or 'unknown', item.get('source'), now(), error))
             cursor = page.get('cursor', cursor)
             more = bool(page.get('more'))
             total = page.get('total')
-            save_meta(db, catalog_cursor=cursor, checked_at=now(),
+            save_meta(db, catalog_cursor=cursor, checked_at=now(), error=None,
                       **({'catalog_total': total} if isinstance(total, int) and total >= 0 else {}),
                       **({} if more else {'phase': 'ready', 'synced_at': now()}))
             db.commit()
+            # Commit discovery before reading bodies; a crash cannot lose a failed item
+            # behind the cursor. At the catalog tail, drain all currently due work.
+            while True:
+                attempted = index_pending(db, provider)
+                processed += attempted
+                if more or not attempted or (max_rows is not None and processed >= max_rows):
+                    break
             if max_rows is not None and processed >= max_rows:
                 return status_from(db)
             if not more:
@@ -248,10 +308,21 @@ def status_from(db):
     meta = metadata(db)
     documents = db.execute('SELECT COUNT(*) FROM documents').fetchone()[0]
     cataloged = db.execute("SELECT COUNT(*) FROM catalog WHERE state IN ('ready','partial')").fetchone()[0]
-    pending = db.execute("SELECT COUNT(*) FROM catalog c LEFT JOIN documents d ON d.number=c.number "
-                         "WHERE c.state IN ('ready','partial') AND (d.version IS NULL OR d.version<>c.version)").fetchone()[0]
+    pending = db.execute('SELECT COUNT(*) FROM catalog c LEFT JOIN documents d ON d.number=c.number WHERE ' + PENDING).fetchone()[0]
+    failed = db.execute('SELECT COUNT(*) FROM catalog c LEFT JOIN documents d ON d.number=c.number WHERE '
+                        + PENDING + ' AND c.error IS NOT NULL').fetchone()[0]
+    blocked, next_retry_at = 0, None
+    # Reader processes may see a pre-upgrade index before the indexer migrates it.
+    if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='index_retries'").fetchone():
+        retry = db.execute('SELECT COALESCE(SUM(r.attempts>=?),0),MIN(r.next_retry_at),'
+                           'COALESCE(SUM(c.error IS NOT NULL OR (r.error IS NOT NULL AND r.resolved_at IS NULL)),0) '
+                           'FROM catalog c LEFT JOIN documents d ON d.number=c.number '
+                           'LEFT JOIN index_retries r ON r.number=c.number AND r.version=c.version WHERE ' + PENDING,
+                           (MAX_ATTEMPTS,)).fetchone()
+        blocked, next_retry_at, failed = retry
     return {'enabled': True, 'phase': meta.get('phase', 'building'), 'documents': documents, 'cataloged': cataloged,
-            'pending': pending, 'catalog_total': meta.get('catalog_total'), 'synced_at': meta.get('synced_at'),
+            'pending': pending, 'failed': failed, 'blocked': blocked, 'next_retry_at': next_retry_at,
+            'catalog_total': meta.get('catalog_total'), 'synced_at': meta.get('synced_at'),
             'checked_at': meta.get('checked_at'), 'error': meta.get('error')}
 
 
@@ -513,7 +584,8 @@ def search_body(params):
                 row['position'] = position
         return {'items': rows, 'total': total, 'total_exact': exact_total, 'next_cursor': cursor, 'view': view,
                 'fulltext': coverage, 'query': public_plan(query_plan, mode, terms), 'index': meta,
-                **({'k': size} if view == 'top' else {}), 'partial': coverage.get('phase') != 'ready'}
+                **({'k': size} if view == 'top' else {}),
+                'partial': coverage.get('phase') != 'ready' or bool(coverage.get('pending')) or bool(coverage.get('error'))}
 
 
 def paper_passages(number, params):

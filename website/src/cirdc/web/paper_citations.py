@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from starlette.concurrency import run_in_threadpool
 from starlette.routing import Route
 from ..store import Store
-from .access import SearchRateLimiter
+from .access import ENSURE_REQUESTS_PER_MINUTE, SearchRateLimiter
 from .references import ReferenceError
 
 
@@ -89,7 +89,7 @@ def enqueue(config, number, refresh=False):
 
 
 def routes(config, response):
-    limiter = SearchRateLimiter(limit=10, interval=60)
+    limiter = SearchRateLimiter(limit=ENSURE_REQUESTS_PER_MINUTE, interval=60)
     async def listing(request):
         try:
             q = request.query_params

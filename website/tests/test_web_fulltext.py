@@ -180,3 +180,204 @@ def test_reader_parity_fixture_matches_server_extraction():
     fixture = json.loads((Path(__file__).parents[1] / 'web/tests/fixtures/fulltextPassages.json').read_text())
     assert [(row['ordinal'], fingerprint(row['text'])) for row in passages(fixture['html'])] == \
         [(row['ordinal'], row['fingerprint']) for row in fixture['passages']]
+
+
+class IncrementalCatalog(CatalogProvider):
+    """An unchanged document never reappears after the saved cursor."""
+    def __init__(self):
+        super().__init__()
+        self.events = [{'number': '201', 'version': 'v1', 'state': 'ready'}]
+        self.fail = True
+
+    def agent_document_catalog(self, cursor=None, limit=100):
+        start = int(cursor or 0)
+        return {'items': self.events[start:start + limit], 'cursor': str(min(start + limit, len(self.events))),
+                'more': start + limit < len(self.events), 'total': 1}
+
+    def agent_document(self, number, version=None):
+        if self.fail:
+            self.reads.append((number, version))
+            raise TimeoutError('Cached body temporarily unavailable')
+        return super().agent_document(number, version)
+
+
+@pytest.fixture
+def retry_clock(monkeypatch):
+    import time
+    from types import SimpleNamespace
+    from cirdc.web import fulltext
+    clock = [1000.0]
+    monkeypatch.setattr(fulltext, 'time', SimpleNamespace(time=lambda: clock[0], monotonic=time.monotonic,
+                                                       sleep=lambda seconds: clock.__setitem__(0, clock[0] + seconds)))
+    return clock
+
+
+def test_failed_body_retries_after_restart_without_new_catalog_events(body_site, retry_clock):
+    import json
+    config, _ = body_site
+    provider = IncrementalCatalog()
+    first = run_fulltext_index(config, once=True, providers=providers(provider))
+    assert (first['documents'], first['pending'], first['failed'], first['blocked']) == (0, 1, 1, 0)
+    assert first['next_retry_at'] == 1030
+    provider.fail = False
+    run_fulltext_index(config, once=True, providers=providers(provider))
+    assert len(provider.reads) == 1  # Restart cannot bypass backoff.
+    retry_clock[0] = 1030
+    fixed = run_fulltext_index(config, once=True, providers=providers(provider))
+    assert (fixed['documents'], fixed['pending'], fixed['failed']) == (1, 0, 0)
+    assert fixed['next_retry_at'] is None and fixed['error'] is None
+    assert search_body({'q': 'SAR ADC'})['total'] == 1
+    run_fulltext_index(config, once=True, providers=providers(provider))
+    assert len(provider.reads) == 2
+    with closing(connect('fulltext.sqlite')) as db:
+        retry = db.execute('SELECT * FROM index_retries').fetchone()
+        assert retry['resolved_at'] and json.loads(retry['failures'])[0]['error'] == 'TimeoutError'
+
+
+def test_resident_indexer_retries_without_reopening_catalog(body_site, retry_clock, monkeypatch):
+    from cirdc.web import fulltext
+    config, _ = body_site
+    provider = IncrementalCatalog()
+    def sleep(seconds):
+        if len(provider.reads) == 2:
+            raise KeyboardInterrupt()
+        retry_clock[0] += seconds
+        provider.fail = False
+    monkeypatch.setattr(fulltext.time, 'sleep', sleep)
+    with pytest.raises(KeyboardInterrupt):
+        run_fulltext_index(config, providers=providers(provider))
+    assert len(provider.reads) == 2
+    assert status()['documents'] == 1 and status()['pending'] == 0
+
+
+def test_retry_budget_persists_and_explicit_retry_keeps_history(body_site, retry_clock):
+    import json
+    from cirdc.web import fulltext
+    config, _ = body_site
+    provider = IncrementalCatalog()
+    for attempt in range(fulltext.MAX_ATTEMPTS):
+        result = run_fulltext_index(config, once=True, providers=providers(provider))
+        assert len(provider.reads) == attempt + 1
+        retry_clock[0] = result['next_retry_at'] or retry_clock[0] + 3600
+    assert result['blocked'] == 1 and result['pending'] == 1 and result['next_retry_at'] is None
+    assert search_body({'q': 'SAR'})['partial']
+    # Even a repeated catalog notification of this same version cannot reset failures.
+    provider.events.append(dict(provider.events[0]))
+    run_fulltext_index(config, once=True, providers=providers(provider))
+    assert len(provider.reads) == fulltext.MAX_ATTEMPTS
+    provider.fail = False
+    fixed = run_fulltext_index(config, once=True, retry_failed=True, providers=providers(provider))
+    assert fixed['pending'] == 0 and fixed['blocked'] == 0
+    with closing(connect('fulltext.sqlite')) as db:
+        row = db.execute('SELECT * FROM index_retries').fetchone()
+        assert len(json.loads(row['failures'])) == fulltext.MAX_ATTEMPTS and row['resolved_at']
+
+
+def test_new_version_gets_its_own_retry_budget(body_site, retry_clock):
+    from cirdc.web import fulltext
+    config, _ = body_site
+    provider = IncrementalCatalog()
+    for _ in range(fulltext.MAX_ATTEMPTS):
+        value = run_fulltext_index(config, once=True, providers=providers(provider))
+        retry_clock[0] = value['next_retry_at'] or retry_clock[0] + 3600
+    provider.fail = False
+    provider.documents['201'] = ('v2', '<p>New comparator architecture.</p>')
+    provider.events.append({'number': '201', 'version': 'v2', 'state': 'ready'})
+    fixed = run_fulltext_index(config, once=True, providers=providers(provider))
+    assert fixed['pending'] == 0 and fixed['blocked'] == 0
+    assert paper_passages('201', {'q': 'comparator'})['version'] == 'v2'
+
+
+def test_failed_replacement_preserves_previous_passages_and_fts(body_site, retry_clock, monkeypatch):
+    from cirdc.web import fulltext
+    config, _ = body_site
+    provider = IncrementalCatalog(); provider.fail = False
+    run_fulltext_index(config, once=True, providers=providers(provider))
+    provider.documents['201'] = ('v2', '<p>New comparator architecture.</p>')
+    provider.events.append({'number': '201', 'version': 'v2', 'state': 'ready'})
+    original = fulltext.store_document
+    def broken(db, number, version, source, rows):
+        original(db, number, version, source, rows)
+        raise RuntimeError('Failure after replacement writes')
+    monkeypatch.setattr(fulltext, 'store_document', broken)
+    result = run_fulltext_index(config, once=True, providers=providers(provider))
+    assert result['documents'] == 1 and result['pending'] == 1
+    old = search_body({'q': 'SAR ADC'})
+    assert old['total'] == 1 and old['partial'] and old['items'][0]['passages'][0]['version'] == 'v1'
+    assert search_body({'q': 'comparator'})['total'] == 0
+    monkeypatch.setattr(fulltext, 'store_document', original)
+    retry_clock[0] = result['next_retry_at']
+    run_fulltext_index(config, once=True, providers=providers(provider))
+    assert search_body({'q': 'SAR ADC'})['total'] == 0
+    assert paper_passages('201', {'q': 'comparator'})['version'] == 'v2'
+
+
+def test_legacy_pending_failures_migrate_without_resetting_catalog_cursor(body_site):
+    import json
+    from cirdc.web import fulltext
+    config, _ = body_site
+    provider = IncrementalCatalog(); provider.fail = False
+    with closing(connect('fulltext.sqlite')) as db:
+        fulltext.initialize(db)
+        db.execute('DROP TABLE index_retries')
+        db.execute("INSERT INTO catalog(number,version,state,seen_at,error) VALUES('201','v1','ready','old','TimeoutError')")
+        fulltext.save_meta(db, catalog_cursor='1', phase='ready', error='TimeoutError')
+        db.commit()
+    assert status()['pending'] == 1 and status()['failed'] == 1
+    fixed = run_fulltext_index(config, once=True, providers=providers(provider))
+    assert fixed['documents'] == 1 and fixed['pending'] == 0 and fixed['error'] is None
+    assert len(provider.reads) == 1
+    with closing(connect('fulltext.sqlite')) as db:
+        retry = db.execute('SELECT * FROM index_retries').fetchone()
+        assert retry['resolved_at'] and json.loads(retry['failures'])[0]['legacy']
+
+
+def test_cli_passes_explicit_retry_only_to_fulltext_index(body_site, monkeypatch, capsys):
+    from cirdc.cli import parser
+    from cirdc.web.cli import run
+    from cirdc.web import fulltext
+    args = vars(parser().parse_args(['web', 'fulltext-index', '--once', '--retry-failed']))
+    calls = []
+    monkeypatch.setattr(fulltext, 'run_fulltext_index', lambda config, **kwargs: calls.append(kwargs) or {})
+    assert run(body_site[0], 'fulltext-index', once=args['once'], retry_failed=args['retry_failed']) == 0
+    assert calls == [{'max_rows': None, 'once': True, 'retry_failed': True}]
+    with pytest.raises(ValueError, match='only supported'):
+        run(body_site[0], 'index', retry_failed=True)
+
+
+def test_budget_counts_failed_reads_and_removed_bodies_are_not_retried(body_site, retry_clock):
+    config, _ = body_site
+    provider = IncrementalCatalog()
+    result = run_fulltext_index(config, max_rows=1, providers=providers(provider))
+    assert result['pending'] == 1 and len(provider.reads) == 1
+    provider.events.append({'number': '201', 'version': 'v1', 'state': 'unavailable'})
+    retry_clock[0] = result['next_retry_at']
+    result = run_fulltext_index(config, once=True, providers=providers(provider))
+    assert result['pending'] == 0 and result['failed'] == 0 and len(provider.reads) == 1
+
+
+def test_missing_html_does_not_replace_a_readable_version(body_site, retry_clock, monkeypatch):
+    config, _ = body_site
+    provider = IncrementalCatalog(); provider.fail = False
+    run_fulltext_index(config, once=True, providers=providers(provider))
+    provider.events.append({'number': '201', 'version': 'v2', 'state': 'ready'})
+    monkeypatch.setattr(provider, 'agent_document', lambda *args: {'version': 'v2', 'state': 'ready'})
+    result = run_fulltext_index(config, once=True, providers=providers(provider))
+    assert result['pending'] == 1 and result['failed'] == 1
+    assert search_body({'q': 'SAR ADC'})['total'] == 1
+
+
+def test_catalog_crash_after_cursor_commit_leaves_recoverable_work(body_site, monkeypatch):
+    from cirdc.web import fulltext
+    config, _ = body_site
+    provider = IncrementalCatalog(); provider.fail = False
+    original = fulltext.index_pending
+    def crash(*args):
+        raise KeyboardInterrupt()
+    monkeypatch.setattr(fulltext, 'index_pending', crash)
+    with pytest.raises(KeyboardInterrupt):
+        run_fulltext_index(config, once=True, providers=providers(provider))
+    assert not provider.reads and status()['pending'] == 1
+    monkeypatch.setattr(fulltext, 'index_pending', original)
+    fixed = run_fulltext_index(config, once=True, providers=providers(provider))
+    assert fixed['documents'] == 1 and fixed['pending'] == 0 and fixed['error'] is None

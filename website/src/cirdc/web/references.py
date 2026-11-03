@@ -9,7 +9,7 @@ from starlette.concurrency import run_in_threadpool
 from starlette.routing import Route
 
 from ..store import Store
-from .access import SearchRateLimiter
+from .access import ENSURE_REQUESTS_PER_MINUTE, SearchRateLimiter
 
 
 def options(config):
@@ -130,7 +130,7 @@ def enqueue(config, number):
 
 
 def routes(config, response):
-    limiter = SearchRateLimiter(limit=10, interval=60)
+    limiter = SearchRateLimiter(limit=ENSURE_REQUESTS_PER_MINUTE, interval=60)
 
     async def listing(request):
         try:

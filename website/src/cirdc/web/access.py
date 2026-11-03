@@ -5,6 +5,10 @@ import threading
 from collections import OrderedDict, deque
 
 
+SEARCH_REQUESTS_PER_SECOND = 50
+ENSURE_REQUESTS_PER_MINUTE = 120
+
+
 def authentication_required(interface, reader_auth=None):
     if interface == 'admin':
         return True
@@ -15,7 +19,7 @@ def authentication_required(interface, reader_auth=None):
 
 
 class SearchRateLimiter:
-    def __init__(self, limit=10, interval=1.0, capacity=4096):
+    def __init__(self, limit=SEARCH_REQUESTS_PER_SECOND, interval=1.0, capacity=4096):
         self.limit = limit
         self.interval = interval
         self.capacity = capacity

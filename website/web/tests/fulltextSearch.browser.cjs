@@ -17,7 +17,7 @@ async function main(){
  try{for(const profile of [{name:'desktop',width:1440,height:1000},{name:'mobile',width:390,height:844,touch:true},{name:'narrow-dark',width:320,height:760,touch:true,dark:true}]){
   const context=await browser.newContext({viewport:{width:profile.width,height:profile.height},locale:'zh-CN',isMobile:!!profile.touch,hasTouch:!!profile.touch,colorScheme:profile.dark?'dark':'light'});
   await context.addInitScript(()=>localStorage.setItem('cirdc.ui.language','zh'));
-  const requests=[],writes=[],blocked=[],errors=[];let document={version:'v1',html:fixture.html},passageMode='hits';
+  const requests=[],writes=[],blocked=[],errors=[];let document={version:'v1',html:fixture.html},passageMode='hits',indexFailed=false;
   await context.route('**/*',async route=>{
    const req=route.request(),url=new URL(req.url()),p=url.pathname;
    if(url.origin!==origin){blocked.push(req.url());return route.abort();}
@@ -31,7 +31,7 @@ async function main(){
     const s=url.searchParams;
     if(s.get('field')==='body'){
      if(s.get('totals')==='only')return route.fulfill({json:{total:2,items:[],next_cursor:null}});
-     return route.fulfill({json:{view:s.get('view')||'all',query:{...query,terms:s.get('terms')||'expand'},fulltext:{enabled:true,phase:'ready',documents:2,cataloged:2,pending:0},total:s.get('totals')==='defer'?null:2,next_cursor:null,
+     return route.fulfill({json:{view:s.get('view')||'all',query:{...query,terms:s.get('terms')||'expand'},fulltext:{enabled:true,phase:'ready',documents:2,cataloged:indexFailed?3:2,pending:indexFailed?1:0,failed:indexFailed?1:0,blocked:indexFailed?1:0},total:s.get('totals')==='defer'?null:2,next_cursor:null,
       items:[paper('301','Pipelined-SAR fixture',{passages:hits,passage_total:3,position:s.get('view')==='top'?1:undefined}),paper('302','Second fixture',{passages:[passage({ordinal:1,kind:'text',section:'Results',text:'The SAR ADC achieves 62 dB.',fingerprint:'the sar adc achieves 62 db'})],passage_total:1,position:s.get('view')==='top'?2:undefined})]}});
     }
     if(s.get('view')==='top')return route.fulfill({json:{view:'top',k:Number(s.get('k')||20),total:2,next_cursor:null,query,items:[
@@ -140,6 +140,15 @@ async function main(){
   await page.getByRole('button',{name:'English',exact:true}).click();
   assert((await page.locator('.passage-navigator').innerText()).includes('Full-text hits'));
   await expectFocus(fixture.passages[7].fingerprint,'english');
+
+  indexFailed=true;
+  await page.goto(origin+'/?q=SAR+ADC&field=body',{waitUntil:'networkidle'});
+  // The fixture init script restores Chinese on each full-page navigation.
+  await page.getByText('其中 1 篇索引失败，1 篇已暂停重试。',{exact:true}).waitFor();
+  await noOverflow('failed index chinese');
+  await page.getByRole('button',{name:'English',exact:true}).click();
+  await page.getByText('Indexing failed for 1 papers; retries are paused for 1.',{exact:true}).waitFor();
+  await noOverflow('failed index english');
 
   assert.deepEqual(writes,[]);assert.deepEqual(blocked,[]);assert.deepEqual(errors,[]);
   reports.push({profile:profile.name,bodyResultsExplained:true,highlighted:true,locatedFromResult:true,hitNavigation:3,parityPassages:fixture.passages.length,versionRelocation:true,missingReported:true,topK:true,aliasToggle:true,bilingual:true,writes:0,sourceRequests:0});

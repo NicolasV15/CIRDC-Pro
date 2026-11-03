@@ -1,4 +1,5 @@
 import pytest
+from types import SimpleNamespace
 pytest.importorskip('argon2', reason='Install the web extra')
 from starlette.testclient import TestClient
 from starlette.responses import FileResponse
@@ -96,12 +97,17 @@ def test_administrator_still_requires_login_when_reader_mode_is_public(website, 
         assert client.post('/api/admin/users/active', json={}).status_code == 403
 
 
-def test_public_search_uses_actual_peer_ip_and_ignores_forwarding_claims(website):
+def test_public_search_uses_actual_peer_ip_and_ignores_forwarding_claims(website, monkeypatch):
+    now = [1000.0]
+    monkeypatch.setattr('cirdc.web.access.time', SimpleNamespace(monotonic=lambda: now[0]))
     app = create_app(website, reader_auth='public')
     with TestClient(app, client=('198.51.100.1', 1000)) as client:
-        for i in range(10):
-            assert client.get('/api/papers?q=RF', headers={'X-Forwarded-For': f'203.0.113.{i}'}).status_code == 200
+        for i in range(50):
+            path = '/api/papers' if i % 2 else '/api/agent/v1/papers'
+            assert client.get(path + '?q=RF', headers={'X-Forwarded-For': f'203.0.113.{i}'}).status_code == 200
         assert client.get('/api/papers?q=RF', headers={'X-Forwarded-For': '203.0.113.99'}).status_code == 429
+        now[0] += 1.01
+        assert client.get('/api/papers?q=RF').status_code == 200
     with TestClient(app, client=('198.51.100.2', 1000)) as client:
         assert client.get('/api/papers?q=RF').status_code == 200
 

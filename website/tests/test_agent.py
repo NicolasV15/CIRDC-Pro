@@ -2,6 +2,7 @@ from concurrent.futures import ThreadPoolExecutor
 import copy
 import json
 import threading
+from types import SimpleNamespace
 
 import pytest
 from starlette.testclient import TestClient
@@ -92,6 +93,28 @@ def client_for(site, **kwargs):
 
 def ensure(client, kinds=None, **kwargs):
     return client.post(PREFIX + '/papers/100/ensure', json={'resources': kinds or ['content'], 'wait_seconds': 0, **kwargs})
+
+
+def test_ensure_allowance_is_per_peer_and_polling_does_not_consume_it(agent_site, monkeypatch):
+    now = [1000.0]
+    monkeypatch.setattr('cirdc.web.access.time', SimpleNamespace(monotonic=lambda: now[0]))
+    config, provider, resources = agent_site
+    app = create_app(config, resource_providers=resources)
+    with TestClient(app, client=('198.51.100.1', 1000)) as client:
+        limits = client.get(PREFIX + '/capabilities').json()['limits']
+        assert limits['search_requests_per_second'] == 50
+        assert limits['ensure_requests_per_minute'] == 120
+        for _ in range(120):
+            result = ensure(client, ['content', 'pdf'])
+            assert result.status_code == 202
+        assert ensure(client).status_code == 429
+        assert client.get(result.json()['status_url']).status_code == 202
+        assert ensure(client).status_code == 429
+        with TestClient(app, client=('198.51.100.2', 1000)) as other:
+            assert ensure(other).status_code == 202
+        now[0] += 60.01
+        assert ensure(client).status_code == 202
+    assert provider.calls == [('content', False), ('pdf', False)]
 
 
 def test_open_access_cors_and_admin_node_boundaries(agent_site):
@@ -185,6 +208,37 @@ def test_wait_returns_ready_and_unknown_paper_never_queues(agent_site):
         result = ensure(client, wait_seconds=0.1)
         timer.join()
         assert result.status_code == 200 and result.json()['complete']
+
+
+def test_recovery_receipts_keep_waiting_without_resubmission(agent_site):
+    provider = agent_site[1]
+    notifications = []
+    provider.agent_requested = lambda number, kind: notifications.append((number, kind))
+    with client_for(agent_site) as client:
+        first = ensure(client).json()
+        provider.finish('content', 'partial')
+        provider.current['content'].update(next_action='wait', message='Recovery in progress',
+                                           retry_attempts=1, max_retry_attempts=10, next_retry_at=123.0)
+        provider.current['content']['jobs'][0].update(state='failed', error='internal_failure')
+        for _ in range(2):
+            response = client.get(first['status_url'])
+            assert response.status_code == 202 and response.headers['retry-after'] == '2'
+            value = response.json()
+            content = value['resources']['content']
+            assert value['pending'] and not value['complete']
+            assert content['next_action'] == 'wait' and content['retry_attempts'] == 1
+            assert content['url'].endswith('/content') and 'error' not in content['jobs'][0]
+        assert notifications == [('100', 'content')]
+        assert len(provider.calls) == 1
+        provider.current['content'].update(next_action='contact_administrator', retry_attempts=10)
+        stopped = client.get(first['status_url'])
+        assert stopped.status_code == 200 and not stopped.json()['pending']
+        assert not stopped.json()['complete']
+        repeated = ensure(client).json()
+        assert repeated['request_id'] == first['request_id']
+        assert repeated['resources']['content']['retry_attempts'] == 10
+        assert notifications == [('100', 'content'), ('100', 'content')]
+        assert len(provider.calls) == 1
 
 
 def test_content_cursor_pins_version_and_pdf_bytes_are_checked(agent_site):

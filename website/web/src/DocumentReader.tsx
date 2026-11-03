@@ -154,7 +154,7 @@ export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference
   <div id={contentId} hidden={!expanded}>
   <p className="muted document-progress" role="status">{value?.document?<>{t(value.document.source==='pdf_parse'?'来源：PDF 转换':'来源：官网正文')}{' · '}{t('图片资源：')}{value.document.assets_ready} / {value.document.assets_total}{t(' · 获取时间：')}{value.document.fetched_at?new Date(value.document.fetched_at).toLocaleString(locale()):'—'}</>:t(contentReason(value))}</p>
   {value?.state==='partial'&&<p className="hint">{t('正文可以阅读，部分图片暂不可用；此版本尚未完整缓存。')}</p>}
-  {(error||contentCurrentError(value))&&<p className="error" role="alert">{error?t(error):t('获取未完成，仍可使用论文原始链接或本地资料。')}{contentCurrentError(value)&&<code> {contentCurrentError(value)}</code>}</p>}
+  {(error||contentCurrentError(value))&&<p className="error" role="alert">{value?.next_action==='contact_administrator'?t('后台服务繁忙，请求高峰期，请重新尝试获取'):error?t(error):t('获取未完成，仍可使用论文原始链接或本地资料。')}{contentCurrentError(value)&&!value?.next_action&&<code> {contentCurrentError(value)}</code>}</p>}
   {assetsRetryable(value)&&<button type="button" onClick={()=>{retryRequested.current=true;setRetry(n=>n+1)}}>{t('重试补齐图片')}</button>}
   {pdfRetryable(value)&&<button type="button" onClick={()=>{retryRequested.current=true;setRetry(n=>n+1)}}>{t('重试转换')}</button>}
    <div className="document-layout">

@@ -38,7 +38,8 @@ export default function SearchInsights({query,fulltext,field,onTerm}:{query?:Que
  if(field==='body'){
   if(!fulltext?.enabled)lines.push(<p key="scope" className="insight-warning"><Icon name="info"/>{t('正文检索尚未启用：站点未建立正文段落索引，因此不会返回正文结果。')}</p>);
   else{
-   lines.push(<p key="scope"><Icon name="book"/>{t('正文检索范围：已索引 {n} 篇论文正文',{n:fmt(fulltext.documents)})}{fulltext.pending?t('，另有 {n} 篇已获取正文待索引',{n:fmt(fulltext.pending)}):''}{t('。未获取或未索引正文的论文不会出现在正文结果中。')}{fulltext.phase!=='ready'?' '+t('正文目录仍在同步。'):''}</p>);
+   lines.push(<p key="scope"><Icon name="book"/>{t('正文检索范围：已索引 {n} 篇论文正文',{n:fmt(fulltext.documents)})}{fulltext.pending?t('，{n} 篇正文仍待索引或更新',{n:fmt(fulltext.pending)}):''}{t('。未获取或未索引正文的论文不会出现在正文结果中。')}{fulltext.phase!=='ready'?' '+t('正文目录仍在同步。'):''}</p>);
+   if(fulltext.failed)lines.push(<p key="failed" className="insight-warning"><Icon name="info"/>{t('其中 {n} 篇索引失败，{m} 篇已暂停重试。',{n:fmt(fulltext.failed),m:fmt(fulltext.blocked||0)})}</p>);
    if(query?.match)lines.push(<p key="match" className={query.match==='approximate'?'insight-warning':undefined}><Icon name={query.match==='approximate'?'info':'check'}/>{t(query.match==='exact'?'原句精确命中：忽略大小写、标点、空白与换行差异，词序一致。':query.match==='approximate'?'未找到逐字一致的原句。以下为近似匹配：同一段落包含查询中多数主要词，不能视为原句出处。':query.match==='phrase'?'同一段落包含引号内的完整短语。':'同一段落同时包含全部检索词（含已启用的等价写法）。')}</p>);
   }
  }

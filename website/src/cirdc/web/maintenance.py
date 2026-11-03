@@ -4,7 +4,7 @@ from urllib.parse import urlsplit
 import requests
 from starlette.concurrency import run_in_threadpool
 from starlette.routing import Route
-from .access import SearchRateLimiter
+from .access import ENSURE_REQUESTS_PER_MINUTE, SearchRateLimiter
 
 def options(config):
     value=config.web.get("maintenance",{})
@@ -38,7 +38,7 @@ def call(config,operation,number=None):
         return {k:value[k] for k in ("number","abstract_state","keywords_state","job","updated_at") if k in value}
 
 def routes(config,response,interface="reader"):
-    limiter=SearchRateLimiter(limit=10,interval=60)
+    limiter=SearchRateLimiter(limit=ENSURE_REQUESTS_PER_MINUTE,interval=60)
     async def status(request):
         try:return response(await run_in_threadpool(call,config,"status"))
         except Exception:return response({"error":"maintenance_unavailable"},503)

@@ -59,8 +59,26 @@ usable after another branch fails. A source access failure is not proof that a
 publisher has no HTML. Any PDF fallback and later conversion retain the provider's
 validated-absence rules. PDF downloads check actual readable files before streaming.
 
-Public JSON endpoints support credential-free CORS. Limits apply to searches,
-ensure calls and request bodies; they do not grant new source-request budgets.
+Providers with automatic recovery expose `message`, `next_action`,
+`retry_attempts`, `max_retry_attempts` and `next_retry_at`. While `next_action`
+is `wait`, receipts return HTTP 202 and clients keep polling the same receipt;
+usable partial content remains readable. `contact_administrator` ends polling.
+Show the returned user-facing message instead of internal attempt error codes.
+The provider owns the recovery budget: repeated ensure, reconnecting, polling
+and explicit retry must not reset it. Confirmed institutional non-entitlement
+remains terminal. Older providers without these fields retain explicit retry.
+An optional `agent_requested(number, kind)` hook notifies the provider of an
+accepted POST ensure before reading its snapshot; GET polling never invokes it.
+
+Public JSON endpoints support credential-free CORS. Searches share a limit of
+50 requests per second per peer IP across browser, HTTP and MCP calls. Agent
+ensure calls share a limit of 120 requests per 60 seconds per peer IP across all
+articles and resource types; repeated ensure calls also count. Both use sliding
+windows and return HTTP 429 when exhausted. GET receipt polling does not consume
+the ensure allowance. Other metadata and relationship ensure routes each retain
+their own 120-per-minute allowance. Request-body limits also apply. These limits
+do not grant new source-request budgets. Capabilities advertises the current
+search and Agent ensure limits.
 The existing visit/task recorder associates accepted Agent requests with actual
 returned queue identities. It does not record prompts, document contents or
 invent associations from paper numbers and timestamps.
@@ -77,7 +95,7 @@ the thread pool. The generic website never imports a private provider module.
 | `agent_snapshot(number, resource, reference=None)` | Read-only normalized status, optional opaque JSON `reference`, and verified `jobs` with ID, kind, state and explicit parent ID when known. With a reference, follow those actual jobs/dependencies; do not choose an unrelated newer attempt. |
 | `agent_ensure(number, resource, rate_key, retry=False)` | Reuse cached/active resources; submit missing resources only. Failed or partial work requires explicit retry. Return the same normalized status with a durable reference. |
 | `agent_document(number, version=None)` | Read cleaned HTML plus `version`, `source`, `toc`, `state`, `assets_ready` and `assets_total`. A supplied version must select exactly that immutable document. |
-| `agent_document_catalog(cursor=None, limit=100)` | Optional, read-only. Return `items` with `number`, `version`, `state` (`ready`/`partial` bodies are indexed; other states remove passages) and optional `source`, plus an opaque resumable `cursor`, `more` and optional `total`. Later calls with the last cursor return new or changed documents. Used only by `cirdc web fulltext-index`. |
+| `agent_document_catalog(cursor=None, limit=100)` | Optional, read-only. Return `items` with `number`, `version`, `state` (`ready`/`partial` bodies are indexed; other states remove passages) and optional `source`, plus an opaque resumable `cursor`, `more` and optional `total`. Later cycles must discover new/changed documents and removals. Providers may replay unchanged entries; the indexer skips matching indexed versions. A replayable sweep may return `cursor=null` only at its end (`more=false`), so the next cycle starts another sweep. Used only by `cirdc web fulltext-index`. |
 | `agent_file(number, asset_id=None, version=None)` | Return a verified server-local `path` and `media_type` for streaming. An absent asset ID means the original PDF. Asset requests require a document version. Paths never enter client JSON. |
 
 Status fields are `state` (`missing`, `pending`, `ready`, `partial`, `unavailable`,
