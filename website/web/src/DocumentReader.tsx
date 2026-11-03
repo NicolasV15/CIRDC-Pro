@@ -8,6 +8,7 @@ import {documentMathForDisplay} from './documentMath';
 import {restoreDocumentMathSources,labelDocumentMathSources} from './documentMathSources';
 import {contentLabel,contentPending,shouldEnsureContent,pdfRetryable,assetsRetryable,contentReason,contentDocumentReady,contentCurrentError} from './documentStatus';
 import {restoreReferenceCitations} from './paperReferenceData';
+import {blockRanges,blockText,findPassage,passageBlocks,type FocusResult,type PassageFocus} from './passageLocate';
 
 type Fetcher=(path:string,method?:string,data?:unknown)=>Promise<any>;
 type Resource={href:string;kind?:string};
@@ -15,10 +16,11 @@ type TocEntry={id:string;title:string;level:number};
 const sidebarQuery='(min-width:1200px)';
 function localURL(value:string){const u=new URL(value,location.origin);if(u.origin!==location.origin||!u.pathname.startsWith('/api/'))throw Error('Invalid resource URL');return u.pathname+u.search;}
 
-export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference}:{resource?:Resource;fetcher:Fetcher;onReady?:()=>void;paperNumber?:string;onReference?:(order:number,source:HTMLElement)=>void}){
+export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference,focus,onFocusResult}:{resource?:Resource;fetcher:Fetcher;onReady?:()=>void;paperNumber?:string;onReference?:(order:number,source:HTMLElement)=>void;focus?:PassageFocus|null;onFocusResult?:(result:FocusResult)=>void}){
  const [expanded,setExpanded]=useState(true),contentId=useId();
  const readyCallback=useRef(onReady);useEffect(()=>{readyCallback.current=onReady;},[onReady]);
  const referenceCallback=useRef(onReference);useEffect(()=>{referenceCallback.current=onReference;},[onReference]);
+ const focusCallback=useRef(onFocusResult);useEffect(()=>{focusCallback.current=onFocusResult;},[onFocusResult]);
  const [value,setValue]=useState<any>(),[body,setBody]=useState(''),[error,setError]=useState(''),[image,setImage]=useState<{src:string;alt:string}|null>(null);
  const [retry,setRetry]=useState(0);const retryRequested=useRef(false);
  const element=useRef<HTMLDivElement>(null),tocElement=useRef<HTMLDetailsElement>(null);const current=useRef(0);
@@ -117,6 +119,25 @@ export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference
   resize?.observe(nav);keepVisible();
   return()=>resize?.disconnect();
  },[activeSection,tocOpen]);
+ // A search hit names an indexed passage; it is shown only after its words match the displayed version.
+ useEffect(()=>{
+  const container=element.current;
+  if(!focus||!container||!body)return;
+  if(!expanded){setExpanded(true);return;}
+  const current=value?.document?.version??null,blocks=passageBlocks(container),index=findPassage(blocks.map(blockText),focus.ordinal,focus.fingerprint);
+  if(index<0){focusCallback.current?.({status:'missing',version:current});return;}
+  const block=blocks[index],ranges=blockRanges(block,focus.alternatives);
+  const registry=(globalThis as any).CSS?.highlights,Highlight=(globalThis as any).Highlight;
+  block.classList.add('document-passage-focus');
+  if(registry&&Highlight&&ranges.length)registry.set('cirdc-passage',new Highlight(...ranges));
+  const reveal=()=>block.scrollIntoView({block:'center',behavior:'auto'});
+  const frame=requestAnimationFrame(reveal),until=Date.now()+2500;
+  // Late images move the passage; keep it in view while they settle.
+  const settle=(event:Event)=>{if(event.target instanceof HTMLImageElement&&Date.now()<until)reveal();};
+  container.addEventListener('load',settle,true);
+  focusCallback.current?.({status:index===focus.ordinal&&(!focus.version||focus.version===current)?'located':'relocated',version:current});
+  return()=>{cancelAnimationFrame(frame);container.removeEventListener('load',settle,true);block.classList.remove('document-passage-focus');registry?.delete('cirdc-passage');};
+ },[focus?.token,body,expanded]);
  // A failed image is retried only after the catalog reports more completed assets.
  useEffect(()=>{if(!element.current)return;for(const img of element.current.querySelectorAll<HTMLImageElement>('img[data-content-asset]')){if(img.dataset.failed==='1'&&value?.document?.assets?.some((asset:any)=>asset.id===img.dataset.contentAsset&&asset.status==='ready')){delete img.dataset.failed;const url=new URL(img.src);url.searchParams.set('ready',String(value?.document?.assets_ready||0));img.src=url.toString()}}},[value?.document?.assets_ready]);
  function activateReference(target:EventTarget|null){

@@ -14,6 +14,7 @@ from starlette.staticfiles import StaticFiles
 from .auth import Accounts
 from .access import authentication_required, SearchRateLimiter
 from .index import metadata, publication_year_range, search, validate_year_range
+from .query import article_number
 from .settings import connect
 from .resources import ResourceProviders
 from .http_cache import CatalogCache, PublicTextCompression
@@ -188,11 +189,15 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
         except ValueError:
             return response({'error': 'invalid_query', 'message': '刊会编号参数无效，最多支持 32 个编号。'}, 422)
         query = request.query_params.get('q', '').strip()
-        if len(query) > 200:
-            return response({'error': 'invalid_query', 'message': '搜索词最多 200 个字符。'}, 422)
-        if query.isdigit() and request.query_params.get('field') != 'authors' and not request.query_params.get('author_id'):
+        field = request.query_params.get('field', 'all')
+        if len(query) > (600 if field == 'body' else 200):
+            return response({'error': 'invalid_query', 'message': '正文检索最多 600 个字符。' if field == 'body' else '搜索词最多 200 个字符。'}, 422)
+        if field == 'body':
+            return body_search(dict(request.query_params))
+        number = article_number(query)
+        if number and field != 'authors' and not request.query_params.get('author_id'):
             with closing(Store(config)) as store:
-                rows = store.execute('SELECT * FROM papers WHERE number=%s', (query,))
+                rows = store.execute('SELECT * FROM papers WHERE number=%s', (number,))
             if rows:
                 from .index import project
                 p = project(rows[0])
@@ -226,7 +231,13 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                 resources.attach([item])
                 return response({'items': [item], 'total': 1, 'next_cursor': None, 'direct': True, 'partial': False})
         try:
-            value = search(dict(request.query_params))
+            if request.query_params.get('view', 'all') not in ('all', 'top'):
+                raise ValueError('Invalid result view')
+            if request.query_params.get('view') == 'top':
+                from .ranking import top
+                value = top(dict(request.query_params))
+            else:
+                value = search(dict(request.query_params))
             if value['items']:
                 attach_series(value['items'])
                 attach_author_references(value['items'])
@@ -236,6 +247,36 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
             return response({'error': 'invalid_query', 'message': '查询参数无效，请检查搜索词、年份或翻页链接。'}, 422)
         except sqlite3.OperationalError:
             return response({'error': 'search_busy', 'message': '检索超时或索引繁忙，请缩小范围后重试。'}, 503)
+
+    def body_search(params):
+        from .fulltext import search_body
+        try:
+            value = search_body(params)
+            if value['items']:
+                attach_series(value['items'])
+                attach_author_references(value['items'])
+                resources.attach(value['items'])
+            return response(value)
+        except (ValueError, TypeError):
+            return response({'error': 'invalid_query', 'message': '查询参数无效，请检查搜索词、年份或翻页链接。'}, 422)
+        except sqlite3.OperationalError:
+            return response({'error': 'search_busy', 'message': '检索超时或索引繁忙，请缩小范围后重试。'}, 503)
+
+    def passages(request):
+        number = request.path_params['number']
+        if not re.fullmatch(r'[0-9]{1,64}', number):
+            return response({'error': 'invalid_number'}, 422)
+        from .fulltext import paper_passages
+        try:
+            return response(paper_passages(number, dict(request.query_params)))
+        except (ValueError, TypeError):
+            return response({'error': 'invalid_query', 'message': '查询参数无效，请检查搜索词、年份或翻页链接。'}, 422)
+        except sqlite3.OperationalError:
+            return response({'error': 'search_busy', 'message': '检索超时或索引繁忙，请缩小范围后重试。'}, 503)
+
+    def fulltext_status(request):
+        from .fulltext import status
+        return response({'fulltext': status()})
 
     def paper(request):
         number = request.path_params['number']
@@ -326,6 +367,7 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
         from .patent_citations import routes as patent_citation_routes
         routes += patent_citation_routes(config, response)
         routes += [Route('/api/papers', papers), Route('/api/papers/{number}', paper),
+                   Route('/api/papers/{number}/passages', passages), Route('/api/fulltext/status', fulltext_status),
                    Route('/api/venues', venues), Route('/api/overview', overview),
                    Route('/api/author-profiles/{source}/{author_id}', author_profile),
                    Route('/api/authors', authors), Route('/api/authors/{source}/{author_id}', author)]

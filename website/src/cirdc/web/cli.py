@@ -28,6 +28,11 @@ def run(config, action, interface='reader', host=None, port=None, username=None,
             raise ValueError('Index row budget must be positive')
         from .index import run_index
         print(json.dumps(run_index(config, max_rows=max_rows, once=once), default=str))
+    elif action == 'fulltext-index':
+        if max_rows is not None and max_rows <= 0:
+            raise ValueError('Index document budget must be positive')
+        from .fulltext import run_fulltext_index
+        print(json.dumps(run_fulltext_index(config, max_rows=max_rows, once=once), default=str))
     elif action in ('init-users', 'passwd'):
         from .auth import Accounts
         users = bootstrap_users(config, username) if action == 'init-users' else None

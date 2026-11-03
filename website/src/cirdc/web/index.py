@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 from html import unescape
 from .settings import connect, state_dir
 from .venues import parse_venue_any, add_filter as add_venue_filter
+from .query import article_number, describe, fts_expression, normalize_doi, parse
 
 
 def now():
@@ -291,6 +292,49 @@ def run_index(config, max_rows=None, once=False):
         lock.close()
 
 
+def filter_clauses(db, params, years, venue_any):
+    """Metadata filters shared by every search view; `d` is the docs table."""
+    clauses, args = [], []
+    from .authors import add_filter
+    author_filtered = add_filter(db, params, clauses, args)
+    if params.get('venue'):
+        clauses.append('d.venue IN (SELECT member FROM venue_members WHERE series=? UNION SELECT ?)')
+        args.extend([str(params['venue']), str(params['venue'])])
+    add_venue_filter(venue_any, clauses, args)
+    for key in ('kind', 'abstract_state', 'keywords_state'):
+        if params.get(key):
+            if key == 'kind':
+                clauses.append("(CASE WHEN d.kind IN ('Journals','Magazines','Early Access Articles') THEN 'Journals' ELSE d.kind END)=?")
+                args.append(str(params[key]))
+            else:
+                clauses.append('d.' + key + '=?'); args.append(str(params[key]))
+    for key, op in [('year_from', '>='), ('year_to', '<=')]:
+        if key in years:
+            clauses.append('d.year' + op + '?'); args.append(years[key])
+    filtered = author_filtered or bool(venue_any) or any(params.get(k) for k in ('kind', 'venue', 'year_from', 'year_to', 'abstract_state', 'keywords_state'))
+    return clauses, args, author_filtered, filtered
+
+
+def interpret(params, field):
+    """Exact lookups first, then FTS groups with optional equivalent-alias expansion."""
+    query = str(params.get('q') or '').strip()
+    terms = params.get('terms') or 'expand'
+    if terms not in ('expand', 'exact'):
+        raise ValueError('Invalid term mode')
+    if not query or field == 'authors':
+        return {'terms': terms}
+    number = article_number(query)
+    if number:
+        return {'terms': terms, 'number': number}
+    doi = normalize_doi(query)
+    if doi:
+        return {'terms': terms, 'doi': doi}
+    groups = parse(query, terms)
+    if not groups:
+        raise ValueError('Enter a searchable word')
+    return {'terms': terms, 'groups': groups}
+
+
 def _search_uncached(params):
     totals = params.get('totals', 'include')
     if totals not in ('include', 'defer', 'only'):
@@ -309,40 +353,18 @@ def _search_uncached(params):
         order = params.get('sort', 'relevance' if query else 'year')
         if order not in ('relevance', 'year'):
             raise ValueError('Invalid sort order')
-        clauses, args = [], []
         venue_any = parse_venue_any(params.get('venue_any'))
-        from .authors import add_filter
-        author_filtered = add_filter(db, params, clauses, args)
-        author_query = field == 'authors' and bool(query)
-        use_fts = bool(query and not author_query and not query.isdigit() and not re.match(r'^(?:https?://(?:dx\.)?doi\.org/)?10\.\d+/', query, re.I))
-        if author_query:
-            pass
-        elif query.isdigit():
-            clauses.append('d.number=?'); args.append(query)
-        elif query and not use_fts:
-            clauses.append('d.doi=?'); args.append(re.sub(r'^https?://(?:dx\.)?doi\.org/', '', query, flags=re.I).lower())
+        understood = interpret(params, field)
+        use_fts = 'groups' in understood
+        clauses, args = [], []
+        if understood.get('number'):
+            clauses.append('d.number=?'); args.append(understood['number'])
+        elif understood.get('doi'):
+            clauses.append('d.doi=?'); args.append(understood['doi'])
         elif use_fts:
-            words = re.findall(r'[^\W_]+', query, re.UNICODE)
-            if not words:
-                raise ValueError('Enter a searchable word')
-            expression = ' AND '.join('"' + w.replace('"', '""') + '"' for w in words[:30])
-            if field != 'all':
-                expression = field + ':(' + expression + ')'
-            clauses.append('search MATCH ?'); args.append(expression)
-        if params.get('venue'):
-            clauses.append('d.venue IN (SELECT member FROM venue_members WHERE series=? UNION SELECT ?)')
-            args.extend([str(params['venue']), str(params['venue'])])
-        add_venue_filter(venue_any, clauses, args)
-        for key in ('kind', 'abstract_state', 'keywords_state'):
-            if params.get(key):
-                if key == 'kind':
-                    clauses.append("(CASE WHEN d.kind IN ('Journals','Magazines','Early Access Articles') THEN 'Journals' ELSE d.kind END)=?")
-                    args.append(str(params[key]))
-                else:
-                    clauses.append('d.' + key + '=?'); args.append(str(params[key]))
-        for key, op in [('year_from', '>='), ('year_to', '<=')]:
-            if key in years:
-                clauses.append('d.year' + op + '?'); args.append(years[key])
+            clauses.append('search MATCH ?'); args.append(fts_expression(understood['groups'], None if field == 'all' else field))
+        extra, extra_args, author_filtered, filtered = filter_clauses(db, params, years, venue_any)
+        clauses += extra; args += extra_args
         ranked = use_fts and order == 'relevance'
         count_clauses, count_args = list(clauses), tuple(args)
         fingerprint = hashlib.sha256(json.dumps({k: str(v) for k, v in sorted(params.items()) if k not in ('cursor', 'totals')}, sort_keys=True).encode()).hexdigest()[:16]
@@ -359,7 +381,6 @@ def _search_uncached(params):
                     args.extend([int(cursor['year']), int(cursor['year']), str(cursor['order_number']), str(cursor['order_number']), str(cursor['number'])])
             except (ValueError, KeyError, TypeError, json.JSONDecodeError):
                 raise ValueError('Invalid page cursor') from None
-        filtered = author_filtered or bool(venue_any) or any(params.get(k) for k in ('kind', 'venue', 'year_from', 'year_to', 'abstract_state', 'keywords_state'))
         impossible = False
         if use_fts:
             for field_name, index_name in [('abstract_state', 'docs_abstract_year'), ('keywords_state', 'docs_keywords_year')]:
@@ -369,7 +390,7 @@ def _search_uncached(params):
                     impossible = True
         source = ('search' if ranked and not filtered else
                   'search CROSS JOIN docs d INDEXED BY docs_facets_by_id ON d.id=search.rowid') if use_fts else 'docs d'
-        if not query and not author_filtered:
+        if not use_fts and not understood.get('number') and not understood.get('doi') and not author_filtered:
             preferred = ('docs_venue_cover' if params.get('venue') or venue_any else
                          'docs_abstract_year' if params.get('abstract_state') else
                          'docs_keywords_year' if params.get('keywords_state') else
@@ -402,9 +423,19 @@ def _search_uncached(params):
             stale = time.time() - datetime.fromisoformat(meta['checked_at']).timestamp() > 120
         except (KeyError, TypeError, ValueError):
             stale = True
-        return {'items': rows, 'total': total, 'next_cursor': cursor, 'index': meta,
+        return {'items': rows, 'total': total, 'next_cursor': cursor, 'index': meta, 'query': public_query(understood),
                 'partial': meta.get('phase') != 'ready' or bool(meta.get('error')) or stale or
                            (author_filtered and meta.get('authors_phase') != 'ready')}
+
+
+def public_query(understood):
+    value = {'terms': understood.get('terms', 'expand')}
+    for key in ('number', 'doi'):
+        if understood.get(key):
+            value[key] = understood[key]
+    if understood.get('groups'):
+        value['groups'] = describe(understood['groups'])
+    return value
 
 
 _RESULTS = OrderedDict()

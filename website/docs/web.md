@@ -61,7 +61,14 @@ render placeholders privately and retain the installed environment during releas
 
 The FTS5 index uses SQLite's Unicode tokenizer and searches title, ordered author
 names, classified keywords, and abstract text. BM25 weights are 8/3/5/1.
-Searches match all entered words; raw FTS expressions are not accepted. Filter
+Searches match all entered words; raw FTS expressions are not accepted. Quoted text is
+an exact phrase. Recognized technical terms form one group of equivalent spellings
+(for example SAR ADC / successive-approximation ADC, ΔΣ / ΣΔ / delta-sigma / DSM ADC,
+BBPLL / bang-bang PLL, TI ADC / time-interleaved ADC, SerDes, PLL, VCO); related concepts
+such as BBPD for BBPLL are shown as suggestions and never matched. `terms=exact` disables
+equivalents. DOI input accepts `doi:`, `DOI `, doi.org and dx.doi.org links and
+percent-encoding, then performs an exact lookup; IEEE Xplore document links resolve to
+the article number. The equivalence table lives in `src/cirdc/web/query.py`. Filter
 parameters and DOI lookups are bound SQL values. Conference-series filters
 include individual editions from publication history.
 
@@ -125,6 +132,45 @@ index become ready. A process lock prevents duplicate indexers. SQLite uses
 rollback journaling, not WAL, for the installed SQLite 3.34 runtime. Insufficient
 disk space pauses progress without deleting the index. Details remain available
 by article number during backfill; partial search coverage is labeled.
+
+## Result views and full-text passages
+
+`GET /api/papers` keeps the complete, cursor-paged result list with exact totals
+(`view` omitted). `view=top&k=10..100` returns the most relevant papers with the
+fields and spellings that matched, an excerpt with highlight offsets, and the exact
+number of matching papers; it never replaces the complete list. Ranking places exact
+DOI/number lookups, whole-title matches and full author-name matches first, then
+weights title, keyword, author and abstract hits. Both views share query, filters
+and the equivalent-spelling setting.
+
+`field=body` searches an optional paragraph index of already cached, cleaned article
+bodies. Queries of six or more words first look for the exact word sequence, ignoring
+case, punctuation, whitespace and line breaks (`match=exact`). Without such a passage
+the response is labelled `approximate`: candidates are recalled by their rarest
+content words and kept only when one passage contains at least 60% of the content
+words; these are never presented as the source of the sentence. Shorter queries
+require every term (or one of its equivalents) in the same passage. Results are
+papers with their best passages, section names, highlight offsets, the number of
+matching passages and the indexed document version. `GET /api/papers/{number}/passages`
+lists every hit in reading order and reports `indexed`, `not_indexed` (a cached body
+awaits indexing), `no_body` (the provider has no body), `unknown` (catalog still
+synchronizing) or `disabled`. `GET /api/fulltext/status` reports indexed documents,
+cataloged bodies and pending work; the interface shows this scope with every
+full-text result and never implies that all papers have searchable bodies.
+
+The paragraph index is `fulltext.sqlite` in the website state directory. Run
+`cirdc web fulltext-index [--max-rows N] [--once]` with the reader's resource
+providers enabled; it requires one provider implementing `agent_document_catalog`
+(see [Agent access](agent-api.md)). The indexer reads cached documents through
+`agent_document`, stores passages with their version, ordinal and nearest heading,
+and resumes from its saved catalog cursor. It never calls ensure hooks and never
+starts acquisition, conversion or collection.
+
+Reader links carry `passage`, `v` and `q`. The reader finds the passage by ordinal
+in the displayed version, confirms its first words, and otherwise relocates it by
+wording or reports that it is absent. Highlighting uses CSS highlights without
+changing the document markup, so contents, formulas, figures and reference jumps
+keep working. A floating bar moves between all hits of the query in that paper.
 
 ## Administration and verification
 

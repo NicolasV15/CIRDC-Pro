@@ -17,7 +17,7 @@ def parser():
     web = sub.add_parser('web', help='Authenticated browser and administrator interfaces')
     web.add_argument('--config', default=argparse.SUPPRESS)
     web.add_argument('--json', action='store_true', default=argparse.SUPPRESS)
-    web.add_argument('action', choices=['serve', 'init-users', 'passwd', 'init-index', 'index'])
+    web.add_argument('action', choices=['serve', 'init-users', 'passwd', 'init-index', 'index', 'fulltext-index'])
     web.add_argument('--interface', choices=['reader', 'admin'], default='reader')
     web.add_argument('--host')
     web.add_argument('--port', type=int)

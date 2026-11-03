@@ -10,13 +10,14 @@ import SelectionCopy from './SelectionCopy';
 import PageSizeControl,{normalizePageSize,storedPageSize,pageSizePreference} from './PageSizeControl';
 import PaperSelectionToolbar from './PaperSelectionToolbar';
 import {OverviewCards} from './Overview';
+import SearchInsights,{MatchReasons,PassageHits,Highlighted} from './SearchInsights';
 import PaperDetail,{readingHref} from './PaperDetail';
 import {AuthorLinks,AuthorSearch} from './AuthorSearch';
 import {VenueFamilyFilter,VenueTags} from './VenueTags';
 import {orderVenueFamilies,selectedVenueFamilies,venueFamilies,venueNumbers} from './venueFamilies';
 import {resultSelection} from './resultSelection';
 import type {SelectedPaper} from './paperBatch';
-import type {Filters,Index,Paper,Venue} from './types';
+import type {Filters,FulltextStatus,Index,Paper,QueryInfo,Venue} from './types';
 const BatchDownloadDialog=React.lazy(()=>import('./BatchDownloadDialog'));
 const CitationDialog=React.lazy(()=>import('./CitationDialog'));
 const sidebarQuery='(min-width:1024px)';
@@ -41,6 +42,7 @@ export default function ReaderPage(){
  const latestRequest=useRef(0);
  const totalAbort=useRef<AbortController|null>(null),totalFrames=useRef<number[]>([]),totalUrl=useRef(''),venuesRequest=useRef<Promise<void>|null>(null);
  const [totalFailed,setTotalFailed]=useState(false),[venuesFailed,setVenuesFailed]=useState(false);
+ const [insight,setInsight]=useState<{query?:QueryInfo;fulltext?:FulltextStatus|null;exact:boolean}>({exact:true});
  function cancelTotal(){totalAbort.current?.abort();totalFrames.current.forEach(cancelAnimationFrame);totalFrames.current=[];}
  useEffect(()=>()=>cancelTotal(),[]);
  async function readTotal(url:string,request:number){
@@ -60,7 +62,7 @@ export default function ReaderPage(){
   const pending=api('/api/venues').then(value=>{if(!Array.isArray(value.items))throw Error('invalid_venues');setVenues(value.items);}).catch(()=>{venuesRequest.current=null;setVenuesFailed(true);});
   venuesRequest.current=pending;return pending;
  }
- const defaults:Filters={limit:storedPageSize(),venue_tags:'',q:'',field:'all',kind:'',venue:'',year_from:'',year_to:'',abstract_state:'',keywords_state:'',sort:'relevance',author_source:'',author_id:'',author_unidentified:''};
+ const defaults:Filters={limit:storedPageSize(),venue_tags:'',q:'',field:'all',kind:'',venue:'',year_from:'',year_to:'',abstract_state:'',keywords_state:'',sort:'relevance',author_source:'',author_id:'',author_unidentified:'',view:'',k:'',terms:''};
  const initial={...defaults,...Object.fromEntries(new URLSearchParams(window.location.search))};
  initial.limit=normalizePageSize(initial.limit,defaults.limit);
  initial.venue_tags=selectedVenueFamilies(initial.venue_tags).map(f=>f.key).join(',');
@@ -86,6 +88,7 @@ export default function ReaderPage(){
   const r=await api('/api/papers?'+params);
   if(request!==latestRequest.current)return;
   dispatchResults({type:more?'append':'replace',rows:r.items});
+  setInsight({query:r.query,fulltext:r.fulltext,exact:r.total_exact!==false});
   setCursor(r.next_cursor);
   if(typeof r.total==='number')setTotal(r.total);else queueTotal(params,request);
   setPartial(!!r.partial);
@@ -108,13 +111,13 @@ export default function ReaderPage(){
   return;
  }const resetAuthor=next.field==='authors'&&next.q!==applied.q;const f={...next,venue:value,...(resetAuthor?{author_source:'',author_id:'',author_unidentified:''}:{})};setFilters(f);setApplied(f);history.replaceState({},'',query(f));void load(f);}
  function submit(e:React.FormEvent){e.preventDefault();applySearch(filters);}
- function updateSearchOption(key:'field'|'sort',value:string){if(filters[key]===value)return;const next={...filters,[key]:value};setFilters(next);applySearch(next);}
+ function updateSearchOption(key:'field'|'sort'|'view'|'k'|'terms',value:string){if(filters[key]===value)return;const next={...filters,[key]:value};setFilters(next);applySearch(next);}
  // A removed control would drop keyboard focus to the page; continue from the results instead.
  function keepFocus(){requestAnimationFrame(()=>{if(!document.activeElement||document.activeElement===document.body)resultsTitle.current?.focus({preventScroll:true});});}
  // Removing one applied condition keeps the other applied values and discards unapplied drafts.
  function removeFilter(patch:Partial<Filters>){const next={...applied,...patch};if('venue' in patch)setVenueText(next.venue);applySearch(next,next.venue);keepFocus();}
  function clearAll(){const cleared={...defaults,limit:applied.limit};setFilters(cleared);setVenueText('');setApplied(cleared);history.replaceState({},'','/?limit='+cleared.limit);void load(cleared);keepFocus();}
- function open(number:string){setDetail(number);history.pushState({},'','/papers/'+number);window.scrollTo(0,0);}
+ function open(number:string,href='/papers/'+number){history.pushState({},'',href);setDetail(number);window.scrollTo(0,0);}
  function back(){setDetail(null);history.pushState({},'',query(applied));if(!rows.length)void load(applied);}
  function searchFromPaper(text:string){
   const next={...defaults,limit:applied.limit,q:text,field:'all',sort:'relevance'};
@@ -137,14 +140,16 @@ export default function ReaderPage(){
   ...(applied.keywords_state?[{key:'keywords',label:t('关键词：')+t(contentStateNames[applied.keywords_state]||applied.keywords_state),remove:{keywords_state:''}}]:[]),
   ...families.map(f=>({key:'family-'+f.key,label:f.label,remove:{venue_tags:venueFamilies.filter(x=>x.key!==f.key&&families.some(s=>s.key===x.key)).map(x=>x.key).join(',')}})),
  ];
- const activeCount=chips.length;
+ const activeCount=chips.length,topView=applied.view==='top';
  return <><main id="main" className="workspace reader-workspace" data-copy-scope>
   <div className="reader-hero"><div className="reader-hero-title"><h1 ref={browseTop} tabIndex={-1}>{t('论文检索')}</h1><p className="muted">{t('从标题到摘要，查找你关心的电路、方法与作者。')}</p></div><OverviewCards overview={index?.overview} compact/></div>
   <form className="search-box" role="search" aria-label={t('文献库检索')} onSubmit={submit}>
-   <div className="search-main"><Icon name="search" className="search-icon"/><input aria-label={t('搜索论文')} placeholder={filters.field==='authors'?t('输入作者姓名或 IEEE 作者 ID'):t('搜索论文、作者、关键词，或输入编号 / DOI')} value={filters.q} onChange={e=>update('q',e.target.value)}/><button className="primary" disabled={busy||invalidYearRange(filters)}>{t('检索')}</button></div>
+   <div className="search-main"><Icon name="search" className="search-icon"/><input aria-label={t('搜索论文')} placeholder={filters.field==='authors'?t('输入作者姓名或 IEEE 作者 ID'):filters.field==='body'?t('输入正文中的词、短语或一句原文'):t('搜索论文、作者、关键词，或输入编号 / DOI')} maxLength={filters.field==='body'?600:200} value={filters.q} onChange={e=>update('q',e.target.value)}/><button className="primary" disabled={busy||invalidYearRange(filters)}>{t('检索')}</button></div>
    <div className="search-options">
-    <div className="search-option-section"><span className="search-option-label">{t('检索字段')}</span><div className="search-choice-group field-choices" role="group" aria-label={t('检索字段')}>{[['all',t('全部')],['title',t('标题')],['authors',t('作者')],['keywords',t('关键词')],['abstract',t('摘要')]].map(([v,l])=><button key={v} type="button" className="search-choice" aria-pressed={filters.field===v} onClick={()=>updateSearchOption('field',v)}>{l}</button>)}</div></div>
-    <div className="search-option-section"><span className="search-option-label">{t('排序')}</span><div className="search-choice-group" role="group" aria-label={t('排序')}>{[['relevance',t('相关度')],['year',t('年份从新到旧')]].map(([v,l])=><button key={v} type="button" className="search-choice" aria-pressed={filters.sort===v} onClick={()=>updateSearchOption('sort',v)}>{l}</button>)}</div></div>
+    <div className="search-option-section"><span className="search-option-label">{t('检索字段')}</span><div className="search-choice-group field-choices" role="group" aria-label={t('检索字段')}>{[['all',t('全部')],['title',t('标题')],['authors',t('作者')],['keywords',t('关键词')],['abstract',t('摘要')],['body',t('正文')]].map(([v,l])=><button key={v} type="button" className="search-choice" aria-pressed={filters.field===v} onClick={()=>updateSearchOption('field',v)}>{l}</button>)}</div></div>
+    <div className="search-option-section"><span className="search-option-label">{t('结果')}</span><div className="search-choice-group" role="group" aria-label={t('结果视图')}>{[['',t('全部匹配')],['top',t('最相关')]].map(([v,l])=><button key={v||'all'} type="button" className="search-choice" aria-pressed={filters.view===v} onClick={()=>updateSearchOption('view',v)}>{l}</button>)}</div>{filters.view==='top'&&<select className="top-k-select" aria-label={t('返回篇数')} value={filters.k||'20'} onChange={e=>updateSearchOption('k',e.target.value==='20'?'':e.target.value)}>{['10','20','50','100'].map(k=><option key={k} value={k}>{t('前 {k} 篇',{k})}</option>)}</select>}</div>
+    {filters.view!=='top'&&<div className="search-option-section"><span className="search-option-label">{t('排序')}</span><div className="search-choice-group" role="group" aria-label={t('排序')}>{[['relevance',t('相关度')],['year',t('年份从新到旧')]].map(([v,l])=><button key={v} type="button" className="search-choice" aria-pressed={filters.sort===v} onClick={()=>updateSearchOption('sort',v)}>{l}</button>)}</div></div>}
+    <label className="alias-toggle" title={t('关闭后只匹配输入的原写法')}><input type="checkbox" checked={filters.terms!=='exact'} onChange={e=>updateSearchOption('terms',e.target.checked?'':'exact')}/><span>{t('等价写法扩展')}</span></label>
    </div>
   </form>
   <div className="reader-layout">
@@ -169,16 +174,18 @@ export default function ReaderPage(){
     {applied.field==='authors'&&(applied.q.trim()||applied.author_id)&&<AuthorSearch query={applied.q} authorId={applied.author_id} source={applied.author_source||'ieee'} fetcher={api} onSelect={author=>applySearch({...filters,field:'authors',q:applied.q,author_source:author.source,author_id:author.author_id,author_unidentified:''})} onUnknown={()=>applySearch({...filters,field:'authors',q:applied.q,author_source:'',author_id:'',author_unidentified:'1'})}/>}
     {(applied.author_id||applied.author_unidentified)&&<div className="selected-author" role="status"><Icon name="user"/><span>{applied.author_id?t('当前限定作者：IEEE ID ')+applied.author_id:t('当前查看：未提供作者 ID 的署名记录')}</span><button type="button" className="ghost" onClick={()=>{applySearch({...filters,author_id:'',author_source:'',author_unidentified:''});keepFocus();}}>{t('清除作者限定')}</button></div>}
     {activeCount>0&&<div className="active-filters" role="group" aria-label={t('当前条件')}><span className="active-filters-label">{t('当前条件')}</span>{chips.map(chip=><button type="button" key={chip.key} className="filter-chip" aria-label={t('移除条件：{name}',{name:chip.label})} onClick={()=>removeFilter(chip.remove)}><span>{chip.label}</span><Icon name="close"/></button>)}<button type="button" className="text-button" onClick={clearAll}>{t('清除全部条件')}</button></div>}
-    <div className="result-toolbar"><h2 id="results-title" ref={resultsTitle} tabIndex={-1}>{applied.q?t('检索结果'):t('浏览论文')}</h2><span className="result-count" role="status"><span className="result-total">{totalFailed?t('总数暂不可用'):total===null?t('正在统计总数…'):t('共 {n} 条',{n:fmt(total)})}{totalFailed&&totalUrl.current&&<button type="button" className="text-button" onClick={()=>void readTotal(totalUrl.current,latestRequest.current)}>{t('重试统计')}</button>}</span><span className="result-loaded">{t('已载入 {n} 条',{n:fmt(rows.length)})}</span>{partial&&<span className="result-partial">{t('索引覆盖或同步尚未完成')}</span>}</span><PageSizeControl value={applied.limit} onChange={changePageSize}/></div>
+    {applied.q.trim()&&<SearchInsights query={insight.query} fulltext={insight.fulltext} field={applied.field} onTerm={term=>applySearch({...filters,q:term})}/>}
+    <div className="result-toolbar"><h2 id="results-title" ref={resultsTitle} tabIndex={-1}>{topView?t('最相关论文'):applied.q?t('检索结果'):t('浏览论文')}</h2><span className="result-count" role="status"><span className="result-total">{totalFailed?t('总数暂不可用'):total===null?t('正在统计总数…'):topView?t('前 {k} 篇 · 共 {n} 篇匹配',{k:fmt(rows.length),n:fmt(total)}):insight.exact?t('共 {n} 条',{n:fmt(total)}):t('至少 {n} 条（近似候选已截断）',{n:fmt(total)})}{totalFailed&&totalUrl.current&&<button type="button" className="text-button" onClick={()=>void readTotal(totalUrl.current,latestRequest.current)}>{t('重试统计')}</button>}</span><span className="result-loaded">{t('已载入 {n} 条',{n:fmt(rows.length)})}</span>{partial&&<span className="result-partial">{t('索引覆盖或同步尚未完成')}</span>}</span>{!topView&&<PageSizeControl value={applied.limit} onChange={changePageSize}/>}</div>
     <PaperSelectionToolbar total={rows.length} count={selected.length} disabled={busy} onAll={checked=>dispatchResults({type:'all',checked})} onCite={()=>setCitationNumbers(selected.map(p=>p.number))} onDownload={()=>setDownloadSelection(selected)}/>
     {error&&<div className="error-box" role="alert">{t(error)}</div>}
-    {busy&&!rows.length?<div className="paper-list is-loading" role="status"><span className="sr-only">{t('正在检索…')}</span>{[0,1,2].map(i=><div className="paper-skeleton" key={i} aria-hidden="true"><i/><i/><i/></div>)}</div>:!rows.length?<div className="empty"><Icon name="search"/><h3>{t('当前范围未找到记录')}</h3><p>{partial?t('搜索索引仍在构建或同步，可直接输入论文编号查看。'):t('试试其他搜索词，或放宽刊会和年份条件。')}</p>{activeCount>0&&<button type="button" onClick={clearAll}>{t('清除全部条件')}</button>}</div>:<div className="paper-list">{rows.map(p=><article className={'paper-row'+(selectedKeys.has(p.number)?' paper-selected':'')} key={p.number}>
+    {busy&&!rows.length?<div className="paper-list is-loading" role="status"><span className="sr-only">{t('正在检索…')}</span>{[0,1,2].map(i=><div className="paper-skeleton" key={i} aria-hidden="true"><i/><i/><i/></div>)}</div>:!rows.length?<div className="empty"><Icon name="search"/><h3>{applied.field==='body'&&!applied.q.trim()?t('输入要在正文中查找的词句'):t('当前范围未找到记录')}</h3><p>{applied.field==='body'?t('正文检索只覆盖已获取并已索引的正文；未出现不代表论文中不存在该内容。'):partial?t('搜索索引仍在构建或同步，可直接输入论文编号查看。'):t('试试其他搜索词，或放宽刊会和年份条件。')}</p>{activeCount>0&&<button type="button" onClick={clearAll}>{t('清除全部条件')}</button>}</div>:<div className="paper-list">{rows.map(p=><article className={'paper-row'+(selectedKeys.has(p.number)?' paper-selected':'')} key={p.number}>
      <label className="paper-selection-control"><input type="checkbox" checked={selectedKeys.has(p.number)} disabled={busy} aria-label={t('选择论文：')+(p.title||p.number)} onChange={e=>selectPapers([p],e.target.checked)}/></label>
      <div className="paper-body">
       <a className="paper-title" data-copy-content="title" href={'/papers/'+p.number} onClick={e=>{if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();open(p.number);}}><ScientificTitle value={p.title} fallback={t('未提供标题')}/></a>
       <AuthorLinks references={p.author_refs} fallback={p.authors}/>
-      <div className="paper-source"><span className="paper-year">{p.year||'—'}</span>{p.kind&&<span className="paper-kind">{contentTypeLabel(p.kind)}</span>}<div className="publication-line"><VenueTags paper={p}/><p className="publication">{p.publication}</p></div></div>
-      {p.snippet&&<AbstractPreview number={p.number} preview={p.snippet} fetcher={api}/>}
+      <div className="paper-source">{p.position&&<span className="paper-position">#{p.position}</span>}<span className="paper-year">{p.year||'—'}</span>{p.kind&&<span className="paper-kind">{contentTypeLabel(p.kind)}</span>}<div className="publication-line"><VenueTags paper={p}/><p className="publication">{p.publication}</p></div></div>
+      {topView&&<MatchReasons paper={p}/>}
+      {applied.field==='body'?<PassageHits paper={p} query={applied.q} terms={applied.terms} onOpen={open}/>:p.excerpt?<p className="match-excerpt"><span>{t(p.excerpt.field==='keywords'?'关键词':'摘要')}</span><Highlighted value={p.excerpt}/></p>:p.snippet&&<AbstractPreview number={p.number} preview={p.snippet} fetcher={api}/>}
       <div className="paper-meta"><button type="button" className="citation-trigger" aria-label={t('获取引用格式：')+(p.title||p.number)} onClick={()=>setCitationNumbers([p.number])}><Icon name="quote"/>{t('引用')}</button>{p.resources?.[0]&&readingHref(p.resources[0])&&<a className="button resource-shortcut" href={readingHref(p.resources[0])} target="_blank" rel="noopener noreferrer"><Icon name="file"/>{localizedText(p.resources[0].label_i18n,p.resources[0].label)}<Icon name="external" className="icon-trailing"/></a>}<code className="paper-number" title={t('论文编号')}>{p.number}</code></div>
      </div>
     </article>)}</div>}

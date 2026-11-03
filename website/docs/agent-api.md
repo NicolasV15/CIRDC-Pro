@@ -77,6 +77,7 @@ the thread pool. The generic website never imports a private provider module.
 | `agent_snapshot(number, resource, reference=None)` | Read-only normalized status, optional opaque JSON `reference`, and verified `jobs` with ID, kind, state and explicit parent ID when known. With a reference, follow those actual jobs/dependencies; do not choose an unrelated newer attempt. |
 | `agent_ensure(number, resource, rate_key, retry=False)` | Reuse cached/active resources; submit missing resources only. Failed or partial work requires explicit retry. Return the same normalized status with a durable reference. |
 | `agent_document(number, version=None)` | Read cleaned HTML plus `version`, `source`, `toc`, `state`, `assets_ready` and `assets_total`. A supplied version must select exactly that immutable document. |
+| `agent_document_catalog(cursor=None, limit=100)` | Optional, read-only. Return `items` with `number`, `version`, `state` (`ready`/`partial` bodies are indexed; other states remove passages) and optional `source`, plus an opaque resumable `cursor`, `more` and optional `total`. Later calls with the last cursor return new or changed documents. Used only by `cirdc web fulltext-index`. |
 | `agent_file(number, asset_id=None, version=None)` | Return a verified server-local `path` and `media_type` for streaming. An absent asset ID means the original PDF. Asset requests require a document version. Paths never enter client JSON. |
 
 Status fields are `state` (`missing`, `pending`, `ready`, `partial`, `unavailable`,
