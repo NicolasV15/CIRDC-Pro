@@ -1,13 +1,14 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {locale,t} from './i18n';
 import {authorSearchHref,authorProfileHref,ieeeAuthorHref,otherAuthorIdentities,type AuthorReference,type AuthorIdentity} from './authorLinks';
+import Icon from './Icon';
 
 type Fetcher=(path:string)=>Promise<any>;
 const format=(value:number)=>Number(value).toLocaleString(locale());
 function IeeeSourceLink({author,name=false}:{author:{source:string;author_id:string|null;name?:string;display_name?:string};name?:boolean}){
  const href=ieeeAuthorHref(author);
  if(!href)return null;
- return <a className="ieee-author-source" href={href} target="_blank" rel="noopener noreferrer" title={t('在新标签页查看 IEEE Xplore 作者页面')} data-ieee-author-id={author.author_id}>{name?(author.name||author.display_name||author.author_id):t('查看 IEEE Xplore 作者原始链接')} <span aria-hidden="true">↗</span></a>;
+ return <a className="ieee-author-source" href={href} target="_blank" rel="noopener noreferrer" title={t('在新标签页查看 IEEE Xplore 作者页面')} data-ieee-author-id={author.author_id}>{name?(author.name||author.display_name||author.author_id):t('查看 IEEE Xplore 作者原始链接')}<Icon name="external" className="icon-trailing"/></a>;
 }
 function AuthorEntry({author,detail=false,preview=false}:{author:AuthorReference;detail?:boolean;preview?:boolean}){
  const href=authorSearchHref(author),name=author.name||t('未提供署名');
@@ -52,7 +53,7 @@ export function AuthorSearch({query,authorId,source='ieee',fetcher,onSelect,onUn
  const candidates=otherAuthorIdentities(matches,source||'ieee',authorId);
  function select(author:AuthorIdentity){setExpanded(false);onSelect(author)}
  return <section className="author-matches panel" aria-label={t('作者身份分类')}><div className="section-heading"><h2>{t('作者身份 · 按 IEEE ID 区分')}</h2>{(selectedBusy||busy)&&<span className="muted">{t('查找中…')}</span>}</div>
-  {authorId&&<div className="pinned-author" aria-label={t('已选作者')}><div className="author-match selected" data-author-id={authorId}>{pinned?<IdentityContent author={pinned}/>:<><strong>{t('已选作者')}</strong><span>{t('IEEE ID: ')}{authorId}</span></>}</div><a className="author-profile-link" href={authorProfileHref({source:source||'ieee',author_id:authorId})} target="_blank" rel="noopener noreferrer">{t('作者资料')} ↗</a><IeeeSourceLink author={{source:source||'ieee',author_id:authorId}}/><p className="hint">{t('当前按此作者 ID 检索论文，其他同名作者默认收起。')}</p>{selectedError&&<p className="error" role="alert">{t(selectedError)}</p>}<button type="button" className="author-candidates-toggle" aria-expanded={expanded} aria-controls={candidatesId} onClick={()=>setExpanded(value=>!value)}>{expanded?t('收起作者候选列表'):t('展开其他同名作者')}</button></div>}
+  {authorId&&<div className="pinned-author" aria-label={t('已选作者')}><div className="author-match selected" data-author-id={authorId}>{pinned?<IdentityContent author={pinned}/>:<><strong>{t('已选作者')}</strong><span>{t('IEEE ID: ')}{authorId}</span></>}</div><a className="author-profile-link" href={authorProfileHref({source:source||'ieee',author_id:authorId})} target="_blank" rel="noopener noreferrer"><Icon name="user"/>{t('作者资料')}<Icon name="external" className="icon-trailing"/></a><IeeeSourceLink author={{source:source||'ieee',author_id:authorId}}/><p className="hint">{t('当前按此作者 ID 检索论文，其他同名作者默认收起。')}</p>{selectedError&&<p className="error" role="alert">{t(selectedError)}</p>}<button type="button" className="author-candidates-toggle" aria-expanded={expanded} aria-controls={candidatesId} onClick={()=>setExpanded(value=>!value)}>{expanded?t('收起作者候选列表'):t('展开其他同名作者')}</button></div>}
   {expanded&&<div id={candidatesId} className="author-candidates"><p className="muted">{t('同名但 ID 不同的作者分别列出。选择一个身份，查看该 ID 的论文；同一 ID 的署名变体会一并关联。')}</p>{index&&index.authors_phase!=='ready'&&<p className="author-index-note">{t('作者索引补建中：已检查 ')}{format(index.authors_papers_seen||0)}{t(' 篇，当前结果可能不完整。')}</p>}{error&&<p className="error" role="alert">{t(error)}</p>}
    <div className="author-match-grid">{candidates.map(author=><div className="author-candidate-card" key={author.identity_key}><button type="button" className="author-match" data-author-id={author.author_id} onClick={()=>select(author)}><IdentityContent author={author}/></button><IeeeSourceLink author={author}/></div>)}</div>
    {!busy&&!candidates.length&&!error&&<p className="muted">{authorId?t('当前索引中没有其他匹配的作者身份。'):t('当前索引中没有匹配的已识别作者。')}</p>}{more&&<button type="button" disabled={busy} onClick={()=>void load(more)}>{t('更多作者身份')}</button>}{unknown>0&&<div className="unidentified-authors"><p>{t('另有 ')}{format(unknown)}{t(' 篇论文的匹配署名缺少作者 ID，暂不归并为同一个人。')}</p><button type="button" onClick={onUnknown}>{t('查看缺少 ID 的署名记录')}</button></div>}

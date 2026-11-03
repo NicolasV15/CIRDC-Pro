@@ -139,7 +139,7 @@ export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference
    <div className="document-layout">
     {body&&<div className="document-body" data-copy-content="body" ref={element} dangerouslySetInnerHTML={{__html:body}} onErrorCapture={event=>{const node=event.target;if(node instanceof HTMLImageElement){node.dataset.failed='1';node.alt=t('图片暂不可用')}}} onKeyDown={event=>{const node=event.target instanceof Element?event.target.closest('.document-citation-link[role="button"]'):null;if(node&&['Enter',' '].includes(event.key)&&activateReference(node))event.preventDefault();}} onClick={event=>{const node=event.target;if(event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.shiftKey&&activateReference(node)){event.preventDefault();return;}if(node instanceof Element&&node.closest('a.document-reference-link')&&event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.shiftKey&&!window.matchMedia(sidebarQuery).matches)setTocOpen(false);if(node instanceof HTMLImageElement&&node.dataset.failed!=='1'&&node.complete&&node.naturalWidth>0){event.preventDefault();setImage({src:node.src,alt:node.alt});}}}/>}
    </div>
-  {image&&<div className="document-lightbox" role="dialog" aria-modal="true" aria-label={t('查看大图')} onClick={()=>setImage(null)}><button type="button" onClick={()=>setImage(null)}>{t('关闭')}</button><img src={image.src} alt={image.alt}/></div>}
+  {image&&<div className="document-lightbox" role="dialog" aria-modal="true" aria-label={t('查看大图')} onClick={()=>setImage(null)}><button type="button" className="lightbox-close" onClick={()=>setImage(null)}>{t('关闭')}</button><img src={image.src} alt={image.alt}/></div>}
   </div>
   </section>
  </div>;

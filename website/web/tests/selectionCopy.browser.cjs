@@ -39,7 +39,7 @@ async function main(){
   const toolbar=()=>page.getByRole('toolbar',{name:'选区复制',exact:true});
   async function copy(format){const button=toolbar().getByRole('button',{name:format,exact:true});await button.waitFor();if(profile.touch)await button.tap();else await button.click();}
   async function fallback(){await page.getByRole('dialog').waitFor();assert(!(await page.getByRole('dialog').innerText()).includes('已复制'));return page.getByRole('textbox',{name:'格式源码',exact:true});}
-  async function close(){await page.getByRole('button',{name:'关闭复制预览',exact:true}).click();await page.waitForFunction(()=>!document.querySelector('.selection-copy-dialog'));}
+  async function close(){await page.getByRole('button',{name:'关闭复制预览',exact:true}).click();await page.waitForFunction(()=>!document.querySelector('.selection-copy-dialog'));await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));}
   await page.goto(origin+'/',{waitUntil:'networkidle'});await page.getByRole('button',{name:'中文',exact:true}).click();await page.locator('.paper-title .katex').waitFor();
   assert(!requests.some(p=>p.includes('SelectionCopyToolbar')),'Converter must not load before selection');
   const original=await select('.paper-title .scientific-title','bold',4);await toolbar().waitFor();assert(requests.some(p=>p.includes('SelectionCopyToolbar')));

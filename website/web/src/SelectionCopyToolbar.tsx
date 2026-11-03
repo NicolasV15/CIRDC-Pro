@@ -4,6 +4,7 @@ import {t,useLanguage} from './i18n';
 import {captureSelection} from './selectionContent';
 import type {CopyFormat,CopyResult,CopyWarning} from './selectionFormats';
 import type {CopySnapshot} from './selectionTypes';
+import Icon from './Icon';
 import './selectionCopy.css';
 
 const formats:CopyFormat[]=['markdown','latex','text'];
@@ -20,7 +21,7 @@ function Preview({result,format,onFormat,onClose,manual}:{result:CopyResult;form
  useEffect(()=>{const el=dialog.current;if(!el)return;el.showModal();output.current?.focus();output.current?.select();return()=>{if(el.open)el.close();};},[]);
  useEffect(()=>{output.current?.focus();output.current?.select();},[format]);
  return <dialog ref={dialog} className="citation-dialog selection-copy-dialog" data-copy-ui aria-labelledby="selection-copy-preview-title" onCancel={event=>{event.preventDefault();onClose();}}>
-  <header className="citation-header"><div><h2 id="selection-copy-preview-title">{t('选区格式文本')}</h2><p>{t(manual?'当前环境无法直接写入剪贴板，请复制下面的源码文本。':'下方为选区生成的格式源码。')}</p></div><button type="button" className="citation-close" aria-label={t('关闭复制预览')} onClick={onClose}>×</button></header>
+  <header className="citation-header"><div><h2 id="selection-copy-preview-title">{t('选区格式文本')}</h2><p>{t(manual?'当前环境无法直接写入剪贴板，请复制下面的源码文本。':'下方为选区生成的格式源码。')}</p></div><button type="button" className="citation-close" aria-label={t('关闭复制预览')} onClick={onClose}><Icon name="close"/></button></header>
   <div className="citation-body"><div className="citation-formats" role="group" aria-label={t('选择复制格式')}>{formats.map(key=><button type="button" key={key} aria-pressed={key===format} onClick={()=>onFormat(key)}>{t(labels[key])}</button>)}</div>
    <label className="citation-output-label">{t('格式源码')}<textarea ref={output} readOnly spellCheck={false} value={result.values[format]} aria-label={t('格式源码')}/></label>
    <div className="citation-actions"><button type="button" onClick={()=>{output.current?.focus();output.current?.select();}}>{t('全选文本')}</button><button type="button" onClick={onClose}>{t('关闭')}</button></div>

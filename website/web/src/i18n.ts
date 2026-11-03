@@ -499,7 +499,7 @@ const messages:Record<string,string>={
   "搜索可能尚未包含最近变更；详情仍直接读取数据库。": "Search may not include the latest changes. Paper details are read directly from the database.",
   "同步检查：": "Last synchronization check: ",
   "请从候选列表选择刊会，或输入刊会编号。": "Choose a venue from the suggestions or enter its number.",
-  "论文检索": "LITERATURE EXPLORER",
+  "论文检索": "Paper search",
   "探索论文与研究线索": "Explore papers and research ideas",
   "从标题到摘要，查找你关心的电路、方法与作者。": "Find circuits, methods and authors across titles and abstracts.",
   "筛选刊会、年份与补全状态": "Filter venues, years and completion",
@@ -743,6 +743,9 @@ Object.assign(messages,{"在新标签页查看 IEEE Xplore 作者页面": "View 
 Object.assign(messages,{"已收录":"Recorded","摘要与关键词齐全":"Abstract and keyword coverage","。统计仅反映已有元数据，不代表本轮新抓取或已人工验证。":". Counts reflect stored metadata and do not imply new collection or manual verification."});
 
 Object.assign(messages,{"阅读资料覆盖率":"Reading coverage","统计暂不可用":"Statistics unavailable","已关联 {n} 篇":"{n} linked","登记时间：":"Registered: ","数据库概览":"Database overview"});
+
+// Navigation, filter summaries and page landmarks.
+Object.assign(messages,{"跳到主要内容":"Skip to main content","主导航":"Main navigation","菜单":"Menu","账户菜单：{name}":"Account menu: {name}","当前账户":"Signed in as","工作台分区":"Workspace sections","搜索索引":"Search index","返回检索":"Back to search","IEEE Xplore 原文":"IEEE Xplore","论文内容":"Paper content","筛选":"Filters","更多条件":"More filters","应用筛选":"Apply filters","有未应用的更改":"Unapplied changes","当前条件":"Active filters","移除条件：{name}":"Remove filter: {name}","{n} 个条件生效中":"{n} active filters","刊会编号 {n}":"Publication {n}","{year} 年起":"From {year}","至 {year} 年":"Until {year}","摘要：":"Abstract: ","关键词：":"Keywords: ","索引覆盖或同步尚未完成":"Index coverage or sync is incomplete"});
 
 const storageKey='cirdc.ui.language';
 const listeners=new Set<()=>void>();

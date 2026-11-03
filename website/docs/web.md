@@ -367,8 +367,8 @@ are not inferred.
 
 ## Compact reader overview and optional document coverage
 
-The reader places its compact overview next to the page title on wide screens,
-with responsive stacking on narrow screens. `/api/overview` may include
+The reader places its compact overview next to the page title on wide screens;
+narrow screens show it as a horizontally scrollable row. `/api/overview` may include
 `overview.resource_coverage` and the same value under `index.overview`.
 
 Enabled resource providers can implement `coverage()` to return a localized
@@ -470,9 +470,9 @@ The paper detail header also provides **Cite**, opening the same citation dialog
 
 Paper details initially show the first three author names as compact links. Expand the author list to see every ordered signature, its existing IEEE ID and the original-author-link disclosure. Long expanded lists have their own scroll area. Short lists can expand their ID details as well. Expanding performs no author collection, and citation export continues to use the complete stored author array.
 
-The record row above the paper title groups **Cite** and **Read PDF** together. The PDF control is an enabled reader link when a PDF descriptor is available; otherwise it is a grey native disabled button with the missing/unavailable reason. Unrelated resources do not enable it. Other local resources remain in the publication sidebar when present; the PDF entry is not duplicated there.
+The record actions below the paper title group **Cite**, **Read PDF** and the IEEE Xplore source link. The PDF control is an enabled reader link when a PDF descriptor is available; otherwise it is a grey native disabled button with the missing/unavailable reason shown beside it. Unrelated resources do not enable it. Other local resources remain in the publication sidebar when present; the PDF entry is not duplicated there.
 
-Paper details use the same 1800 px maximum workspace width and responsive outer padding as the search page, including full available width for the paper title.
+The search page uses a centered workspace with a filter sidebar on wide screens and a collapsible **Filters** panel on narrow screens; applied conditions appear above the results and can be removed individually. Paper details follow the reading-layout page width with responsive outer padding.
 
 Search results offer a dropdown with 25, 50 or 100 records per page, applied immediately. The setting is stored in the browser and the `limit` URL parameter, survives returning from a paper, and remains when other filters are cleared. Historical custom sizes in saved preferences or URLs fall back to an available preset. A size change replaces the current result batch, resets its cursor and clears row selections. Load more continues to append the chosen batch size. The existing API limit and schema remain unchanged.
 
