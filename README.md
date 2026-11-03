@@ -29,7 +29,7 @@ are separate from the public metadata engine.
 
 The repository includes `cirdc-research` for paper search, full-text reading,
 original document retrieval and resuming resource requests. Developers can install
-it directly from a checkout with Python 3.10+; the installation works offline:
+it directly from a checkout with Python 3.10+. Site selection happens during installation:
 
 ```sh
 sh tools/install-skill --agent codex
@@ -44,8 +44,13 @@ Claude Code as symlinks to that one canonical source. It also works from another
 folder as `sh /path/to/CIRDC-Pro/tools/install-skill --agent all`. Source changes
 are visible through the links, so keep the checkout at its installed path.
 
-A site address can be supplied when the Skill is first used. To save it during
-installation, add `--base-url https://papers.example.org`. Open a new Codex session
+The first terminal installation asks for the site, defaulting to `http://127.0.0.1:18088`.
+Use `--base-url https://papers.example.org` for a remote site or a scripted install.
+The installer checks the research API and saves the selection in
+`~/.config/cirdc/research.json`; normal Skill use does not ask for a URL. Updates
+reuse an existing selection. Use `sh tools/install-skill --configure` to change it.
+For intentional offline setup, supply an address and `--skip-check`.
+Open a new Codex session
 and use `$cirdc-research`; in Claude Code run `/reload-skills`, then `/cirdc-research`.
 Use the same command with `--uninstall` to remove only its matching links.
 

@@ -127,9 +127,12 @@ Open a new Codex session and invoke `$cirdc-research`, or run `/reload-skills` i
 Claude Code and invoke `/cirdc-research`. The Skill can also be selected by relevance.
 Explicit site arguments and `CIRDC_BASE_URL` override the saved origin. Both hosts
 share the current saved site; rerunning with another origin changes that choice.
+The installer checks the site's research capabilities before saving configuration
+or publishing links. These commands already select the site, so no URL prompt is
+needed during installation or subsequent Skill use.
 No agent settings or MCP configuration are edited. For remote MCP tools, configure
-the connection separately as described above. A Skill installation does not prove
-that the site or any resource provider is reachable.
+the connection separately as described above. A successful connection check proves
+research API access at setup time, not future availability or resource completeness.
 
 To update a downloaded Skill, download the current installer and rerun the same
 command. Downloads finish and validate before the maintained copy is replaced;
@@ -140,7 +143,7 @@ installing. The installer updates only its marked local cache.
 ### Install from source or an SSH checkout
 
 From a full repository checkout, use the root entrypoint. It automatically locates
-the canonical Skill folder, works offline and needs no site address or backend setup:
+the canonical Skill folder and completes site configuration without backend setup:
 
 ```sh
 sh tools/install-skill --agent codex
@@ -149,11 +152,36 @@ sh tools/install-skill --agent claude-code
 sh /path/to/CIRDC-Pro/tools/install-skill --agent all
 ```
 
-The site can be provided on first use, through `CIRDC_BASE_URL`, or saved by adding
-`--base-url https://papers.example.org` to the install command. When no address is
-supplied, source installation leaves the existing site configuration untouched.
-This mode does not download or modify the source Skill. Source updates are visible
-through the links; keep the checkout at its installed path.
+On first installation in a terminal, choose the site when prompted; pressing Enter
+selects `http://127.0.0.1:18088` on the machine executing the helper. Enter the
+reachable remote origin when the reader runs on a different machine. Existing
+configuration is reused on updates. To supply the choice without a prompt, add
+`--base-url https://papers.example.org` or set `CIRDC_BASE_URL`. Without a terminal,
+the installer checks the saved or local default site; a failure ends installation
+with a setup command, rather than deferring configuration to first use.
+
+The research API is checked and `~/.config/cirdc/research.json` is written before
+installation is reported complete. This source mode does not download or modify
+the Skill. Source updates are visible through the links; keep the checkout at its
+installed path. For intentional offline setup, use an explicit or saved address
+with `--skip-check`; the output records that connectivity was not verified.
+
+### Reconfigure without reinstalling
+
+Run the same setup program when choosing or changing the site:
+
+```sh
+sh tools/install-skill --configure
+# Supply a remote address directly, including from scripts:
+sh tools/install-skill --configure --base-url https://papers.example.org
+# Or from a downloaded/installed Skill:
+python3 ~/.agents/skills/cirdc-research/scripts/install_skill.py --configure
+```
+
+`--configure` does not need `--agent` and does not change any Skill symlink or MCP
+configuration. Additional existing JSON preferences are preserved. During research,
+the helper never prompts for a URL: a missing configuration reports incomplete
+installation, while an unavailable configured site reports a connection error.
 
 If an agent accesses a source checkout over SSH while its AI host discovers Skills
 on another computer, run the following on the **AI host computer**, substituting
@@ -167,8 +195,10 @@ python3 "$HOME/.local/share/cirdc/source-skills/cirdc-research/scripts/install_s
   --source "$HOME/.local/share/cirdc/source-skills/cirdc-research" --agent all
 ```
 
-No online Skill or running website is used during this installation. To update
-this transferred copy, copy the source Skill again; the local symlinks stay valid.
+The Skill files come from the local copy, not the website. Site selection and the
+connection check still happen during installation; for intentional offline setup,
+pass `--base-url` with `--skip-check`. To update the transferred copy, copy the
+source Skill again; the local symlinks stay valid.
 A remote filesystem path or HTTP URL cannot be a local symlink target. An AI host
 executing on the source computer can link that checkout directly; installing in a
 remote user's home does not configure a local AI application. Other Agent Skills

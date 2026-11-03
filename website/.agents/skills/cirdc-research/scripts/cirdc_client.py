@@ -24,8 +24,11 @@ class Client:
         value = base_url or os.environ.get('CIRDC_BASE_URL', '')
         if not value:
             config = Path.home() / '.config/cirdc/research.json'
+            if not config.exists():
+                raise ClientError({'error': 'site_not_configured',
+                    'message': 'Complete installation with install_skill.py --configure (or sh tools/install-skill --configure). Research use does not prompt for a URL.'})
             try:
-                value = json.loads(config.read_text(encoding='utf-8'))['base_url'] if config.exists() else ''
+                value = json.loads(config.read_text(encoding='utf-8'))['base_url']
             except (OSError, ValueError, KeyError, TypeError):
                 raise ClientError({'error': 'invalid_site_config'}) from None
         if not isinstance(value, str):

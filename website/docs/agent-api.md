@@ -20,6 +20,15 @@ HTTP-capable AI the online Skill URL. The MCP initialization instructions and
 `cirdc://research/skill` resource also supply the workflow directly. Reading an
 online Skill is guidance, not an automatic native Skill installation in the AI host.
 
+The AI Access page presents two copyable Agent prompts. The first binds a native
+Skill installation to the current browser origin and asks the Agent to verify
+calls without a URL argument. For the second, users open an Agent conversation
+in the desired working directory and copy the prompt. The Agent confirms its
+current directory, clones the canonical repository, initializes a local deployment,
+starts persistent services, and installs the Skill using the actual resulting URL.
+That local-deployment prompt does not inherit this remote site's origin. The page
+itself does not run an installer, deploy a service, or acquire resources.
+
 MCP tools dispatch into the same application with the original connection peer,
 so HTTP and MCP share validation, rate limits, queues and task-origin records.
 There are no loopback network requests and no tool accepting arbitrary destination
@@ -94,8 +103,9 @@ The Skill's single source is `.agents/skills/cirdc-research/`. Python wheel buil
 include the Skill, its API reference and both standard-library scripts as package data; source
 development reads the same canonical files. They are served without attachment
 headers, archives or a frontend build dependency. `/llms.txt` and capabilities link
-to these readable URLs. The frontend displays live service addresses, call examples and optional native
-Skill installation commands. Fixed allowlisted script routes serve the installer
+to these readable URLs. The frontend presents only the two Agent setup prompts;
+detailed commands and API examples remain in the references for Agents to consult.
+Fixed allowlisted script routes serve the installer
 and HTTP helper as Python text; arbitrary filesystem paths are never exposed. An optional standard-library HTTP CLI remains in the source Skill
 folder for developers who already use the checkout.
 
@@ -105,8 +115,8 @@ Run website tests, frontend tests/build, affected provider tests and isolated
 database integration checks. Client tests exercise a real local HTTP server and
 remote MCP connection with synthetic resources, including reconnecting to a saved
 receipt and preserving caller identity. Browser fixtures check desktop/mobile
-layouts, URL configuration copying and readable Skill links without source
-requests. Validate the Skill with the skill-creator validator. Inspect the plain
+layouts, complete prompt copying, use of the current conversation directory and language switching
+without API or source requests. Validate the Skill with the skill-creator validator. Inspect the plain
 Markdown package data, website distributions and actual frontend bundles with
 the project's publication/redaction checks.
 
@@ -117,16 +127,26 @@ MCP remain compatible.
 
 ## Native Skill installation
 
-The AI access page also offers a native local installation for Codex and Claude
-Code. The installer downloads the canonical Skill files into one user-owned cache
+The first AI Access prompt asks the Agent to perform the native installation for
+its current host. The installer downloads the canonical Skill files into one user-owned cache
 and creates host-specific symlinks, or links a developer's existing local checkout.
 Site configuration stays in a private local JSON file, separate from source. This
 is the same single-source pattern as an application's bundled Skill; it works
 across projects and does not require a local CIRDC backend or MCP adapter.
 
-From a source checkout, `sh tools/install-skill --agent all` installs directly
-without a site address or network access. A checkout accessed over SSH can supply
-a local Skill copy to the AI host without using the website.
+From a source checkout, `sh tools/install-skill --agent all` links the source and
+completes configuration at installation time. Explicit arguments, environment and
+saved configuration take precedence; first terminal setup asks for a site with
+`http://127.0.0.1:18088` as the local default. Scripted setup accepts `--base-url`
+and `--non-interactive`. A bounded read-only capabilities check precedes config
+and link changes. Installation failure preserves the previous setup.
+
+`sh tools/install-skill --configure` selects and checks a site without changing
+native Skill links. The runtime helper reads the saved configuration without
+prompting or silently switching sites. Source or transferred-copy installations
+can intentionally skip the network check with `--skip-check` and an explicit or
+saved address; their result reports `connection_verified=false`. A checkout over
+SSH can still supply a local Skill copy; this does not configure another user's home.
 
 See the [installation, update and uninstall reference](../.agents/skills/cirdc-research/references/api.md#native-skill-installation)
 for exact commands and paths. The installer preserves unrelated host entries and

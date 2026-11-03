@@ -1,30 +1,37 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {spawnSync} from 'node:child_process';
-import {agentExamples} from '../src/agentAccess.ts';
+import {agentPrompts,CIRDC_REPOSITORY} from '../src/agentAccess.ts';
 
-test('connection examples use direct remote URLs without local installation',()=>{
- const examples=agentExamples('https://papers.example.org');
- const config=JSON.parse(examples.mcp).mcpServers['cirdc-research'];
- assert.equal(config.url,'https://papers.example.org/api/agent/v1/mcp');
- assert.equal(config.type,'http');
- assert.equal(config.command,undefined);
- assert.equal(examples.mcpUrl,config.url);
- assert.equal(examples.skillUrl,'https://papers.example.org/api/agent/v1/skills/cirdc-research/SKILL.md');
- assert.match(examples.http,/\/api\/agent\/v1\/requests\/REQUEST_ID/);
- assert.match(examples.python,/wait_seconds/);
- assert.doesNotMatch(examples.http,/\n\+/);
+test('online installation binds to the visited site and its own installer',()=>{
+ const {remote}=agentPrompts('https://papers.example.org:8443');
+ assert(remote.includes('https://papers.example.org:8443/api/agent/v1/skills/cirdc-research/SKILL.md'));
+ assert(remote.includes('https://papers.example.org:8443/api/agent/v1/skills/cirdc-research/scripts/install_skill.py'));
+ assert(remote.includes('--base-url https://papers.example.org:8443'));
 });
 
+test('self hosting uses the conversation directory and never inherits the remote service address',()=>{
+ const first=agentPrompts('https://first.example.org');
+ const second=agentPrompts('https://second.example.org');
+ assert.equal(first.local,second.local);
+ assert.notEqual(first.remote,second.remote);
+ assert(first.local.includes('当前对话的工作目录'));
+ assert(first.local.includes('pwd'));
+ assert(first.local.includes(CIRDC_REPOSITORY));
+ assert(!first.local.includes('https://first.example.org'));
+ assert(first.local.includes('--base-url'));
+ assert.doesNotMatch(first.local,/【请填写|ENTER WORKING DIRECTORY/);
+});
 
-test('native installers use the current site and valid shell commands for each host',()=>{
- const examples=agentExamples('https://papers.example.org');
- assert.equal(examples.sourceInstall,'sh tools/install-skill --agent all');
- assert.equal(examples.installUrl,examples.base+'/skills/cirdc-research/scripts/install_skill.py');
- for(const [command,agent] of [[examples.installCodex,'codex'],[examples.installClaudeCode,'claude-code']]){
-  assert(command.includes(examples.installUrl));
-  assert(command.includes("--base-url 'https://papers.example.org' --agent "+agent));
-  assert.equal(spawnSync('sh',['-n'],{input:command}).status,0);
-  assert(command.includes('&&\npython3'));
+test('language changes preserve the site and automatic working-directory workflow',()=>{
+ const zh=agentPrompts('https://papers.example.org','zh');
+ const en=agentPrompts('https://papers.example.org','en');
+ assert.notEqual(zh.remote,en.remote);assert.notEqual(zh.local,en.local);
+ assert(en.local.includes("conversation's current working directory"));
+ for(const value of [zh,en]){
+  assert.deepEqual(Object.keys(value).sort(),['local','remote']);
+  assert(value.remote.includes('--base-url https://papers.example.org'));
+  assert(value.local.includes('pwd'));
+  assert(value.local.includes(CIRDC_REPOSITORY));
+  assert(value.local.includes('/api/agent/v1/capabilities'));
  }
 });
