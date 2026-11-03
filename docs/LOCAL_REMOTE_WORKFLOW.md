@@ -44,6 +44,10 @@ and `website/.workspace/` locate the existing deployment and verification record
 For an authorized website deployment, set `CIRDC_WEB_ROOT` to that existing deployment
 root before calling `sh tools/web deploy RELEASE_ID`. Publication requires an
 existing environment, account/index state and a previous wheel for rollback.
+For a prepared environment transition, `CIRDC_WEB_PYTHON` selects an absolute
+Python path matching the service configuration. Installation and protection checks
+apply to that environment; a shared worker environment is not reinstalled. Keep
+the previous environment and service configuration available for rollback.
 The existing configuration must load within the bounded startup check; unavailable
 remote storage stops publication before any service is stopped.
 It locks the deployment, builds a source snapshot before stopping services, and

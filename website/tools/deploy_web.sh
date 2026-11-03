@@ -8,7 +8,9 @@ task_release=${1:-web-$(date -u +%Y%m%dT%H%M%SZ)}
 [[ "$task_release" =~ ^[a-zA-Z0-9][a-zA-Z0-9_-]*$ ]] || { echo 'Invalid release identifier' >&2; exit 1; }
 [[ "$task_root" = /* && "$task_state" = /* ]] || { echo 'Absolute deployment paths are required' >&2; exit 1; }
 task_destination="$task_root/releases/$task_release"
-task_python="$task_root/.venv/bin/python"
+task_python=${CIRDC_WEB_PYTHON:-$task_root/.venv/bin/python}
+[[ "$task_python" = /* ]] || { echo 'An absolute website Python path is required' >&2; exit 1; }
+task_environment=$(dirname -- "$(dirname -- "$task_python")")
 task_control="$task_root/.runtime/deployment"
 test -L "$task_root/current" && test -x "$task_python" || {
     echo 'An existing release and website environment are required.' >&2; exit 1;
@@ -16,7 +18,7 @@ test -L "$task_root/current" && test -x "$task_python" || {
 test -s "$task_state/accounts.sqlite" && test -s "$task_state/search.sqlite" || {
     echo 'Existing website accounts and search state are required.' >&2; exit 1;
 }
-test ! -f "$task_root/.venv/.cirdc-runtime-protected" || {
+test ! -f "$task_environment/.cirdc-runtime-protected" || {
     echo 'This environment is a protected collection runtime.' >&2; exit 1;
 }
 install -d -m 0700 "$task_control"

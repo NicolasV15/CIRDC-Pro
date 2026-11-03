@@ -94,6 +94,29 @@ def test_build_failure_never_stops_the_running_release(deployment):
     assert not any(e[0] == 'systemctl' for e in events())
 
 
+def test_prepared_runtime_transition_does_not_reinstall_old_environment(deployment):
+    target, publish, events = deployment
+    python = target / 'prepared/bin/python'
+    python.parent.mkdir(parents=True)
+    python.symlink_to((target / '.venv/bin/python').resolve())
+    (target / '.venv/.cirdc-runtime-protected').touch()
+    result = publish(CIRDC_WEB_PYTHON=str(python))
+    assert result.returncode == 0, result.stderr
+    installs = [e for e in events() if e[:3] == ['uv', 'pip', 'install']]
+    assert len(installs) == 1 and installs[0][installs[0].index('--python') + 1] == str(python)
+    assert (target / '.venv/.cirdc-runtime-protected').exists()
+
+
+def test_protection_applies_to_selected_runtime(deployment):
+    target, publish, events = deployment
+    python = target / 'prepared/bin/python'
+    python.parent.mkdir(parents=True)
+    python.symlink_to((target / '.venv/bin/python').resolve())
+    (target / 'prepared/.cirdc-runtime-protected').touch()
+    assert publish(CIRDC_WEB_PYTHON=str(python)).returncode != 0
+    assert not events()
+
+
 @pytest.mark.parametrize('matches', [True, False])
 def test_publication_can_require_the_checked_wheel(deployment, matches):
     target, publish, events = deployment
