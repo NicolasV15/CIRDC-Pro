@@ -1,0 +1,129 @@
+import json
+import sqlite3
+
+import pytest
+from starlette.applications import Starlette
+from starlette.testclient import TestClient
+
+from cirdc.web.arxiv import Catalog, resolve, routes
+
+
+def test_identifiers_and_versions():
+    assert resolve("https://export.arxiv.org/src/hep-th/9901001v2") == ("hep-th/9901001", 2)
+    assert resolve("arXiv:2402.08954v1") == ("2402.08954", 1)
+    with pytest.raises(ValueError):
+        resolve("https://example.org/abs/2402.08954")
+    with pytest.raises(ValueError):
+        resolve("../2402.08954")
+
+
+def test_search_is_readonly_and_pagination_bound_to_query(tmp_path):
+    index = tmp_path / "index.sqlite"
+    with sqlite3.connect(index) as db:
+        db.execute("CREATE TABLE identity(database_id TEXT)")
+        db.execute("INSERT INTO identity VALUES ('fixture')")
+        db.execute(
+            "CREATE VIRTUAL TABLE metadata USING fts5(arxiv_id UNINDEXED,title,authors,abstract,categories)"
+        )
+        db.executemany(
+            "INSERT INTO metadata VALUES (?,?,?,?,?)",
+            [(str(i), "analog study", "A", "text", "cs.AI") for i in range(4)],
+        )
+    profile = tmp_path / "config.json"
+    profile.write_text(
+        json.dumps(
+            {"mysql": {"database": "fixture_arxiv"}, "database_id": "fixture", "index_path": str(index)}
+        )
+    )
+    catalog = Catalog(profile)
+    first = catalog.search("analog", 2)
+    assert len(first["items"]) == 2
+    second = catalog.search("analog", 2, first["next_cursor"])
+    assert len(second["items"]) == 2
+    assert {x["paper_id"] for x in first["items"]}.isdisjoint(x["paper_id"] for x in second["items"])
+    with pytest.raises(ValueError):
+        catalog.search("different", 2, first["next_cursor"])
+    with pytest.raises(ValueError):
+        catalog.search("analog", 101)
+    assert not (tmp_path / "index.sqlite-wal").exists()
+
+
+def test_routes_never_acquire():
+    class Fake:
+        def paper(self, **kw):
+            return {"paper_id": "1", "versions": [{"version": 1}]}
+
+        def search(self, *args):
+            return {"items": []}
+
+    with TestClient(Starlette(routes=routes(Fake()))) as client:
+        assert client.get("/api/arxiv/papers?q=analog").status_code == 200
+        assert client.get("/api/arxiv/papers/1").json()["paper"]["paper_id"] == "1"
+        assert client.get("/api/arxiv/papers/1/versions").json()["versions"] == [{"version": 1}]
+        assert client.post("/api/arxiv/papers/1").status_code == 405
+
+
+@pytest.fixture
+def search_catalog(tmp_path):
+    index = tmp_path / "index.sqlite"
+    papers = [
+        ("hep-th/9901001", "Early physics", "Alice", "Vacuum theory", "hep-th"),
+        ("0704.0001", "Operational amplifier design", "Alice", "A precision analog circuit", "hep-ph"),
+        ("2402.08954", "Learning system", "Bob", "Operational amplifier study", "cs.AI"),
+        ("2501.00001", "New amplifier", "Carol", "A new opamp design", "eess.SP"),
+    ]
+    with sqlite3.connect(index) as db:
+        db.execute("CREATE TABLE identity(database_id TEXT)")
+        db.execute("INSERT INTO identity VALUES ('search-fixture')")
+        db.execute("CREATE TABLE documents(id INTEGER PRIMARY KEY,arxiv_id TEXT UNIQUE,content_hash TEXT)")
+        db.execute(
+            "CREATE VIRTUAL TABLE metadata USING fts5(arxiv_id UNINDEXED,title,authors,abstract,categories)"
+        )
+        for i, row in enumerate(papers, 1):
+            db.execute(
+                "INSERT INTO metadata(rowid,arxiv_id,title,authors,abstract,categories) VALUES (?,?,?,?,?,?)",
+                (i, *row),
+            )
+            db.execute("INSERT INTO documents VALUES (?,?,?)", (i, row[0], "fixture"))
+    profile = tmp_path / "reader.json"
+    profile.write_text(
+        json.dumps(
+            {
+                "mysql": {"database": "search_fixture"},
+                "database_id": "search-fixture",
+                "index_path": str(index),
+            }
+        )
+    )
+    return Catalog(profile)
+
+
+def test_arxiv_search_fields_aliases_years_and_category(search_catalog):
+    c = search_catalog
+    assert c.overview()["indexed"] == 4
+    assert len(c.search("", 2)["items"]) == 2
+    assert c.search("Alice", field="authors")["total"] == 2
+    assert c.search("Alice", field="title")["total"] == 0
+    assert c.search("opamp")["total"] == 3
+    assert c.search("opamp", terms="exact")["total"] == 1
+    assert c.search("", category="CS.ai")["items"][0]["arxiv_id"] == "2402.08954"
+    assert c.search("", year_from="1999", year_to="2007")["total"] == 2
+    assert [p["year"] for p in c.search("", sort="year")["items"]] == [2025, 2024, 2007, 1999]
+    assert c.search('"vacuum theory"')["total"] == 1
+    assert c.search("0704.0001v2")["items"][0]["requested_version"] == 2
+    assert c.search("0704.0001v2")["query"]["number"] == "0704.0001v2"
+    assert c.search("opamp", totals="defer")["total"] is None
+    assert c.search("opamp", totals="only")["items"] == []
+
+
+def test_cursors_bind_filters_and_top_has_no_next_cursor(search_catalog):
+    c = search_catalog
+    first = c.search("opamp", 1)
+    assert first["next_cursor"]
+    with pytest.raises(ValueError):
+        c.search("opamp", 1, first["next_cursor"], field="title")
+    with pytest.raises(ValueError):
+        c.search("", field="body")
+    with pytest.raises(ValueError):
+        c.search("", year_from="2025", year_to="2020")
+    assert c.search("opamp", view="top", k="10")["next_cursor"] is None

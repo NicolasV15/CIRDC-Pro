@@ -34,7 +34,7 @@ def test_download_install_update_and_saved_site_work_from_another_project(agent_
         cache = Path(result['source'])
         for link in result['links']:
             assert Path(link).is_symlink() and Path(link).samefile(cache)
-        assert all((cache / name).read_bytes() == (SOURCE / name).read_bytes() for name in installer.FILES)
+        assert all((cache / name).read_bytes() == (SOURCE / name).read_bytes() for name in [*installer.read_manifest(SOURCE)['files'], 'version.json'])
         assert json.loads(Path(result['config']).read_text()) == {'base_url': origin}
         monkeypatch.setattr(Path, 'home', classmethod(lambda cls: home))
         monkeypatch.delenv('CIRDC_BASE_URL', raising=False)
@@ -44,7 +44,11 @@ def test_download_install_update_and_saved_site_work_from_another_project(agent_
         client = load_script(cache / 'scripts/cirdc_client.py').Client()
         assert client.search('RF')['items']
         assert client.capabilities()['authentication'] == 'none'
-        (cache / 'SKILL.md').write_text('old cached content')
+        (cache / 'SKILL.md').write_text('user changed content')
+        with pytest.raises(installer.InstallError, match='User-modified'):
+            installer.install(origin, ['codex'], home=home)
+        assert (cache / 'SKILL.md').read_text() == 'user changed content'
+        (cache / 'SKILL.md').write_bytes((SOURCE / 'SKILL.md').read_bytes())
         assert installer.install(origin, ['codex'], home=home)['status'] == 'installed'
         assert (cache / 'SKILL.md').read_bytes() == (SOURCE / 'SKILL.md').read_bytes()
         installer.install('', ['codex'], home=home, uninstall=True)

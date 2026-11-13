@@ -1,65 +1,91 @@
-/* Agent prompts only: opening and copying this page must not install, deploy or acquire anything. */
+/* Fixture-only AI access dialog acceptance. Opening/copying must never install,
+ * deploy, acquire resources or reload the current search/article. */
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
-const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://agent-fixture.test';
-const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff'};
+const root=process.env.CIRDC_AGENT_STATIC_ROOT||path.resolve(__dirname,'../../src/cirdc/web/static'),origin=process.env.CIRDC_AGENT_LIVE_ORIGIN||'http://agent-fixture.test';
+const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.json':'application/json','.woff2':'font/woff2','.woff':'font/woff'};
+const rows=Array.from({length:12},(_,i)=>({number:String(83000801+i),title:'Cached fixture '+i,authors:'',author_refs:[],publication:'Fixture',venue:'4',kind:'Journals',year:2026,snippet:'Cached abstract.',resources:[]}));
 async function main(){
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})}),reports=[];
- try{for(const width of [1440,390,320]){
-  const context=await browser.newContext({viewport:{width,height:950}}),requests=[],errors=[];
-  await context.addInitScript(()=>localStorage.setItem('cirdc.ui.language','zh'));
+ try{for(const profile of [{name:'desktop',width:1920,height:1000},{name:'mobile',width:390,height:844,touch:true},{name:'narrow-dark',width:320,height:760,touch:true,dark:true},{name:'member-mobile',width:390,height:844,touch:true,account:true}]){
+  const context=await browser.newContext({viewport:{width:profile.width,height:profile.height},isMobile:!!profile.touch,hasTouch:!!profile.touch,colorScheme:profile.dark?'dark':'light'}),requests=[],blocked=[],errors=[];
+  await context.addInitScript(()=>{localStorage.setItem('cirdc.ui.language','zh');Object.defineProperty(navigator,'clipboard',{configurable:true,value:undefined});});
   await context.route('**/*',async route=>{
-   const req=route.request(),u=new URL(req.url());requests.push({method:req.method(),path:u.pathname});
-   assert.equal(req.method(),'GET');assert.equal(u.origin,origin);
-   if(u.pathname==='/developers/ai')return route.fulfill({contentType:'text/html',body:await fs.readFile(path.join(root,'index.html'))});
-   if(u.pathname.startsWith('/assets/'))return route.fulfill({contentType:types[path.extname(u.pathname)]||'application/octet-stream',body:await fs.readFile(root+u.pathname)});
-   throw Error('Prompt page made an unexpected request '+u.pathname);
+   const req=route.request(),u=new URL(req.url()),p=u.pathname;requests.push({method:req.method(),path:p,navigation:req.isNavigationRequest()});
+   if(req.method()!=='GET'||u.origin!==origin){blocked.push(req.method()+' '+req.url());return route.abort();}
+   if(p==='/'||p==='/developers/ai'||p.startsWith('/papers/')||p.startsWith('/authors/ieee/'))return process.env.CIRDC_AGENT_LIVE_ORIGIN?route.continue():route.fulfill({contentType:'text/html',body:await fs.readFile(root+'/index.html')});
+   if(p.startsWith('/assets/'))return process.env.CIRDC_AGENT_LIVE_ORIGIN?route.continue():route.fulfill({contentType:types[path.extname(p)]||'application/octet-stream',body:await fs.readFile(root+p)});
+   if(p==='/api/agent/v1/skills/cirdc-research/version.json'&&process.env.CIRDC_AGENT_SKILL_UNAVAILABLE)return route.fulfill({status:404,json:{error:'not_found'}});
+   if(p==='/api/agent/v1/skills/cirdc-research/version.json')return process.env.CIRDC_AGENT_LIVE_ORIGIN?route.continue():route.fulfill({contentType:'application/json',body:await fs.readFile(path.resolve(__dirname,'../../.agents/skills/cirdc-research/version.json'))});
+   if(p==='/api/auth/session')return route.fulfill({json:{interface:'reader',authentication_required:!!profile.account,user:profile.account?{username:'fixture-reader',role:'reader',must_change:false}:null,csrf:''}});
+   if(p==='/api/overview')return route.fulfill({json:{index:{phase:'ready',year_range:{min:1884,max:2027},overview:{papers:rows.length,venues:[],field_states:[]}}}});
+   if(p==='/api/authors/ieee/87000804')return route.fulfill({json:{author:{source:'ieee',author_id:'87000804',display_name:'Cached author',papers:19}}});
+   if(p==='/api/author-profiles/ieee/87000804')return route.fulfill({json:{author:{source:'ieee',author_id:'87000804',fetch_state:'complete',profile:{preferred_name:'Cached author',is_hidden:false,current_affiliations:['Example Institute'],bio_paragraphs:Array.from({length:8},()=>('Cached author biography. '.repeat(18))),topics:[{name:'Example topic',num_records:1}],coauthors:[],publication_years:[]}}}});
+   if(p==='/api/venues')return route.fulfill({json:{items:[]}});
+   if(p==='/api/papers')return route.fulfill({json:{items:rows,total:rows.length,next_cursor:null,partial:false}});
+   if(/^\/api\/papers\/\d+$/.test(p))return route.fulfill({json:{paper:{number:rows[0].number,record:{articleTitle:rows[0].title,abstract:'Cached detail abstract.',authors:[],keywords:{}},resources:[]}}});
+   if(p.endsWith('/metadata/status'))return route.fulfill({json:{state:'disabled'}});
+   if(p.endsWith('/references')||p.endsWith('/citations')||p.endsWith('/patent-citations'))return route.fulfill({json:{number:rows[0].number,state:'disabled',version:null,group:u.searchParams.get('group')||'ieee',group_states:{ieee:'disabled',nonIeee:'disabled'},items:[],total:0,next_offset:null,source_presence:'unknown',counts:{ieee:null,nonIeee:null,total:null},stored_counts:{ieee:0,nonIeee:0,total:0}}});
+   blocked.push(p);return route.abort();
   });
-  const page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
-  await page.goto(origin+'/developers/ai',{waitUntil:'networkidle'});
-  await page.getByRole('heading',{name:'AI 接入',exact:true}).waitFor();
-  assert.equal(await page.locator('main textarea').count(),2);
-  assert.equal(await page.locator('main button').count(),2);
-  assert.equal(await page.locator('main input').count(),0);
-  assert.equal(await page.locator('main a').count(),1); // Only the common return-to-search link.
-  const online=page.getByRole('textbox',{name:'在线安装 prompt',exact:true});
-  const remoteText=await online.inputValue();
-  assert(remoteText.includes('--base-url '+origin));
-  assert(remoteText.includes(origin+'/api/agent/v1/skills/cirdc-research/scripts/install_skill.py'));
-  const onlineRegion=page.getByRole('region',{name:'连接当前站点',exact:true});
-  await onlineRegion.getByRole('button').click();
-  await onlineRegion.getByText('已选中文本，请手动复制。',{exact:true}).waitFor();
-  assert.equal(await online.evaluate(el=>el.selectionEnd-el.selectionStart),remoteText.length);
-  const localRegion=page.getByRole('region',{name:'部署到自己的机器',exact:true}),localButton=localRegion.getByRole('button');
-  assert(await localButton.isEnabled());
-  const local=page.getByRole('textbox',{name:'本地部署 prompt',exact:true});
-  const localText=await local.inputValue();
-  assert(localText.includes('当前对话的工作目录')&&localText.includes('pwd'));
-  assert(!localText.includes(origin));
-  assert(!localText.includes('【请填写'));
-  await localButton.click();
-  await localRegion.getByText('已选中文本，请手动复制。',{exact:true}).waitFor();
-  assert.equal(await local.evaluate(el=>el.selectionEnd-el.selectionStart),localText.length);
-  await page.locator('main textarea').evaluateAll(fields=>fields.forEach(field=>{field.blur();field.scrollTop=0;}));
-  assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),'Chinese overflow at '+width);
-  if(process.env.CIRDC_BROWSER_OUTPUT)await page.screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,'agent-prompts-'+width+'.png'),fullPage:true});
-  await page.getByRole('button',{name:'English',exact:true}).click();
-  await page.getByRole('heading',{name:'AI access',exact:true}).waitFor();
-  const englishRemote=page.getByRole('textbox',{name:'Online install prompt',exact:true});
-  assert.notEqual(await englishRemote.inputValue(),remoteText);
-  assert((await page.getByRole('textbox',{name:'Local deployment prompt',exact:true}).inputValue()).includes("conversation's current working directory"));
-  assert.equal(await page.locator('main input').count(),0);
-  await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.agentCopiedPrompt=text;}}}));
-  await page.getByRole('region',{name:'Connect to this site',exact:true}).getByRole('button').click();
-  await page.getByRole('region',{name:'Connect to this site',exact:true}).getByText('Copied',{exact:true}).waitFor();
-  assert.equal(await page.evaluate(()=>window.agentCopiedPrompt),await englishRemote.inputValue());
-  assert(await page.getByRole('region',{name:'Deploy on your machine',exact:true}).getByRole('button').isEnabled());
-  assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),'English overflow at '+width);
-  assert.equal(requests.filter(r=>r.path.startsWith('/api/')).length,0);
-  assert.deepEqual(errors,[]);
-  reports.push({width,prompts:2,bilingual:true,copyFallback:true,clipboard:true,conversationDirectory:true,remoteSiteNotInherited:true,apiRequests:0});await context.close();
+  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',error=>errors.push(error.message));
+  const modal=()=>page.getByRole('dialog',{name:/^(AI 接入|AI access)$/});
+  async function openHeader(){
+   await page.locator('.header-ai-trigger').click();
+   await modal().waitFor();
+  }
+  async function close(){await modal().getByRole('button',{name:/^(关闭|Close)$/}).click();await modal().waitFor({state:'detached'});}
+  async function style(selector){return page.locator(selector).evaluate(el=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return {width:r.width,borderRadius:s.borderRadius,borderColor:s.borderColor,background:s.backgroundColor,shadow:s.boxShadow};});}
+  async function checkHeader(){
+   await page.mouse.move(0,0);
+   // Compare settled theme colors after the existing button shadow transition.
+   await page.locator('.header-ai-trigger').evaluate(async el=>{getComputedStyle(el).boxShadow;await Promise.all(el.getAnimations().map(animation=>animation.finished.catch(()=>{})));});
+   const result=await page.evaluate(()=>{const ai=document.querySelector('.header-ai-trigger'),language=document.querySelector('.language-switch'),appearance=document.querySelector('.appearance-trigger'),menu=document.querySelector('.header-menu-trigger'),header=document.querySelector('.app-header-inner'),brand=document.querySelector('.brand'),tools=document.querySelector('.header-tools'),padding=getComputedStyle(header),rect=el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,height:r.height};},style=el=>{const s=getComputedStyle(el);return ['backgroundColor','color','fontFamily','fontSize','fontWeight','lineHeight','borderRadius','boxShadow'].map(k=>s[k]);};return {ai:rect(ai),language:rect(language),appearance:rect(appearance),menu:menu?rect(menu):null,header:rect(header),brand:rect(brand),tools:rect(tools),paddingLeft:parseFloat(padding.paddingLeft),paddingRight:parseFloat(padding.paddingRight),viewport:document.documentElement.clientWidth,home:brand.getAttribute('href'),searchLinks:document.querySelectorAll('.app-nav,.header-menu-nav').length,aiStyle:style(ai),directlyBefore:ai.nextElementSibling===language,overflow:document.documentElement.scrollWidth>innerWidth};});
+   assert(result.directlyBefore);assert(result.ai.right<=result.language.left);assert(result.language.right<=result.appearance.left);assert(Math.abs(result.ai.top-result.language.top)<1);assert(Math.abs(result.language.top-result.appearance.top)<1);assert.equal(result.ai.height,result.language.height);assert.equal(result.language.height,result.appearance.height);assert.equal(result.home,'/');assert.equal(result.searchLinks,0);assert(Math.abs(result.header.right-result.viewport)<1);assert(Math.abs(result.brand.left-result.paddingLeft)<1);assert(Math.abs(result.tools.right-(result.viewport-result.paddingRight))<1);assert.equal(!!result.menu,!!profile.account);if(result.menu?.height){assert.equal(result.menu.top,result.ai.top);assert.equal(result.menu.height,result.ai.height);}assert(!result.overflow);
+  }
+  await page.goto(origin+'/?q=fixture&limit=25',{waitUntil:'networkidle'});await page.locator('.paper-row').first().waitFor();await checkHeader();
+  assert(!requests.some(r=>r.path.includes('AgentAccessPage')),'AI content must load only when opened');
+  const filter=page.locator('.venue-family-filter');if(!await filter.isVisible())await page.locator('.filter-disclosure > summary').click();
+  await filter.locator('.venue-guide-trigger').click();await page.locator('#venue-guide-dialog[open]').waitFor();const guideStyle=await style('#venue-guide-dialog');await page.getByRole('button',{name:'关闭说明',exact:true}).click();
+  await page.locator('.paper-row input[type=checkbox]').first().check();await page.getByRole('textbox',{name:'搜索论文',exact:true}).fill('unsubmitted draft');
+  const url=page.url(),historyLength=await page.evaluate(()=>history.length),apiReads=requests.filter(r=>r.path.startsWith('/api/')).length;
+  await openHeader();assert.equal(page.url(),url);assert.equal(await page.evaluate(()=>history.length),historyLength);assert.equal(await page.locator('dialog[open]').count(),1);assert.equal(await modal().locator('textarea').count(),2);assert.equal(await modal().locator('input').count(),0);assert.equal(await modal().locator('a').count(),1);if(process.env.CIRDC_AGENT_SKILL_UNAVAILABLE){await modal().getByText('版本信息暂不可用',{exact:false}).waitFor();assert(!(await modal().locator('.agent-skill-version').innerText()).includes('1.0.0'));}else await modal().locator('.agent-skill-version').filter({hasText:'1.0.0'}).waitFor();assert.equal(await modal().locator('.agent-release').count(),0);assert.equal(await modal().locator('.venue-guide-scroll>section').count(),0);assert.equal(await modal().locator('.agent-options>.agent-prompt-card').count(),2);assert.equal(await modal().locator('.agent-skill-meta a').count(),1);assert((await modal().locator('a').getAttribute('href')).endsWith('#native-skill-installation'));assert.deepEqual(await style('#agent-access-dialog'),guideStyle);
+  assert.equal(await page.evaluate(()=>document.body.style.overflow),'hidden');
+  async function checkSkillHelp(){
+   const version=modal().locator('.agent-skill-version'),help=modal().locator('.agent-skill-help');assert(await help.isVisible());const a=await version.boundingBox(),b=await help.boundingBox();assert(b.x>=a.x+a.width,'Installation link sits to the right of the version');assert(await help.evaluate(el=>el.parentElement.classList.contains('agent-skill-meta')));assert.equal(await help.getAttribute('target'),'_blank');assert(!await modal().evaluate(el=>el.scrollWidth>el.clientWidth));
+  }
+  await checkSkillHelp();
+  const versionLine=modal().locator('.agent-skill-version');assert((await versionLine.innerText()).startsWith('本站 Skill 版本：'));await modal().locator('.venue-guide-scroll').evaluate(el=>el.scrollTop=el.scrollHeight);assert(await versionLine.isVisible());await checkSkillHelp();if(process.env.CIRDC_BROWSER_OUTPUT)await page.screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,'agent-version-'+profile.name+'.png')});await modal().locator('.venue-guide-scroll').evaluate(el=>el.scrollTop=0);
+  const online=modal().getByRole('textbox',{name:'在线安装 prompt',exact:true}),remoteText=await online.inputValue();assert(remoteText.includes('--base-url '+origin));assert(remoteText.includes('是否更新？'));assert(remoteText.includes('CIRDC_SKILL_UPDATE_CHECK=0'));assert(!remoteText.includes('--auto-update'));assert(remoteText.includes(origin+'/api/agent/v1/skills/cirdc-research/scripts/install_skill.py'));
+  await modal().getByRole('region',{name:'连接当前站点',exact:true}).getByRole('button').click();await modal().getByText('已选中文本，请手动复制。',{exact:true}).waitFor();assert.equal(await online.evaluate(el=>el.selectionEnd-el.selectionStart),remoteText.length);
+  const local=modal().getByRole('textbox',{name:'本地部署 prompt',exact:true}),localText=await local.inputValue();assert(localText.includes('当前对话的工作目录')&&localText.includes('pwd'));assert(!localText.includes(origin));await modal().getByRole('region',{name:'部署到自己的机器',exact:true}).getByRole('button').click();assert.equal(await local.evaluate(el=>el.selectionEnd-el.selectionStart),localText.length);
+  // Native modal focus must remain trapped; background tools stay inert.
+  for(let i=0;i<9;i++){await page.keyboard.press('Tab');assert(await page.evaluate(()=>document.activeElement===document.body||!!document.activeElement?.closest('#agent-access-dialog')));}
+  assert(await page.evaluate(()=>{document.querySelector('.search-main input').focus();return document.activeElement!==document.querySelector('.search-main input');}),'Background controls must remain inert');
+  if(process.env.CIRDC_BROWSER_OUTPUT)await page.screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,'agent-dialog-'+profile.name+'.png')});
+  assert(!await modal().evaluate(el=>el.scrollWidth>el.clientWidth));assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));
+  await page.keyboard.press('Escape');await modal().waitFor({state:'detached'});assert.equal(await page.evaluate(()=>document.body.style.overflow),'');assert(await page.locator('.header-ai-trigger').evaluate(el=>el===document.activeElement));
+  assert.equal(await page.getByRole('textbox',{name:'搜索论文',exact:true}).inputValue(),'unsubmitted draft');assert(await page.locator('.paper-row input[type=checkbox]').first().isChecked());assert.equal(page.url(),url);assert.equal(requests.filter(r=>r.path.startsWith('/api/')).length,apiReads+1);
+  // Footer opener preserves the scrolled reading position and supports backdrop dismissal.
+  await page.locator('.app-footer button').scrollIntoViewIfNeeded();const scroll=await page.evaluate(()=>scrollY);await page.locator('.app-footer button').click();await modal().waitFor();const rect=await modal().boundingBox();await page.mouse.click(Math.max(0,rect.x-3),Math.max(0,rect.y-3));await modal().waitFor({state:'detached'});assert.equal(await page.evaluate(()=>scrollY),scroll);assert(await page.locator('.app-footer button').evaluate(el=>el===document.activeElement));
+  await page.getByRole('button',{name:'English',exact:true}).click();await checkHeader();await openHeader();assert.equal(await modal().locator('.agent-release').count(),0);assert((await modal().locator('.agent-skill-version').innerText()).startsWith('Site Skill version：'));await checkSkillHelp();const englishRemote=modal().getByRole('textbox',{name:'Online install prompt',exact:true});assert.notEqual(await englishRemote.inputValue(),remoteText);assert((await modal().getByRole('textbox',{name:'Local deployment prompt',exact:true}).inputValue()).includes("conversation's current working directory"));
+  await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async value=>{window.agentCopiedPrompt=value;}}}));await modal().getByRole('region',{name:'Connect to this site',exact:true}).getByRole('button').click();await modal().getByText('Copied',{exact:true}).waitFor();assert.equal(await page.evaluate(()=>window.agentCopiedPrompt),await englishRemote.inputValue());
+  for(const theme of ['classic-green','plain-white','graphite','paper','midnight','lavender']){await page.evaluate(theme=>document.documentElement.dataset.theme=theme,theme);const colors=await modal().evaluate(el=>({actual:getComputedStyle(el).backgroundColor,expected:getComputedStyle(document.documentElement).getPropertyValue('--theme-surface').trim()}));assert(colors.actual&&colors.expected);assert(!await modal().evaluate(el=>el.scrollWidth>el.clientWidth));await checkHeader();}
+  await close();await page.getByRole('button',{name:'中文',exact:true}).click();await page.locator('.paper-row .paper-title').first().click();await page.locator('.detail-page h1').waitFor();await page.waitForFunction(()=>{const citations=document.querySelector('.paper-citations [aria-busy]'),patents=document.querySelector('.paper-patent-citations .references-status button');return citations?.getAttribute('aria-busy')==='false'&&patents&&!patents.disabled;});await page.waitForLoadState('networkidle');const articleUrl=page.url(),detailReads=requests.filter(r=>r.path.startsWith('/api/papers/'+rows[0].number)).length;await page.evaluate(()=>{window.agentArticleNode=document.querySelector('.detail-page');window.agentDisclosureState=Array.from(window.agentArticleNode.querySelectorAll('[aria-expanded]'),el=>[el.getAttribute('aria-controls'),el.getAttribute('aria-expanded')]);});await openHeader();await close();assert.equal(page.url(),articleUrl);assert(await page.evaluate(()=>window.agentArticleNode===document.querySelector('.detail-page')&&JSON.stringify(window.agentDisclosureState)===JSON.stringify(Array.from(window.agentArticleNode.querySelectorAll('[aria-expanded]'),el=>[el.getAttribute('aria-controls'),el.getAttribute('aria-expanded')]))));assert.equal(requests.filter(r=>r.path.startsWith('/api/papers/'+rows[0].number)).length,detailReads,JSON.stringify(requests.filter(r=>r.path.startsWith('/api/'))));
+  // The author route must stay mounted while every AI access button is used.
+  const authorPath='/authors/ieee/87000804?view=profile';await page.goto(origin+authorPath,{waitUntil:'networkidle'});await page.locator('.author-profile h1').waitFor();await page.locator('.author-profile details summary').first().click();
+  const authorUrl=page.url(),authorHistory=await page.evaluate(()=>history.length),authorReads=requests.filter(r=>r.path.startsWith('/api/')).length,authorNavigations=requests.filter(r=>r.navigation).length;
+  await page.evaluate(()=>window.agentAuthorNode=document.querySelector('.author-profile'));
+  function authorPresent(){return page.evaluate(()=>window.agentAuthorNode===document.querySelector('.author-profile')&&!document.querySelector('.reader-workspace'));}
+  await openHeader();assert.equal(page.url(),authorUrl);assert.equal(await page.evaluate(()=>history.length),authorHistory);assert(await authorPresent());await close();assert(await page.locator('.author-profile details').first().evaluate(el=>el.open));
+  await page.locator('.app-footer button').scrollIntoViewIfNeeded();const authorScroll=await page.evaluate(()=>scrollY);await page.locator('.app-footer button').click();await modal().waitFor();assert.equal(page.url(),authorUrl);assert(await authorPresent());await page.keyboard.press('Escape');await modal().waitFor({state:'detached'});assert.equal(await page.evaluate(()=>scrollY),authorScroll);assert.equal(await page.evaluate(()=>history.length),authorHistory);assert.equal(requests.filter(r=>r.navigation).length,authorNavigations);assert.equal(requests.filter(r=>r.path.startsWith('/api/')).length,authorReads+1);
+  if(profile.account){await page.locator('.header-menu-trigger').click();await page.getByRole('button',{name:'修改密码',exact:true}).waitFor();assert(await page.getByRole('button',{name:'退出',exact:true}).isVisible());await page.keyboard.press('Escape');assert.equal(await page.locator('.header-menu-trigger').getAttribute('aria-expanded'),'false');}
+  // Old tabs still contain the former anchor; its compatibility entry must
+  // restore the referring author before any browse page can rewrite the URL.
+  await page.evaluate(()=>{const link=document.createElement('a');link.href='/developers/ai';link.textContent='Legacy AI entry';link.dataset.legacyAiEntry='';document.querySelector('.app-footer').append(link);});await page.locator('[data-legacy-ai-entry]').click();await modal().waitFor();assert.equal(page.url(),authorUrl);assert.equal(await page.locator('.reader-workspace').count(),0);assert(await page.locator('.author-profile').isVisible());await close();assert.equal(page.url(),authorUrl);
+  await page.goto(origin+'/developers/ai',{waitUntil:'networkidle',referer:origin+'/'});await modal().waitFor();await close();assert.equal(new URL(page.url()).pathname,'/');assert(await page.locator('.reader-workspace').isVisible());
+  assert.equal(context.pages().length,1);assert.deepEqual(blocked,[]);assert.deepEqual(errors,[]);reports.push({profile:profile.name,sameVenueDialogStyle:true,skillHelpRightOfVersion:true,releaseNoticePanelRemoved:true,aiBeforeLanguage:true,headerAtViewportEdges:true,singleHomeLink:true,accountMenuPreserved:true,headerControlsEqualHeight:true,lazy:true,searchDraftSelectionAndUrlPreserved:true,footerAndScrollPreserved:true,articlePreserved:true,authorPagePreserved:true,authorButtonsDoNotNavigate:true,legacyAuthorLinkRestored:true,authorScrollAndDisclosuresPreserved:true,escapeBackdropAndFocus:true,backgroundInert:true,bilingual:true,themes:6,copyFallback:true,clipboard:true,legacyLink:true,newPages:0,skillAvailableVersion:'1.0.0',localVersionNotClaimed:true,oneManifestReadPerPage:true,confirmationPromptAndOptOut:true,sideEffectRequests:0});console.log(JSON.stringify(reports.at(-1)));await context.close();
  }}finally{await browser.close();}
- console.log(JSON.stringify(reports,null,2));
- if(process.env.CIRDC_BROWSER_OUTPUT)await fs.writeFile(path.join(process.env.CIRDC_BROWSER_OUTPUT,'agent-prompts-browser.json'),JSON.stringify(reports,null,2));
+ if(process.env.CIRDC_BROWSER_OUTPUT)await fs.writeFile(path.join(process.env.CIRDC_BROWSER_OUTPUT,'agent-dialog-result.json'),JSON.stringify({reports},null,2)+'\n');
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

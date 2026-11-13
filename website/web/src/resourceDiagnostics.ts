@@ -9,8 +9,9 @@ export function refreshLabel(job:ResourceJob){
  return ['queued','fetching','body_ready'].includes(job.state||'')?'已有 PDF，正在检查更新':job.state==='ready'?'PDF 更新检查完成':'已有 PDF，更新检查未完成';
 }
 
-export type PdfRetryTodo={auto_attempts?:number;auto_max_attempts?:number;auto_retry_eligible?:boolean;auto_retry_exhausted?:boolean;next_retry_at?:number|null};
+export type PdfRetryTodo={attempt_state?:string;auto_attempts?:number;auto_max_attempts?:number;auto_retry_eligible?:boolean;auto_retry_exhausted?:boolean;next_retry_at?:number|null};
 export function pdfRetryState(todo:PdfRetryTodo){
+ if(['queued','fetching','body_ready'].includes(todo.attempt_state||''))return {label:todo.attempt_state==='queued'?'任务已排队':'任务处理中',nextAt:null};
  if(todo.auto_retry_exhausted)return {label:'次数耗尽，待人工处理',nextAt:null};
  if(todo.auto_retry_eligible)return {label:'等待自动重试',nextAt:todo.next_retry_at??null};
  return {label:todo.auto_retry_eligible===false?'待人工处理':'待后续补全',nextAt:null};

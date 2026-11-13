@@ -145,7 +145,7 @@ export function captureSelection(original:Range,scope:HTMLElement,pageURL=locati
   if(el.matches(mathSelector+',.katex,tex-math')){
    if(!overlaps(selected,el))return [];
    const value=mathValue(el);if(!value){warnings.add('math-unavailable');return [];}
-   return [{kind:'math',tex:value.tex,display:value.display}];
+   return [{kind:'math',tex:value.tex,display:value.display,preserveWhitespace:el.matches('[data-copy-content="math-source"]')}];
   }
   if(el.tagName==='IMG'){warnings.add('image-link');return [{kind:'image',alt:el.getAttribute('alt')||'Image',href:safeHref(el.getAttribute('src'),pageURL)}];}
   if(!source&&el.hasAttribute('data-copy-source-html')){const value=mapped(el,selected);if(value)return wrap(el,value,selected);}

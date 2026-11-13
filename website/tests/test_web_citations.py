@@ -59,3 +59,37 @@ def test_read_bridge_filters_private_output_and_preserves_snapshot_parameters(we
     assert commands[0][-2:]==['--version','a'*32]
     assert '--group' in commands[0] and 'shell' not in commands[0]
     with pytest.raises(api.ReferenceError):api.read(website,'100',group='non-ieee')
+
+
+def test_joint_update_is_one_queue_command_and_keeps_existing_api_contract(website,monkeypatch):
+    from cirdc.web import patent_citations
+    website.web['citations']={'enabled':True}
+    website.web['patent_citations']={'enabled':True}
+    queued=[False];commands=[]
+    monkeypatch.setattr(api,'read',lambda *args,**kwargs:view(state='queued' if queued[0] else 'complete'))
+    monkeypatch.setattr(patent_citations,'read',lambda *args,**kwargs:{**view(state='queued' if queued[0] else 'complete'),'group':'patent'})
+    def command(config,setting,args):
+        commands.append(args);queued[0]=True
+        return {'jobs':[{'id':'1','run_id':'a'*32,'kind':'citations'}]}
+    monkeypatch.setattr(api,'call',command)
+    with TestClient(create_app(website,reader_auth='public')) as client:
+        headers={'Origin':'http://testserver'}
+        response=client.post('/api/papers/100/citations/ensure',json={'refresh':True,'include_patents':True},headers=headers)
+        assert response.status_code==202 and response.json()['papers']['state']==response.json()['patents']['state']=='queued'
+        assert commands==[['enqueue','100','--include-patents','--retry']]
+        client.post('/api/papers/100/citations/ensure',json={'refresh':True,'include_patents':True},headers=headers)
+        assert len(commands)==1  # Existing joint work is reused.
+        assert client.post('/api/papers/100/citations/ensure',json={'include_patents':'yes'},headers=headers).status_code==422
+        assert client.post('/api/papers/100/citations/ensure',json={'include_patents':True}).status_code==403
+
+
+def test_joint_update_busy_response_joins_already_queued_work(website,monkeypatch):
+    from cirdc.web import patent_citations
+    website.web['citations']={'enabled':True};website.web['patent_citations']={'enabled':True}
+    queued=[False]
+    monkeypatch.setattr(api,'read',lambda *args,**kwargs:view(state='queued' if queued[0] else 'complete'))
+    monkeypatch.setattr(patent_citations,'read',lambda *args,**kwargs:view(state='queued' if queued[0] else 'complete',group='patent'))
+    def busy(*args,**kwargs):queued[0]=True;raise api.ReferenceError('worker_busy',409)
+    monkeypatch.setattr(api,'call',busy)
+    result=api.enqueue_joint(website,'100',True)
+    assert result['papers']['state']==result['patents']['state']=='queued'

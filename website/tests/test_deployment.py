@@ -158,6 +158,21 @@ def test_missing_rollback_wheel_blocks_publication(deployment):
     assert not events()
 
 
+def test_environment_transition_can_restore_the_actual_serving_artifact(deployment):
+    target,publish,events=deployment
+    active=target/'active-environment.whl';active.write_text('active serving package')
+    result=publish(CIRDC_WEB_ROLLBACK_WHEEL=str(active),FAIL_HEALTH_ONCE='1')
+    assert result.returncode!=0 and 'previous release restored' in result.stderr
+    installs=[e for e in events() if e[:3]==['uv','pip','install']]
+    assert installs[-1][-1]==str(active)
+
+
+def test_invalid_environment_rollback_artifact_never_stops_services(deployment):
+    target,publish,events=deployment
+    assert publish(CIRDC_WEB_ROLLBACK_WHEEL='missing-relative.whl').returncode!=0
+    assert not events()
+
+
 def test_concurrent_publication_is_rejected(deployment):
     import fcntl
     target, publish, events = deployment

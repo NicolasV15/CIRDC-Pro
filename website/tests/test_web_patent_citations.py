@@ -56,3 +56,14 @@ def test_read_bridge_has_separate_command_and_filters_private_fields(website, mo
     assert '--group' not in calls[0] and calls[0][-2:] == ['--version','a'*32]
     for kwargs in [{'limit':101},{'offset':-1},{'version':'wrong'}]:
         with pytest.raises(api.ReferenceError):api.read(website,'100',**kwargs)
+
+
+def test_patent_only_caller_can_join_a_shared_citation_task(website,monkeypatch):
+    from cirdc.web.task_origins import CURRENT
+    current=view(state='fetching',job={'id':'12','run_id':'a'*32,'kind':'citations'})
+    monkeypatch.setattr(api,'read',lambda *args,**kwargs:current)
+    context={'kind':'patent_citations','paper':'100'};token=CURRENT.set(context)
+    try:
+        assert api.enqueue(website,'100',True)==current
+        assert context['joint_citations'] is True
+    finally:CURRENT.reset(token)

@@ -267,3 +267,11 @@ def test_record_creation_time_uses_utc_even_if_server_defaults_to_local(reposito
     assert abs((row['created_at']-now).total_seconds())<5
     assert abs((row['updated_at']-now).total_seconds())<5
     assert repository.store.execute('SELECT @@SESSION.time_zone AS zone')[0]['zone']=='+00:00'
+
+
+def test_failure_timestamp_normalizes_non_utc_input(repository):
+    local=datetime.now(timezone.utc).astimezone(timezone(timedelta(hours=8)))
+    repository.failed(AID,AuthorError('network_error'),local.isoformat())
+    actual=repository.row(AID)['last_attempt_at']
+    assert abs((actual-local.astimezone(timezone.utc).replace(tzinfo=None)).total_seconds())<1
+    assert repository.save(snapshot())['status']=='saved'

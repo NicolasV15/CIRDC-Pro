@@ -2,6 +2,7 @@ import {useEffect,useRef,useState} from 'react';
 import ScientificTitle from './ScientificTitle';
 import {citationNotice,citationTime,type CitationSummary} from './citationSummary';
 import {locale,t,useLanguage} from './i18n';
+import type {CitationActivity} from './citationUpdates';
 import {referenceLabel,referenceLink} from './paperReferenceData';
 import {CITATION_GROUPS,CITATION_PAGE_SIZE,citationCount,citationGroupState,citationItemKey,citationsPending,initialCitationGroup,showCitationGroups,mergeCitationPage,validateCitationPage,type CitationGroup,type CitationsPage} from './paperCitationData';
 type Fetcher=(path:string,method?:string,data?:unknown)=>Promise<any>;
@@ -11,7 +12,7 @@ const groupName=(group:CitationGroup)=>t(group==='ieee'?'IEEE 文献':'非 IEEE 
 const fmt=(value:number)=>value.toLocaleString(locale());
 function date(value:string|null){if(!value)return t('尚未检查');const parsed=new Date(value);return Number.isNaN(parsed.getTime())?t('尚未检查'):parsed.toLocaleString(locale());}
 
-export default function PaperCitations({number,fetcher,embedded=false,onSummary}:{number:string;fetcher:Fetcher;embedded?:boolean;onSummary?:(value:CitationSummary)=>void}){
+export default function PaperCitations({number,fetcher,embedded=false,onSummary,onActivity,updateKey=0}:{number:string;fetcher:Fetcher;embedded?:boolean;onSummary?:(value:CitationSummary)=>void;onActivity?:(value:CitationActivity)=>void;updateKey?:number}){
  useLanguage();
  const [expanded,setExpanded]=useState(false),[group,setGroup]=useState<CitationGroup>('ieee'),[pages,setPages]=useState<Pages>(emptyPages);
  const [loading,setLoading]=useState(true),[more,setMore]=useState<Record<CitationGroup,boolean>>({ieee:false,nonIeee:false}),[error,setError]=useState('');
@@ -67,6 +68,9 @@ export default function PaperCitations({number,fetcher,embedded=false,onSummary}
  function refresh(action:'status'|'update'){
   clearTimer();paging.current.clear();setMore({ieee:false,nonIeee:false});setError('');setLoading(true);void readStatus(++generation.current,action);
  }
+ useEffect(()=>{if(updateKey)refresh('update');},[updateKey]);
+ const activityPending=citationsPending(pages.ieee),activityDisabled=pages.ieee?.state==='disabled';
+ useEffect(()=>onActivity?.({busy:loading||activityPending,disabled:activityDisabled}),[loading,activityPending,activityDisabled,onActivity]);
  function chooseGroup(value:CitationGroup){groupChosen.current=true;setGroup(value);}
  async function loadMore(){
   const snapshot=current.current[visibleGroup];if(!snapshot?.version||snapshot.next_offset===null||paging.current.has(visibleGroup))return;
@@ -91,7 +95,7 @@ export default function PaperCitations({number,fetcher,embedded=false,onSummary}
  return <section id={panelId} className={embedded?'paper-citations citation-content-embedded':'panel paper-citations'} aria-label={t('被引论文')}>
   {!embedded&&<div className="section-heading references-heading"><h2><button type="button" className="reference-toggle" aria-label={expanded?t('收起被引论文'):t('展开被引论文')} aria-controls={contentId} aria-expanded={expanded} onClick={()=>setExpanded(value=>!value)}>{t('被引论文')}</button></h2>{!expanded&&(total!==undefined?<span className="muted">{t('共 {total} 条',{total:fmt(total)})}</span>:pages.ieee?.source_presence==='absent'?<span className="muted">{t('官网未提供')}</span>:null)}</div>}
   <div id={contentId} hidden={!contentExpanded}>{contentExpanded&&<>
-   <div className="references-status">{!error&&<span role="status">{loading?t('正在读取被引论文…'):t(notice)}</span>}<div className="citation-update-actions"><button type="button" className="text-button" disabled={loading} onClick={()=>refresh('status')}>{t('刷新状态')}</button><button type="button" disabled={loading||pending||pages.ieee?.state==='disabled'} onClick={()=>refresh('update')}>{t('更新被引论文')}</button></div></div>
+   <div className="references-status">{!error&&<span role="status">{loading?t('正在读取被引论文…'):t(notice)}</span>}<div className="citation-update-actions"><button type="button" className="text-button" disabled={loading} onClick={()=>refresh('status')}>{t('刷新状态')}</button>{!embedded&&<button type="button" disabled={loading||pending||pages.ieee?.state==='disabled'} onClick={()=>refresh('update')}>{t('更新被引论文')}</button>}</div></div>
    {groupsVisible&&<div className="citation-groups" role="tablist" aria-label={t('被引论文分组')}>{CITATION_GROUPS.map(key=><button type="button" role="tab" key={key} id={panelId+'-tab-'+key} aria-selected={group===key} aria-controls={panelId+'-group-'+key} tabIndex={group===key?0:-1} onKeyDown={event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();const next=event.key==='Home'?'ieee':event.key==='End'?'nonIeee':key==='ieee'?'nonIeee':'ieee';chooseGroup(next);document.getElementById(panelId+'-tab-'+next)?.focus();}}} onClick={()=>chooseGroup(key)}>{groupName(key)}<span>{citationCount(pages[key],key)!==undefined?fmt(citationCount(pages[key],key)!):pages[key]?.source_presence==='absent'?t('官网未提供'):t('待确认')}</span></button>)}</div>}
    <div id={panelId+'-group-'+visibleGroup} role={groupsVisible?'tabpanel':undefined} aria-labelledby={groupsVisible?panelId+'-tab-'+visibleGroup:undefined} aria-busy={loading}>
     {(showCount||checked)&&<div className="citation-snapshot-meta">{showCount&&<span>{count!==undefined?t('已载入 {loaded} / {total} 条',{loaded:fmt(view!.items.length),total:fmt(count)}):t('已载入 {loaded} 条',{loaded:fmt(view!.items.length)})}</span>}{checked&&<time dateTime={checked.value} title={view?.last_attempt_at&&view.last_attempt_at!==checked.value?t('最近更新尝试：{time}',{time:date(view.last_attempt_at)}):undefined}>{t(checked.checked?'检查：{time}':'尝试：{time}',{time:date(checked.value)})}</time>}</div>}

@@ -49,6 +49,15 @@ def test_created_run_is_bound_and_changed_reused_task_is_not_guessed():
     assert origins.resolve_links(context,before,before,{'state':'queued'})[0]['binding']=='stable_existing'
 
 
+def test_joint_citation_request_uses_explicit_shared_and_fallback_task_identities():
+    context={'kind':'citations','paper':'100','joint_citations':True}
+    shared={'id':'12','run_id':'c'*32,'kind':'citations'}
+    fallback={'id':'13','run_id':'d'*32,'kind':'patent_citations'}
+    links=origins.resolve_links(context,[],[],{'papers':{'number':'100','job':shared},'patents':{'number':'100','job':shared},'jobs':[fallback]})
+    assert {r['task_id'] for r in links}=={'12','13'}
+    assert all(r['queue']=='metadata' for r in links)
+
+
 def test_machine_claims_and_rejected_requests_do_not_become_reader_sources(tmp_path):
     async def claim(request):return JSONResponse({'job':{'id':'task-1','kind':'opaque_resource'}})
     async def rejected(request):return JSONResponse({'error':'denied'},403)

@@ -6,10 +6,10 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from contextvars import ContextVar, copy_context
 
-OVERHEAD = 2
+OVERHEAD = 10
 READ_TIMEOUT = 10
-SUBMIT_WORKERS = 4
-READ_WORKERS = 8
+SUBMIT_WORKERS = 16
+READ_WORKERS = 32
 DEADLINE = ContextVar('agent_deadline', default=None)
 LOG = logging.getLogger('cirdc.agent')
 
@@ -18,8 +18,9 @@ class BusyError(Exception):
     code = 'resource_service_unavailable'
     status = 503
 
-    def __init__(self, accepted=None):
+    def __init__(self, accepted=None, reason='submission_in_progress'):
         self.accepted = accepted
+        self.details = {'reason': reason}
 
 
 class BoundedExecutor:
@@ -28,10 +29,19 @@ class BoundedExecutor:
         self.slots = threading.BoundedSemaphore(workers)
 
     async def call(self, function, *args):
-        remaining = (DEADLINE.get() or time.monotonic() + READ_TIMEOUT) - time.monotonic()
-        if remaining <= 0 or not self.slots.acquire(blocking=False):
-            LOG.warning('agent_capacity_or_deadline_exhausted')
-            raise BusyError(accepted=False)
+        deadline = DEADLINE.get() or time.monotonic() + READ_TIMEOUT
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise BusyError(accepted=False, reason='request_deadline_exceeded')
+        while not self.slots.acquire(blocking=False):
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise BusyError(accepted=False, reason='request_deadline_exceeded')
+            await asyncio.sleep(min(0.005, remaining))
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            self.slots.release()
+            raise BusyError(accepted=False, reason='request_deadline_exceeded')
         context = copy_context()
         start = time.monotonic()
         def invoke():
@@ -52,7 +62,7 @@ class BoundedExecutor:
             return await asyncio.wait_for(asyncio.shield(wrapped), remaining)
         except asyncio.TimeoutError:
             LOG.warning('agent_hook_timeout function=%s', getattr(function, '__name__', 'hook'))
-            raise BusyError() from None
+            raise BusyError(reason='hook_timeout') from None
 
     def close(self):
         self.pool.shutdown(wait=False)

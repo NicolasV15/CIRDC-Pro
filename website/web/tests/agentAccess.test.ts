@@ -30,6 +30,9 @@ test('language changes preserve the site and automatic working-directory workflo
  for(const value of [zh,en]){
   assert.deepEqual(Object.keys(value).sort(),['local','remote']);
   assert(value.remote.includes('--base-url https://papers.example.org'));
+  assert(value.remote.includes('CIRDC_SKILL_UPDATE_CHECK=0'));
+  assert(!value.remote.includes('--auto-update'));
+  assert(value.remote.includes('24'));
   assert(value.local.includes('pwd'));
   assert(value.local.includes(CIRDC_REPOSITORY));
   assert(value.local.includes('/api/agent/v1/capabilities'));

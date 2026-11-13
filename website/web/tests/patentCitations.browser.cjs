@@ -39,7 +39,12 @@ async function main(){
      if(holdEnsure&&id===number){heldResolve();heldResponse=patentData(url,id);await new Promise(resolve=>{releaseHeld=resolve;});return route.fulfill({json:heldResponse});}
      return ensureError?route.fulfill({status:503,json:{error:'patent_citations_unavailable'}}):route.fulfill({json:patentData(url,id)});
     }
-    if(p==='/api/papers/'+id+'/citations/ensure')return route.fulfill({json:paperCitations(url,id)});
+    if(p==='/api/papers/'+id+'/citations/ensure'){
+     if(!req.postDataJSON().include_patents)return route.fulfill({json:paperCitations(url,id)});
+     const result={papers:paperCitations(url,id),patents:patentData(url,id)};
+     if(holdEnsure&&id===number){heldResolve();heldResponse=result;await new Promise(resolve=>{releaseHeld=resolve;});return route.fulfill({json:heldResponse});}
+     return ensureError?route.fulfill({status:503,json:{error:'citations_unavailable'}}):route.fulfill({json:result});
+    }
     blocked.push(req.method()+' '+p);return route.abort();
    }
    if(req.method()!=='GET'){blocked.push(req.method()+' '+p);return route.abort();}
@@ -59,23 +64,23 @@ async function main(){
    blocked.push(p);return route.abort();
   });
   const page=await context.newPage();page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));await page.clock.install({time:new Date('2026-11-01T01:00:00+08:00')});await page.clock.pauseAt(new Date('2026-11-01T01:00:01+08:00'));
-  const combined=()=>page.locator('.paper-citation-panel'),panel=()=>page.locator('.paper-patent-citations'),toggle=()=>combined().locator('.reference-toggle'),patentTab=()=>combined().locator('.citation-type-tab[id$="-tab-patents"]'),paperTab=()=>combined().locator('.citation-type-tab[id$="-tab-papers"]'),pposts=()=>posts.filter(x=>x.path.endsWith('/patent-citations/ensure')),preads=()=>requests.filter(x=>x.path.endsWith('/patent-citations'));
+  const combined=()=>page.locator('.paper-citation-panel'),panel=()=>page.locator('.paper-patent-citations'),toggle=()=>combined().locator('.reference-toggle'),patentTab=()=>combined().locator('.citation-type-tab[id$="-tab-patents"]'),paperTab=()=>combined().locator('.citation-type-tab[id$="-tab-papers"]'),pposts=()=>posts.filter(x=>x.path.endsWith('/patent-citations/ensure')||x.data.include_patents===true),preads=()=>requests.filter(x=>x.path.endsWith('/patent-citations'));
   async function settled(){await page.waitForFunction(()=>{const p=document.querySelector('.paper-patent-citations');return !!p&&!p.textContent.includes('正在读取专利被引…');});}
   async function refresh(){await panel().getByRole('button',{name:'刷新状态',exact:true}).click();await settled();}
-  async function update(){await panel().getByRole('button',{name:'更新专利被引',exact:true}).click();await settled();}
+  async function update(){await combined().getByRole('button',{name:'更新被引',exact:true}).click();await settled();}
   async function open(){await page.goto(origin+'/papers/'+number,{waitUntil:'networkidle'});await toggle().waitFor();if(await toggle().getAttribute('aria-expanded')==='false')await toggle().click();await patentTab().click();await settled();}
-  await page.goto(origin+'/papers/'+number,{waitUntil:'networkidle'});assert.equal(await toggle().getAttribute('aria-expanded'),'false');assert.equal(pposts().length,1);assert.deepEqual(pposts()[0].data,{});
+  await page.goto(origin+'/papers/'+number,{waitUntil:'networkidle'});assert.equal(await toggle().getAttribute('aria-expanded'),'false');assert.equal(pposts().length,1);assert.deepEqual(pposts()[0].data,{refresh:false,include_patents:true});
   assert(await panel().evaluate(el=>!!(document.querySelector('.paper-citations').compareDocumentPosition(el)&Node.DOCUMENT_POSITION_FOLLOWING)&&!!(el.compareDocumentPosition(document.querySelector('.keywords-panel'))&Node.DOCUMENT_POSITION_FOLLOWING)));
   assert.equal(await combined().locator('h2').count(),1);assert.equal(await combined().innerText(),'被引');assert.equal(await combined().locator('.citation-overview').count(),0);assert.equal(await page.locator('.paper-citations [role="tab"]').count(),2);
   await toggle().click();assert.equal(await paperTab().locator('span').innerText(),'3');assert.equal(await patentTab().locator('span').innerText(),'55');assert.equal(await paperTab().getAttribute('aria-selected'),'true');await patentTab().click();await settled();
   const initialPosts=posts.length;for(let i=0;i<3;i++){await paperTab().click();await patentTab().click();}assert.equal(posts.length,initialPosts);assert.equal(await panel().locator('li').count(),50);await paperTab().click();await paperTab().press('ArrowRight');assert.equal(await patentTab().getAttribute('aria-selected'),'true');await patentTab().press('Home');assert.equal(await paperTab().getAttribute('aria-selected'),'true');await patentTab().click();
-  assert.equal(await panel().locator('li').count(),50);assert((await panel().innerText()).includes('已载入 50 / 55 条'));assert.equal(await panel().getByRole('button',{name:'更新专利被引'}).isDisabled(),true);
+  assert.equal(await panel().locator('li').count(),50);assert((await panel().innerText()).includes('已载入 50 / 55 条'));assert.equal(await combined().getByRole('button',{name:'更新被引',exact:true}).isDisabled(),true);
   assert.equal(await panel().locator('li').first().locator('a').getAttribute('href'),'https://patents.google.com/patent/US1234567B2/en');assert((await panel().locator('li').nth(1).locator('a').getAttribute('href')).startsWith('https://patents.google.com/?q='));assert.equal(await panel().locator('a[href^="/papers/"]').count(),0);assert(await panel().locator('.katex').count()>0);
   const headingStyles=await toggle().evaluate(el=>({fontSize:getComputedStyle(el).fontSize,fontWeight:getComputedStyle(el).fontWeight}));assert.deepEqual(headingStyles,{fontSize:'17px',fontWeight:'650'});
   mode='new';state='complete';badPage=true;await panel().getByRole('button',{name:'加载更多专利被引'}).click();await panel().getByRole('alert').waitFor();assert.equal(await panel().locator('li').count(),50);assert((await panel().getByRole('alert').innerText()).includes('快照不一致'));
   await panel().getByRole('button',{name:'加载更多专利被引'}).click();await panel().locator('li').nth(51).waitFor();assert.equal(await panel().locator('li').count(),52);assert(preads().filter(x=>x.offset>0).every(x=>x.version===v1));await paperTab().click();await patentTab().click();assert.equal(await panel().locator('li').count(),52);assert.equal(pposts().length,1);
   await refresh();assert.equal(pposts().length,1);assert.equal(await panel().locator('li').count(),3);assert((await panel().locator('li').first().innerText()).includes('new'));
-  state='fetching';await update();assert.equal(pposts().length,2);assert.deepEqual(pposts().at(-1).data,{refresh:true});assert.equal(await panel().locator('li').count(),3);
+  state='fetching';await update();assert.equal(pposts().length,2);assert.deepEqual(pposts().at(-1).data,{refresh:true,include_patents:true});assert.equal(await panel().locator('li').count(),3);
   readError=true;await page.clock.fastForward(2100);await panel().getByRole('alert').waitFor();assert.equal(await panel().locator('li').count(),3);const disconnectedReads=preads().length;await page.clock.fastForward(6100);assert.equal(preads().length,disconnectedReads);assert.equal(pposts().length,2);readError=false;
   mode='failure';await refresh();await panel().getByText('更新未完成，已有结果仍可查看。',{exact:true}).waitFor();assert.equal(await panel().locator('li').count(),3);assert((await panel().innerText()).includes('2026/10/20'));assert(!(await panel().innerText()).includes('patent_citations_unavailable'));
   const stopped=preads().length;await page.clock.fastForward(6100);assert.equal(preads().length,stopped);assert.equal(pposts().length,2);
@@ -87,7 +92,7 @@ async function main(){
   ensureError=true;await update();assert.equal(await panel().locator('li').count(),2);assert(!(await panel().innerText()).includes('patent_citations_unavailable'));ensureError=false;await refresh();
   await page.getByRole('button',{name:'English',exact:true}).click();assert.equal(await toggle().innerText(),'Citations');assert.equal(await toggle().getAttribute('aria-label'),'Collapse citations');assert((await panel().innerText()).includes('2 / 3 loaded'));assert((await panel().innerText()).includes('Patent on Google Patents'));await page.getByRole('button',{name:'中文',exact:true}).click();
   if(process.env.CIRDC_BROWSER_OUTPUT){await fs.mkdir(process.env.CIRDC_BROWSER_OUTPUT,{recursive:true});await combined().screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,profile.name+'-patent-panel.png')});}
-  mode='disabled';const beforeDisabled=pposts().length;await open();assert.equal(pposts().length,beforeDisabled);assert.equal(await panel().getByRole('button',{name:'更新专利被引'}).isDisabled(),true);await refresh();assert.equal(pposts().length,beforeDisabled);
+  mode='disabled';const beforeDisabled=pposts().length;await open();assert.equal(pposts().length,beforeDisabled);assert.equal(await combined().getByRole('button',{name:'更新被引',exact:true}).isDisabled(),false);await refresh();assert.equal(pposts().length,beforeDisabled);
   mode='unknown';await open();assert.equal(pposts().length,beforeDisabled+1);assert.equal(await patentTab().locator('span').innerText(),'—');const unknownReads=preads().length;await page.clock.fastForward(6100);assert.equal(preads().length,unknownReads);
   mode='old';state='queued';holdEnsure=true;const held=new Promise(resolve=>{heldResolve=resolve;});await page.reload({waitUntil:'domcontentloaded'});await held;
   await page.evaluate(id=>{history.pushState({},'','/papers/'+id);dispatchEvent(new PopStateEvent('popstate'));},other);await page.locator('#paper-patent-citations-'+other).waitFor({state:'attached'});releaseHeld();holdEnsure=false;await toggle().click();await patentTab().click();await settled();assert((await panel().innerText()).includes('专利被引功能尚未启用'));assert.equal(await panel().locator('li').count(),0);assert.equal(pposts().filter(x=>x.path.includes('/'+other+'/')).length,0);

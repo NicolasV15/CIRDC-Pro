@@ -30,7 +30,7 @@ def test_real_http_timeout_late_commit_and_read_isolation(agent_site, wait, monk
     provider.agent_ensure = blocked
     origin_db = tmp_path / 'origins.sqlite'
     monkeypatch.setenv('CIRDC_WEB_VISITS_FILE', str(origin_db))
-    with serve(create_app(config, resource_providers=resources)) as origin, httpx.Client(base_url=origin, timeout=12, trust_env=False) as client:
+    with serve(create_app(config, resource_providers=resources)) as origin, httpx.Client(base_url=origin, timeout=25, trust_env=False) as client:
         try:
             start = time.monotonic()
             result = client.post(PREFIX+'/papers/100/ensure', json={'wait_seconds': wait})
@@ -39,7 +39,7 @@ def test_real_http_timeout_late_commit_and_read_isolation(agent_site, wait, monk
             assert result.status_code == 503 and result.json()['accepted'] is None
             assert result.json()['next_action'] == 'wait'
             assert result.headers['retry-after'] == str(result.json()['retry_after_seconds'])
-            assert wait+1.8 <= elapsed <= wait+2.7
+            assert wait+9.8 <= elapsed <= wait+10.9
             other = client.post(PREFIX+'/papers/101/ensure', json={'wait_seconds': 0})
             assert other.status_code == 202
             assert client.get(PREFIX+'/papers/101/content').status_code == 200
@@ -83,17 +83,15 @@ def test_cross_paper_submission_does_not_hold_sqlite_write_lock(agent_site):
         entered.set()
         assert release.wait(3)
         return {}, {'content': {'jobs': ['first']}}
-    with ThreadPoolExecutor(2) as pool:
-        first = pool.submit(store.ensure, '100', ['content'], slow)
+    with ThreadPoolExecutor(3) as pool:
+        first=pool.submit(store.ensure,'100',['content'],slow)
         assert entered.wait(1)
-        try:
-            second = pool.submit(store.ensure, '101', ['content'], lambda _: ({}, {}))
-            assert second.result(timeout=1)[0]
-            with pytest.raises(BusyError):
-                store.ensure('100', ['pdf'], lambda _: ({}, {}))
-        finally:
-            release.set()
-        assert first.result(timeout=1)[0]
+        second=pool.submit(store.ensure,'101',['content'],lambda _: ({},{}))
+        assert second.result(timeout=1)[0]
+        same=pool.submit(store.ensure,'100',['pdf'],lambda _: ({},{}))
+        assert not same.done()
+        release.set()
+        assert first.result(timeout=1)[0] and same.result(timeout=1)[0]
 
 
 def test_error_actions_and_limiter_interval(agent_site):
@@ -116,9 +114,8 @@ def test_error_actions_and_limiter_interval(agent_site):
         for _ in range(119):
             ensure(client)
         response = ensure(client)
-        assert response.status_code == 429
-        assert 1 <= response.json()['retry_after_seconds'] <= 60
-        assert response.headers['retry-after'] == str(response.json()['retry_after_seconds'])
+        assert response.status_code == 202
+        assert response.json()['request_id']==ensure(client).json()['request_id']
 
 
 def test_http_helper_preserves_backoff_and_transport_semantics(agent_site, monkeypatch):
@@ -180,3 +177,27 @@ def test_retry_timeout_does_not_return_old_receipt_as_completed(agent_site, monk
             time.sleep(0.01)
         assert value['request_id'] == first['request_id']
         assert value['pending'] and value['prior_attempts'] == 1
+
+
+def test_busy_labels_require_capacity_evidence_and_diagnostics_keep_real_ids(agent_site):
+    from cirdc.web.agent import error_value
+    from cirdc.web.resource_errors import diagnostics, redacted_exception
+    assert 'cause is not confirmed' in error_value('resource_service_unavailable',503)['message']
+    assert 'capacity' in error_value('resource_service_unavailable',503,reason='capacity_limited')['message']
+    assert 'timed out' in error_value('resource_service_unavailable',503,reason='hook_timeout')['message']
+    provider=agent_site[1]
+    def broken(*args):
+        raise RuntimeError("Connection failed: host='private.invalid' token='fixture secret' /private/resource/file")
+    provider.agent_document=broken
+    with client_for(agent_site) as client:
+        receipt=ensure(client).json()
+        assert client.get(PREFIX+'/papers/100/content').status_code==503
+        assert client.get('/api/admin/resource-requests').status_code==404
+    value=diagnostics()
+    assert value['requests'][0]['id']==receipt['request_id']
+    assert value['requests'][0]['references_json']['content']['jobs']
+    error=next(e['detail'] for e in value['events'] if e['action']=='resource_api_error')
+    assert error['number']=='100' and error['phase']=='content'
+    assert 'RuntimeError' in error['exception'] and 'Connection failed' in error['exception']
+    assert not any(secret in error['exception'] for secret in ['private.invalid','fixture secret','/private/resource/file'])
+    assert 'TimeoutError' in redacted_exception(TimeoutError('read did not complete'))

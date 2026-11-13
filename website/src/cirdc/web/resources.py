@@ -65,7 +65,7 @@ class ResourceProviders:
     def coverage(self):
         """Optional provider statistics; never expose provider configuration."""
         result = []
-        fields = {'id', 'label', 'label_i18n', 'numerator', 'denominator', 'status', 'sampled_at', 'note', 'note_i18n'}
+        fields = {'id', 'label', 'label_i18n', 'numerator', 'denominator', 'status', 'sampled_at', 'note', 'note_i18n', 'institution_not_licensed'}
         for provider in self.providers:
             method = getattr(provider, 'coverage', None)
             if not callable(method):

@@ -336,7 +336,10 @@ class AuthorRepository:
         return rows[0] if rows else None
 
     def save(self, value):
-        value = validate(value)
+        return self._save_validated(validate(value))
+
+    def _save_validated(self, value):
+        """Internal write path for the immediately validated canonical snapshot."""
         self.ready()
         aid = value['author_id']
         with author_lock(self.store, aid):
@@ -384,7 +387,7 @@ class AuthorRepository:
         with author_lock(self.store, aid):
             self.store.db.rollback()
             old = self.row(aid)
-            attempted = datetime.fromisoformat(attempted_at).replace(tzinfo=None)
+            attempted = datetime.fromisoformat(timestamp(attempted_at)).replace(tzinfo=None)
             if old and old['last_attempt_at'] and old['last_attempt_at'] > attempted:
                 self.store.db.rollback()
                 return

@@ -32,6 +32,12 @@ shopt -s nullglob
 task_previous_wheels=("$task_root/$task_previous"/dist/cirdc_pro-*.whl)
 [[ ${#task_previous_wheels[@]} -eq 1 ]] || { echo 'Exactly one rollback wheel is required.' >&2; exit 1; }
 task_previous_wheel=${task_previous_wheels[0]}
+if [[ -n "${CIRDC_WEB_ROLLBACK_WHEEL:-}" ]]; then
+    [[ "$CIRDC_WEB_ROLLBACK_WHEEL" = /* && -f "$CIRDC_WEB_ROLLBACK_WHEEL" ]] || {
+        echo 'The rollback artifact must be an existing absolute wheel path.' >&2; exit 1;
+    }
+    task_previous_wheel=$CIRDC_WEB_ROLLBACK_WHEEL
+fi
 test ! -e "$task_destination" && test ! -L "$task_destination"
 mkdir "$task_destination"
 # Snapshot canonical source, excluding development environments and build caches.

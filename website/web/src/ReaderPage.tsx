@@ -1,4 +1,5 @@
 import React,{useEffect,useRef,useState} from 'react';
+import ArxivPage from './ArxivPage';
 import {t,useLanguage,localizedText,contentTypeLabel} from './i18n';
 import {api} from './api';
 import {fmt,time,contentStateNames} from './format';
@@ -12,6 +13,7 @@ import PaperSelectionToolbar from './PaperSelectionToolbar';
 import {OverviewCards} from './Overview';
 import SearchInsights,{MatchReasons,PassageHits,Highlighted} from './SearchInsights';
 import PaperDetail,{readingHref} from './PaperDetail';
+import PaperSearchControls from './PaperSearchControls';
 import {AuthorLinks,AuthorSearch} from './AuthorSearch';
 import {VenueFamilyFilter,VenueTags} from './VenueTags';
 import {orderVenueFamilies,selectedVenueFamilies,venueFamilies,venueNumbers} from './venueFamilies';
@@ -26,6 +28,10 @@ function invalidYearRange(f:Pick<Filters,'year_from'|'year_to'>){return !!f.year
 function query(f:Filters){return '/?'+new URLSearchParams(Object.entries(f).filter(([key,value])=>key!=='cursor'&&!!value));}
 
 export default function ReaderPage(){
+ const arxiv=location.pathname.startsWith('/arxiv/')||new URLSearchParams(location.search).get('source')==='arxiv';
+ return arxiv?<ArxivPage/>:<IEEEReaderPage/>;
+}
+function IEEEReaderPage(){
  useLanguage();
  const browseTop=useRef<HTMLHeadingElement>(null),resultsTitle=useRef<HTMLHeadingElement>(null);
  const [citationNumbers,setCitationNumbers]=useState<string[]>([]),[downloadSelection,setDownloadSelection]=useState<SelectedPaper[]|null>(null);
@@ -142,16 +148,9 @@ export default function ReaderPage(){
  ];
  const activeCount=chips.length,topView=applied.view==='top';
  return <><main id="main" className="workspace reader-workspace" data-copy-scope>
-  <div className="reader-hero"><div className="reader-hero-title"><h1 ref={browseTop} tabIndex={-1}>{t('论文检索')}</h1><p className="muted">{t('从标题到摘要，查找你关心的电路、方法与作者。')}</p></div><OverviewCards overview={index?.overview} compact/></div>
-  <form className="search-box" role="search" aria-label={t('文献库检索')} onSubmit={submit}>
-   <div className="search-main"><Icon name="search" className="search-icon"/><input aria-label={t('搜索论文')} placeholder={filters.field==='authors'?t('输入作者姓名或 IEEE 作者 ID'):filters.field==='body'?t('输入正文中的词、短语或一句原文'):t('搜索论文、作者、关键词，或输入编号 / DOI')} maxLength={filters.field==='body'?600:200} value={filters.q} onChange={e=>update('q',e.target.value)}/><button className="primary" disabled={busy||invalidYearRange(filters)}>{t('检索')}</button></div>
-   <div className="search-options">
-    <div className="search-option-section"><span className="search-option-label">{t('检索字段')}</span><div className="search-choice-group field-choices" role="group" aria-label={t('检索字段')}>{[['all',t('全部')],['title',t('标题')],['authors',t('作者')],['keywords',t('关键词')],['abstract',t('摘要')],['body',t('正文')]].map(([v,l])=><button key={v} type="button" className="search-choice" aria-pressed={filters.field===v} onClick={()=>updateSearchOption('field',v)}>{l}</button>)}</div></div>
-    <div className="search-option-section"><span className="search-option-label">{t('结果')}</span><div className="search-choice-group" role="group" aria-label={t('结果视图')}>{[['',t('全部匹配')],['top',t('最相关')]].map(([v,l])=><button key={v||'all'} type="button" className="search-choice" aria-pressed={filters.view===v} onClick={()=>updateSearchOption('view',v)}>{l}</button>)}</div>{filters.view==='top'&&<select className="top-k-select" aria-label={t('返回篇数')} value={filters.k||'20'} onChange={e=>updateSearchOption('k',e.target.value==='20'?'':e.target.value)}>{['10','20','50','100'].map(k=><option key={k} value={k}>{t('前 {k} 篇',{k})}</option>)}</select>}</div>
-    {filters.view!=='top'&&<div className="search-option-section"><span className="search-option-label">{t('排序')}</span><div className="search-choice-group" role="group" aria-label={t('排序')}>{[['relevance',t('相关度')],['year',t('年份从新到旧')]].map(([v,l])=><button key={v} type="button" className="search-choice" aria-pressed={filters.sort===v} onClick={()=>updateSearchOption('sort',v)}>{l}</button>)}</div></div>}
-    <label className="alias-toggle" title={t('关闭后只匹配输入的原写法')}><input type="checkbox" checked={filters.terms!=='exact'} onChange={e=>updateSearchOption('terms',e.target.checked?'':'exact')}/><span>{t('等价写法扩展')}</span></label>
-   </div>
-  </form>
+  <div className="reader-hero"><div className="reader-hero-title"><h1 className="search-page-title" ref={browseTop} tabIndex={-1}>{t('IEEE Xplore 论文检索')}</h1><p className="muted">{t('从标题到摘要，查找你关心的电路、方法与作者。')}</p></div><OverviewCards overview={index?.overview} compact/></div>
+  <PaperSearchControls value={filters} fields={[["all",t('全部')],["title",t('标题')],["authors",t('作者')],["keywords",t('关键词')],["abstract",t('摘要')],["body",t('正文')]]} busy={busy} invalid={invalidYearRange(filters)} placeholder={filters.field==='authors'?t('输入作者姓名或 IEEE 作者 ID'):filters.field==='body'?t('输入正文中的词、短语或一句原文'):t('搜索论文、作者、关键词，或输入编号 / DOI')} onQuery={q=>update('q',q)} onOption={updateSearchOption} onSubmit={submit}/>
+
   <div className="reader-layout">
    <aside className="reader-sidebar" aria-label={t('筛选')}>
     <details className="filter-disclosure" open={filtersOpen} onToggle={e=>setFiltersOpen(e.currentTarget.open)}>

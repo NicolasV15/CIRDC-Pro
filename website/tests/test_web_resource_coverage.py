@@ -13,7 +13,7 @@ class Provider:
     identifier='documents'
     def routes(self): return []
     def coverage(self):
-        return {'id':'documents','label':'Registered documents','status':'ready','numerator':25,'denominator':50,
+        return {'id':'documents','label':'Registered documents','status':'ready','numerator':25,'denominator':50,'institution_not_licensed':2,
                 'sampled_at':'2026-10-29T00:00:00Z','configuration_secret':'must-not-be-exposed'}
 
 
@@ -25,6 +25,7 @@ def test_optional_coverage_extends_only_the_response_not_the_stored_index(websit
         r=client.get('/api/overview');assert r.status_code==200
         body=r.json();item=body['overview']['resource_coverage'][0]
         assert item['numerator']==25 and item['denominator']==50 and item['status']=='ready'
+        assert item['institution_not_licensed']==2
         assert 'configuration_secret' not in item
         assert body['index']['overview']==body['overview']
     with closing(connect('search.sqlite')) as db:

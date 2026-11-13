@@ -42,7 +42,7 @@ def read(config, number, offset=0, limit=50, version=None):
     if value.get('number') != number or not isinstance(value.get('items'), list):
         raise ReferenceError('patent_citations_unavailable', 503)
     fields = ('number','state','version','group','total','expected_total','counts','stored_counts','group_states',
-              'source_presence','empty_reason','checked_at','last_attempt_at','next_check_at','stale','error','offset','limit','next_offset','items')
+              'source_presence','empty_reason','checked_at','last_attempt_at','next_check_at','stale','error','offset','limit','next_offset','items','job')
     return {k: v for k, v in value.items() if k in fields}
 
 
@@ -77,6 +77,11 @@ def due(current, refresh=False):
 
 def enqueue(config, number, refresh=False):
     current = read(config, number)
+    if (current.get('job') or {}).get('kind') == 'citations':
+        from .task_origins import CURRENT
+        context = CURRENT.get()
+        if context and context.get('kind') == 'patent_citations' and context.get('paper') == number:
+            context['joint_citations'] = True
     if not due(current, refresh):return current
     try:call(config, 'enqueue_command', ['enqueue', number] + (['--retry'] if refresh else []))
     except ReferenceError as error:

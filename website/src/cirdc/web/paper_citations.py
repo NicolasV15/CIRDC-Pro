@@ -42,7 +42,7 @@ def read(config, number, group='ieee', offset=0, limit=50, version=None):
     if value.get('number') != number or not isinstance(value.get('items'), list):
         raise ReferenceError('citations_unavailable', 503)
     fields = ('number','state','version','group','total','expected_total','counts','stored_counts','group_states',
-              'source_presence','empty_reason','checked_at','last_attempt_at','next_check_at','stale','error','offset','limit','next_offset','items')
+              'source_presence','empty_reason','checked_at','last_attempt_at','next_check_at','stale','error','offset','limit','next_offset','items','job')
     return {k: v for k, v in value.items() if k in fields}
 
 
@@ -88,6 +88,36 @@ def enqueue(config, number, refresh=False):
     return read(config, number)
 
 
+
+def enqueue_joint(config, number, refresh=False):
+    from . import patent_citations
+    from .task_origins import CURRENT
+    context = CURRENT.get()
+    if context and context.get('kind') == 'citations' and context.get('paper') == number:
+        context['joint_citations'] = True
+    papers, patents = read(config, number), patent_citations.read(config, number)
+    jobs = []
+    if due(papers, refresh) or patent_citations.due(patents, refresh):
+        if enabled(config) and patent_citations.enabled(config):
+            try:
+                value = call(config, 'enqueue_command', ['enqueue', number, '--include-patents'] + (['--retry'] if refresh else []))
+                jobs = value.get('jobs', [])
+            except ReferenceError as error:
+                if error.code != 'worker_busy':raise
+                for _ in range(3):
+                    time.sleep(.1)
+                    papers, patents = read(config, number), patent_citations.read(config, number)
+                    if not due(papers, False) and not patent_citations.due(patents, False):
+                        return {'papers':papers,'patents':patents,'jobs':[]}
+                raise ReferenceError('citations_queue_unavailable', 503) from None
+        elif due(papers, refresh):
+            enqueue(config, number, refresh)
+        elif patent_citations.due(patents, refresh):
+            patent_citations.enqueue(config, number, refresh)
+        papers, patents = read(config, number), patent_citations.read(config, number)
+    return {'papers':papers,'patents':patents,'jobs':jobs}
+
+
 def routes(config, response):
     limiter = SearchRateLimiter(limit=ENSURE_REQUESTS_PER_MINUTE, interval=60)
     async def listing(request):
@@ -100,8 +130,16 @@ def routes(config, response):
     async def ensure(request):
         try:
             data = await request.json()
-            if not isinstance(data,dict) or set(data)-{'refresh'} or not isinstance(data.get('refresh',False),bool):
+            if not isinstance(data,dict) or set(data)-{'refresh','include_patents'} or any(not isinstance(data.get(key,False),bool) for key in ('refresh','include_patents')):
                 return response({'error':'invalid_citation_request'},422)
+            if data.get('include_patents'):
+                from . import patent_citations
+                papers, patents = await run_in_threadpool(read,config,request.path_params['number']), await run_in_threadpool(patent_citations.read,config,request.path_params['number'])
+                if (due(papers,data.get('refresh',False)) or patent_citations.due(patents,data.get('refresh',False))) and not limiter.allow(request.client.host if request.client else 'unknown'):
+                    return response({'error':'rate_limited'},429)
+                value = await run_in_threadpool(enqueue_joint,config,request.path_params['number'],data.get('refresh',False))
+                pending = any(part['state'] in ('queued','fetching') for part in (value['papers'],value['patents']))
+                return response(value,202 if pending else 200)
             current = await run_in_threadpool(read,config,request.path_params['number'])
             if due(current,data.get('refresh',False)):
                 if not limiter.allow(request.client.host if request.client else 'unknown'):

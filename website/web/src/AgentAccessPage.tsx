@@ -3,6 +3,7 @@ import {t,useLanguage} from './i18n';
 import {agentPrompts} from './agentAccess';
 import Icon,{type IconName} from './Icon';
 import './agentAccess.css';
+import {skillBase,skillRelease,type SkillRelease} from './skillRelease';
 
 function Prompt({title,value}:{title:string;value:string}){
  const [notice,setNotice]=useState<'copied'|'selected'|''>('');
@@ -20,18 +21,28 @@ function Prompt({title,value}:{title:string;value:string}){
 }
 function Option({id,step,icon,title,description,prompt,value}:{id:string;step:string;icon:IconName;title:string;description:string;prompt:string;value:string}){
  return <section className="panel agent-prompt-card" aria-labelledby={id}>
-  <div className="agent-choice-heading"><span className="agent-choice-icon" aria-hidden="true"><Icon name={icon}/><b>{step}</b></span><div><h2 id={id}>{title}</h2><p className="muted">{description}</p></div></div>
+  <div className="agent-choice-heading"><span className="agent-choice-icon" aria-hidden="true"><Icon name={icon}/><b>{step}</b></span><div><h3 id={id}>{title}</h3><p className="muted">{description}</p></div></div>
   <Prompt title={prompt} value={value}/>
  </section>;
 }
-export default function AgentAccess(){
+export default function AgentAccess({onClose,returnFocus}:{onClose:()=>void;returnFocus:HTMLElement|null}){
  const language=useLanguage();
+ const [release,setRelease]=useState<SkillRelease|null>(null);
+ useEffect(()=>{let active=true;void skillRelease().then(value=>{if(active)setRelease(value);});return()=>{active=false;};},[]);
+ const dialog=useRef<HTMLDialogElement>(null),close=useRef<HTMLButtonElement>(null);
+ useEffect(()=>{
+  const box=dialog.current;if(!box)return;
+  const opener=returnFocus??(document.activeElement instanceof HTMLElement?document.activeElement:null),overflow=document.body.style.overflow;
+  box.showModal();document.body.style.overflow='hidden';close.current?.focus();
+  return()=>{if(box.open)box.close();document.body.style.overflow=overflow;if(opener?.isConnected)opener.focus({preventScroll:true});};
+ },[]);
  const prompts=agentPrompts(window.location.origin,language);
- return <main id="main" className="workspace agent-access">
-  <div className="agent-hero"><a className="back-link" href="/"><Icon name="back"/>{t('返回论文检索')}</a><h1>{t('AI 接入')}</h1><p className="muted">{t('在目标工作目录下打开 Agent 对话，复制对应 prompt 即可。')}</p></div>
-  <div className="agent-options">
+ return <dialog id="agent-access-dialog" className="venue-guide-dialog agent-access-dialog" ref={dialog} aria-labelledby="agent-access-title" aria-describedby="agent-access-intro" onCancel={event=>{event.preventDefault();onClose();}} onClick={event=>{if(event.target!==event.currentTarget)return;const rect=event.currentTarget.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)onClose();}}>
+  <header className="venue-guide-header agent-access-header"><div><h2 id="agent-access-title">{t('AI 接入')}</h2><p id="agent-access-intro">{t('在目标工作目录下打开 Agent 对话，复制对应 prompt 即可。')}</p></div><button type="button" className="venue-guide-close" ref={close} aria-label={t('关闭')} onClick={onClose}><Icon name="close"/></button><div className="agent-skill-meta"><p className="agent-skill-version">{t('本站 Skill 版本')}：{release?release.version:t('版本信息暂不可用')}</p><a className="agent-skill-help" href={skillBase+'/references/api.md#native-skill-installation'} target="_blank" rel="noreferrer"><span>{t('安装与更新说明')}</span><Icon name="external" className="icon-trailing"/></a></div></header>
+  <div className="venue-guide-scroll" tabIndex={0}>
+   <div className="agent-options">
    <Option id="agent-online-title" step="1" icon="link" title={t('连接当前站点')} description={t('Agent 安装在线 Skill，自动保存当前站点地址，随后即可在你的项目中使用。')} prompt={t('在线安装 prompt')} value={prompts.remote}/>
    <Option id="agent-local-title" step="2" icon="server" title={t('部署到自己的机器')} description={t('Agent 在当前对话的工作目录中克隆源码、部署网页，并安装指向该实例的 Skill。')} prompt={t('本地部署 prompt')} value={prompts.local}/>
-  </div>
- </main>;
+  </div></div>
+ </dialog>;
 }

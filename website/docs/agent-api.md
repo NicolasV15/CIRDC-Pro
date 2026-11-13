@@ -58,27 +58,28 @@ Resources report independent availability and task states. Cached content remain
 usable after another branch fails. A source access failure is not proof that a
 publisher has no HTML. Any PDF fallback and later conversion retain the provider's
 validated-absence rules. PDF downloads check actual readable files before streaming.
+The final PDF output boundary owns the lightweight signature check, shared by
+GET, HEAD and Range downloads. Availability and registration do not repeat this
+check. MCP reports the normal download endpoint's type and size; a download
+failure is returned separately without changing a completed acquisition receipt.
+The standalone client saves a PDF using one GET, checking that response's type
+and received length without an extra HEAD or a second signature check.
 
-Providers with automatic recovery expose `message`, `next_action`,
-`retry_attempts`, `max_retry_attempts` and `next_retry_at`. While `next_action`
-is `wait`, receipts return HTTP 202 and clients keep polling the same receipt;
-usable partial content remains readable. `contact_administrator` ends polling.
-Show the returned user-facing message instead of internal attempt error codes.
-The provider owns the recovery budget: repeated ensure, reconnecting, polling
-and explicit retry must not reset it. Confirmed institutional non-entitlement
-remains terminal. Older providers without these fields retain explicit retry.
-An optional `agent_requested(number, kind)` hook notifies the provider of an
-accepted POST ensure before reading its snapshot; GET polling never invokes it.
+Accepted ordinary source acquisition persists without a cumulative retry cap.
+PDF-to-text conversion retains an independent bounded recovery policy. Pending
+responses expose acquisition_id, phase, next_action=wait and polling guidance.
+A conversion can end with failed/partial and next_action=contact_administrator or
+stop. Its receipt can return HTTP 200, pending=false and complete=false; clients
+must report the terminal resource outcome without automatically resubmitting.
+Mixed receipts keep each resource independent and remain pending only while
+another branch still needs waiting. A confirmed institutional non-entitlement is
+a normal terminal no-PDF outcome. Provider hooks receive optional caller context;
+GET never promotes or submits work.
 
-Public JSON endpoints support credential-free CORS. Searches share a limit of
-50 requests per second per peer IP across browser, HTTP and MCP calls. Agent
-ensure calls share a limit of 120 requests per 60 seconds per peer IP across all
-articles and resource types; repeated ensure calls also count. Both use sliding
-windows and return HTTP 429 when exhausted. GET receipt polling does not consume
-the ensure allowance. Other metadata and relationship ensure routes each retain
-their own 120-per-minute allowance. Request-body limits also apply. These limits
-do not grant new source-request budgets. Capabilities advertises the current
-search and Agent ensure limits.
+Public JSON endpoints support credential-free CORS. Resource ensure has no
+per-peer frequency quota; short transactions queue accepted work durably.
+Search and unrelated metadata/relationship limits retain their own contracts.
+Source egress spacing and capacity are independent of local admission.
 The existing visit/task recorder associates accepted Agent requests with actual
 returned queue identities. It does not record prompts, document contents or
 invent associations from paper numbers and timestamps.
@@ -96,7 +97,7 @@ the thread pool. The generic website never imports a private provider module.
 | `agent_ensure(number, resource, rate_key, retry=False)` | Reuse cached/active resources; submit missing resources only. Failed or partial work requires explicit retry. Return the same normalized status with a durable reference. |
 | `agent_document(number, version=None)` | Read cleaned HTML plus `version`, `source`, `toc`, `state`, `assets_ready` and `assets_total`. A supplied version must select exactly that immutable document. |
 | `agent_document_catalog(cursor=None, limit=100)` | Optional, read-only. Return `items` with `number`, `version`, `state` (`ready`/`partial` bodies are indexed; other states remove passages) and optional `source`, plus an opaque resumable `cursor`, `more` and optional `total`. Later cycles must discover new/changed documents and removals. Providers may replay unchanged entries; the indexer skips matching indexed versions. A replayable sweep may return `cursor=null` only at its end (`more=false`), so the next cycle starts another sweep. Used only by `cirdc web fulltext-index`. |
-| `agent_file(number, asset_id=None, version=None)` | Return a verified server-local `path` and `media_type` for streaming. An absent asset ID means the original PDF. Asset requests require a document version. Paths never enter client JSON. |
+| `agent_file(number, asset_id=None, version=None)` | Resolve a registered server-local `path` and `media_type` for streaming. The final HTTP PDF output checks readability and the lightweight signature. An absent asset ID means the original PDF. Asset requests require a document version. Paths never enter client JSON. |
 
 Status fields are `state` (`missing`, `pending`, `ready`, `partial`, `unavailable`,
 `failed`), `phase`, `reason`, `retryable`, optional `transient`, source/version,
@@ -179,22 +180,58 @@ response supplies a receipt, query that receipt instead. A 503 is a service erro
 not evidence of missing content. Preserve `message`, `next_action`,
 `retry_after_seconds`, `request_id` and `status_url`. HTTP `Retry-After` matches
 the JSON interval. A 429 interval reflects the remaining rate-limit window.
-Stop on `next_action=stop` or `contact_administrator`.
+A confirmed unavailable PDF is terminal; pending acquisition continues through its receipt.
 
-Ensure's processing budget is `wait_seconds + 2` seconds from validated parameters,
-including metadata lookup and submission; `wait_seconds=0` has a two-second budget
+Ensure's processing budget is `wait_seconds + 10` seconds from validated parameters,
+including metadata lookup and submission; `wait_seconds=0` has a ten-second budget
 and does not wait for resource completion. Receipt/capabilities reads have a
-two-second budget; content JSON has ten seconds. These budgets exclude network
+ten-second budget; content JSON has ten seconds. These budgets exclude network
 transfer and do not limit PDF/image streaming. Capabilities reports budgets and
-per-process concurrency (four submissions, eight reads). The 120/minute allowance
-is an admission limit, not a source throughput guarantee.
+internal bounded execution pools with queued admission. Resource ensure has no per-IP quota. Local execution pools are not acquisition-attempt limits.
 
 On ensure errors, `accepted=true` means submission was confirmed, `false` means
 not submitted, and `null` means unknown. Only a committed receipt is returned as a
 receipt. When submission times out, the synchronous hook can still finish and save
 its receipt; it retains its execution slot until completion. Without a receipt,
 back off, read first, then resume an ordinary ensure with `retry=false` if needed.
-Never automatically repeat `retry=true`. Polling never submits work or resets the
-backend recovery budget. Preserve usable content and original failure history.
+Ensure is idempotent and needs no retry flag. Polling never submits work. Preserve usable content and original failure history.
 
 `/healthz` checks website liveness; it does not report resource worker capacity.
+
+## Independent research Skill releases
+
+The canonical release metadata, compatibility, SHA-256 inventory and bilingual
+notes live in `.agents/skills/cirdc-research/version.json`; this version is independent
+of API and Python package versions. Run `python3 website/tools/skill_release.py`
+from the repository root to check, or `--write` after choosing a new release version.
+Wheel/sdist builds validate the inventory; online distribution and the AI access
+dialog read that same manifest. Local checks use only that static endpoint and
+never queue database, paper, PDF or maintenance work.
+
+See [version rules, safe updates and a forwardable migration notice](../.agents/skills/cirdc-research/references/api.md#skill-version-and-updates).
+Older local copies require one manual update; remote MCP/HTTP-only and ordinary
+website users require no native Skill update. Use isolated fixtures for all update
+failure/caching tests; never acquire papers to validate a version check.
+
+
+## Durable resource acquisition
+
+Accepted work survives disconnects and restarts. Poll the original receipt; failures are diagnostics, not an acquisition lifetime limit. PDF ready and confirmed unavailable are normal terminal outcomes. Use wait_seconds=0 for submission bursts. Stable client_id and channel provide fair scheduling between API callers and browser users.
+
+## Research Skill 1.2.0: IEEE and arXiv
+
+The canonical `cirdc-research` release now supports both sources without changing
+existing IEEE commands or installation settings. `capabilities.sources` advertises
+source configuration; older sites without that field remain IEEE-compatible.
+arXiv uses its own internal paper ID, integer paper version and render identity,
+with HTTP paths under `/api/arxiv` and source-specific MCP tools on the existing
+MCP connection. The Skill's `references/arxiv.md` contains routing, state handling,
+CLI examples and cached original-file downloads. A configured source does not
+prove its metadata index or full-text coverage is complete.
+
+arXiv's cached `/content` response uses the existing block-pagination contract,
+pins cursors to paper version/render/hash, and validates source-specific asset
+URLs. Reading never creates acquisition. One explicit arXiv ensure requests
+HTML/PDF/source plus reading preparation; its terminal partial outcomes and
+bounded retries are different from IEEE recovery. MathML without original TeX
+is preserved as markup with a warning rather than guessed into LaTeX.

@@ -52,7 +52,7 @@ async function main(){
   await pendingHeading.waitFor();const pending=pendingHeading.locator('xpath=following-sibling::table[1]');
   assert.equal(await pending.getByRole('row').filter({hasText:'12345678'}).count(),0);
   assert.equal(await pending.getByRole('row').filter({hasText:'12345679'}).count(),1);
-  const waiting=pending.getByRole('row').filter({hasText:'12345679'});assert.match(await waiting.innerText(),/1\/3/);assert.match(await waiting.innerText(),profile.lang==='en'?/Next retry:/:/下次重试/);
+  const waiting=pending.getByRole('row').filter({hasText:'12345679'});assert.match(await waiting.innerText(),/1\/3/);assert.match(await waiting.innerText(),profile.lang==='en'?/Next background acquisition retry:/:/后台下次获取重试/);
   const exhausted=pending.getByRole('row').filter({hasText:'12345681'});assert.match(await exhausted.innerText(),/3\/3/);assert.match(await exhausted.innerText(),profile.lang==='en'?/Retry limit reached/:/次数耗尽/);
   const manual=pending.getByRole('row').filter({hasText:'12345682'});assert.match(await manual.innerText(),profile.lang==='en'?/Manual handling required/:/待人工处理/);
   assert.deepEqual(mutations,[]);assert.deepEqual(external,[]);assert.deepEqual(errors,[]);

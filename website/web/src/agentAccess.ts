@@ -9,7 +9,8 @@ export function agentPrompts(origin:string,language:'zh'|'en'='zh'){
 在线 Skill：${skill}
 官方安装程序：${installer}
 
-先读取在线 Skill 及其安装说明，识别当前 AI 工具，使用官方安装程序完成原生 Skill 安装。安装时明确设置参数 --base-url ${site}
+先读取在线 Skill 及其安装说明，识别当前 AI 工具，使用官方安装程序完成原生 Skill 安装。此下载式安装会在首次使用 Skill 或 helper 启动时轻量检查原绑定站点的新版本（结果缓存 24 小时）。发现新版后，Agent 展示当前版本、最新版本及简短更新说明，并询问“是否更新？”。只有用户明确同意后才能调用官方安装器升级；未回复或暂不更新时继续旧版和正常业务。支持稍后提醒、跳过此版本，以及用 CIRDC_SKILL_UPDATE_CHECK=0 或 research.json 的 check_updates=false 关闭检查。无常驻进程或定时任务，不保证打开 AI 工具就触发。
+安装时明确设置参数 --base-url ${site}
 验证连接并保存站点配置。复用或安全更新匹配的安装，保留已有文件和其他配置；如果工作区经过 SSH，区分源码所在机器与技能实际安装的机器。
 
 安装完成后，从任意项目目录，在不传 URL 的情况下调用已安装的 Skill HTTP helper 的 capabilities，核对调用实际使用的地址就是上述站点。请直接执行并返回 Skill 安装位置、已绑定站点和验证结果，后续使用时不要再向我询问站点地址。`:
@@ -18,7 +19,8 @@ Target site: ${site}
 Online Skill: ${skill}
 Official installer: ${installer}
 
-Read the online Skill and its installation reference. Identify the current AI host and complete its native Skill installation with the official installer. Set this installer argument explicitly: --base-url ${site}
+Read the online Skill and its installation reference. Identify the current AI host and complete its native Skill installation with the official installer. This download checks the original bound site on first Skill use or helper startup, caching results for 24 hours. For a new release, show current/latest versions and short notes, then ask “Would you like to update?”. Only run the official installer after explicit user agreement; no reply or a deferral means continuing with the old version and normal work. Support snoozing, skipping a release, and disabling checks with CIRDC_SKILL_UPDATE_CHECK=0 or check_updates=false in research.json. No resident process or scheduled job is created; opening the AI tool alone is not a verified trigger.
+Set this installer argument explicitly: --base-url ${site}
 Verify connectivity and persist the site configuration. Reuse or safely update a matching installation while preserving existing files and other settings. If the workspace uses SSH, distinguish the source machine from the machine where skills are installed.
 
 From an arbitrary project directory, call capabilities through the installed Skill's HTTP helper without providing a URL, and verify that the helper actually uses the target site above. Execute the installation and report the Skill location, bound site, and verification result. Do not ask me for a site address during later research use.`;

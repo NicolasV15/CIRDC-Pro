@@ -5,7 +5,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve(__dirname,'../src');
 async function moduleURL(name,imports={}){let js=ts.transpileModule(await fs.readFile(path.join(root,name),'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;for(const [key,url] of Object.entries(imports))js=js.replaceAll("'"+key+"'",JSON.stringify(url));return 'data:text/javascript;base64,'+Buffer.from(js).toString('base64');}
 async function main(){
- const citations=await moduleURL('citations.ts'),titles=await moduleURL('titleMath.ts',{'./citations.ts':citations}),formats=await moduleURL('selectionFormats.ts'),content=await moduleURL('selectionContent.ts',{'./titleMath':titles,'./selectionFormats':formats});
+ const citations=await moduleURL('citations.ts'),titles=await moduleURL('titleMath.ts',{'./citations.ts':citations}),formats=await moduleURL('selectionFormats.ts',{'katex':'data:text/javascript;base64,'+Buffer.from(await fs.readFile(path.join(path.dirname(require.resolve('katex')),'katex.mjs'),'utf8')).toString('base64')}),content=await moduleURL('selectionContent.ts',{'./titleMath':titles,'./selectionFormats':formats});
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
  try{
   const page=await browser.newPage();let requests=0;await page.route('**/*',route=>{requests++;return route.abort();});
@@ -23,7 +23,15 @@ async function main(){
    eq(whole(scope.firstChild).values.markdown,'before $\\frac{x_1}{y^2}$ after','source TeX precedes annotation');const visual=scope.querySelector('#visual').firstChild;eq(capture(visual,1,visual,3).values.markdown,'$\\frac{x_1}{y^2}$','formula interior expands formula only');
    eq(capture(scope.firstChild.firstChild,0,scope.querySelector('[data-copy-tex]'),0).values.text,'before ','formula at zero end offset excluded');
    set('<p><span class="katex"><span class="katex-mathml"><annotation encoding="application/x-tex">x_1^2</annotation></span><span class="katex-html" aria-hidden="true">DUPLICATE</span></span></p>');eq(whole(scope.firstChild).values.text,'x_1^2','annotation fallback deduplicates');
+   const padded=String.raw`\mathrm { g _ { m 2 } ^ { \mathrm { ~ R ~ } } }`,compact=String.raw`\mathrm{g_{m2}^{\mathrm{~R~}}}`;
+   set('<p>before <span class="katex"><span class="katex-mathml"><annotation encoding="application/x-tex">'+padded+'</annotation></span><span class="katex-html" aria-hidden="true"><span id="padded-visual">VISUAL</span></span></span> after</p>');
+   const saved=scope.innerHTML,inside=scope.querySelector('#padded-visual').firstChild,cleaned=capture(inside,1,inside,3);
+   eq(cleaned.values.markdown,'$'+compact+'$','partial padded annotation exports complete compact Markdown');eq(cleaned.values.latex,'\\('+compact+'\\)','partial padded annotation exports complete compact LaTeX');eq(cleaned.values.text,compact,'partial padded annotation exports complete compact text');eq(scope.innerHTML,saved,'original annotation and formula DOM unchanged');
    set('<div><p class="abstract-measure" aria-hidden="true">DUPLICATE</p><p>visible <b>selected</b><button>Copy</button><span class="abstract-tail">… expand</span></p><nav>CONTENTS</nav><p hidden>HIDDEN</p></div>');eq(whole(scope.firstChild).values.text,'visible selected','hidden copies controls and TOC excluded');
+   set('<p>before <span class="katex"><span class="katex-mathml"><annotation encoding="application/x-tex">\\mu</annotation></span><span class="katex-html" aria-hidden="true"><span id="greek-visual">UNTRUSTED_VISUAL</span></span></span> after</p>');
+   const greekDOM=scope.innerHTML,greekVisual=scope.querySelector('#greek-visual').firstChild,greekCopy=capture(greekVisual,1,greekVisual,2);
+   eq(greekCopy.values.text,'μ','partial Greek annotation becomes one Unicode symbol');eq(greekCopy.values.markdown,String.raw`$\mu$`,'Greek Markdown remains TeX');eq(whole(scope.firstChild).values.text,'before μ after','mixed Greek selection deduplicates visual content');eq(scope.innerHTML,greekDOM,'Greek source and display DOM unchanged');
+   set('<p><code>\\mu</code><span data-copy-content="math-source" data-copy-tex="\\mu">\\mu</span></p>');eq(whole(scope.firstChild).values.text,String.raw`\mu\mu`,'code and explicit original math source remain literal');
    set('<p>V<sub>out</sub><sup>2</sup></p>');eq(whole(scope.firstChild).values.text,'V_{out}^{2}','HTML scripts retained');
    set('<ol start="4"><li>first</li><li>second</li></ol>');const li=scope.querySelectorAll('li')[1].firstChild;eq(capture(li,0,li,6).values.markdown,'5. second','partial ordered list ordinal');
    set('<table><thead><tr><th>A</th><th>B</th></tr></thead><tbody><tr><td>1</td><td>2</td></tr></tbody></table>');eq(whole(scope.firstChild).values.markdown,'| A | B |\n| --- | --- |\n| 1 | 2 |','simple complete table');

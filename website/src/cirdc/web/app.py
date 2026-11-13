@@ -78,6 +78,8 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                     and re.fullmatch(r'/api/papers/[0-9]{1,64}/metadata/ensure', path)):
                 policy = {**policy, 'write': True, 'body_limit': 1024}
             machine = policy.get('machine', False)
+            if interface == 'reader' and re.fullmatch(r'/api/author-profiles/ieee/[0-9]{1,64}/ensure', path):
+                policy = {**policy, 'write': True}
             if public_reader and path.startswith('/api/'):
                 if path.startswith('/api/auth/') and path != '/api/auth/session':
                     return response({'error': 'not_found'}, 404)
@@ -342,7 +344,12 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
             return response({'error': 'invalid_author_reference'}, 422)
         with closing(Store(config)) as store:
             value = AuthorRepository(store, config.state_dir).show(aid, public=True)
-        return response({'status': 'ready' if value else 'not_fetched', 'author': value})
+        from .author_acquisition import call
+        try:
+            acquisition = call(config, 'read', aid)
+        except Exception:
+            acquisition = {'state': 'unavailable'}
+        return response({'status': 'ready' if value else 'not_fetched', 'author': value, 'acquisition': acquisition})
 
     def shell(request):
         if not (static / 'index.html').exists():
@@ -360,6 +367,9 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
     from .maintenance import routes as maintenance_routes
     routes += maintenance_routes(config,response,interface)
     if interface == 'reader':
+        from .author_acquisition import routes as author_routes
+        routes += author_routes(config,response)
+    if interface == 'reader':
         from .references import routes as reference_routes
         routes += reference_routes(config, response)
         from .paper_citations import routes as citation_routes
@@ -371,6 +381,8 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                    Route('/api/venues', venues), Route('/api/overview', overview),
                    Route('/api/author-profiles/{source}/{author_id}', author_profile),
                    Route('/api/authors', authors), Route('/api/authors/{source}/{author_id}', author)]
+        from .arxiv import routes as arxiv_routes
+        routes += arxiv_routes()
         routes += resources.routes()
         from .agent import AgentAPI
         agent_api = AgentAPI(resources, papers, paper)
@@ -446,6 +458,10 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
         def resource_settings(request):
             return response({'items': resources.settings()})
 
+        def resource_requests(request):
+            from .resource_errors import diagnostics
+            return response(diagnostics())
+
         async def configure_resource(request):
             try:
                 values = await body(request)
@@ -488,6 +504,7 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                    Route('/api/admin/users', users), Route('/api/admin/users/{action}', user_action, methods=['POST']),
                    Route('/api/admin/audit', audit), Route('/api/admin/overview', overview),
                    Route('/api/admin/resources', resource_settings),
+                   Route('/api/admin/resource-requests', resource_requests),
                    Route('/api/admin/resources/{identifier}', configure_resource, methods=['POST'])]
     if static.exists():
         routes.append(Mount('/assets', StaticFiles(directory=static / 'assets'), name='assets'))
@@ -495,6 +512,7 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
     if interface == 'reader':
         routes.append(Route('/authors/{source}/{author_id}', shell))
         routes.append(Route('/developers/ai', shell))
+        routes.append(Route('/arxiv/papers/{paper_id:int}', shell))
     if interface == 'admin':
         routes.append(Route('/admin/', shell))
     app = Starlette(routes=routes, lifespan=research_mcp.lifespan if research_mcp else None)

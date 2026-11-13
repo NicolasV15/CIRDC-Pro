@@ -4,6 +4,7 @@ import {api} from './api';
 import {time} from './format';
 import Icon from './Icon';
 import {PdfAcquisition} from './PdfAcquisition';
+import {PaperPdfLink as CachedPdfLink,PaperSourceLink} from './PaperResourceLinks';
 import MetadataMaintenance from './MetadataMaintenance';
 import ReaderLayoutControls,{useReaderLayout} from './ReaderLayoutControls';
 import ScientificTitle from './ScientificTitle';
@@ -31,7 +32,7 @@ function PaperPdfLink({items,notice,noticeLocales,auto=false}:{items?:ReadingRes
  const missingText=localizedText(noticeLocales,notice||t('暂无已关联 PDF'));
  const acquisition=(items||[]).find(item=>item.kind==='pdf-acquisition'&&item.href?.startsWith('/api/content/'));
  if(acquisition)return <PdfAcquisition key={acquisition.href} href={acquisition.href} api={api} auto={auto}/>;
- return pdf?<a className="button detail-pdf-trigger" href={readingHref(pdf)} target="_blank" rel="noopener noreferrer"><Icon name="file"/>{t('阅读 PDF')}<Icon name="external" className="icon-trailing"/></a>:<span className="pdf-unavailable"><button type="button" className="detail-pdf-trigger reading-pdf-unavailable" disabled aria-describedby={noticeId} title={missingText}><Icon name="file"/>{t('阅读 PDF')}</button><span id={noticeId} className="pdf-unavailable-reason">{missingText}</span></span>;
+ return pdf?<CachedPdfLink href={readingHref(pdf)}/>:<span className="pdf-unavailable"><button type="button" className="detail-pdf-trigger reading-pdf-unavailable" disabled aria-describedby={noticeId} title={missingText}><Icon name="file"/>{t('阅读 PDF')}</button><span id={noticeId} className="pdf-unavailable-reason">{missingText}</span></span>;
 }
 type Locate={q:string;terms:string;passage:number;version:string|null};
 type Hits={state:string;items:Passage[];total:number;match:string;alternatives:string[][]};
@@ -110,7 +111,7 @@ export default function PaperDetail({number,back,initialQuery,onSearch}:{number:
    <h1 ref={pageTop} tabIndex={-1} data-copy-content="title"><ScientificTitle value={p.articleTitle} fallback={t('未提供标题')}/></h1>
    <AuthorLinks references={references} detail/>
    <div className="publication-line detail-publication-line"><VenueTags paper={{kind:p.articleContentType,venue:String(p.publicationNumber||''),venue_series:item.venue_series,publication:p.publicationTitle}}/><p className="publication">{[p.publicationTitle,p.publicationYear,p.publicationDate].filter(Boolean).join(' · ')}</p></div>
-   <div className="detail-record-toolbar"><div className="detail-record-actions"><button type="button" className="detail-citation-trigger" aria-label={t('获取引用格式：')+(text(p.articleTitle)||number)} onClick={()=>setCitationOpen(true)}><Icon name="quote"/>{t('引用')}</button><PaperPdfLink items={item.resources} notice={item.resource_notice} noticeLocales={item.resource_notice_i18n} auto={documentReadyFor===number}/><a className="button detail-source-link" href={'https://ieeexplore.ieee.org/document/'+number} target="_blank" rel="noreferrer">{t('IEEE Xplore 原文')}<Icon name="external" className="icon-trailing"/></a></div><span className="detail-record-id">{t('论文编号')} <code>{number}</code></span></div>
+   <div className="detail-record-toolbar"><div className="detail-record-actions"><button type="button" className="detail-citation-trigger" aria-label={t('获取引用格式：')+(text(p.articleTitle)||number)} onClick={()=>setCitationOpen(true)}><Icon name="quote"/>{t('引用')}</button><PaperPdfLink items={item.resources} notice={item.resource_notice} noticeLocales={item.resource_notice_i18n} auto={documentReadyFor===number}/><PaperSourceLink href={'https://ieeexplore.ieee.org/document/'+number} label={t('IEEE Xplore 原文')}/></div><span className="detail-record-id">{t('论文编号')} <code>{number}</code></span></div>
   </header>
   <div className="detail-grid"><section className="detail-main" aria-label={t('论文内容')}>
    <section className="panel abstract-panel"><div className="section-heading references-heading"><h2><button type="button" className="reference-toggle" aria-label={abstractExpanded?t('收起摘要'):t('展开摘要')} aria-controls={abstractContentId} aria-expanded={abstractExpanded} onClick={()=>setAbstractExpanded(value=>!value)}>{t('摘要')}</button></h2></div><div id={abstractContentId} hidden={!abstractExpanded}><p className="abstract" data-copy-content="abstract" data-copy-source-html={typeof p.abstract==='string'?p.abstract.trim():undefined} data-copy-source-mode="literal" data-copy-preserve-lines><AbstractText value={p.abstract} fallback="—"/></p><MetadataMaintenance key={number} number={number} fetcher={api} onReady={()=>{void api('/api/papers/'+number).then(r=>{if(loadedNumber.current===number)setItem(r.paper);});}}/></div></section>

@@ -36,12 +36,28 @@ function IdentityContent({author}:{author:AuthorIdentity}){
 }
 export function AuthorSearch({query,authorId,source='ieee',fetcher,onSelect,onUnknown}:{query:string;authorId:string;source?:string;fetcher:Fetcher;onSelect:(author:AuthorIdentity)=>void;onUnknown:()=>void}){
  const [expanded,setExpanded]=useState(!authorId),[selected,setSelected]=useState<AuthorIdentity|null>(null),[selectedBusy,setSelectedBusy]=useState(false),[selectedError,setSelectedError]=useState('');
+ const [profileAffiliations,setProfileAffiliations]=useState<{identity:string;values:string[]}|null>(null);
+ const identity=JSON.stringify([source||'ieee',authorId]);
  const [matches,setMatches]=useState<AuthorIdentity[]>([]),[more,setMore]=useState<string|null>(null),[unknown,setUnknown]=useState(0),[busy,setBusy]=useState(false),[error,setError]=useState(''),[index,setIndex]=useState<any>();
  const request=useRef(0),candidatesId=React.useId();
  const searchQuery=/^\d+$/.test(query.trim())?(selected?.display_name||query):query;
  useEffect(()=>{setExpanded(!authorId);setSelected(null);setSelectedError('');if(!authorId){setSelectedBusy(false);return}let active=true;setSelectedBusy(true);
   void fetcher('/api/authors/'+encodeURIComponent(source||'ieee')+'/'+encodeURIComponent(authorId)).then(value=>{if(active)setSelected(value.author)}).catch(e=>{if(active)setSelectedError(e.message)}).finally(()=>{if(active)setSelectedBusy(false)});
   return()=>{active=false};
+ },[authorId,source,fetcher]);
+ useEffect(()=>{
+  setProfileAffiliations(null);
+  if(!authorProfileHref({source:source||'ieee',author_id:authorId}))return;
+  let active=true;
+  // This optional lookup reads an already stored profile for the selected ID.
+  // It does not delay paper results or fetch profiles for candidate identities.
+  void fetcher('/api/author-profiles/'+encodeURIComponent(source||'ieee')+'/'+encodeURIComponent(authorId)).then(value=>{
+   if(!active)return;const author=value.author,profile=author?.profile;
+   if(author?.source!==(source||'ieee')||author?.author_id!==authorId||author.fetch_state==='hidden'||profile?.is_hidden===true)return;
+   const values=Array.isArray(profile?.current_affiliations)?profile.current_affiliations.filter((item:unknown):item is string=>typeof item==='string'&&!!item.trim()):[];
+   setProfileAffiliations({identity,values});
+  }).catch(()=>{/* Missing or unavailable optional profiles leave the identity card intact. */});
+  return()=>{active=false;};
  },[authorId,source,fetcher]);
  async function load(cursor?:string){const current=++request.current;setBusy(true);setError('');try{
   const params=new URLSearchParams({q:searchQuery,limit:'20'});if(cursor)params.set('cursor',cursor);
@@ -50,10 +66,11 @@ export function AuthorSearch({query,authorId,source='ieee',fetcher,onSelect,onUn
  }catch(e){if(current===request.current)setError((e as Error).message)}finally{if(current===request.current)setBusy(false)}}
  useEffect(()=>{++request.current;setMatches([]);setMore(null);setUnknown(0);setIndex(undefined);setError('');setBusy(false);if(expanded&&searchQuery.trim())void load();return()=>{++request.current}},[expanded,searchQuery]);
  const pinned=selected?.author_id===authorId&&selected.source===(source||'ieee')?selected:null;
+ const affiliations=profileAffiliations?.identity===identity?profileAffiliations.values:[];
  const candidates=otherAuthorIdentities(matches,source||'ieee',authorId);
  function select(author:AuthorIdentity){setExpanded(false);onSelect(author)}
  return <section className="author-matches panel" aria-label={t('作者身份分类')}><div className="section-heading"><h2>{t('作者身份 · 按 IEEE ID 区分')}</h2>{(selectedBusy||busy)&&<span className="muted">{t('查找中…')}</span>}</div>
-  {authorId&&<div className="pinned-author" aria-label={t('已选作者')}><div className="author-match selected" data-author-id={authorId}>{pinned?<IdentityContent author={pinned}/>:<><strong>{t('已选作者')}</strong><span>{t('IEEE ID: ')}{authorId}</span></>}</div><a className="author-profile-link" href={authorProfileHref({source:source||'ieee',author_id:authorId})} target="_blank" rel="noopener noreferrer"><Icon name="user"/>{t('作者资料')}<Icon name="external" className="icon-trailing"/></a><IeeeSourceLink author={{source:source||'ieee',author_id:authorId}}/><p className="hint">{t('当前按此作者 ID 检索论文，其他同名作者默认收起。')}</p>{selectedError&&<p className="error" role="alert">{t(selectedError)}</p>}<button type="button" className="author-candidates-toggle" aria-expanded={expanded} aria-controls={candidatesId} onClick={()=>setExpanded(value=>!value)}>{expanded?t('收起作者候选列表'):t('展开其他同名作者')}</button></div>}
+  {authorId&&<div className="pinned-author" aria-label={t('已选作者')}><div className={'author-match selected'+(affiliations.length?' has-affiliation':'')} data-author-id={authorId}><div className="author-identity-summary">{pinned?<IdentityContent author={pinned}/>:<><strong>{t('已选作者')}</strong><span>{t('IEEE ID: ')}{authorId}</span></>}</div>{affiliations.length>0&&<dl className="author-affiliation"><dt>{t('机构')}</dt><dd><ul>{affiliations.map((value,i)=><li key={i}>{value}</li>)}</ul></dd></dl>}</div><a className="author-profile-link" href={authorProfileHref({source:source||'ieee',author_id:authorId})} target="_blank" rel="noopener noreferrer"><Icon name="user"/>{t('作者资料')}<Icon name="external" className="icon-trailing"/></a><IeeeSourceLink author={{source:source||'ieee',author_id:authorId}}/><p className="hint">{t('当前按此作者 ID 检索论文，其他同名作者默认收起。')}</p>{selectedError&&<p className="error" role="alert">{t(selectedError)}</p>}<button type="button" className="author-candidates-toggle" aria-expanded={expanded} aria-controls={candidatesId} onClick={()=>setExpanded(value=>!value)}>{expanded?t('收起作者候选列表'):t('展开其他同名作者')}</button></div>}
   {expanded&&<div id={candidatesId} className="author-candidates"><p className="muted">{t('同名但 ID 不同的作者分别列出。选择一个身份，查看该 ID 的论文；同一 ID 的署名变体会一并关联。')}</p>{index&&index.authors_phase!=='ready'&&<p className="author-index-note">{t('作者索引补建中：已检查 ')}{format(index.authors_papers_seen||0)}{t(' 篇，当前结果可能不完整。')}</p>}{error&&<p className="error" role="alert">{t(error)}</p>}
    <div className="author-match-grid">{candidates.map(author=><div className="author-candidate-card" key={author.identity_key}><button type="button" className="author-match" data-author-id={author.author_id} onClick={()=>select(author)}><IdentityContent author={author}/></button><IeeeSourceLink author={author}/></div>)}</div>
    {!busy&&!candidates.length&&!error&&<p className="muted">{authorId?t('当前索引中没有其他匹配的作者身份。'):t('当前索引中没有匹配的已识别作者。')}</p>}{more&&<button type="button" disabled={busy} onClick={()=>void load(more)}>{t('更多作者身份')}</button>}{unknown>0&&<div className="unidentified-authors"><p>{t('另有 ')}{format(unknown)}{t(' 篇论文的匹配署名缺少作者 ID，暂不归并为同一个人。')}</p><button type="button" onClick={onUnknown}>{t('查看缺少 ID 的署名记录')}</button></div>}

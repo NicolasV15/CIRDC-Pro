@@ -21,3 +21,8 @@ test('a failed refresh with an existing PDF is distinct from an ordinary missing
  assert.equal(refreshLabel({is_refresh:true,state:'failed',availability_state:'failed'}),null);
  assert.equal(refreshLabel({state:'failed'}),null);
 });
+
+test('a dispatched retry is queued until a worker starts it, with no acquisition retry date',()=>{
+ assert.deepEqual(pdfRetryState({attempt_state:'queued',auto_attempts:0,auto_retry_eligible:true,next_retry_at:1800021600}),{label:'任务已排队',nextAt:null});
+ assert.deepEqual(pdfRetryState({attempt_state:'fetching',auto_attempts:1,auto_retry_eligible:true}),{label:'任务处理中',nextAt:null});
+});

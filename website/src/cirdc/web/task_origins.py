@@ -81,7 +81,7 @@ def response_jobs(value, paper):
 
 
 def resolve_links(context, before, after, value):
-    links = response_jobs(value, context['paper']) if context['kind'] not in KINDS else []
+    links = response_jobs(value, context['paper']) if context['kind'] not in KINDS or context.get('joint_citations') else []
     if context['kind'] in KINDS:
         raw_job = value.get('job') if isinstance(value, dict) else None
         if context['kind']=='metadata' and isinstance(raw_job, dict):

@@ -1,8 +1,10 @@
 # Single-author profiles / 单作者资料
 
 The optional `authors` table lives beside `papers` in the configured database.
-It is empty after initialization. No paper updates, indexing, page visits or
-coauthor links initiate profile retrieval. No batches or schedules are installed.
+It is empty after initialization. Page visits and GET requests never initiate profile retrieval. Explicit public
+POST actions and authorized curated backfill share the durable author queue.
+Background discovery only fills never-attempted identities; it does not refresh
+successful profiles or retry failures. Coauthors are not traversed.
 
 ## Commands
 
@@ -89,7 +91,9 @@ interruption, or import its already exported snapshot without source requests.
 ## Website
 
 Reader page: `/authors/ieee/ID`; authenticated API:
-`GET /api/author-profiles/ieee/ID`. No write methods or fetch buttons exist.
+`GET /api/author-profiles/ieee/ID`. The explicit Get/Update button submits `POST /api/author-profiles/ieee/ID/ensure`
+with `{}` or `{"refresh": true}`. GET includes `acquisition` status and never
+submits work. Existing work is reused and foreground demand promotes queued work.
 The selected author identity card links to this independent page. Paper bylines
 continue linking to exact-ID paper searches; candidate lists stay collapsed.
 The page supports Chinese/English and mobile layouts, has no image placeholder,
@@ -104,3 +108,33 @@ Switch the deployment's `current` symlink to its previous release and restart th
 two web listeners. Keep `authors` and snapshots for forward recovery; old paper
 clients permit the additional table and do not depend on it. Never drop author
 records as part of application rollback. No database restart is required.
+
+## Queue deployment
+
+Enable the optional `authors` coordinator role only after initializing its private
+SQLite queue with `cirdc.author_jobs.Queue`. Its isolated website interpreter runs
+`python -m cirdc.author_jobs COORDINATOR_CONFIG` as a JSON-lines writer adapter.
+`jobs.authors` supplies private `python`, `config`, `queue`, `index`, `scope_file`,
+and `background_enabled` settings. No deployment identity belongs in source.
+`scope_file` selects the existing coordinator circuit-scope resource; daily
+discovery resolves current indexed venues and conference series, so newly indexed
+papers are included without changing the frozen repair manifest.
+Workers must configure a local `author_parser_command` argv ending in
+`python -m cirdc.author_jobs parse` before advertising `author_profiles_v1`.
+The parser receives upstream JSON on stdin and exports only whitelisted fields.
+The optional `web.authors` block supplies `enabled`, `coordinator`, `worker_id`,
+and `token` for the existing authenticated loopback coordination endpoint.
+Queue `control` supports pause/resume; an explicit enqueue with refresh retries a
+failed identity. Queue history and typed author origins remain durable.
+
+## Database operation boundaries
+
+The author adapter opens a fresh, pinned MySQL connection for each operation.
+Nested eligibility/profile checks share that operation's connection; it is closed
+when the operation completes or fails, ending read transactions too. Every new
+connection verifies the database identity, author schema and UTC session setup.
+There is no automatic SQL replay or reconnect while a transaction or author lock
+is held. An interrupted apply leaves the job and sanitized result available for
+the coordinator's existing idempotent recovery. Heartbeats check MySQL, and an
+unavailable database is explicitly unhealthy rather than a successful queue-only
+check. The qualification tool uses scoped profile reads as well.

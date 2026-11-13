@@ -95,26 +95,14 @@ def ensure(client, kinds=None, **kwargs):
     return client.post(PREFIX + '/papers/100/ensure', json={'resources': kinds or ['content'], 'wait_seconds': 0, **kwargs})
 
 
-def test_ensure_allowance_is_per_peer_and_polling_does_not_consume_it(agent_site, monkeypatch):
-    now = [1000.0]
-    monkeypatch.setattr('cirdc.web.access.time', SimpleNamespace(monotonic=lambda: now[0]))
-    config, provider, resources = agent_site
-    app = create_app(config, resource_providers=resources)
-    with TestClient(app, client=('198.51.100.1', 1000)) as client:
-        limits = client.get(PREFIX + '/capabilities').json()['limits']
-        assert limits['search_requests_per_second'] == 50
-        assert limits['ensure_requests_per_minute'] == 120
-        for _ in range(120):
-            result = ensure(client, ['content', 'pdf'])
-            assert result.status_code == 202
-        assert ensure(client).status_code == 429
-        assert client.get(result.json()['status_url']).status_code == 202
-        assert ensure(client).status_code == 429
-        with TestClient(app, client=('198.51.100.2', 1000)) as other:
-            assert ensure(other).status_code == 202
-        now[0] += 60.01
-        assert ensure(client).status_code == 202
-    assert provider.calls == [('content', False), ('pdf', False)]
+def test_ensure_bursts_are_accepted_without_per_peer_quota(agent_site):
+    with client_for(agent_site) as client:
+        first=ensure(client).json()
+        for _ in range(125):
+            response=ensure(client)
+            assert response.status_code==202 and response.json()['request_id']==first['request_id']
+        assert client.get(PREFIX+'/capabilities').json()['limits']['ensure_requests_per_minute'] is None
+    assert len(agent_site[1].calls)==1
 
 
 def test_open_access_cors_and_admin_node_boundaries(agent_site):

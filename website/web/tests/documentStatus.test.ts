@@ -69,12 +69,14 @@ test('confirmed institutional PDF denial is an availability outcome rather than 
 });
 
 
-test("automatic recovery waits without manual retry and exhaustion directs to administrator",()=>{
- const waiting={state:"failed",next_action:"wait",message:"后台服务繁忙，请求高峰期，请重新尝试获取",job:{kind:"ieee_pdf",state:"failed",error:"source_route_mismatch"}};
- assert.equal(contentPending(waiting),true);assert.equal(contentCurrentError(waiting),"");
- assert.equal(shouldEnsureContent(waiting),false);assert.equal(contentReason(waiting),waiting.message);
- const exhausted={...waiting,next_action:"contact_administrator",message:"后台服务繁忙，请求高峰期，请重新尝试获取"};
- assert.equal(contentPending(exhausted),false);assert.equal(contentLabel(exhausted),exhausted.message);
- assert.equal(shouldEnsureContent(exhausted),false);assert.equal(pdfRetryable(exhausted),false);
- assert.equal(assetsRetryable({...exhausted,state:"partial",document:{source:"ieee_html"}}),false);
+test('recovery state distinguishes waiting and exhaustion without guessing capacity',()=>{
+ const waiting={state:'failed',next_action:'wait',next_retry_at:1800000000,job:{kind:'ieee_pdf',state:'failed',error:'source_route_mismatch'}};
+ assert.equal(contentPending(waiting),true);assert.equal(contentCurrentError(waiting),'');
+ assert.equal(shouldEnsureContent(waiting),false);assert.equal(contentLabel(waiting),'等待自动重试');
+ assert.equal(contentReason(waiting),'执行节点的网络出口校验未通过');
+ const exhausted={...waiting,next_action:'contact_administrator',retry_attempts:10,max_retry_attempts:10};
+ assert.equal(contentPending(exhausted),false);assert.equal(contentLabel(exhausted),'需要管理员处理');
+ assert.equal(shouldEnsureContent(exhausted),false);
+ assert.equal(contentPending({...waiting,next_action:'stop'}),false);
+ assert.equal(shouldEnsureContent({state:'failed',job:{kind:'ieee_html',state:'failed'}}),false);
 });

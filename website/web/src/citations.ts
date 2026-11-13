@@ -5,6 +5,7 @@ export type CitationRecord = {
  publicationTitle?: string; publicationYear?: string | number; publicationDate?: string;
  volume?: string | number; issue?: string | number; startPage?: string | number;
  endPage?: string | number; doi?: string; publisher?: string;
+ source?:'ieee'|'arxiv';sourceId?:string;sourceVersion?:number;
 };
 
 const entities: Record<string, string> = {amp:'&',lt:'<',gt:'>',quot:'"',apos:"'",nbsp:' ',mu:'μ',micro:'µ',deg:'°',times:'×',minus:'−',plusmn:'±',alpha:'α',beta:'β',gamma:'γ',Delta:'Δ',Omega:'Ω',pi:'π',sigma:'σ'};
@@ -61,7 +62,10 @@ export function buildCitations(record: CitationRecord,number: string,accessed=lo
  const pages=start ? start+(end&&end!==start?'–'+end:'') : '';
  const candidate=citationText(record.doi).replace(/^(?:https?:\/\/(?:dx\.)?doi\.org\/|doi:\s*)/i,'');
  const doi=/^10\.\d+\/\S+$/.test(candidate)?candidate:'';
- const url=doi?'https://doi.org/'+doi:'https://ieeexplore.ieee.org/document/'+number;
+ const arxiv=record.source==='arxiv';
+ if(arxiv&&(!/^(?:\d{4}\.\d{4,5}|[a-z][a-z.-]+\/\d{7})$/.test(record.sourceId||'')||!Number.isInteger(record.sourceVersion)||Number(record.sourceVersion)<1))throw new Error('Invalid arXiv identity');
+ const sourceId=arxiv?record.sourceId+'v'+record.sourceVersion:'';
+ const url=arxiv?'https://arxiv.org/abs/'+sourceId:doi?'https://doi.org/'+doi:'https://ieeexplore.ieee.org/document/'+number;
  const missing: string[]=[];
  if(!title)missing.push('title');if(!authors.length)missing.push('authors');if(!publication)missing.push('publication');if(!year)missing.push('year');
  if(early&&!citationText(record.publicationDate))missing.push('online_date');
@@ -75,7 +79,9 @@ export function buildCitations(record: CitationRecord,number: string,accessed=lo
  if(pages)fields.push(['pages',tex(pages.replace('–','--'))]);
  if(conference&&citationText(record.publisher))fields.push(['publisher',tex(citationText(record.publisher))]);
  if(early)fields.push(['note','Early Access']);if(doi)fields.push(['doi',tex(doi)]);fields.push(['url',tex(url)]);
- const bibtex=`@${bibType}{ieee${number},\n`+fields.map(([key,value])=>`  ${key} = {${value}}`).join(',\n')+'\n}';
+ if(arxiv){fields.push(['archivePrefix','arXiv'],['eprint',sourceId]);}
+ const citeKey=arxiv?'arxiv'+sourceId.replace(/[^a-zA-Z0-9]/g,'_'):'ieee'+number;
+ const bibtex=`@${bibType}{${citeKey},\n`+fields.map(([key,value])=>`  ${key} = {${value}}`).join(',\n')+'\n}';
 
  const ieeeNames=authors.map(author=>author.first&&author.last?initials(author.first)+' '+author.last:author.full);
  const ieeeAuthors=ieeeNames.length>6?ieeeNames[0]+' et al.':ieeeNames.length>1?ieeeNames.slice(0,-1).join(', ')+(ieeeNames.length>2?', and ':' and ')+ieeeNames.at(-1):ieeeNames[0]||'';
@@ -91,12 +97,12 @@ export function buildCitations(record: CitationRecord,number: string,accessed=lo
  if(authors.length>3)gbtNames.push('et al.');
  let gbt=gbtNames.length?gbtNames.join(', ')+'. ':'';
  if(title)gbt+=title;
- gbt+=conference?'[C]//':early?'[J/OL]. ':'[J]. ';
+ gbt+=arxiv?'[EB/OL]. ':conference?'[C]//':early?'[J/OL]. ':'[J]. ';
  gbt+=publication;
  if(year)gbt+=(publication?', ':'')+year;
  if(volume)gbt+=', '+volume;if(issue)gbt+='('+issue+')';if(pages)gbt+=': '+pages;
  if(early&&/^\d{4}-\d{2}-\d{2}$/.test(accessed))gbt+='['+accessed+']';
  gbt+='.';
- if(doi)gbt+=' DOI: '+doi+'.';else if(early||!publication)gbt+=' '+url;
+ if(doi)gbt+=' DOI: '+doi+'.';else if(arxiv||early||!publication)gbt+=' '+url;
  return {values:{bibtex,ieee,gbt2025:gbt},missing,earlyAccess:early,unstructuredAuthors:authors.some(author=>!author.first||!author.last)};
 }

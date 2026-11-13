@@ -33,7 +33,7 @@ class RequestStore:
         with (directory / (number + '.lock')).open('a') as lock:
             start = time.monotonic()
             try:
-                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                fcntl.flock(lock, fcntl.LOCK_EX)
             except BlockingIOError:
                 raise BusyError() from None
             logging.getLogger('cirdc.agent').info('agent_submit_lock seconds=%.3f', time.monotonic()-start)
@@ -60,6 +60,12 @@ class RequestStore:
         from .task_origins import CURRENT, response_jobs
         from .visits import VisitStore
         context = CURRENT.get()
+        try:
+            from .auth import Accounts
+            Accounts().audit('resource-api', 'resource_api_receipt', request_id, json.dumps({
+                'id': (context or {}).get('id'), 'request_id': request_id, 'number': number}))
+        except Exception:
+            logging.getLogger('cirdc.agent').warning('resource_receipt_audit_unavailable')
         path = os.environ.get('CIRDC_WEB_VISITS_FILE')
         if context and path:
             try:

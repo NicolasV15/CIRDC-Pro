@@ -567,6 +567,29 @@ an explicit conversion retry; ordinary polling never retries a failed conversion
 Body and asset URLs may carry a version query parameter, which image retry preserves.
 The website contains no parser endpoint or service credentials.
 
+Resource controls use the versioned Agent API for submissions and saved receipts,
+with ordinary cached provider reads for rendering. An API timeout reports unknown
+acceptance when applicable; it does not change a background job to failed. A saved
+receipt is queried again, including after reload in the same browser session.
+Without a receipt, recovery reads first and resumes an ordinary ensure only for a
+confirmed missing resource, or joins a confirmed active task to obtain its receipt.
+An explicit retry is sent once and is never repeated
+automatically. Stop, confirmed unavailable and administrator-action outcomes stop
+automatic polling. Cached partial content remains readable throughout recovery.
+
+Queued, processing, waiting for automatic retry, retry exhaustion and confirmed
+unavailability have separate labels. Only confirmed request capacity or frequency
+limits are described as busy. `retry_after_seconds` controls API query spacing;
+`next_retry_at` is the background acquisition retry time. The displayed retry count
+uses actual started attempts, without changing scheduler budgets or history.
+
+Administrator resource diagnostics show execution task/node IDs and immutable
+failure records separately from API errors and receipts. The read-only
+`GET /api/admin/resource-requests` route lists recent durable receipts and existing
+audit records, including redacted original exceptions. Receipt references and
+recorded request IDs provide the links; no association is inferred from time or
+article identity alone. Reader messages omit raw exceptions and internal paths.
+
 Cached IEEE equation source controls are restored only when a standalone
 `View Source` label and its plain TeX sibling exactly match the adjacent
 `doc-math` formula. Source starts collapsed and uses the existing disclosure

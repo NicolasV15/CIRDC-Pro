@@ -5,7 +5,7 @@ import {t,useLanguage} from './i18n';
 import ScientificTitle from './ScientificTitle';
 import Icon from './Icon';
 
-export default function CitationDialog({numbers,fetcher,onClose}:{numbers:string[];fetcher:(path:string)=>Promise<any>;onClose:()=>void}) {
+export default function CitationDialog({numbers,fetcher,onClose,filenamePrefix='ieee'}:{numbers:string[];fetcher:(path:string)=>Promise<any>;onClose:()=>void;filenamePrefix?:string}) {
  const language=useLanguage();
  const dialog=useRef<HTMLDialogElement>(null),close=useRef<HTMLButtonElement>(null),output=useRef<HTMLTextAreaElement>(null);
  const [records,setRecords]=useState<LoadedPaper[]>([]),[failures,setFailures]=useState<BatchFailure[]>([]),[progress,setProgress]=useState(0),[loading,setLoading]=useState(true),[attempt,setAttempt]=useState(0),[format,setFormat]=useState<CitationStyle>('bibtex'),[notice,setNotice]=useState('');
@@ -32,7 +32,8 @@ export default function CitationDialog({numbers,fetcher,onClose}:{numbers:string
  }
  function download(){
   const url=URL.createObjectURL(new Blob([value+'\n'],{type:format==='bibtex'?'application/x-bibtex;charset=utf-8':'text/plain;charset=utf-8'}));
-  const link=document.createElement('a');link.href=url;link.download=(numbers.length>1?'cirdc-references':'ieee'+number)+(format==='bibtex'?'.bib':'.txt');document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  const downloadId=record?.source==='arxiv'?(record.sourceId+'v'+record.sourceVersion).replace(/[\/]/g,'-'):number;
+  const link=document.createElement('a');link.href=url;link.download=(numbers.length>1?(filenamePrefix==='ieee'?'cirdc':filenamePrefix)+'-references':filenamePrefix+downloadId)+(format==='bibtex'?'.bib':'.txt');document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
  }
  const missingNames:Record<string,string>={title:'标题',authors:'作者',publication:'刊会名称',year:'出版年份',online_date:'在线发表日期'};
  return <dialog ref={dialog} className="citation-dialog" aria-labelledby="citation-dialog-title" onCancel={event=>{event.preventDefault();onClose();}} onClick={event=>{if(event.target!==event.currentTarget)return;const rect=event.currentTarget.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)onClose();}}>

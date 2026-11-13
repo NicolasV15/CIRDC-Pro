@@ -44,7 +44,7 @@ def asset_url(value, number, version):
     return f'{PREFIX}/papers/{number}/assets/{quote(match[2])}?version={quote(version)}'
 
 
-def render_document(source, number, version, output_format):
+def render_document(source, number, version, output_format, *, asset_resolver=None):
     if output_format not in FORMATS:
         raise DocumentError('invalid_format')
     root = markup.fragment_fromstring(source or '<p></p>', create_parent='div')
@@ -60,13 +60,15 @@ def render_document(source, number, version, output_format):
             if key.lower().startswith('on'):
                 del node.attrib[key]
         if node.tag == 'img':
-            href = asset_url(node.get('src', ''), number, version)
+            href = asset_resolver(node.get('src', '')) if asset_resolver else asset_url(node.get('src', ''), number, version)
             if href:
                 node.set('src', href)
                 assets.append({'url': href, 'alt': node.get('alt', '')})
             else:
                 node.attrib.pop('src', None)
                 warnings.add('image_source_unavailable')
+        if node.tag == 'math':
+            warnings.add('mathml_without_tex')
         if node.tag == 'a':
             href = node.get('href', '')
             url = urlsplit(href)
@@ -84,6 +86,8 @@ def render_document(source, number, version, output_format):
             return ''
         tag = node.tag.lower()
         text = children(node)
+        if tag == 'math':
+            return etree.tostring(node,encoding='unicode',method='html',with_tail=False) if output_format!='text' else ''.join(node.itertext())
         if 'doc-math' in node.get('class', '').split():
             tex = ''.join(node.itertext()).strip()
             if output_format == 'text':
@@ -156,11 +160,11 @@ def render_document(source, number, version, output_format):
     return blocks, assets, sorted(warnings)
 
 
-def page_document(document, number, output_format='markdown', cursor=None, limit=12000):
+def page_document(document, number, output_format='markdown', cursor=None, limit=12000, *, asset_resolver=None):
     version = document['version']
     source = document['html']
     fingerprint = hashlib.sha256(source.encode()).hexdigest()
-    blocks, assets, warnings = render_document(source, number, version, output_format)
+    blocks, assets, warnings = render_document(source, number, version, output_format, asset_resolver=asset_resolver)
     start = 0
     if cursor:
         token = decode_cursor(cursor)

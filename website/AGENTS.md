@@ -43,13 +43,27 @@ and deployment instructions; a checkout alone does not configure one.
 Reserved `papers.has_pdf` and `papers.pdf_path` are nullable deployment annotations.
 Public metadata writes preserve them and keep them outside exported article JSON.
 
-Author profiles require an explicit, single-identity request; see `docs/authors.md`.
-Do not enumerate author IDs, traverse coauthors, start batches or install schedules
-without a separate request. The optional schema has its own version and must not
+Author browsing and GET requests remain read-only; the explicit profile button
+may enqueue one verified identity. Authorized curated backfill shares that queue,
+only filling never-attempted profiles; successful profiles are refreshed manually.
+Do not expand coauthors or start whole-library collection without a separate request. The optional schema has its own version and must not
 advance the paper schema. No profile images or image URLs enter storage, snapshots,
-logs or responses. Author browsing remains read-only and never collects source data.
+logs or responses. Page visits never collect source data; only explicit POST actions enqueue work.
 
 Keep `.workspace` and any runtime links private and ignored. Workspace maintenance
 must not recursively change their targets. Existing service releases and private
 state remain at their configured locations; source relocation does not change
 network routes, accounts, paused jobs or deployment authorization.
+
+## Let it crash (code development)
+
+For frontend and API code changes, follow the parent's
+[Let it crash rules](../AGENTS.md#let-it-crash-code-development).
+Preserve request isolation, explicit UI/API errors and the existing background-task
+failure and retry contracts.
+
+## Frontend design
+
+- Avoid unnecessary secondary labels and descriptions. Let the layout do the explaining.
+- Use hierarchy, grouping, spacing and control placement to convey structure;
+  retain essential control labels, units, status/error feedback and accessibility text.
