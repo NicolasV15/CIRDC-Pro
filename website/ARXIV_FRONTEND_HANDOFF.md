@@ -1,6 +1,6 @@
 # arXiv 前端开发交接
 
-更新：2026-11-14。当前任务入口；旧的 `UI_REDESIGN_DELIVERY.md` 和 `DEVELOPMENT_FOLLOWUPS.md` 用于理解历史，不作为本轮完成清单。
+更新：2026-11-14。本轮账号、收藏和管理台开发入口已转为 [ACCOUNT_FAVORITES_HANDOFF.md](ACCOUNT_FAVORITES_HANDOFF.md)。本文件保留 arXiv 历史交付、实现背景与 Demo 说明；下文的设计及功能扩展授权仅适用于原 arXiv 轮次，不作为新任务的范围。
 
 ## 当前轮次：带真实数据继续开发
 
