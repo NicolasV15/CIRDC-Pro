@@ -3,7 +3,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://arxiv-categories.test';
 const types={'.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
-const rows=[['2401.00001',['eess.SP','cs.AR']],['2401.00002',['cs.AI']],['2401.00003',['eess.SY']],['2401.00004',['math-ph']]].map(([arxiv_id,categories],i)=>({paper_id:i+1,arxiv_id,title:'Paper '+(i+1),authors_raw:'A. Author',abstract:'Abstract.',categories,year:2024,submitted_at:i===3?null:'2024-01-02T12:00:00+00:00'}));
+const rows=[['2401.00001',['eess.SP','cs.AR']],['2401.00002',['cs.AI']],['2401.00003',['eess.SY']],['2401.00004',['math-ph']]].map(([arxiv_id,categories],i)=>({paper_id:i+1,arxiv_id,title:'Paper '+(i+1),authors_raw:'A. Author',abstract:'Abstract.',categories,year:2024,submitted_at:i===3?null:'2024-01-01T20:00:00+00:00'}));
 const matches=(row,category)=>!category||category.split(',').some(code=>row.categories.some(c=>c.toLowerCase()===code.toLowerCase()||c.toLowerCase().startsWith(code.toLowerCase()+'.')));
 (async()=>{const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})}),reports=[];
  try{for(const width of [1440,390,320]){

@@ -6,7 +6,7 @@ const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://a
 const types={'.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
 const authors=Array.from({length:12},(_,i)=>['Author'+(i+1),'Given','']);
 const papers={
- 1:{paper_id:'1',arxiv_id:'2402.08954',title:'Time-Interleaved ADC',authors_raw:'Lin Zhang, Wei Chen',abstract:'Current abstract.',metadata:{categories:['eess.SP','cs.AR'],submitted_at:'2024-02-14T00:00:00Z',license:'http://creativecommons.org/licenses/by/4.0/',authors_structured:[['Zhang','Lin',''],['Chen','Wei','']]},versions:[{version:1,version_date:'2024-02-14'},{version:2,version_date:'2024-03-02'},{version:3,version_date:'2024-06-20'}]},
+ 1:{paper_id:'1',arxiv_id:'2402.08954',title:'Time-Interleaved ADC',authors_raw:'Lin Zhang, Wei Chen',abstract:'Current abstract.',metadata:{categories:['eess.SP','cs.AR'],submitted_at:'2024-02-13T20:30:00Z',license:'http://creativecommons.org/licenses/by/4.0/',authors_structured:[['Zhang','Lin',''],['Chen','Wei','']]},versions:[{version:1,version_date:'2024-02-14'},{version:2,version_date:'2024-03-02'},{version:3,version_date:'2024-06-19T20:30:00Z'}]},
  2:{paper_id:'2',arxiv_id:'hep-th/9901001',title:'Long author list',authors_raw:'',abstract:'',metadata:{categories:['hep-th'],authors_structured:authors},versions:[{version:1,version_date:'1999-01-04'}]},
 };
 const ready={state:'ready'},none={state:'not_requested'};
