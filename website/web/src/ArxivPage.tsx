@@ -1,7 +1,7 @@
 import {lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {api,ApiError} from './api';
 import {arxivCitationRecord} from './arxivCitations';
-import {locale,t,useLanguage} from './i18n';
+import {t,useLanguage} from './i18n';
 import ScientificTitle from './ScientificTitle';
 import AbstractText from './AbstractText';
 const CitationDialog=lazy(()=>import('./CitationDialog'));
@@ -19,15 +19,12 @@ import {arxivCategoryLabel} from './ArxivCategoryFilter';
 import {licenseLabel} from './arxivLicense';
 import {decodeTexAccents} from './texAccents';
 import './arxiv.css';
+import {arxivDate} from './arxivDate';
 import ArxivSearchPage from './ArxivSearchPage';
 
 type Version={version:number;version_date:string};
 type Paper={paper_id:string;arxiv_id:string;title:string;abstract:string;authors_raw:string;metadata?:Record<string,any>;versions?:Version[]};
 
-function dateLabel(value?:string){
- if(!value)return '—';const parsed=new Date(value);
- return Number.isNaN(parsed.getTime())?value:new Intl.DateTimeFormat(locale(),{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'UTC'}).format(parsed);
-}
 function requestedVersion(){return Number(new URLSearchParams(location.search).get('v'))||0;}
 const searchHref=(values:Record<string,string>)=>'/?'+new URLSearchParams({source:'arxiv',...values});
 /** Optional source fields, displayed only when the metadata record carries them. */
@@ -51,8 +48,8 @@ function ArxivAuthors({names,raw}:{names:string[];raw:string}){
 }
 function VersionSwitch({versions,value,onChange}:{versions:Version[];value:number;onChange:(version:number)=>void}){
  const latest=Math.max(...versions.map(v=>v.version));
- if(versions.length>6)return <label className="arxiv-version-select">{t('版本')}<select value={value} onChange={e=>onChange(Number(e.target.value))}>{versions.map(v=><option key={v.version} value={v.version}>v{v.version} · {dateLabel(v.version_date)}{v.version===latest?' · '+t('最新'):''}</option>)}</select></label>;
- return <div className="arxiv-version-switch" role="group" aria-label={t('版本')}>{versions.map(v=><button type="button" key={v.version} aria-pressed={v.version===value} onClick={()=>onChange(v.version)}><strong>v{v.version}</strong><span>{dateLabel(v.version_date)}</span>{v.version===latest&&<small>{t('最新')}</small>}</button>)}</div>;
+ if(versions.length>6)return <label className="arxiv-version-select">{t('版本')}<select value={value} onChange={e=>onChange(Number(e.target.value))}>{versions.map(v=><option key={v.version} value={v.version}>v{v.version} · {arxivDate(v.version_date)}{v.version===latest?' · '+t('最新'):''}</option>)}</select></label>;
+ return <div className="arxiv-version-switch" role="group" aria-label={t('版本')}>{versions.map(v=><button type="button" key={v.version} aria-pressed={v.version===value} onClick={()=>onChange(v.version)}><strong>v{v.version}</strong><span>{arxivDate(v.version_date)}</span>{v.version===latest&&<small>{t('最新')}</small>}</button>)}</div>;
 }
 function ArxivDetail(){
  useLanguage();
@@ -126,8 +123,8 @@ function ArxivDetail(){
    {!layout.infoOpen&&<button type="button" className="publication-sidebar-rail" aria-label={t('展开出版信息')} aria-expanded={false} aria-controls={informationId} onClick={()=>update({infoOpen:true})}><Icon name="right"/><span className="publication-sidebar-rail-label">{t('出版信息')}</span></button>}
    <div id={informationId} className="panel bibliographic" hidden={!layout.infoOpen}><div className="publication-sidebar-heading"><h2>{t('出版信息')}</h2><button type="button" className="publication-sidebar-toggle" aria-label={t('收起出版信息')} aria-expanded={true} aria-controls={informationId} onClick={()=>update({infoOpen:false})}><Icon name="right"/></button></div><dl>
     <div className="bibliographic-row"><dt>{t('论文编号')}</dt><dd>{paper.arxiv_id}</dd></div>
-    <div className="bibliographic-row"><dt>{t('当前版本')}</dt><dd>{selected?'v'+selected.version+' · '+dateLabel(selected.version_date):'—'}{versions.length>1&&<small className="arxiv-version-count">{t('共 {n} 个版本',{n:String(versions.length)})}</small>}</dd></div>
-    <div className="bibliographic-row"><dt>{t('投稿时间')}</dt><dd>{dateLabel(metadata.submitted_at)}</dd></div>
+    <div className="bibliographic-row"><dt>{t('当前版本')}</dt><dd>{selected?'v'+selected.version+' · '+arxivDate(selected.version_date):'—'}{versions.length>1&&<small className="arxiv-version-count">{t('共 {n} 个版本',{n:String(versions.length)})}</small>}</dd></div>
+    <div className="bibliographic-row"><dt>{t('投稿时间')}</dt><dd>{arxivDate(metadata.submitted_at)}</dd></div>
     <div className="bibliographic-row"><dt>DOI</dt><dd>{metadata.doi?<a href={'https://doi.org/'+metadata.doi} target="_blank" rel="noopener noreferrer">{breakable(metadata.doi)}</a>:'—'}</dd></div>
     <div className="bibliographic-row"><dt>{t('许可证')}</dt><dd>{license?(license.href?<a href={license.href} target="_blank" rel="noopener noreferrer">{licenseText}</a>:licenseText):'—'}</dd></div>
     {optionalFields.map(([label,keys])=>{const value=keys.map(key=>metadata[key]).find(v=>typeof v==='string'&&v.trim());return value?<div className="bibliographic-row" key={label}><dt>{t(label)}</dt><dd>{linked(value)}</dd></div>:null;})}

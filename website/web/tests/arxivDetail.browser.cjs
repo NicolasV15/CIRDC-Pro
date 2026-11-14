@@ -57,6 +57,8 @@ async function main(){
   assert.deepEqual(await marker(),['Body of version 3.']);
   assert.match(await page.locator('.document-progress').innerText(),/arXiv HTML/);
   assert.equal(await versionButton(3).getAttribute('aria-pressed'),'true');
+  assert.match(await versionButton(3).innerText(),/2024-06-20/);
+  assert.equal(await page.locator('.bibliographic-row').filter({has:page.locator('dt',{hasText:label('投稿时间','Submitted')})}).locator('dd').innerText(),'2024-02-14');
   assert.equal(await page.locator('.arxiv-version-note').count(),0);
   assert.equal(await page.locator('.bibliographic a',{hasText:'CC BY 4.0'}).count(),1);
   assert.equal(await page.locator('.arxiv-kicker a[href*="category=eess.SP"]').count(),1);
