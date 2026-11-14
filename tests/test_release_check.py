@@ -86,3 +86,15 @@ def test_combined_release_checks_cover_docs_and_website(tmp_path, where):
     assert result.returncode == 1
     assert 'private deployment value' in result.stdout
     assert secret not in result.stdout + result.stderr
+
+
+def test_latexml_identifiers_are_not_network_hosts():
+    # Real table element IDs may contain four numeric components after a letter.
+    address = '.'.join(['10', '23', '45', '67'])
+    markup = ('<span id="S4.T' + address + '">table</span>').encode()
+    assert release.content_failures(markup, set()) == []
+    for value in [address, 'http://' + address + '/file', '<img src="//' + address + '/x">',
+                  'host="' + address + '"', '::ffff:' + address]:
+        assert 'private network address' in release.content_failures(value.encode(), set())
+    # Explicit private deployment values are still blocked even inside an identifier.
+    assert 'private deployment value' in release.content_failures(markup, {address})

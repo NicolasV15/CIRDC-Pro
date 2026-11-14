@@ -8,10 +8,11 @@ action=${1:-help}
 if [ "$#" -gt 0 ]; then shift; fi
 case "$action" in
   help|--help|-h)
-    printf '%s\n' 'Usage: sh tools/web {setup|test|build|serve|deploy} [arguments]' \
+    printf '%s\n' 'Usage: sh tools/web {setup|test|build|demo|serve|deploy} [arguments]' \
       'setup: install the isolated website development environment and frontend dependencies' \
       'test: run frontend and website API tests (remaining arguments go to pytest)' \
       'build: build frontend assets, wheel and source distribution' \
+      'demo: serve the offline real-data arXiv subset (no production configuration)' \
       'serve: run the development server (arguments follow cirdc web serve)' \
       'deploy: publish to the existing target selected by CIRDC_WEB_ROOT'
     exit 0 ;;
@@ -31,6 +32,9 @@ case "$action" in
   build)
     npm --prefix web run build
     exec uv build --project "$site" --out-dir "$site/dist" "$@" ;;
+  demo)
+    test -x "$environment/bin/python" || { printf '%s\n' 'Run sh tools/web setup first.' >&2; exit 2; }
+    exec "$environment/bin/python" "$site/tools/arxiv_demo.py" "$@" ;;
   serve)
     test -x "$environment/bin/python" || { printf '%s\n' 'Run sh tools/web setup first.' >&2; exit 2; }
     exec "$environment/bin/python" -m cirdc.cli web serve "$@" ;;

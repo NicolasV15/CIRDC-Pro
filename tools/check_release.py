@@ -60,7 +60,7 @@ def content_failures(content, protected, maintenance=True):
             break
     if re.search(rb'/(?:Users|home|projects)/[A-Za-z0-9_.-]+/', content):
         reasons.append('machine-specific absolute path')
-    for match in re.finditer(rb'(?<![0-9.])(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?![0-9.])', content):
+    for match in re.finditer(rb'(?<![A-Za-z0-9_.])(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?![A-Za-z0-9_.])', content):
         try:
             address = ipaddress.IPv4Address(match[0].decode())
         except ipaddress.AddressValueError:

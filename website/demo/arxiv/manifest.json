@@ -1,0 +1,666 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-11-14T07:24:50.018063+00:00",
+  "metadata": "metadata.json",
+  "metadata_sha256": "362d8e09bad4ba5102d2bc18e8664e2d9ae54f20128821c8c7ac36fb65696cbe",
+  "metadata_counts": {
+    "arxiv": 43,
+    "ieee": 3
+  },
+  "reading_sample": {
+    "arxiv_id": "2611.14519",
+    "paper_id": "3300802",
+    "version": 1,
+    "render_id": "0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+    "title": "Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training",
+    "authors": "Emre Kutlusan and Yongmin Li",
+    "source_url": "https://arxiv.org/abs/2611.14519v1",
+    "license": "http://creativecommons.org/licenses/by/4.0/",
+    "changes": "Original HTML and derived cached body/images copied byte-for-byte; no new conversion. Only the demo API response omits queue identities and distinguishes unbundled resources.",
+    "observed_resources": {
+      "html": {
+        "state": "ready",
+        "url": "https://export.arxiv.org/html/2611.14519v1",
+        "bytes": 854925,
+        "sha256": "86b6d85624e6b64339a7d3f04e29cb1ce2fb399cb9cfdc925cee7c06f617b30b",
+        "fetched_at": "2026-11-13T16:55:03.691849+00:00",
+        "media_type": "text/html"
+      },
+      "pdf": {
+        "state": "fetching"
+      },
+      "source": {
+        "state": "queued"
+      }
+    }
+  },
+  "resources": {
+    "state": "demo_snapshot",
+    "paper_version": 1,
+    "reading_state": "ready",
+    "reading_ready": true,
+    "acquisition_complete": false,
+    "document": {
+      "source": "arxiv_html",
+      "version": "0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "render_id": "0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "paper_version": 1,
+      "toc": [
+        {
+          "id": "section-0",
+          "title": "Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training",
+          "level": 1
+        },
+        {
+          "id": "section-1",
+          "title": "Abstract",
+          "level": 6
+        },
+        {
+          "id": "section-2",
+          "title": "Keywords:",
+          "level": 6
+        },
+        {
+          "id": "section-3",
+          "title": "1 Introduction",
+          "level": 2
+        },
+        {
+          "id": "section-4",
+          "title": "2 Related work",
+          "level": 2
+        },
+        {
+          "id": "section-5",
+          "title": "2.1 Segmentation architectures and nnU-Net",
+          "level": 3
+        },
+        {
+          "id": "section-6",
+          "title": "2.2 Foundation models and their medical adaptation",
+          "level": 3
+        },
+        {
+          "id": "section-7",
+          "title": "2.3 Parameter-efficient adaptation",
+          "level": 3
+        },
+        {
+          "id": "section-8",
+          "title": "2.4 Cross-dataset evaluation and data hygiene",
+          "level": 3
+        },
+        {
+          "id": "section-9",
+          "title": "2.5 Research gaps",
+          "level": 3
+        },
+        {
+          "id": "section-10",
+          "title": "3 Methods",
+          "level": 2
+        },
+        {
+          "id": "section-11",
+          "title": "3.1 Design and scope",
+          "level": 3
+        },
+        {
+          "id": "section-12",
+          "title": "3.2 Domains, datasets and leakage control",
+          "level": 3
+        },
+        {
+          "id": "section-13",
+          "title": "3.3 Adaptation strategies",
+          "level": 3
+        },
+        {
+          "id": "section-14",
+          "title": "3.4 Task-specific architectures",
+          "level": 3
+        },
+        {
+          "id": "section-15",
+          "title": "3.4.1 Residual U-Net",
+          "level": 4
+        },
+        {
+          "id": "section-16",
+          "title": "3.4.2 Plain U-Net",
+          "level": 4
+        },
+        {
+          "id": "section-17",
+          "title": "3.4.3 Shared training recipe",
+          "level": 4
+        },
+        {
+          "id": "section-18",
+          "title": "3.5 Training protocol and model selection",
+          "level": 3
+        },
+        {
+          "id": "section-19",
+          "title": "3.6 Reproducibility, the measurement floor and evaluation",
+          "level": 3
+        },
+        {
+          "id": "section-20",
+          "title": "4 Results",
+          "level": 2
+        },
+        {
+          "id": "section-21",
+          "title": "4.1 In-domain parity, out-of-distribution deficit",
+          "level": 3
+        },
+        {
+          "id": "section-22",
+          "title": "4.2 The deficit is not architectural",
+          "level": 3
+        },
+        {
+          "id": "section-23",
+          "title": "4.3 Failure modes, lesion size and boundary quality",
+          "level": 3
+        },
+        {
+          "id": "section-24",
+          "title": "4.4 More data closes the in-domain gap but not the out-of-distribution one",
+          "level": 3
+        },
+        {
+          "id": "section-25",
+          "title": "4.5 Adaptation capacity requirements differ by domain",
+          "level": 3
+        },
+        {
+          "id": "section-26",
+          "title": "4.5.1 Parameter-efficient adaptation matches full fine-tuning",
+          "level": 4
+        },
+        {
+          "id": "section-27",
+          "title": "4.5.2 The rank requirement differs by domain",
+          "level": 4
+        },
+        {
+          "id": "section-28",
+          "title": "4.5.3 The effect of the epoch budget",
+          "level": 4
+        },
+        {
+          "id": "section-29",
+          "title": "4.5.4 The requirement is not specific to LoRA",
+          "level": 4
+        },
+        {
+          "id": "section-30",
+          "title": "4.6 Stability of the optimal configuration",
+          "level": 3
+        },
+        {
+          "id": "section-31",
+          "title": "4.6.1 The rank artefact",
+          "level": 4
+        },
+        {
+          "id": "section-32",
+          "title": "4.6.2 The selection-criterion artefact",
+          "level": 4
+        },
+        {
+          "id": "section-33",
+          "title": "4.6.3 The mismatched-comparison artefact",
+          "level": 4
+        },
+        {
+          "id": "section-34",
+          "title": "4.6.4 Synthesis",
+          "level": 4
+        },
+        {
+          "id": "section-35",
+          "title": "4.7 Candidate explanations for the domain effect",
+          "level": 3
+        },
+        {
+          "id": "section-36",
+          "title": "5 Discussion",
+          "level": 2
+        },
+        {
+          "id": "section-37",
+          "title": "5.1 Adaptation",
+          "level": 3
+        },
+        {
+          "id": "section-38",
+          "title": "5.2 Domain",
+          "level": 3
+        },
+        {
+          "id": "section-39",
+          "title": "5.3 Practical recommendations",
+          "level": 3
+        },
+        {
+          "id": "section-40",
+          "title": "5.4 Limitations",
+          "level": 3
+        },
+        {
+          "id": "section-41",
+          "title": "5.5 Relation to previous work",
+          "level": 3
+        },
+        {
+          "id": "section-42",
+          "title": "6 Conclusion",
+          "level": 2
+        },
+        {
+          "id": "section-43",
+          "title": "Data availability",
+          "level": 2
+        },
+        {
+          "id": "section-44",
+          "title": "Code availability",
+          "level": 2
+        },
+        {
+          "id": "section-45",
+          "title": "Ethics statement",
+          "level": 2
+        },
+        {
+          "id": "section-46",
+          "title": "Acknowledgements",
+          "level": 2
+        },
+        {
+          "id": "section-47",
+          "title": "Funding",
+          "level": 2
+        },
+        {
+          "id": "section-48",
+          "title": "CRediT authorship contribution statement",
+          "level": 2
+        },
+        {
+          "id": "section-49",
+          "title": "Declaration of competing interest",
+          "level": 2
+        },
+        {
+          "id": "section-50",
+          "title": "Declaration of generative AI and AI-assisted technologies in the manuscript preparation process",
+          "level": 2
+        },
+        {
+          "id": "section-51",
+          "title": "References",
+          "level": 2
+        }
+      ],
+      "body_url": "/api/arxiv/papers/3300802/versions/1/body?render_id=0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "assets_ready": 0,
+      "assets_total": 4,
+      "fetched_at": "2026-11-13T16:55:03.691849+00:00"
+    },
+    "resources": {
+      "html": {
+        "state": "ready",
+        "download_url": "/api/arxiv/papers/3300802/versions/1/files/html"
+      },
+      "pdf": {
+        "state": "not_packaged"
+      },
+      "source": {
+        "state": "not_packaged"
+      }
+    },
+    "demo": {
+      "offline": true,
+      "observation": "see observed_resources in manifest.json",
+      "not_packaged_is_not_source_absence": true
+    }
+  },
+  "document": {
+    "state": "partial",
+    "paper_version": 1,
+    "reading_state": "ready",
+    "reading_ready": true,
+    "acquisition_complete": false,
+    "document": {
+      "source": "arxiv_html",
+      "version": "0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "render_id": "0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "paper_version": 1,
+      "toc": [
+        {
+          "id": "section-0",
+          "title": "Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training",
+          "level": 1
+        },
+        {
+          "id": "section-1",
+          "title": "Abstract",
+          "level": 6
+        },
+        {
+          "id": "section-2",
+          "title": "Keywords:",
+          "level": 6
+        },
+        {
+          "id": "section-3",
+          "title": "1 Introduction",
+          "level": 2
+        },
+        {
+          "id": "section-4",
+          "title": "2 Related work",
+          "level": 2
+        },
+        {
+          "id": "section-5",
+          "title": "2.1 Segmentation architectures and nnU-Net",
+          "level": 3
+        },
+        {
+          "id": "section-6",
+          "title": "2.2 Foundation models and their medical adaptation",
+          "level": 3
+        },
+        {
+          "id": "section-7",
+          "title": "2.3 Parameter-efficient adaptation",
+          "level": 3
+        },
+        {
+          "id": "section-8",
+          "title": "2.4 Cross-dataset evaluation and data hygiene",
+          "level": 3
+        },
+        {
+          "id": "section-9",
+          "title": "2.5 Research gaps",
+          "level": 3
+        },
+        {
+          "id": "section-10",
+          "title": "3 Methods",
+          "level": 2
+        },
+        {
+          "id": "section-11",
+          "title": "3.1 Design and scope",
+          "level": 3
+        },
+        {
+          "id": "section-12",
+          "title": "3.2 Domains, datasets and leakage control",
+          "level": 3
+        },
+        {
+          "id": "section-13",
+          "title": "3.3 Adaptation strategies",
+          "level": 3
+        },
+        {
+          "id": "section-14",
+          "title": "3.4 Task-specific architectures",
+          "level": 3
+        },
+        {
+          "id": "section-15",
+          "title": "3.4.1 Residual U-Net",
+          "level": 4
+        },
+        {
+          "id": "section-16",
+          "title": "3.4.2 Plain U-Net",
+          "level": 4
+        },
+        {
+          "id": "section-17",
+          "title": "3.4.3 Shared training recipe",
+          "level": 4
+        },
+        {
+          "id": "section-18",
+          "title": "3.5 Training protocol and model selection",
+          "level": 3
+        },
+        {
+          "id": "section-19",
+          "title": "3.6 Reproducibility, the measurement floor and evaluation",
+          "level": 3
+        },
+        {
+          "id": "section-20",
+          "title": "4 Results",
+          "level": 2
+        },
+        {
+          "id": "section-21",
+          "title": "4.1 In-domain parity, out-of-distribution deficit",
+          "level": 3
+        },
+        {
+          "id": "section-22",
+          "title": "4.2 The deficit is not architectural",
+          "level": 3
+        },
+        {
+          "id": "section-23",
+          "title": "4.3 Failure modes, lesion size and boundary quality",
+          "level": 3
+        },
+        {
+          "id": "section-24",
+          "title": "4.4 More data closes the in-domain gap but not the out-of-distribution one",
+          "level": 3
+        },
+        {
+          "id": "section-25",
+          "title": "4.5 Adaptation capacity requirements differ by domain",
+          "level": 3
+        },
+        {
+          "id": "section-26",
+          "title": "4.5.1 Parameter-efficient adaptation matches full fine-tuning",
+          "level": 4
+        },
+        {
+          "id": "section-27",
+          "title": "4.5.2 The rank requirement differs by domain",
+          "level": 4
+        },
+        {
+          "id": "section-28",
+          "title": "4.5.3 The effect of the epoch budget",
+          "level": 4
+        },
+        {
+          "id": "section-29",
+          "title": "4.5.4 The requirement is not specific to LoRA",
+          "level": 4
+        },
+        {
+          "id": "section-30",
+          "title": "4.6 Stability of the optimal configuration",
+          "level": 3
+        },
+        {
+          "id": "section-31",
+          "title": "4.6.1 The rank artefact",
+          "level": 4
+        },
+        {
+          "id": "section-32",
+          "title": "4.6.2 The selection-criterion artefact",
+          "level": 4
+        },
+        {
+          "id": "section-33",
+          "title": "4.6.3 The mismatched-comparison artefact",
+          "level": 4
+        },
+        {
+          "id": "section-34",
+          "title": "4.6.4 Synthesis",
+          "level": 4
+        },
+        {
+          "id": "section-35",
+          "title": "4.7 Candidate explanations for the domain effect",
+          "level": 3
+        },
+        {
+          "id": "section-36",
+          "title": "5 Discussion",
+          "level": 2
+        },
+        {
+          "id": "section-37",
+          "title": "5.1 Adaptation",
+          "level": 3
+        },
+        {
+          "id": "section-38",
+          "title": "5.2 Domain",
+          "level": 3
+        },
+        {
+          "id": "section-39",
+          "title": "5.3 Practical recommendations",
+          "level": 3
+        },
+        {
+          "id": "section-40",
+          "title": "5.4 Limitations",
+          "level": 3
+        },
+        {
+          "id": "section-41",
+          "title": "5.5 Relation to previous work",
+          "level": 3
+        },
+        {
+          "id": "section-42",
+          "title": "6 Conclusion",
+          "level": 2
+        },
+        {
+          "id": "section-43",
+          "title": "Data availability",
+          "level": 2
+        },
+        {
+          "id": "section-44",
+          "title": "Code availability",
+          "level": 2
+        },
+        {
+          "id": "section-45",
+          "title": "Ethics statement",
+          "level": 2
+        },
+        {
+          "id": "section-46",
+          "title": "Acknowledgements",
+          "level": 2
+        },
+        {
+          "id": "section-47",
+          "title": "Funding",
+          "level": 2
+        },
+        {
+          "id": "section-48",
+          "title": "CRediT authorship contribution statement",
+          "level": 2
+        },
+        {
+          "id": "section-49",
+          "title": "Declaration of competing interest",
+          "level": 2
+        },
+        {
+          "id": "section-50",
+          "title": "Declaration of generative AI and AI-assisted technologies in the manuscript preparation process",
+          "level": 2
+        },
+        {
+          "id": "section-51",
+          "title": "References",
+          "level": 2
+        }
+      ],
+      "body_url": "/api/arxiv/papers/3300802/versions/1/body?render_id=0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "assets_ready": 0,
+      "assets_total": 4,
+      "fetched_at": "2026-11-13T16:55:03.691849+00:00"
+    },
+    "resources": {
+      "html": {
+        "state": "ready",
+        "download_url": "/api/arxiv/papers/3300802/versions/1/files/html"
+      },
+      "pdf": {
+        "state": "not_packaged"
+      },
+      "source": {
+        "state": "not_packaged"
+      }
+    },
+    "demo": {
+      "offline": true,
+      "observation": "see observed_resources in manifest.json",
+      "not_packaged_is_not_source_absence": true
+    },
+    "next_action": "stop"
+  },
+  "files": [
+    {
+      "url": "/api/arxiv/papers/3300802/versions/1/body?render_id=0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "file": "files/2611.14519v1-body.html",
+      "media_type": "text/html; charset=utf-8",
+      "sha256": "e68477b91b623a334c50bc3b1f5eea1c4cbab42c2233541fedc241dd1eb40e93",
+      "bytes": 668231,
+      "attachment": false
+    },
+    {
+      "url": "/api/arxiv/papers/3300802/versions/1/files/html",
+      "file": "files/2611.14519v1-original.html",
+      "media_type": "text/html",
+      "sha256": "86b6d85624e6b64339a7d3f04e29cb1ce2fb399cb9cfdc925cee7c06f617b30b",
+      "bytes": 854925,
+      "attachment": true
+    }
+  ],
+  "missing_assets": [
+    {
+      "url": "/api/arxiv/papers/3300802/versions/1/assets/3c3fd16c24fb2566aca461301960f77bb7e7cf0e5518c3720fb2f16d9e529bb4?render_id=0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "reason": "not_in_existing_cache_at_capture"
+    },
+    {
+      "url": "/api/arxiv/papers/3300802/versions/1/assets/6a11308a61feb3a67c887bec5bd94a8f23bec527ef34bfc0ffd37041409b91b7?render_id=0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "reason": "not_in_existing_cache_at_capture"
+    },
+    {
+      "url": "/api/arxiv/papers/3300802/versions/1/assets/7b2005b68efcfd39ce3275331ce9e77b23722f370ebb7e4c5f31a6f9a8d2160c?render_id=0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "reason": "not_in_existing_cache_at_capture"
+    },
+    {
+      "url": "/api/arxiv/papers/3300802/versions/1/assets/a28243b603ec9e0bb14a20e0204a731493267b8077f66fbce3ea1660b8dc433a?render_id=0e0cb9f09b534a138bdee7fd053d6a413d652e4957e859f1455ae12b673197ac",
+      "reason": "not_in_existing_cache_at_capture"
+    }
+  ]
+}
