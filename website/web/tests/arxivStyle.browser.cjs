@@ -27,9 +27,11 @@ try{for(const language of ['zh','en'])for(const width of [1440,390,320]){
  });}
  const ieee=await context.newPage();await ieee.goto(origin+'/papers/1');await ieee.locator('a.detail-pdf-trigger').waitFor();const expected=await metrics(ieee);
  const arxiv=await context.newPage();await arxiv.goto(origin+'/arxiv/papers/1?source=arxiv&v=1');await arxiv.locator('a.detail-pdf-trigger').waitFor();assert.deepEqual(await metrics(arxiv),expected);
- const actions=arxiv.locator('.detail-record-actions');assert.deepEqual(await actions.locator('a').evaluateAll(links=>links.map(l=>l.className)),['button detail-pdf-trigger','button detail-source-link','button detail-source-download','button detail-source-download']);
- const pdfBox=await actions.locator('a').nth(0).boundingBox(),sourceBox=await actions.locator('a').nth(1).boundingBox();assert.equal(pdfBox.y,sourceBox.y);assert.ok(sourceBox.x>pdfBox.x);
- for(const [index,name] of [[2,'article.html'],[3,'source.tar.gz']]){const pending=arxiv.waitForEvent('download');await actions.locator('a').nth(index).click();assert.equal((await pending).suggestedFilename(),name);}
+ const actions=arxiv.locator('.detail-record-actions');assert.deepEqual(await actions.locator('a').evaluateAll(links=>links.map(l=>l.className)),['button detail-pdf-trigger','button detail-source-link']);
+ const pdfBox=await actions.locator("a").nth(0).boundingBox(),sourceBox=await actions.locator("a").nth(1).boundingBox();// On phone widths the actions wrap as on IEEE pages; the source link still follows the PDF link in reading order.
+ assert.ok(sourceBox.y===pdfBox.y?sourceBox.x>pdfBox.x:sourceBox.y>pdfBox.y);if(width>=1024)assert.equal(pdfBox.y,sourceBox.y);
+ // Cached originals download from the version's resource list, never from an acquisition control.
+ for(const [kind,name] of [['html','article.html'],['source','source.tar.gz']]){const pending=arxiv.waitForEvent('download');await arxiv.locator('.arxiv-resource-download[href$="/files/'+kind+'"]').click();assert.equal((await pending).suggestedFilename(),name);}
  const before=await arxiv.locator('.abstract').evaluate(e=>getComputedStyle(e).fontSize);await arxiv.locator('.reader-layout-controls summary').click();const font=arxiv.locator('input[type=range]').first();await font.focus();await font.press('ArrowRight');assert.notEqual(await arxiv.locator('.abstract').evaluate(e=>getComputedStyle(e).fontSize),before);
  assert.equal(posts,0);assert.ok(await arxiv.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));reports.push({language,width,matchingTypography:true,matchingResourceButtons:true,downloads:2,posts});await context.close();
 }console.log(JSON.stringify(reports));}finally{await browser.close();await new Promise(resolve=>server.close(resolve));}})().catch(e=>{console.error(e);process.exitCode=1;});

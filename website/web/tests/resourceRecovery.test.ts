@@ -1,8 +1,10 @@
-import {test} from 'node:test';
+import {test,beforeEach} from 'node:test';
 import assert from 'node:assert/strict';
 import {ResourceFlow,queryDelay,recoveryLabel,requestLabel,terminal,failureReason} from '../src/resourceRecovery.ts';
 const href='/api/content/100',id='a'.repeat(32);
 const failure=(value:any)=>Object.assign(Error('fixture'),{value});
+// Node 25+ provides a process-wide sessionStorage; saved receipts must not leak between tests.
+beforeEach(()=>{globalThis.sessionStorage?.clear();});
 test('API acceptance, backend state and recovery time are independent',()=>{
  assert.equal(requestLabel({accepted:null}),'接口未及时返回，是否已受理尚未确认');
  assert.equal(requestLabel({accepted:false}),'本次请求未受理');

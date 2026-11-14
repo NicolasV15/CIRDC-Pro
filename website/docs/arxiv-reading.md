@@ -52,7 +52,10 @@ not a replacement version date, journal publication year or OAI modification dat
 GET `/api/arxiv/papers` additionally accepts `field`, `sort=relevance|year`,
 `view=top`, `k=10|20|50|100`, `terms=exact|expand`, `category`, `year_from`, and
 `year_to`. Empty queries browse indexed papers. Category filtering matches whole
-category codes, and equivalent-term expansion reuses the IEEE query interpreter.
+category codes. An archive code with dotted subject classes (`astro-ph`, `cond-mat`,
+`cs`, `econ`, `eess`, `math`, `nlin`, `physics`, `q-bio`, `q-fin`, `stat`) matches
+every class in that archive, so `eess` matches `eess.SP` and `eess.SY` while `math`
+does not match `math-ph`. Equivalent-term expansion reuses the IEEE query interpreter.
 Cursors bind all active search options. `totals=defer` returns rows first;
 `totals=only` computes the exact matching count separately. Failed/timed-out counts
 remain unavailable, never zero. Queries have an execution budget and use only the
@@ -69,6 +72,32 @@ not acquire missing PDFs, parse PDFs or write metadata. Missing files are report
 original bytes remain unchanged, and download filenames contain the arXiv ID/version.
 The metadata worker/index owner is unchanged; preview configuration can select its
 existing full index without rebuilding or changing it.
+
+## Browsing and reading pages
+
+The search page offers circuit-related subject classes as one-click filters and names
+every category with the official arXiv taxonomy (`web/src/arxivTaxonomy.ts`; names
+stay in English as source terms). Category tags in result rows filter by that exact
+class; the free-text category field still accepts any code, including obsolete ones.
+
+The detail page shows every observed version with its date. Choosing a version pushes
+a history entry, so back/forward restore it, and clears the previous version's status
+and body before the new version's requests return. An unknown `v` in a link is
+reported and replaced by the latest version. Older versions state that the title,
+authors and abstract are current metadata. Author names search the authors field;
+category labels open the category browse page. License URLs are shortened to their
+names (for example `CC BY 4.0`); comments, journal reference, report number and
+MSC/ACM classes appear only when the metadata record contains them.
+
+Each version lists HTML, PDF and TeX source originals plus the reading text with their
+own state: cached, queued, not requested, not offered by arXiv, access restricted or
+failed. Cached originals download through the read-only file routes. The page offers
+at most one upstream action: `ensure` for a version that was never requested, and an
+explicit retry for a partial version with failed/restricted originals or a failed
+reading conversion. Confirmed absence is final, so a version whose remaining items
+are all unavailable offers no action. Polling continues only while the version is
+queued and never submits a request. The shared reader labels reading text by its
+provenance: arXiv HTML, converted from TeX source, or converted from PDF.
 
 ## Frontend continuation
 

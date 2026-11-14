@@ -116,6 +116,41 @@ def test_arxiv_search_fields_aliases_years_and_category(search_catalog):
     assert c.search("opamp", totals="only")["items"] == []
 
 
+def test_archive_filter_matches_its_subject_classes_only(tmp_path):
+    index = tmp_path / "index.sqlite"
+    papers = [
+        ("2501.00001", "eess paper", "A", "x", "eess.SP cs.AR"),
+        ("2501.00002", "cross-list", "A", "x", "cs.LG eess.SY"),
+        ("2501.00003", "math physics", "A", "x", "math-ph"),
+        ("2501.00004", "mathematics", "A", "x", "math.OC"),
+        ("2501.00005", "condensed", "A", "x", "cond-mat.mes-hall"),
+        ("2501.00006", "legacy", "A", "x", "cond-mat"),
+    ]
+    with sqlite3.connect(index) as db:
+        db.execute("CREATE TABLE identity(database_id TEXT)")
+        db.execute("INSERT INTO identity VALUES ('archive-fixture')")
+        db.execute(
+            "CREATE VIRTUAL TABLE metadata USING fts5(arxiv_id UNINDEXED,title,authors,abstract,categories)"
+        )
+        db.executemany("INSERT INTO metadata VALUES (?,?,?,?,?)", papers)
+    profile = tmp_path / "reader.json"
+    profile.write_text(
+        json.dumps({"mysql": {"database": "archive"}, "database_id": "archive-fixture", "index_path": str(index)})
+    )
+    c = Catalog(profile)
+
+    def ids(**options):
+        return sorted(item["arxiv_id"] for item in c.search("", **options)["items"])
+
+    assert ids(category="eess") == ["2501.00001", "2501.00002"]
+    assert c.search("", category="eess", totals="only")["total"] == 2
+    assert ids(category="math") == ["2501.00004"]
+    assert ids(category="cond-mat") == ["2501.00005", "2501.00006"]
+    assert ids(category="eess.SY") == ["2501.00002"]
+    assert ids(category="cs") == ["2501.00001", "2501.00002"]
+    assert sorted(item["arxiv_id"] for item in c.search("paper", category="eess")["items"]) == ["2501.00001"]
+
+
 def test_cursors_bind_filters_and_top_has_no_next_cursor(search_catalog):
     c = search_catalog
     first = c.search("opamp", 1)

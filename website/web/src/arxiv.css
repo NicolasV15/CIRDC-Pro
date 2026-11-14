@@ -1,5 +1,45 @@
 .arxiv-page select{max-width:100%}
 
-.arxiv-page .bibliographic select{width:100%;min-width:0}
+/* Header: categories link to browsing, the identifier names the selected version. */
+.arxiv-kicker{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px}
+.arxiv-kicker a{color:var(--theme-muted);text-decoration:none}
+.arxiv-kicker a:hover{color:var(--theme-accent);text-decoration:underline}
+.arxiv-identifier{color:var(--theme-text);font-family:var(--font-mono,ui-monospace,monospace);font-weight:600;letter-spacing:0}
+.arxiv-detail-authors-block{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:4px 0 0}
+.arxiv-detail-authors{margin:0;font-size:15px;line-height:1.6;overflow-wrap:anywhere}
+.arxiv-author-link{color:var(--theme-text);text-decoration:underline;text-decoration-color:var(--theme-border-strong);text-underline-offset:3px}
+.arxiv-author-link:hover{color:var(--theme-accent);text-decoration-color:currentColor}
 
-.arxiv-detail-authors{margin:4px 0 0;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+/* Version switch: each version is a pressable chip with its date; older versions carry a metadata note. */
+.arxiv-version-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:14px 0 2px}
+.arxiv-version-switch{display:flex;flex-wrap:wrap;gap:6px}
+.arxiv-version-switch button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:999px;color:var(--theme-muted);font-size:13px;font-weight:500}
+.arxiv-version-switch button strong{color:var(--theme-text);font-weight:650}
+.arxiv-version-switch button small{color:var(--theme-success-fg);font-size:11px;font-weight:650}
+.arxiv-version-switch button[aria-pressed=true]{border-color:var(--theme-accent);background:var(--theme-selected);color:var(--theme-text)}
+.arxiv-version-select{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--theme-muted)}
+.arxiv-version-note{margin:0;font-size:12px}
+.arxiv-version-count{display:block;color:var(--theme-muted);font-size:12px}
+
+/* Version resources: one status line per original plus the reading text. */
+.arxiv-resources{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:12px}
+.arxiv-resources>.hint{margin:0}
+.arxiv-resource-list{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;padding:0;list-style:none}
+.arxiv-resource-list li{display:inline-flex;align-items:center;gap:6px;min-height:28px;font-size:13px}
+.arxiv-resource-name{color:var(--theme-muted);font-weight:600}
+.arxiv-resource-download{display:inline-flex;align-items:center;gap:3px;font-size:13px;font-weight:600}
+.arxiv-resource-download .icon{width:14px;height:14px}
+.arxiv-resource-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.arxiv-resource-actions:empty{display:none}
+.arxiv-resource-actions .hint{margin:0}
+.arxiv-resource-progress{display:inline-flex;align-items:center;gap:8px;color:var(--theme-muted);font-size:13px}
+.arxiv-resource-error{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 8px;color:var(--theme-error-fg);font-size:13px}
+.arxiv-page .bibliographic dd a{overflow-wrap:anywhere}
+
+/* Search rows: subject classes are filter shortcuts styled like IEEE venue tags. */
+.arxiv-categories{display:flex;flex-wrap:wrap;gap:4px}
+.arxiv-category-tag{min-height:0;padding:1px 7px;border:1px solid var(--theme-border-strong);border-radius:5px;background:var(--theme-selected);color:var(--theme-text);font-size:12px;font-weight:650;line-height:1.5;white-space:nowrap}
+.arxiv-category-tag:hover{border-color:var(--theme-accent);color:var(--theme-accent)}
+.arxiv-category-tag.is-active{border-color:var(--theme-accent);background:var(--theme-accent);color:var(--theme-on-accent)}
+.arxiv-category-filter{margin-bottom:12px}
+@media (pointer:coarse){.arxiv-category-tag{min-height:32px;padding:2px 10px}}

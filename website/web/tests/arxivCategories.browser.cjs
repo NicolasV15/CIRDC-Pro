@@ -1,0 +1,50 @@
+/* arXiv category browsing: quick subject classes, archive filters and row category tags. Fixtures only. */
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://arxiv-categories.test';
+const types={'.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
+const rows=[['2401.00001',['eess.SP','cs.AR']],['2401.00002',['cs.AI']],['2401.00003',['eess.SY']],['2401.00004',['math-ph']]].map(([arxiv_id,categories],i)=>({paper_id:i+1,arxiv_id,title:'Paper '+(i+1),authors_raw:'A. Author',abstract:'Abstract.',categories,year:2024}));
+const matches=(row,category)=>!category||row.categories.some(c=>c.toLowerCase()===category.toLowerCase()||c.toLowerCase().startsWith(category.toLowerCase()+'.'));
+(async()=>{const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})}),reports=[];
+ try{for(const width of [1440,390]){
+  const context=await browser.newContext({viewport:{width,height:900}});await context.addInitScript(()=>localStorage.setItem('cirdc.ui.language','zh'));
+  const requests=[],errors=[];let writes=0;
+  await context.route('**/*',async route=>{const req=route.request(),u=new URL(req.url()),p=u.pathname;
+   if(req.method()!=='GET'){writes++;return route.abort();}
+   if(p.startsWith('/assets/'))return route.fulfill({contentType:types[path.extname(p)]||'application/octet-stream',body:await fs.readFile(root+p)});
+   if(!p.startsWith('/api/'))return route.fulfill({contentType:'text/html',body:await fs.readFile(root+'/index.html')});
+   if(p==='/api/auth/session')return route.fulfill({json:{interface:'reader',authentication_required:false,user:null,csrf:''}});
+   if(p==='/api/arxiv/overview')return route.fulfill({json:{indexed:4,year_range:{min:1991,max:2026}}});
+   if(p==='/api/arxiv/papers'){const category=u.searchParams.get('category')||'';requests.push(category);const items=rows.filter(row=>matches(row,category));
+    return route.fulfill({json:{items:u.searchParams.get('totals')==='only'?[]:items,total:u.searchParams.get('totals')==='defer'?null:items.length,next_cursor:null,query:{terms:'expand',groups:[]}}});}
+   return route.fulfill({status:404,json:{error:'not_found'}});
+  });
+  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
+  await page.goto(origin+'/?source=arxiv');await page.locator('.paper-row').nth(3).waitFor();
+  if(width<1024)await page.locator('.filter-disclosure > summary').click();
+  // Archive chip applies at once and matches every eess subject class.
+  await page.getByRole('group',{name:'电路相关分类'}).getByRole('button',{name:'eess 全部',exact:true}).click();
+  await page.waitForFunction(()=>new URLSearchParams(location.search).get('category')==='eess');
+  await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===2);
+  assert.equal(await page.getByRole('group',{name:'电路相关分类'}).getByRole('button',{name:'eess 全部',exact:true}).getAttribute('aria-pressed'),'true');
+  assert.match(await page.locator('.active-filters .filter-chip').innerText(),/eess 全部分类/);
+  // Pressing the selected chip clears the category.
+  await page.getByRole('group',{name:'电路相关分类'}).getByRole('button',{name:'eess 全部',exact:true}).click();
+  await page.waitForFunction(()=>!new URLSearchParams(location.search).has('category'));
+  await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===4);
+  // A row's category tag filters by that exact subject class and names it.
+  const tag=page.locator('.paper-row').nth(1).locator('.arxiv-category-tag',{hasText:'cs.AI'});
+  assert.equal(await tag.getAttribute('title'),'Artificial Intelligence');
+  await tag.click();
+  await page.waitForFunction(()=>new URLSearchParams(location.search).get('category')==='cs.AI');
+  await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===1);
+  assert.match(await page.locator('.active-filters .filter-chip').innerText(),/cs\.AI · Artificial Intelligence/);
+  assert.equal(await page.locator('.arxiv-category-tag.is-active').count(),1);
+  // The free-text field still accepts any code and lists official names.
+  assert.equal(await page.locator('#arxiv-categories option[value="eess.SP"]').getAttribute('label'),'Signal Processing');
+  assert.equal(await page.locator('.paper-row .arxiv-category-tag',{hasText:'math-ph'}).count(),0);
+  assert.equal(writes,0);assert.deepEqual(errors,[]);
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  reports.push({width,archiveFilter:true,rowTagFilter:true,writes});await context.close();
+ }console.log(JSON.stringify(reports));}finally{await browser.close();}
+})().catch(error=>{console.error(error);process.exitCode=1;});

@@ -20,6 +20,8 @@ type TocEntry={id:string;title:string;level:number};
 const sidebarQuery='(min-width:1200px)';
 function localURL(value:string){const u=new URL(value,location.origin);if(u.origin!==location.origin||!u.pathname.startsWith('/api/'))throw Error('Invalid resource URL');return u.pathname+u.search;}
 
+/** Reading-text provenance; publisher HTML remains the default for IEEE documents. */
+const sourceLabels:Record<string,string>={pdf_parse:'来源：PDF 转换',arxiv_html:'来源：arXiv HTML',arxiv_source:'来源：TeX 源码转换'};
 export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference,focus,onFocusResult,automatic=true}:{automatic?:boolean;resource?:Resource;fetcher:Fetcher;onReady?:()=>void;paperNumber?:string;onReference?:(order:number,source:HTMLElement)=>void;focus?:PassageFocus|null;onFocusResult?:(result:FocusResult)=>void}){
  const [expanded,setExpanded]=useState(true),contentId=useId();
  const readyCallback=useRef(onReady);useEffect(()=>{readyCallback.current=onReady;},[onReady]);
@@ -168,7 +170,7 @@ export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference
   <section className="panel document-reader" aria-label={t('文章正文')}>
   <div className="section-heading references-heading"><h2><button type="button" className="reference-toggle" aria-label={expanded?t('收起正文'):t('展开正文')} aria-controls={contentId} aria-expanded={expanded} onClick={()=>{setImage(null);setExpanded(value=>!value);}}>{t('文章正文')}</button></h2>{expanded&&<span className={'badge '+(value?.state||'queued')}>{t(contentLabel(value))}</span>}</div>
   <div id={contentId} hidden={!expanded}>
-  <p className="muted document-progress" role="status">{value?.document?<>{t(value.document.source==='pdf_parse'?'来源：PDF 转换':'来源：官网正文')}{' · '}{t('图片资源：')}{value.document.assets_ready} / {value.document.assets_total}{t(' · 获取时间：')}{value.document.fetched_at?new Date(value.document.fetched_at).toLocaleString(locale()):'—'}</>:t(value?.next_action?'':contentReason(value))}</p>
+  <p className="muted document-progress" role="status">{value?.document?<>{t(sourceLabels[value.document.source]||'来源：官网正文')}{' · '}{t('图片资源：')}{value.document.assets_ready} / {value.document.assets_total}{t(' · 获取时间：')}{value.document.fetched_at?new Date(value.document.fetched_at).toLocaleString(locale()):'—'}</>:t(value?.next_action?'':contentReason(value))}</p>
   {value?.state==='partial'&&<p className="hint">{t('正文可以阅读，部分图片暂不可用；此版本尚未完整缓存。')}</p>}
   <ResourceFeedback value={value} request={requestFailure}/>
   {error&&<p className="error" role="alert">{t(error)}</p>}

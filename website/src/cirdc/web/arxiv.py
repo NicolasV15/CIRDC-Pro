@@ -17,6 +17,8 @@ from starlette.responses import JSONResponse
 from starlette.routing import Route
 
 IDENTIFIER = re.compile(r"(\d{4}\.\d{4,5}|[a-z][a-z.-]+/\d{7})(?:v([1-9]\d*))?\Z")
+# Archives whose subject classes are written ARCHIVE.CLASS; filtering by one matches every class.
+ARCHIVES = frozenset(("astro-ph", "cond-mat", "cs", "econ", "eess", "math", "nlin", "physics", "q-bio", "q-fin", "stat"))
 
 
 def resolve(value):
@@ -210,7 +212,13 @@ class Catalog:
         if exact_id:
             where.append("arxiv_id=?")
             values.append(exact_id)
-        if category:
+        if category.lower() in ARCHIVES:
+            where.append(
+                "(instr(' '||lower(categories)||' ',' '||lower(?)||' ')>0"
+                " OR instr(' '||lower(categories),' '||lower(?)||'.')>0)"
+            )
+            values.extend((category, category))
+        elif category:
             where.append("instr(' '||lower(categories)||' ',' '||lower(?)||' ')>0")
             values.append(category)
 
