@@ -5,7 +5,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve(__dirname,'../src');
 async function moduleURL(name,imports={}){let js=ts.transpileModule(await fs.readFile(path.join(root,name),'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;for(const [key,url] of Object.entries(imports))js=js.replaceAll("'"+key+"'",JSON.stringify(url));return 'data:text/javascript;base64,'+Buffer.from(js).toString('base64');}
 async function main(){
- const citations=await moduleURL('citations.ts'),titles=await moduleURL('titleMath.ts',{'./citations.ts':citations}),formats=await moduleURL('selectionFormats.ts',{'katex':'data:text/javascript;base64,'+Buffer.from(await fs.readFile(path.join(path.dirname(require.resolve('katex')),'katex.mjs'),'utf8')).toString('base64')}),content=await moduleURL('selectionContent.ts',{'./titleMath':titles,'./selectionFormats':formats});
+ const citations=await moduleURL('citations.ts'),titles=await moduleURL('titleMath.ts',{'./citations.ts':citations,'./texAccents.ts':await moduleURL('texAccents.ts')}),formats=await moduleURL('selectionFormats.ts',{'katex':'data:text/javascript;base64,'+Buffer.from(await fs.readFile(path.join(path.dirname(require.resolve('katex')),'katex.mjs'),'utf8')).toString('base64')}),content=await moduleURL('selectionContent.ts',{'./titleMath':titles,'./selectionFormats':formats});
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
  try{
   const page=await browser.newPage();let requests=0;await page.route('**/*',route=>{requests++;return route.abort();});

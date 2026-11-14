@@ -1,4 +1,5 @@
 import {citationText,decodeTextEntities} from './citations.ts';
+import {decodeTexAccents} from './texAccents.ts';
 
 export type TitlePart=({type:'text';value:string}|{type:'math';value:string;raw:string})&{script?:'sub'|'sup'};
 const delimiters=[['$$','$$'],['\\(','\\)'],['\\[','\\]'],['$','$']] as const;
@@ -22,7 +23,7 @@ export function titleParts(value:unknown,preserveWhitespace=false,preserveScript
  }).trim(),parts:TitlePart[]=[];
  const scripts:('sub'|'sup')[]=[];
  const context=()=>scripts.length?{script:scripts.at(-1)}:{};
- const addText=(text:string)=>{const value=citationText(text,false,preserveWhitespace).replace(/\\\$/g,'$');if(value)parts.push({type:'text',value,...context()});};
+ const addText=(text:string)=>{const value=decodeTexAccents(citationText(text,false,preserveWhitespace)).replace(/\\\$/g,'$');if(value)parts.push({type:'text',value,...context()});};
  const plain=(text:string)=>{
   if(!preserveScripts){addText(text);return;}
   let start=0;

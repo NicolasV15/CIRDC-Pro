@@ -151,6 +151,42 @@ def test_archive_filter_matches_its_subject_classes_only(tmp_path):
     assert sorted(item["arxiv_id"] for item in c.search("paper", category="eess")["items"]) == ["2501.00001"]
 
 
+def test_unicode_queries_match_tex_encoded_metadata(tmp_path):
+    index = tmp_path / "index.sqlite"
+    papers = [
+        ("0704.0001", "Diphoton production", "C. Bal\\'azs, E. L. Berger", "x", "hep-ph"),
+        ("2611.14067", "Hall crystals in moir\\'e graphene", "A", "x", "cond-mat.str-el"),
+        ("2611.14447", "Reflectance", "J. Mart\\'{\\i}n-Albo, M. Ib\\'a\\~nez", "x", "physics.ins-det"),
+        ("2611.11648", "Search and rescue", "Jok\\=ubas Dim\\v{s}a", "x", "cs.RO"),
+        ("2611.00001", "Unrelated", "Martin Balazs", "x", "cs.AI"),
+    ]
+    with sqlite3.connect(index) as db:
+        db.execute("CREATE TABLE identity(database_id TEXT)")
+        db.execute("INSERT INTO identity VALUES ('accent-fixture')")
+        db.execute(
+            "CREATE VIRTUAL TABLE metadata USING fts5(arxiv_id UNINDEXED,title,authors,abstract,categories)"
+        )
+        db.executemany("INSERT INTO metadata VALUES (?,?,?,?,?)", papers)
+    profile = tmp_path / "reader.json"
+    profile.write_text(
+        json.dumps({"mysql": {"database": "accent"}, "database_id": "accent-fixture", "index_path": str(index)})
+    )
+    c = Catalog(profile)
+
+    def ids(query, **options):
+        return sorted(item["arxiv_id"] for item in c.search(query, **options)["items"])
+
+    # A Unicode name matches both Unicode and TeX spellings; the unaccented spelling matches only itself.
+    assert ids("Balázs", field="authors") == ["0704.0001", "2611.00001"]
+    assert ids('"C. Balázs"', field="authors") == ["0704.0001"]
+    assert ids("Martín", field="authors") == ["2611.00001", "2611.14447"]
+    assert ids("Ibáñez", field="authors") == ["2611.14447"]
+    assert ids("Dimša Jokūbas", field="authors") == ["2611.11648"]
+    assert ids("moiré", field="title") == ["2611.14067"]
+    assert ids("Balazs", field="authors") == ["2611.00001"]
+    assert c.search("Balázs", field="authors", totals="only")["total"] == 2
+
+
 def test_cursors_bind_filters_and_top_has_no_next_cursor(search_catalog):
     c = search_catalog
     first = c.search("opamp", 1)

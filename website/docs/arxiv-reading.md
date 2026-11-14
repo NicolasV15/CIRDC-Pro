@@ -56,6 +56,11 @@ category codes. An archive code with dotted subject classes (`astro-ph`, `cond-m
 `cs`, `econ`, `eess`, `math`, `nlin`, `physics`, `q-bio`, `q-fin`, `stat`) matches
 every class in that archive, so `eess` matches `eess.SP` and `eess.SY` while `math`
 does not match `math-ph`. Equivalent-term expansion reuses the IEEE query interpreter.
+arXiv metadata spells many accented names with TeX macros (`Bal\'azs`, `Dim\v{s}a`), which
+the index splits into separate words. A query word with accented Latin letters therefore
+also matches its TeX spellings, braced or not: `Balázs` and `"C. Balázs"` find
+`C. Bal\'azs`, and `Martín` finds `Mart\'{\i}n`. An unaccented query (`Balazs`) still
+matches only unaccented metadata, because the index does not record where an accent was.
 Cursors bind all active search options. `totals=defer` returns rows first;
 `totals=only` computes the exact matching count separately. Failed/timed-out counts
 remain unavailable, never zero. Queries have an execution budget and use only the
@@ -87,16 +92,20 @@ reported and replaced by the latest version. Older versions state that the title
 authors and abstract are current metadata. Author names search the authors field;
 category labels open the category browse page. License URLs are shortened to their
 names (for example `CC BY 4.0`); comments, journal reference, report number and
-MSC/ACM classes appear only when the metadata record contains them.
+MSC/ACM classes appear only when the metadata record contains them; comments link their
+web addresses. The submitter is shown when recorded. TeX text accents in titles, abstracts,
+raw author lists and citations are displayed as letters (`moir\'e` as `moiré`), and copied
+titles and abstracts contain the same letters. Math segments and their copied TeX are unchanged.
 
 Each version lists HTML, PDF and TeX source originals plus the reading text with their
-own state: cached, queued, not requested, not offered by arXiv, access restricted or
-failed. Cached originals download through the read-only file routes. The page offers
+own state: cached, queued, fetching, not requested, not offered by arXiv, access
+restricted or failed (the offline demo adds "not packaged"). Reads repeat while the version
+or any of its files is queued or fetching. Cached originals download through the read-only
+file routes. The page offers
 at most one upstream action: `ensure` for a version that was never requested, and an
 explicit retry for a partial version with failed/restricted originals or a failed
 reading conversion. Confirmed absence is final, so a version whose remaining items
-are all unavailable offers no action. Polling continues only while the version is
-queued and never submits a request. The shared reader labels reading text by its
+are all unavailable offers no action. Polling never submits a request. The shared reader labels reading text by its
 provenance: arXiv HTML, converted from TeX source, or converted from PDF.
 
 ## Frontend continuation

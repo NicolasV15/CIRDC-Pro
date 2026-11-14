@@ -1,7 +1,12 @@
 type Resource={state:string;download_url?:string;error?:string};
 export type ArxivState={state:string;reading_ready?:boolean;acquisition_complete?:boolean;resources?:Record<string,Resource>;document?:unknown;reading_state?:string;conversion_errors?:Record<string,string>;request_id?:string};
 
-const RETRYABLE=['failed','blocked'];
+const RETRYABLE=['failed','blocked'],PENDING=['queued','fetching'];
+
+/** Work still in progress for this version; only reads are repeated while it lasts. */
+export function acquisitionPending(state:ArxivState|null){
+ return !!state&&(PENDING.includes(state.state)||Object.values(state.resources||{}).some(r=>PENDING.includes(r.state)));
+}
 
 /** The only upstream action the current state permits: a first request, an explicit retry of unfinished branches, or none. */
 export function acquisitionAction(state:ArxivState|null):'ensure'|'retry'|null{

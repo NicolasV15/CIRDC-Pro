@@ -13,10 +13,11 @@ import PaperSearchBar from './PaperSearchBar';
 import BackToTop from './BackToTop';
 import {PaperPdfLink,PaperSourceLink} from './PaperResourceLinks';
 import {ArxivResources} from './ArxivResources';
-import {acquisitionAction,type ArxivState} from './arxivResourceState';
+import {acquisitionAction,acquisitionPending,type ArxivState} from './arxivResourceState';
 import {arxivCategoryName} from './arxivTaxonomy';
 import {arxivCategoryLabel} from './ArxivCategoryFilter';
 import {licenseLabel} from './arxivLicense';
+import {decodeTexAccents} from './texAccents';
 import './arxiv.css';
 import ArxivSearchPage from './ArxivSearchPage';
 
@@ -30,15 +31,19 @@ function dateLabel(value?:string){
 function requestedVersion(){return Number(new URLSearchParams(location.search).get('v'))||0;}
 const searchHref=(values:Record<string,string>)=>'/?'+new URLSearchParams({source:'arxiv',...values});
 /** Optional source fields, displayed only when the metadata record carries them. */
-const optionalFields:[string,string[]][]=[['备注',['comments']],['期刊引用',['journal_ref','journal-ref']],['报告编号',['report_no','report-no']],['MSC 分类',['msc_class','msc-class']],['ACM 分类',['acm_class','acm-class']]];
+const optionalFields:[string,string[]][]=[['提交者',['submitter']],['备注',['comments']],['期刊引用',['journal_ref','journal-ref']],['报告编号',['report_no','report-no']],['MSC 分类',['msc_class','msc-class']],['ACM 分类',['acm_class','acm-class']]];
 const AUTHOR_PREVIEW=8;
+/** Line breaks after `/` so DOIs wrap at their parts in the narrow sidebar. */
+function breakable(value:string){return value.split('/').flatMap((part,i)=>i?[<wbr key={i}/>,'/'+part]:[part]);}
+/** Web addresses in free-text comments (for example a project page) become links. */
+function linked(value:string){return value.split(/(https?:\/\/[^\s<>"]+[^\s<>".,;:!?)])/).map((part,i)=>i%2?<a key={i} href={part} target="_blank" rel="noopener noreferrer">{part}</a>:part);}
 
 export default function ArxivPage(){
  return location.pathname.match(/^\/arxiv\/papers\/(\d+)$/)?<ArxivDetail/>:<ArxivSearchPage/>;
 }
 function ArxivAuthors({names,raw}:{names:string[];raw:string}){
  const [expanded,setExpanded]=useState(false);
- if(!names.length)return raw?<p className="authors arxiv-detail-authors" data-copy-content="authors">{raw}</p>:null;
+ if(!names.length)return raw?<p className="authors arxiv-detail-authors" data-copy-content="authors">{decodeTexAccents(raw)}</p>:null;
  const visible=expanded?names:names.slice(0,AUTHOR_PREVIEW);
  return <div className="arxiv-detail-authors-block"><p className="authors arxiv-detail-authors" data-copy-content="authors">{visible.map((name,i)=><span key={i}>{i>0&&', '}<a className="arxiv-author-link" href={searchHref({field:'authors',q:'"'+name+'"'})} title={t('检索该作者的 arXiv 论文')}>{name}</a></span>)}{!expanded&&names.length>AUTHOR_PREVIEW&&<span aria-hidden="true">, …</span>}</p>
   {names.length>AUTHOR_PREVIEW&&<button type="button" className="detail-authors-toggle" aria-expanded={expanded} onClick={()=>setExpanded(v=>!v)}>{expanded?t('收起作者列表'):t('展开全部作者（共 {n} 位）',{n:names.length})}</button>}
@@ -73,7 +78,7 @@ function ArxivDetail(){
  useEffect(()=>{
   if(!paperId||!version||!paper)return;let active=true;let timer:ReturnType<typeof setTimeout>|undefined;
   const base='/api/arxiv/papers/'+paperId+'/versions/'+version;
-  async function read(){try{const value=await api(base+'/resources');if(!active)return;setState(value);setStatusError('');if(value.state==='queued')timer=setTimeout(read,3000);}catch(e){if(active)setStatusError((e as Error).message);}}
+  async function read(){try{const value=await api(base+'/resources');if(!active)return;setState(value);setStatusError('');if(acquisitionPending(value))timer=setTimeout(read,3000);}catch(e){if(active)setStatusError((e as Error).message);}}
   void read();return()=>{active=false;if(timer)clearTimeout(timer);};
  },[paperId,version,poll,paper]);
  async function acquire(){
@@ -123,9 +128,9 @@ function ArxivDetail(){
     <div className="bibliographic-row"><dt>{t('论文编号')}</dt><dd>{paper.arxiv_id}</dd></div>
     <div className="bibliographic-row"><dt>{t('当前版本')}</dt><dd>{selected?'v'+selected.version+' · '+dateLabel(selected.version_date):'—'}{versions.length>1&&<small className="arxiv-version-count">{t('共 {n} 个版本',{n:String(versions.length)})}</small>}</dd></div>
     <div className="bibliographic-row"><dt>{t('投稿时间')}</dt><dd>{dateLabel(metadata.submitted_at)}</dd></div>
-    <div className="bibliographic-row"><dt>DOI</dt><dd>{metadata.doi?<a href={'https://doi.org/'+metadata.doi} target="_blank" rel="noopener noreferrer">{metadata.doi}</a>:'—'}</dd></div>
+    <div className="bibliographic-row"><dt>DOI</dt><dd>{metadata.doi?<a href={'https://doi.org/'+metadata.doi} target="_blank" rel="noopener noreferrer">{breakable(metadata.doi)}</a>:'—'}</dd></div>
     <div className="bibliographic-row"><dt>{t('许可证')}</dt><dd>{license?(license.href?<a href={license.href} target="_blank" rel="noopener noreferrer">{licenseText}</a>:licenseText):'—'}</dd></div>
-    {optionalFields.map(([label,keys])=>{const value=keys.map(key=>metadata[key]).find(v=>typeof v==='string'&&v.trim());return value?<div className="bibliographic-row" key={label}><dt>{t(label)}</dt><dd>{value}</dd></div>:null;})}
+    {optionalFields.map(([label,keys])=>{const value=keys.map(key=>metadata[key]).find(v=>typeof v==='string'&&v.trim());return value?<div className="bibliographic-row" key={label}><dt>{t(label)}</dt><dd>{linked(value)}</dd></div>:null;})}
    </dl></div>
   </aside></div><BackToTop target={pageTop}/>
   </>}

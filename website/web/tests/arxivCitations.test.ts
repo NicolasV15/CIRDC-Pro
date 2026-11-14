@@ -15,3 +15,12 @@ test('detail and list citation metadata keep the selected version and preprint s
  const first=arxivCitationRecord(paper,1),second=arxivCitationRecord(paper,2);
  assert.equal(first.sourceVersion,1);assert.equal(first.publicationYear,2007);assert.equal(second.sourceVersion,2);assert.equal(second.publicationYear,2008);assert.equal(first.doi,undefined);assert.match(buildCitations(first,'1').values.bibtex,/0704\.0001v1/);assert.match(buildCitations(second,'1').values.bibtex,/0704\.0001v2/);assert.throws(()=>arxivCitationRecord(paper,3));
 });
+test('arXiv citations decode TeX text accents but keep title math unchanged',async()=>{
+ const {arxivCitationRecord}=await import('../src/arxivCitations.ts');
+ const paper={arxiv_id:'2611.14067',title:"Hall crystals in moir\\'e graphene with $\\'{x}$ scaling",authors_raw:"C. Bal\\'azs and J. Mart\\'{\\i}n",versions:[{version:1,version_date:'2026-11-10'}]};
+ const record=arxivCitationRecord(paper,1);
+ assert.equal(record.articleTitle,"Hall crystals in moiré graphene with $\\'{x}$ scaling");
+ assert.deepEqual(record.authors,[{preferredName:'C. Balázs and J. Martín'}]);
+ const bibtex=buildCitations(record,'1').values.bibtex;
+ assert.match(bibtex,/moiré graphene/);assert.ok(!bibtex.includes("moir\\textbackslash"));
+});

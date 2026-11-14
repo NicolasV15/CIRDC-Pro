@@ -36,6 +36,64 @@ def resolve(value):
     return match[1], int(match[2]) if match[2] else None
 
 
+# arXiv metadata spells accented Latin letters with TeX macros (``Mart\'in``, ``Dim\v{s}a``), which the
+# index tokenizes as separate words. Accents written as symbols may be braced (``\'{\i}n``) or not.
+SYMBOL_ACCENTS = {"\u0300", "\u0301", "\u0302", "\u0303", "\u0304", "\u0307", "\u0308"}
+LETTER_ACCENTS = {"\u0306": "u", "\u030a": "r", "\u030b": "H", "\u030c": "v", "\u0327": "c", "\u0328": "k"}
+SPECIAL_LETTERS = {"ø": "o", "Ø": "O", "ß": "ss", "ł": "l", "Ł": "L", "æ": "ae", "Æ": "AE", "œ": "oe", "Œ": "OE", "å": "aa", "Å": "AA"}
+
+
+def tex_spellings(word):
+    """Token sequences of a Unicode word as arXiv's TeX-encoded metadata spells it; empty when unaccented."""
+    import unicodedata
+
+    from .query import tokens
+
+    if not any(ord(char) > 127 for char in word):
+        return []
+    results = []
+    for braced in (False, True):
+        text = ""
+        for char in unicodedata.normalize("NFC", word):
+            if char in SPECIAL_LETTERS:
+                text += " " + SPECIAL_LETTERS[char] + " "
+                continue
+            base, *marks = unicodedata.normalize("NFD", char)
+            letters = [LETTER_ACCENTS[mark] for mark in marks if mark in LETTER_ACCENTS]
+            if letters:
+                text += " " + " ".join(letters) + " " + base + " "
+            elif any(mark in SYMBOL_ACCENTS for mark in marks):
+                text += " " + base + (" " if braced else "")
+            else:
+                text += char
+        spelled = tuple(tokens(text))
+        if spelled != tuple(tokens(word)) and spelled not in results:
+            results.append(spelled)
+    return results
+
+
+def with_tex_spellings(groups, query):
+    """Add TeX-encoded alternatives for accented words so Unicode queries match TeX-encoded metadata."""
+    from .query import TOKEN, fold, normalize
+
+    spellings = {}
+    for word in TOKEN.findall(normalize(query)):
+        for spelled in tex_spellings(word):
+            spellings.setdefault(fold(word), []).append(spelled)
+    if not spellings:
+        return groups
+    for group in groups:
+        alternatives = list(group["alternatives"])
+        for alternative in group["alternatives"]:
+            options = [()]
+            for word in alternative:
+                choices = [(word,), *spellings.get(word, [])]
+                options = [prefix + choice for prefix in options for choice in choices][:8]
+            alternatives += [option for option in options if option not in alternatives]
+        group["alternatives"] = alternatives
+    return groups
+
+
 class Catalog:
     def __init__(self, profile):
         self.config = json.loads(Path(profile).read_text())
@@ -194,7 +252,7 @@ class Catalog:
             except ValueError:
                 pass
         groups = (
-            parse(query, terms="exact" if terms == "exact" else "expand")
+            with_tex_spellings(parse(query, terms="exact" if terms == "exact" else "expand"), query)
             if query.strip() and not exact_id
             else []
         )
