@@ -113,6 +113,16 @@ class DemoCatalog(Catalog):
             row = db.execute('SELECT payload FROM papers WHERE ' + column + '=?', (key,)).fetchone()
         return json.loads(row['payload']) if row else None
 
+    def with_submission_dates(self, items):
+        result = []
+        for item in items:
+            paper = self.paper(paper_id=int(item['paper_id']))
+            date = paper.get('metadata', {}).get('submitted_at')
+            if not date:
+                date = next((v.get('version_date') for v in paper['versions'] if v['version'] == 1), None)
+            result.append({**item, 'submitted_at': date, 'submitted_at_source': 'demo_metadata' if date else None})
+        return result
+
     def overview(self):
         with closing(connect(self.database)) as db:
             years = [int(item['year']) for item in self.search('', limit=100)['items']]

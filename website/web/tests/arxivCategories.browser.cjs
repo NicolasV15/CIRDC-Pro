@@ -3,7 +3,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://arxiv-categories.test';
 const types={'.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
-const rows=[['2401.00001',['eess.SP','cs.AR']],['2401.00002',['cs.AI']],['2401.00003',['eess.SY']],['2401.00004',['math-ph']]].map(([arxiv_id,categories],i)=>({paper_id:i+1,arxiv_id,title:'Paper '+(i+1),authors_raw:'A. Author',abstract:'Abstract.',categories,year:2024}));
+const rows=[['2401.00001',['eess.SP','cs.AR']],['2401.00002',['cs.AI']],['2401.00003',['eess.SY']],['2401.00004',['math-ph']]].map(([arxiv_id,categories],i)=>({paper_id:i+1,arxiv_id,title:'Paper '+(i+1),authors_raw:'A. Author',abstract:'Abstract.',categories,year:2024,submitted_at:i===3?null:'2024-01-02T12:00:00+00:00'}));
 const matches=(row,category)=>!category||category.split(',').some(code=>row.categories.some(c=>c.toLowerCase()===code.toLowerCase()||c.toLowerCase().startsWith(code.toLowerCase()+'.')));
 (async()=>{const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})}),reports=[];
  try{for(const width of [1440,390,320]){
@@ -21,6 +21,9 @@ const matches=(row,category)=>!category||category.split(',').some(code=>row.cate
   });
   const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   await page.goto(origin+'/?source=arxiv');await page.locator('.paper-row').nth(3).waitFor();
+  assert.equal(await page.getByRole('button',{name:'最新投稿',exact:true}).getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('.paper-year').first().innerText(),'2024-01-02');
+  assert.equal(await page.getByText('日期未提供',{exact:true}).count(),1);
   if(width<1024)await page.locator('.filter-disclosure > summary').click();
   const group=page.getByRole('group',{name:'电路相关分类'});
   assert.equal(await group.getByRole('button',{name:'eess 全部',exact:true}).count(),0);

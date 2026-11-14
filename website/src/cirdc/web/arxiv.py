@@ -9,6 +9,7 @@ import sqlite3
 import time
 from contextlib import closing, contextmanager
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 import pymysql
@@ -160,6 +161,41 @@ class Catalog:
             }
             row["source"] = "arxiv"
             return row
+
+    def with_submission_dates(self, items):
+        """Hydrate only the requested page from normalized metadata, then v1 history."""
+        if not items:
+            return []
+        identifiers = [int(item["paper_id"]) for item in items]
+        with self.connection() as cur:
+            cur.execute(
+                "SELECT p.id,JSON_UNQUOTE(JSON_EXTRACT(p.document,'$.submitted_at')) AS submitted_at,"
+                "v.version_date FROM papers p LEFT JOIN versions v ON v.paper_id=p.id AND v.version=1 "
+                "WHERE p.id IN (" + ",".join("%s" for _ in identifiers) + ")",
+                identifiers,
+            )
+            dates = {}
+            for row in cur.fetchall():
+                raw = row["submitted_at"]
+                if raw in (None, "", "null"):
+                    raw = row["version_date"]
+                    source = "version_1"
+                else:
+                    source = "normalized_metadata"
+                if raw:
+                    try:
+                        parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+                    except ValueError:
+                        try:
+                            parsed = parsedate_to_datetime(raw)
+                        except (ValueError, TypeError) as error:
+                            raise RuntimeError("arxiv_submission_date_invalid") from error
+                    if parsed.tzinfo is None:
+                        parsed = parsed.replace(tzinfo=timezone.utc)
+                    dates[str(row["id"])] = (parsed.astimezone(timezone.utc).isoformat(), source)
+        return [{**item, "submitted_at": dates.get(str(item["paper_id"]), (None, None))[0],
+                 "submitted_at_source": dates.get(str(item["paper_id"]), (None, None))[1]}
+                for item in items]
 
     def index_connection(self):
         db = sqlite3.connect(
@@ -522,6 +558,11 @@ def routes(catalog=None):
                     params.get("cursor"),
                     **options,
                 )
+                include_dates = params.get("include_dates", "0")
+                if include_dates not in ("0", "1"):
+                    raise ValueError("invalid_date_option")
+                if include_dates == "1":
+                    value["items"] = await run_in_threadpool(catalog.with_submission_dates, value["items"])
                 return JSONResponse(value)
             return JSONResponse(value, status_code=200 if paper else 404)
         except ValueError:

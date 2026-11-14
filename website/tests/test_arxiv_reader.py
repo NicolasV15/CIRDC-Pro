@@ -242,3 +242,38 @@ def test_category_only_browses_newest_indexed_rows_without_text_ranking(tmp_path
     second = catalog.search("", category="eess", limit=1, cursor=first["next_cursor"])
     assert second["items"][0]["arxiv_id"] == "2501.00001"
     assert second["total"] == 2
+
+
+def test_submission_dates_are_batched_and_use_metadata_then_v1():
+    from contextlib import nullcontext
+    class Cursor:
+        def execute(self, sql, values):
+            assert "v.version=1" in sql and "WHERE p.id IN (%s,%s,%s)" in sql
+            assert values == [3, 1, 2]
+        def fetchall(self):
+            return [
+                {"id": 1, "submitted_at": "2024-02-02T00:30:00+02:00", "version_date": "2000-01-01"},
+                {"id": 2, "submitted_at": None, "version_date": "Mon, 2 Apr 2007 18:00:00 GMT"},
+                {"id": 3, "submitted_at": None, "version_date": None},
+            ]
+    c = object.__new__(Catalog)
+    c.connection = lambda: nullcontext(Cursor())
+    rows = c.with_submission_dates([{"paper_id": str(i)} for i in [3, 1, 2]])
+    assert [r["paper_id"] for r in rows] == ["3", "1", "2"]
+    assert rows[0]["submitted_at"] is None
+    assert rows[1]["submitted_at"] == "2024-02-01T22:30:00+00:00"
+    assert rows[1]["submitted_at_source"] == "normalized_metadata"
+    assert rows[2]["submitted_at"] == "2007-04-02T18:00:00+00:00"
+    assert rows[2]["submitted_at_source"] == "version_1"
+    c.connection = lambda: pytest.fail("Empty pages must not query MySQL")
+    assert c.with_submission_dates([]) == []
+
+
+def test_search_route_only_hydrates_dates_when_requested():
+    class Fake:
+        def search(self, *args): return {"items": [{"paper_id": "1"}]}
+        def with_submission_dates(self, items): return [{**items[0], "submitted_at": "2026-11-10T18:59:54+00:00"}]
+    with TestClient(Starlette(routes=routes(Fake()))) as client:
+        assert "submitted_at" not in client.get("/api/arxiv/papers").json()["items"][0]
+        assert client.get("/api/arxiv/papers?include_dates=1").json()["items"][0]["submitted_at"].startswith("2026-11-10")
+        assert client.get("/api/arxiv/papers?include_dates=bad").status_code == 422
