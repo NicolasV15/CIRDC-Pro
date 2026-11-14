@@ -1,0 +1,870 @@
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document" id="section-0">Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods</h1>
+<div class="ltx_abstract" id="abstract1"><h6 class="ltx_title ltx_title_abstract" id="section-1">Abstract</h6>
+<p class="ltx_p" id="abstract1.1">Automatic Music Transcription (AMT) relies on paired audio–MIDI datasets, implicitly assuming near-perfect temporal alignment. However, widely used piano datasets have been shown to contain alignment errors that may bias model evaluation and training. We propose a framework for evaluating audio–MIDI alignment scoring methods through controlled temporal, pitch, and structural MIDI corruptions. We also introduce STI, a scoring method built on AMT models, and benchmark it against existing alignment scoring approaches. Our results show that STI, together with methods based on CENS and spectrograms, achieves the strongest overall performance, with STI exhibiting the highest sensitivity to fine-grained temporal misalignments, the main alignment error in AMT datasets. We then apply the best-performing methods to widely used piano AMT datasets and identify trends in their relative alignment quality. These results support more informed dataset curation, model training, and AMT evaluation.</p>
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<div class="ltx_para" id="p1">
+<p class="ltx_p" id="p1.1"><span class="ltx_text" id="p1.1.1"></span></p>
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section" id="section-2"><span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p" id="S1.p1.1">Automatic Music Transcription (AMT) generally relies on datasets composed of paired audio and MIDI recordings [<a class="ltx_ref" href="#bib.bib2" title="" rel="noopener noreferrer">1</a>, <a class="ltx_ref" href="#bib.bib1" title="" rel="noopener noreferrer">2</a>]. These pairs are intended to represent a perfect correspondence, with all note pitches, onsets, and offsets accurately aligned. Such alignment is fundamental to both training and evaluating AMT systems [<a class="ltx_ref" href="#bib.bib3" title="" rel="noopener noreferrer">3</a>], whose objective is to accurately predict these note-level events. However, this assumption has been shown to be inaccurate.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p" id="S1.p2.1">Several studies have reported temporal alignment issues in widely used AMT datasets. By evaluating transcription performance under different onset tolerance windows, [<a class="ltx_ref" href="#bib.bib6" title="" rel="noopener noreferrer">4</a>] and [<a class="ltx_ref" href="#bib.bib12" title="" rel="noopener noreferrer">5</a>] found evidence of substantial misalignments in MAPS [<a class="ltx_ref" href="#bib.bib4" title="" rel="noopener noreferrer">6</a>] and MusicNet [<a class="ltx_ref" href="#bib.bib5" title="" rel="noopener noreferrer">7</a>], respectively. These findings for MAPS are further supported by [<a class="ltx_ref" href="#bib.bib10" title="" rel="noopener noreferrer">8</a>], which reported improved transcription performance with alternative MAPS annotations and higher performance on SMD [<a class="ltx_ref" href="#bib.bib20" title="" rel="noopener noreferrer">9</a>], suggesting that SMD is better aligned than the original MAPS annotations. A more targeted analysis of MAPS identified poorly annotated notes [<a class="ltx_ref" href="#bib.bib11" title="" rel="noopener noreferrer">10</a>], but focused on a single subset and relied on manual validation. Despite this evidence, there has been little systematic investigation of the extent and severity of alignment errors across piano AMT datasets, with existing analysis often relying on AMT model performance, which can vary for reasons unrelated to alignment.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p" id="S1.p3.1">In this work, we investigate audio--MIDI alignment in automatic piano transcription datasets. We first propose a framework to assess and quantify alignment quality by benchmarking several scoring mechanisms and identifying those best suited to the task. We also introduce a scoring method based on transcription models that is specifically designed to capture fine-grained temporal misalignments at note onsets. The evaluation is based on the response of each method to controlled MIDI corruptions, using original audio--MIDI pairs from standard AMT datasets as references. Finally, we apply the best-performing methods identified by the framework to assess the alignment quality of widely used piano AMT datasets, investigating both the methods’ ability to distinguish alignment differences and the alignment quality of the datasets themselves. <span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup>
+<span class="ltx_tag ltx_tag_note">1</span>
+            
+            
+            
+          Implementation available on our <a class="ltx_ref ltx_href" href="https://github.com/sb-lucas/SyncAM" title="" rel="noopener noreferrer"><span class="ltx_text ltx_underline">GitHub</span>.</a></span></span></span></p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section" id="section-3"><span class="ltx_tag ltx_tag_section">2 </span>Method</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p" id="S2.p1.1">We perform controlled corruptions over audio–MIDI pairs, define a set of alignment scoring methods and propose evaluation metrics to assess score behavior.</p>
+</div>
+<section class="ltx_subsection" id="S2.SS1">
+<h3 class="ltx_title ltx_title_subsection" id="section-4"><span class="ltx_tag ltx_tag_subsection">2.1 </span>MIDI Corruption</h3>
+<div class="ltx_para" id="S2.SS1.p1">
+<p class="ltx_p" id="S2.SS1.p1.1">We construct a pipeline for three types of corruption applied to audio–MIDI pairs: pitch, note onset, and structural. We do not evaluate note velocity alignment because it lacks a well-defined MIDI-to-audio mapping, making controlled corruption of this dimension methodologically unclear within our framework. Each corruption is parameterized by a severity <span class="doc-math" data-copy-display="inline" data-copy-tex="S\in[0,1]">S\in[0,1]</span><span><span>View Source</span><span>S\in[0,1]</span></span>, discretized into <span class="doc-math" data-copy-display="inline" data-copy-tex="N=11">N=11</span><span><span>View Source</span><span>N=11</span></span> equally spaced levels <span class="doc-math" data-copy-display="inline" data-copy-tex="S\in\{0,0.1,\dots,1\}">S\in\{0,0.1,\dots,1\}</span><span><span>View Source</span><span>S\in\{0,0.1,\dots,1\}</span></span>, where <span class="doc-math" data-copy-display="inline" data-copy-tex="S=0">S=0</span><span><span>View Source</span><span>S=0</span></span> denotes no corruption and <span class="doc-math" data-copy-display="inline" data-copy-tex="S=1">S=1</span><span><span>View Source</span><span>S=1</span></span> the maximum corruption allowed by the method. The mapping from <span class="doc-math" data-copy-display="inline" data-copy-tex="S">S</span><span><span>View Source</span><span>S</span></span> to corruption magnitude varies by type, as described below:</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p2">
+<p class="ltx_p" id="S2.SS1.p2.1"><span class="ltx_text ltx_font_bold" id="S2.SS1.p2.1.1">Pitch Swap:</span> This corruption modifies note pitches while preserving their original onset times and durations. Each new pitch is sampled uniformly from the standard piano range ([21, 108]), excluding the note’s original pitch. The number of swapped notes, <span class="doc-math" data-copy-display="inline" data-copy-tex="N_{\text{swap}}">N_{\text{swap}}</span><span><span>View Source</span><span>N_{\text{swap}}</span></span>, is determined by the severity level <span class="doc-math" data-copy-display="inline" data-copy-tex="S">S</span><span><span>View Source</span><span>S</span></span> and the total number of notes <span class="doc-math" data-copy-display="inline" data-copy-tex="N_{\text{orig}}">N_{\text{orig}}</span><span><span>View Source</span><span>N_{\text{orig}}</span></span> in the original MIDI file:</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p3">
+<table class="ltx_equation ltx_eqn_table" id="S2.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><span class="doc-math" data-copy-display="block" data-copy-tex="N_{\text{swap}}=\lfloor S\cdot N_{\text{orig}}\rfloor">N_{\text{swap}}=\lfloor S\cdot N_{\text{orig}}\rfloor</span><span><span>View Source</span><span>N_{\text{swap}}=\lfloor S\cdot N_{\text{orig}}\rfloor</span></span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td></tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S2.SS1.p4">
+<p class="ltx_p" id="S2.SS1.p4.1"><span class="ltx_text ltx_font_bold" id="S2.SS1.p4.1.1">Structural:</span> This corruption randomly removes existing notes and inserts an equal number of new notes into the MIDI file. Added notes are assigned random pitches between 21 and 108 and random velocities between 60 and 100. Each added note is also assigned a random onset time within the range of the original MIDI file and a duration between 0.1&nbsp;s and 1.5&nbsp;s. The total number of modified notes, <span class="doc-math" data-copy-display="inline" data-copy-tex="N_{\text{modified}}">N_{\text{modified}}</span><span><span>View Source</span><span>N_{\text{modified}}</span></span>, is the sum of deleted and inserted notes:</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p5">
+<table class="ltx_equation ltx_eqn_table" id="S2.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><span class="doc-math" data-copy-display="block" data-copy-tex="N_{\text{modified}}=\lfloor 2\cdot S\cdot N_{\text{orig}}\rfloor">N_{\text{modified}}=\lfloor 2\cdot S\cdot N_{\text{orig}}\rfloor</span><span><span>View Source</span><span>N_{\text{modified}}=\lfloor 2\cdot S\cdot N_{\text{orig}}\rfloor</span></span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td></tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S2.SS1.p6">
+<p class="ltx_p" id="S2.SS1.p6.1"><span class="ltx_text ltx_font_bold" id="S2.SS1.p6.1.1">Onset Shift:</span> This corruption shifts the onset of each note by a value <span class="doc-math" data-copy-display="inline" data-copy-tex="\Delta t">\Delta t</span><span><span>View Source</span><span>\Delta t</span></span>, randomly advancing or delaying each note by that amount. According to MIREX standards [<a class="ltx_ref" href="#bib.bib17" title="" rel="noopener noreferrer">11</a>], a note is considered correctly aligned if its onset is within 50 ms of the reference. We therefore set the maximum shift, <span class="doc-math" data-copy-display="inline" data-copy-tex="\Delta t_{\max}">\Delta t_{\max}</span><span><span>View Source</span><span>\Delta t_{\max}</span></span>, to 500 ms to cover both fine-grained timing errors and coarse temporal misalignments. To better analyze fine-grained misalignments below 50 ms, we apply a quadratic mapping that spans the full range while ensuring a minimum shift of 5 ms for any non-zero severity level and allocating four severity levels below 50 ms. The onset shift is therefore defined as:</p>
+</div>
+<div class="ltx_para" id="S2.SS1.p7">
+<table class="ltx_equation ltx_eqn_table" id="S2.E3">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><span class="doc-math" data-copy-display="block" data-copy-tex="\Delta t=\Delta t_{\max}\cdot S^{2}">\Delta t=\Delta t_{\max}\cdot S^{2}</span><span><span>View Source</span><span>\Delta t=\Delta t_{\max}\cdot S^{2}</span></span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td></tr></tbody>
+</table>
+</div>
+</section>
+<section class="ltx_subsection" id="S2.SS2">
+<h3 class="ltx_title ltx_title_subsection" id="section-5"><span class="ltx_tag ltx_tag_subsection">2.2 </span>Scores</h3>
+<div class="ltx_para" id="S2.SS2.p1">
+<p class="ltx_p" id="S2.SS2.p1.1">We generate scores ranging from 0 to 1, rescaling whenever needed, using four families of methods: embedding-based, feature-alignment-based, onset-based, and transcription-based scores.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p2">
+<p class="ltx_p" id="S2.SS2.p2.1">Embedding-based methods compute cosine similarity between audio and MIDI embeddings in a shared latent space. We evaluate <span class="ltx_text ltx_font_bold" id="S2.SS2.p2.1.1">CLaMP 3</span> [<a class="ltx_ref" href="#bib.bib13" title="" rel="noopener noreferrer">12</a>], which directly embeds audio and MIDI into a shared representation, and <span class="ltx_text ltx_font_bold" id="S2.SS2.p2.1.2">CLAP</span> [<a class="ltx_ref" href="#bib.bib14" title="" rel="noopener noreferrer">13</a>], which first synthesizes the MIDI into audio before comparing audio embeddings. For inputs longer than the model’s maximum duration, we split the audio into non-overlapping chunks, compute embeddings independently, and average them.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p3">
+<p class="ltx_p" id="S2.SS2.p3.1">Feature-alignment-based methods compare audio and MIDI using three frame-level feature representations: spectrograms, CENS [<a class="ltx_ref" href="#bib.bib21" title="" rel="noopener noreferrer">14</a>], and DLNCO [<a class="ltx_ref" href="#bib.bib22" title="" rel="noopener noreferrer">15</a>]. We synthesize the MIDI into audio and extract spectrograms and CENS from both the original and synthesized audio. DLNCO is extracted directly from the MIDI and original audio. We evaluate two alignment strategies. The first, based on DTW, uses MrMsDTW&nbsp;[<a class="ltx_ref" href="#bib.bib15" title="" rel="noopener noreferrer">16</a>] to compute an optimal alignment path between feature sequences and scores the mean frame-wise cosine similarity along that path. We evaluate this strategy on CENS and DLNCO features (<span class="ltx_text ltx_font_bold" id="S2.SS2.p3.1.1">DTW-C</span> and <span class="ltx_text ltx_font_bold" id="S2.SS2.p3.1.2">DTW-D</span>, respectively). The second uses frame-wise cosine similarity, obtained by L2-normalizing each sequence independently, zero-padding the shorter sequence at the end to match the length of the longer one, and averaging the resulting per-frame cosine similarities over the full padded length. We evaluate this strategy on spectrograms, DLNCO and CENS features (<span class="ltx_text ltx_font_bold" id="S2.SS2.p3.1.3">CS-S</span>, <span class="ltx_text ltx_font_bold" id="S2.SS2.p3.1.4">CS-D</span> and <span class="ltx_text ltx_font_bold" id="S2.SS2.p3.1.5">CS-C</span>, respectively).</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p4">
+<p class="ltx_p" id="S2.SS2.p4.1">Leveraging note onset information, <span class="ltx_text ltx_font_bold" id="S2.SS2.p4.1.1">Onset-F1</span> compares MIDI note onsets with those detected from audio using Madmom’s CNN-based onset detector [<a class="ltx_ref" href="#bib.bib16" title="" rel="noopener noreferrer">17</a>]. MIDI onsets within 30 ms of each other are merged to simulate chords, matching the behavior of audio onset detectors. We report the mir_eval&nbsp;[<a class="ltx_ref" href="#bib.bib7" title="" rel="noopener noreferrer">18</a>] onset F1-score using the standard MIREX tolerance of 50 ms.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p5">
+<p class="ltx_p" id="S2.SS2.p5.1">Transcription-based methods first transcribe audio to MIDI and then score the resulting transcription against the reference MIDI under two matching strategies. The first, following the standard MIREX evaluation protocol, computes a note-level F-measure in which a note is considered correct if its pitch falls within a quarter tone, its onset within 50 ms, and its offset within 20% of its duration. We evaluate this strategy using Basic Pitch&nbsp;[<a class="ltx_ref" href="#bib.bib18" title="" rel="noopener noreferrer">19</a>], Transkun&nbsp;[<a class="ltx_ref" href="#bib.bib10" title="" rel="noopener noreferrer">8</a>], and
+ByteDance&nbsp;[<a class="ltx_ref" href="#bib.bib19" title="" rel="noopener noreferrer">20</a>], resulting in <span class="ltx_text ltx_font_bold" id="S2.SS2.p5.1.1">AMT-BP</span>, <span class="ltx_text ltx_font_bold" id="S2.SS2.p5.1.2">AMT-TK</span> and <span class="ltx_text ltx_font_bold" id="S2.SS2.p5.1.3">AMT-BD</span>, respectively.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p6">
+<p class="ltx_p" id="S2.SS2.p6.1">Building on the same models, we propose a novel audio–MIDI alignment scoring method—the <span class="ltx_text ltx_font_bold" id="S2.SS2.p6.1.1">S</span>oft, <span class="ltx_text ltx_font_bold" id="S2.SS2.p6.1.2">T</span>ranscription-based, pitch-constrained <span class="ltx_text ltx_font_bold" id="S2.SS2.p6.1.3">I</span>nter-Onset Interval (<span class="ltx_text ltx_font_bold" id="S2.SS2.p6.1.4">STI</span>) score. Each note is represented by its pitch, onset time, and pitch-constrained Inter-Onset Interval (IOI), defined as the time elapsed since the previous note of the same pitch. This representation provides additional structural information for robust MIDI comparison.</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p7">
+<p class="ltx_p" id="S2.SS2.p7.1">We construct a bipartite cost matrix between the predicted and reference MIDIs. Matching-pitch note pairs receive a cost <span class="doc-math" data-copy-display="inline" data-copy-tex="c">c</span><span><span>View Source</span><span>c</span></span> given by the equally weighted sum of their absolute onset and IOI differences, while mismatched-pitch pairs receive a large penalty of <span class="doc-math" data-copy-display="inline" data-copy-tex="10^{6}">10^{6}</span><span><span>View Source</span><span>10^{6}</span></span>. The globally optimal one-to-one assignment is computed using the Hungarian algorithm. Each matched pair receives a soft weight</p>
+</div>
+<div class="ltx_para" id="S2.SS2.p8">
+<table class="ltx_equation ltx_eqn_table" id="S2.E4">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><span class="doc-math" data-copy-display="block" data-copy-tex="w=\exp(-c/\tau),">w=\exp(-c/\tau),</span><span><span>View Source</span><span>w=\exp(-c/\tau),</span></span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td></tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S2.SS2.p9">
+<p class="ltx_p" id="S2.SS2.p9.1">where <span class="doc-math" data-copy-display="inline" data-copy-tex="\tau=0.05">\tau=0.05</span><span><span>View Source</span><span>\tau=0.05</span></span> is the tolerance scale, matching the temporal tolerance used in MIREX. The sum of these weights yields a soft note-match count, from which we compute continuous precision, recall, and F-measure. We evaluate STI with the same three transcription models, resulting in <span class="ltx_text ltx_font_bold" id="S2.SS2.p9.1.1">STI-BP</span>, <span class="ltx_text ltx_font_bold" id="S2.SS2.p9.1.2">STI-TK</span>, and <span class="ltx_text ltx_font_bold" id="S2.SS2.p9.1.3">STI-BD</span>.</p>
+</div>
+<figure class="ltx_table" id="S2.T1">
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="S2.T1.3">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S2.T1.3.1">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt" id="S2.T1.3.1.1"></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="4" id="S2.T1.3.1.2"><span class="ltx_text ltx_font_bold" id="S2.T1.3.1.2.1">Structural</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="4" id="S2.T1.3.1.3"><span class="ltx_text ltx_font_bold" id="S2.T1.3.1.3.1">Onset Shift</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="4" id="S2.T1.3.1.4"><span class="ltx_text ltx_font_bold" id="S2.T1.3.1.4.1">Pitch Swap</span></th></tr>
+<tr class="ltx_tr" id="S2.T1.3.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row" id="S2.T1.3.2.1"><span class="ltx_text ltx_font_bold" id="S2.T1.3.2.1.1">Metric</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.2">Mono</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.3">Stab</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.4">Sens</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.5">Cons</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.6">Mono</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.7">Stab</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.8">Sens</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.9">Cons</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.10">Mono</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.11">Stab</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.12">Sens</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T1.3.2.13">Cons</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S2.T1.3.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="S2.T1.3.3.1">CLaMP 3</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.2">0.89</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.3"><span class="ltx_text ltx_font_bold" id="S2.T1.3.3.3.1">0.97</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.4">0.09</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.5">0.83</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.6">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.7">0.96</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.8">0.02</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.9">0.46</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.10">0.93</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.11"><span class="ltx_text ltx_font_bold" id="S2.T1.3.3.11.1">0.96</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.12">0.07</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T1.3.3.13">0.87</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.4.1">CLAP</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.2">0.77</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.3">0.96</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.4">0.03</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.5">0.69</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.6">0.25</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.7">0.96</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.8">0.00</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.9">0.26</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.10">0.22</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.11"><span class="ltx_text ltx_font_bold" id="S2.T1.3.4.11.1">0.96</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.12">0.00</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.4.13">0.41</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.5.1">CS-C</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.2">0.99</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.3">0.93</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.4">0.49</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.5">0.87</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.6">0.97</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.7">0.95</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.8">0.23</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.9"><span class="ltx_text ltx_font_bold" id="S2.T1.3.5.9.1">0.95</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.10"><span class="ltx_text ltx_font_bold" id="S2.T1.3.5.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.11">0.94</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.12">0.49</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.5.13">0.99</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.6.1">CS-D</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.2">0.98</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.3">0.68</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.4">0.78</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.5">0.98</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.6">0.72</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.7">0.65</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.8">0.66</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.9">0.42</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.10">0.99</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.11">0.69</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.12">0.75</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.6.13">0.98</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.7.1">CS-S</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.2">0.99</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.3">0.93</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.4">0.34</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.5">0.87</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.6">0.97</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.7">0.94</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.8">0.21</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.9">0.89</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.10"><span class="ltx_text ltx_font_bold" id="S2.T1.3.7.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.11">0.93</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.12">0.37</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.7.13"><span class="ltx_text ltx_font_bold" id="S2.T1.3.7.13.1">1.00</span></td></tr>
+<tr class="ltx_tr" id="S2.T1.3.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.8.1">DTW-C</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.2">0.96</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.3">0.94</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.4">0.45</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.5">0.83</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.6"><span class="ltx_text ltx_font_bold" id="S2.T1.3.8.6.1">0.99</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.7"><span class="ltx_text ltx_font_bold" id="S2.T1.3.8.7.1">0.98</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.8">0.16</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.9">0.93</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.10"><span class="ltx_text ltx_font_bold" id="S2.T1.3.8.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.11">0.95</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.12">0.45</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.8.13">0.98</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.9">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.9.1">DTW-D</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.2">0.99</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.3">0.72</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.4">0.58</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.5">0.98</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.6">0.91</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.7">0.73</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.8">0.23</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.9">0.71</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.10"><span class="ltx_text ltx_font_bold" id="S2.T1.3.9.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.11">0.71</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.12">0.65</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.9.13">0.99</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.10">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.10.1">Onset-F1</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.2">0.95</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.3">0.85</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.4">0.47</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.5">0.97</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.6">0.57</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.7">0.76</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.8">0.43</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.9">0.33</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.10">0.00</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.11">0.84</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.12">0.00</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.10.13">0.00</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.11">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.11.1">AMT-BP</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.2">0.98</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.3">0.56</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.4">0.93</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.5">0.98</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.6">0.61</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.7">0.52</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.8">0.74</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.9">0.45</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.10">0.99</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.11">0.54</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.12">0.88</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.11.13">0.98</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.12">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.12.1">AMT-BD</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.2">0.98</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.3">0.59</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.4">0.95</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.5">0.98</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.6">0.64</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.7">0.52</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.8">0.76</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.9">0.47</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.10">0.99</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.11">0.58</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.12">0.90</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.12.13">0.98</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.13">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.13.1">AMT-TK</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.2"><span class="ltx_text ltx_font_bold" id="S2.T1.3.13.2.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.3">0.74</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.4">0.99</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.5"><span class="ltx_text ltx_font_bold" id="S2.T1.3.13.5.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.6">0.64</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.7">0.62</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.8">0.80</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.9">0.47</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.10"><span class="ltx_text ltx_font_bold" id="S2.T1.3.13.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.11">0.75</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.12">0.91</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.13.13"><span class="ltx_text ltx_font_bold" id="S2.T1.3.13.13.1">1.00</span></td></tr>
+<tr class="ltx_tr" id="S2.T1.3.14">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.14.1">STI-BP</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.2"><span class="ltx_text ltx_font_bold" id="S2.T1.3.14.2.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.3">0.70</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.4"><span class="ltx_text ltx_font_bold" id="S2.T1.3.14.4.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.5">0.91</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.6">0.95</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.7">0.71</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.8">0.93</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.9">0.65</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.10"><span class="ltx_text ltx_font_bold" id="S2.T1.3.14.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.11">0.71</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.12"><span class="ltx_text ltx_font_bold" id="S2.T1.3.14.12.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.14.13">0.91</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.15">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T1.3.15.1">STI-BD</th>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.2"><span class="ltx_text ltx_font_bold" id="S2.T1.3.15.2.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.3">0.76</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.4"><span class="ltx_text ltx_font_bold" id="S2.T1.3.15.4.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.5">0.89</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.6">0.95</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.7">0.76</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.8"><span class="ltx_text ltx_font_bold" id="S2.T1.3.15.8.1">0.95</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.9">0.63</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.10"><span class="ltx_text ltx_font_bold" id="S2.T1.3.15.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.11">0.76</td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.12"><span class="ltx_text ltx_font_bold" id="S2.T1.3.15.12.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T1.3.15.13">0.89</td></tr>
+<tr class="ltx_tr" id="S2.T1.3.16">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="S2.T1.3.16.1">STI-TK</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.2"><span class="ltx_text ltx_font_bold" id="S2.T1.3.16.2.1">1.00</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.3">0.76</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.4"><span class="ltx_text ltx_font_bold" id="S2.T1.3.16.4.1">1.00</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.5">0.88</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.6">0.95</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.7">0.77</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.8"><span class="ltx_text ltx_font_bold" id="S2.T1.3.16.8.1">0.95</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.9">0.63</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.10"><span class="ltx_text ltx_font_bold" id="S2.T1.3.16.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.11">0.77</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.12"><span class="ltx_text ltx_font_bold" id="S2.T1.3.16.12.1">1.00</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T1.3.16.13">0.89</td></tr>
+</tbody>
+</table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table"><span class="ltx_text ltx_font_bold" id="S2.T1.4">Table 1</span>: </span>Performance of each method per corruption type averaged across datasets (Mono: Monotonicity, Stab: Stability, Sens: Sensitivity, Cons: Consistency). Bold marks the best value per column.</figcaption>
+</figure>
+</section>
+<section class="ltx_subsection" id="S2.SS3">
+<h3 class="ltx_title ltx_title_subsection" id="section-6"><span class="ltx_tag ltx_tag_subsection">2.3 </span>Evaluation Metrics</h3>
+<div class="ltx_para" id="S2.SS3.p1">
+<p class="ltx_p" id="S2.SS3.p1.1">For a fixed corruption type, let <span class="doc-math" data-copy-display="inline" data-copy-tex="\mathcal{S}=(S_{1},\dots,S_{N})">\mathcal{S}=(S_{1},\dots,S_{N})</span><span><span>View Source</span><span>\mathcal{S}=(S_{1},\dots,S_{N})</span></span> denote the ordered severity levels. A sample <span class="doc-math" data-copy-display="inline" data-copy-tex="j">j</span><span><span>View Source</span><span>j</span></span> consists of an audio recording and its corresponding corrupted MIDIs for that corruption type. Let <span class="doc-math" data-copy-display="inline" data-copy-tex="\varphi_{S_{i}}^{(j)}">\varphi_{S_{i}}^{(j)}</span><span><span>View Source</span><span>\varphi_{S_{i}}^{(j)}</span></span> denote the score obtained for sample <span class="doc-math" data-copy-display="inline" data-copy-tex="j\in\{1,\dots,L\}">j\in\{1,\dots,L\}</span><span><span>View Source</span><span>j\in\{1,\dots,L\}</span></span> at severity level <span class="doc-math" data-copy-display="inline" data-copy-tex="S_{i}">S_{i}</span><span><span>View Source</span><span>S_{i}</span></span>. All metrics are computed independently for each corruption type. When needed, we use <span class="doc-math" data-copy-display="inline" data-copy-tex="\epsilon">\epsilon</span><span><span>View Source</span><span>\epsilon</span></span> as a small constant to avoid division by zero. For all, higher values indicate better performance.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p2">
+<p class="ltx_p" id="S2.SS3.p2.1"><span class="ltx_text ltx_font_bold" id="S2.SS3.p2.1.1">Monotonicity:</span> Measures whether scores consistently decrease as severity <span class="doc-math" data-copy-display="inline" data-copy-tex="S">S</span><span><span>View Source</span><span>S</span></span> increases, regardless of magnitude. Let <span class="doc-math" data-copy-display="inline" data-copy-tex="{\varphi}^{(j)}=\left(\varphi_{S_{1}}^{(j)},\dots,\varphi_{S_{N}}^{(j)}\right)">{\varphi}^{(j)}=\left(\varphi_{S_{1}}^{(j)},\dots,\varphi_{S_{N}}^{(j)}\right)</span><span><span>View Source</span><span>{\varphi}^{(j)}=\left(\varphi_{S_{1}}^{(j)},\dots,\varphi_{S_{N}}^{(j)}\right)</span></span> denote the ordered scores for sample <span class="doc-math" data-copy-display="inline" data-copy-tex="j">j</span><span><span>View Source</span><span>j</span></span>. We compute the Spearman rank correlation between <span class="doc-math" data-copy-display="inline" data-copy-tex="\mathcal{S}">\mathcal{S}</span><span><span>View Source</span><span>\mathcal{S}</span></span> and <span class="doc-math" data-copy-display="inline" data-copy-tex="{\varphi}^{(j)}">{\varphi}^{(j)}</span><span><span>View Source</span><span>{\varphi}^{(j)}</span></span> for each sample and average across samples. Since the relationship is inverse, we negate it:</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p3">
+<table class="ltx_equation ltx_eqn_table" id="S2.E5">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><span class="doc-math" data-copy-display="block" data-copy-tex="\text{Monotonicity}=-\frac{1}{L}\sum_{j=1}^{L}\rho_{\text{Spearman}}(\mathcal{S},\boldsymbol{\varphi}^{(j)})">\text{Monotonicity}=-\frac{1}{L}\sum_{j=1}^{L}\rho_{\text{Spearman}}(\mathcal{S},\boldsymbol{\varphi}^{(j)})</span><span><span>View Source</span><span>\text{Monotonicity}=-\frac{1}{L}\sum_{j=1}^{L}\rho_{\text{Spearman}}(\mathcal{S},\boldsymbol{\varphi}^{(j)})</span></span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td></tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S2.SS3.p4">
+<p class="ltx_p" id="S2.SS3.p4.1"><span class="ltx_text ltx_font_bold" id="S2.SS3.p4.1.1">Stability:</span> Measures whether scores are stable across samples at a fixed severity level. We compute the normalized dispersion across samples for each severity and average over all severity levels:</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p5">
+<table class="ltx_equation ltx_eqn_table" id="S2.E6">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><span class="doc-math" data-copy-display="block" data-copy-tex="\text{Stability}=\frac{1}{N}\sum_{i=1}^{N}\frac{1}{1+\sigma(\varphi_{S_{i}})/(\mu(\varphi_{S_{i}})+\epsilon)},">\text{Stability}=\frac{1}{N}\sum_{i=1}^{N}\frac{1}{1+\sigma(\varphi_{S_{i}})/(\mu(\varphi_{S_{i}})+\epsilon)},</span><span><span>View Source</span><span>\text{Stability}=\frac{1}{N}\sum_{i=1}^{N}\frac{1}{1+\sigma(\varphi_{S_{i}})/(\mu(\varphi_{S_{i}})+\epsilon)},</span></span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td></tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S2.SS3.p6">
+<p class="ltx_p" id="S2.SS3.p6.1">where <span class="doc-math" data-copy-display="inline" data-copy-tex="\mu(\varphi_{S_{i}})">\mu(\varphi_{S_{i}})</span><span><span>View Source</span><span>\mu(\varphi_{S_{i}})</span></span> and <span class="doc-math" data-copy-display="inline" data-copy-tex="\sigma(\varphi_{S_{i}})">\sigma(\varphi_{S_{i}})</span><span><span>View Source</span><span>\sigma(\varphi_{S_{i}})</span></span> denote the mean and standard deviation of <span class="doc-math" data-copy-display="inline" data-copy-tex="\{\varphi_{S_{i}}^{(j)}\}_{j=1}^{L}">\{\varphi_{S_{i}}^{(j)}\}_{j=1}^{L}</span><span><span>View Source</span><span>\{\varphi_{S_{i}}^{(j)}\}_{j=1}^{L}</span></span>, respectively.</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p7">
+<p class="ltx_p" id="S2.SS3.p7.1"><span class="ltx_text ltx_font_bold" id="S2.SS3.p7.1.1">Sensitivity:</span> Measures the overall responsiveness to corruption, independent of the response shape. It quantifies the relative score drop between <span class="doc-math" data-copy-display="inline" data-copy-tex="S=0">S=0</span><span><span>View Source</span><span>S=0</span></span> and <span class="doc-math" data-copy-display="inline" data-copy-tex="S=1">S=1</span><span><span>View Source</span><span>S=1</span></span> for each sample and averages across samples:</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p8">
+<table class="ltx_equation ltx_eqn_table" id="S2.E7">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><span class="doc-math" data-copy-display="block" data-copy-tex="\text{Sensitivity}=\frac{1}{L}\sum_{j=1}^{L}\frac{\varphi_{S=0}^{(j)}-\varphi_{S=1}^{(j)}}{\varphi_{S=0}^{(j)}+\epsilon}">\text{Sensitivity}=\frac{1}{L}\sum_{j=1}^{L}\frac{\varphi_{S=0}^{(j)}-\varphi_{S=1}^{(j)}}{\varphi_{S=0}^{(j)}+\epsilon}</span><span><span>View Source</span><span>\text{Sensitivity}=\frac{1}{L}\sum_{j=1}^{L}\frac{\varphi_{S=0}^{(j)}-\varphi_{S=1}^{(j)}}{\varphi_{S=0}^{(j)}+\epsilon}</span></span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td></tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S2.SS3.p9">
+<p class="ltx_p" id="S2.SS3.p9.1"><span class="ltx_text ltx_font_bold" id="S2.SS3.p9.1.1">Consistency:</span> Measures whether scores degrade uniformly with corruption magnitude rather than through abrupt transitions. For pitch and structural corruptions, magnitude increases linearly with <span class="doc-math" data-copy-display="inline" data-copy-tex="S">S</span><span><span>View Source</span><span>S</span></span>, so we fit <span class="doc-math" data-copy-display="inline" data-copy-tex="\varphi=aS+b">\varphi=aS+b</span><span><span>View Source</span><span>\varphi=aS+b</span></span> per sample. For onset shift, magnitude follows <span class="doc-math" data-copy-display="inline" data-copy-tex="\Delta t\propto S^{2}">\Delta t\propto S^{2}</span><span><span>View Source</span><span>\Delta t\propto S^{2}</span></span> (Eq.&nbsp;<a class="ltx_ref" href="#S2.E3" title="In 2.1 MIDI Corruption ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">3</span></a>), so we fit <span class="doc-math" data-copy-display="inline" data-copy-tex="\varphi=aS^{2}+b">\varphi=aS^{2}+b</span><span><span>View Source</span><span>\varphi=aS^{2}+b</span></span>. We report the average coefficient of determination <span class="doc-math" data-copy-display="inline" data-copy-tex="R^{2}">R^{2}</span><span><span>View Source</span><span>R^{2}</span></span> per sample:</p>
+</div>
+<div class="ltx_para" id="S2.SS3.p10">
+<table class="ltx_equation ltx_eqn_table" id="S2.E8">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><span class="doc-math" data-copy-display="block" data-copy-tex="\text{Consistency}=\frac{1}{L}\sum_{j=1}^{L}R^{2}_{(j)}">\text{Consistency}=\frac{1}{L}\sum_{j=1}^{L}R^{2}_{(j)}</span><span><span>View Source</span><span>\text{Consistency}=\frac{1}{L}\sum_{j=1}^{L}R^{2}_{(j)}</span></span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td></tr></tbody>
+</table>
+</div>
+<figure class="ltx_table" id="S2.T2">
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="S2.T2.3">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S2.T2.3.1">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_tt" id="S2.T2.3.1.1"></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="4" id="S2.T2.3.1.2"><span class="ltx_text ltx_font_bold" id="S2.T2.3.1.2.1">MAESTRO</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="4" id="S2.T2.3.1.3"><span class="ltx_text ltx_font_bold" id="S2.T2.3.1.3.1">SMD</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" colspan="4" id="S2.T2.3.1.4"><span class="ltx_text ltx_font_bold" id="S2.T2.3.1.4.1">MAPS-S</span></th></tr>
+<tr class="ltx_tr" id="S2.T2.3.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row" id="S2.T2.3.2.1"><span class="ltx_text ltx_font_bold" id="S2.T2.3.2.1.1">Metric</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.2">Mono</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.3">Stab</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.4">Sens</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.5">Cons</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.6">Mono</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.7">Stab</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.8">Sens</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.9">Cons</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.10">Mono</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.11">Stab</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.12">Sens</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_t" id="S2.T2.3.2.13">Cons</th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S2.T2.3.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="S2.T2.3.3.1">CS-C</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.2">0.94</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.3"><span class="ltx_text ltx_font_bold" id="S2.T2.3.3.3.1">0.99</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.4">0.02</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.5">0.94</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.6">0.64</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.7">0.93</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.8">0.01</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.9">0.83</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.10">0.94</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.11"><span class="ltx_text ltx_font_bold" id="S2.T2.3.3.11.1">0.99</span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.12">0.02</td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S2.T2.3.3.13">0.91</td></tr>
+<tr class="ltx_tr" id="S2.T2.3.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.3.4.1">CS-S</th>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.2">0.95</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.3">0.97</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.4">0.04</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.5">0.97</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.6">0.75</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.7">0.92</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.8">0.02</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.9">0.88</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.10">0.97</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.11">0.96</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.12">0.04</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.4.13">0.94</td></tr>
+<tr class="ltx_tr" id="S2.T2.3.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.3.5.1">DTW-C</th>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.2">0.94</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.3"><span class="ltx_text ltx_font_bold" id="S2.T2.3.5.3.1">0.99</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.4">0.02</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.5">0.94</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.6">0.93</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.7"><span class="ltx_text ltx_font_bold" id="S2.T2.3.5.7.1">0.99</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.8">0.02</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.9">0.93</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.10">0.95</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.11"><span class="ltx_text ltx_font_bold" id="S2.T2.3.5.11.1">0.99</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.12">0.02</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.5.13">0.91</td></tr>
+<tr class="ltx_tr" id="S2.T2.3.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.3.6.1">DTW-D</th>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.2">0.28</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.3">0.76</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.4">0.06</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.5">0.59</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.6">0.55</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.7">0.71</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.8">0.08</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.9">0.64</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.10">-0.18</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.11">0.67</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.12">0.00</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.6.13">0.25</td></tr>
+<tr class="ltx_tr" id="S2.T2.3.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.3.7.1">STI-BP</th>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.2"><span class="ltx_text ltx_font_bold" id="S2.T2.3.7.2.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.3">0.78</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.4">0.47</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.5"><span class="ltx_text ltx_font_bold" id="S2.T2.3.7.5.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.6"><span class="ltx_text ltx_font_bold" id="S2.T2.3.7.6.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.7">0.63</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.8">0.34</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.9"><span class="ltx_text ltx_font_bold" id="S2.T2.3.7.9.1">0.98</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.10"><span class="ltx_text ltx_font_bold" id="S2.T2.3.7.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.11">0.85</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.12">0.48</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.7.13"><span class="ltx_text ltx_font_bold" id="S2.T2.3.7.13.1">0.99</span></td></tr>
+<tr class="ltx_tr" id="S2.T2.3.8">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S2.T2.3.8.1">STI-BD</th>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.2"><span class="ltx_text ltx_font_bold" id="S2.T2.3.8.2.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.3">0.92</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.4"><span class="ltx_text ltx_font_bold" id="S2.T2.3.8.4.1">0.52</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.5">0.99</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.6">0.98</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.7">0.66</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.8"><span class="ltx_text ltx_font_bold" id="S2.T2.3.8.8.1">0.38</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.9"><span class="ltx_text ltx_font_bold" id="S2.T2.3.8.9.1">0.98</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.10"><span class="ltx_text ltx_font_bold" id="S2.T2.3.8.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.11">0.96</td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.12"><span class="ltx_text ltx_font_bold" id="S2.T2.3.8.12.1">0.52</span></td>
+<td class="ltx_td ltx_align_center" id="S2.T2.3.8.13"><span class="ltx_text ltx_font_bold" id="S2.T2.3.8.13.1">0.99</span></td></tr>
+<tr class="ltx_tr" id="S2.T2.3.9">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="S2.T2.3.9.1">STI-TK</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.2"><span class="ltx_text ltx_font_bold" id="S2.T2.3.9.2.1">1.00</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.3">0.95</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.4"><span class="ltx_text ltx_font_bold" id="S2.T2.3.9.4.1">0.52</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.5">0.99</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.6">0.98</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.7">0.67</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.8">0.37</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.9">0.97</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.10"><span class="ltx_text ltx_font_bold" id="S2.T2.3.9.10.1">1.00</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.11">0.98</td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.12"><span class="ltx_text ltx_font_bold" id="S2.T2.3.9.12.1">0.52</span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S2.T2.3.9.13"><span class="ltx_text ltx_font_bold" id="S2.T2.3.9.13.1">0.99</span></td></tr>
+</tbody>
+</table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table"><span class="ltx_text ltx_font_bold" id="S2.T2.4">Table 2</span>: </span>Evaluation of well-performing methods on fine-grained onset corruption per dataset (Mono: Monotonicity, Stab: Stability, Sens: Sensitivity, Cons: Consistency). Bold marks the best value per column.</figcaption>
+</figure>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section" id="section-7"><span class="ltx_tag ltx_tag_section">3 </span>Experiments</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p" id="S3.p1.1">We source audio–MIDI pairs from the validation split of MAESTRO [<a class="ltx_ref" href="#bib.bib1" title="" rel="noopener noreferrer">2</a>], SMD, and what we refer to as MAPS-S, which consists only of musical pieces from the synthetic AkPnCGdD and SptkBGAm subsets of MAPS. This combination provides diversity in timbre and style, enabling assessment of generalization. While MAESTRO and SMD are not perfectly aligned, their errors are typically limited to small temporal misalignments. The perfectly aligned MAPS-S subset, therefore, enables fine-grained evaluation of sensitivity to temporal misalignment.</p>
+</div>
+<div class="ltx_para" id="S3.p2">
+<p class="ltx_p" id="S3.p2.1">All metrics use <span class="doc-math" data-copy-display="inline" data-copy-tex="\epsilon=10^{-8}">\epsilon=10^{-8}</span><span><span>View Source</span><span>\epsilon=10^{-8}</span></span> for numerical stability. Embedding-based methods use CLAP <span class="ltx_text ltx_font_typewriter" id="S3.p2.1.1">laion/clap-htsat-unfused</span> and CLaMP 3 <span class="ltx_text ltx_font_typewriter" id="S3.p2.1.2">sander-wood/clamp3</span> (SAAS variant). All MIDI-to-audio synthesis use FluidSynth with the FluidR3_GM soundfont, program 0 (piano). Feature extraction uses a 22,050 Hz sampling rate and hop length of 64 to extract CENS via Librosa&nbsp;[<a class="ltx_ref" href="#bib.bib8" title="" rel="noopener noreferrer">21</a>], DLNCO via SyncToolbox [<a class="ltx_ref" href="#bib.bib9" title="" rel="noopener noreferrer">22</a>] and Librosa, and magnitude spectrogram features via Librosa with a 512-point Fast Fourier Transform.</p>
+</div>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section" id="section-8"><span class="ltx_tag ltx_tag_section">4 </span>Results</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p" id="S4.p1.1">Table&nbsp;<a class="ltx_ref" href="#S2.T1" title="Table 1 ‣ 2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">1</span></a> reports results for all corruption types, averaged over the three datasets. Embedding-based methods consistently show the lowest monotonicity values across all corruption types. In contrast, the proposed STI method substantially outperforms the standard AMT F-measure on onset corruption, demonstrating the benefit of incorporating Inter-Onset Interval information to provide a richer structural representation for MIDI comparison.</p>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p" id="S4.p2.1">Across corruption types, structural corruption is easily detected by nearly all methods, whereas pitch swaps are either captured accurately or largely missed, exposing clear limitations in some approaches. Onset shifts are considerably more challenging to detect, resulting in a much wider spread of monotonicity values.</p>
+</div>
+<div class="ltx_para" id="S4.p3">
+<p class="ltx_p" id="S4.p3.1">Since onset shift is the most discriminative corruption type and AMT datasets primarily suffer from fine-grained temporal misalignments, Table&nbsp;<a class="ltx_ref" href="#S2.T2" title="Table 2 ‣ 2.3 Evaluation Metrics ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">2</span></a> focuses on the first four onset severity levels, corresponding to shifts of 0 ms, 5 ms, 20 ms, and 45 ms. Results are reported separately for MAESTRO, SMD, and MAPS-S to evaluate the influence of timbre and recording conditions. Only methods with onset monotonicity above 0.9 in Table&nbsp;<a class="ltx_ref" href="#S2.T1" title="Table 1 ‣ 2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">1</span></a> are included. Comparing the two tables, DTW-D exhibits a drop in monotonicity, suggesting that it captures coarse temporal misalignments better than fine-grained ones. More generally, Table&nbsp;<a class="ltx_ref" href="#S2.T2" title="Table 2 ‣ 2.3 Evaluation Metrics ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">2</span></a> shows lower monotonicity on SMD than on MAESTRO and MAPS-S for most methods, suggesting the presence of temporal alignment noise in SMD.</p>
+</div>
+<div class="ltx_para" id="S4.p4">
+<p class="ltx_p" id="S4.p4.1">Methods based on spectrogram and CENS features perform best in stability. Their slowly varying spectral representations make them less sensitive to small onset shifts, resulting in stable but less informative scores. In contrast, the proposed STI methods trade some stability for greater sensitivity and resolution in detecting fine-grained misalignments, achieving the best overall performance by ranking among the top methods across all other metrics.</p>
+</div>
+<figure class="ltx_table" id="S4.T3">
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle" id="S4.T3.3">
+<thead class="ltx_thead">
+<tr class="ltx_tr" id="S4.T3.3.1">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_tt" id="S4.T3.3.1.1"><span class="ltx_text ltx_font_bold" id="S4.T3.3.1.1.1">Dataset</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S4.T3.3.1.2"><span class="ltx_text ltx_font_bold" id="S4.T3.3.1.2.1">CS-S</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S4.T3.3.1.3"><span class="ltx_text ltx_font_bold" id="S4.T3.3.1.3.1">DTW-C</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S4.T3.3.1.4"><span class="ltx_text ltx_font_bold" id="S4.T3.3.1.4.1">STI-BP</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S4.T3.3.1.5"><span class="ltx_text ltx_font_bold" id="S4.T3.3.1.5.1">STI-BD</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_tt" id="S4.T3.3.1.6"><span class="ltx_text ltx_font_bold" id="S4.T3.3.1.6.1">STI-TK</span></th></tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr" id="S4.T3.3.2">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t" id="S4.T3.3.2.1">SMD</th>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.3.2.2"><span class="doc-math" data-copy-display="inline" data-copy-tex="71\pm 6">71\pm 6</span><span><span>View Source</span><span>71\pm 6</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.3.2.3"><span class="doc-math" data-copy-display="inline" data-copy-tex="\underline{92}\pm 1">\underline{92}\pm 1</span><span><span>View Source</span><span>\underline{92}\pm 1</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.3.2.4"><span class="doc-math" data-copy-display="inline" data-copy-tex="31\pm 19">31\pm 19</span><span><span>View Source</span><span>31\pm 19</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.3.2.5"><span class="doc-math" data-copy-display="inline" data-copy-tex="58\pm 31">58\pm 31</span><span><span>View Source</span><span>58\pm 31</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_t" id="S4.T3.3.2.6"><span class="doc-math" data-copy-display="inline" data-copy-tex="61\pm 32">61\pm 32</span><span><span>View Source</span><span>61\pm 32</span></span></td></tr>
+<tr class="ltx_tr" id="S4.T3.3.3">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S4.T3.3.3.1">MAESTRO</th>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.3.2"><span class="doc-math" data-copy-display="inline" data-copy-tex="74\pm 3">74\pm 3</span><span><span>View Source</span><span>74\pm 3</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.3.3"><span class="doc-math" data-copy-display="inline" data-copy-tex="91\pm 1">91\pm 1</span><span><span>View Source</span><span>91\pm 1</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.3.4"><span class="doc-math" data-copy-display="inline" data-copy-tex="34\pm 10">34\pm 10</span><span><span>View Source</span><span>34\pm 10</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.3.5"><span class="doc-math" data-copy-display="inline" data-copy-tex="\underline{82}\pm 8">\underline{82}\pm 8</span><span><span>View Source</span><span>\underline{82}\pm 8</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.3.6"><span class="doc-math" data-copy-display="inline" data-copy-tex="\underline{87}\pm 5">\underline{87}\pm 5</span><span><span>View Source</span><span>\underline{87}\pm 5</span></span></td></tr>
+<tr class="ltx_tr" id="S4.T3.3.4">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S4.T3.3.4.1">MAPS-S</th>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.4.2"><span class="doc-math" data-copy-display="inline" data-copy-tex="\mathbf{78}\pm 3">\mathbf{78}\pm 3</span><span><span>View Source</span><span>\mathbf{78}\pm 3</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.4.3"><span class="doc-math" data-copy-display="inline" data-copy-tex="\mathbf{93}\pm 1">\mathbf{93}\pm 1</span><span><span>View Source</span><span>\mathbf{93}\pm 1</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.4.4"><span class="doc-math" data-copy-display="inline" data-copy-tex="\mathbf{47}\pm 8">\mathbf{47}\pm 8</span><span><span>View Source</span><span>\mathbf{47}\pm 8</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.4.5"><span class="doc-math" data-copy-display="inline" data-copy-tex="\mathbf{90}\pm 4">\mathbf{90}\pm 4</span><span><span>View Source</span><span>\mathbf{90}\pm 4</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.4.6"><span class="doc-math" data-copy-display="inline" data-copy-tex="\mathbf{93}\pm 2">\mathbf{93}\pm 2</span><span><span>View Source</span><span>\mathbf{93}\pm 2</span></span></td></tr>
+<tr class="ltx_tr" id="S4.T3.3.5">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S4.T3.3.5.1">ENSTDkAm</th>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.5.2"><span class="doc-math" data-copy-display="inline" data-copy-tex="72\pm 2">72\pm 2</span><span><span>View Source</span><span>72\pm 2</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.5.3"><span class="doc-math" data-copy-display="inline" data-copy-tex="89\pm 1">89\pm 1</span><span><span>View Source</span><span>89\pm 1</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.5.4"><span class="doc-math" data-copy-display="inline" data-copy-tex="33\pm 6">33\pm 6</span><span><span>View Source</span><span>33\pm 6</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.5.5"><span class="doc-math" data-copy-display="inline" data-copy-tex="51\pm 8">51\pm 8</span><span><span>View Source</span><span>51\pm 8</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.5.6"><span class="doc-math" data-copy-display="inline" data-copy-tex="67\pm 8">67\pm 8</span><span><span>View Source</span><span>67\pm 8</span></span></td></tr>
+<tr class="ltx_tr" id="S4.T3.3.6">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row" id="S4.T3.3.6.1">ENSTDkCl</th>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.6.2"><span class="doc-math" data-copy-display="inline" data-copy-tex="\underline{75}\pm 2">\underline{75}\pm 2</span><span><span>View Source</span><span>\underline{75}\pm 2</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.6.3"><span class="doc-math" data-copy-display="inline" data-copy-tex="89\pm 2">89\pm 2</span><span><span>View Source</span><span>89\pm 2</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.6.4"><span class="doc-math" data-copy-display="inline" data-copy-tex="\underline{39}\pm 9">\underline{39}\pm 9</span><span><span>View Source</span><span>\underline{39}\pm 9</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.6.5"><span class="doc-math" data-copy-display="inline" data-copy-tex="64\pm 9">64\pm 9</span><span><span>View Source</span><span>64\pm 9</span></span></td>
+<td class="ltx_td ltx_align_center" id="S4.T3.3.6.6"><span class="doc-math" data-copy-display="inline" data-copy-tex="73\pm 8">73\pm 8</span><span><span>View Source</span><span>73\pm 8</span></span></td></tr>
+<tr class="ltx_tr" id="S4.T3.3.7">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_bb" id="S4.T3.3.7.1">MusicNet</th>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.3.7.2"><span class="doc-math" data-copy-display="inline" data-copy-tex="71\pm 2">71\pm 2</span><span><span>View Source</span><span>71\pm 2</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.3.7.3"><span class="doc-math" data-copy-display="inline" data-copy-tex="87\pm 4">87\pm 4</span><span><span>View Source</span><span>87\pm 4</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.3.7.4"><span class="doc-math" data-copy-display="inline" data-copy-tex="25\pm 8">25\pm 8</span><span><span>View Source</span><span>25\pm 8</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.3.7.5"><span class="doc-math" data-copy-display="inline" data-copy-tex="42\pm 12">42\pm 12</span><span><span>View Source</span><span>42\pm 12</span></span></td>
+<td class="ltx_td ltx_align_center ltx_border_bb" id="S4.T3.3.7.6"><span class="doc-math" data-copy-display="inline" data-copy-tex="45\pm 11">45\pm 11</span><span><span>View Source</span><span>45\pm 11</span></span></td></tr>
+</tbody>
+</table>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table"><span class="ltx_text ltx_font_bold" id="S4.T3.4">Table 3</span>: </span>Dataset alignment quality according to the methods with highest monotonicity performance (<span class="doc-math" data-copy-display="inline" data-copy-tex="\text{mean}\pm\text{std}">\text{mean}\pm\text{std}</span><span><span>View Source</span><span>\text{mean}\pm\text{std}</span></span>, rescaled to <span class="doc-math" data-copy-display="inline" data-copy-tex="[0,100]">[0,100]</span><span><span>View Source</span><span>[0,100]</span></span>). Bold marks the best performance and underline marks the second-best performance per column.</figcaption>
+</figure>
+<div class="ltx_para" id="S4.p5">
+<p class="ltx_p" id="S4.p5.1">We select the five methods with highest monotonicity performance on MAPS-S for fine-grained onset alignment to assess real-world dataset alignment. Table&nbsp;<a class="ltx_ref" href="#S4.T3" title="Table 3 ‣ 4 Results ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">3</span></a> reports their scores across six piano AMT datasets: the three previously used datasets, the MUS subsets of ENSTDkAm and ENSTDkCl from MAPS, and MusicNet’s solo piano recordings. All methods rank the synthetic and perfectly aligned MAPS-S highest, confirming prior expectations. However, they disagree on the alignment quality of recorded datasets, leaving only general trends. Most methods rank ENSTDkCl above ENSTDkAm, while SMD shows the largest score variability, suggesting inconsistent alignment across samples. MAESTRO remains among the three best-aligned datasets but is not consistently ranked first. Lastly, MusicNet is consistently scored as the worst-aligned.</p>
+</div>
+<div class="ltx_para" id="S4.p6">
+<p class="ltx_p" id="S4.p6.1">The similar near-ceiling scores produced by CS-S and DTW-C limit discrimination. In contrast, the proposed STI methods provide a wider score range, enabling more effective comparison of fine-grained alignment differences.</p>
+</div>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section" id="section-9"><span class="ltx_tag ltx_tag_section">5 </span>Conclusion</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p" id="S5.p1.1">In this work, we propose a framework for evaluating audio–MIDI alignment scoring methods through controlled pitch, onset, and structural corruptions applied to piano AMT datasets. We introduce four metrics for different aspects of score behavior and propose STI, a scoring method that leverages modern AMT models.</p>
+</div>
+<div class="ltx_para" id="S5.p2">
+<p class="ltx_p" id="S5.p2.1">Our benchmark identifies feature-based methods and STI as the strongest overall approaches. In particular, STI provides high resolution for fine-grained temporal misalignments, making it well suited to the small onset errors that characterize alignment issues in AMT datasets. We then apply the best-performing methods to rank the alignment quality of widely used piano AMT datasets and find that they produce general consistent rankings, although they disagree on the precise ordering of closely aligned datasets. Our benchmark helps identify and measure the conditions under which methods differ, providing a systematic basis for comparing and selecting alignment scoring methods. Building on these findings, future work includes improving STI as AMT quality advances, extending it to other instruments, and refining the benchmark for broader and more reliable alignment assessment.</p>
+</div>
+</section>
+<section class="ltx_section" id="S6">
+<h2 class="ltx_title ltx_title_section" id="section-10"><span class="ltx_tag ltx_tag_section">6 </span>Acknowledgments</h2>
+<div class="ltx_para" id="S6.p1">
+<p class="ltx_p" id="S6.p1.1">This study was financed, in part, by the São Paulo Research Foundation (FAPESP), Brasil. Process Number 2025/02767-4. We also acknowledge the support provided by Rede de Avanço em Inteligência Artificial (RAIA).</p>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography" id="section-11">References</h2>
+<ul class="ltx_biblist" id="bib.L1">
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib2"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">E. Benetos, S. Dixon, D. Giannoulis, H. Kirchhoff, and A. Klapuri</span><span class="ltx_text ltx_bib_year"> (2013)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Automatic music transcription: an overview</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">IEEE Signal Processing Magazine</span> <span class="ltx_text ltx_bib_volume">30</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages">pp.&nbsp;20–30</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib1"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">C. Hawthorne, A. Stasyuk, A. Roberts, I. Simon, C. A. Huang, S. Dieleman, E. Elsen, J. Engel, and D. Eck</span><span class="ltx_text ltx_bib_year"> (2019)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Enabling factorized piano music modeling and generation with the MAESTRO dataset</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">International Conference on Learning Representations (ICLR)</span>,
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S3.p1.1" title="3 Experiments ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib3"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">C. Hawthorne, E. Elsen, J. Song, A. Roberts, I. Simon, C. Raffel, S. Oore, and D. Eck</span><span class="ltx_text ltx_bib_year"> (2018)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Onsets and frames: dual-objective piano transcription</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">International Society for Music Information Retrieval
+Conference (ISMIR)</span>,
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib6"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">A. Cogliati, Z. Duan, and B. Wohlberg</span><span class="ltx_text ltx_bib_year"> (2016)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Context-dependent piano music transcription with convolutional sparse coding</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">IEEE/ACM Transactions on Audio, Speech, and Language Processing</span> <span class="ltx_text ltx_bib_volume">24</span> (<span class="ltx_text ltx_bib_number">12</span>), <span class="ltx_text ltx_bib_pages">pp.&nbsp;2218–2230</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1109/TASLP.2016.2598305" title="" rel="noopener noreferrer">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib12"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">J. Gardner, I. Simon, E. Manilow, C. Hawthorne, and J. Engel</span><span class="ltx_text ltx_bib_year"> (2021)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">MT3: multi-task multitrack music transcription</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">ArXiv</span> <span class="ltx_text ltx_bib_volume">abs/2111.03017</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="https://api.semanticscholar.org/CorpusID:242757066" title="" rel="noopener noreferrer">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_report" id="bib.bib4"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">V. Emiya, N. Bertin, B. David, and R. Badeau</span><span class="ltx_text ltx_bib_year"> (2010)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">MAPS - A piano database for multipitch estimation and automatic transcription of music</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_type">Research Report</span>
+</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_bib_publisher">TELECOM ParisTech</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="https://inria.hal.science/inria-00544155" title="" rel="noopener noreferrer">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib5"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">J. Thickstun, Z. Harchaoui, and S. Kakade</span><span class="ltx_text ltx_bib_year"> (2017)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Learning features of music from scratch</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">International Conference on Learning Representations</span>,
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="https://openreview.net/forum?id=rkFBJv9gg" title="" rel="noopener noreferrer">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib10"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Y. Yan and Z. Duan</span><span class="ltx_text ltx_bib_year"> (2024)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Scoring time intervals using non-hierarchical transformer for automatic piano transcription</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc. International Society for Music Information Retrieval Conference (ISMIR)</span>,
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S2.SS2.p5.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib20"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[9]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">M. Müller, V. Konz, W. Bogler, and V. Arifi-Müller</span><span class="ltx_text ltx_bib_year"> (2011)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Saarland music data (SMD)</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Late-Breaking and Demo Session of the 12th International Conference on Music Information Retrieval (ISMIR)</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib11"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[10]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">X. Gong, W. Xu, J. Liu, and W. Cheng</span><span class="ltx_text ltx_bib_year"> (2019)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Analysis and correction of maps dataset</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc. 22nd Int. Conf. Digit. Audio Effects</span>,
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2.1" title="1 Introduction ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inbook" id="bib.bib17"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[11]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">J. S. Downie, A. F. Ehmann, M. Bay, and M. C. Jones</span><span class="ltx_text ltx_bib_year"> (2010)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The music information retrieval evaluation exchange: some observations and insights</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Advances in Music Information Retrieval</span>,  <span class="ltx_text ltx_bib_editor">Z. W. Raś and A. A. Wieczorkowska (Eds.)</span>,
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">pp.&nbsp;93–115</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text isbn ltx_bib_external">ISBN 978-3-642-11674-2</span>,
+<a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1007/978-3-642-11674-2%5F5" title="" rel="noopener noreferrer">Document</a>,
+<a class="ltx_ref ltx_bib_external" href="https://doi.org/10.1007/978-3-642-11674-2_5" title="" rel="noopener noreferrer">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS1.p6.1" title="2.1 MIDI Corruption ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.1</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_misc" id="bib.bib13"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[12]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">S. Wu, Z. Guo, R. Yuan, J. Jiang, S. Doh, G. Xia, J. Nam, X. Li, F. Yu, and M. Sun</span><span class="ltx_text ltx_bib_year"> (2025)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">CLaMP 3: universal music information retrieval across unaligned modalities and unseen languages</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external">2502.10362</span>,
+<a class="ltx_ref ltx_bib_external" href="https://arxiv.org/abs/2502.10362" title="" rel="noopener noreferrer">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p2.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib14"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[13]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Y. Wu*, K. Chen*, T. Zhang*, Y. Hui*, T. Berg-Kirkpatrick, and S. Dubnov</span><span class="ltx_text ltx_bib_year"> (2023)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmentation</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">IEEE International Conference on Acoustics, Speech and Signal Processing, ICASSP</span>,
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p2.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib21"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[14]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">M. Müller, F. Kurth, and M. Clausen</span><span class="ltx_text ltx_bib_year"> (2005)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Audio matching via chroma-based statistical features</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">International Society for Music Information Retrieval Conference</span>,
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="https://api.semanticscholar.org/CorpusID:431329" title="" rel="noopener noreferrer">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p3.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib22"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[15]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">S. Ewert, M. Muller, and P. Grosche</span><span class="ltx_text ltx_bib_year"> (2009)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">High resolution audio synchronization using chroma onset features</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">2009 IEEE International Conference on Acoustics, Speech and Signal Processing</span>,
+</span>
+<span class="ltx_bibblock">Vol. <span class="ltx_text ltx_bib_volume"></span>, <span class="ltx_text ltx_bib_pages">pp.&nbsp;1869–1872</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1109/ICASSP.2009.4959972" title="" rel="noopener noreferrer">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p3.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib15"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[16]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">T. Prätzlich, J. Driedger, and M. Müller</span><span class="ltx_text ltx_bib_year"> (2016)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Memory-restricted multiscale dynamic time warping</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">2016 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</span>,
+</span>
+<span class="ltx_bibblock">Vol. <span class="ltx_text ltx_bib_volume"></span>, <span class="ltx_text ltx_bib_pages">pp.&nbsp;569–573</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1109/ICASSP.2016.7471739" title="" rel="noopener noreferrer">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p3.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib16"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[17]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">S. Böck, F. Korzeniowski, J. Schlüter, F. Krebs, and G. Widmer</span><span class="ltx_text ltx_bib_year"> (2016)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">madmom: a new Python Audio and Music Signal Processing Library</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proceedings of the 24th ACM International Conference on
+Multimedia</span>,
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_place">Amsterdam, The Netherlands</span>, <span class="ltx_text ltx_bib_pages">pp.&nbsp;1174–1178</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.1145/2964284.2973795" title="" rel="noopener noreferrer">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p4.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib7"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[18]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">C. Raffel, B. McFee, E. J. Humphrey, J. Salamon, O. Nieto, D. Liang, and D. P. W. Ellis</span><span class="ltx_text ltx_bib_year"> (2014)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Mir_eval: a transparent implementation of common mir metrics</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proceedings of the 15th International Conference on Music Information Retrieval (ISMIR)</span>,
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p4.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib18"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[19]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">R. M. Bittner, J. J. Bosch, D. Rubinstein, G. Meseguer-Brocal, and S. Ewert</span><span class="ltx_text ltx_bib_year"> (2022)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">A lightweight instrument-agnostic model for polyphonic note transcription and multipitch estimation</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proceedings of the IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)</span>,
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_place">Singapore</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p5.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib19"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[20]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Q. Kong, B. Li, X. Song, Y. Wan, and Y. Wang</span><span class="ltx_text ltx_bib_year"> (2021)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">High-resolution piano transcription with pedals by regressing onset and offset times</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">IEEE/ACM Trans. Audio, Speech and Lang. Proc.</span> <span class="ltx_text ltx_bib_volume">29</span>, <span class="ltx_text ltx_bib_pages">pp.&nbsp;3707–3717</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS2.p5.1" title="2.2 Scores ‣ 2 Method ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§2.2</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_inproceedings" id="bib.bib8"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[21]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">B. McFee, C. Raffel, D. Liang, D. P. Ellis, M. McVicar, E. Battenberg, and O. Nieto</span><span class="ltx_text ltx_bib_year"> (2015)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Librosa: audio and music signal analysis in python</span>.
+</span>
+<span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proceedings of the 14th python in science conference</span>,
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">pp.&nbsp;18–24</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="https://doi.org/10.25080/majora-7b98e3ed-003" title="" rel="noopener noreferrer">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S3.p2.1" title="3 Experiments ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span></li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib9"><span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[22]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">M. Müller, Y. Özer, M. Krause, T. Prätzlich, and J. Driedger</span><span class="ltx_text ltx_bib_year"> (2021)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Sync toolbox: a python package for efficient, robust, and accurate music synchronization</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Open Source Software</span> <span class="ltx_text ltx_bib_volume">6</span> (<span class="ltx_text ltx_bib_number">64</span>), <span class="ltx_text ltx_bib_pages">pp.&nbsp;3434</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.21105/joss.03434" title="" rel="noopener noreferrer">Document</a>,
+<a class="ltx_ref ltx_bib_external" href="https://doi.org/10.21105/joss.03434" title="" rel="noopener noreferrer">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S3.p2.1" title="3 Experiments ‣ Assessing Alignment in Automatic Piano Transcription Datasets: A Benchmark for Scoring Methods" rel="noopener noreferrer"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span></li>
+</ul>
+</section><div class="ltx_rdf"></div>
+<div class="ltx_rdf"></div>
+</article>
