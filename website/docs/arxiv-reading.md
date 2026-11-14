@@ -69,3 +69,8 @@ not acquire missing PDFs, parse PDFs or write metadata. Missing files are report
 original bytes remain unchanged, and download filenames contain the arXiv ID/version.
 The metadata worker/index owner is unchanged; preview configuration can select its
 existing full index without rebuilding or changing it.
+
+## Frontend continuation
+
+For the current IEEE-aligned frontend polish scope, source baseline, behavior
+boundaries and validation matrix, use [arXiv frontend handoff](../ARXIV_FRONTEND_HANDOFF.md).
