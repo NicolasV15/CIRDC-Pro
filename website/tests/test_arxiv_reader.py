@@ -198,3 +198,23 @@ def test_cursors_bind_filters_and_top_has_no_next_cursor(search_catalog):
     with pytest.raises(ValueError):
         c.search("", year_from="2025", year_to="2020")
     assert c.search("opamp", view="top", k="10")["next_cursor"] is None
+
+
+def test_category_only_browses_newest_indexed_rows_without_text_ranking(tmp_path):
+    index = tmp_path / "browse.sqlite"
+    with sqlite3.connect(index) as db:
+        db.execute("CREATE TABLE identity(database_id TEXT)")
+        db.execute("INSERT INTO identity VALUES ('category-browse')")
+        db.execute("CREATE VIRTUAL TABLE metadata USING fts5(arxiv_id UNINDEXED,title,authors,abstract,categories)")
+        db.executemany("INSERT INTO metadata VALUES (?,?,?,?,?)", [
+            ("2501.00001", "Earlier", "A", "x", "eess.SP"),
+            ("2501.00002", "Later", "B", "x", "eess.SP cs.AR cs.LG"),
+        ])
+    profile = tmp_path / "reader.json"
+    profile.write_text(json.dumps({"mysql": {"database": "archive"}, "database_id": "category-browse", "index_path": str(index)}))
+    catalog = Catalog(profile)
+    first = catalog.search("", category="eess", limit=1)
+    assert first["items"][0]["arxiv_id"] == "2501.00002"
+    second = catalog.search("", category="eess", limit=1, cursor=first["next_cursor"])
+    assert second["items"][0]["arxiv_id"] == "2501.00001"
+    assert second["total"] == 2

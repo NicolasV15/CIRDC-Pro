@@ -112,3 +112,8 @@ provenance: arXiv HTML, converted from TeX source, or converted from PDF.
 
 For the current IEEE-aligned frontend polish scope, source baseline, behavior
 boundaries and validation matrix, use [arXiv frontend handoff](../ARXIV_FRONTEND_HANDOFF.md).
+
+Category-only browsing with no search text follows the newest-indexed order (or
+the explicitly selected year order). It does not compute a text-relevance score
+for every matching paper. This keeps broad archive browsing within the existing
+query budget; text searches retain their relevance ranking.

@@ -345,7 +345,7 @@ class Catalog:
                     year + " DESC,arxiv_id DESC,rowid DESC"
                     if sort == "year"
                     else "rank,rowid"
-                    if match
+                    if groups
                     else "rowid DESC"
                 )
                 has_documents = db.execute("SELECT 1 FROM sqlite_master WHERE name='documents'").fetchone()
