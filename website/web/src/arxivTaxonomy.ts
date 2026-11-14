@@ -26,6 +26,14 @@ export function arxivCategoryName(code:string){return names.get(code.toLowerCase
 export function isArxivArchive(code:string){return archives.some(([archive])=>archive===code.toLowerCase());}
 /** Subject classes most often used for circuit and device research. */
 export const circuitCategories=['eess.SP','eess.SY','cs.AR','cs.ET','physics.app-ph','physics.ins-det','cond-mat.mes-hall'];
+/** Cross-disciplinary shortcuts retain official codes; groups only organize the picker. */
+export const arxivCategoryGroups=[
+ {key:'circuits',name:{zh:'电路与器件',en:'Circuits and devices'},codes:circuitCategories},
+ {key:'ai',name:{zh:'人工智能与学习',en:'Artificial intelligence and learning'},codes:['cs.AI','cs.LG','cs.NE','stat.ML']},
+ {key:'methods',name:{zh:'优化与计算方法',en:'Optimization and computational methods'},codes:['math.OC','cs.CE']},
+];
+export const quickArxivCategories=arxivCategoryGroups.flatMap(group=>group.codes);
+
 
 /** Comma-separated OR selection, shared by URLs, chips and the category picker. */
 export function selectedArxivCategories(value:string){

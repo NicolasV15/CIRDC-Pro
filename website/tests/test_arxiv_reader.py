@@ -148,6 +148,15 @@ def test_archive_filter_matches_its_subject_classes_only(tmp_path):
     assert ids(category="cond-mat") == ["2501.00005", "2501.00006"]
     assert ids(category="eess.SY") == ["2501.00002"]
     assert ids(category="eess.SP,cs.AR") == ["2501.00001"]  # cross-lists appear once
+    # FTS tokenization equates dots and hyphens: exact category checks must remain.
+    with sqlite3.connect(index) as db:
+        db.execute("INSERT INTO metadata VALUES (?,?,?,?,?)", ("2501.00007", "punctuation", "A", "x", "eess-SP"))
+    assert c.search("", category="eess.SP", totals="only")["total"] == 1
+    assert c.search("", category="eess.SP,cs.AR", year_from="2025", year_to="2025", totals="only")["total"] == 1
+    assert c.search("paper", category="eess.SP,cs.AR", totals="only")["total"] == 1
+    with sqlite3.connect(index) as db:
+        db.execute("DELETE FROM metadata WHERE arxiv_id='2501.00007'")
+
     assert ids(category=" eess.SP, EESS.sy ") == ["2501.00001", "2501.00002"]
     assert ids(category="math,math-ph") == ["2501.00003", "2501.00004"]
     assert c.search("", category="eess.SP,cs.AR,eess.SY", totals="only")["total"] == 2

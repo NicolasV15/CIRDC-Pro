@@ -83,7 +83,7 @@ existing full index without rebuilding or changing it.
 The search page offers circuit-related subject classes as one-click filters and names
 every category with the official arXiv taxonomy (`web/src/arxivTaxonomy.ts`; names
 stay in English as source terms). Category tags in result rows filter by that exact
-class; the free-text category field accepts comma-separated codes, including obsolete ones. The circuit-related shortcuts are multi-select and no longer include an `eess` archive shortcut; archive filters remain supported by the API and explicit category field. An information button beside the heading opens an IEEE-styled guide for all seven shortcuts, with bilingual scope summaries, separate CIRDC reading tips and links to the official taxonomy (reviewed 2026-11-14).
+class; the free-text category field accepts comma-separated codes, including obsolete ones. The circuit-related shortcuts are multi-select and no longer include an `eess` archive shortcut; archive filters remain supported by the API and explicit category field. An information button beside the heading opens an IEEE-styled guide for all 13 shortcuts, grouped into circuits/devices, AI/learning and optimization/computational methods, with bilingual scope summaries, separate CIRDC reading tips and links to the official taxonomy (reviewed 2026-11-14).
 
 The detail page shows every observed version with its date. Choosing a version pushes
 a history entry, so back/forward restore it, and clears the previous version's status

@@ -347,6 +347,18 @@ class Catalog:
                         + " AND ".join(filters),
                         args,
                     ).fetchone()[0]
+                elif categories and not exact_id and db.execute(
+                    "SELECT 1 FROM sqlite_master WHERE name='metadata_content'"
+                ).fetchone():
+                    # Read exact category strings from FTS's stored rows in one join.
+                    # Virtual-column reads otherwise perform a content lookup per hit.
+                    count_clause = clause.replace("lower(categories)", "lower(content.c4)").replace(
+                        "arxiv_id", "content.c0"
+                    )
+                    total = db.execute(
+                        "SELECT COUNT(*) FROM metadata JOIN metadata_content content "
+                        "ON content.id=metadata.rowid" + count_clause, values
+                    ).fetchone()[0]
                 else:
                     total = db.execute("SELECT COUNT(*) FROM metadata" + clause, values).fetchone()[0]
             else:

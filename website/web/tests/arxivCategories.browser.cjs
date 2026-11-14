@@ -40,14 +40,25 @@ const matches=(row,category)=>!category||category.split(',').some(code=>row.cate
   const disclosure=page.locator('.arxiv-category-filter');
   await page.getByRole('button',{name:'电路相关分类介绍',exact:true}).click();
   const guide=page.getByRole('dialog',{name:'电路相关分类介绍'});await guide.waitFor();
-  assert.equal(await guide.locator('.venue-guide-profile').count(),7);
+  assert.equal(await guide.locator('.venue-guide-profile').count(),13);
   assert.ok((await guide.innerText()).includes('匹配其中任意一个'));
-  assert.equal(await guide.locator('a[href^="https://arxiv.org/category_taxonomy#"]').count(),7);
+  assert.equal(await guide.locator('a[href^="https://arxiv.org/category_taxonomy#"]').count(),13);
   assert.ok(await guide.evaluate(el=>el.scrollWidth<=el.clientWidth+1));
   if(process.env.CIRDC_BROWSER_OUTPUT){await fs.mkdir(process.env.CIRDC_BROWSER_OUTPUT,{recursive:true});await page.screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,'category-guide-'+width+'.png')});}
   await page.keyboard.press('Escape');await guide.waitFor({state:'detached'});
   assert.ok(await disclosure.evaluate(el=>el.open));
   assert.equal(await page.evaluate(()=>document.activeElement?.getAttribute('aria-controls')),'arxiv-category-guide-dialog');
+  await page.getByRole('button',{name:'清除分类',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===4);
+  // New AI shortcuts combine with existing circuit categories.
+  await group.getByRole('button',{name:'cs.AI',exact:true}).click();
+  await page.waitForFunction(()=>new URLSearchParams(location.search).get('category')==='cs.AI');
+  await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===1);
+  await group.getByRole('button',{name:'eess.SP',exact:true}).click();
+  await page.waitForFunction(()=>new URLSearchParams(location.search).get('category')==='cs.AI,eess.SP');
+  await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===2);
+  assert.equal(await group.locator('[aria-pressed=true]').count(),2);
+  for(const code of ['cs.LG','cs.NE','stat.ML','math.OC','cs.CE'])assert.equal(await group.getByRole('button',{name:code,exact:true}).count(),1);
   await page.getByRole('button',{name:'清除分类',exact:true}).click();
   await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===4);
   // A row's category tag filters by that exact subject class and names it.
@@ -68,6 +79,6 @@ const matches=(row,category)=>!category||category.split(',').some(code=>row.cate
   await page.getByRole('dialog',{name:'Circuit-related category guide'}).waitFor();
   assert.ok((await page.getByRole('dialog').innerText()).includes('Reading tips'));
   await page.getByRole('button',{name:'Close category guide',exact:true}).click();
-  reports.push({width,multiCategoryUnion:true,duplicateRows:false,restore:true,guideProfiles:7,bilingual:true,rowTagFilter:true,writes});await context.close();
+  reports.push({width,multiCategoryUnion:true,duplicateRows:false,restore:true,guideProfiles:13,bilingual:true,rowTagFilter:true,writes});await context.close();
  }console.log(JSON.stringify(reports));}finally{await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
