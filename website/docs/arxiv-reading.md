@@ -52,7 +52,7 @@ not a replacement version date, journal publication year or OAI modification dat
 GET `/api/arxiv/papers` additionally accepts `field`, `sort=relevance|year`,
 `view=top`, `k=10|20|50|100`, `terms=exact|expand`, `category`, `year_from`, and
 `year_to`. Empty queries browse indexed papers. Category filtering matches whole
-category codes. An archive code with dotted subject classes (`astro-ph`, `cond-mat`,
+category codes. Supply comma-separated codes to match **any** selected category (at most 32 distinct codes, 64 characters per code); cross-listed papers appear once. The query cursor binds the complete selection and counts use the same union. Existing single-code URLs remain valid. An archive code with dotted subject classes (`astro-ph`, `cond-mat`,
 `cs`, `econ`, `eess`, `math`, `nlin`, `physics`, `q-bio`, `q-fin`, `stat`) matches
 every class in that archive, so `eess` matches `eess.SP` and `eess.SY` while `math`
 does not match `math-ph`. Equivalent-term expansion reuses the IEEE query interpreter.
@@ -83,7 +83,7 @@ existing full index without rebuilding or changing it.
 The search page offers circuit-related subject classes as one-click filters and names
 every category with the official arXiv taxonomy (`web/src/arxivTaxonomy.ts`; names
 stay in English as source terms). Category tags in result rows filter by that exact
-class; the free-text category field still accepts any code, including obsolete ones.
+class; the free-text category field accepts comma-separated codes, including obsolete ones. The circuit-related shortcuts are multi-select and no longer include an `eess` archive shortcut; archive filters remain supported by the API and explicit category field. An information button beside the heading opens an IEEE-styled guide for all seven shortcuts, with bilingual scope summaries, separate CIRDC reading tips and links to the official taxonomy (reviewed 2026-11-14).
 
 The detail page shows every observed version with its date. Choosing a version pushes
 a history entry, so back/forward restore it, and clears the previous version's status

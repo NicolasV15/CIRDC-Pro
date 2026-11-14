@@ -213,11 +213,17 @@ class Catalog:
             raise ValueError("invalid_search_options")
         if (
             len(query) > 200
-            or len(category) > 64
+            or len(category) > 2048
             or category
-            and not re.fullmatch("[A-Za-z0-9.-]+", category)
+            and any(not re.fullmatch("[A-Za-z0-9.-]{1,64}", code.strip()) for code in category.split(","))
         ):
             raise ValueError("invalid_query")
+        categories = sorted({code.strip().lower() for code in category.split(",")}) if category else []
+        if len(categories) > 32:
+            raise ValueError("invalid_query")
+        # Keep existing single-category cursors compatible; canonicalize multi-selection.
+        if len(categories) > 1:
+            category = ",".join(categories)
         low = int(year_from) if year_from else None
         high = int(year_to) if year_to else None
         if any(v is not None and not 1991 <= v <= 2200 for v in (low, high)) or low and high and low > high:
@@ -259,8 +265,11 @@ class Catalog:
         match = fts_expression(groups, field=None if field == "all" else field) if groups else ""
         if query.strip() and not exact_id and not groups:
             raise ValueError("invalid_query")
-        if category:
-            category_match = 'categories:("' + category.replace(".", " ").replace("-", " ") + '")'
+        if categories:
+            category_match = "(" + " OR ".join(
+                'categories:("' + code.replace(".", " ").replace("-", " ") + '")'
+                for code in categories
+            ) + ")"
             match = "(" + match + ") AND " + category_match if match else category_match
         where = []
         values = []
@@ -270,16 +279,19 @@ class Catalog:
         if exact_id:
             where.append("arxiv_id=?")
             values.append(exact_id)
-        if category.lower() in ARCHIVES:
-            where.append(
-                "(instr(' '||lower(categories)||' ',' '||lower(?)||' ')>0"
-                " OR instr(' '||lower(categories),' '||lower(?)||'.')>0)"
-            )
-            values.extend((category, category))
-        elif category:
-            where.append("instr(' '||lower(categories)||' ',' '||lower(?)||' ')>0")
-            values.append(category)
-
+        if categories:
+            category_where = []
+            for code in categories:
+                if code in ARCHIVES:
+                    category_where.append(
+                        "(instr(' '||lower(categories)||' ',' '||?||' ')>0"
+                        " OR instr(' '||lower(categories),' '||?||'.')>0)"
+                    )
+                    values.extend((code, code))
+                else:
+                    category_where.append("instr(' '||lower(categories)||' ',' '||?||' ')>0")
+                    values.append(code)
+            where.append("(" + " OR ".join(category_where) + ")")
         def year_sql(column):
             return (
                 "CASE WHEN instr("

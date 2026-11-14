@@ -1,7 +1,8 @@
-import {useState} from 'react';
+import {lazy,Suspense,useState} from 'react';
 import {t,useLanguage} from './i18n';
 import Icon from './Icon';
-import {arxivCategoryName,circuitCategories,isArxivArchive} from './arxivTaxonomy';
+import {arxivCategoryName,circuitCategories,isArxivArchive,selectedArxivCategories,toggleArxivCategory} from './arxivTaxonomy';
+const ArxivCategoryGuide=lazy(()=>import('./ArxivCategoryGuide'));
 
 /** Category label shown in chips and result rows: the code, with the official name when one exists. */
 export function arxivCategoryLabel(code:string){
@@ -9,15 +10,14 @@ export function arxivCategoryLabel(code:string){
  return isArxivArchive(code)?t('{code} 全部分类',{code}):name?code+' · '+name:code;
 }
 
-/** Quick subject-class choices for circuit and device research; one category applies at a time. */
+/** Multiple subject classes are combined with OR; the generic archive shortcut is unnecessary. */
 export function ArxivCategoryFilter({value,onChange}:{value:string;onChange:(value:string)=>void}){
- useLanguage();
- const [open,setOpen]=useState(true),current=value.toLowerCase();
- const choices=['eess',...circuitCategories];
- return <details className="venue-family-filter arxiv-category-filter" open={open} onToggle={e=>setOpen(e.currentTarget.open)}>
-  <summary><span className="venue-family-heading"><span>{t('电路相关分类')}</span></span><small>{value?arxivCategoryLabel(value):t('全部 arXiv 分类')}</small><Icon name="down" className="disclosure-caret"/></summary>
-  <div className="venue-family-body"><div className="venue-family-choices" role="group" aria-label={t('电路相关分类')}>
-   {choices.map(code=>{const selected=current===code.toLowerCase();return <button type="button" className="venue-family-choice" key={code} aria-pressed={selected} title={arxivCategoryLabel(code)} onClick={()=>onChange(selected?'':code)}>{selected&&<Icon name="check"/>}{isArxivArchive(code)?t('{code} 全部',{code}):code}</button>;})}
+ const lang=useLanguage(),zh=lang==='zh',[open,setOpen]=useState(true),[guideOpen,setGuideOpen]=useState(false),selected=selectedArxivCategories(value),keys=new Set(selected);
+ const info=zh?'电路相关分类介绍':'Circuit-related category guide';
+ return <><details className="venue-family-filter arxiv-category-filter" open={open} onToggle={e=>setOpen(e.currentTarget.open)}>
+  <summary><span className="venue-family-heading"><span>{t('电路相关分类')}</span><button type="button" className="venue-guide-trigger" aria-label={info} title={info} aria-haspopup="dialog" aria-controls="arxiv-category-guide-dialog" aria-expanded={guideOpen} onClick={e=>{e.preventDefault();e.stopPropagation();setGuideOpen(true);}} onKeyDown={e=>{if(e.key==='Enter'||e.key===' ')e.stopPropagation();}}><Icon name="info"/></button></span><small>{selected.length?(zh?`已选 ${selected.length} 个分类`:`${selected.length} categories selected`):t('全部 arXiv 分类')}</small><Icon name="down" className="disclosure-caret"/></summary>
+  <div className="venue-family-body"><div className="venue-family-actions"><button type="button" className="text-button" onClick={()=>onChange(selectedArxivCategories([...selected,...circuitCategories].join(',')).join(','))} disabled={circuitCategories.every(code=>keys.has(code))}>{zh?'选择全部电路分类':'Select all circuit categories'}</button><button type="button" className="text-button" onClick={()=>onChange('')} disabled={!selected.length}>{zh?'清除分类':'Clear categories'}</button></div><div className="venue-family-choices" role="group" aria-label={t('电路相关分类')}>
+   {circuitCategories.map(code=><button type="button" className="venue-family-choice" key={code} aria-pressed={keys.has(code)} title={arxivCategoryLabel(code)} onClick={()=>onChange(toggleArxivCategory(value,code))}>{keys.has(code)&&<Icon name="check"/>}{code}</button>)}
   </div></div>
- </details>;
+ </details>{guideOpen&&<Suspense fallback={<p className="hint" role="status">{zh?'正在加载分类介绍…':'Loading category guide…'}</p>}><ArxivCategoryGuide onClose={()=>setGuideOpen(false)}/></Suspense>}</>;
 }
