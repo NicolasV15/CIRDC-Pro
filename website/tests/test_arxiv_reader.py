@@ -147,6 +147,21 @@ def test_archive_filter_matches_its_subject_classes_only(tmp_path):
     assert ids(category="math") == ["2501.00004"]
     assert ids(category="cond-mat") == ["2501.00005", "2501.00006"]
     assert ids(category="eess.SY") == ["2501.00002"]
+    assert ids(category="eess.SP,cs.AR") == ["2501.00001"]  # cross-lists appear once
+    assert ids(category=" eess.SP, EESS.sy ") == ["2501.00001", "2501.00002"]
+    assert ids(category="math,math-ph") == ["2501.00003", "2501.00004"]
+    assert c.search("", category="eess.SP,cs.AR,eess.SY", totals="only")["total"] == 2
+    assert sorted(item["arxiv_id"] for item in c.search("paper", category="eess.SP,math")["items"]) == ["2501.00001"]
+    assert ids(category="eess.SP,cs.AR", year_from="2026") == []
+    first = c.search("", category="eess.SP,eess.SY", limit=1)
+    second = c.search("", category="EESS.SY,eess.SP,eess.SP", limit=1, cursor=first["next_cursor"])
+    assert first["items"][0]["arxiv_id"] != second["items"][0]["arxiv_id"]
+    with pytest.raises(ValueError, match="invalid_cursor"):
+        c.search("", category="eess.SP,math", limit=1, cursor=first["next_cursor"])
+    for category in ["eess.SP,", ",eess.SP", "eess.SP OR cs.AR", "eess.SP,cs.AR) OR x", ",".join(f"cs.X{i}" for i in range(33))]:
+        with pytest.raises(ValueError):
+            c.search("", category=category)
+
     assert ids(category="cs") == ["2501.00001", "2501.00002"]
     assert sorted(item["arxiv_id"] for item in c.search("paper", category="eess")["items"]) == ["2501.00001"]
 

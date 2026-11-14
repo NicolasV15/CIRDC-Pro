@@ -4,9 +4,9 @@ const fs=require('node:fs/promises'),path=require('node:path'),assert=require('n
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://arxiv-categories.test';
 const types={'.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
 const rows=[['2401.00001',['eess.SP','cs.AR']],['2401.00002',['cs.AI']],['2401.00003',['eess.SY']],['2401.00004',['math-ph']]].map(([arxiv_id,categories],i)=>({paper_id:i+1,arxiv_id,title:'Paper '+(i+1),authors_raw:'A. Author',abstract:'Abstract.',categories,year:2024}));
-const matches=(row,category)=>!category||row.categories.some(c=>c.toLowerCase()===category.toLowerCase()||c.toLowerCase().startsWith(category.toLowerCase()+'.'));
+const matches=(row,category)=>!category||category.split(',').some(code=>row.categories.some(c=>c.toLowerCase()===code.toLowerCase()||c.toLowerCase().startsWith(code.toLowerCase()+'.')));
 (async()=>{const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})}),reports=[];
- try{for(const width of [1440,390]){
+ try{for(const width of [1440,390,320]){
   const context=await browser.newContext({viewport:{width,height:900}});await context.addInitScript(()=>localStorage.setItem('cirdc.ui.language','zh'));
   const requests=[],errors=[];let writes=0;
   await context.route('**/*',async route=>{const req=route.request(),u=new URL(req.url()),p=u.pathname;
@@ -22,15 +22,33 @@ const matches=(row,category)=>!category||row.categories.some(c=>c.toLowerCase()=
   const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   await page.goto(origin+'/?source=arxiv');await page.locator('.paper-row').nth(3).waitFor();
   if(width<1024)await page.locator('.filter-disclosure > summary').click();
-  // Archive chip applies at once and matches every eess subject class.
-  await page.getByRole('group',{name:'电路相关分类'}).getByRole('button',{name:'eess 全部',exact:true}).click();
-  await page.waitForFunction(()=>new URLSearchParams(location.search).get('category')==='eess');
+  const group=page.getByRole('group',{name:'电路相关分类'});
+  assert.equal(await group.getByRole('button',{name:'eess 全部',exact:true}).count(),0);
+  await group.getByRole('button',{name:'eess.SP',exact:true}).click();
+  await group.getByRole('button',{name:'cs.AR',exact:true}).click();
+  await group.getByRole('button',{name:'eess.SY',exact:true}).click();
+  await page.waitForFunction(()=>new URLSearchParams(location.search).get('category')==='cs.AR,eess.SP,eess.SY');
   await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===2);
-  assert.equal(await page.getByRole('group',{name:'电路相关分类'}).getByRole('button',{name:'eess 全部',exact:true}).getAttribute('aria-pressed'),'true');
-  assert.match(await page.locator('.active-filters .filter-chip').innerText(),/eess 全部分类/);
-  // Pressing the selected chip clears the category.
-  await page.getByRole('group',{name:'电路相关分类'}).getByRole('button',{name:'eess 全部',exact:true}).click();
-  await page.waitForFunction(()=>!new URLSearchParams(location.search).has('category'));
+  assert.equal(await group.locator('[aria-pressed=true]').count(),3);
+  assert.equal(await page.locator('.active-filters .filter-chip').count(),3);
+  await page.reload();await page.locator('.paper-row').nth(1).waitFor();
+  if(width<1024)await page.locator('.filter-disclosure > summary').click();
+  assert.equal(await group.locator('[aria-pressed=true]').count(),3);
+  await page.getByRole('button',{name:'移除条件：eess.SP · Signal Processing',exact:true}).click();
+  await page.waitForFunction(()=>new URLSearchParams(location.search).get('category')==='cs.AR,eess.SY');
+  assert.equal(await group.locator('[aria-pressed=true]').count(),2);
+  const disclosure=page.locator('.arxiv-category-filter');
+  await page.getByRole('button',{name:'电路相关分类介绍',exact:true}).click();
+  const guide=page.getByRole('dialog',{name:'电路相关分类介绍'});await guide.waitFor();
+  assert.equal(await guide.locator('.venue-guide-profile').count(),7);
+  assert.ok((await guide.innerText()).includes('匹配其中任意一个'));
+  assert.equal(await guide.locator('a[href^="https://arxiv.org/category_taxonomy#"]').count(),7);
+  assert.ok(await guide.evaluate(el=>el.scrollWidth<=el.clientWidth+1));
+  if(process.env.CIRDC_BROWSER_OUTPUT){await fs.mkdir(process.env.CIRDC_BROWSER_OUTPUT,{recursive:true});await page.screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,'category-guide-'+width+'.png')});}
+  await page.keyboard.press('Escape');await guide.waitFor({state:'detached'});
+  assert.ok(await disclosure.evaluate(el=>el.open));
+  assert.equal(await page.evaluate(()=>document.activeElement?.getAttribute('aria-controls')),'arxiv-category-guide-dialog');
+  await page.getByRole('button',{name:'清除分类',exact:true}).click();
   await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===4);
   // A row's category tag filters by that exact subject class and names it.
   const tag=page.locator('.paper-row').nth(1).locator('.arxiv-category-tag',{hasText:'cs.AI'});
@@ -45,6 +63,11 @@ const matches=(row,category)=>!category||row.categories.some(c=>c.toLowerCase()=
   assert.equal(await page.locator('.paper-row .arxiv-category-tag',{hasText:'math-ph'}).count(),0);
   assert.equal(writes,0);assert.deepEqual(errors,[]);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
-  reports.push({width,archiveFilter:true,rowTagFilter:true,writes});await context.close();
+  await page.getByRole('button',{name:'English',exact:true}).click();
+  await page.getByRole('button',{name:'Circuit-related category guide',exact:true}).click();
+  await page.getByRole('dialog',{name:'Circuit-related category guide'}).waitFor();
+  assert.ok((await page.getByRole('dialog').innerText()).includes('Reading tips'));
+  await page.getByRole('button',{name:'Close category guide',exact:true}).click();
+  reports.push({width,multiCategoryUnion:true,duplicateRows:false,restore:true,guideProfiles:7,bilingual:true,rowTagFilter:true,writes});await context.close();
  }console.log(JSON.stringify(reports));}finally{await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

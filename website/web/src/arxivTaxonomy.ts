@@ -26,3 +26,14 @@ export function arxivCategoryName(code:string){return names.get(code.toLowerCase
 export function isArxivArchive(code:string){return archives.some(([archive])=>archive===code.toLowerCase());}
 /** Subject classes most often used for circuit and device research. */
 export const circuitCategories=['eess.SP','eess.SY','cs.AR','cs.ET','physics.app-ph','physics.ins-det','cond-mat.mes-hall'];
+
+/** Comma-separated OR selection, shared by URLs, chips and the category picker. */
+export function selectedArxivCategories(value:string){
+ const canonical=new Map(arxivCategories.map(c=>[c.code.toLowerCase(),c.code]));
+ return [...new Set(value.split(',').map(code=>code.trim().toLowerCase()).filter(Boolean))]
+  .sort().map(code=>canonical.get(code)||code);
+}
+export function toggleArxivCategory(value:string,code:string){
+ const selected=selectedArxivCategories(value),found=selected.some(c=>c.toLowerCase()===code.toLowerCase());
+ return selectedArxivCategories(found?selected.filter(c=>c.toLowerCase()!==code.toLowerCase()).join(','):[...selected,code].join(',')).join(',');
+}
