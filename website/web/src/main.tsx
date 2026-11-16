@@ -50,7 +50,8 @@ function App(){
   setError(String((e as Error).message));
  }}
  const publicReader=mode==='reader'&&!authRequired;
- useEffect(()=>{if(!loading)setAccount(user,publicReader,registration);},[user,publicReader,registration,loading]);
+ // Synced preferences and favorites belong to the reader site; the administrator workspace keeps browser settings.
+ useEffect(()=>{if(!loading&&mode==='reader')setAccount(user,publicReader,registration);},[user,publicReader,registration,loading,mode]);
  const path=window.location.pathname,next=returnPath(new URLSearchParams(window.location.search).get('next'));
  /** After signing in from the sign-in or registration page, return to the page that sent the reader there. */
  function signedIn(u:User){setCsrf(u.csrf);if(['/login','/register'].includes(path)&&!u.must_change){window.location.replace(next);return;}setUser(u);}
@@ -61,7 +62,7 @@ function App(){
   <a className="skip-link" href="#main">{t('跳到主要内容')}</a>
   <AppHeader mode={mode} user={user} publicReader={publicReader} registration={registration} agentOpen={agentOpen} onAgentAccess={openAgentAccess} onPassword={()=>setChange(true)} onLogout={()=>void logout()}/>
   {error&&<div className="global-error" role="alert"><span>{t(error)}</span><button type="button" className="ghost" onClick={()=>setError('')}>{t('关闭')}</button></div>}
-  {!publicReader&&!user?(path==='/register'&&registration?<Register onLogin={signedIn} next={next}/>:<Login mode={mode} registration={registration} next={next} onLogin={signedIn}/>):user&&(user.must_change||change)?<PasswordForm forced={!!user.must_change} done={()=>{setChange(false);setUser(null);void session();}} cancel={()=>setChange(false)}/>:mode==='admin'?<AdminPage/>
+  {!publicReader&&!user?(path==='/register'&&registration?<Register onLogin={signedIn} next={next}/>:<Login mode={mode} registration={registration} next={next} onLogin={signedIn}/>):user&&(user.must_change||change)?<PasswordForm forced={!!user.must_change} done={()=>{setChange(false);setUser(null);void session();}} cancel={()=>setChange(false)}/>:mode==='admin'?<AdminPage current={user?.username}/>
    :path==='/login'&&!user?<Login mode={mode} publicReader registration={registration} next={next} onLogin={signedIn}/>:path==='/register'&&registration&&!user?<Register onLogin={signedIn} next={next}/>
    :path==='/account'&&user?<Suspense fallback={null}><AccountPage onPassword={()=>setChange(true)} onLogout={()=>void logout()}/></Suspense>:path==='/favorites'&&user?<Suspense fallback={null}><FavoritesPage/></Suspense>
    :profileRoute?<AuthorProfile source={profileRoute[1]} authorId={profileRoute[2]} fetcher={api}/>:<Reader/>}
