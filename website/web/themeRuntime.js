@@ -15,6 +15,9 @@
   var meta=document.querySelector('meta[name="theme-color"]');
   if(!meta){meta=document.createElement('meta');meta.name='theme-color';document.head.appendChild(meta);}
   meta.content=theme.bg;
+  var icon=document.querySelector('link[rel~="icon"]');
+  if(!icon){icon=document.createElement('link');icon.rel='icon';document.head.appendChild(icon);}
+  icon.type='image/svg+xml';icon.href=theme.icon;
   if(remember){try{localStorage.setItem(key,preference);}catch(e){}}
   var next=preference+'/'+effective;
   if(next!==snapshot){snapshot=next;listeners.forEach(function(listener){listener();});}
