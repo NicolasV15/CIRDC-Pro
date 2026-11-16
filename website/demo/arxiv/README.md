@@ -1,6 +1,27 @@
 # 离线真实数据 Demo
 
-本目录供协作开发使用；无需 MySQL、生产站点、私有 provider、账户、密钥或外部论文下载。依赖安装和首次构建需要正常的软件包网络；完成后，Demo 运行及数据访问离线完成。
+## 2026-11-14 正文重构补充（当前材料状态）
+
+账号与正文重构任务见 `../../ACCOUNT_FAVORITES_HANDOFF.md`。本次从已存在缓存补充 `2611.14519v1` 的四张图片、PDF 原件和 TeX 源码包，逐文件摘要写入 manifest；原始 HTML 和 body 未改。既有启动命令和该篇深链接保持可用。下文关于缺图、PDF/TeX 未打包的文字是原捕获快照，已被本节更新；`observed_resources` 保留历史，不代表本次文件状态。
+
+第二篇 `reading-supplement/2611.14443v1/` 含 CC BY 4.0 的缓存原始 HTML、派生 body 和可用资产，作者和题名在原文内，来源、许可、render 与逐文件摘要见该目录 manifest。它目前是展示参考包，尚未加入 43 篇种子或单正文 API，由 Claude 接入本轮 Demo。
+
+两篇正文均是 HTML 路径，补充 PDF/TeX 原件不代表已经提供对应转换正文。源码转换和 PDF 转换须分别检查；fixture 与真实转换实测明确区分。没有启动新获取、解析或转换。补充原件可下载并用于阅读对照，但 Demo 仍没有 ZIP 准备接口，不能声称生产 ZIP 已验收。保留作者、出处和 CC BY 4.0 归属，不能把未打包当成原站缺失。
+
+## 账号、收藏与管理台（2026-11-16）
+
+`sh tools/web demo --port 18090 --admin-port 18091` 同时启动阅读端和管理台。
+
+- **账号与收藏**：使用网站正式的注册、登录、设置、收藏和 ZIP 打包代码，数据存放在 `work/arxiv-demo/state`（可用 `--state` 指定，不能放在网站正式状态目录下）。删除这个目录即可清空 Demo 账号。注册按正式规则限制为每个地址每小时 5 次，频繁重跑浏览器测试时请换一个新的状态目录。
+- **测试 PDF**：启动时在状态目录生成，正文写明「CIRDC offline demo TEST MATERIAL - not the paper」，只用于验证收藏打包。覆盖 IEEE 11741266、11126195，arXiv 0704.0001 的 v1、v2，以及 hep-th/9901001 的 v2；其余显示「未打包」。2611.14519v1 打包的是本目录里的真实 PDF 原件，字节不变。测试 PDF 只走 `/api/demo-test-cache/` 路由，论文详情页的资料状态不会把它们当作缓存原件。
+- **管理台**：浏览器打开 `http://localhost:18091/admin/`，用户名 `demo-admin`，密码写在状态目录的 `admin-credentials.txt`。账户与审计使用正式代码；作业、索引、资料和采集数据来自隔离的测试适配器（`--admin-scenario mixed` 或 `empty`），启动、恢复、重试只记录请求，不会启动任何作业。
+- **阅读样本**：在原有正文之外增加三个仅限 Demo 的条目，不进入 43 篇检索：
+  - `/arxiv/papers/9900001?source=arxiv&v=1`：缓存的 2611.14443v1 原站 HTML 与派生正文（CC BY 4.0，见 `reading-supplement/2611.14443v1/manifest.json`），字节不变。条目信息只取自缓存 HTML：标题、摘要，以及水印中的分类和日期；该 HTML 没有作者信息，因此作者留空。
+  - `/arxiv/papers/9900002?source=arxiv&v=1`：TeX 源码转换路径（`arxiv_source`）的代表性 fixture。
+  - `/arxiv/papers/9900003?source=arxiv&v=1`：PDF 转换路径（`pdf_parse`）的代表性 fixture。
+  - 两份 fixture 位于 `reading-fixtures/`，为本 Demo 编写，正文开头写明不是任何论文的转换结果，只用于检查阅读器对两种结构的处理。没有真实的 TeX 或 PDF 转换产物可以验证。
+
+；无需 MySQL、生产站点、私有 provider、账户、密钥或外部论文下载。依赖安装和首次构建需要正常的软件包网络；完成后，Demo 运行及数据访问离线完成。
 
 从仓库根运行：
 

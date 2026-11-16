@@ -12,35 +12,49 @@ from test_web import website as website
 
 def test_public_session_is_anonymous_without_cookie_or_account_lookup(website, monkeypatch):
     app = create_app(website, reader_auth='public')
+    original = app.state.accounts.session
     def forbidden(*args):
-        raise AssertionError('Public readers must not resolve account cookies')
+        raise AssertionError('Anonymous public readers must not resolve accounts')
     monkeypatch.setattr(app.state.accounts, 'session', forbidden)
     with TestClient(app) as client:
-        client.cookies.set('cirdc_reader', 'old-or-invalid-cookie')
         r = client.get('/api/auth/session')
         assert r.status_code == 200
         assert r.json()['user'] is None
         assert r.json()['authentication_required'] is False
         assert r.json()['access_mode'] == 'public'
+        assert r.json()['registration'] is True
         assert 'set-cookie' not in r.headers
         assert client.get('/api/papers?q=RF&field=title').status_code == 200
         assert client.get('/api/overview').status_code == 200
         assert client.get('/api/authors?q=Alice').status_code == 200
-
-
-def test_public_reader_rejects_every_account_operation_and_administrator_route(website):
-    app = create_app(website, reader_auth='public')
+        # Opening the sign-in form is the only anonymous request that sets a (pre-login) cookie.
+        prepared = client.get('/api/auth/session?prepare=1')
+        assert prepared.json()['csrf'] and 'cirdc_pre_reader' in prepared.headers['set-cookie']
+    monkeypatch.setattr(app.state.accounts, 'session', original)
     with TestClient(app) as client:
-        for path in ['/api/auth/login', '/api/auth/logout', '/api/auth/password']:
-            assert client.post(path, json={}).status_code == 404
-            assert client.get(path).status_code == 404
+        client.cookies.set('cirdc_reader', 'old-or-invalid-cookie')
+        assert client.get('/api/auth/session').json()['user'] is None
+        assert client.get('/api/papers?q=RF&field=title').status_code == 200
+
+
+def test_public_reader_allows_personal_accounts_but_never_administration(website):
+    app = create_app(website, reader_auth='public')
+    origin = {'Origin': 'http://testserver'}
+    with TestClient(app) as client:
         for path in ['/admin/', '/api/admin/users', '/api/admin/actions/update']:
             assert client.get(path).status_code == 404
-            assert client.post(path, json={}).status_code == 404
+            assert client.post(path, json={}, headers=origin).status_code == 404
         for method in ['POST', 'PUT', 'PATCH', 'DELETE']:
-            r = client.request(method, '/api/papers', json={})
+            r = client.request(method, '/api/papers', json={}, headers=origin)
             assert r.status_code == 405
             assert r.headers['allow'] == 'GET, HEAD'
+        # Sign-in and registration need the pre-login token; personal routes need a session.
+        assert client.post('/api/auth/login', json={}, headers=origin).status_code == 403
+        assert client.post('/api/auth/register', json={}, headers=origin).status_code == 403
+        assert client.post('/api/auth/login', json={}).status_code == 403
+        assert client.get('/api/me/settings').status_code == 401
+        assert client.get('/api/me/favorites').status_code == 401
+        assert client.post('/api/auth/password', json={}, headers=origin).status_code == 401
 
 
 def test_public_resource_streams_support_head_and_byte_ranges(website, tmp_path):
@@ -70,10 +84,11 @@ def test_requiring_login_again_preserves_accounts_passwords_and_session_workflow
         token = client.cookies.get('cirdc_reader')
     public = create_app(website, reader_auth='public')
     with TestClient(public) as client:
+        # A reader session stays valid when the site opens to anonymous readers; writes still need CSRF.
         client.cookies.set('cirdc_reader', token)
-        assert client.get('/api/auth/session').json()['user'] is None
+        assert client.get('/api/auth/session').json()['user']['username'] == 'alice'
         assert client.get('/api/papers?q=RF').status_code == 200
-        assert client.post('/api/auth/password', json={}).status_code == 404
+        assert client.post('/api/auth/password', json={}, headers={'Origin': 'http://testserver'}).status_code == 403
     restored = create_app(website, reader_auth='required')
     with restored.state.accounts.db() as db:
         after = db.execute('SELECT password_hash FROM users WHERE username=?', ('alice',)).fetchone()[0]

@@ -1,5 +1,6 @@
 import {useEffect,useId,useRef,useState} from 'react';
-import {t,useLanguage,setLanguage} from './i18n';
+import {t,useLanguage} from './i18n';
+import {chooseLanguage,signInHref} from './account';
 import ThemeControl from './ThemeControl';
 import Icon from './Icon';
 import SourceSwitch from './PaperSourceSwitch';
@@ -10,9 +11,9 @@ export function BrandMark(){
 }
 function LanguageSwitch(){
  const lang=useLanguage();
- return <div className="language-switch" role="group" aria-label={t('界面语言')}><button type="button" lang="zh-CN" aria-pressed={lang==='zh'} onClick={()=>setLanguage('zh')}>{t('中文')}</button><button type="button" lang="en" aria-pressed={lang==='en'} onClick={()=>setLanguage('en')}>{t('English')}</button></div>;
+ return <div className="language-switch" role="group" aria-label={t('界面语言')}><button type="button" lang="zh-CN" aria-pressed={lang==='zh'} onClick={()=>chooseLanguage('zh')}>{t('中文')}</button><button type="button" lang="en" aria-pressed={lang==='en'} onClick={()=>chooseLanguage('en')}>{t('English')}</button></div>;
 }
-function HeaderMenu({user,onPassword,onLogout}:{user:User;onPassword:()=>void;onLogout:()=>void}){
+function HeaderMenu({user,reader,onPassword,onLogout}:{user:User;reader:boolean;onPassword:()=>void;onLogout:()=>void}){
  const [open,setOpen]=useState(false),root=useRef<HTMLDivElement>(null),trigger=useRef<HTMLButtonElement>(null),id=useId();
  useEffect(()=>{
   if(!open)return;
@@ -28,19 +29,20 @@ function HeaderMenu({user,onPassword,onLogout}:{user:User;onPassword:()=>void;on
   </button>
   <div id={id} className="header-menu-panel" hidden={!open}>
    <div className="header-menu-account"><p className="header-menu-user"><span>{t('当前账户')}</span><strong>{user.username}</strong></p>
+    {reader&&<><a className="menu-item" href="/favorites"><Icon name="star"/>{t('我的收藏')}</a><a className="menu-item" href="/account"><Icon name="settings"/>{t('账户设置')}</a></>}
     <button type="button" className="menu-item" onClick={()=>{setOpen(false);onPassword();}}><Icon name="key"/>{t('修改密码')}</button>
     <button type="button" className="menu-item" onClick={()=>{setOpen(false);onLogout();}}><Icon name="logout"/>{t('退出')}</button></div>
   </div>
  </div>;
 }
-export default function AppHeader({mode,user,publicReader,agentOpen,onAgentAccess,onPassword,onLogout}:{mode:string;user:User|null;publicReader:boolean;agentOpen:boolean;onAgentAccess:(opener:HTMLElement)=>void;onPassword:()=>void;onLogout:()=>void}){
+export default function AppHeader({mode,user,publicReader,registration=false,agentOpen,onAgentAccess,onPassword,onLogout}:{mode:string;user:User|null;publicReader:boolean;registration?:boolean;agentOpen:boolean;onAgentAccess:(opener:HTMLElement)=>void;onPassword:()=>void;onLogout:()=>void}){
  useLanguage();
- const admin=mode==='admin',account=user&&!publicReader?user:null;
- const source=location.pathname.startsWith('/arxiv/')||new URLSearchParams(location.search).get('source')==='arxiv'?'arxiv':'ieee';
+ const admin=mode==='admin',account=user,signIn=publicReader&&!user&&!['/login','/register'].includes(location.pathname);
+ const source=['/favorites','/account','/login','/register'].includes(location.pathname)?null:location.pathname.startsWith('/arxiv/')||new URLSearchParams(location.search).get('source')==='arxiv'?'arxiv':'ieee';
  return <header className={'app-header'+(publicReader?' public-reader-header':'')}>
   <div className="app-header-inner">
    <div className="header-brand-group"><a className="brand" href={admin?'/admin/':'/'}><BrandMark/><span className="brand-name">{t('CIRDC ')}<em>{t('Pro')}</em></span><span className="brand-sub">{admin?t('管理员工作台'):t('文献数据库')}</span></a>{!admin&&<SourceSwitch source={source}/>}</div>
-   <div className="header-tools">{!admin&&<button type="button" className="header-ai-trigger" aria-haspopup="dialog" aria-controls="agent-access-dialog" aria-expanded={agentOpen} onClick={event=>onAgentAccess(event.currentTarget)}>{t('AI 接入')}</button>}<LanguageSwitch/><ThemeControl/>{account&&<HeaderMenu user={account} onPassword={onPassword} onLogout={onLogout}/>}</div>
+   <div className="header-tools">{!admin&&<button type="button" className="header-ai-trigger" aria-haspopup="dialog" aria-controls="agent-access-dialog" aria-expanded={agentOpen} onClick={event=>onAgentAccess(event.currentTarget)}>{t('AI 接入')}</button>}<LanguageSwitch/><ThemeControl/>{account&&<HeaderMenu user={account} reader={!admin} onPassword={onPassword} onLogout={onLogout}/>}{signIn&&<a className="button header-sign-in" href={signInHref()}>{t('登录')}</a>}{signIn&&registration&&<a className="header-register" href={'/register?next='+encodeURIComponent(location.pathname+location.search)}>{t('注册')}</a>}</div>
   </div>
  </header>;
 }

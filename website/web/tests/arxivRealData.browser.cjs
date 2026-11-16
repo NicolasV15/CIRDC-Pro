@@ -39,14 +39,18 @@ const assert=require('node:assert/strict');
   // Web addresses in comments are links.
   await page.goto(origin+'/arxiv/papers/3300797?source=arxiv');await sidebar.waitFor();
   assert.equal(await sidebar.locator('a[href="https://codiscovery.ai/contrastive-discovery/"]').count(),1);
-  // Files not bundled in the demo are labelled as such; there is nothing to request.
+  // 2611.14519v1 has every original cached (HTML, PDF, TeX since 5c072ad); downloads are read-only links.
   await page.goto(origin+'/arxiv/papers/3300802?source=arxiv&v=1');await page.locator('.document-progress').waitFor();
   const items=page.locator('.arxiv-resource-list li');
-  assert.deepEqual(await items.evaluateAll(list=>list.map(li=>li.dataset.state)),['ready','not_packaged','not_packaged','ready']);
+  assert.deepEqual(await items.evaluateAll(list=>list.map(li=>li.dataset.state)),['ready','ready','ready','ready']);
+  assert.deepEqual(await page.locator('.arxiv-resource-download').evaluateAll(links=>links.map(a=>a.getAttribute('href').split('/').pop())),['html','pdf','source']);
+  assert.equal(await page.locator('.arxiv-resource-actions button').count(),0);
+  assert.match(await page.locator('.document-progress').innerText(),/arXiv HTML/);
+  // Files not bundled in the demo are labelled as such; there is nothing to request.
+  await page.goto(origin+'/arxiv/papers/1?source=arxiv&v=2');await page.locator('.arxiv-resource-list').waitFor();
+  assert.deepEqual(await items.evaluateAll(list=>list.map(li=>li.dataset.state)),['not_packaged','not_packaged','not_packaged','not_packaged']);
   assert.match(await items.nth(1).innerText(),zh?/未打包/:/Not packaged/);
   assert.equal(await page.locator('.arxiv-resource-actions button').count(),0);
-  assert.match(await page.locator('.arxiv-resource-download').getAttribute('href'),/\/versions\/1\/files\/html$/);
-  assert.match(await page.locator('.document-progress').innerText(),/arXiv HTML/);
   await noOverflow();
   assert.deepEqual(writes,[]);assert.deepEqual(errors,[]);
   reports.push({language,width,rows:43,accentsDecoded:true,authorSearch:true,notPackaged:true,writes:writes.length});

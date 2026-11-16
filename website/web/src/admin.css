@@ -1,0 +1,32 @@
+/* Administrator workspace: a section rail beside one focused section; shared panels, tables and badges. */
+.admin-shell{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px;align-items:start}
+.admin-nav{position:sticky;top:84px;display:flex;flex-direction:column;gap:2px}
+.admin-nav-scope{display:inline-flex;align-items:center;gap:6px;margin:0 0 12px;color:var(--theme-faint);font-size:12px;font-weight:600}
+.admin-nav-scope .icon{width:14px;height:14px}
+.admin-nav a{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 12px;border-radius:var(--radius);color:var(--theme-muted);font-weight:600;text-decoration:none}
+.admin-nav a:hover{background:var(--theme-hover);color:var(--theme-text)}
+.admin-nav a[aria-current=page]{background:var(--theme-selected);color:var(--theme-text)}
+.admin-nav a .icon{width:17px;height:17px}
+.admin-nav .admin-alert{margin-left:auto;background:var(--theme-error-fg)}
+.admin-heading{margin:0 0 18px}
+.admin-heading h1{margin:0;font-size:26px}
+.admin-heading h1:focus{outline:none}
+.admin-summaries{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.admin-summary{display:flex;flex-direction:column;gap:8px;margin:0}
+.admin-summary h3{margin:0;color:var(--theme-muted);font-size:13px;font-weight:650}
+.admin-summary-value{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:22px;font-weight:700;overflow-wrap:anywhere}
+.admin-summary-value code{font-size:18px}
+.admin-summary .muted{margin:0;font-size:13px}
+.admin-summary .text-button{align-self:flex-start;display:inline-flex;align-items:center;gap:2px;margin-top:auto}
+.admin-stack{display:flex;flex-direction:column;gap:0}
+.admin-confirm{display:inline-flex;flex-wrap:wrap;gap:6px}
+.admin-workspace .danger{border-color:var(--theme-error-border);background:var(--theme-error-bg);color:var(--theme-error-fg)}
+.admin-filter{max-width:220px;min-height:34px}
+@media (max-width:960px){
+ .admin-shell{grid-template-columns:minmax(0,1fr);gap:16px}
+ .admin-nav{position:static;flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:4px;scrollbar-width:thin}
+ .admin-nav-scope{display:none}
+ .admin-nav a{flex:0 0 auto;border:1px solid var(--theme-border);border-radius:999px;min-height:38px}
+ .admin-filter{max-width:none;width:100%}
+}
+.admin-workspace td{vertical-align:middle}

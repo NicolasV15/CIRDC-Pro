@@ -1,6 +1,6 @@
 import {useEffect,useRef} from 'react';
 import {useLanguage} from './i18n';
-import {arxivCategoryProfiles,arxivCategoryReviewed,arxivCategorySource} from './arxivCategoryGuide';
+import {arxivCategoryProfiles,arxivCategoryReviewed,arxivCategorySource} from './arxivCategoryGuideData';
 import Icon from './Icon';
 
 export default function ArxivCategoryGuide({onClose}:{onClose:()=>void}){

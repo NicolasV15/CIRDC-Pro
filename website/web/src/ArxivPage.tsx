@@ -1,3 +1,6 @@
+import FavoriteButton from './FavoriteButton';
+import {useFavoriteStates} from './favorites';
+import {useAccount} from './account';
 import {lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {api,ApiError} from './api';
 import {arxivCitationRecord} from './arxivCitations';
@@ -63,6 +66,7 @@ function ArxivDetail(){
  currentVersion.current=version;
  const [abstractExpanded,setAbstractExpanded]=useState(true);
  const {layout,update,reset}=useReaderLayout();
+ useFavoriteStates(paperId&&version?[{source:'arxiv',paperId,version}]:[],!!useAccount().user);
  useEffect(()=>{let active=true;void api('/api/arxiv/papers/'+paperId).then(v=>{
   if(!active)return;const p:Paper=v.paper,observed=(p.versions||[]).map(x=>x.version),latest=Math.max(...observed),wanted=requestedVersion();
   setPaper(p);
@@ -111,14 +115,15 @@ function ArxivDetail(){
    {notice&&<p className="hint" role="status">{notice}</p>}
    <div className="detail-record-toolbar"><div className="detail-record-actions">
     <button type="button" className="detail-citation-trigger" aria-label={t('获取引用格式：')+paper.title} disabled={!selected} onClick={()=>setCitationOpen(true)}><Icon name="quote"/>{t('引用')}</button>
+    {selected&&<FavoriteButton detail target={{source:'arxiv',paperId:paper.paper_id,version}} title={paper.title}/>}
     {state?.resources?.pdf?.state==='ready'&&<PaperPdfLink href={base+'/pdf/reader'}/>}
-    <PaperSourceLink href={'https://arxiv.org/abs/'+paper.arxiv_id+'v'+version} label={t('arXiv 原文')}/>
+    {/^(\d{4}\.\d{4,5}|[a-z][a-z.-]+\/\d{7})$/.test(paper.arxiv_id)&&<PaperSourceLink href={'https://arxiv.org/abs/'+paper.arxiv_id+'v'+version} label={t('arXiv 原文')}/>}
    </div></div>
    <ArxivResources key={version} base={base} state={state} error={statusError} busy={busy} onAcquire={()=>void acquire()} onReload={()=>setPoll(v=>v+1)}/>
   </header>
   <div className="detail-grid"><section className="detail-main" aria-label={t('论文内容')}>
    <section className="panel abstract-panel"><div className="section-heading references-heading"><h2><button type="button" className="reference-toggle" aria-label={abstractExpanded?t('收起摘要'):t('展开摘要')} aria-controls="arxiv-abstract" aria-expanded={abstractExpanded} onClick={()=>setAbstractExpanded(v=>!v)}>{t('摘要')}</button></h2></div><div id="arxiv-abstract" hidden={!abstractExpanded}>{paper.abstract?<p className="abstract" data-copy-content="abstract" data-copy-source-html={paper.abstract} data-copy-source-mode="literal" data-copy-preserve-lines><AbstractText value={paper.abstract}/></p>:<p className="muted">{t('元数据未提供摘要。')}</p>}</div></section>
-   {!!state?.document&&<Suspense fallback={<p className="hint">{t('正在加载正文…')}</p>}><DocumentReader key={version} resource={documentResource} fetcher={api} automatic={false}/></Suspense>}
+   {!!state?.document&&<Suspense fallback={<p className="hint">{t('正在加载正文…')}</p>}><DocumentReader key={version} resource={documentResource} fetcher={api} automatic={false} paperSource="arxiv"/></Suspense>}
   </section><aside className={'publication-sidebar'+(!layout.infoOpen?' is-collapsed':'')}>
    {!layout.infoOpen&&<button type="button" className="publication-sidebar-rail" aria-label={t('展开出版信息')} aria-expanded={false} aria-controls={informationId} onClick={()=>update({infoOpen:true})}><Icon name="right"/><span className="publication-sidebar-rail-label">{t('出版信息')}</span></button>}
    <div id={informationId} className="panel bibliographic" hidden={!layout.infoOpen}><div className="publication-sidebar-heading"><h2>{t('出版信息')}</h2><button type="button" className="publication-sidebar-toggle" aria-label={t('收起出版信息')} aria-expanded={true} aria-controls={informationId} onClick={()=>update({infoOpen:false})}><Icon name="right"/></button></div><dl>

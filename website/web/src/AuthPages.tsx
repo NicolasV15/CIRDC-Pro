@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect,useState} from 'react';
 import {t} from './i18n';
 import {api,setCsrf} from './api';
 import type {User} from './types';
@@ -14,14 +14,21 @@ function Illustration(){
   <rect className="ill-line" x="62" y="182" width="118" height="6" rx="3"/>
  </svg>;
 }
-export function Login({mode,onLogin}:{mode:string;onLogin:(u:User)=>void}){
- const [name,setName]=useState(''),[password,setPassword]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false);
+/** Public readers receive a pre-login token only when they open a sign-in or registration form. */
+function usePreLoginToken(publicReader:boolean){
+ const [ready,setReady]=useState(!publicReader);
+ useEffect(()=>{if(!publicReader)return;void api('/api/auth/session?prepare=1').then(r=>{setCsrf(r.csrf);setReady(true);}).catch(()=>setReady(true));},[publicReader]);
+ return ready;
+}
+export function Login({mode,onLogin,publicReader=false,registration=false,next='/'}:{mode:string;onLogin:(u:User)=>void;publicReader?:boolean;registration?:boolean;next?:string}){
+ const [name,setName]=useState(''),[password,setPassword]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),ready=usePreLoginToken(publicReader);
  async function submit(e:React.FormEvent){e.preventDefault();setBusy(true);setError('');try{const r=await api('/api/auth/login','POST',{username:name,password});setCsrf(r.csrf);onLogin(r.user);}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
  return <main id="main" className="auth-layout">
   <section className="auth-intro"><span className="eyebrow">{t('CIRCUITS · RESEARCH · DISCOVERY')}</span><h1>{t('从一篇论文，')}<br/>{t('开始下一步研究。')}</h1><p>{t('汇集期刊与会议元数据。检索标题、作者、关键词和摘要，查看完整记录与数据覆盖情况。')}</p><Illustration/></section>
-  <section className="auth-card" aria-labelledby="login-title"><h2 id="login-title">{mode==='admin'?t('登录管理员工作台'):t('登录文献数据库')}</h2><p className="muted">{t('使用独立的网站账户。首次登录需要修改初始密码。')}</p>
-   <form onSubmit={e=>void submit(e)}><label>{t('用户名')}<input name="username" autoComplete="username" required value={name} onChange={e=>setName(e.target.value)}/></label><PasswordInput label={t('密码')} name="password" value={password} onChange={setPassword} autoComplete="current-password"/>{error&&<p className="error" role="alert">{t(error)}</p>}<button className="primary wide" disabled={busy}>{busy?t('正在登录…'):t('登录')}</button></form>
-   <p className="hint">{t('账户由管理员开通。忘记密码时请联系管理员。')}</p></section>
+  <section className="auth-card" aria-labelledby="login-title"><h2 id="login-title">{mode==='admin'?t('登录管理员工作台'):publicReader?t('登录 CIRDC Pro'):t('登录文献数据库')}</h2><p className="muted">{publicReader?t('登录后可收藏论文，并在不同设备上同步主题和语言。'):t('使用独立的网站账户。首次登录需要修改初始密码。')}</p>
+   <form onSubmit={e=>void submit(e)}><label>{t('用户名')}<input name="username" autoComplete="username" required value={name} onChange={e=>setName(e.target.value)}/></label><PasswordInput label={t('密码')} name="password" value={password} onChange={setPassword} autoComplete="current-password"/>{error&&<p className="error" role="alert">{t(error)}</p>}<button className="primary wide" disabled={busy||!ready}>{busy?t('正在登录…'):t('登录')}</button></form>
+   {registration&&<p className="auth-switch">{t('还没有账户？')}<a href={'/register?next='+encodeURIComponent(next)}>{t('注册')}</a></p>}
+   <p className="hint">{registration?t('忘记密码时请联系管理员重置。'):t('账户由管理员开通。忘记密码时请联系管理员。')}</p>{publicReader&&<p className="auth-switch"><a href={next}>{t('继续匿名浏览')}</a></p>}</section>
  </main>;
 }
 function PasswordInput({label,name,value,onChange,autoComplete,minLength}:{label:string;name?:string;value:string;onChange:(value:string)=>void;autoComplete:'current-password'|'new-password';minLength?:number}){
@@ -34,5 +41,23 @@ export function PasswordForm({forced,done,cancel}:{forced:boolean;done:()=>void;
  return <main id="main" className="password-page">
   <section className="auth-card" aria-labelledby="password-title"><span className="eyebrow">{t('ACCOUNT SECURITY')}</span><h1 id="password-title">{forced?t('设置你自己的密码'):t('修改密码')}</h1><p className="muted">{forced?t('首次登录，请先修改初始密码后继续。'):t('修改后所有已有会话会退出，请使用新密码重新登录。')}</p>
    <form onSubmit={e=>void submit(e)}><PasswordInput label={t('当前密码')} value={current} onChange={setCurrent} autoComplete="current-password"/><PasswordInput label={t('新密码 · 至少 8 个字符')} value={next} onChange={setNext} autoComplete="new-password" minLength={8}/><PasswordInput label={t('再次输入新密码')} value={confirm} onChange={setConfirm} autoComplete="new-password" minLength={8}/>{error&&<p className="error" role="alert">{t(error)}</p>}<div className="actions"><button className="primary" disabled={busy}>{busy?t('保存中…'):t('保存并重新登录')}</button>{!forced&&<button type="button" onClick={cancel}>{t('取消')}</button>}</div></form></section>
+ </main>;
+}
+
+/** Self-registration creates an ordinary reader who keeps the password chosen here. */
+export function Register({onLogin,next='/'}:{onLogin:(u:User)=>void;next?:string}){
+ const [name,setName]=useState(''),[password,setPassword]=useState(''),[confirm,setConfirm]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),ready=usePreLoginToken(true);
+ async function submit(e:React.FormEvent){
+  e.preventDefault();setError('');
+  if(password!==confirm){setError(t('两次输入的密码不一致。'));return;}
+  setBusy(true);try{const r=await api('/api/auth/register','POST',{username:name,password});setCsrf(r.csrf);onLogin(r.user);}catch(e){setError((e as Error).message);}finally{setBusy(false);}
+ }
+ return <main id="main" className="auth-layout">
+  <section className="auth-intro"><span className="eyebrow">{t('CIRCUITS · RESEARCH · DISCOVERY')}</span><h1>{t('收藏论文，')}<br/>{t('在任何设备继续阅读。')}</h1><p>{t('账户只保存你的收藏和界面偏好，不改变论文数据。')}</p><Illustration/></section>
+  <section className="auth-card" aria-labelledby="register-title"><h2 id="register-title">{t('创建账户')}</h2>
+   <form onSubmit={e=>void submit(e)}><label>{t('用户名')}<input name="username" autoComplete="username" required pattern="[a-z][a-z0-9_\-]{0,31}" title={t('小写字母开头，可含数字、下划线和连字符，最多 32 个字符。')} aria-describedby="register-username-rule" value={name} onChange={e=>setName(e.target.value.trim())}/></label><p className="hint" id="register-username-rule">{t('小写字母开头，可含数字、下划线和连字符，最多 32 个字符。')}</p>
+    <PasswordInput label={t('密码 · 至少 8 个字符')} name="password" value={password} onChange={setPassword} autoComplete="new-password" minLength={8}/><PasswordInput label={t('再次输入密码')} value={confirm} onChange={setConfirm} autoComplete="new-password" minLength={8}/>
+    {error&&<p className="error" role="alert">{t(error)}</p>}<button className="primary wide" disabled={busy||!ready}>{busy?t('正在创建…'):t('创建并登录')}</button></form>
+   <p className="auth-switch">{t('已有账户？')}<a href={'/login?next='+encodeURIComponent(next)}>{t('登录')}</a></p></section>
  </main>;
 }

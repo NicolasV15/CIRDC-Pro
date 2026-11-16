@@ -1,3 +1,6 @@
+import FavoriteButton from './FavoriteButton';
+import {useFavoriteStates} from './favorites';
+import {useAccount} from './account';
 import React,{useEffect,useRef,useState} from 'react';
 import ArxivPage from './ArxivPage';
 import {t,useLanguage,localizedText,contentTypeLabel} from './i18n';
@@ -38,6 +41,7 @@ function IEEEReaderPage(){
  // Selection belongs to the rows on screen, never to a hidden cross-search basket.
  const [results,dispatchResults]=React.useReducer(resultSelection<Paper>,{rows:[],selected:[]});
  const {rows}=results,selectedKeys=new Set(results.selected);
+ useFavoriteStates(rows.map(p=>({source:'ieee' as const,paperId:String(p.number)})),!!useAccount().user);
  function snapshot(p:Paper):SelectedPaper{return {number:p.number,title:p.title,year:p.year,kind:p.kind,venue:p.venue,venue_series:p.venue_series,publication:p.publication};}
  const selected=rows.filter(p=>selectedKeys.has(p.number)).map(snapshot);
  function selectPapers(papers:Paper[],checked:boolean){dispatchResults({type:'select',numbers:papers.map(p=>p.number),checked});}
@@ -185,7 +189,7 @@ function IEEEReaderPage(){
       <div className="paper-source">{p.position&&<span className="paper-position">#{p.position}</span>}<span className="paper-year">{p.year||'—'}</span>{p.kind&&<span className="paper-kind">{contentTypeLabel(p.kind)}</span>}<div className="publication-line"><VenueTags paper={p}/><p className="publication">{p.publication}</p></div></div>
       {topView&&<MatchReasons paper={p}/>}
       {applied.field==='body'?<PassageHits paper={p} query={applied.q} terms={applied.terms} onOpen={open}/>:p.excerpt?<p className="match-excerpt"><span>{t(p.excerpt.field==='keywords'?'关键词':'摘要')}</span><Highlighted value={p.excerpt}/></p>:p.snippet&&<AbstractPreview number={p.number} preview={p.snippet} fetcher={api}/>}
-      <div className="paper-meta"><button type="button" className="citation-trigger" aria-label={t('获取引用格式：')+(p.title||p.number)} onClick={()=>setCitationNumbers([p.number])}><Icon name="quote"/>{t('引用')}</button>{p.resources?.[0]&&readingHref(p.resources[0])&&<a className="button resource-shortcut" href={readingHref(p.resources[0])} target="_blank" rel="noopener noreferrer"><Icon name="file"/>{localizedText(p.resources[0].label_i18n,p.resources[0].label)}<Icon name="external" className="icon-trailing"/></a>}<code className="paper-number" title={t('论文编号')}>{p.number}</code></div>
+      <div className="paper-meta"><button type="button" className="citation-trigger" aria-label={t('获取引用格式：')+(p.title||p.number)} onClick={()=>setCitationNumbers([p.number])}><Icon name="quote"/>{t('引用')}</button><FavoriteButton target={{source:'ieee',paperId:String(p.number)}} title={p.title||p.number}/>{p.resources?.[0]&&readingHref(p.resources[0])&&<a className="button resource-shortcut" href={readingHref(p.resources[0])} target="_blank" rel="noopener noreferrer"><Icon name="file"/>{localizedText(p.resources[0].label_i18n,p.resources[0].label)}<Icon name="external" className="icon-trailing"/></a>}<code className="paper-number" title={t('论文编号')}>{p.number}</code></div>
      </div>
     </article>)}</div>}
     {cursor&&<button className="load-more" disabled={busy} onClick={()=>void load(applied,cursor)}>{busy?t('加载中…'):t('加载更多论文')}</button>}
