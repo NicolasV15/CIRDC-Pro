@@ -12,6 +12,7 @@ from starlette.responses import FileResponse, JSONResponse
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 from .auth import Accounts
+from .account_api import auth_routes, registration_open
 from .access import authentication_required, SearchRateLimiter
 from .index import metadata, publication_year_range, search, validate_year_range
 from .query import article_number
@@ -30,6 +31,42 @@ def response(value, status=200):
                         headers={'Cache-Control': 'no-store'})
 
 
+class SiteDirectory:
+    """Paper identities and cached-PDF routes of this deployment, for favorites and their archives."""
+
+    def __init__(self, config, resources, arxiv_catalog):
+        self.config, self.resources, self.catalog = config, resources, arxiv_catalog
+
+    def ieee(self, numbers):
+        numbers = [n for n in dict.fromkeys(numbers) if re.fullmatch(r'[0-9]{1,64}', n)]
+        if not numbers:
+            return {}
+        with closing(Store(self.config)) as store:
+            rows = store.execute('SELECT number,data FROM papers WHERE number IN (' + ','.join(['%s'] * len(numbers)) + ')',
+                                 tuple(numbers))
+        result = {}
+        for row in rows:
+            record = json.loads(row['data']) if isinstance(row['data'], str) else row['data']
+            year = str(record.get('publicationYear', ''))
+            result[str(row['number'])] = {'title': str(record.get('articleTitle') or ''),
+                                          'year': int(year) if year.isdigit() else None}
+        return result
+
+    def arxiv(self, paper_id):
+        return self.catalog.paper(paper_id=paper_id) if self.catalog else None
+
+    def pdf_route(self, source, paper_id, version):
+        if source == 'arxiv':
+            return f'/api/arxiv/papers/{paper_id}/versions/{version}/files/pdf' if self.catalog else None
+        item = {'number': paper_id}
+        self.resources.attach([item])
+        for resource in item.get('resources', []):
+            href = str(resource.get('href', ''))
+            if resource.get('kind') == 'pdf' and re.fullmatch(r'/api/[A-Za-z0-9_./%-]+', href) and '..' not in href:
+                return href
+        return None
+
+
 def create_app(config, interface='reader', resource_providers=None, reader_auth=None):
     if interface not in ('reader', 'admin'):
         raise ValueError('Invalid interface')
@@ -37,8 +74,8 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
     public_reader = interface == 'reader' and not requires_auth
     accounts = Accounts()
     resources = resource_providers if resource_providers is not None else ResourceProviders(config, interface)
+    registration = registration_open(interface, public_reader)
     cookie = 'cirdc_' + interface
-    pre_cookie = 'cirdc_pre_' + interface
     static = Path(__file__).parent / 'static'
     search_limit = SearchRateLimiter()
 
@@ -80,10 +117,9 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
             machine = policy.get('machine', False)
             if interface == 'reader' and re.fullmatch(r'/api/author-profiles/ieee/[0-9]{1,64}/ensure', path):
                 policy = {**policy, 'write': True}
+            personal_request = path.startswith(('/api/me/', '/api/auth/'))
             if public_reader and path.startswith('/api/'):
-                if path.startswith('/api/auth/') and path != '/api/auth/session':
-                    return response({'error': 'not_found'}, 404)
-                if request.method not in ('GET', 'HEAD') and not policy.get('write'):
+                if request.method not in ('GET', 'HEAD') and not policy.get('write') and not personal_request:
                     result = response({'error': 'read_only'}, 405)
                     result.headers['Allow'] = 'GET, HEAD'
                     return result
@@ -95,17 +131,21 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                 length = request.headers.get('content-length', '0')
                 if not length.isdigit() or int(length) > policy.get('body_limit', 32768):
                     return response({'error': 'request_too_large'}, 413)
-            user = None if public_reader or agent_request else await run_in_threadpool(accounts.session, request.cookies.get(cookie), interface)
+            # Anonymous public visitors are never looked up; a signed-in reader keeps their session.
+            token = request.cookies.get(cookie)
+            user = None if agent_request or public_reader and not token else await run_in_threadpool(accounts.session, token, interface)
             request.state.user = user
             request.state.public_reader = public_reader
-            if path.startswith('/api/') and path not in ('/api/auth/session', '/api/auth/login'):
-                if not user and not public_reader and not machine:
+            if path.startswith('/api/') and path not in ('/api/auth/session', '/api/auth/login', '/api/auth/register'):
+                if not user and (not public_reader and not machine or path.startswith('/api/me/')):
                     return response({'error': 'authentication_required'}, 401)
-                if user and user['must_change'] and path not in ('/api/auth/password', '/api/auth/logout'):
+                # Public browsing continues for a reader who must change a password; personal features wait.
+                if user and user['must_change'] and path not in ('/api/auth/password', '/api/auth/logout') and (
+                        not public_reader or path.startswith('/api/me/')):
                     return response({'error': 'password_change_required'}, 403)
                 if interface == 'admin' and user['role'] != 'admin':
                     return response({'error': 'administrator_required'}, 403)
-                if not public_reader and not machine and request.method in ('POST', 'PUT', 'PATCH', 'DELETE') and not secrets.compare_digest(request.headers.get('x-csrf-token', ''), user['csrf']):
+                if user and not machine and request.method in ('POST', 'PUT', 'PATCH', 'DELETE') and not secrets.compare_digest(request.headers.get('x-csrf-token', ''), user['csrf']):
                     return response({'error': 'csrf_rejected'}, 403)
                 if path in ('/api/papers', '/api/agent/v1/papers'):
                     key = ('ip', request.client.host if request.client else 'unknown') if public_reader or agent_request else ('account', user['username'])
@@ -123,18 +163,6 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
             result.headers.setdefault('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'")
             return result
 
-    async def session(request):
-        if public_reader:
-            return response({'user': None, 'csrf': '', 'interface': interface,
-                             'authentication_required': False, 'access_mode': 'public'})
-        user = request.state.user
-        csrf = user['csrf'] if user else secrets.token_urlsafe(32)
-        result = response({'user': user, 'csrf': csrf, 'interface': interface,
-                           'authentication_required': True, 'access_mode': 'required'})
-        if not user:
-            result.set_cookie(pre_cookie, csrf, httponly=True, samesite='strict', max_age=3600)
-        return result
-
     async def body(request):
         raw = bytearray()
         async for chunk in request.stream():
@@ -145,38 +173,6 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
         if not isinstance(data, dict):
             raise ValueError('Expected an object')
         return data
-
-    async def login(request):
-        if not secrets.compare_digest(request.cookies.get(pre_cookie, ''), request.headers.get('x-csrf-token', '')) or not request.cookies.get(pre_cookie):
-            return response({'error': 'csrf_rejected'}, 403)
-        try:
-            data = await body(request)
-            token, user = await run_in_threadpool(accounts.login, data.get('username'), data.get('password'),
-                                                  interface, request.client.host if request.client else '')
-        except PermissionError:
-            return response({'error': 'login_throttled', 'message': '尝试过多，请 15 分钟后重试。'}, 429)
-        except (ValueError, KeyError, TypeError):
-            return response({'error': 'invalid_credentials', 'message': '用户名或密码不正确。'}, 401)
-        result = response({'user': user, 'csrf': user['csrf']})
-        result.set_cookie(cookie, token, httponly=True, samesite='strict', max_age=3600 if interface == 'admin' else 28800)
-        result.delete_cookie(pre_cookie)
-        return result
-
-    def logout(request):
-        accounts.logout(request.cookies.get(cookie, ''))
-        result = response({'status': 'signed_out'})
-        result.delete_cookie(cookie)
-        return result
-
-    async def password(request):
-        try:
-            data = await body(request)
-            await run_in_threadpool(accounts.change, request.state.user['username'], data.get('current_password'), data.get('new_password'))
-        except (ValueError, TypeError):
-            return response({'error': 'invalid_password', 'message': '请核对当前密码，新密码至少 8 个字符且不能与原密码相同。'}, 422)
-        result = response({'status': 'password_changed'})
-        result.delete_cookie(cookie)
-        return result
 
     def papers(request):
         totals = request.query_params.get('totals', 'include')
@@ -360,10 +356,7 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
         return response({'status': 'ok', 'interface': interface})
 
     research_mcp = None
-    routes = [Route('/healthz', health), Route('/api/auth/session', session),
-              Route('/api/auth/login', login, methods=['POST']),
-              Route('/api/auth/logout', logout, methods=['POST']),
-              Route('/api/auth/password', password, methods=['POST'])]
+    routes = [Route('/healthz', health), *auth_routes(accounts, interface, public_reader, registration, response, body)]
     from .maintenance import routes as maintenance_routes
     routes += maintenance_routes(config,response,interface)
     if interface == 'reader':
@@ -381,9 +374,13 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                    Route('/api/venues', venues), Route('/api/overview', overview),
                    Route('/api/author-profiles/{source}/{author_id}', author_profile),
                    Route('/api/authors', authors), Route('/api/authors/{source}/{author_id}', author)]
-        from .arxiv import routes as arxiv_routes
-        routes += arxiv_routes()
+        from .arxiv import configured_catalog, routes as arxiv_routes
+        arxiv_catalog = configured_catalog()
+        routes += arxiv_routes(arxiv_catalog)
         routes += resources.routes()
+        from .personal import Archives, Personal, routes as personal_routes
+        personal = Personal(accounts, SiteDirectory(config, resources, arxiv_catalog))
+        routes += personal_routes(personal, Archives(personal, lambda: app), response, body)
         from .agent import AgentAPI
         agent_api = AgentAPI(resources, papers, paper)
         routes += agent_api.routes()
@@ -509,6 +506,8 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
     if static.exists():
         routes.append(Mount('/assets', StaticFiles(directory=static / 'assets'), name='assets'))
     routes += [Route('/', shell), Route('/login', shell), Route('/papers/{number}', shell)]
+    if interface == 'reader':
+        routes += [Route('/register', shell), Route('/account', shell), Route('/favorites', shell)]
     if interface == 'reader':
         routes.append(Route('/authors/{source}/{author_id}', shell))
         routes.append(Route('/developers/ai', shell))

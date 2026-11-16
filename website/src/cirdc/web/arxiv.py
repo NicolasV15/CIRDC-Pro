@@ -464,11 +464,15 @@ class Catalog:
         }
 
 
-def routes(catalog=None):
+def configured_catalog():
     profile = os.environ.get("CIRDC_ARXIV_READER_CONFIG")
-    if catalog is None and not profile:
+    return Catalog(profile) if profile else None
+
+
+def routes(catalog=None):
+    catalog = catalog or configured_catalog()
+    if catalog is None:
         return []
-    catalog = catalog or Catalog(profile)
 
     async def endpoint(request):
         try:

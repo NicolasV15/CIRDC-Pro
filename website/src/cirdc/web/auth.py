@@ -28,6 +28,26 @@ class Accounts:
               id INTEGER PRIMARY KEY,at REAL NOT NULL,actor TEXT NOT NULL,action TEXT NOT NULL,
               target TEXT NOT NULL,detail TEXT NOT NULL);
             ''')
+        self.migrate()
+
+    def migrate(self):
+        """Additive, repeatable schema changes; one transaction, so a failure leaves no partial change."""
+        with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
+            columns = {row['name'] for row in db.execute('PRAGMA table_info(users)')}
+            if 'origin' not in columns:
+                db.execute("ALTER TABLE users ADD COLUMN origin TEXT NOT NULL DEFAULT 'admin'")
+            db.execute('''CREATE TABLE IF NOT EXISTS signups(id INTEGER PRIMARY KEY,ip TEXT NOT NULL,at REAL NOT NULL)''')
+            db.execute('''CREATE TABLE IF NOT EXISTS user_settings(
+              username TEXT PRIMARY KEY,theme TEXT,language TEXT,updated REAL NOT NULL)''')
+            db.execute('''CREATE TABLE IF NOT EXISTS favorites(
+              id INTEGER PRIMARY KEY,username TEXT NOT NULL,source TEXT NOT NULL,paper_id TEXT NOT NULL,
+              version INTEGER NOT NULL DEFAULT 0,identifier TEXT NOT NULL,title TEXT NOT NULL,year INTEGER,
+              created REAL NOT NULL,UNIQUE(username,source,paper_id,version))''')
+            db.execute('CREATE INDEX IF NOT EXISTS favorite_user ON favorites(username,id)')
+            db.execute('''CREATE TABLE IF NOT EXISTS archives(
+              id TEXT PRIMARY KEY,username TEXT NOT NULL,path TEXT NOT NULL,filename TEXT NOT NULL,
+              created REAL NOT NULL,expires REAL NOT NULL)''')
 
     @contextmanager
     def db(self):
@@ -41,6 +61,23 @@ class Accounts:
     @staticmethod
     def valid_username(username):
         return isinstance(username, str) and re.fullmatch(r'[a-z][a-z0-9_-]{0,31}', username)
+
+    def register(self, username, password, ip, limit=5, window=3600):
+        """Self-service sign-up: always an ordinary reader who keeps the chosen password."""
+        if not self.valid_username(username) or not isinstance(password, str) or not 8 <= len(password) <= 1024:
+            raise ValueError('Invalid account or password (minimum 8 characters)')
+        with self.db() as db:
+            db.execute('DELETE FROM signups WHERE at<?', (time.time() - window,))
+            if db.execute('SELECT COUNT(*) FROM signups WHERE ip=?', (ip,)).fetchone()[0] >= limit:
+                raise PermissionError('Too many registrations; try again later')
+            db.execute('INSERT INTO signups(ip,at) VALUES(?,?)', (ip, time.time()))
+        value = self.hasher.hash(password)
+        with self.db() as db:
+            inserted = db.execute('INSERT OR IGNORE INTO users(username,password_hash,role,must_change,created,origin) '
+                                  "VALUES(?,?,'reader',0,?,'self')", (username, value, time.time())).rowcount
+            if not inserted:
+                raise FileExistsError('Account already exists')
+            self.audit(username, 'account_register', username, '', db)
 
     def create(self, username, password, role='reader', actor='bootstrap'):
         if not self.valid_username(username) or len(password) < 8 or len(password) > 1024 or role not in ('reader', 'admin'):
@@ -152,7 +189,7 @@ class Accounts:
 
     def list(self):
         with self.db() as db:
-            return [dict(r) for r in db.execute('SELECT username,role,active,must_change,created FROM users ORDER BY username')]
+            return [dict(r) for r in db.execute('SELECT username,role,active,must_change,created,origin FROM users ORDER BY username')]
 
     def events(self):
         with self.db() as db:
