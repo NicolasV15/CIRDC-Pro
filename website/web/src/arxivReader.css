@@ -1,0 +1,80 @@
+/* arXiv reading text, for every reading path (arXiv HTML, TeX source and PDF conversion). Scoped to the paper
+   source so IEEE text keeps the shared rules; LaTeXML roles (ltx_*) are styled where they occur. Display only:
+   the cached HTML, its TeX and copy values are untouched. */
+.document-body[data-paper-source="arxiv"]{--arxiv-rule:var(--theme-border-strong)}
+.document-body[data-paper-source="arxiv"] .ltx_para>.ltx_p:first-child{margin-top:0}
+.document-body[data-paper-source="arxiv"] .ltx_para{margin:0 0 1em}
+.document-body[data-paper-source="arxiv"] .ltx_tag_section,.document-body[data-paper-source="arxiv"] :is(.ltx_tag_subsection,.ltx_tag_subsubsection){margin-right:.15em}
+
+/* Equations: LaTeXML lays them out as tables. Centre the formula, keep the number at the right edge and align
+   multi-line equations on their columns, without the grid lines the shared table rule would draw. */
+.document-body[data-paper-source="arxiv"] table:is(.ltx_equation,.ltx_eqn_table,.ltx_equationgroup){display:block;width:100%;max-width:100%;margin:1.1em 0;overflow:visible;border:0;font-family:inherit;font-size:inherit}
+.document-body[data-paper-source="arxiv"] table:is(.ltx_equation,.ltx_eqn_table,.ltx_equationgroup)>tbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto) minmax(0,1fr) auto;align-items:center;row-gap:.35em}
+.document-body[data-paper-source="arxiv"] table.ltx_eqn_align>tbody{grid-template-columns:minmax(0,1fr) minmax(0,auto) minmax(0,auto) minmax(0,1fr) auto}
+.document-body[data-paper-source="arxiv"] table:is(.ltx_equation,.ltx_eqn_table,.ltx_equationgroup) tr{display:contents}
+.document-body[data-paper-source="arxiv"] table:is(.ltx_equation,.ltx_eqn_table,.ltx_equationgroup) td{display:block;min-width:0;padding:0;border:0;background:none;overflow-x:auto;overflow-y:hidden}
+.document-body[data-paper-source="arxiv"] td.ltx_eqn_center_padleft{grid-column-start:1}
+.document-body[data-paper-source="arxiv"] td.ltx_eqn_eqno{grid-column:-2/-1;padding-left:1.2em;color:var(--theme-muted);font-family:var(--font-sans);font-size:.85em;white-space:nowrap;text-align:right;overflow:visible}
+.document-body[data-paper-source="arxiv"] td:is(.ltx_align_right){text-align:right}
+.document-body[data-paper-source="arxiv"] td:is(.ltx_align_left){text-align:left}
+.document-body[data-paper-source="arxiv"] td:is(.ltx_align_center){text-align:center}
+.document-body[data-paper-source="arxiv"] td.ltx_eqn_cell .katex-display{margin:0;padding:6px 2px}
+.document-body[data-paper-source="arxiv"] td.ltx_eqn_cell .document-math-source{margin:2px 0 4px;text-align:left}
+
+/* Tables follow the rules LaTeXML recorded (booktabs and \hline), not a full grid. */
+.document-body[data-paper-source="arxiv"] figure.ltx_table{margin:1.6em 0;overflow-x:auto}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular{width:max-content;max-width:100%;margin:.6em auto;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular :is(td,th){padding:5px 10px;border:0;background:none;font-weight:inherit;line-height:1.45;white-space:nowrap}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular th{font-weight:650}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular .ltx_border_t{border-top:1px solid var(--arxiv-rule)}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular .ltx_border_tt{border-top:2px solid var(--arxiv-rule)}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular .ltx_border_b{border-bottom:1px solid var(--arxiv-rule)}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular .ltx_border_bb{border-bottom:2px solid var(--arxiv-rule)}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular .ltx_border_l{border-left:1px solid var(--arxiv-rule)}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular .ltx_border_r{border-right:1px solid var(--arxiv-rule)}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular :is(.ltx_align_left){text-align:left}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular :is(.ltx_align_center){text-align:center}
+.document-body[data-paper-source="arxiv"] table.ltx_tabular :is(.ltx_align_right){text-align:right}
+
+/* Figures: sub-figures sit side by side when there is room; captions read as supporting text. */
+.document-body[data-paper-source="arxiv"] figure.ltx_figure{margin:1.6em 0}
+.document-body[data-paper-source="arxiv"] .ltx_flex_figure{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:12px 20px}
+.document-body[data-paper-source="arxiv"] .ltx_flex_cell{flex:1 1 220px;min-width:0}
+.document-body[data-paper-source="arxiv"] .ltx_flex_break{flex-basis:100%;height:0}
+.document-body[data-paper-source="arxiv"] .ltx_flex_cell figure{margin:0}
+.document-body[data-paper-source="arxiv"] figure img{margin:8px auto}
+.document-body[data-paper-source="arxiv"] .ltx_caption{margin:.5em auto 0;max-width:46em;text-align:left;color:var(--theme-text)}
+.document-body[data-paper-source="arxiv"] .ltx_caption .ltx_tag{font-weight:650}
+
+/* Footnotes: the marker stays in the sentence; the note reads as an aside below it. */
+.document-body[data-paper-source="arxiv"] .ltx_note_mark{color:var(--theme-accent);font-family:var(--font-sans);font-size:.7em}
+.document-body[data-paper-source="arxiv"] .ltx_note_outer{display:block;margin:.4em 0 .6em;padding:.35em .8em;border-left:3px solid var(--theme-border-strong);color:var(--theme-muted);font-family:var(--font-sans);font-size:calc(13px * var(--reader-font-scale,1));line-height:1.6}
+.document-body[data-paper-source="arxiv"] .ltx_note_content>.ltx_note_mark{display:none}
+.document-body[data-paper-source="arxiv"] .ltx_note_content .ltx_tag_note{margin-right:.45em;font-weight:650;color:var(--theme-text)}
+
+/* Theorems, lists and algorithms. */
+.document-body[data-paper-source="arxiv"] .ltx_theorem{margin:1.2em 0;padding:.7em 1em;border-left:3px solid var(--theme-accent);border-radius:0 var(--radius) var(--radius) 0;background:var(--theme-surface-alt)}
+.document-body[data-paper-source="arxiv"] .ltx_theorem>.ltx_title_theorem{display:inline;margin:0 .45em 0 0;font-family:var(--font-sans);font-size:1em}
+.document-body[data-paper-source="arxiv"] .ltx_theorem>.ltx_title_theorem+.ltx_para,.document-body[data-paper-source="arxiv"] .ltx_theorem>.ltx_title_theorem+.ltx_para>.ltx_p:first-child{display:inline}
+.document-body[data-paper-source="arxiv"] .ltx_theorem .ltx_para{margin:0}
+.document-body[data-paper-source="arxiv"] :is(ul.ltx_itemize,ol.ltx_enumerate,dl.ltx_description){margin:.6em 0 1em;padding:0;list-style:none}
+.document-body[data-paper-source="arxiv"] li.ltx_item{display:grid;grid-template-columns:2em minmax(0,1fr);margin:.3em 0}
+.document-body[data-paper-source="arxiv"] li.ltx_item>.ltx_tag{padding-right:.55em;text-align:right;color:var(--theme-muted)}
+.document-body[data-paper-source="arxiv"] li.ltx_item>:not(.ltx_tag){grid-column:2;margin:0}
+.document-body[data-paper-source="arxiv"] li.ltx_item .ltx_para{margin:0}
+.document-body[data-paper-source="arxiv"] li.ltx_item .ltx_p{margin:0}
+.document-body[data-paper-source="arxiv"] .ltx_float_algorithm{margin:1.4em 0;padding:0 0 8px;border-top:2px solid var(--theme-border-strong);border-bottom:1px solid var(--theme-border-strong);background:var(--theme-surface-alt);line-height:1.5}
+.document-body[data-paper-source="arxiv"] .ltx_float_algorithm>.ltx_caption{max-width:none;margin:0 0 6px;padding:10px 12px;border-bottom:1px solid var(--theme-border);font-family:var(--font-sans);font-size:1em}
+.document-body[data-paper-source="arxiv"] .ltx_listingline{position:relative;padding:2px 12px 2px 3.6em;font-family:var(--font-mono);font-size:.88em;white-space:pre-wrap}
+.document-body[data-paper-source="arxiv"] .ltx_listingline>.ltx_tag_listingline{position:absolute;left:12px;width:2.2em;text-align:right;color:var(--theme-muted);font-family:var(--font-sans)}
+
+/* References: numbered entries with a hanging label instead of bullets. */
+.document-body[data-paper-source="arxiv"] ul.ltx_biblist{margin:0;padding:0;list-style:none}
+.document-body[data-paper-source="arxiv"] li.ltx_bibitem{display:grid;grid-template-columns:minmax(2.4em,auto) minmax(0,1fr);column-gap:.6em;margin:.55em 0;font-size:.92em;line-height:1.6}
+.document-body[data-paper-source="arxiv"] li.ltx_bibitem>.ltx_tag_bibitem{color:var(--theme-muted);font-family:var(--font-sans);font-size:.92em;font-variant-numeric:tabular-nums;text-align:right}
+.document-body[data-paper-source="arxiv"] li.ltx_bibitem>:not(.ltx_tag_bibitem){grid-column:2}
+.document-body[data-paper-source="arxiv"] .ltx_bibitem .ltx_bibblock{display:inline}
+@media (max-width:640px){
+ .document-body[data-paper-source="arxiv"] td.ltx_eqn_eqno{padding-left:.6em}
+ .document-body[data-paper-source="arxiv"] li.ltx_item{grid-template-columns:1.6em minmax(0,1fr)}
+}

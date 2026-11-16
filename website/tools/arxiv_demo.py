@@ -204,7 +204,9 @@ def create_demo(database, data=DATA, state=None):
         banner += '<a href="/?source=arxiv">arXiv</a> · <a href="/api/demo">Dataset / limitations</a></aside>'
         return HTMLResponse(raw.replace('<body>', '<body>' + banner))
 
-    app = Starlette(routes=[*catalog_routes(catalog), *personal_routes, Route('/api/{path:path}', api,
+    from reading_samples import routes as reading_routes
+    sample_routes, _sample_ids = reading_routes()
+    app = Starlette(routes=[*sample_routes, *catalog_routes(catalog), *personal_routes, Route('/api/{path:path}', api,
                       methods=['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE']),
                       Route('/healthz', lambda request: JSONResponse({'status': 'ok', 'demo': True})),
                       # StaticFiles must precede the SPA fallback so missing assets return 404.

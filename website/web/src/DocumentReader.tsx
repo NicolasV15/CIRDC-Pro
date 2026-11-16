@@ -1,6 +1,7 @@
 import {useEffect,useId,useRef,useState} from 'react';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
+import './arxivReader.css';
 import {t,locale} from './i18n';
 import {restoreDocumentReferences} from './documentReferences';
 import {restoreDocumentHeadings} from './documentHeadings';
@@ -21,8 +22,14 @@ const sidebarQuery='(min-width:1200px)';
 function localURL(value:string){const u=new URL(value,location.origin);if(u.origin!==location.origin||!u.pathname.startsWith('/api/'))throw Error('Invalid resource URL');return u.pathname+u.search;}
 
 /** Reading-text provenance; publisher HTML remains the default for IEEE documents. */
+/** arXiv tables of contents repeat the page title and file the abstract at heading level 6; show them as sections. */
+export function arxivToc(entries:TocEntry[],arxiv:boolean){
+ if(!arxiv)return entries;
+ return entries.filter((entry,index)=>!(index===0&&entry.level===1)).map(entry=>entry.level>=5&&/^abstract$/i.test(entry.title.trim())?{...entry,level:2}:entry);
+}
 const sourceLabels:Record<string,string>={pdf_parse:'来源：PDF 转换',arxiv_html:'来源：arXiv HTML',arxiv_source:'来源：TeX 源码转换'};
-export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference,focus,onFocusResult,automatic=true}:{automatic?:boolean;resource?:Resource;fetcher:Fetcher;onReady?:()=>void;paperNumber?:string;onReference?:(order:number,source:HTMLElement)=>void;focus?:PassageFocus|null;onFocusResult?:(result:FocusResult)=>void}){
+/** `paperSource` names where the paper comes from; arXiv adaptations follow it, whichever path produced the text. */
+export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference,focus,onFocusResult,automatic=true,paperSource='ieee'}:{automatic?:boolean;paperSource?:'ieee'|'arxiv';resource?:Resource;fetcher:Fetcher;onReady?:()=>void;paperNumber?:string;onReference?:(order:number,source:HTMLElement)=>void;focus?:PassageFocus|null;onFocusResult?:(result:FocusResult)=>void}){
  const [expanded,setExpanded]=useState(true),contentId=useId();
  const readyCallback=useRef(onReady);useEffect(()=>{readyCallback.current=onReady;},[onReady]);
  const referenceCallback=useRef(onReference);useEffect(()=>{referenceCallback.current=onReference;},[onReference]);
@@ -33,7 +40,8 @@ export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference
  const element=useRef<HTMLDivElement>(null),tocElement=useRef<HTMLDetailsElement>(null);const current=useRef(0);
  const [activeSection,setActiveSection]=useState(''),[tocOpen,setTocOpen]=useState(()=>window.matchMedia(sidebarQuery).matches);
  const [headingTitles,setHeadingTitles]=useState<Record<string,string>>({});
- const toc:TocEntry[]=(Array.isArray(value?.document?.toc)?value.document.toc:[]).map((entry:TocEntry)=>({...entry,title:Object.hasOwn(headingTitles,entry.id)?headingTitles[entry.id]:entry.title}));
+ const arxiv=paperSource==='arxiv'||!!value?.document?.source?.startsWith('arxiv_');
+ const toc:TocEntry[]=arxivToc(Array.isArray(value?.document?.toc)?value.document.toc:[],arxiv).map((entry:TocEntry)=>({...entry,title:Object.hasOwn(headingTitles,entry.id)?headingTitles[entry.id]:entry.title}));
  const tocIds=JSON.stringify(toc.map(entry=>entry.id));
  useEffect(()=>{
   const media=window.matchMedia(sidebarQuery),change=()=>setTocOpen(media.matches);
@@ -66,20 +74,20 @@ export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference
   setHeadingTitles(restoreDocumentHeadings(element.current));
   restoreDocumentReferences(element.current);
   restoreDocumentAlgorithms(element.current);
-  if(value?.document?.source==='ieee_html'||value?.document?.source?.startsWith('arxiv_'))restoreDocumentMathSources(element.current,t('查看公式源码'));
+  if(value?.document?.source==='ieee_html'||arxiv)restoreDocumentMathSources(element.current,t('查看公式源码'));
   for(const node of element.current.querySelectorAll<HTMLElement>('.doc-math')){
    let tex=node.dataset.copyTex??node.textContent??'';const display=node.dataset.copyDisplay==='block'||tex.startsWith('\\[');tex=tex.replace(/^\\[([]/,'').replace(/\\[)\]]$/,'');
    node.dataset.copyTex=tex;node.dataset.copyDisplay=display?'block':'inline';
    try{katex.render(documentMathForDisplay(tex),node,{displayMode:display,throwOnError:false,trust:false,strict:'ignore',output:'htmlAndMathml',maxExpand:1000})}catch{node.textContent=tex}
   }
- },[body,value?.document?.source,paperNumber]);
+ },[body,value?.document?.source,paperNumber,arxiv]);
  useEffect(()=>{
   const container=element.current;if(!container||!body)return;
   const reveal=()=>setExpanded(true);container.addEventListener('cirdc-document-reveal',reveal);
   return()=>container.removeEventListener('cirdc-document-reveal',reveal);
  },[body]);
  useEffect(()=>{
-  if(!element.current||!value?.document?.source?.startsWith('arxiv_'))return;
+  if(!element.current||!arxiv)return;
   for(const img of element.current.querySelectorAll<HTMLImageElement>('img')){
    if(img.complete&&img.naturalWidth===0){const url=new URL(img.src);url.searchParams.set('asset_revision',String(value.document.assets_ready));img.src=url.pathname+url.search;}
   }
@@ -178,7 +186,7 @@ export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference
   {pdfRetryable(value)&&<button type="button" onClick={()=>{retryRequested.current=true;setRetry(n=>n+1)}}>{t('重试转换')}</button>}
   {!value?.next_action&&!value?.document&&value?.job?.kind==='ieee_html'&&value?.state==='failed'&&<button type="button" onClick={()=>{retryRequested.current=true;setRetry(n=>n+1)}}>{t('重试获取正文')}</button>}
    <div className="document-layout">
-    {body&&<div className="document-body" data-document-source={value?.document?.source} data-copy-content="body" ref={element} dangerouslySetInnerHTML={{__html:body}} onErrorCapture={event=>{const node=event.target;if(node instanceof HTMLImageElement){node.dataset.failed='1';node.alt=t('图片暂不可用')}}} onKeyDown={event=>{const node=event.target instanceof Element?event.target.closest('.document-citation-link[role="button"]'):null;if(node&&['Enter',' '].includes(event.key)&&activateReference(node))event.preventDefault();}} onClick={event=>{const node=event.target;if(event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.shiftKey&&activateReference(node)){event.preventDefault();return;}if(node instanceof Element&&node.closest('a.document-reference-link')&&event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.shiftKey&&!window.matchMedia(sidebarQuery).matches)setTocOpen(false);if(node instanceof HTMLImageElement&&node.dataset.failed!=='1'&&node.complete&&node.naturalWidth>0){event.preventDefault();setImage({src:node.src,alt:node.alt});}}}/>}
+    {body&&<div className="document-body" data-document-source={value?.document?.source} data-paper-source={paperSource} data-copy-content="body" ref={element} dangerouslySetInnerHTML={{__html:body}} onErrorCapture={event=>{const node=event.target;if(node instanceof HTMLImageElement){node.dataset.failed='1';node.alt=t('图片暂不可用')}}} onKeyDown={event=>{const node=event.target instanceof Element?event.target.closest('.document-citation-link[role="button"]'):null;if(node&&['Enter',' '].includes(event.key)&&activateReference(node))event.preventDefault();}} onClick={event=>{const node=event.target;if(event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.shiftKey&&activateReference(node)){event.preventDefault();return;}if(node instanceof Element&&node.closest('a.document-reference-link')&&event.button===0&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.shiftKey&&!window.matchMedia(sidebarQuery).matches)setTocOpen(false);if(node instanceof HTMLImageElement&&node.dataset.failed!=='1'&&node.complete&&node.naturalWidth>0){event.preventDefault();setImage({src:node.src,alt:node.alt});}}}/>}
    </div>
   {image&&<div className="document-lightbox" role="dialog" aria-modal="true" aria-label={t('查看大图')} onClick={()=>setImage(null)}><button type="button" className="lightbox-close" onClick={()=>setImage(null)}>{t('关闭')}</button><img src={image.src} alt={image.alt}/></div>}
   </div>
