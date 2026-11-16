@@ -18,7 +18,7 @@ export function ArxivResources({base,state,error,busy,onAcquire,onReload}:{base:
    <li data-state={reading}><span className="arxiv-resource-name">{t('正文')}</span><span className={'badge '+reading}>{t(readingLabels[reading]||reading)}</span></li>
   </ul>}
   <div className="arxiv-resource-actions" role="status">
-   {queued&&<span className="arxiv-resource-progress"><span className="spinner" aria-hidden="true"/>{t('正在获取本版本资料，页面会自动更新。')}</span>}
+   {queued&&<span className="arxiv-resource-progress"><span className="spinner" aria-hidden="true"/>{t('正在获取资料…')}</span>}
    {action&&<button type="button" className="detail-pdf-trigger" disabled={busy} aria-busy={busy||undefined} onClick={onAcquire}>{busy?<span className="spinner" aria-hidden="true"/>:<Icon name="download"/>}{busy?t('正在提交…'):action==='retry'?t('重试未完成项'):t('获取本版本资料')}</button>}
    {state?.state==='partial'&&!action&&<span className="hint">{t('已获取全部可用资料。')}</span>}
    {error&&<span className="arxiv-resource-error">{t(error)}<button type="button" className="text-button" onClick={onReload}>{t('重新读取状态')}</button></span>}

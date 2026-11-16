@@ -41,8 +41,8 @@ export default function AgentAccess({onClose,returnFocus}:{onClose:()=>void;retu
   <header className="venue-guide-header agent-access-header"><div><h2 id="agent-access-title">{t('AI 接入')}</h2><p id="agent-access-intro">{t('在目标工作目录下打开 Agent 对话，复制对应 prompt 即可。')}</p></div><button type="button" className="venue-guide-close" ref={close} aria-label={t('关闭')} onClick={onClose}><Icon name="close"/></button><div className="agent-skill-meta"><p className="agent-skill-version">{t('本站 Skill 版本')}：{release?release.version:t('版本信息暂不可用')}</p><a className="agent-skill-help" href={skillBase+'/references/api.md#native-skill-installation'} target="_blank" rel="noreferrer"><span>{t('安装与更新说明')}</span><Icon name="external" className="icon-trailing"/></a></div></header>
   <div className="venue-guide-scroll" tabIndex={0}>
    <div className="agent-options">
-   <Option id="agent-online-title" step="1" icon="link" title={t('连接当前站点')} description={t('Agent 安装在线 Skill，自动保存当前站点地址，随后即可在你的项目中使用。')} prompt={t('在线安装 prompt')} value={prompts.remote}/>
-   <Option id="agent-local-title" step="2" icon="server" title={t('部署到自己的机器')} description={t('Agent 在当前对话的工作目录中克隆源码、部署网页，并安装指向该实例的 Skill。')} prompt={t('本地部署 prompt')} value={prompts.local}/>
+   <Option id="agent-online-title" step="1" icon="link" title={t('连接当前站点')} description={t('安装在线 Skill 并绑定当前站点。')} prompt={t('在线安装 prompt')} value={prompts.remote}/>
+   <Option id="agent-local-title" step="2" icon="server" title={t('部署到自己的机器')} description={t('在本地工作目录克隆、部署服务并安装 Skill。')} prompt={t('本地部署 prompt')} value={prompts.local}/>
   </div></div>
  </dialog>;
 }

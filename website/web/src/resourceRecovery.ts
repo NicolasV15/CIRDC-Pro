@@ -29,15 +29,15 @@ export function recoveryLabel(value?:Feedback){
 export function failureReason(value?:Feedback){
  const job=['failed','partial','unavailable'].includes(value?.job?.state||value?.state||'')?value?.job:value?.pdf_acquisition?.job;
  const code=(['failed','partial','unavailable'].includes(job?.state||value?.state||'')?job?.error:undefined)||value?.reason||value?.error;
- return ({network_error:'获取时网络连接失败',access_restricted:'来源暂时限制访问',access_denied:'来源拒绝访问',rate_limited:'请求过于频繁，服务繁忙',capacity_limited:'请求容量已满，服务繁忙',source_route_mismatch:'执行节点的网络出口校验未通过',source_route_unavailable:'执行节点的网络出口暂不可用',source_route_not_configured:'执行节点尚未配置网络出口',pdf_storage_unavailable:'PDF 存储暂不可用',pdf_service_not_configured:'PDF 转换服务尚未配置',parse_failed:'正文解析未完成',invalid_pdf:'取得的 PDF 文件无效',assets_incomplete:'部分图片未能取得',provider_not_configured:'资源服务尚未配置'} as Record<string,string>)[code||'']||(['failed','partial'].includes(value?.job?.state||value?.state||'')?'获取未完成，原因尚未确认':'');
+ return ({network_error:'获取时网络连接失败',access_restricted:'来源暂时限制访问',access_denied:'来源拒绝访问',rate_limited:'请求过于频繁，服务繁忙',capacity_limited:'请求容量已满，服务繁忙',source_route_mismatch:'采集节点网络异常',source_route_unavailable:'采集节点网络异常',source_route_not_configured:'采集节点网络异常',pdf_storage_unavailable:'PDF 存储暂不可用',pdf_service_not_configured:'PDF 转换服务尚未配置',parse_failed:'正文解析未完成',invalid_pdf:'取得的 PDF 文件无效',assets_incomplete:'部分图片未能取得',provider_not_configured:'资源服务尚未配置'} as Record<string,string>)[code||'']||(['failed','partial'].includes(value?.job?.state||value?.state||'')?'获取未完成':'');
 }
 export function requestLabel(value?:Feedback){
  if(!value)return '';
- if(value.request_id&&terminal(value))return '回执查询未完成，已停止自动查询';
- if(value.request_id)return '已取得回执，将继续查询原请求';
- if(value.accepted===null)return '接口未及时返回，是否已受理尚未确认';
+ if(value.request_id&&terminal(value))return '查询未完成，已停止自动刷新';
+ if(value.request_id)return '正在查询进度…';
+ if(value.accepted===null)return '请求超时，正在确认状态…';
  if(value.accepted===false)return '本次请求未受理';
- return ['hook_timeout','request_timeout','request_deadline_exceeded'].includes(value.reason||'')?'接口查询超时，后台任务状态尚未确认':'接口暂不可用，后台任务状态尚未确认';
+ return ['hook_timeout','request_timeout','request_deadline_exceeded'].includes(value.reason||'')?'状态查询超时':'服务暂不可用';
 }
 type API=(path:string,method?:string,data?:unknown)=>Promise<any>;
 export class ResourceFlow {

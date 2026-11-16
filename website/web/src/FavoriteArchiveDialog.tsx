@@ -27,7 +27,7 @@ export default function FavoriteArchiveDialog({rows,onClose}:{rows:FavoriteRow[]
  async function discard(){if(!result?.archive)return;try{await api(result.archive.href,'DELETE');setDiscarded(true);}catch(e){setError((e as Error).message);}}
  const skipped=result?.skipped||[];
  return <dialog ref={dialog} className="citation-dialog favorite-archive-dialog" aria-labelledby="favorite-archive-title" onCancel={e=>{e.preventDefault();onClose();}}>
-  <header className="citation-header"><div><h2 id="favorite-archive-title">{t('下载收藏的 PDF')}</h2><p>{t('已选 {n} 篇，合成一个 ZIP；只打包已缓存的 PDF。',{n:rows.length})}</p></div><button type="button" ref={close} className="citation-close" aria-label={t('关闭')} onClick={onClose}><Icon name="close"/></button></header>
+  <header className="citation-header"><div><h2 id="favorite-archive-title">{t('下载收藏的 PDF')}</h2><p>{t('已选 {n} 篇（仅含已有 PDF）',{n:rows.length})}</p></div><button type="button" ref={close} className="citation-close" aria-label={t('关闭')} onClick={onClose}><Icon name="close"/></button></header>
   <div className="citation-body">
    {!result&&<form className="favorite-archive-form" onSubmit={e=>{e.preventDefault();void prepare();}}>
     <label>{t('文件名模板')}<input value={template} onChange={e=>setTemplate(e.target.value)} aria-invalid={!!templateError} aria-describedby="favorite-template-hint"/></label>
@@ -39,9 +39,9 @@ export default function FavoriteArchiveDialog({rows,onClose}:{rows:FavoriteRow[]
     {result.archive&&!discarded?<>
      <p><strong>{t('已打包 {n} 个 PDF',{n:result.files.length})}</strong>{skipped.length>0&&t('，{n} 篇未包含',{n:skipped.length})}</p>
      <a className="button primary" href={result.archive.href} download><Icon name="download"/>{t('下载 ZIP')}</a>
-     <p className="hint">{t('下载链接仅限当前账户，{time} 后失效。开始下载不代表浏览器已完成保存。',{time:new Date(result.archive.expires*1000).toLocaleTimeString(locale(),{hour:'2-digit',minute:'2-digit'})})}</p>
+     <p className="hint">{t('链接将于 {time} 失效。',{time:new Date(result.archive.expires*1000).toLocaleTimeString(locale(),{hour:'2-digit',minute:'2-digit'})})}</p>
      <button type="button" className="text-button" onClick={()=>void discard()}><Icon name="trash"/>{t('删除服务器上的压缩包')}</button>
-    </>:discarded?<p>{t('压缩包已删除。')}</p>:<p><strong>{t('没有可打包的 PDF')}</strong>{t('，未生成压缩包。')}</p>}
+    </>:discarded?<p>{t('压缩包已删除。')}</p>:<p><strong>{t('没有可打包的 PDF。')}</strong></p>}
     {skipped.length>0&&<details className="favorite-archive-skipped" open={!result.archive}><summary>{t('未包含 {n} 篇',{n:skipped.length})}</summary><ul>{skipped.map(item=><li key={item.id}><span>{titles.get(item.id)?.title||titles.get(item.id)?.identifier}</span><span className="badge">{t(reasons[item.reason]||item.reason)}</span></li>)}</ul></details>}
     {error&&<p className="error" role="alert">{t(error)}</p>}
     <div className="actions"><button type="button" onClick={onClose}>{t('关闭')}</button></div>

@@ -16,7 +16,7 @@ export default function AccountPage({onPassword,onLogout}:{onPassword:()=>void;o
     <p className="hint">{t('忘记密码时请联系管理员重置。')}</p>
    </section>
    <section className="panel account-section" aria-labelledby="account-preferences"><h2 id="account-preferences">{t('外观与语言')}</h2>
-    <p className="muted">{t('保存在账户中，在其他设备登录后自动恢复。退出后恢复此浏览器原来的设置。')}</p>
+    <p className="muted">{t('自动同步到你登录的其他设备。')}</p>
     {syncError&&<p className="error account-sync-error" role="alert">{t(syncError)}<button type="button" className="text-button" onClick={dismissSyncError}>{t('关闭')}</button></p>}
     <h3>{t('界面语言')}</h3>
     <div className="language-switch account-language" role="group" aria-label={t('界面语言')}><button type="button" lang="zh-CN" aria-pressed={language==='zh'} onClick={()=>chooseLanguage('zh')}>{t('中文')}</button><button type="button" lang="en" aria-pressed={language==='en'} onClick={()=>chooseLanguage('en')}>{t('English')}</button></div>

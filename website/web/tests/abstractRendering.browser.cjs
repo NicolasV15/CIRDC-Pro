@@ -38,7 +38,7 @@ async function main(){
   await page.getByRole('button',{name:'收起摘要',exact:true}).click();assert(!await abstract.isVisible());await page.getByRole('button',{name:'展开摘要',exact:true}).click();assert.equal(await abstract.locator('.katex').count(),6);
   await abstract.evaluate(el=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);document.dispatchEvent(new Event('selectionchange'));});
   await page.getByRole('toolbar',{name:'选区复制',exact:true}).getByRole('button',{name:'复制 Markdown',exact:true}).click();const dialog=page.getByRole('dialog');await dialog.waitFor();const output=page.getByRole('textbox',{name:'格式源码',exact:true});
-  const markdown=await output.inputValue();for(const tex of formulas)assert(markdown.includes('$'+tex),'Markdown must retain '+tex);assert.equal((markdown.match(/<sup>2<\/sup>/g)||[]).length,2);assert(!(await dialog.innerText()).includes('部分原始格式无法'));
+  const markdown=await output.inputValue();for(const tex of formulas)assert(markdown.includes('$'+tex),'Markdown must retain '+tex);assert.equal((markdown.match(/<sup>2<\/sup>/g)||[]).length,2);assert(!(await dialog.innerText()).includes('部分格式已简化'));
   await page.getByRole('button',{name:'复制 LaTeX',exact:true}).click();assert.equal(((await output.inputValue()).match(/\\textsuperscript\{2\}/g)||[]).length,2);
   await page.getByRole('button',{name:'复制纯文本',exact:true}).click();assert.equal(((await output.inputValue()).match(/\^\{2\}/g)||[]).length,2);
   await page.getByRole('button',{name:'关闭复制预览',exact:true}).click();await page.getByRole('button',{name:'English',exact:true}).click();assert.equal(await abstract.locator('.katex').count(),6);

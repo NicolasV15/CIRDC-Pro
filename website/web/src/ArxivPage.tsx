@@ -102,7 +102,7 @@ function ArxivDetail(){
   return {paper:{number:String(paper.paper_id),record:arxivCitationRecord(paper,version)}};
  },[paper,version]);
  function back(){const values=new URLSearchParams(location.search);values.delete('v');values.set('source','arxiv');values.set('restore','1');location.href='/?'+values;}
- if(missing)return <main id="main" className="workspace detail-page arxiv-page"><div className="detail-toolbar"><button type="button" className="back" onClick={back}><Icon name="back"/>{t('返回检索')}</button></div><div className="empty"><Icon name="search"/><h1>{t('未找到该 arXiv 论文')}</h1><p>{t('该记录不在当前 arXiv 元数据目录中。')}</p></div></main>;
+ if(missing)return <main id="main" className="workspace detail-page arxiv-page"><div className="detail-toolbar"><button type="button" className="back" onClick={back}><Icon name="back"/>{t('返回检索')}</button></div><div className="empty"><Icon name="search"/><h1>{t('未找到该 arXiv 论文')}</h1></div></main>;
  return <><main id="main" className="workspace detail-page arxiv-page" data-copy-scope style={{'--reader-page-width':layout.pageWidth+'px','--reader-toc-width':layout.tocWidth+'px','--reader-font-scale':layout.fontScale/100,'--publication-column-width':(layout.infoOpen?layout.infoWidth:44)+'px'} as React.CSSProperties}>
   <div className="detail-toolbar"><button type="button" className="back" onClick={back}><Icon name="back"/>{t('返回检索')}</button><PaperSearchBar number={paper?.arxiv_id||''} initialQuery={initialQuery} placeholder={t('搜索 arXiv：标题、作者、摘要或编号')} onSearch={q=>{location.href=searchHref({q});}}/><ReaderLayoutControls layout={layout} onChange={update} onReset={reset}/></div>
   {error&&<div className="error-box" role="alert">{t(error)}</div>}
@@ -111,7 +111,7 @@ function ArxivDetail(){
    <p className="detail-kicker arxiv-kicker" data-copy-ignore>{(metadata.categories||[]).map((code:string)=><a key={code} href={searchHref({category:code})} title={arxivCategoryName(code)} aria-label={t('浏览分类：{name}',{name:arxivCategoryLabel(code)})}>{code}</a>)}<span className="arxiv-identifier">arXiv:{paper.arxiv_id}v{version}</span></p>
    <h1 ref={pageTop} tabIndex={-1} data-copy-content="title"><ScientificTitle value={paper.title}/></h1>
    <ArxivAuthors key={paper.paper_id} names={authors} raw={paper.authors_raw}/>
-   {versions.length>0&&<div className="arxiv-version-row"><VersionSwitch versions={versions} value={version} onChange={choose}/>{version!==latest&&<p className="hint arxiv-version-note">{t('标题、作者与摘要为当前元数据，不一定与 v{v} 相同。',{v:String(version)})}</p>}</div>}
+   {versions.length>0&&<div className="arxiv-version-row"><VersionSwitch versions={versions} value={version} onChange={choose}/>{version!==latest&&<p className="hint arxiv-version-note">{t('标题、作者与摘要显示最新版本元数据。')}</p>}</div>}
    {notice&&<p className="hint" role="status">{notice}</p>}
    <div className="detail-record-toolbar"><div className="detail-record-actions">
     <button type="button" className="detail-citation-trigger" aria-label={t('获取引用格式：')+paper.title} disabled={!selected} onClick={()=>setCitationOpen(true)}><Icon name="quote"/>{t('引用')}</button>

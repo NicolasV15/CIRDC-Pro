@@ -44,7 +44,7 @@ export default function AdminPage({current}:{current?:string}){
   const r=await api('/api/admin/actions/'+action,'POST',action==='resume'||action==='retry'?{run_id:selected}:params);
   if(action==='plan')setPreview(r);
   else if(action==='doctor')setDiagnostics(r);
-  else{setNotice({key:t('作业请求已提交：{id}。请以实际进度为准。'),values:{id:r.run_id||selected}});setPreview(undefined);await refresh();}
+  else{setNotice({key:t('作业已提交：{id}'),values:{id:r.run_id||selected}});setPreview(undefined);await refresh();}
  }catch(e){setError((e as Error).message);}finally{setBusy(false);}}
  async function userAction(action:string,name=username,active?:boolean){setError('');setNotice(null);try{
   await api('/api/admin/users/'+action,'POST',{username:name,password:newPassword,...(active!==undefined?{active}:{})});
@@ -63,7 +63,7 @@ export default function AdminPage({current}:{current?:string}){
    {error&&<div className="error-box" role="alert">{t(error)}</div>}{notice&&<div className="notice" role="status">{t(notice.key,notice.values)}</div>}
    {section==='overview'&&<div className="admin-summaries">
     <Summary label={t('最新作业')} value={latest?<code>{latest.id.slice(0,8)}</code>:t('暂无作业')} state={latest?.status} detail={latest?time(latest.created_at):undefined} onOpen={()=>open('jobs')}/>
-    <Summary label={t('失败或受限作业')} value={fmt(failing)} detail={failing?t('需要查看原因后决定是否重试。'):t('最近作业没有失败。')} onOpen={()=>open('jobs')}/>
+    <Summary label={t('失败或受限作业')} value={fmt(failing)} onOpen={()=>open('jobs')}/>
     <Summary label={t('搜索索引')} value={index?.overview?fmt(index.overview.papers):'—'} state={index?.phase} detail={t('索引中的论文记录')} onOpen={()=>open('index')}/>
     <Summary label={t('采集与补全')} value={maintenance?.service||t('未配置')} detail={maintenance?t('待提交结果 {n}',{n:String(maintenance.pending_results??'—')}):maintenance===null?t('暂时无法读取采集状态'):undefined} onOpen={()=>open('resources')}/>
     <Summary label={t('网站账户')} value={users?fmt(users.length):'—'} detail={users?t('自主注册 {self} · 已停用 {disabled}',{self:String(users.filter(u=>u.origin==='self').length),disabled:String(users.filter(u=>!u.active).length)}):undefined} onOpen={()=>open('accounts')}/>
@@ -81,21 +81,20 @@ export default function AdminPage({current}:{current?:string}){
    </aside><section className="panel job-detail"><div className="section-heading"><h2>{t('作业详情')}</h2>{job&&<Badge state={job.observed_status||job.status}/>}</div>{job?<>
     <code className="job-id">{job.id}</code><p className="muted">{t('心跳 ')}{time(job.heartbeat)}{t(' · 阶段 ')}{stageLabel(job.params?.stage||'all')}</p>
     <div className="job-counts">{['done','pending','failed','blocked','deferred'].map(k=><div key={k} className={'job-count job-count-'+k}><span>{t(statusNames[k]||k)}</span><strong>{fmt(job.counts?.[k])}</strong></div>)}</div>
-    <p className="hint">{t('以上为任务数，不是论文数。待办未清零或仍有失败时，不代表全库已完成。')}</p>
-    {job.error&&<div className="error-box">{t(job.error)}{t('。受限任务会保留，不会自动循环重试。')}</div>}
+    <p className="hint">{t('单位：任务数')}</p>
+    {job.error&&<div className="error-box">{t(job.error)}</div>}
     <div className="actions">
      <ConfirmButton id="resume" confirm={confirm} setConfirm={setConfirm} disabled={busy||running} label={t('恢复待办任务')} confirmLabel={t('确认恢复待办任务')} onConfirm={()=>operation('resume')}/>
      <ConfirmButton id="retry" confirm={confirm} setConfirm={setConfirm} disabled={busy||running} label={t('重试失败 / 受限任务')} confirmLabel={t('确认重试失败 / 受限任务')} onConfirm={()=>operation('retry')}/>
      <button onClick={()=>void api('/api/admin/runs/'+selected+'/logs').then(r=>setLog(r.log)).catch(e=>setError(e.message))}>{t('读取运行日志')}</button>
     </div>
-    {running&&<p className="hint">{t('作业运行中，恢复和重试暂不可用。')}</p>}
     <details><summary>{t('已导入 / 已抓取记录统计')}</summary><pre>{JSON.stringify(job.stats,null,2)}</pre></details>
     <h3>{t('失败与受限记录')}</h3>{!job.errors?.length?<p className="muted">{t('当前没有失败记录。')}</p>:<div className="table-scroll"><table><thead><tr><th>{t('阶段 / 任务')}</th><th>{t('状态')}</th><th>{t('原因')}</th></tr></thead><tbody>{job.errors.map((e:any,i:number)=><tr key={i}><td>{stageLabel(e.kind)}<br/><code>{e.task_key}</code></td><td><Badge state={e.status}/></td><td>{t(e.error)}</td></tr>)}</tbody></table></div>}
     {!!job.deferred?.length&&<details><summary>{t('待后续发布的目录任务')}</summary><pre>{JSON.stringify(job.deferred,null,2)}</pre></details>}
     {log&&<details open><summary>{t('日志末尾（最多 64 KiB）')}</summary><pre>{log}</pre></details>}
    </>:<p className="muted">{jobs===null?t('正在读取…'):t('暂无更新作业。')}</p>}</section></div>}
-   {section==='index'&&<><OverviewCards overview={index?.overview}/><div className="admin-grid admin-grid-index"><section className="admin-column"><IndexStatus index={index}/><section className="panel"><h2>{t('服务预检')}</h2><p className="muted">{t('检查数据库、元数据目录与迁移状态，不触发采集。')}</p><button disabled={busy} onClick={()=>void operation('doctor')}>{t('执行预检')}</button>{diagnostics&&<pre>{JSON.stringify(diagnostics,null,2)}</pre>}</section></section>
-    <section className="panel"><h2>{t('字段覆盖')}</h2>{!index?.overview?.field_states?.length?<p className="muted">{t('暂无字段统计。')}</p>:<div className="table-scroll"><table><thead><tr><th>{t('摘要')}</th><th>{t('关键词')}</th><th className="numeric">{t('论文数')}</th></tr></thead><tbody>{index.overview.field_states.map((s,i)=><tr key={i}><td><Badge state={s.abstract_state}/></td><td><Badge state={s.keywords_state}/></td><td className="numeric">{fmt(s.n)}</td></tr>)}</tbody></table></div>}<p className="hint">{t('采样时间：')}{time(index?.overview?.sampled_at)}{t('。索引初次构建与论文元数据补全是两个独立过程。')}</p></section></div></>}
+   {section==='index'&&<><OverviewCards overview={index?.overview}/><div className="admin-grid admin-grid-index"><section className="admin-column"><IndexStatus index={index}/><section className="panel"><h2>{t('服务预检')}</h2><p className="muted">{t('检查数据库、目录与迁移状态。')}</p><button disabled={busy} onClick={()=>void operation('doctor')}>{t('执行预检')}</button>{diagnostics&&<pre>{JSON.stringify(diagnostics,null,2)}</pre>}</section></section>
+    <section className="panel"><h2>{t('字段覆盖')}</h2>{!index?.overview?.field_states?.length?<p className="muted">{t('暂无字段统计。')}</p>:<div className="table-scroll"><table><thead><tr><th>{t('摘要')}</th><th>{t('关键词')}</th><th className="numeric">{t('论文数')}</th></tr></thead><tbody>{index.overview.field_states.map((s,i)=><tr key={i}><td><Badge state={s.abstract_state}/></td><td><Badge state={s.keywords_state}/></td><td className="numeric">{fmt(s.n)}</td></tr>)}</tbody></table></div>}<p className="hint">{t('采样时间：')}{time(index?.overview?.sampled_at)}</p></section></div></>}
    {section==='resources'&&<div className="admin-stack"><MaintenanceStatus api={api}/><ResourceSettings api={api}/></div>}
    {section==='accounts'&&<div className="admin-grid"><aside className="admin-aside"><section className="panel"><h2>{t('新增读者 / 重置密码')}</h2><label>{t('用户名')}<input value={username} onChange={e=>setUsername(e.target.value)} autoComplete="off"/></label><label>{t('初始 / 重置密码')}<input value={newPassword} onChange={e=>setNewPassword(e.target.value)} type="password" minLength={8} autoComplete="new-password"/></label><p className="hint">{t('新建或重置后须在首次登录时改密。')}</p>
     <div className="actions"><button className="primary" disabled={!username||newPassword.length<8} onClick={()=>void userAction('create')}>{t('新增读者')}</button><ConfirmButton id={'reset:'+username} confirm={confirm} setConfirm={setConfirm} disabled={!username||newPassword.length<8} label={t('重置密码')} confirmLabel={t('确认重置 {name} 的密码',{name:username})} onConfirm={()=>userAction('reset')}/></div></section></aside>

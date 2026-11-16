@@ -4,16 +4,16 @@ import {citationNotice,citationTime} from '../src/citationSummary.ts';
 
 const ready={kind:'papers' as const,state:'complete',absent:false,count:5,hasSnapshot:true,hasItems:true,stale:false,error:null};
 test('a single notice distinguishes publisher absence, confirmed zero and unknown counts',()=>{
- assert.equal(citationNotice({...ready,state:'no_data',absent:true,count:undefined,hasItems:false}),'官网未提供被引论文栏目');
- assert.equal(citationNotice({...ready,kind:'patents',state:'no_data',absent:true,count:undefined,hasItems:false}),'官网未提供专利被引栏目');
- assert.equal(citationNotice({...ready,count:0,hasItems:false}),'已确认没有被引论文');
- assert.equal(citationNotice({...ready,kind:'patents',count:0,hasItems:false}),'官网当前记录 0 条专利被引');
+ assert.equal(citationNotice({...ready,state:'no_data',absent:true,count:undefined,hasItems:false}),'官网未提供被引论文');
+ assert.equal(citationNotice({...ready,kind:'patents',state:'no_data',absent:true,count:undefined,hasItems:false}),'官网未提供专利被引');
+ assert.equal(citationNotice({...ready,count:0,hasItems:false}),'暂无被引论文（0 条）');
+ assert.equal(citationNotice({...ready,kind:'patents',count:0,hasItems:false}),'暂无专利被引（0 条）');
  assert.equal(citationNotice({...ready,state:'unavailable',count:undefined,hasItems:false}),'来源状态待确认');
 });
 test('latest attempt failures and pending work are visible even when the saved snapshot records absence',()=>{
- assert.equal(citationNotice({...ready,state:'fetching',absent:true}),'正在更新，显示已有结果。');
- assert.equal(citationNotice({...ready,state:'failed',absent:true}),'更新未完成，已有结果仍可查看。');
- assert.equal(citationNotice({...ready,state:'blocked',absent:true}),'访问受限，已有结果仍可查看。');
+ assert.equal(citationNotice({...ready,state:'fetching',absent:true}),'正在更新…');
+ assert.equal(citationNotice({...ready,state:'failed',absent:true}),'更新未完成');
+ assert.equal(citationNotice({...ready,state:'blocked',absent:true}),'访问受限');
  assert.equal(citationNotice({...ready,state:'failed',hasSnapshot:false,count:undefined}),'更新未完成，数量待确认。');
  assert.equal(citationNotice({...ready,state:'partial'}),'部分记录待补齐。');
 });

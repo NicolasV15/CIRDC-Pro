@@ -179,7 +179,7 @@ export function DocumentReader({resource,fetcher,onReady,paperNumber,onReference
   <div className="section-heading references-heading"><h2><button type="button" className="reference-toggle" aria-label={expanded?t('收起正文'):t('展开正文')} aria-controls={contentId} aria-expanded={expanded} onClick={()=>{setImage(null);setExpanded(value=>!value);}}>{t('文章正文')}</button></h2>{expanded&&<span className={'badge '+(value?.state||'queued')}>{t(contentLabel(value))}</span>}</div>
   <div id={contentId} hidden={!expanded}>
   <p className="muted document-progress" role="status">{value?.document?<>{t(sourceLabels[value.document.source]||'来源：官网正文')}{' · '}{t('图片资源：')}{value.document.assets_ready} / {value.document.assets_total}{t(' · 获取时间：')}{value.document.fetched_at?new Date(value.document.fetched_at).toLocaleString(locale()):'—'}</>:t(value?.next_action?'':contentReason(value))}</p>
-  {value?.state==='partial'&&<p className="hint">{t('正文可以阅读，部分图片暂不可用；此版本尚未完整缓存。')}</p>}
+  {value?.state==='partial'&&<p className="hint">{t('部分图片暂未加载。')}</p>}
   <ResourceFeedback value={value} request={requestFailure}/>
   {error&&<p className="error" role="alert">{t(error)}</p>}
   {assetsRetryable(value)&&<button type="button" onClick={()=>{retryRequested.current=true;setRetry(n=>n+1)}}>{t('重试补齐图片')}</button>}

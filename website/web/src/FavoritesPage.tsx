@@ -52,7 +52,7 @@ export default function FavoritesPage(){
    <button type="button" disabled={busy||!chosen.length||tooMany} aria-describedby={tooMany?'favorite-limit':undefined} onClick={()=>setArchive(chosen)}><Icon name="download"/>{t('下载 PDF')}</button>
    {selected.length>0&&<button type="button" className="text-button" onClick={()=>{setConfirming(false);dispatch({type:'all',checked:false});}}>{t('清空选择')}</button>}
   </>}/>
-  {tooMany&&<p className="error favorite-limit" id="favorite-limit" role="alert">{t('一次最多下载 {limit} 篇，当前已选 {n} 篇，请减少选择。',{limit:ARCHIVE_LIMIT,n:chosen.length})}</p>}
+  {tooMany&&<p className="error favorite-limit" id="favorite-limit" role="alert">{t('单次最多打包 {limit} 篇（已选 {n} 篇）。',{limit:ARCHIVE_LIMIT,n:chosen.length})}</p>}
   {error&&<div className="error-box" role="alert">{t(error)}</div>}
   {busy&&!rows.length?<div className="paper-list is-loading" role="status"><span className="sr-only">{t('正在读取收藏…')}</span>{[0,1,2].map(i=><div className="paper-skeleton" key={i} aria-hidden="true"><i/><i/><i/></div>)}</div>
    :!rows.length&&!error?<div className="empty"><Icon name="star"/><h2>{source?t('这个来源还没有收藏'):t('还没有收藏的论文')}</h2><p>{t('在检索结果或论文详情中点击「收藏」即可保存。')}</p><a className="button" href={source==='arxiv'?'/?source=arxiv':'/'}>{t('去检索论文')}</a></div>

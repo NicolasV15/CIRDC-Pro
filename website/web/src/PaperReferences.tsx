@@ -83,7 +83,6 @@ export default function PaperReferences({number,fetcher,jump}:{number:string;fet
   <div className="section-heading references-heading"><h2><button type="button" className="reference-toggle" aria-label={expanded?t('收起参考文献'):t('展开参考文献')} aria-controls={contentId} aria-expanded={expanded} onClick={()=>setExpanded(value=>!value)}>{t('参考文献')}</button></h2>{view&&referenceCountKnown(view)?<span className="muted">{t('已载入 {loaded} / {total} 条',{loaded:fmt(view.items.length),total:fmt(view.total)})}</span>:view?.source_presence==='absent'?<span className="muted">{t('官网未提供')}</span>:null}</div>
   <div id={contentId} hidden={!expanded}>{expanded&&<>
   <div className="references-status"><span role="status">{loading?t('正在读取参考文献…'):t(stateLabel)}</span><button type="button" className="text-button" disabled={loading||more||locating} onClick={refresh}>{t('刷新状态')}</button></div>
-  {view&&['partial','blocked','failed'].includes(view.state)&&<p className="hint">{view.items.length?t('保留已收录的参考文献；后续重试由后台安排。'):t('刷新页面不会连续重试获取参考文献。')}</p>}
   {view?.state==='partial'&&view.expected_total!==null&&<p className="hint">{t('来源记录 {expected} 条，当前已保存 {total} 条。',{expected:fmt(view.expected_total),total:fmt(view.total)})}</p>}
   {error&&<p className="error" role="alert">{t(error)}</p>}{notice&&<p className="hint" role="status">{t(notice)}</p>}
   {locating&&<p className="hint" role="status">{t('正在定位参考文献…')}</p>}
@@ -92,7 +91,7 @@ export default function PaperReferences({number,fetcher,jump}:{number:string;fet
    const link=referenceLink(item),content=<ScientificTitle value={item.text||item.title} fallback={t('未提供参考文献文本')}/>;
    return <li key={view.version+':'+item.order} data-reference-order={item.order} className={selected===item.order?'is-highlighted':undefined} tabIndex={-1} aria-current={selected===item.order?'true':undefined}><span className="reference-number">{referenceLabel(item)}</span><div className="reference-text">{link?<a href={link.href} target="_blank" rel="noopener noreferrer" className="paper-reference-link">{content}</a>:content}{link&&<small>{link.kind==='paper'?t('站内论文'):t('Google Scholar 搜索')} ↗</small>}</div></li>;
   })}</ol>}
-  {empty&&!error&&<p className="muted references-empty">{view.source_presence==='absent'||view.empty_reason==='section_absent'?t('官网未提供这篇论文的参考文献栏目。'):view.empty_reason==='zero_count'||view.state==='no_data'||(view.state==='complete'&&view.total===0)?t('已确认该论文没有参考文献。'):view.state==='unavailable'?t('尚未确认官网是否提供参考文献。'):t('当前没有可展示的参考文献。')}</p>}
+  {empty&&!error&&<p className="muted references-empty">{view.source_presence==='absent'||view.empty_reason==='section_absent'?t('官网未提供参考文献。'):view.empty_reason==='zero_count'||view.state==='no_data'||(view.state==='complete'&&view.total===0)?t('无参考文献。'):view.state==='unavailable'?t('参考文献待确认。'):t('暂无参考文献。')}</p>}
   {view?.version&&view.next_offset!==null&&<button type="button" className="load-more reference-load-more" disabled={more||loading} onClick={()=>void loadMore()}>{more?t('正在载入参考文献…'):t('加载更多参考文献')}</button>}
   </>}</div>
  </section>;

@@ -73,7 +73,7 @@ test('recovery state distinguishes waiting and exhaustion without guessing capac
  const waiting={state:'failed',next_action:'wait',next_retry_at:1800000000,job:{kind:'ieee_pdf',state:'failed',error:'source_route_mismatch'}};
  assert.equal(contentPending(waiting),true);assert.equal(contentCurrentError(waiting),'');
  assert.equal(shouldEnsureContent(waiting),false);assert.equal(contentLabel(waiting),'等待自动重试');
- assert.equal(contentReason(waiting),'执行节点的网络出口校验未通过');
+ assert.equal(contentReason(waiting),'采集节点网络异常');
  const exhausted={...waiting,next_action:'contact_administrator',retry_attempts:10,max_retry_attempts:10};
  assert.equal(contentPending(exhausted),false);assert.equal(contentLabel(exhausted),'需要管理员处理');
  assert.equal(shouldEnsureContent(exhausted),false);

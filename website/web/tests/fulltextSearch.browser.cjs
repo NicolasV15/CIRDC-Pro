@@ -67,7 +67,7 @@ async function main(){
   await page.goto(origin+'/?q=SAR+ADC&field=body',{waitUntil:'networkidle'});
   await page.locator('.passage-hit').first().waitFor();
   const insight=await page.locator('.search-insights').innerText();
-  assert(insight.includes('正文检索范围：已索引 2 篇论文正文')&&insight.includes('同一段落同时包含全部检索词'));
+  assert(insight.includes('已索引 2 篇正文')&&insight.includes('同一段落同时包含全部检索词'));
   assert(insight.includes('同时匹配')&&insight.includes('pipelined ADC'));
   assert.equal(await page.locator('.paper-row').first().locator('.passage-hit').count(),3);
   assert.equal(await page.locator('.passage-hit').first().locator('mark.hit').first().innerText(),'successive-approximation ADC');

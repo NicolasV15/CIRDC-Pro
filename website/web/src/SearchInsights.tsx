@@ -33,18 +33,18 @@ export default function SearchInsights({query,fulltext,field,onTerm}:{query?:Que
  if(query?.number)lines.push(<p key="number"><Icon name="search"/>{t('按论文编号精确查找：')}<code>{query.number}</code></p>);
  for(const group of concepts){
   const others=group.equivalents||[];
-  lines.push(<p key={'c'+group.text}><Icon name="link"/><strong>{group.label||group.text}</strong>{query?.terms==='exact'||!others.length?<span>{t('仅匹配原写法（已关闭别名扩展）')}</span>:<span>{t('同时匹配 {n} 种等价写法：',{n:others.length})}<em>{others.slice(0,4).join(' · ')}{others.length>4?' …':''}</em></span>}</p>);
+  lines.push(<p key={'c'+group.text}><Icon name="link"/><strong>{group.label||group.text}</strong>{query?.terms==='exact'||!others.length?<span>{t('精确匹配原写法')}</span>:<span>{t('同时匹配 {n} 种等价写法：',{n:others.length})}<em>{others.slice(0,4).join(' · ')}{others.length>4?' …':''}</em></span>}</p>);
  }
  if(field==='body'){
-  if(!fulltext?.enabled)lines.push(<p key="scope" className="insight-warning"><Icon name="info"/>{t('正文检索尚未启用：站点未建立正文段落索引，因此不会返回正文结果。')}</p>);
+  if(!fulltext?.enabled)lines.push(<p key="scope" className="insight-warning"><Icon name="info"/>{t('正文检索尚未启用。')}</p>);
   else{
-   lines.push(<p key="scope"><Icon name="book"/>{t('正文检索范围：已索引 {n} 篇论文正文',{n:fmt(fulltext.documents)})}{fulltext.pending?t('，{n} 篇正文仍待索引或更新',{n:fmt(fulltext.pending)}):''}{t('。未获取或未索引正文的论文不会出现在正文结果中。')}{fulltext.phase!=='ready'?' '+t('正文目录仍在同步。'):''}</p>);
+   lines.push(<p key="scope"><Icon name="book"/>{t('已索引 {n} 篇正文',{n:fmt(fulltext.documents)})}{fulltext.pending?t(' · {n} 篇待更新',{n:fmt(fulltext.pending)}):''}{fulltext.phase!=='ready'?' · '+t('目录同步中'):''}</p>);
    if(fulltext.failed)lines.push(<p key="failed" className="insight-warning"><Icon name="info"/>{t('其中 {n} 篇索引失败，{m} 篇已暂停重试。',{n:fmt(fulltext.failed),m:fmt(fulltext.blocked||0)})}</p>);
-   if(query?.match)lines.push(<p key="match" className={query.match==='approximate'?'insight-warning':undefined}><Icon name={query.match==='approximate'?'info':'check'}/>{t(query.match==='exact'?'原句精确命中：忽略大小写、标点、空白与换行差异，词序一致。':query.match==='approximate'?'未找到逐字一致的原句。以下为近似匹配：同一段落包含查询中多数主要词，不能视为原句出处。':query.match==='phrase'?'同一段落包含引号内的完整短语。':'同一段落同时包含全部检索词（含已启用的等价写法）。')}</p>);
+   if(query?.match)lines.push(<p key="match" className={query.match==='approximate'?'insight-warning':undefined}><Icon name={query.match==='approximate'?'info':'check'}/>{t(query.match==='exact'?'原句精确命中（忽略大小写与标点差异）。':query.match==='approximate'?'未找到精确原句，以下为包含主要检索词的相近段落。':query.match==='phrase'?'同一段落包含引号内的完整短语。':'同一段落同时包含全部检索词。')}</p>);
   }
  }
  if(!lines.length&&!related.length)return null;
- return <section className="search-insights" aria-label={t('检索说明')}>{lines}{related.length>0&&<div className="related-terms"><span>{t('相关概念（不参与匹配）：')}</span>{related.map(term=><button type="button" key={term} className="filter-chip" onClick={()=>onTerm(term)}>{term}</button>)}</div>}</section>;
+ return <section className="search-insights" aria-label={t('检索说明')}>{lines}{related.length>0&&<div className="related-terms"><span>{t('相关概念：')}</span>{related.map(term=><button type="button" key={term} className="filter-chip" onClick={()=>onTerm(term)}>{term}</button>)}</div>}</section>;
 }
 
 const flagNames:Record<string,string>={exact_title:'标题完全一致',title_phrase:'标题包含完整查询',author_name:'作者姓名一致'};

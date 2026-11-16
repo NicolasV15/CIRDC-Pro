@@ -23,7 +23,7 @@ function AppearanceDialog({snapshot,onClose}:{snapshot:string;onClose:()=>void})
  useLanguage();const account=useAccount(),dialog=useRef<HTMLDialogElement>(null),close=useRef<HTMLButtonElement>(null);
  useEffect(()=>{const box=dialog.current;if(!box)return;const opener=document.activeElement instanceof HTMLElement?document.activeElement:null,overflow=document.body.style.overflow;box.showModal();document.body.style.overflow='hidden';close.current?.focus();return()=>{if(box.open)box.close();document.body.style.overflow=overflow;if(opener?.isConnected)opener.focus({preventScroll:true});};},[]);
  return <dialog ref={dialog} className="citation-dialog theme-dialog" aria-labelledby="theme-dialog-title" onCancel={e=>{e.preventDefault();onClose();}} onClick={e=>{if(e.target!==e.currentTarget)return;const r=e.currentTarget.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)onClose();}}>
-  <header className="citation-header"><div><h2 id="theme-dialog-title">{t('外观与主题')}</h2><p>{account.user?t('选择后立即生效，并保存到你的账户。'):t('选择后立即生效，并在此浏览器记住。')}</p></div><button type="button" ref={close} className="citation-close" aria-label={t('关闭外观设置')} onClick={onClose}><Icon name="close"/></button></header>
+  <header className="citation-header"><div><h2 id="theme-dialog-title">{t('外观与主题')}</h2>{account.user&&<p>{t('与你的账户同步')}</p>}</div><button type="button" ref={close} className="citation-close" aria-label={t('关闭外观设置')} onClick={onClose}><Icon name="close"/></button></header>
   <div className="citation-body"><ThemeChoices snapshot={snapshot}/><p className="hint">{t('跟随系统时自动切换简洁白与石墨黑。')}</p></div>
  </dialog>;
 }

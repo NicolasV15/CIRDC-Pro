@@ -9,7 +9,7 @@ import './selectionCopy.css';
 
 const formats:CopyFormat[]=['markdown','latex','text'];
 const labels:Record<CopyFormat,string>={markdown:'复制 Markdown',latex:'复制 LaTeX',text:'复制纯文本'};
-const warnings:Record<CopyWarning,string>={'table-simplified':'表格结构不完整、包含合并单元格或不适合当前格式，已按逐行内容复制。','image-link':'图片已按说明和链接复制。','source-unmapped':'部分原始格式无法与显示选区准确对应，已保留实际显示内容。','math-unavailable':'部分公式缺少可恢复的 TeX，未根据视觉字符猜测内容。','link-omitted':'不支持的链接地址已省略，保留选中文字。'};
+const warnings:Record<CopyWarning,string>={'table-simplified':'表格已简化为逐行文本。','image-link':'图片已转为链接。','source-unmapped':'部分格式已简化。','math-unavailable':'部分公式缺少 TeX 源码，已省略。','link-omitted':'部分链接仅保留文字。'};
 function restore(snapshot:CopySnapshot){
  const range=snapshot.range;if(!range.startContainer.isConnected||!range.endContainer.isConnected)return;
  const selection=window.getSelection();if(!selection)return;
@@ -21,13 +21,11 @@ function Preview({result,format,onFormat,onClose,manual}:{result:CopyResult;form
  useEffect(()=>{const el=dialog.current;if(!el)return;el.showModal();output.current?.focus();output.current?.select();return()=>{if(el.open)el.close();};},[]);
  useEffect(()=>{output.current?.focus();output.current?.select();},[format]);
  return <dialog ref={dialog} className="citation-dialog selection-copy-dialog" data-copy-ui aria-labelledby="selection-copy-preview-title" onCancel={event=>{event.preventDefault();onClose();}}>
-  <header className="citation-header"><div><h2 id="selection-copy-preview-title">{t('选区格式文本')}</h2><p>{t(manual?'当前环境无法直接写入剪贴板，请复制下面的源码文本。':'下方为选区生成的格式源码。')}</p></div><button type="button" className="citation-close" aria-label={t('关闭复制预览')} onClick={onClose}><Icon name="close"/></button></header>
+  <header className="citation-header"><div><h2 id="selection-copy-preview-title">{t('选区格式文本')}</h2>{manual&&<p>{t('无法自动写入剪贴板，请手动复制。')}</p>}</div><button type="button" className="citation-close" aria-label={t('关闭复制预览')} onClick={onClose}><Icon name="close"/></button></header>
   <div className="citation-body"><div className="citation-formats" role="group" aria-label={t('选择复制格式')}>{formats.map(key=><button type="button" key={key} aria-pressed={key===format} onClick={()=>onFormat(key)}>{t(labels[key])}</button>)}</div>
    <label className="citation-output-label">{t('格式源码')}<textarea ref={output} readOnly spellCheck={false} value={result.values[format]} aria-label={t('格式源码')}/></label>
    <div className="citation-actions"><button type="button" onClick={()=>{output.current?.focus();output.current?.select();}}>{t('全选文本')}</button><button type="button" onClick={onClose}>{t('关闭')}</button></div>
-   <p className="hint">{t('可使用 Ctrl/Cmd+C，或手机的原生复制操作。')}</p>
    {!!result.warnings[format].length&&<ul className="selection-copy-warnings">{result.warnings[format].map(key=><li key={key}>{t(warnings[key])}</li>)}</ul>}
-   {format==='latex'&&<p className="hint">{t('LaTeX 为片段；链接使用的 href 命令需要目标文档支持 hyperref。')}</p>}
   </div>
  </dialog>;
 }

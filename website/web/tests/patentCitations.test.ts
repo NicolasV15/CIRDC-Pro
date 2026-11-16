@@ -62,7 +62,7 @@ test('malformed and cross-paper pages cannot enter a patent snapshot',()=>{
 });
 test('patent panel labels and source-state notices have English translations',async()=>{
  Object.assign(globalThis,{document:{documentElement:{lang:''},title:''},window:{addEventListener:()=>{}}});
- const {setLanguage,t}=await import('../src/i18n.ts');setLanguage('en');assert.equal(t('专利被引'),'Patent Citations');assert.equal(t('官网当前记录 0 条专利被引'),'IEEE Xplore currently lists 0 patent citations');assert.equal(t('官网当前记录 0 条专利被引。'),'IEEE Xplore currently lists 0 patent citations.');
+ const {setLanguage,t}=await import('../src/i18n.ts');setLanguage('en');assert.equal(t('专利被引'),'Patent Citations');assert.equal(t('暂无专利被引（0 条）'),'0 patent citations');assert.equal(t('官网未提供专利被引'),'Patent citations not provided by publisher');
  const source=ts.createSourceFile('PaperPatentCitations.tsx',fs.readFileSync(new URL('../src/PaperPatentCitations.tsx',import.meta.url),'utf8'),ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),missing:string[]=[];
  function walk(node:ts.Node){if(ts.isStringLiteral(node)&&/[\u3400-\u9fff]/.test(node.text)&&/[\u3400-\u9fff]/.test(t(node.text)))missing.push(node.text);if(ts.isJsxText(node)&&/[\u3400-\u9fff]/.test(node.text))missing.push(node.text);ts.forEachChild(node,walk)}
  walk(source);assert.deepEqual(missing,[]);setLanguage('zh');assert.equal(t('Patent Citations'),'专利被引');

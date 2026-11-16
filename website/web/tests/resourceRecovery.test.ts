@@ -6,7 +6,7 @@ const failure=(value:any)=>Object.assign(Error('fixture'),{value});
 // Node 25+ provides a process-wide sessionStorage; saved receipts must not leak between tests.
 beforeEach(()=>{globalThis.sessionStorage?.clear();});
 test('API acceptance, backend state and recovery time are independent',()=>{
- assert.equal(requestLabel({accepted:null}),'接口未及时返回，是否已受理尚未确认');
+ assert.equal(requestLabel({accepted:null}),'请求超时，正在确认状态…');
  assert.equal(requestLabel({accepted:false}),'本次请求未受理');
  assert.equal(recoveryLabel({next_action:'wait',phase:'ieee_pdf:queued'}),'任务已排队');
  assert.equal(recoveryLabel({next_action:'wait',phase:'ieee_html:fetching'}),'任务处理中');

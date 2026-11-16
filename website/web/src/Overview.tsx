@@ -8,7 +8,7 @@ export function OverviewCards({overview,compact=false}:{overview?:Overview;compa
  if(!overview)return null;
  const n=(kind:string)=>overview.venues.find(v=>v.kind===kind)?.n||0;
  const metrics=overview.resource_coverage?.length?overview.resource_coverage:[undefined];
- const cells:{label:string;value:string;hint:string;tooltip?:string;coverage?:boolean}[]=[{label:t('论文记录'),value:fmt(overview.papers),hint:t('数据库中已有记录')},{label:t('期刊'),value:fmt(n('Journals')),hint:t('已收录的期刊系列')},{label:t('会议系列'),value:fmt(n('Conferences')),hint:t('已收录的会议系列')}];
+ const cells:{label:string;value:string;hint?:string;tooltip?:string;coverage?:boolean}[]=[{label:t('论文记录'),value:fmt(overview.papers)},{label:t('期刊'),value:fmt(n('Journals'))},{label:t('会议系列'),value:fmt(n('Conferences'))}];
  for(const metric of metrics){
   const coverage=coverageDisplay(metric,overview.papers,locale());
   const label=metric?localizedText(metric.label_i18n,metric.label||t('阅读资料覆盖率')):t('阅读资料覆盖率');
@@ -17,7 +17,7 @@ export function OverviewCards({overview,compact=false}:{overview?:Overview;compa
   const tooltip=[explanation,coverage.count===null?'':hint,metric?.sampled_at?t('登记时间：')+time(metric.sampled_at):''].filter(Boolean).join(' · ');
   cells.push({label,value:coverage.rate,hint,tooltip,coverage:true});
  }
- return <div className={'stats'+(compact?' stats-compact':'')} role="group" aria-label={t('数据库概览')} tabIndex={compact?0:undefined} style={{'--overview-columns':cells.length} as React.CSSProperties}>{cells.map((cell,index)=><div className={'stat'+(cell.coverage?' stat-coverage':'')} key={index} title={cell.tooltip||cell.hint}><span>{cell.label}</span><strong>{cell.value}</strong>{(!compact||cell.coverage)&&<small>{cell.hint}</small>}</div>)}</div>;
+ return <div className={'stats'+(compact?' stats-compact':'')} role="group" aria-label={t('数据库概览')} tabIndex={compact?0:undefined} style={{'--overview-columns':cells.length} as React.CSSProperties}>{cells.map((cell,index)=><div className={'stat'+(cell.coverage?' stat-coverage':'')} key={index} title={cell.tooltip||cell.hint||undefined}><span>{cell.label}</span><strong>{cell.value}</strong>{cell.hint&&(!compact||cell.coverage)&&<small>{cell.hint}</small>}</div>)}</div>;
 }
 export function IndexStatus({index}:{index?:Index}){
  if(!index)return null;

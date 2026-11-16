@@ -9,7 +9,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
   page.on('request',r=>{const p=new URL(r.url()).pathname;if(r.method()==='GET'&&p==='/api/content/100')readSincePost=true;if(r.method()==='POST'&&p.endsWith('/ensure')){if(!readSincePost)unreadSubmissions++;readSincePost=false;posts.push(r.postDataJSON());}if(p.includes('/api/agent/v1/requests/'))receipts.push(p);});
   await context.route('**/*',route=>{const p=new URL(route.request().url()).pathname;if(p.endsWith('/metadata/status')||/\/(references|citations|patent-citations)$/.test(p))return route.fulfill({json:{state:'disabled',items:[],counts:{},total:0}});return route.continue();});
   await page.goto(origin+'/papers/100');
-  await page.getByText('接口未及时返回，是否已受理尚未确认',{exact:false}).waitFor();
+  await page.getByText('请求超时，正在确认状态…',{exact:false}).waitFor();
   try{await page.waitForFunction(()=>document.querySelector('.document-reader .badge')?.textContent==='任务已排队');}catch(error){console.error(await page.locator('body').innerText(),posts,receipts,errors);throw error;}
   assert(posts.length>=1);assert.equal(unreadSubmissions,0,'Every recovery ensure must follow a read');assert(posts.every(p=>p.retry===false));
   await page.evaluate(()=>fetch('/fixture/wait'));

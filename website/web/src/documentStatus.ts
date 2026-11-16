@@ -29,8 +29,8 @@ export function contentReason(value?:ContentState){
  if(value?.pdf_acquisition?.state==='failed'&&value.job?.kind!=='pdf_parse')return 'PDF 获取未完成，请稍后重试。';
  const reasons:Record<string,string>={local_pdf_missing:'官网未提供在线正文，本地尚无 PDF。',pdf_storage_unavailable:'本地 PDF 存储暂不可用，请稍后重新打开。',pdf_file_unavailable:'本地 PDF 暂不可读取，请稍后重新打开。',pdf_invalid_input:'本地 PDF 文件无效，暂时无法转换。',pdf_service_not_configured:'PDF 转换服务尚未就绪，请稍后重新打开。'};
  if(value?.result?.reason&&reasons[value.result.reason])return reasons[value.result.reason];
- if(value?.job?.kind==='pdf_parse')return value.state==='failed'?'PDF 转换未完成，可以重试；原 PDF 仍可阅读。':'转换完成后将自动显示正文，可先阅读原 PDF。';
- return value?.state==='source_no_body'?'官网未提供在线正文，正在检查本地 PDF。':'已缓存时直接读取；缺失时由固定节点自动获取本篇文章。';
+ if(value?.job?.kind==='pdf_parse')return value.state==='failed'?'正文转换未完成':'正在从 PDF 转换正文…';
+ return value?.state==='source_no_body'?'官网未提供在线正文，正在检查本地 PDF。':'正在准备正文…';
 }
 
 export function assetsRetryable(value?:ContentState){return !value?.next_action&&value?.document?.source==='ieee_html'&&value.state==='partial'&&!contentPending(value);}
