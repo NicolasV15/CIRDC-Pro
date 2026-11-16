@@ -122,4 +122,80 @@ sh tools/web demo --port 18090
 
 Claude 完成后在本文件增量记录交回 SHA、变更摘要、实际运行命令、接口/依赖变化、迁移兼容性、测试证据、关键页面截图位置、已知限制与唯一下一步。仅提交本轮代码与文档；按协作分支交回可评审提交，不修改 main 或生产服务。
 
-当前停点：需求与实施计划已确认，功能尚未实施。已有源码与真实元数据 Demo 随协作分支提供；账号/管理台/PDF 测试适配由 Claude 按本文件补齐。下一步：Claude 阅读本文件并开始实施。
+当前停点：见下方 Claude 完成记录。
+
+## Claude 完成记录（2026-11-16）
+
+在 `5c072add` 之上提交，依次为 `919985b`（账号与个人接口）、`aff22c2`（前端与 Demo 账号）、`b24e128`（管理台）、`340058b`（arXiv 正文三路径）及本记录所在的收尾提交。未合并 main，未部署、未重启服务、未执行生产迁移。
+
+### 变更摘要
+
+| 范围 | 内容 |
+| --- | --- |
+| 账号 | 公开阅读模式匿名可浏览且不设 cookie；打开登录/注册表单时才发放登录前令牌。自主注册只建普通读者、不要求再改密，每地址每小时 5 次，重复用户名返回 `username_taken`。公开模式默认开放注册、强制登录模式默认关闭，可用 `CIRDC_WEB_REGISTRATION=open|closed` 覆盖。管理员开通与重置仍要求首次改密；停用账号与会话失效逻辑不变。登录、注册、会话、改密路由抽到 `account_api.py`，正式站点与 Demo 共用 |
+| 设置 | `/api/me/settings` 保存主题与语言。首次登录且无云端偏好时保存当前浏览器偏好，已有云端偏好优先；登录期间的更改写入账户、不改浏览器的匿名偏好，退出后恢复；保存失败有提示。设置页只含账户信息、改密、主题、语言和退出 |
+| 收藏 | IEEE 与 arXiv 列表、详情页增加收藏按钮；匿名点击跳登录并返回原页面。arXiv 详情页收藏当前版本，列表收藏时由服务器固定为当时最新版本；同一论文的不同版本分开保存。`/favorites` 按时间倒序、来源筛选（切换时清空选择）、分页加载（追加时保留选择）、全选已载入、清空选择、确认后批量取消。论文或版本暂不可读时保留并显示状态 |
+| ZIP | 收藏页一次最多 100 篇，超过时提示、不截断。服务器在进程内调用本应用已注册的只读缓存路由读取 PDF，有界写入临时 ZIP，只返回给所属用户，1 小时过期，每人最多保留 3 个。逐条反馈缺失、受限、未打包、不可读；全部不可用时不生成空包；意外读取失败整体报错并清理。文件名沿用现有模板，服务器校验并处理重名 |
+| 管理台 | 改为左侧分区导航（概览、更新作业、索引与预检、资料与采集、账户、审计），分区写入地址 `#hash`。原有全部操作保留；启动、恢复、重试、停用、重置密码需在原位确认；账户显示来源（自主注册/管理员开通）并可按用户名筛选；不能停用自己 |
+| arXiv 正文 | 阅读器改为按论文来源（`paperSource`）适配 arXiv，正文容器带 `data-paper-source`，三条路径（`arxiv_html`、`arxiv_source`、`pdf_parse`）都适用；arXiv 样式集中在 `arxivReader.css`，IEEE 正文仍用共享规则。修正见下表 |
+| 其他 | 协作者新增的 `arxivCategoryGuide.ts` 与 `ArxivCategoryGuide.tsx` 仅大小写不同，在 macOS 等大小写不敏感文件系统上构建失败；数据模块改名为 `arxivCategoryGuideData.ts`。`arxivDemo` 测试改为在没有打包 PDF 的第二行检查无 PDF 弹窗（第一行已在 `5c072ad` 补入真实 PDF） |
+
+### arXiv 正文：路径与组件问题清单
+
+检查对象：真实 HTML 2611.14519v1（图）与 2611.14443v1（公式、表格、脚注、参考文献），以及为 TeX 源码与 PDF 转换路径编写的两份代表性 fixture。
+
+| 组件 | 改前问题 | 原因 | 处理 |
+| --- | --- | --- | --- |
+| 编号公式、多行公式 | 公式外围出现网格线；编号不在右缘；多行等号不对齐 | LaTeXML 用表格排公式，被 IEEE 的「所有单元格加边框」规则套用 | 用 grid 重新排布单元格：居中、编号贴右、对齐列保持；不改 DOM |
+| 表格 | 三线表被画成满格 | 同上 | 只按 `ltx_border_*` 画线，表头加粗，数字等宽 |
+| 多子图 | 子图上下堆叠且过大 | 未处理 `ltx_flex_figure` | 有空间时并排，手机上堆叠；图注改用辅助字体 |
+| 脚注 | 编号重复，内容插在正文中间 | 未处理 `ltx_note` | 编号留在句中，内容作为句后旁注 |
+| 定理、列表、算法 | 标题与正文脱节、算法行号与内容错位 | 未处理 `ltx_theorem`、`ltx_item`、`ltx_listing` | 各自布局；算法行号固定宽度 |
+| 参考文献 | 带圆点，编号无悬挂缩进 | 未处理 `ltx_biblist` | 去圆点，编号悬挂对齐 |
+| 目录 | 首条重复文档标题，Abstract 缩进到第 6 级 | 目录按原始标题级别 | arXiv 目录去掉首个文档标题，Abstract 按二级显示 |
+| PDF 转换路径 | `pdf_parse` 与 IEEE 相同，被当成 IEEE | 适配只看 `document.source` | 按论文来源判断；该路径无 LaTeXML 结构，保持共享段落、图片、表格和公式规则 |
+| 原文链接 | Demo fixture 的伪编号也生成 arxiv.org 链接 | — | 只为合法 arXiv 编号显示「arXiv 原文」 |
+
+IEEE 正文：容器标注 `data-paper-source="ieee"`，所有 arXiv 规则都以 `data-paper-source="arxiv"` 为前提；IEEE 相关浏览器回归结果见下。
+
+### 实际运行的命令
+
+```sh
+sh tools/web demo --port 18090 --admin-port 18091      # 首次因种子更新加 --rebuild
+website/.venv-dev/bin/python -m pytest -q              # 在 website 目录
+npm --prefix website/web test
+npm --prefix website/web run build
+CIRDC_DEMO_ORIGIN=http://127.0.0.1:18090 node website/web/tests/accountFavorites.browser.cjs
+CIRDC_DEMO_ORIGIN=http://127.0.0.1:18090 node website/web/tests/arxivReadingPaths.browser.cjs
+CIRDC_DEMO_ADMIN_ORIGIN=http://localhost:18091 CIRDC_DEMO_ADMIN_CREDENTIALS=work/arxiv-demo/state/admin-credentials.txt node website/web/tests/adminWorkspace.browser.cjs
+python tools/check_release.py --component all
+```
+
+### 接口、依赖与迁移
+
+- 新增接口：`POST /api/auth/register`、`GET /api/auth/session?prepare=1`、`/api/me/settings`、`/api/me/favorites`（含 `remove`、`state`）、`/api/me/archives`。详见 `docs/web.md` 的 Accounts, favorites and synced settings。旧的搜索页下载接口不变。
+- 新增环境变量：`CIRDC_WEB_REGISTRATION`。无新依赖。
+- 账号库迁移：`users.origin` 列与 `user_settings`、`favorites`、`archives`、`signups` 表，增量、可重复、单事务；旧账号、密码哈希、权限和会话不变。生产迁移未执行，部署后首次启动网站时自动进行。
+
+### 测试证据
+
+| 项目 | 结果 |
+| --- | --- |
+| website pytest | 389 通过，41 跳过（跳过项为本机没有的数据库集成环境）。新增 `test_web_personal.py` 10 项：注册与重复、限流、强制登录模式关闭注册、旧账号库迁移（重复两次）、设置校验与合并、主题表与前端一致、收藏校验/幂等/分页/越权、不可读收藏保留、跨来源 ZIP（逐文件 SHA-256、同名、受限/缺失/未打包/非 PDF）、100/101 上限、全部缺失不生成包、读取中断报错且无残留、过期清理；`test_arxiv_demo.py` 新增 Demo 账号与收藏、管理台适配器 2 项；公开模式 3 项按新契约更新 |
+| 前端单元测试与构建 | 184/184；i18n 覆盖清单加入 4 个新页面文件；构建通过 |
+| 浏览器回归（30 个 `*.browser.cjs`） | 25 通过。新增 `accountFavorites`（注册→登录→收藏→筛选→ZIP→设置跨浏览器恢复→退出，1440/390/320，ZIP 内真实 PDF 字节一致、测试 PDF 有标注、写请求只到账号与个人接口）、`adminWorkspace`（六个分区、前进后退、确认后才提交、作业与账户操作只到测试适配器，中/英 × 1440/390/320）、`arxivReadingPaths`（四份样本 × 三宽度：公式无网格且编号贴右、表格只画记录的线、脚注、参考文献、多子图、算法、目录、论文来源标注、原件与正文 SHA-256） |
+| 随本轮调整的既有测试 | `resourceDiagnostics`：资源设置移到「资料与采集」分区，改为点击该分区，断言不变，现已通过；`arxivDemo`、`arxivRealData`：按 `5c072ad` 补入的 PDF/TeX 更新预期 |
+| 改动前即失败 | `abstractRendering`、`agentAccess`（测试写死 Skill 1.0.0）、`patentCitations`、`selectionCopy`（macOS 下 `Control+c`），失败位置与上一轮记录相同；`resourceApiLinked` 需要真实站点，未运行 |
+| 溢出与报错扫描 | 登录、注册、收藏、账户、四份阅读样本、IEEE 详情和管理台六个分区 × 6 主题 × 中英 × 1440/390/320 = 540 组：无横向溢出、无越界控件、无页面错误 |
+| 键盘 | 匿名页「登录」与收藏按钮、收藏页筛选/全选/勾选/标题、详情页收藏与版本按钮、管理台导航与概览卡片均可用 Tab 到达并有焦点指示 |
+| 分发包与发布检查 | 根目录 `cirdc_pro-0.6.6`、website `cirdc_pro-0.3.2` 的 wheel/sdist 构建成功；`tools/check_release.py --component all` passed（本机无私有 profile，仅通用检查）；待推送提交与前端产物人工检查无私有地址、本机路径或凭据，无 source map |
+
+截图（改前改后，1440/390）：本机被忽略目录 `artifacts/account-favorites/`（`reader-before`、`reader-after`、`admin-before`、`admin-after`、`personal`），未提交。
+
+### 已知限制与下一步
+
+- 测试 PDF、隔离账号库和管理台测试适配器通过，不代表生产缓存、生产账号库规模或真实作业接口已验证。生产 provider 的缓存路由是否都能被进程内读取，需要在部署环境用真实收藏确认。
+- 没有真实的 TeX 源码转换或 PDF 转换正文；这两条路径只用代表性 fixture 验证了结构处理。
+- 匿名用户点击收藏后会跳到登录页，登录后回到原页面，但不会自动替他完成收藏。这是有意的设计，以免登录后在用户不知情时提交操作。
+- 注册限流按客户端地址计算；如果部署在反向代理后，应确认代理把真实地址传给了网站。
+- 唯一下一步：在部署环境的测试账号下，用真实缓存核对一次收藏 ZIP（IEEE 与 arXiv 各一篇，比对 SHA-256），然后再开放注册。

@@ -203,6 +203,12 @@ revoke sessions. Audit entries contain actor/action/target, never passwords.
 Only bounded, redacted log tails are returned; filenames are derived from a
 validated job identifier.
 
+The workspace is organised as sections in the address hash (`#overview`, `#jobs`,
+`#index`, `#resources`, `#accounts`, `#audit`). The overview summarises the latest job,
+failed or restricted jobs, index state, collection service and accounts. Starting,
+resuming or retrying jobs, disabling an account and resetting a password ask for
+confirmation in place; the signed-in administrator cannot disable their own account.
+
 Run `CIRDC_INTEGRATION=1 pytest` with a verified isolated test profile for unit and MySQL integration tests.
 The integration fixture uses connection-local temporary tables to isolate the
 existing corpus and jobs. Build and inspect both wheel and source distribution.
@@ -372,19 +378,22 @@ External links are created only for IEEE references with a numeric string ID;
 unknown identities are not guessed and no browser request collects profile data.
 The source links do not select another identity or expand author candidates.
 
-## Temporarily opening the reader without account sign-in
+## Opening the reader without account sign-in
 
-`CIRDC_WEB_READER_AUTH=public` opens the **reader** as anonymous, read-only access.
-The default is `required`. Administrator authentication is always required,
-even if the environment variable is public. Keep the administrator listener on
+`CIRDC_WEB_READER_AUTH=public` lets anonymous readers search, read and download
+without an account. The default is `required`. Administrator authentication is always
+required, even if the environment variable is public. Keep the administrator listener on
 loopback and use its existing SSH tunnel.
 
-The session endpoint reports `authentication_required` and `access_mode`; public
-responses contain no user identity, CSRF token or pre-login cookie. The browser
-then hides the sign-in/password/sign-out interface. Reader account APIs are
-inactive in public mode, and public API requests allow only GET/HEAD. This also
-applies to installed reading-resource routes. Search retains a per-peer-IP limit;
-forwarded client-address headers are not trusted and limiter memory is bounded.
+Anonymous public visitors are never looked up and receive no cookie: the session endpoint
+returns no user and no CSRF token. Only `GET /api/auth/session?prepare=1`, requested when
+the sign-in or registration form opens, issues the pre-login token. Signed-in readers keep
+their session in public mode and use their personal features (below); their writes need
+the session CSRF token and a matching `Origin`. A reader who must change an initial
+password can still browse, while personal routes wait for the change. Anonymous API writes
+remain limited to the explicitly enabled acquisition actions; other anonymous writes return
+405. Search keeps a per-peer-IP limit; forwarded client-address headers are not trusted and
+limiter memory is bounded.
 
 Account hashes, existing users, login/password/session code and administrator
 account management remain intact. The flag does not alter paper or author data,
@@ -407,6 +416,58 @@ systemctl --user restart cirdc-web.service
 
 The same installed frontend restores its existing login and password-change
 workflow after refresh; no rebuild or account recreation is needed.
+
+## Accounts, favorites and synced settings
+
+Readers can register themselves with a username (lowercase letter first, at most 32
+characters of lowercase letters, digits, `_` or `-`) and a password of 8–1024
+characters. Registration creates an ordinary reader who keeps that password, signs them
+in, and is limited to five registrations per client address and hour. It is open by
+default on public readers and closed where readers must already have an account;
+`CIRDC_WEB_REGISTRATION=open|closed` overrides that. Administrator-created accounts and
+password resets still require a password change at first sign-in. Forgotten passwords are
+reset by an administrator. The account list marks each account as self-registered or
+created by an administrator.
+
+Personal routes take the user from the session and never accept another user's name.
+They answer 401 without a session and are `Cache-Control: no-store`:
+
+- `GET/PUT /api/me/settings`: `{"theme", "language"}`; a theme is `system` or a
+  catalog theme, a language is `zh` or `en`; omitted fields are kept. On first sign-in
+  without saved settings the browser's current choices are saved; saved settings win
+  afterwards. Signed-in changes go to the account and leave the browser's anonymous
+  choice untouched, which returns after signing out.
+- `GET /api/me/favorites?source=ieee|arxiv&limit=1..100&cursor=ID`: newest first, with
+  `counts` per source and each favorite's current `status` (`ok`, `paper_missing`,
+  `version_missing`, `unavailable`). Favorites are kept when a paper or version cannot be
+  read.
+- `POST /api/me/favorites` `{"items": [{"source": "ieee", "paper_id": "123"},
+  {"source": "arxiv", "paper_id": "7", "version": 2}]}` (at most 100): verified against the
+  catalogs and idempotent. An arXiv favorite pins one version; `"version": "latest"` (used
+  from result lists) pins the newest observed version. Different versions are separate
+  favorites.
+- `POST /api/me/favorites/remove` `{"ids": [...]}` removes only the user's own entries.
+- `GET /api/me/favorites/state?keys=ieee:123,arxiv:7:2,arxiv:9` reports saved IDs; a key
+  without a version lists every saved version.
+- `POST /api/me/archives` `{"ids": [...], "filenames": {"ID": "name.pdf"}}` packages the
+  cached PDFs of at most 100 favorites into one ZIP across sources and versions. More than
+  100 returns `too_many_archive_items` instead of truncating or splitting. The server
+  resolves each favorite to this deployment's own read-only cache route (a provider's PDF
+  link for IEEE, `/api/arxiv/papers/ID/versions/V/files/pdf` for arXiv), reads it in-process
+  and streams it into a temporary ZIP in the state directory; it never accepts client URLs
+  or paths, contacts a source or starts acquisition. Filenames come from the browser's
+  existing template; unsafe or duplicate names are replaced or numbered. The response lists
+  packaged files and skipped favorites with `missing`, `restricted`, `not_packaged` or
+  `unreadable`; with no packageable file no archive is created. An unexpected read failure
+  fails the whole request (`archive_failed`) and leaves no file.
+- `GET /api/me/archives/ID` downloads the ZIP for its owner only; `DELETE` removes it.
+  Archives expire after one hour; at most three per user are kept, and expired or
+  abandoned files are removed on later requests.
+
+Settings, favorites, archive records and registration limits are additional tables in the
+existing `accounts.sqlite`. The migration is additive, repeatable and runs in one
+transaction; existing users, password hashes, roles and sessions are unchanged.
+Favorites store the verified identity and a display title only, never text or files.
 
 ## Document chapter navigation
 

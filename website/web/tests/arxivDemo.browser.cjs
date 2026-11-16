@@ -13,7 +13,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=r
   await context.route('**/*',route=>{if(new URL(route.request().url()).origin!==new URL(origin).origin){external.push(route.request().url());return route.abort();}return route.continue();});
   await page.goto(origin+'/?source=arxiv');await page.locator('.paper-row').nth(24).waitFor();
   await page.getByRole('button',{name:'加载更多',exact:true}).click();await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===43);
-  await page.locator('.paper-row input[type=checkbox]').first().check();
+  // The first row (2611.14519v1) now carries a packaged PDF; the no-PDF dialog is checked on the second row.
+  await page.locator('.paper-row input[type=checkbox]').nth(1).check();
   await page.getByRole('button',{name:'批量引用',exact:true}).click();await page.getByRole('textbox',{name:'引用文本',exact:true}).waitFor();
   assert.ok((await page.getByRole('textbox',{name:'引用文本',exact:true}).inputValue()).includes('arxiv.org/abs/'));
   await page.getByRole('button',{name:'关闭引用格式',exact:true}).click();

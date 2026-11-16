@@ -108,6 +108,30 @@ reading conversion. Confirmed absence is final, so a version whose remaining ite
 are all unavailable offers no action. Polling never submits a request. The shared reader labels reading text by its
 provenance: arXiv HTML, converted from TeX source, or converted from PDF.
 
+### Reading paths
+
+arXiv reading text arrives on three paths: official arXiv HTML (`arxiv_html`), LaTeXML
+conversion of the TeX source (`arxiv_source`) and PDF conversion (`pdf_parse`). The last
+uses the same source value as IEEE PDF conversion, so the detail page tells the shared
+reader that the paper is from arXiv (`paperSource`), and the body carries
+`data-paper-source="arxiv"` whatever the path. arXiv presentation follows that attribute
+(`web/src/arxivReader.css`); IEEE text keeps the shared rules. Nothing in the cached HTML,
+TeX, formula copy values or original files changes; all adaptations are display rules:
+
+- LaTeXML equation tables are laid out without grid lines, centred, with the number at the
+  right edge; aligned multi-line equations keep their columns.
+- `ltx_tabular` tables draw only the rules LaTeXML recorded (`ltx_border_t/tt/b/bb/l/r`).
+- Sub-figures sit side by side when there is room; captions use the supporting face.
+- Footnotes keep their marker in the sentence and read as an aside below it; theorems,
+  itemize/enumerate lists, algorithm listings and references get their own layout.
+- The table of contents leaves out the repeated document title and lists the abstract as
+  a section.
+
+PDF-converted text has no LaTeXML roles; it keeps the shared paragraph, image, table and
+display-math rules. The offline demo serves the two cached HTML bodies and two labelled
+representative fixtures for the TeX and PDF paths (see the demo README); no real TeX or
+PDF conversion output was available for verification.
+
 ## Frontend continuation
 
 For the current IEEE-aligned frontend polish scope, source baseline, behavior

@@ -33,7 +33,8 @@ async function main(){
   const page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
   await page.goto(origin+'/admin/');
   if(profile.lang==='en')await page.getByRole('button',{name:'English',exact:true}).click();
-  await page.getByRole('button',{name:profile.lang==='en'?'Index and diagnostics':'索引与预检',exact:true}).click();
+  // Resource settings live in the workspace's resources section (was the index tab before the redesign).
+  await page.locator('.admin-nav a[href="#resources"]').click();
   const section=page.locator('.resource-settings');
   const heading=section.getByRole('heading',{name:profile.lang==='en'?'PDF retrieval outcomes (per paper)':'PDF 获取结果（按论文）'});
   await heading.waitFor();
