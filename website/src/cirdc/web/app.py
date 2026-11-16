@@ -62,7 +62,7 @@ class SiteDirectory:
         self.resources.attach([item])
         for resource in item.get('resources', []):
             href = str(resource.get('href', ''))
-            if resource.get('kind') == 'pdf' and re.fullmatch(r'/api/[A-Za-z0-9_./%-]+', href) and '..' not in href:
+            if (resource.get('kind') == 'pdf' or resource.get('media_type') == 'application/pdf') and re.fullmatch(r'/api/[A-Za-z0-9_./%-]+', href) and '..' not in href:
                 return href
         return None
 

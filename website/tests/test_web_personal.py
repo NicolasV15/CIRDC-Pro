@@ -280,3 +280,13 @@ def test_archives_expire_and_are_removed(site):
         import os
         assert not os.path.exists(path)
         assert ARCHIVE_SECONDS == 3600
+
+
+def test_site_directory_accepts_existing_provider_pdf_media_type():
+    class Resources:
+        def attach(self, items):
+            items[0]['resources'] = [
+                {'kind': 'pdf-acquisition', 'href': '/api/content/100/pdf'},
+                {'media_type': 'application/pdf', 'href': '/api/resources/local-library/100'}]
+    directory = web_app.SiteDirectory(None, Resources(), None)
+    assert directory.pdf_route('ieee', '100', None) == '/api/resources/local-library/100'
