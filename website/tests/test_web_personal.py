@@ -177,6 +177,10 @@ def test_favorites_are_verified_versioned_idempotent_and_private(site):
         assert alice.post('/api/me/favorites', json={'items': [{'source': 'ieee', 'paper_id': '999'}]}, headers=a).status_code == 404
         assert alice.post('/api/me/favorites', json={'items': [{'source': 'arxiv', 'paper_id': '7', 'version': 9}]}, headers=a).status_code == 404
         assert alice.post('/api/me/favorites', json={'items': [{'source': 'arxiv', 'paper_id': '7'}]}, headers=a).status_code == 422
+        latest = alice.post('/api/me/favorites', json={'items': [{'source': 'arxiv', 'paper_id': '8', 'version': 'latest'}]},
+                            headers=a).json()['items']
+        assert list(latest) == ['arxiv:8:1']
+        alice.post('/api/me/favorites/remove', json={'ids': list(latest.values())}, headers=a)
         assert alice.post('/api/me/favorites', json={'items': [{'source': 'ieee', 'paper_id': '100', 'user': 'bob'}]},
                           headers={'Origin': ORIGIN}).status_code == 403
         listed = alice.get('/api/me/favorites?limit=2').json()

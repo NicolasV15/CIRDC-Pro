@@ -19,7 +19,8 @@
   var next=preference+'/'+effective;
   if(next!==snapshot){snapshot=next;listeners.forEach(function(listener){listener();});}
  }
- window.CIRDCTheme={getSnapshot:function(){return snapshot;},setPreference:function(value){apply(value,true);},subscribe:function(listener){listeners.add(listener);return function(){listeners.delete(listener);};}};
+ // applyAccount shows a signed-in reader's synced theme without touching this browser's saved choice; restore returns to it.
+ window.CIRDCTheme={getSnapshot:function(){return snapshot;},setPreference:function(value){apply(value,true);},applyAccount:function(value){apply(value,false);},restore:function(){var saved='system';try{saved=localStorage.getItem(key);}catch(e){}apply(saved,false);},subscribe:function(listener){listeners.add(listener);return function(){listeners.delete(listener);};}};
  apply(preference,false);
  var systemChange=function(){if(preference==='system')apply('system',false);};
  if(media.addEventListener)media.addEventListener('change',systemChange);else if(media.addListener)media.addListener(systemChange);

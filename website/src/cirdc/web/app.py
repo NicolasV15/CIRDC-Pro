@@ -12,7 +12,7 @@ from starlette.responses import FileResponse, JSONResponse
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 from .auth import Accounts
-from .account_api import auth_routes, registration_open
+from .account_api import admin_account_routes, auth_routes, registration_open
 from .access import authentication_required, SearchRateLimiter
 from .index import metadata, publication_year_range, search, validate_year_range
 from .query import article_number
@@ -470,36 +470,9 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
                                     request.path_params['identifier'], 'storage configuration updated')
             return response({'status': 'saved', 'item': value})
 
-        def users(request):
-            return response({'items': accounts.list()})
-
-        def audit(request):
-            return response({'items': accounts.events()})
-
-        async def user_action(request):
-            try:
-                data = await body(request)
-                name = data.get('username')
-                actor = request.state.user['username']
-                action = request.path_params['action']
-                if action == 'create':
-                    await run_in_threadpool(accounts.create, name, data.get('password', ''), 'reader', actor)
-                elif action == 'reset':
-                    await run_in_threadpool(accounts.reset, name, data.get('password', ''), True, actor)
-                elif action == 'active':
-                    if not isinstance(data.get('active'), bool):
-                        raise ValueError()
-                    await run_in_threadpool(accounts.disable, name, data['active'], actor)
-                else:
-                    return response({'error': 'not_found'}, 404)
-            except (ValueError, TypeError):
-                return response({'error': 'invalid_account_action', 'message': '账户操作无效，请检查用户名或密码。'}, 422)
-            return response({'status': 'ok'})
-
         routes += [Route('/api/admin/runs', runs), Route('/api/admin/runs/{run_id}/logs', logs),
                    Route('/api/admin/runs/{run_id}', run_status), Route('/api/admin/actions/{action}', operation, methods=['POST']),
-                   Route('/api/admin/users', users), Route('/api/admin/users/{action}', user_action, methods=['POST']),
-                   Route('/api/admin/audit', audit), Route('/api/admin/overview', overview),
+                   *admin_account_routes(accounts, response, body), Route('/api/admin/overview', overview),
                    Route('/api/admin/resources', resource_settings),
                    Route('/api/admin/resource-requests', resource_requests),
                    Route('/api/admin/resources/{identifier}', configure_resource, methods=['POST'])]

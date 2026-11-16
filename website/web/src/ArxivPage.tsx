@@ -1,3 +1,6 @@
+import FavoriteButton from './FavoriteButton';
+import {useFavoriteStates} from './favorites';
+import {useAccount} from './account';
 import {lazy,Suspense,useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {api,ApiError} from './api';
 import {arxivCitationRecord} from './arxivCitations';
@@ -66,6 +69,7 @@ function ArxivDetail(){
  currentVersion.current=version;
  const [abstractExpanded,setAbstractExpanded]=useState(true);
  const {layout,update,reset}=useReaderLayout();
+ useFavoriteStates(paperId&&version?[{source:'arxiv',paperId,version}]:[],!!useAccount().user);
  useEffect(()=>{let active=true;void api('/api/arxiv/papers/'+paperId).then(v=>{
   if(!active)return;const p:Paper=v.paper,observed=(p.versions||[]).map(x=>x.version),latest=Math.max(...observed),wanted=requestedVersion();
   setPaper(p);
@@ -114,6 +118,7 @@ function ArxivDetail(){
    {notice&&<p className="hint" role="status">{notice}</p>}
    <div className="detail-record-toolbar"><div className="detail-record-actions">
     <button type="button" className="detail-citation-trigger" aria-label={t('获取引用格式：')+paper.title} disabled={!selected} onClick={()=>setCitationOpen(true)}><Icon name="quote"/>{t('引用')}</button>
+    {selected&&<FavoriteButton detail target={{source:'arxiv',paperId:paper.paper_id,version}} title={paper.title}/>}
     {state?.resources?.pdf?.state==='ready'&&<PaperPdfLink href={base+'/pdf/reader'}/>}
     <PaperSourceLink href={'https://arxiv.org/abs/'+paper.arxiv_id+'v'+version} label={t('arXiv 原文')}/>
    </div></div>

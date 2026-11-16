@@ -23,6 +23,7 @@ from .settings import state_dir
 THEMES = frozenset(('system', 'classic-green', 'plain-white', 'graphite', 'paper', 'midnight', 'lavender'))
 LANGUAGES = frozenset(('zh', 'en'))
 SOURCES = ('ieee', 'arxiv')
+LATEST = -1
 ARCHIVE_LIMIT = 100
 ARCHIVE_SECONDS = 3600
 ARCHIVES_PER_USER = 3
@@ -93,6 +94,9 @@ class Personal:
             raise ValueError('invalid_favorite')
         version = item.get('version', 0)
         if source == 'arxiv':
+            # 'latest' pins the newest observed version at the time of saving (used from result lists).
+            if version == 'latest':
+                return source, paper_id, LATEST
             if type(version) is not int or not 1 <= version <= 10000:
                 raise ValueError('invalid_favorite')
         elif version not in (0, None):
@@ -112,7 +116,9 @@ class Personal:
                 result.append((source, paper_id, 0, paper_id, paper.get('title') or '', paper.get('year')))
             else:
                 paper = self.directory.arxiv(paper_id)
-                if not paper or version not in [v['version'] for v in paper.get('versions') or []]:
+                observed = [v['version'] for v in (paper or {}).get('versions') or []]
+                version = max(observed, default=0) if version == LATEST else version
+                if not paper or version not in observed:
                     raise LookupError('paper_not_found')
                 result.append((source, paper_id, version, paper['arxiv_id'], paper.get('title') or '',
                                arxiv_year(paper['arxiv_id'])))
@@ -128,7 +134,7 @@ class Personal:
             for row in rows:
                 db.execute('INSERT OR IGNORE INTO favorites(username,source,paper_id,version,identifier,title,year,created) '
                            'VALUES(?,?,?,?,?,?,?,?)', (username, *row, now))
-        return self.state(username, identities)
+        return self.state(username, [row[:3] for row in rows])
 
     def remove(self, username, ids):
         if not isinstance(ids, list) or not 1 <= len(ids) <= 1000 or not all(type(i) is int for i in ids):

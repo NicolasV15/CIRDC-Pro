@@ -127,9 +127,13 @@ def file_key(url):
                                                 if k != 'asset_revision')) if parsed.query else '')
 
 
-def create_demo(database, data=DATA):
+def create_demo(database, data=DATA, state=None):
     seed, manifest = verified_inputs(data)
     catalog = DemoCatalog(database)
+    # Accounts, favorites and archives use the real implementation on a store inside the demo work folder.
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from demo_personal import PersonalGuard, personal_extension
+    accounts, personal_routes, holder = personal_extension(state or Path(database).parent / 'state', seed, catalog)
     files = {file_key(entry['url']): entry for entry in manifest['files']}
     sample = manifest['reading_sample']
     sample_base = f"/api/arxiv/papers/{sample['paper_id']}/versions/{sample['version']}"
@@ -146,9 +150,6 @@ def create_demo(database, data=DATA):
         path = request.url.path
         if request.method not in ('GET', 'HEAD'):
             return missing('demo_acquisition_disabled', 409)
-        if path == '/api/auth/session':
-            return JSONResponse({'interface': 'reader', 'authentication_required': False, 'user': None,
-                                 'csrf': '', 'demo': True})
         if path == '/api/demo':
             return JSONResponse({'offline': True, 'arxiv': len(seed['arxiv']), 'ieee': len(ieee),
                                  'reading': sample, 'missing_assets': manifest.get('missing_assets', []),
@@ -203,7 +204,7 @@ def create_demo(database, data=DATA):
         banner += '<a href="/?source=arxiv">arXiv</a> · <a href="/api/demo">Dataset / limitations</a></aside>'
         return HTMLResponse(raw.replace('<body>', '<body>' + banner))
 
-    app = Starlette(routes=[*catalog_routes(catalog), Route('/api/{path:path}', api,
+    app = Starlette(routes=[*catalog_routes(catalog), *personal_routes, Route('/api/{path:path}', api,
                       methods=['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE']),
                       Route('/healthz', lambda request: JSONResponse({'status': 'ok', 'demo': True})),
                       # StaticFiles must precede the SPA fallback so missing assets return 404.
@@ -211,6 +212,9 @@ def create_demo(database, data=DATA):
     from starlette.routing import Mount
     app.routes.append(Mount('/assets', StaticFiles(directory=SITE / 'src/cirdc/web/static/assets')))
     app.routes.append(Route('/{path:path}', page))
+    app.add_middleware(PersonalGuard, accounts=accounts, interface='reader')
+    holder['app'] = app
+    app.state.accounts = accounts
     return app
 
 
@@ -219,13 +223,34 @@ def main():
     parser.add_argument('--port', type=int, default=18090)
     parser.add_argument('--rebuild', action='store_true', help='replace only this demo database from the checked seed')
     parser.add_argument('--prepare-only', action='store_true')
+    parser.add_argument('--state', type=Path, default=SITE.parent / 'work/arxiv-demo/state',
+                        help='isolated accounts, favorites and archives for this demo only')
+    parser.add_argument('--admin-port', type=int, help='also serve the administrator workspace over a test adapter')
+    parser.add_argument('--admin-scenario', choices=['mixed', 'empty'], default='mixed')
     args = parser.parse_args()
     database = prepare(SITE.parent / 'work/arxiv-demo/demo.sqlite', rebuild=args.rebuild)
-    print(json.dumps({'database': str(database), 'url': f'http://127.0.0.1:{args.port}/?source=arxiv',
-                      'offline': True}), flush=True)
+    state = args.state.resolve()
+    if state.is_relative_to(Path.home() / '.local/state'):
+        raise SystemExit('Choose a demo state folder outside the website state directory')
+    state.mkdir(parents=True, exist_ok=True, mode=0o700)
+    info = {'database': str(database), 'state': str(state), 'url': f'http://127.0.0.1:{args.port}/?source=arxiv', 'offline': True}
+    if args.admin_port:
+        info['admin'] = f'http://127.0.0.1:{args.admin_port}/admin/'
+        info['admin_credentials'] = str(state / 'admin-credentials.txt')
+    print(json.dumps(info), flush=True)
     if not args.prepare_only:
+        import asyncio
         import uvicorn
-        uvicorn.run(create_demo(database), host='127.0.0.1', port=args.port)
+        reader = create_demo(database, state=state)
+        servers = [uvicorn.Server(uvicorn.Config(reader, host='127.0.0.1', port=args.port))]
+        if args.admin_port:
+            from demo_personal import create_admin_demo
+            admin = create_admin_demo(state, args.admin_scenario, SITE / 'src/cirdc/web/static')
+            servers.append(uvicorn.Server(uvicorn.Config(admin, host='127.0.0.1', port=args.admin_port)))
+
+        async def serve():
+            await asyncio.gather(*(server.serve() for server in servers))
+        asyncio.run(serve())
 
 
 if __name__ == '__main__':

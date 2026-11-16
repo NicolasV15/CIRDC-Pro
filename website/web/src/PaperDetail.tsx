@@ -1,3 +1,6 @@
+import FavoriteButton from './FavoriteButton';
+import {useFavoriteStates} from './favorites';
+import {useAccount} from './account';
 import React,{useEffect,useRef,useState} from 'react';
 import {t,localizedText,keywordGroupLabel,contentTypeLabel} from './i18n';
 import {api} from './api';
@@ -81,6 +84,7 @@ function ReadingResources({items}:{items?:ReadingResource[]}){
  return <section className="reading-resources"><h3>{t('本地资料')}</h3>{available.map(item=><div className="reading-resource" key={item.id}><a className="button wide" href={readingHref(item)} target="_blank" rel="noopener noreferrer"><Icon name="file"/><span>{localizedText(item.label_i18n,item.label)}</span><Icon name="external" className="icon-trailing"/></a>{item.note&&<p className="hint">{localizedText(item.note_i18n,item.note)}{item.size_bytes?' · '+(item.size_bytes/1024/1024).toFixed(1)+' MiB':''}</p>}</div>)}</section>;
 }
 export default function PaperDetail({number,back,initialQuery,onSearch}:{number:string;back:()=>void;initialQuery:string;onSearch:(query:string)=>void}){
+ useFavoriteStates([{source:'ieee',paperId:number}],!!useAccount().user);
  const pageTop=useRef<HTMLHeadingElement>(null);
  const [item,setItem]=useState<any>(),[error,setError]=useState(''),[citationOpen,setCitationOpen]=useState(false);
  const [documentReadyFor,setDocumentReadyFor]=useState<string|null>(null);
@@ -111,7 +115,7 @@ export default function PaperDetail({number,back,initialQuery,onSearch}:{number:
    <h1 ref={pageTop} tabIndex={-1} data-copy-content="title"><ScientificTitle value={p.articleTitle} fallback={t('未提供标题')}/></h1>
    <AuthorLinks references={references} detail/>
    <div className="publication-line detail-publication-line"><VenueTags paper={{kind:p.articleContentType,venue:String(p.publicationNumber||''),venue_series:item.venue_series,publication:p.publicationTitle}}/><p className="publication">{[p.publicationTitle,p.publicationYear,p.publicationDate].filter(Boolean).join(' · ')}</p></div>
-   <div className="detail-record-toolbar"><div className="detail-record-actions"><button type="button" className="detail-citation-trigger" aria-label={t('获取引用格式：')+(text(p.articleTitle)||number)} onClick={()=>setCitationOpen(true)}><Icon name="quote"/>{t('引用')}</button><PaperPdfLink items={item.resources} notice={item.resource_notice} noticeLocales={item.resource_notice_i18n} auto={documentReadyFor===number}/><PaperSourceLink href={'https://ieeexplore.ieee.org/document/'+number} label={t('IEEE Xplore 原文')}/></div><span className="detail-record-id">{t('论文编号')} <code>{number}</code></span></div>
+   <div className="detail-record-toolbar"><div className="detail-record-actions"><button type="button" className="detail-citation-trigger" aria-label={t('获取引用格式：')+(text(p.articleTitle)||number)} onClick={()=>setCitationOpen(true)}><Icon name="quote"/>{t('引用')}</button><FavoriteButton detail target={{source:'ieee',paperId:number}} title={text(p.articleTitle)||number}/><PaperPdfLink items={item.resources} notice={item.resource_notice} noticeLocales={item.resource_notice_i18n} auto={documentReadyFor===number}/><PaperSourceLink href={'https://ieeexplore.ieee.org/document/'+number} label={t('IEEE Xplore 原文')}/></div><span className="detail-record-id">{t('论文编号')} <code>{number}</code></span></div>
   </header>
   <div className="detail-grid"><section className="detail-main" aria-label={t('论文内容')}>
    <section className="panel abstract-panel"><div className="section-heading references-heading"><h2><button type="button" className="reference-toggle" aria-label={abstractExpanded?t('收起摘要'):t('展开摘要')} aria-controls={abstractContentId} aria-expanded={abstractExpanded} onClick={()=>setAbstractExpanded(value=>!value)}>{t('摘要')}</button></h2></div><div id={abstractContentId} hidden={!abstractExpanded}><p className="abstract" data-copy-content="abstract" data-copy-source-html={typeof p.abstract==='string'?p.abstract.trim():undefined} data-copy-source-mode="literal" data-copy-preserve-lines><AbstractText value={p.abstract} fallback="—"/></p><MetadataMaintenance key={number} number={number} fetcher={api} onReady={()=>{void api('/api/papers/'+number).then(r=>{if(loadedNumber.current===number)setItem(r.paper);});}}/></div></section>
