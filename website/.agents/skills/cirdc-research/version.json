@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "name": "cirdc-research",
-  "version": "1.2.0",
-  "released": "2026-11-13",
+  "version": "1.3.0",
+  "released": "2026-11-24",
   "notes": {
-    "zh": "兼容 IEEE 与 arXiv：独立来源和版本身份、分页读取缓存正文，以及 PDF/HTML/源码按需获取；保留现有 IEEE 命令与安装配置。",
-    "en": "Support IEEE and arXiv with source/version identities, paginated cached reading and on-demand PDF/HTML/source acquisition; preserve IEEE commands and site configuration."
+    "zh": "新增 IEEE 与 arXiv 统一联合检索（search_unified / GET /api/agent/v1/search / search-unified），支持跨库 RRF 相关度与时间混排、来源筛选联动和独立来源状态；保留既有单源接口与安装配置。",
+    "en": "Add unified IEEE + arXiv search (search_unified / GET /api/agent/v1/search / search-unified) with RRF relevance and chronological merging, source filter linking, and per-source status; preserve existing single-source commands and site configuration."
   },
   "compatibility": {
     "api_major": 1,
@@ -14,24 +14,24 @@
   },
   "files": {
     "SKILL.md": {
-      "sha256": "33eba8d91253802d0ab2c103f4145341ce25048c357506cf550995564ebb8086",
-      "bytes": 9791
+      "sha256": "b87473a39968acdb7262897e98745d6701e7a25863ae1d79966849edf77f3eab",
+      "bytes": 10131
     },
     "agents/openai.yaml": {
       "sha256": "2fb0925cb1815f207c3f695a97a0fa09d977a067aa86afd45216e2070288bf22",
       "bytes": 248
     },
     "references/api.md": {
-      "sha256": "38e95cdfdc3a31fd698e5bb96c8a3ac20d96bfe120edb01d4d1b70a74f8492df",
-      "bytes": 24169
+      "sha256": "da87f09ed8620c61e7e0b95de93fe2fb2c97c410795baf7aecc2f138489ea87a",
+      "bytes": 24588
     },
     "references/arxiv.md": {
       "sha256": "f92bfe3ab44ad8c9d5ae16f27c91c835ac5f20ea3667291d9d988de03374e9f6",
       "bytes": 6301
     },
     "scripts/cirdc_client.py": {
-      "sha256": "fd91c0074ef389c42f71897acc419230e467ed20968cb77b900143b30b36ffd3",
-      "bytes": 22121
+      "sha256": "9a5dabf50d63f9febc011349d35c5478fd74cd49f86a6223900c52c6fbc9a34d",
+      "bytes": 22891
     },
     "scripts/install_skill.py": {
       "sha256": "f17fb37d70b7e7fe2e8087d84534ab11393ef6ee45c1f0c6d9eba0b4e09a2fc4",
@@ -39,6 +39,32 @@
     }
   },
   "legacy_files": [
+    {
+      "SKILL.md": {
+        "sha256": "33eba8d91253802d0ab2c103f4145341ce25048c357506cf550995564ebb8086",
+        "bytes": 9791
+      },
+      "agents/openai.yaml": {
+        "sha256": "2fb0925cb1815f207c3f695a97a0fa09d977a067aa86afd45216e2070288bf22",
+        "bytes": 248
+      },
+      "references/api.md": {
+        "sha256": "38e95cdfdc3a31fd698e5bb96c8a3ac20d96bfe120edb01d4d1b70a74f8492df",
+        "bytes": 24169
+      },
+      "references/arxiv.md": {
+        "sha256": "f92bfe3ab44ad8c9d5ae16f27c91c835ac5f20ea3667291d9d988de03374e9f6",
+        "bytes": 6301
+      },
+      "scripts/cirdc_client.py": {
+        "sha256": "fd91c0074ef389c42f71897acc419230e467ed20968cb77b900143b30b36ffd3",
+        "bytes": 22121
+      },
+      "scripts/install_skill.py": {
+        "sha256": "f17fb37d70b7e7fe2e8087d84534ab11393ef6ee45c1f0c6d9eba0b4e09a2fc4",
+        "bytes": 25680
+      }
+    },
     {
       "SKILL.md": {
         "sha256": "430cb7ea727fdeb0a61eecae1b4f3e7ff17fb77fd8dc39e0b81df884e3eb8cd2",
@@ -58,5 +84,5 @@
       }
     }
   ],
-  "release_notes": "兼容 IEEE 与 arXiv：独立来源和版本身份、分页读取缓存正文，以及 PDF/HTML/源码按需获取；保留现有 IEEE 命令与安装配置。"
+  "release_notes": "新增 IEEE 与 arXiv 统一联合检索（search_unified / GET /api/agent/v1/search / search-unified），支持跨库 RRF 相关度与时间混排、来源筛选联动和独立来源状态；保留既有单源接口与安装配置。"
 }

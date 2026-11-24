@@ -139,8 +139,8 @@ def result_status(values):
 
 
 class AgentAPI:
-    def __init__(self, resources, papers, paper):
-        self.resources, self.papers, self.paper = resources, papers, paper
+    def __init__(self, resources, papers, paper, unified=None):
+        self.resources, self.papers, self.paper, self.unified = resources, papers, paper, unified
         self._lifecycle_lock = threading.Lock()
         self._lifespans = 0
         self._closed = False
@@ -194,6 +194,8 @@ class AgentAPI:
                                    'arxiv': {'enabled': bool(__import__('os').environ.get('CIRDC_ARXIV_READER_CONFIG')),
                                              'api_base':'/api/arxiv','versioned':True,
                                              'resources_enabled':any(getattr(p,'identifier',None)=='arxiv-resources' for p in getattr(self.resources,'providers',[]))}},
+                       'unified_search': self.unified is not None,
+                       **({'unified_search_url': PREFIX + '/search'} if self.unified is not None else {}),
                        'formats': ['markdown', 'text', 'html'],
                        'resource_contract_version':2,
                        'limits': {'wait_seconds_default': 10, 'wait_seconds_max': 30,
@@ -214,6 +216,20 @@ class AgentAPI:
             item.pop('resources', None)
             item.pop('resource_notice', None)
             item['detail_url'] = PREFIX + '/papers/' + str(item['number'])
+        return answer(value, result.status_code)
+
+    async def unified_search(self, request):
+        if self.unified is None:
+            raise AgentError('unified_search_unavailable', 404)
+        result = await self.reads.call(self.unified, request)
+        value = json.loads(result.body)
+        for item in value.get('items', []):
+            item.pop('resources', None)
+            item.pop('resource_notice', None)
+            if item.get('source') == 'arxiv' and item.get('paper_id') is not None:
+                item['detail_url'] = '/api/arxiv/papers/' + str(item['paper_id'])
+            elif item.get('number') is not None:
+                item['detail_url'] = PREFIX + '/papers/' + str(item['number'])
         return answer(value, result.status_code)
 
     async def get_paper(self, request):
@@ -465,6 +481,7 @@ class AgentAPI:
     def routes(self):
         return [Route(PREFIX + path, protect(handler), methods=methods) for path, handler, methods in [
             ('/capabilities', self.capabilities, ['GET']), ('/papers', self.search, ['GET']),
+            ('/search', self.unified_search, ['GET']),
             ('/papers/{number}', self.get_paper, ['GET']), ('/papers/{number}/ensure', self.ensure, ['POST']),
             ('/requests/{request_id}', self.get_request, ['GET']), ('/papers/{number}/content', self.content, ['GET']),
             ('/papers/{number}/pdf', self.file, ['GET', 'HEAD']),

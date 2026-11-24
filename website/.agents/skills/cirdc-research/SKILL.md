@@ -61,11 +61,16 @@ assume arXiv is installed. `enabled` describes configuration, not full database 
 index completion; preserve returned coverage and unavailable-index errors.
 
 Route an arXiv ID, version or official arXiv link to arXiv. Route IEEE article
-numbers/Xplore links to IEEE. For a general topic, search the source requested by
-the user; when unrestricted, search both enabled sources separately and label
-results. Preserve each source's cursor; do not merge numeric IDs or treat local
-rankings as a single comparable score. Preprints and published papers can be
-related but must not be merged from title similarity.
+numbers/Xplore links to IEEE. For a general topic, use `search_unified` /
+`GET /api/agent/v1/search` (or `search-unified` in the helper) when
+`capabilities.unified_search` is true: pass `sources=ieee,arxiv` (default) or a
+single source (`ieee` / `arxiv`) to get deterministically merged results (RRF
+for keyword relevance, chronological for year/browse) with explicit `source`
+tags, per-source status/totals, and `source_notes` for source-specific fields.
+If an older site omits `unified_search`, fall back to searching each enabled
+source separately and labeling results. Preserve each returned cursor; never
+merge numeric IDs across sources or merge preprints with published papers by
+title similarity alone.
 
 For arXiv, follow [arXiv versioned access](references/arxiv.md): resolve the base ID,
 select a concrete paper version, inspect cached resources, and read with

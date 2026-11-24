@@ -317,6 +317,9 @@ class Client:
     def search(self, query="", **filters):
         return self.request("/papers", params={"q": query, **filters})
 
+    def search_unified(self, query="", **filters):
+        return self.request("/search", params={"q": query, **filters})
+
     @staticmethod
     def number(value):
         if not isinstance(value, str) or not re.fullmatch("[0-9]{1,64}", value):
@@ -482,6 +485,20 @@ def main(argv=None):
     arxiv_status = commands.add_parser("arxiv-status")
     arxiv_status.add_argument("request_id")
     arxiv_status.add_argument("--wait-seconds", type=float, default=0)
+    unified = commands.add_parser(
+        "search-unified", help="Search IEEE and arXiv together with RRF/chronological merging"
+    )
+    unified.add_argument("query", nargs="?", default="")
+    unified.add_argument("--sources", default="ieee,arxiv")
+    unified.add_argument("--field", default="all")
+    unified.add_argument("--sort")
+    unified.add_argument("--limit", type=int, default=20)
+    unified.add_argument("--year-from", type=int)
+    unified.add_argument("--year-to", type=int)
+    unified.add_argument("--venue")
+    unified.add_argument("--venue-any")
+    unified.add_argument("--category")
+    unified.add_argument("--cursor")
     updates = commands.add_parser(
         "updates", help="Check releases or defer/skip/disable update prompts; never installs"
     )

@@ -182,6 +182,22 @@ def create_demo(database, data=DATA, state=None):
                                  'resources': {k: {'state': 'not_packaged'} for k in ('html', 'pdf', 'source')},
                                  'reading_state': 'not_packaged', 'reading_ready': False,
                                  'acquisition_complete': False, 'demo': True})
+        if path == '/api/search/unified':
+            if request.query_params.get('field') == 'body':
+                return missing('demo_ieee_body_index_not_packaged', 409)
+            from cirdc.web.unified_search import UnifiedSearchUnavailable, unified_search
+            try:
+                result = unified_search(
+                    dict(request.query_params),
+                    ieee_search=lambda p: index._search_uncached(p),
+                    arxiv_catalog=catalog,
+                )
+            except (ValueError, TypeError):
+                return JSONResponse({'error': 'invalid_query'}, status_code=422)
+            except UnifiedSearchUnavailable:
+                return JSONResponse({'error': 'search_busy'}, status_code=503)
+            result['demo'] = True
+            return JSONResponse(result)
         if path == '/api/papers':
             if request.query_params.get('field') == 'body':
                 return missing('demo_ieee_body_index_not_packaged', 409)

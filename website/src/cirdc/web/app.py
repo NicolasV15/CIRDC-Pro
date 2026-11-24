@@ -377,12 +377,39 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
         from .arxiv import configured_catalog, routes as arxiv_routes
         arxiv_catalog = configured_catalog()
         routes += arxiv_routes(arxiv_catalog)
+
+        def ieee_query(params):
+            if params.get('field') == 'body':
+                from .fulltext import search_body
+                value = search_body(params)
+            elif params.get('view') == 'top':
+                from .ranking import top
+                value = top(params)
+            else:
+                value = search(params)
+            if value['items']:
+                attach_series(value['items'])
+                attach_author_references(value['items'])
+                resources.attach(value['items'])
+            return value
+
+        def unified_papers(request):
+            from .unified_search import UnifiedSearchUnavailable, unified_search
+            try:
+                value = unified_search(dict(request.query_params), ieee_search=ieee_query, arxiv_catalog=arxiv_catalog)
+                return response(value)
+            except (ValueError, TypeError):
+                return response({'error': 'invalid_query', 'message': '查询参数无效，请检查搜索词、来源、年份或翻页链接。'}, 422)
+            except UnifiedSearchUnavailable:
+                return response({'error': 'search_busy', 'message': '检索超时或索引繁忙，请缩小范围后重试。'}, 503)
+
+        routes.append(Route('/api/search/unified', unified_papers))
         routes += resources.routes()
         from .personal import Archives, Personal, routes as personal_routes
         personal = Personal(accounts, SiteDirectory(config, resources, arxiv_catalog))
         routes += personal_routes(personal, Archives(personal, lambda: app), response, body)
         from .agent import AgentAPI
-        agent_api = AgentAPI(resources, papers, paper)
+        agent_api = AgentAPI(resources, papers, paper, unified=unified_papers)
         routes += agent_api.routes()
         from .agent_mcp import ResearchMCP, MCP_PATH
         research_mcp = ResearchMCP()

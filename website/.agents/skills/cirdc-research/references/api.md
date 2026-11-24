@@ -108,12 +108,15 @@ standard library and is optional for both direct HTTP and hosted MCP:
 
 ```sh
 python scripts/cirdc_client.py --base-url "$CIRDC_BASE_URL" capabilities
+python scripts/cirdc_client.py search-unified 'ring amplifier' --sources ieee,arxiv --year-from 2020 --limit 20
 python scripts/cirdc_client.py search 'ring amplifier' --year-from 2020 --limit 20
 python scripts/cirdc_client.py ensure ARTICLE_NUMBER --resources content pdf --wait-seconds 10
 python scripts/cirdc_client.py status REQUEST_ID --wait-seconds 10
 python scripts/cirdc_client.py read ARTICLE_NUMBER --cursor NEXT_CURSOR
 python scripts/cirdc_client.py pdf ARTICLE_NUMBER --output article.pdf
 ```
+
+`GET /api/agent/v1/search` (MCP tool `search_unified`, CLI `search-unified`) queries IEEE and arXiv together (`sources=ieee,arxiv` by default), merging keyword relevance with RRF and chronological/browse lists by year/date while preserving each source's status, totals, `source_notes` and independent IDs.
 
 The helper only saves a ready PDF and refuses to overwrite an existing file.
 

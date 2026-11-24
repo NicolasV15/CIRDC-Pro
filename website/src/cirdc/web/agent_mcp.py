@@ -124,6 +124,16 @@ class ResearchMCP:
             return await self.request(ctx, '/capabilities')
 
         @server.tool(annotations=readonly, structured_output=True)
+        async def search_unified(ctx: Context, query: str = '', sources: str = 'ieee,arxiv', field: str = 'all',
+                                 sort: str = 'relevance', limit: int = 20, year_from: int | None = None,
+                                 year_to: int | None = None, venue: str | None = None, venue_any: str | None = None,
+                                 category: str | None = None, cursor: str | None = None) -> dict[str, Any]:
+            """Search IEEE and arXiv papers together with RRF or chronological merging; never collects documents."""
+            return await self.request(ctx, '/search', params={'q': query, 'sources': sources, 'field': field,
+                'sort': sort, 'limit': limit, 'year_from': year_from, 'year_to': year_to, 'venue': venue,
+                'venue_any': venue_any, 'category': category, 'cursor': cursor})
+
+        @server.tool(annotations=readonly, structured_output=True)
         async def search_papers(ctx: Context, query: str = '', field: str = 'all', sort: str = 'relevance',
                                 limit: int = 20, year_from: int | None = None, year_to: int | None = None,
                                 venue: str | None = None, venue_tags: str | None = None, kind: str | None = None,
