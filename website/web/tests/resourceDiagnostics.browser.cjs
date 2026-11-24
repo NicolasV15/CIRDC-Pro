@@ -1,6 +1,8 @@
 /* Read-only administrator fixture: no source requests, retries or configuration writes. */
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+/** Phones keep the language switch in the header menu. */
+async function chooseLanguage(page,name){const menu=page.locator('.header-more-trigger');if(await menu.isVisible())await menu.click();await page.locator('.app-header .language-switch').getByRole('button',{name,exact:true}).click();}
 const root=process.env.CIRDC_WEB_STATIC||path.resolve(__dirname,'../../src/cirdc/web/static');
 const origin='http://resource-outcomes.test';
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff'};
@@ -32,7 +34,7 @@ async function main(){
   });
   const page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
   await page.goto(origin+'/admin/');
-  if(profile.lang==='en')await page.getByRole('button',{name:'English',exact:true}).click();
+  if(profile.lang==='en')await chooseLanguage(page,'English');
   // Resource settings live in the workspace's resources section (was the index tab before the redesign).
   await page.locator('.admin-nav a[href="#resources"]').click();
   const section=page.locator('.resource-settings');

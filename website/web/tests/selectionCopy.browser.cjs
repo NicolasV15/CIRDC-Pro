@@ -2,6 +2,8 @@
  * PLAYWRIGHT_CHROMIUM_EXECUTABLE and CIRDC_BROWSER_OUTPUT. All requests are mocked. */
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+/** Phones keep the language switch in the header menu. */
+async function chooseLanguage(page,name){const menu=page.locator('.header-more-trigger');if(await menu.isVisible())await menu.click();await page.locator('.app-header .language-switch').getByRole('button',{name,exact:true}).click();}
 const root=process.env.CIRDC_COPY_STATIC_ROOT||path.resolve(__dirname,'../../src/cirdc/web/static'),aid='83000801';
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
 const title='Selection <b>bold</b> $x_1$ + $\\mu$',abstract='<p>Detail <b>bold</b> and <i>italic</i> with $a_1$ and $\\alpha$.</p><p>Second paragraph.</p>';
@@ -49,7 +51,7 @@ async function main(){
   async function copy(format){const button=toolbar().getByRole('button',{name:format,exact:true});await button.waitFor();if(profile.touch)await button.tap();else await button.click();}
   async function fallback(){await page.getByRole('dialog').waitFor();assert(!(await page.getByRole('dialog').innerText()).includes('已复制'));return page.getByRole('textbox',{name:'格式源码',exact:true});}
   async function close(){await page.getByRole('button',{name:'关闭复制预览',exact:true}).click();await page.waitForFunction(()=>!document.querySelector('.selection-copy-dialog'));await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));}
-  await page.goto(origin+'/',{waitUntil:'networkidle'});await page.getByRole('button',{name:'中文',exact:true}).click();await page.locator('.paper-title .katex').first().waitFor();
+  await page.goto(origin+'/',{waitUntil:'networkidle'});await chooseLanguage(page,'中文');await page.locator('.paper-title .katex').first().waitFor();
   assert(!requests.some(p=>p.includes('SelectionCopyToolbar')),'Converter must not load before selection');
   const original=await select('.paper-title .scientific-title','bold',4);await toolbar().waitFor();assert(requests.some(p=>p.includes('SelectionCopyToolbar')));
   if(profile.secure){
@@ -93,7 +95,7 @@ async function main(){
   source='pdf_parse';await page.reload({waitUntil:'networkidle'});await page.locator('#inline-math .katex').waitFor();if(profile.secure)await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>Promise.reject(Error('denied'))}}));await select('#mixed');await copy('复制 Markdown');const expected='Value $\\frac{x_1}{y^2}$ end.';
   if(profile.secure){assert.equal(await (await fallback()).inputValue(),expected);await close();}else{assert.equal(await (await fallback()).inputValue(),expected);await page.getByRole('button',{name:'English',exact:true}).count();await close();}
   await greekCopy('#greek-inline',String.raw`\mu`,'μ',true);
-  await page.getByRole('button',{name:'English',exact:true}).click();await select('#partial','selected',8);await page.getByRole('toolbar',{name:'Copy selection',exact:true}).getByRole('button',{name:'Copy Markdown',exact:true}).click();await page.getByRole('dialog').waitFor();assert.equal(await page.getByRole('textbox',{name:'Format source',exact:true}).inputValue(),'selected');await page.getByRole('button',{name:'Close copy preview',exact:true}).click();
+  await chooseLanguage(page,'English');await select('#partial','selected',8);await page.getByRole('toolbar',{name:'Copy selection',exact:true}).getByRole('button',{name:'Copy Markdown',exact:true}).click();await page.getByRole('dialog').waitFor();assert.equal(await page.getByRole('textbox',{name:'Format source',exact:true}).inputValue(),'selected');await page.getByRole('button',{name:'Close copy preview',exact:true}).click();
   assert.deepEqual(posts,[]);assert.deepEqual(blocked,[]);assert.deepEqual(errors,[]);assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));
   reports.push({profile:profile.name,lazyBeforeSelection:true,listTitle:true,listPreviewDeduplicated:true,detailAbstractMapped:true,bodyHTML:true,pdfHTML:true,partialParagraph:true,partialFormulaAtomic:true,sourceTeXPreserved:true,compactMathAllFormats:true,unicodeGreekTitleAbstractAndBodies:true,greekVariantsPreserved:true,complexGreekTexFallback:true,greekSourceFormatsUnchanged:true,originalFormulaDOMUnchanged:true,mathEnvironmentNotNested:true,htmlScriptsPreserved:true,lists:true,simpleTable:true,mergedTableExplicitFallback:true,modernClipboard:profile.secure,httpOrDeniedPreview:true,noFalseCopied:true,selectionPreserved:true,nativeCopyUnchanged:profile.secure,mobileTouch:!!profile.touch,bilingual:true,existingDisclosureAndReferenceJump:true,sourceRequests:0,realApiRequests:0});console.log(JSON.stringify(reports.at(-1)));await context.close();
  }}finally{await browser.close();}

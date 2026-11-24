@@ -2,6 +2,8 @@
  * PLAYWRIGHT_CHROMIUM_EXECUTABLE and CIRDC_BROWSER_OUTPUT. All requests are mocked. */
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+/** Phones keep the language switch in the header menu. */
+async function chooseLanguage(page,name){const menu=page.locator('.header-more-trigger');if(await menu.isVisible())await menu.click();await page.locator('.app-header .language-switch').getByRole('button',{name,exact:true}).click();}
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://search-startup.test';
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
 async function main(){
@@ -47,7 +49,7 @@ async function main(){
   await search('Fail');await page.getByRole('button',{name:'重试统计',exact:true}).waitFor();assert.equal(await page.locator('.paper-row').count(),17);assert((await page.locator('.result-total').innerText()).includes('总数暂不可用'));failCount=false;await page.getByRole('button',{name:'重试统计',exact:true}).click();await page.waitForFunction(()=>document.querySelector('.result-total')?.textContent.includes('17'));
   const venue=page.locator('input[list="venues"]');if(!await venue.isVisible())await page.locator('.filter-disclosure > summary').click();await venue.focus();await page.getByText('刊会列表暂不可用，可输入刊会编号。',{exact:true}).waitFor();await venue.blur();await venue.focus();await page.waitForFunction(()=>document.querySelectorAll('#venues option').length===2);assert.equal(venueCalls,2);
   await venue.fill('4 · Fixture JSSC');await page.locator('.search-box').evaluate(el=>el.requestSubmit());await page.waitForTimeout(150);assert(requests.some(url=>url.startsWith('/api/papers?')&&url.includes('venue=4')));
-  await page.getByRole('button',{name:'English',exact:true}).click();assert((await page.locator('.result-loaded').innerText()).includes('17'));
+  await chooseLanguage(page,'English');assert((await page.locator('.result-loaded').innerText()).includes('17'));
   assert.deepEqual(blocked,[]);assert.deepEqual(errors,[]);assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));
   reports.push({profile:profile.name,rowsVisibleBeforeCount:true,exactTotalAfterwards:true,loadedCountAndPagination:true,pageSizeSelectionCleared:true,staleCountIgnored:true,countFailureAndRetry:true,rowFailureStopsCounting:true,catalogLazy:true,catalogRetry:true,venueFiltering:true,bilingual:true,realSourceRequests:0,pdfConversions:0});console.log(JSON.stringify(reports.at(-1)));await context.close();
  }}finally{await browser.close();}

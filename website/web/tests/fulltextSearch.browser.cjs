@@ -2,6 +2,10 @@
  * PLAYWRIGHT_CHROMIUM_EXECUTABLE and CIRDC_BROWSER_OUTPUT. All requests are mocked; nothing is written. */
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+/** Phones fold the search options behind one row; open it before using them. */
+async function openOptions(page){const toggle=page.locator('.search-options-toggle');if(await toggle.isVisible()&&await toggle.getAttribute('aria-expanded')!=='true')await toggle.click();}
+/** Phones keep the language switch in the header menu. */
+async function chooseLanguage(page,name){const menu=page.locator('.header-more-trigger');if(await menu.isVisible())await menu.click();await page.locator('.app-header .language-switch').getByRole('button',{name,exact:true}).click();}
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://fulltext-search.test';
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
 const fixture=require('./fixtures/fulltextPassages.json');
@@ -129,6 +133,7 @@ async function main(){
   assert.equal(await page.locator('.load-more').count(),0);
   assert.equal(await page.locator('.page-size-control').count(),0);
   assert(requests.some(r=>r.startsWith('/api/papers?')&&r.includes('view=top')&&r.includes('k=10')));
+  await openOptions(page);
   await page.locator('.alias-toggle input').uncheck();
   await page.waitForFunction(()=>new URL(location.href).searchParams.get('terms')==='exact');
   assert(requests.some(r=>r.startsWith('/api/papers?')&&r.includes('terms=exact')&&r.includes('view=top')));
@@ -137,7 +142,7 @@ async function main(){
   // Language switching keeps the reader state and localizes the explanations.
   await page.goto(origin+'/papers/301?passage=7&v=v1&q=SAR+ADC',{waitUntil:'networkidle'});
   await focused().waitFor();
-  await page.getByRole('button',{name:'English',exact:true}).click();
+  await chooseLanguage(page,'English');
   assert((await page.locator('.passage-navigator').innerText()).includes('Full-text hits'));
   await expectFocus(fixture.passages[7].fingerprint,'english');
 
@@ -146,7 +151,7 @@ async function main(){
   // The fixture init script restores Chinese on each full-page navigation.
   await page.getByText('其中 1 篇索引失败，1 篇已暂停重试。',{exact:true}).waitFor();
   await noOverflow('failed index chinese');
-  await page.getByRole('button',{name:'English',exact:true}).click();
+  await chooseLanguage(page,'English');
   await page.getByText('Indexing failed for 1 papers; retries are paused for 1.',{exact:true}).waitFor();
   await noOverflow('failed index english');
 

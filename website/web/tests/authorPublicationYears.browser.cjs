@@ -1,6 +1,8 @@
 /* Isolated cached author fixture. No acquisition, database or source requests. */
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+/** Phones keep the language switch in the header menu. */
+async function chooseLanguage(page,name){const menu=page.locator('.header-more-trigger');if(await menu.isVisible())await menu.click();await page.locator('.app-header .language-switch').getByRole('button',{name,exact:true}).click();}
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://author-years.test';
 const initial=[{name:'2028',num_records:6},{name:'2020',num_records:0},{name:'2024',num_records:null},{name:'2026',num_records:12},{name:'2021',num_records:3}];
 (async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}),reports=[];
@@ -29,7 +31,7 @@ try{for(const width of [1440,390,320]){
  assert((await columns().nth(2).getAttribute('aria-label')).includes('来源未提供'));assert.equal(await section().locator('table').count(),0);
  const colors=[];for(const theme of ['classic-green','plain-white','graphite','paper','midnight','lavender']){await page.evaluate(value=>document.documentElement.dataset.theme=value,theme);colors.push(await columns().nth(3).locator('.author-year-bar').evaluate(el=>getComputedStyle(el).backgroundColor));assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));}
  assert(new Set(colors).size>1);if(process.env.CIRDC_BROWSER_OUTPUT){await section().scrollIntoViewIfNeeded();await section().screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,'author-years-'+width+'.png')});}
- const before=reads;await page.getByRole('button',{name:'English',exact:true}).click();assert.equal(await section().locator('figcaption').innerText(),'IEEE article count');assert.equal(reads,before);assert((await columns().nth(3).getAttribute('aria-label')).includes('IEEE article count'));
+ const before=reads;await chooseLanguage(page,'English');assert.equal(await section().locator('figcaption').innerText(),'IEEE article count');assert.equal(reads,before);assert((await columns().nth(3).getAttribute('aria-label')).includes('IEEE article count'));
  await section().locator('summary').press('Enter');assert.equal(await section().getAttribute('open'),null);await section().locator('summary').press('Enter');assert.notEqual(await section().getAttribute('open'),null);
  years=Array.from({length:60},(_,i)=>({name:String(1960+i),num_records:i%13}));await page.reload({waitUntil:'networkidle'});await section().locator('summary').click();const scroll=section().locator('.author-year-scroll');
  assert.equal(await columns().count(),60);assert(await scroll.evaluate(el=>el.scrollWidth>el.clientWidth));await scroll.focus();await scroll.press('End');await scroll.evaluate(el=>el.scrollLeft=el.scrollWidth);assert(await scroll.evaluate(el=>el.scrollLeft>0));assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));

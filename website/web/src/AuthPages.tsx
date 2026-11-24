@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {t} from './i18n';
+import {currentLanguage,t} from './i18n';
 import {api,setCsrf} from './api';
 import type {User} from './types';
 
@@ -20,11 +20,13 @@ function usePreLoginToken(publicReader:boolean){
  useEffect(()=>{if(!publicReader)return;void api('/api/auth/session?prepare=1').then(r=>{setCsrf(r.csrf);setReady(true);}).catch(()=>setReady(true));},[publicReader]);
  return ready;
 }
+/** Phones hide the headline break; English still needs the space between the two phrases. */
+function HeadlineBreak(){return <>{currentLanguage()==='en'?' ':''}<br/></>;}
 export function Login({mode,onLogin,publicReader=false,registration=false,next='/'}:{mode:string;onLogin:(u:User)=>void;publicReader?:boolean;registration?:boolean;next?:string}){
  const [name,setName]=useState(''),[password,setPassword]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),ready=usePreLoginToken(publicReader);
  async function submit(e:React.FormEvent){e.preventDefault();setBusy(true);setError('');try{const r=await api('/api/auth/login','POST',{username:name,password});setCsrf(r.csrf);onLogin(r.user);}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
  return <main id="main" className="auth-layout">
-  <section className="auth-intro"><span className="eyebrow">{t('CIRCUITS · RESEARCH · DISCOVERY')}</span><h1>{t('从一篇论文，')}<br/>{t('开始下一步研究。')}</h1><p>{t('汇集期刊与会议元数据。检索标题、作者、关键词和摘要，查看完整记录与数据覆盖情况。')}</p><Illustration/></section>
+  <section className="auth-intro"><span className="eyebrow">{t('CIRCUITS · RESEARCH · DISCOVERY')}</span><h1>{t('从一篇论文，')}<HeadlineBreak/>{t('开始下一步研究。')}</h1><p>{t('汇集期刊与会议元数据。检索标题、作者、关键词和摘要，查看完整记录与数据覆盖情况。')}</p><Illustration/></section>
   <section className="auth-card" aria-labelledby="login-title"><h2 id="login-title">{mode==='admin'?t('登录管理员工作台'):publicReader?t('登录 CIRDC Pro'):t('登录文献数据库')}</h2><p className="muted">{publicReader?t('登录后可收藏论文，并在不同设备上同步主题和语言。'):t('首次登录需修改初始密码。')}</p>
    <form onSubmit={e=>void submit(e)}><label>{t('用户名')}<input name="username" autoComplete="username" required value={name} onChange={e=>setName(e.target.value)}/></label><PasswordInput label={t('密码')} name="password" value={password} onChange={setPassword} autoComplete="current-password"/>{error&&<p className="error" role="alert">{t(error)}</p>}<button className="primary wide" disabled={busy||!ready}>{busy?t('正在登录…'):t('登录')}</button></form>
    {registration&&<p className="auth-switch">{t('还没有账户？')}<a href={'/register?next='+encodeURIComponent(next)}>{t('注册')}</a></p>}
@@ -53,7 +55,7 @@ export function Register({onLogin,next='/'}:{onLogin:(u:User)=>void;next?:string
   setBusy(true);try{const r=await api('/api/auth/register','POST',{username:name,password});setCsrf(r.csrf);onLogin(r.user);}catch(e){setError((e as Error).message);}finally{setBusy(false);}
  }
  return <main id="main" className="auth-layout">
-  <section className="auth-intro"><span className="eyebrow">{t('CIRCUITS · RESEARCH · DISCOVERY')}</span><h1>{t('收藏论文，')}<br/>{t('在任何设备继续阅读。')}</h1><Illustration/></section>
+  <section className="auth-intro"><span className="eyebrow">{t('CIRCUITS · RESEARCH · DISCOVERY')}</span><h1>{t('收藏论文，')}<HeadlineBreak/>{t('在任何设备继续阅读。')}</h1><Illustration/></section>
   <section className="auth-card" aria-labelledby="register-title"><h2 id="register-title">{t('创建账户')}</h2>
    <form onSubmit={e=>void submit(e)}><label>{t('用户名')}<input name="username" autoComplete="username" required pattern="[a-z][a-z0-9_\-]{0,31}" title={t('小写字母开头，可含数字、下划线和连字符，最多 32 个字符。')} aria-describedby="register-username-rule" value={name} onChange={e=>setName(e.target.value.trim())}/></label><p className="hint" id="register-username-rule">{t('小写字母开头，可含数字、下划线和连字符，最多 32 个字符。')}</p>
     <PasswordInput label={t('密码 · 至少 8 个字符')} name="password" value={password} onChange={setPassword} autoComplete="new-password" minLength={8}/><PasswordInput label={t('再次输入密码')} value={confirm} onChange={setConfirm} autoComplete="new-password" minLength={8}/>

@@ -3,6 +3,8 @@
  * private cached example; CIRDC_AUTHOR_LIVE_ORIGIN serves only HTML/assets live. */
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+/** Phones keep the language switch in the header menu. */
+async function chooseLanguage(page,name){const menu=page.locator('.header-more-trigger');if(await menu.isVisible())await menu.click();await page.locator('.app-header .language-switch').getByRole('button',{name,exact:true}).click();}
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin=process.env.CIRDC_AUTHOR_LIVE_ORIGIN||'http://author-affiliation.test';
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.woff2':'font/woff2','.woff':'font/woff'};
 async function main(){
@@ -49,7 +51,7 @@ async function main(){
   assert((await page.locator('.pinned-author .author-profile-link').getAttribute('href')).endsWith('/'+local.author_id));assert((await page.locator('.pinned-author .ieee-author-source').getAttribute('href')).endsWith('/'+local.author_id));
   for(const theme of ['classic-green','plain-white','graphite','paper','midnight','lavender']){await page.evaluate(value=>document.documentElement.dataset.theme=value,theme);assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));}
   await page.evaluate(value=>document.documentElement.dataset.theme=value,settings.dark?'graphite':'plain-white');if(process.env.CIRDC_BROWSER_OUTPUT){await card().scrollIntoViewIfNeeded();await page.screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,'author-affiliation-'+settings.name+'.png')});}
-  await page.getByRole('button',{name:'English',exact:true}).click();assert.equal(await aff().locator('dt').innerText(),'Affiliation');assert.deepEqual(await aff().locator('li').allTextContents(),baseAffiliations);assert.equal(profileRequests().length,reads);await page.getByRole('button',{name:'中文',exact:true}).click();
+  await chooseLanguage(page,'English');assert.equal(await aff().locator('dt').innerText(),'Affiliation');assert.deepEqual(await aff().locator('li').allTextContents(),baseAffiliations);assert.equal(profileRequests().length,reads);await chooseLanguage(page,'中文');
   await page.locator('.author-candidate-card [data-author-id="'+other.author_id+'"]').click();await card().filter({hasText:other.author_id}).waitFor();await aff().getByText('Other identity institution',{exact:true}).waitFor();assert(!(await aff().innerText()).includes(baseAffiliations[0]));
   // A response for a previous same-name identity cannot replace the new identity.
   mode='hold';held=null;heldPromise=new Promise(resolve=>{heldReady=resolve;});await switchIdentity(local.author_id);await heldRequest();assert.equal(await aff().count(),0);await switchIdentity(other.author_id);await aff().getByText('Other identity institution',{exact:true}).waitFor();await held.route.fulfill({json:response(local.author_id,'ready')});await page.waitForLoadState('networkidle');assert.deepEqual(await aff().locator('li').allTextContents(),['Other identity institution']);

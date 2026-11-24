@@ -2,6 +2,8 @@
  * PLAYWRIGHT_CHROMIUM_EXECUTABLE and CIRDC_BROWSER_OUTPUT. All requests mocked. */
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+/** Phones keep the language switch in the header menu. */
+async function chooseLanguage(page,name){const menu=page.locator('.header-more-trigger');if(await menu.isVisible())await menu.click();await page.locator('.app-header .language-switch').getByRole('button',{name,exact:true}).click();}
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://coverage-fixture.test';
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.woff2':'font/woff2','.woff':'font/woff'};
 async function main(){const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})}),reports=[];
@@ -17,7 +19,7 @@ try{for(const profile of [{name:'desktop',width:1440,height:1000},{name:'mobile'
  if(profile.touch){const a=await pdf.boundingBox(),b=await body.boundingBox();assert(Math.abs(a.y-b.y)<1);}
  assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));if(process.env.CIRDC_BROWSER_OUTPUT)await stats.screenshot({path:path.join(process.env.CIRDC_BROWSER_OUTPUT,'coverage-'+profile.name+'.png')});
  await page.getByRole('textbox',{name:'搜索论文',exact:true}).fill('Filtered');await page.locator('.search-box').evaluate(el=>el.requestSubmit());await page.waitForTimeout(150);assert.equal(await body.locator('strong').innerText(),'5.00%');
- await page.getByRole('button',{name:'English',exact:true}).click();assert.equal(await stats.getByText('Curated full-text coverage',{exact:true}).count(),1);assert.equal(await stats.getByText('All-paper PDF coverage',{exact:true}).count(),1);
+ await chooseLanguage(page,'English');assert.equal(await stats.getByText('Curated full-text coverage',{exact:true}).count(),1);assert.equal(await stats.getByText('All-paper PDF coverage',{exact:true}).count(),1);
  assert.equal(await stats.locator('.coverage-unavailable').count(),0);
  mode='unavailable';await page.reload({waitUntil:'networkidle'});let tiles=page.locator('.stat');assert.equal(await tiles.nth(4).locator('strong').innerText(),'—');assert.equal(await tiles.nth(3).locator('strong').innerText(),'2.71%');
  mode='zero';await page.reload({waitUntil:'networkidle'});assert.equal(await page.locator('.stat').nth(4).locator('strong').innerText(),'0.00%');assert.deepEqual(blocked,[]);assert.deepEqual(errors,[]);reports.push({profile:profile.name,metrics:2,cards:5,scopedDenominator:true,independentCounts:true,unavailableIsNotZero:true,verifiedZero:true,filtersDoNotChangeScope:true,bilingual:true,mobileMetricsSideBySide:!!profile.touch,realApiRequests:0,collectionRequests:0});console.log(JSON.stringify(reports.at(-1)));await context.close();

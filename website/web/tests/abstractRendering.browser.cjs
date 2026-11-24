@@ -3,6 +3,8 @@
  * A supplied local paper fixture is read without contacting its source. */
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+/** Phones keep the language switch in the header menu. */
+async function chooseLanguage(page,name){const menu=page.locator('.header-more-trigger');if(await menu.isVisible())await menu.click();await page.locator('.app-header .language-switch').getByRole('button',{name,exact:true}).click();}
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://abstract-rendering.test',aid='83000802';
 const xml=tex=>'<inline-formula xmlns:mml="http://www.w3.org/1998/Math/MathML"><tex-math>$'+tex+'$</tex-math></inline-formula>';
 const synthetic={articleTitle:'Cached abstract fixture',abstract:'A '+xml('\\text {DR}_{\\text {speech}}')+' example occupies 0.43mm<sup>2</sup> and 2.28 mm<sup>2</sup>. '+xml('x_1')+' and '+xml('y^2')+' use '+xml('14.4~\\mu ')+'W. Results '+xml('a<b>c')+' and '+xml('\\mu ')+' remain source expressions. 中文 &amp; text.'};
@@ -27,7 +29,7 @@ async function main(){
    if(p.endsWith('/references')||p.endsWith('/citations')||p.endsWith('/patent-citations'))return route.fulfill({json:{number:aid,state:'disabled',version:null,total:0,items:[],next_offset:null,source_presence:'unknown',counts:{ieee:null,nonIeee:null,total:null},stored_counts:{ieee:0,nonIeee:0,total:0}}});
    blocked.push(p);return route.abort();
   });
-  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));await page.goto(origin+'/',{waitUntil:'networkidle'});await page.getByRole('button',{name:'中文',exact:true}).click();
+  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));await page.goto(origin+'/',{waitUntil:'networkidle'});await chooseLanguage(page,'中文');
   await page.getByRole('button',{name:'展开摘要',exact:true}).click();await page.locator('.snippet.expanded .katex').first().waitFor();
   const list=page.locator('.snippet.expanded');assert.equal(await list.locator('.katex').count(),6);assert.equal(await list.locator('sup').count(),2);assert.equal(await list.locator('.scientific-title-fallback').count(),0);
   assert.deepEqual(await list.locator('annotation[encoding="application/x-tex"]').allTextContents().then(values=>values.map(v=>v.trim())),formulas);
@@ -41,7 +43,7 @@ async function main(){
   const markdown=await output.inputValue();for(const tex of formulas)assert(markdown.includes('$'+tex),'Markdown must retain '+tex);assert.equal((markdown.match(/<sup>2<\/sup>/g)||[]).length,2);assert(!(await dialog.innerText()).includes('部分格式已简化'));
   await page.getByRole('button',{name:'复制 LaTeX',exact:true}).click();assert.equal(((await output.inputValue()).match(/\\textsuperscript\{2\}/g)||[]).length,2);
   await page.getByRole('button',{name:'复制纯文本',exact:true}).click();assert.equal(((await output.inputValue()).match(/\^\{2\}/g)||[]).length,2);
-  await page.getByRole('button',{name:'关闭复制预览',exact:true}).click();await page.getByRole('button',{name:'English',exact:true}).click();assert.equal(await abstract.locator('.katex').count(),6);
+  await page.getByRole('button',{name:'关闭复制预览',exact:true}).click();await chooseLanguage(page,'English');assert.equal(await abstract.locator('.katex').count(),6);
   assert.deepEqual(blocked,[]);assert.deepEqual(posts,[]);assert.deepEqual(errors,[]);
   reports.push({profile:profile.name,formulas:6,superscripts:2,listExpanded:true,detail:true,copyAllFormats:true,sourceTeXUnchanged:true,disclosurePreserved:true,bilingual:true,sourceRequests:0,pdfConversions:0});console.log(JSON.stringify(reports.at(-1)));await context.close();
  }}finally{await browser.close();}

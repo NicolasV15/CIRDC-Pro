@@ -601,6 +601,16 @@ The search page uses a centered workspace with a filter sidebar on wide screens 
 Search results offer a dropdown with 25, 50 or 100 records per page, applied immediately. The setting is stored in the browser and the `limit` URL parameter, survives returning from a paper, and remains when other filters are cleared. Historical custom sizes in saved preferences or URLs fall back to an available preset. A size change replaces the current result batch, resets its cursor and clears row selections. Load more continues to append the chosen batch size. The existing API limit and schema remain unchanged.
 
 
+## Phone layout
+
+At 760 px and below the header stays on one row: the brand mark (with the name where it fits), the IEEE/arXiv source switch, sign-in or the account menu, and a menu button. The menu holds AI access, the interface language, Appearance and, while registration is open, Register; it closes on Escape, an outside tap or a language choice, and returns focus to the menu button. Wider screens keep these controls inline in the header. The source switch remains a separate component, so a later combined source selection can replace it without changing the header.
+
+The search box keeps the query field and Search button visible. Search field, result view, sort order and equivalent spellings fold behind **Search options**; while folded, the row names every choice that differs from the page default (relevance for IEEE, newest submissions for arXiv). Filters keep their existing collapsible panel.
+
+The selection bar is one row until a paper is selected; Cite and Download then appear below it with short labels, and their accessible names stay the full action names. Paper-detail record actions form an even two-column grid, and the reading-layout control shows its icon only. Administrator tables scroll sideways instead of breaking names and buttons. Wide screens keep their layout unchanged.
+
+`web/tests/mobileLayout.browser.cjs` checks these pages and dialogs against the offline demo at 390, 320 and 1440 px in Chinese and English: one-row header, no wrapped button labels, no controls outside the viewport and no page overflow.
+
 ## Appearance themes
 
 The Appearance control offers six presets and a system option. System is the default,

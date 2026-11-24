@@ -1,5 +1,7 @@
 /* arXiv category browsing: quick subject classes, archive filters and row category tags. Fixtures only. */
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+/** Phones keep the language switch in the header menu. */
+async function chooseLanguage(page,name){const menu=page.locator('.header-more-trigger');if(await menu.isVisible())await menu.click();await page.locator('.app-header .language-switch').getByRole('button',{name,exact:true}).click();}
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'../../src/cirdc/web/static'),origin='http://arxiv-categories.test';
 const types={'.js':'text/javascript','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff','.ttf':'font/ttf'};
@@ -21,6 +23,8 @@ const matches=(row,category)=>!category||category.split(',').some(code=>row.cate
   });
   const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   await page.goto(origin+'/?source=arxiv');await page.locator('.paper-row').nth(3).waitFor();
+  // Phones fold the search options behind one row; it names no choice while all are defaults.
+  if(await page.locator('.search-options-toggle').isVisible()){assert.equal(await page.locator('.search-options-summary').count(),0);if(await page.locator('.search-options-toggle').getAttribute('aria-expanded')!=='true')await page.locator('.search-options-toggle').click();}
   assert.equal(await page.getByRole('button',{name:'最新投稿',exact:true}).getAttribute('aria-pressed'),'true');
   assert.equal(await page.locator('.paper-year').first().innerText(),'2024-01-02');
   assert.equal(await page.getByText('日期未提供',{exact:true}).count(),1);
@@ -77,7 +81,7 @@ const matches=(row,category)=>!category||category.split(',').some(code=>row.cate
   assert.equal(await page.locator('.paper-row .arxiv-category-tag',{hasText:'math-ph'}).count(),0);
   assert.equal(writes,0);assert.deepEqual(errors,[]);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
-  await page.getByRole('button',{name:'English',exact:true}).click();
+  await chooseLanguage(page,'English');
   await page.getByRole('button',{name:'Circuit-related category guide',exact:true}).click();
   await page.getByRole('dialog',{name:'Circuit-related category guide'}).waitFor();
   assert.ok((await page.getByRole('dialog').innerText()).includes('Reading tips'));

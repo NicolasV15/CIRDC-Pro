@@ -880,3 +880,4 @@ Object.assign(messages,{"{code} 全部分类": "All {code} categories", "如 ees
 
 
 Object.assign(messages,{"最新投稿":"Newest submissions","首次投稿日期（UTC+8）":"First submitted (UTC+8)","日期未提供":"Date not provided"});
+Object.assign(messages,{"更多设置":"More settings","检索选项":"Search options","仅原写法":"Exact spelling only"});
