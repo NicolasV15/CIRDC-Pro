@@ -112,9 +112,9 @@ function UnifiedSearchPage(){
    if(request===latestRequest.current)setBusy(false);
   }
  }
- // The arXiv count is read once, when a list that includes arXiv is first shown.
+ // The arXiv count is read once so the unified header overview stays stable across source toggles.
  const arxivOverview=useRef(false);
- useEffect(()=>{if(detail||arxivOverview.current||!selectedSources(applied.sources).includes('arxiv'))return;arxivOverview.current=true;void api('/api/arxiv/overview').then(v=>setArxivIndexed(v.indexed)).catch(()=>{});},[detail,applied.sources]);
+ useEffect(()=>{if(detail||arxivOverview.current)return;arxivOverview.current=true;void api('/api/arxiv/overview').then(v=>setArxivIndexed(v.indexed)).catch(()=>{});},[detail]);
  async function overview(){try{const r=await api('/api/overview');setIndex(r.index);}catch(e){setError((e as Error).message);}}
  /** Returning from an arXiv detail page restores the list that opened it, when its query still matches. */
  function restore(f:UnifiedFilters){
@@ -203,7 +203,7 @@ function UnifiedSearchPage(){
  const fields=fieldsFor(draftSources).map(field=>[field,fieldLabels[field]] as [string,string]);
  const chronological=both?t('时间从新到旧'):arxiv?t('最新投稿'):t('年份从新到旧');
  const placeholder=filters.field==='authors'?(arxiv&&!ieee?t('输入作者姓名'):t('输入作者姓名或 IEEE 作者 ID')):filters.field==='body'?t('输入正文中的词、短语或一句原文'):both?t('搜索标题、作者、摘要，或输入编号 / DOI / arXiv 编号'):arxiv?t('搜索标题、作者、摘要，或输入 arXiv 编号'):t('搜索论文、作者、关键词，或输入编号 / DOI');
- const title=both?t('IEEE 与 arXiv 论文检索'):arxiv?t('arXiv 论文检索'):t('IEEE Xplore 论文检索');
+ const title=t('IEEE 与 arXiv 论文检索');
  const unavailable=unavailableSources(rowInfo),partial=unavailable.length>0;
  const fieldNote=notes.find(note=>note.code==='field_not_supported');
  const onlySource=fieldNote?allSources.find(source=>source!==fieldNote.source&&sources.includes(source)):fieldOnlySource(applied.field,sources);
@@ -215,7 +215,7 @@ function UnifiedSearchPage(){
  const selectedRows=rows.filter(row=>selectedKeys.has(row.number));
  const linkParams=new URLSearchParams(activeEntries(applied));
  return <><main id="main" className="workspace reader-workspace" data-copy-scope>
-  <div className="reader-hero"><div className="reader-hero-title"><h1 className="search-page-title" ref={browseTop} tabIndex={-1}>{title}</h1></div>{both?<OverviewCards overview={index?.overview} compact arxiv={arxivIndexed??null}/>:ieee?<OverviewCards overview={index?.overview} compact/>:<div className="stats stats-compact" role="group" aria-label={t('数据库概览')} style={{'--overview-columns':2} as React.CSSProperties}><div className="stat"><span>{t('已索引论文')}</span><strong>{arxivIndexed===undefined?'—':fmt(arxivIndexed)}</strong></div><div className="stat"><span>{t('检索范围')}</span><strong>{t('元数据')}</strong></div></div>}</div>
+  <div className="reader-hero"><div className="reader-hero-title"><h1 className="search-page-title" ref={browseTop} tabIndex={-1}>{title}</h1></div><OverviewCards overview={index?.overview} compact arxiv={arxivIndexed??null}/></div>
   <PaperSearchControls chronologicalLabel={chronological} defaultSort={effectiveSort({q:filters.q,sort:''})} value={{...filters,sort:effectiveSort(filters)}} fields={fields} busy={busy} invalid={invalidYearRange(filters)} placeholder={placeholder} scope={<SourcePicker value={filters.sources} disabled={busy&&!rows.length} onChange={changeSources}/>} onQuery={q=>update('q',q)} onOption={updateSearchOption} onSubmit={submit}/>
 
   <div className="reader-layout">
