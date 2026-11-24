@@ -1,5 +1,6 @@
 /* Fixture-only AI access dialog acceptance. Opening/copying must never install,
  * deploy, acquire resources or reload the current search/article. */
+const {serveUnifiedFromLegacy}=require('./unifiedFixture.cjs');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 /** Phones keep the language switch in the header menu. */
@@ -36,7 +37,7 @@ async function main(){
    if(p.endsWith('/references')||p.endsWith('/citations')||p.endsWith('/patent-citations'))return route.fulfill({json:{number:rows[0].number,state:'disabled',version:null,group:u.searchParams.get('group')||'ieee',group_states:{ieee:'disabled',nonIeee:'disabled'},items:[],total:0,next_offset:null,source_presence:'unknown',counts:{ieee:null,nonIeee:null,total:null},stored_counts:{ieee:0,nonIeee:0,total:0}}});
    blocked.push(p);return route.abort();
   });
-  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',error=>errors.push(error.message));
+await serveUnifiedFromLegacy(context);  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',error=>errors.push(error.message));
   const modal=()=>page.getByRole('dialog',{name:/^(AI 接入|AI access)$/});
   const phone=profile.width<=760,opener=phone?'.header-more-trigger':'.header-ai-trigger';
   async function openHeader(){
@@ -69,7 +70,7 @@ async function main(){
   }
   await page.goto(origin+'/?q=fixture&limit=25',{waitUntil:'networkidle'});await page.locator('.paper-row').first().waitFor();await checkHeader();
   assert(!requests.some(r=>r.path.includes('AgentAccessPage')),'AI content must load only when opened');
-  const filter=page.locator('.venue-family-filter');if(!await filter.isVisible())await page.locator('.filter-disclosure > summary').click();
+  const filter=page.locator('.venue-family-filter:not(.arxiv-category-filter)');if(!await filter.isVisible())await page.locator('.filter-disclosure > summary').click();
   await filter.locator('.venue-guide-trigger').click();await page.locator('#venue-guide-dialog[open]').waitFor();const guideStyle=await style('#venue-guide-dialog');await page.getByRole('button',{name:'关闭说明',exact:true}).click();
   await page.locator('.paper-row input[type=checkbox]').first().check();await page.getByRole('textbox',{name:'搜索论文',exact:true}).fill('unsubmitted draft');
   const url=page.url(),historyLength=await page.evaluate(()=>history.length),apiReads=requests.filter(r=>r.path.startsWith('/api/')).length;

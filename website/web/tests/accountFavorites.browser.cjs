@@ -24,11 +24,11 @@ function entries(zip){ // Minimal reader for the stored (uncompressed) ZIP the s
   page.on('pageerror',e=>errors.push(e.message));
   context.on('request',r=>{if(r.method()!=='GET'&&r.method()!=='HEAD')writes.push(r.method()+' '+new URL(r.url()).pathname);});
   // Anonymous browsing sets no cookie; saving a paper leads to sign-in and back.
-  await page.goto(origin+'/?source=arxiv');await page.locator('.paper-row').first().waitFor();
+  await page.goto(origin+'/?sources=arxiv');await page.locator('.paper-row').first().waitFor();
   assert.deepEqual(await context.cookies(),[]);
   await page.locator('.paper-row').first().locator('.favorite-trigger').click();
   await page.waitForURL(u=>new URL(u).pathname==='/login');
-  assert.equal(new URL(page.url()).searchParams.get('next'),'/?source=arxiv');
+  assert.equal(new URLSearchParams(new URL(page.url()).searchParams.get('next').split('?')[1]).get('sources'),'arxiv');
   if(index===0){
    await page.getByRole('link',{name:'注册'}).click();await page.waitForURL(u=>new URL(u).pathname==='/register');
    await page.getByLabel('用户名',{exact:true}).fill(name);
@@ -40,7 +40,7 @@ function entries(zip){ // Minimal reader for the stored (uncompressed) ZIP the s
    await page.getByLabel('用户名',{exact:true}).fill(name);await page.getByLabel('密码',{exact:true}).fill(password);
    await page.getByRole('button',{name:'登录',exact:true}).click();
   }
-  await page.waitForURL(u=>new URL(u).pathname==='/'&&new URL(u).searchParams.get('source')==='arxiv');
+  await page.waitForURL(u=>new URL(u).pathname==='/'&&new URL(u).searchParams.get('sources')==='arxiv');
   await page.locator('.header-menu-trigger').waitFor();
   // From the second browser on, the account's saved theme and language are restored at sign-in.
   const L=index===0?{all:'全部',checked:'已勾选 {n}',download:'下载 PDF',dialog:'下载收藏的 PDF',prepare:'准备 ZIP',zip:'下载 ZIP',packed:'已打包 {n} 个 PDF',skipped:'未包含 {n} 篇',done:'关闭'}
@@ -59,7 +59,7 @@ function entries(zip){ // Minimal reader for the stored (uncompressed) ZIP the s
    // The list saved 3300802 at its newest version; its detail page shows that version as saved.
    await page.goto(origin+'/arxiv/papers/3300802?source=arxiv&v=1');await page.locator('.detail-favorite-trigger.is-saved').waitFor();
    await page.goto(origin+'/arxiv/papers/3112709?source=arxiv&v=2');await page.locator('.detail-favorite-trigger').click();await page.locator('.detail-favorite-trigger.is-saved').waitFor();
-   await page.goto(origin+'/');await page.locator('.paper-row').first().waitFor();
+   await page.goto(origin+'/?sources=ieee');await page.locator('.paper-row').first().waitFor();
    for(const row of await page.locator('.paper-row').all()){await row.locator('.favorite-trigger').click();await row.locator('.favorite-trigger.is-saved').waitFor();}
   }
   // Favorites: counts, filter clears selection, select all, ZIP with exact real bytes and labelled test material.

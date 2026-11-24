@@ -2,7 +2,7 @@
 
 The metadata maintenance package owns the independently migrated database and metadata index. The website reads those through `CIRDC_ARXIV_READER_CONFIG`, a private JSON profile containing `mysql`, `database_id`, and `index_path`. Use a SELECT-only account. The adapter also opens a read-only transaction and validates database/index identity. No website operation imports or synchronizes metadata. The index may still be unavailable during initialization; this returns 503, never an upstream search.
 
-The frontend uses `/?source=arxiv&q=...` and `/arxiv/papers/INTERNAL_ID?v=VERSION`. IEEE remains the default. Opening a page, selecting versions and polling are read-only. The explicit acquisition button requests all three formats and reading preparation. The metadata schema's current title and abstract do not represent historical per-version snapshots.
+The home page searches both sources through `/api/search/unified`; `/?sources=arxiv&q=...` limits it to arXiv, and older `/?source=arxiv` links open with only arXiv checked. Detail pages stay at `/arxiv/papers/INTERNAL_ID?v=VERSION`. Opening a page, selecting versions and polling are read-only. The explicit acquisition button requests all three formats and reading preparation. The metadata schema's current title and abstract do not represent historical per-version snapshots.
 
 ## Interfaces
 

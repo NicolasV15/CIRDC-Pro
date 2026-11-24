@@ -17,12 +17,12 @@ const matches=(row,category)=>!category||category.split(',').some(code=>row.cate
    if(!p.startsWith('/api/'))return route.fulfill({contentType:'text/html',body:await fs.readFile(root+'/index.html')});
    if(p==='/api/auth/session')return route.fulfill({json:{interface:'reader',authentication_required:false,user:null,csrf:''}});
    if(p==='/api/arxiv/overview')return route.fulfill({json:{indexed:4,year_range:{min:1991,max:2026}}});
-   if(p==='/api/arxiv/papers'){const category=u.searchParams.get('category')||'';requests.push(category);const items=rows.filter(row=>matches(row,category));
+   if(p==='/api/arxiv/papers'||p==='/api/search/unified'){const category=u.searchParams.get('category')||'';requests.push(category);const items=rows.filter(row=>matches(row,category)).map(row=>({...row,source:'arxiv'}));
     return route.fulfill({json:{items:u.searchParams.get('totals')==='only'?[]:items,total:u.searchParams.get('totals')==='defer'?null:items.length,next_cursor:null,query:{terms:'expand',groups:[]}}});}
    return route.fulfill({status:404,json:{error:'not_found'}});
   });
   const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(origin+'/?source=arxiv');await page.locator('.paper-row').nth(3).waitFor();
+  await page.goto(origin+'/?sources=arxiv');await page.locator('.paper-row').nth(3).waitFor();
   // Phones fold the search options behind one row; it names no choice while all are defaults.
   if(await page.locator('.search-options-toggle').isVisible()){assert.equal(await page.locator('.search-options-summary').count(),0);if(await page.locator('.search-options-toggle').getAttribute('aria-expanded')!=='true')await page.locator('.search-options-toggle').click();}
   assert.equal(await page.getByRole('button',{name:'最新投稿',exact:true}).getAttribute('aria-pressed'),'true');

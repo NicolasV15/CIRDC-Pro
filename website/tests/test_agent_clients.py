@@ -93,7 +93,7 @@ def test_hosted_mcp_real_http_workflow(agent_site, tmp_path, monkeypatch):
                     assert session_id() is None
                     listed = await session.list_tools()
                     assert {tool.name for tool in listed.tools} == {'capabilities', 'search_papers', 'get_paper',
-                        'ensure_resources', 'get_request', 'read_content', 'get_pdf'}
+                        'ensure_resources', 'get_request', 'read_content', 'get_pdf', 'search_unified'}
                     assert next(t for t in listed.tools if t.name == 'get_request').annotations.readOnlyHint
 
                     async def call(name, args=None):

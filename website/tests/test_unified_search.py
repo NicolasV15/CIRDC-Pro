@@ -183,6 +183,27 @@ def test_source_specific_fields_and_filters_link_cleanly():
     assert len(res_cat['items']) == 2
 
 
+
+def test_ieee_status_and_author_filters_reach_ieee_only():
+    ieee_calls = []
+    arxiv = FakeArxivCatalog(SAMPLE_ARXIV)
+    params = {'abstract_state': 'pending', 'keywords_state': 'no_data', 'author_unidentified': '1'}
+    unified_search(params, ieee_search=make_fake_ieee(SAMPLE_IEEE, calls=ieee_calls), arxiv_catalog=arxiv)
+    assert {k: ieee_calls[0].get(k) for k in params} == params
+    first = unified_search({'limit': '2'}, ieee_search=make_fake_ieee(SAMPLE_IEEE), arxiv_catalog=arxiv)
+    with pytest.raises(ValueError):
+        unified_search({**params, 'limit': '2', 'cursor': first['next_cursor']}, ieee_search=make_fake_ieee(SAMPLE_IEEE), arxiv_catalog=arxiv)
+
+
+def test_body_search_keeps_the_ieee_fulltext_status():
+    status = {'enabled': True, 'phase': 'ready', 'documents': 2}
+    def ieee(params):
+        return {'items': [{'number': '101', 'title': 'IEEE A', 'year': 2026}], 'total': 1, 'total_exact': True,
+                'next_cursor': None, 'fulltext': status}
+    res = unified_search({'q': 'adc', 'field': 'body'}, ieee_search=ieee, arxiv_catalog=FakeArxivCatalog(SAMPLE_ARXIV))
+    assert res['fulltext'] == status
+    assert 'fulltext' not in unified_search({'sources': 'arxiv'}, ieee_search=ieee, arxiv_catalog=FakeArxivCatalog(SAMPLE_ARXIV))
+
 def test_partial_failure_isolates_broken_source_and_never_fabricates_zero():
     ieee = make_fake_ieee(SAMPLE_IEEE)
     broken_arxiv = FakeArxivCatalog(SAMPLE_ARXIV, fail=True)

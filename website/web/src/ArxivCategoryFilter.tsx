@@ -11,8 +11,8 @@ export function arxivCategoryLabel(code:string){
 }
 
 /** Multiple subject classes are combined with OR; the generic archive shortcut is unnecessary. */
-export function ArxivCategoryFilter({value,onChange}:{value:string;onChange:(value:string)=>void}){
- const lang=useLanguage(),zh=lang==='zh',[open,setOpen]=useState(true),[guideOpen,setGuideOpen]=useState(false),selected=selectedArxivCategories(value),keys=new Set(selected);
+export function ArxivCategoryFilter({value,defaultOpen=true,onChange}:{value:string;defaultOpen?:boolean;onChange:(value:string)=>void}){
+ const lang=useLanguage(),zh=lang==='zh',[open,setOpen]=useState(defaultOpen),[guideOpen,setGuideOpen]=useState(false),selected=selectedArxivCategories(value),keys=new Set(selected);
  const info=zh?'电路相关分类介绍':'Circuit-related category guide';
  return <><details className="venue-family-filter arxiv-category-filter" open={open} onToggle={e=>setOpen(e.currentTarget.open)}>
   <summary><span className="venue-family-heading"><span>{t('电路相关分类')}</span><button type="button" className="venue-guide-trigger" aria-label={info} title={info} aria-haspopup="dialog" aria-controls="arxiv-category-guide-dialog" aria-expanded={guideOpen} onClick={e=>{e.preventDefault();e.stopPropagation();setGuideOpen(true);}} onKeyDown={e=>{if(e.key==='Enter'||e.key===' ')e.stopPropagation();}}><Icon name="info"/></button></span><small>{selected.length?(zh?`已选 ${selected.length} 个分类`:`${selected.length} categories selected`):t('全部 arXiv 分类')}</small><Icon name="down" className="disclosure-caret"/></summary>

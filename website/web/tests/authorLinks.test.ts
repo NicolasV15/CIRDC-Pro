@@ -3,7 +3,7 @@ import {test} from 'node:test';
 import {authorSearchHref,ieeeAuthorHref,otherAuthorIdentities,type AuthorIdentity} from '../src/authorLinks.ts';
 test('author links preserve opaque IDs and names without carrying unrelated filters',()=>{
  const id='9007199254740995';const url=new URL(authorSearchHref({source:'ieee',author_id:id,name:'Kim & Li / 李',ordinal:0})!,'http://test/');
- assert.equal(url.searchParams.get('author_id'),id);assert.equal(url.searchParams.get('q'),'Kim & Li / 李');assert.equal(url.searchParams.get('field'),'authors');assert.equal(url.searchParams.get('author_source'),'ieee');assert.equal([...url.searchParams].length,4);
+ assert.equal(url.searchParams.get('author_id'),id);assert.equal(url.searchParams.get('q'),'Kim & Li / 李');assert.equal(url.searchParams.get('field'),'authors');assert.equal(url.searchParams.get('author_source'),'ieee');assert.equal(url.searchParams.get('sources'),'ieee');assert.equal([...url.searchParams].length,5);
 });
 test('missing IDs are never guessed and nameless identified authors remain searchable',()=>{
  assert.equal(authorSearchHref({source:'ieee',author_id:null,name:'Same Name',ordinal:0}),undefined);

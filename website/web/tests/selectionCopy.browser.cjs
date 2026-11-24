@@ -1,5 +1,6 @@
 /* Fixture-only acceptance. Set PLAYWRIGHT_MODULE, optionally
  * PLAYWRIGHT_CHROMIUM_EXECUTABLE and CIRDC_BROWSER_OUTPUT. All requests are mocked. */
+const {serveUnifiedFromLegacy}=require('./unifiedFixture.cjs');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 /** Phones keep the language switch in the header menu. */
@@ -32,7 +33,7 @@ async function main(){
    if(p.endsWith('/patent-citations'))return route.fulfill({json:{number:aid,state:'disabled',version:null,total:0,expected_total:null,source_presence:'unknown',empty_reason:null,checked_at:null,last_attempt_at:null,next_check_at:null,stale:false,error:null,offset:0,limit:50,next_offset:null,items:[]}});
    blocked.push(p);return route.abort();
   });
-  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));
+await serveUnifiedFromLegacy(context);  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));
   async function select(selector,start,end){await page.locator(selector).scrollIntoViewIfNeeded();return page.evaluate(({selector,start,end})=>{
    if(document.activeElement instanceof HTMLElement)document.activeElement.blur();const el=document.querySelector(selector),range=document.createRange();
    if(start===undefined)range.selectNodeContents(el);else{const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let n;while(n=walker.nextNode())if(n.textContent.includes(start)){const a=n.textContent.indexOf(start);range.setStart(n,a);range.setEnd(n,a+(end??start.length));break;}}

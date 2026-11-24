@@ -1,6 +1,7 @@
 /* Fixture-only acceptance. Set PLAYWRIGHT_MODULE, optionally
  * PLAYWRIGHT_CHROMIUM_EXECUTABLE, CIRDC_ABSTRACT_FIXTURE and CIRDC_BROWSER_OUTPUT.
  * A supplied local paper fixture is read without contacting its source. */
+const {serveUnifiedFromLegacy}=require('./unifiedFixture.cjs');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 /** Phones keep the language switch in the header menu. */
@@ -29,7 +30,7 @@ async function main(){
    if(p.endsWith('/references')||p.endsWith('/citations')||p.endsWith('/patent-citations'))return route.fulfill({json:{number:aid,state:'disabled',version:null,total:0,items:[],next_offset:null,source_presence:'unknown',counts:{ieee:null,nonIeee:null,total:null},stored_counts:{ieee:0,nonIeee:0,total:0}}});
    blocked.push(p);return route.abort();
   });
-  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));await page.goto(origin+'/',{waitUntil:'networkidle'});await chooseLanguage(page,'中文');
+await serveUnifiedFromLegacy(context);  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));await page.goto(origin+'/',{waitUntil:'networkidle'});await chooseLanguage(page,'中文');
   await page.getByRole('button',{name:'展开摘要',exact:true}).click();await page.locator('.snippet.expanded .katex').first().waitFor();
   const list=page.locator('.snippet.expanded');assert.equal(await list.locator('.katex').count(),6);assert.equal(await list.locator('sup').count(),2);assert.equal(await list.locator('.scientific-title-fallback').count(),0);
   assert.deepEqual(await list.locator('annotation[encoding="application/x-tex"]').allTextContents().then(values=>values.map(v=>v.trim())),formulas);

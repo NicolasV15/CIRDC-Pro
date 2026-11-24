@@ -3,7 +3,6 @@ import {t,useLanguage} from './i18n';
 import {chooseLanguage,signInHref} from './account';
 import ThemeControl from './ThemeControl';
 import Icon from './Icon';
-import SourceSwitch from './PaperSourceSwitch';
 import type {User} from './types';
 
 export function BrandMark(){
@@ -58,10 +57,9 @@ function HeaderMenu({user,reader,onPassword,onLogout}:{user:User;reader:boolean;
 export default function AppHeader({mode,user,publicReader,registration=false,agentOpen,onAgentAccess,onPassword,onLogout}:{mode:string;user:User|null;publicReader:boolean;registration?:boolean;agentOpen:boolean;onAgentAccess:(opener:HTMLElement)=>void;onPassword:()=>void;onLogout:()=>void}){
  useLanguage();
  const admin=mode==='admin',account=user,signIn=publicReader&&!user&&!['/login','/register'].includes(location.pathname);
- const source=['/favorites','/account','/login','/register'].includes(location.pathname)?null:location.pathname.startsWith('/arxiv/')||new URLSearchParams(location.search).get('source')==='arxiv'?'arxiv':'ieee';
  return <header className={'app-header'+(publicReader?' public-reader-header':'')}>
   <div className="app-header-inner">
-   <div className="header-brand-group"><a className="brand" href={admin?'/admin/':'/'}><BrandMark/><span className="brand-name">{t('CIRDC ')}<em>{t('Pro')}</em></span><span className="brand-sub">{admin?t('管理员工作台'):t('文献数据库')}</span></a>{!admin&&<SourceSwitch source={source}/>}</div>
+   <div className="header-brand-group"><a className="brand" href={admin?'/admin/':'/'}><BrandMark/><span className="brand-name">{t('CIRDC ')}<em>{t('Pro')}</em></span><span className="brand-sub">{admin?t('管理员工作台'):t('文献数据库')}</span></a></div>
    <div className="header-tools"><HeaderTools admin={admin} agentOpen={agentOpen} onAgentAccess={onAgentAccess} register={signIn&&registration?'/register?next='+encodeURIComponent(location.pathname+location.search):null}>{account&&<HeaderMenu user={account} reader={!admin} onPassword={onPassword} onLogout={onLogout}/>}{signIn&&<a className="button header-sign-in" href={signInHref()}>{t('登录')}</a>}</HeaderTools></div>
   </div>
  </header>;

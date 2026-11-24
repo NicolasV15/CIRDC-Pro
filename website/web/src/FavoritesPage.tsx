@@ -14,7 +14,7 @@ type Source=''|'ieee'|'arxiv';
 const ARCHIVE_LIMIT=100;
 const statusLabels:Record<string,string>={paper_missing:'论文暂不可读取',version_missing:'该版本暂不可读取',unavailable:'目录暂时不可用'};
 function sourceFromURL():Source{const value=new URLSearchParams(location.search).get('source');return value==='ieee'||value==='arxiv'?value:'';}
-function href(row:FavoriteRow){return row.source==='ieee'?'/papers/'+row.paper_id:'/arxiv/papers/'+row.paper_id+'?'+new URLSearchParams({source:'arxiv',v:String(row.version)});}
+function href(row:FavoriteRow){return row.source==='ieee'?'/papers/'+row.paper_id:'/arxiv/papers/'+row.paper_id+'?'+new URLSearchParams({v:String(row.version)});}
 
 /** Saved papers, newest first. Selection belongs to the loaded rows of the current filter only. */
 export default function FavoritesPage(){
@@ -55,14 +55,14 @@ export default function FavoritesPage(){
   {tooMany&&<p className="error favorite-limit" id="favorite-limit" role="alert">{t('单次最多打包 {limit} 篇（已选 {n} 篇）。',{limit:ARCHIVE_LIMIT,n:chosen.length})}</p>}
   {error&&<div className="error-box" role="alert">{t(error)}</div>}
   {busy&&!rows.length?<div className="paper-list is-loading" role="status"><span className="sr-only">{t('正在读取收藏…')}</span>{[0,1,2].map(i=><div className="paper-skeleton" key={i} aria-hidden="true"><i/><i/><i/></div>)}</div>
-   :!rows.length&&!error?<div className="empty"><Icon name="star"/><h2>{source?t('这个来源还没有收藏'):t('还没有收藏的论文')}</h2><p>{t('在检索结果或论文详情中点击「收藏」即可保存。')}</p><a className="button" href={source==='arxiv'?'/?source=arxiv':'/'}>{t('去检索论文')}</a></div>
+   :!rows.length&&!error?<div className="empty"><Icon name="star"/><h2>{source?t('这个来源还没有收藏'):t('还没有收藏的论文')}</h2><p>{t('在检索结果或论文详情中点击「收藏」即可保存。')}</p><a className="button" href={source?'/?sources='+source:'/'}>{t('去检索论文')}</a></div>
    :<div className="paper-list favorite-list">{rows.map(row=><article className={'paper-row favorite-row'+(selected.includes(row.number)?' paper-selected':'')} key={row.number}>
     <label className="paper-selection-control"><input type="checkbox" checked={selected.includes(row.number)} disabled={busy} aria-label={t('选择论文：')+(row.title||row.identifier)} onChange={e=>{setConfirming(false);dispatch({type:'select',numbers:[row.number],checked:e.target.checked});}}/></label>
     <div className="paper-body">
      <a className="paper-title" href={href(row)}><ScientificTitle value={row.title} fallback={row.identifier}/></a>
      <div className="favorite-meta"><span className={'favorite-source '+row.source}>{row.source==='ieee'?'IEEE':'arXiv'}</span><code className="paper-number">{row.source==='arxiv'?row.identifier+'v'+row.version:row.identifier}</code>{row.year&&<span className="paper-year">{row.year}</span>}
       {row.status!=='ok'&&<span className="badge failed">{t(statusLabels[row.status]||row.status)}</span>}
-      {row.source==='arxiv'&&row.latest_version&&row.latest_version>row.version&&<a className="favorite-newer" href={'/arxiv/papers/'+row.paper_id+'?'+new URLSearchParams({source:'arxiv',v:String(row.latest_version)})}>{t('有更新版本 v{v}',{v:String(row.latest_version)})}</a>}
+      {row.source==='arxiv'&&row.latest_version&&row.latest_version>row.version&&<a className="favorite-newer" href={'/arxiv/papers/'+row.paper_id+'?'+new URLSearchParams({v:String(row.latest_version)})}>{t('有更新版本 v{v}',{v:String(row.latest_version)})}</a>}
       <span className="favorite-saved">{t('收藏于 {date}',{date:new Date(row.created*1000).toLocaleDateString(locale())})}</span></div>
     </div>
    </article>)}</div>}

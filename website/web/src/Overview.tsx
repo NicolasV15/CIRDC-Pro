@@ -4,11 +4,12 @@ import {coverageDisplay} from './resourceCoverage';
 import {fmt,time} from './format';
 import type {Index,Overview} from './types';
 
-export function OverviewCards({overview,compact=false}:{overview?:Overview;compact?:boolean}){
+/** `arxiv` (the indexed arXiv count) switches the venue counts to one count per source, for the unified search. */
+export function OverviewCards({overview,compact=false,arxiv}:{overview?:Overview;compact?:boolean;arxiv?:number|null}){
  if(!overview)return null;
  const n=(kind:string)=>overview.venues.find(v=>v.kind===kind)?.n||0;
  const metrics=overview.resource_coverage?.length?overview.resource_coverage:[undefined];
- const cells:{label:string;value:string;hint?:string;tooltip?:string;coverage?:boolean}[]=[{label:t('论文记录'),value:fmt(overview.papers)},{label:t('期刊'),value:fmt(n('Journals'))},{label:t('会议系列'),value:fmt(n('Conferences'))}];
+ const cells:{label:string;value:string;hint?:string;tooltip?:string;coverage?:boolean}[]=arxiv!==undefined?[{label:t('IEEE 论文'),value:fmt(overview.papers)},{label:t('arXiv 论文'),value:arxiv===null?'—':fmt(arxiv)}]:[{label:t('论文记录'),value:fmt(overview.papers)},{label:t('期刊'),value:fmt(n('Journals'))},{label:t('会议系列'),value:fmt(n('Conferences'))}];
  for(const metric of metrics){
   const coverage=coverageDisplay(metric,overview.papers,locale());
   const label=metric?localizedText(metric.label_i18n,metric.label||t('阅读资料覆盖率')):t('阅读资料覆盖率');

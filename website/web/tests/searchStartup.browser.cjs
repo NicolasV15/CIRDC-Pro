@@ -1,5 +1,6 @@
 /* Isolated search loading acceptance. Set PLAYWRIGHT_MODULE, optionally
  * PLAYWRIGHT_CHROMIUM_EXECUTABLE and CIRDC_BROWSER_OUTPUT. All requests are mocked. */
+const {serveUnifiedFromLegacy}=require('./unifiedFixture.cjs');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 /** Phones keep the language switch in the header menu. */
@@ -39,6 +40,7 @@ async function main(){
    }
    blocked.push(p);return route.abort();
   });
+  await serveUnifiedFromLegacy(context);
   await page.goto(origin+'/',{waitUntil:'domcontentloaded'});await page.locator('.paper-row').first().waitFor();assert.equal(await page.locator('.paper-row').count(),25);await page.waitForFunction(()=>document.querySelector('.result-total')?.textContent.includes('正在统计'));
   await page.waitForTimeout(80);assert(initialPending);assert(!requests.includes('/api/venues'));assert((await page.locator('.result-loaded').innerText()).includes('25'));releaseInitial();await page.waitForFunction(()=>document.querySelector('.result-total')?.textContent.includes('173'));
   await page.getByRole('button',{name:'加载更多论文',exact:true}).click();await page.waitForFunction(()=>document.querySelectorAll('.paper-row').length===50);assert((await page.locator('.result-loaded').innerText()).includes('50'));

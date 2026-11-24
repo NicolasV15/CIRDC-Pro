@@ -13,11 +13,12 @@ export function VenueTags({ paper }: {
         return <AdditionalVenueTag paper={paper}/>;
     return <div className="venue-tags" aria-label={t("刊会来源标签")}>{tags.map(tag => <span className={'venue-tag ' + tag.family.kind.toLowerCase()} key={tag.family.key} title={tag.family.title + (tag.old ? t("（历史刊会名称）") : '')}>{tag.label}{tag.old && <span className="venue-old">{t("Old")}</span>}</span>)}</div>;
 }
-export function VenueFamilyFilter({ value, onChange }: {
+export function VenueFamilyFilter({ value, defaultOpen = true, onChange }: {
     value: string;
+    defaultOpen?: boolean;
     onChange: (value: string) => void;
 }) {
-    const [open, setOpen] = useState(true), [query, setQuery] = useState(''),[guideOpen,setGuideOpen]=useState(false);
+    const [open, setOpen] = useState(defaultOpen), [query, setQuery] = useState(''),[guideOpen,setGuideOpen]=useState(false);
     const language=useLanguage(),copy=guideCopy[language];
     const selected = orderVenueFamilies(selectedVenueFamilies(value)), keys = new Set(selected.map(f => f.key)), matches = orderVenueFamilies(matchingVenueFamilies(query));
     function toggle(key: string) { const next = new Set(keys); if (next.has(key))

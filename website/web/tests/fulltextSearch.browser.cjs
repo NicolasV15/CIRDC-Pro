@@ -1,5 +1,6 @@
 /* Fixture-only full-text search and passage location. Set PLAYWRIGHT_MODULE, optionally
  * PLAYWRIGHT_CHROMIUM_EXECUTABLE and CIRDC_BROWSER_OUTPUT. All requests are mocked; nothing is written. */
+const {serveUnifiedFromLegacy}=require('./unifiedFixture.cjs');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 /** Phones fold the search options behind one row; open it before using them. */
@@ -54,7 +55,7 @@ async function main(){
    if(p.endsWith('/references')||p.endsWith('/citations')||p.endsWith('/patent-citations'))return route.fulfill({json:{number:p.split('/')[3],state:'disabled',version:null,items:[],total:0,next_offset:null,group:url.searchParams.get('group')||'ieee',counts:{ieee:null,nonIeee:null,total:null},stored_counts:{ieee:0,nonIeee:0,total:0},group_states:{ieee:'disabled',nonIeee:'disabled'},source_presence:'unknown',empty_reason:null,expected_total:null,checked_at:null,last_attempt_at:null,next_check_at:null,stale:false,error:null,offset:0,limit:50}});
    blocked.push(p);return route.abort();
   });
-  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));
+await serveUnifiedFromLegacy(context);  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));
   const focused=()=>page.locator('.document-passage-focus');
   // Tokens of the focused block with the reader's own formula and label handling.
   const tokensOf=el=>{if(!el)return '';const copy=el.cloneNode(true);copy.querySelectorAll('.document-math-source,.document-section-number').forEach(n=>n.remove());copy.querySelectorAll('.doc-math').forEach(n=>n.replaceWith(' ⋯ '));copy.querySelectorAll('td,th,br').forEach(n=>n.before(' '));

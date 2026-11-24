@@ -1,6 +1,7 @@
 /* Cached-profile fixtures only. No author acquisition or database writes.
  * Optional CIRDC_AUTHOR_IDENTITY_FIXTURE / CIRDC_AUTHOR_PROFILE_FIXTURE use a
  * private cached example; CIRDC_AUTHOR_LIVE_ORIGIN serves only HTML/assets live. */
+const {serveUnifiedFromLegacy}=require('./unifiedFixture.cjs');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 /** Phones keep the language switch in the header menu. */
@@ -38,7 +39,7 @@ async function main(){
    if(p.startsWith('/api/author-profiles/ieee/')){const id=p.split('/').at(-1);if(mode==='hold'&&id===local.author_id){held={route,id};heldReady();return;}if(mode==='error')return route.fulfill({status:503,json:{error:'fixture_unavailable'}});return route.fulfill({json:response(id)});}
    blocked.push(p);return route.abort();
   });
-  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));
+await serveUnifiedFromLegacy(context);  const page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));
   const card=()=>page.locator('.pinned-author>.author-match'),aff=()=>card().locator('.author-affiliation');
   const profileRequests=()=>requests.filter(r=>r.path.startsWith('/api/author-profiles/'));
   async function heldRequest(){let timer;try{await Promise.race([heldPromise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Profile request not held')),12000);})]);}finally{clearTimeout(timer);}}

@@ -601,11 +601,21 @@ The search page uses a centered workspace with a filter sidebar on wide screens 
 Search results offer a dropdown with 25, 50 or 100 records per page, applied immediately. The setting is stored in the browser and the `limit` URL parameter, survives returning from a paper, and remains when other filters are cleared. Historical custom sizes in saved preferences or URLs fall back to an available preset. A size change replaces the current result batch, resets its cursor and clears row selections. Load more continues to append the chosen batch size. The existing API limit and schema remain unchanged.
 
 
+## Unified IEEE and arXiv search
+
+The home page `/` searches IEEE and arXiv together through `GET /api/search/unified`. Two checks beside the query choose the sources (`sources=ieee,arxiv`, the default, `sources=ieee` or `sources=arxiv`); at least one stays checked, and a change reloads the results and the URL. Older `/?source=arxiv` links open with only arXiv checked.
+
+The checked sources decide the search fields and filters. Keywords and Body exist only for IEEE and Categories only for arXiv; with both sources checked such a field shows one line naming the source it matches. Years, sort order, result view and equivalent spellings apply to both. IEEE venue families, publication type, venue series and content states, and arXiv categories sit in their own filter groups; each narrows only its own source, and unchecking a source keeps its conditions for when it is checked again (they leave the URL and the request meanwhile). With both sources checked the two category panels start folded unless they hold a selection.
+
+Results form one list with an IEEE or arXiv badge on every paper. A query ranks by relevance, merged across sources by the API; without one, the newest papers come first. The count shows the total and, with both sources, each source's share. If one source does not answer, the list keeps the other source's papers, names the missing source and offers Retry; it never reports that source as zero matches. Selection, citations and PDF downloads accept papers of both sources together: each paper is read and packaged by its own source.
+
+`web/tests/unifiedSearch.browser.cjs` checks the mixed list, source checks, linked filters and fields, the single-source field note, a failing source, cursor pages without duplicates, mixed citations and downloads and both detail pages against the offline demo at 1440, 390 and 320 px in Chinese and English.
+
 ## Phone layout
 
-At 760 px and below the header stays on one row: the brand mark (with the name where it fits), the IEEE/arXiv source switch, sign-in or the account menu, and a menu button. The menu holds AI access, the interface language, Appearance and, while registration is open, Register; it closes on Escape, an outside tap or a language choice, and returns focus to the menu button. Wider screens keep these controls inline in the header. The source switch remains a separate component, so a later combined source selection can replace it without changing the header.
+At 760 px and below the header stays on one row: the brand mark and name, sign-in or the account menu, and a menu button. The menu holds AI access, the interface language, Appearance and, while registration is open, Register; it closes on Escape, an outside tap or a language choice, and returns focus to the menu button. Wider screens keep these controls inline in the header.
 
-The search box keeps the query field and Search button visible. Search field, result view, sort order and equivalent spellings fold behind **Search options**; while folded, the row names every choice that differs from the page default (relevance for IEEE, newest submissions for arXiv). Filters keep their existing collapsible panel.
+The search box keeps the query field and Search button visible. Search field, result view, sort order and equivalent spellings fold behind **Search options**; while folded, the row names every choice that differs from the default (relevance with a query, newest first without one). The IEEE and arXiv source checks stay visible on their own row below the query. Filters keep their existing collapsible panel.
 
 The selection bar is one row until a paper is selected; Cite and Download then appear below it with short labels, and their accessible names stay the full action names. Paper-detail record actions form an even two-column grid, and the reading-layout control shows its icon only. Administrator tables scroll sideways instead of breaking names and buttons. Wide screens keep their layout unchanged.
 

@@ -17,7 +17,8 @@ VALID_VIEWS = ('', 'all', 'top')
 VALID_TERMS = ('', 'expand', 'exact')
 VALID_TOTALS = ('', 'include', 'defer', 'only')
 VALID_TOP_K = {10, 20, 50, 100}
-IEEE_FILTER_KEYS = ('venue', 'venue_any', 'venue_tags', 'kind', 'publication', 'author_id', 'author_source')
+IEEE_FILTER_KEYS = ('venue', 'venue_any', 'venue_tags', 'kind', 'publication', 'author_id', 'author_source',
+                    'author_unidentified', 'abstract_state', 'keywords_state')
 RRF_K = 60
 
 
@@ -151,6 +152,7 @@ def _fetch_ieee_window(
         'total_exact': first.get('total_exact', first.get('total') is not None),
         'has_more': has_more_after_second if len(entries) == need else False,
         'query': first.get('query'),
+        'fulltext': first.get('fulltext'),
     }
 
 
@@ -526,6 +528,7 @@ def unified_search(
         total_exact = all(info['total_exact'] for info in sources_info.values() if info['status'] == 'ok')
 
     explanation = (ieee_window or {}).get('query') or (arxiv_window or {}).get('query')
+    fulltext = (ieee_window or {}).get('fulltext')
 
     return {
         'items': merged_items,
@@ -540,4 +543,5 @@ def unified_search(
         'sources': sources_info,
         'source_notes': source_notes,
         **({'query': explanation} if explanation else {}),
+        **({'fulltext': fulltext} if fulltext is not None else {}),
     }

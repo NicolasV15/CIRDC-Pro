@@ -23,13 +23,12 @@ import {licenseLabel} from './arxivLicense';
 import {decodeTexAccents} from './texAccents';
 import './arxiv.css';
 import {arxivDate} from './arxivDate';
-import ArxivSearchPage from './ArxivSearchPage';
 
 type Version={version:number;version_date:string};
 type Paper={paper_id:string;arxiv_id:string;title:string;abstract:string;authors_raw:string;metadata?:Record<string,any>;versions?:Version[]};
 
 function requestedVersion(){return Number(new URLSearchParams(location.search).get('v'))||0;}
-const searchHref=(values:Record<string,string>)=>'/?'+new URLSearchParams({source:'arxiv',...values});
+const searchHref=(values:Record<string,string>)=>'/?'+new URLSearchParams({sources:'arxiv',...values});
 /** Optional source fields, displayed only when the metadata record carries them. */
 const optionalFields:[string,string[]][]=[['提交者',['submitter']],['备注',['comments']],['期刊引用',['journal_ref','journal-ref']],['报告编号',['report_no','report-no']],['MSC 分类',['msc_class','msc-class']],['ACM 分类',['acm_class','acm-class']]];
 const AUTHOR_PREVIEW=8;
@@ -39,7 +38,7 @@ function breakable(value:string){return value.split('/').flatMap((part,i)=>i?[<w
 function linked(value:string){return value.split(/(https?:\/\/[^\s<>"]+[^\s<>".,;:!?)])/).map((part,i)=>i%2?<a key={i} href={part} target="_blank" rel="noopener noreferrer">{part}</a>:part);}
 
 export default function ArxivPage(){
- return location.pathname.match(/^\/arxiv\/papers\/(\d+)$/)?<ArxivDetail/>:<ArxivSearchPage/>;
+ return <ArxivDetail/>;
 }
 function ArxivAuthors({names,raw}:{names:string[];raw:string}){
  const [expanded,setExpanded]=useState(false);
@@ -101,7 +100,7 @@ function ArxivDetail(){
   if(!paper||path!=='/api/papers/'+paper.paper_id)throw Error('invalid_arxiv_paper_request');
   return {paper:{number:String(paper.paper_id),record:arxivCitationRecord(paper,version)}};
  },[paper,version]);
- function back(){const values=new URLSearchParams(location.search);values.delete('v');values.set('source','arxiv');values.set('restore','1');location.href='/?'+values;}
+ function back(){const values=new URLSearchParams(location.search);values.delete('v');values.delete('source');values.set('restore','1');location.href='/?'+values;}
  if(missing)return <main id="main" className="workspace detail-page arxiv-page"><div className="detail-toolbar"><button type="button" className="back" onClick={back}><Icon name="back"/>{t('返回检索')}</button></div><div className="empty"><Icon name="search"/><h1>{t('未找到该 arXiv 论文')}</h1></div></main>;
  return <><main id="main" className="workspace detail-page arxiv-page" data-copy-scope style={{'--reader-page-width':layout.pageWidth+'px','--reader-toc-width':layout.tocWidth+'px','--reader-font-scale':layout.fontScale/100,'--publication-column-width':(layout.infoOpen?layout.infoWidth:44)+'px'} as React.CSSProperties}>
   <div className="detail-toolbar"><button type="button" className="back" onClick={back}><Icon name="back"/>{t('返回检索')}</button><PaperSearchBar number={paper?.arxiv_id||''} initialQuery={initialQuery} placeholder={t('搜索 arXiv：标题、作者、摘要或编号')} onSearch={q=>{location.href=searchHref({q});}}/><ReaderLayoutControls layout={layout} onChange={update} onReset={reset}/></div>

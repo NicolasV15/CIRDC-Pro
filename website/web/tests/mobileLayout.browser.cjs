@@ -42,22 +42,22 @@ function header(){
   await sp.goto(origin+'/register');await sp.getByLabel('用户名',{exact:true}).fill(reader);
   const fields=sp.locator('input[type=password]');for(let i=0;i<await fields.count();i++)await fields.nth(i).fill('mobile-pass-123');
   await sp.getByRole('button',{name:'创建并登录'}).click();await sp.waitForURL(url=>!new URL(url).pathname.startsWith('/register'));
-  for(const href of ['/','/?source=arxiv']){await sp.goto(origin+href);const star=sp.locator('.paper-row .favorite-trigger').first();await star.click();await sp.locator('.paper-row .favorite-trigger.is-saved').first().waitFor();}
+  for(const href of ['/?sources=ieee','/?sources=arxiv']){await sp.goto(origin+href);const star=sp.locator('.paper-row .favorite-trigger').first();await star.click();await sp.locator('.paper-row .favorite-trigger.is-saved').first().waitFor();}
   const signedIn=await setup.storageState();await setup.close();
   for(const [language,width] of profiles){
    const phone=width<=760,zh=language==='zh',L=(a,b)=>zh?a:b,report={language,width,pages:0};
    const open=async(state)=>{const context=await browser.newContext({viewport:{width,height:844},...(state?{storageState:state}:{})});await context.addInitScript(lang=>localStorage.setItem('cirdc.ui.language',lang),language);const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));return {context,page,errors};};
    const check=async(page,name)=>{const facts=await page.evaluate(layout);assert.ok(facts.overflow<=1,`${name} ${language}/${width}: page overflow ${facts.overflow}`);assert.deepEqual(facts.issues,[],`${name} ${language}/${width}`);report.pages++;if(shots)await page.screenshot({path:path.join(shots,`${name}-${language}-${width}.png`)});};
    const checkHeader=async(page,name)=>{const h=await page.evaluate(header);if(phone){assert.ok(h.height<=60,`${name}: header height ${h.height}`);assert.ok(h.spread<=2,`${name}: header controls on one row (${h.spread})`);assert.ok(h.menu);assert.ok(h.inline.every(shown=>!shown),`${name}: site tools fold into the menu`);}else{assert.ok(!h.menu);assert.ok(h.inline.every(Boolean));assert.ok(h.spread<=2);}assert.ok(h.overflow<=1);};
-   // Anonymous reader: IEEE home.
+   // Anonymous reader: the unified home (IEEE and arXiv).
    let {context,page,errors}=await open();
    await page.goto(origin+'/');await page.locator('.paper-row').first().waitFor();
    await checkHeader(page,'home');await check(page,'home');
    const trigger=page.locator('.header-more-trigger'),toggle=page.locator('.search-options-toggle'),options=page.locator('.search-options');
    if(phone){
-    // Focus follows the visual order: brand, sources, sign-in, then the menu button.
-    await page.locator('.brand').focus();const order=[];for(let i=0;i<4;i++){await page.keyboard.press('Tab');order.push(await page.evaluate(()=>document.activeElement.className||document.activeElement.textContent));}
-    assert.deepEqual(order.slice(2),['button header-sign-in','header-more-trigger'],'header focus order');
+    // Focus follows the visual order: brand, sign-in, then the menu button.
+    await page.locator('.brand').focus();const order=[];for(let i=0;i<2;i++){await page.keyboard.press('Tab');order.push(await page.evaluate(()=>document.activeElement.className||document.activeElement.textContent));}
+    assert.deepEqual(order,['button header-sign-in','header-more-trigger'],'header focus order');
     // Site tools fold into one menu that closes with Escape and returns focus.
     assert.equal(await trigger.getAttribute('aria-expanded'),'false');
     await trigger.click();assert.equal(await trigger.getAttribute('aria-expanded'),'true');
@@ -104,11 +104,11 @@ function header(){
    await check(page,'citation');await page.keyboard.press('Escape');await page.locator('dialog.citation-dialog[open]').waitFor({state:'detached'});
    // Filters and the venue guide.
    const filters=page.locator('.filter-disclosure');if(!await filters.evaluate(e=>e.open))await filters.locator(':scope>summary').click();
-   await page.locator('.venue-family-filter').waitFor();if(!await page.locator('.venue-family-filter').evaluate(e=>e.open))await page.locator('.venue-family-filter>summary').click();
+   await page.locator('.venue-family-filter:not(.arxiv-category-filter)').waitFor();if(!await page.locator('.venue-family-filter:not(.arxiv-category-filter)').evaluate(e=>e.open))await page.locator('.venue-family-filter:not(.arxiv-category-filter)>summary').click();
    await check(page,'home-filters');
-   await page.locator('.venue-family-filter .venue-guide-trigger').click();await page.locator('#venue-guide-dialog[open]').waitFor();await check(page,'venue-guide');await page.keyboard.press('Escape');
+   await page.locator('.venue-family-filter:not(.arxiv-category-filter) .venue-guide-trigger').click();await page.locator('#venue-guide-dialog[open]').waitFor();await check(page,'venue-guide');await page.keyboard.press('Escape');
    // arXiv home with its category filter.
-   await page.goto(origin+'/?source=arxiv');await page.locator('.paper-row').first().waitFor();await checkHeader(page,'arxiv');await check(page,'arxiv');
+   await page.goto(origin+'/?sources=arxiv');await page.locator('.paper-row').first().waitFor();await checkHeader(page,'arxiv');await check(page,'arxiv');
    if(phone){assert.ok(!await options.isVisible());assert.equal(await page.locator('.search-options-summary').count(),0,'newest first is the arXiv default');}
    const arxivFilters=page.locator('.filter-disclosure');if(!await arxivFilters.evaluate(e=>e.open))await arxivFilters.locator(':scope>summary').click();
    await check(page,'arxiv-filters');
