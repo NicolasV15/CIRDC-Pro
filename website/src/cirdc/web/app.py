@@ -338,13 +338,16 @@ def create_app(config, interface='reader', resource_providers=None, reader_auth=
             identity(aid, source)
         except AuthorError:
             return response({'error': 'invalid_author_reference'}, 422)
-        with closing(Store(config)) as store:
-            value = AuthorRepository(store, config.state_dir).show(aid, public=True)
         from .author_acquisition import call
         try:
             acquisition = call(config, 'read', aid)
         except Exception:
             acquisition = {'state': 'unavailable'}
+        # The worker writes the profile before completing its queue entry.
+        # Read the profile after reading the queue to avoid reporting complete
+        # with an earlier, empty database snapshot.
+        with closing(Store(config)) as store:
+            value = AuthorRepository(store, config.state_dir).show(aid, public=True)
         return response({'status': 'ready' if value else 'not_fetched', 'author': value, 'acquisition': acquisition})
 
     def shell(request):

@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {t,locale} from './i18n';
 import {authorSearchHref,authorProfileHref,ieeeAuthorHref} from './authorLinks';
 import Icon from './Icon';
@@ -9,27 +9,65 @@ const states:Record<string,string>={complete:'已完成',no_data:'来源未提�
 const fmt=(value:unknown)=>value===null||value===undefined?'—':Number(value).toLocaleString(locale());
 const time=(value:string|null)=>value?new Date(value).toLocaleString(locale()):'—';
 
-export function AuthorProfile({source,authorId,fetcher}:{source:string;authorId:string;fetcher:Fetcher}){
- const [author,setAuthor]=useState<any>(null),[local,setLocal]=useState<any>(null),[busy,setBusy]=useState(true),[error,setError]=useState('');
+type Props={source:string;authorId:string;fetcher:Fetcher};
+const pending=(state?:string)=>state==='queued'||state==='fetching';
+
+export function AuthorProfile(props:Props){
+ return <AuthorProfileView key={props.source+':'+props.authorId} {...props}/>;
+}
+
+function AuthorProfileView({source,authorId,fetcher}:Props){
+ const [author,setAuthor]=useState<any>(null),[local,setLocal]=useState<any>(null),[busy,setBusy]=useState(true);
+ const [loadError,setLoadError]=useState(''),[submitError,setSubmitError]=useState('');
  const [acquisition,setAcquisition]=useState<any>({state:'missing'}),[sending,setSending]=useState(false),[revision,setRevision]=useState(0);
+ const follow=useRef(false);
  const path=encodeURIComponent(source)+'/'+encodeURIComponent(authorId);
- useEffect(()=>{setAuthor(null);setLocal(null);setError('')},[source,authorId]);
- useEffect(()=>{let active=true,timer:ReturnType<typeof setTimeout>|undefined;const started=Date.now();setBusy(true);
+ useEffect(()=>{
+  let active=true;
+  void fetcher('/api/authors/'+path).then(value=>{if(active)setLocal(value.author)}).catch(()=>{});
+  return()=>{active=false};
+ },[path,fetcher]);
+ useEffect(()=>{
+  if(sending)return;
+  let active=true,timer:ReturnType<typeof setTimeout>|undefined;
+  const started=Date.now();
+  const delay=()=>document.hidden||Date.now()-started>=60000?10000:2000;
   async function load(){
-   try{const value=await fetcher('/api/author-profiles/'+path);if(!active)return;
-    setAuthor(value.author);setAcquisition(value.acquisition||{state:'disabled'});
-    if(['queued','fetching'].includes(value.acquisition?.state)&&Date.now()-started<60000)timer=setTimeout(load,2000);
-   }catch(e){if(active)setError(e instanceof Error?e.message:String(e))}finally{if(active)setBusy(false)}
+   try{
+    const value=await fetcher('/api/author-profiles/'+path);
+    if(!active)return;
+    setAuthor(value.author);
+    const next=value.acquisition||{state:'disabled'};
+    if(next.state==='unavailable'&&follow.current){
+     timer=setTimeout(load,10000);
+     return;
+    }
+    setLoadError('');
+    setAcquisition(next);
+    follow.current=pending(next.state);
+    if(follow.current)timer=setTimeout(load,delay());
+   }catch(e){
+    if(!active)return;
+    setLoadError(e instanceof Error?e.message:String(e));
+    if(follow.current)timer=setTimeout(load,10000);
+   }finally{if(active)setBusy(false)}
   }
   void load();
-  void fetcher('/api/authors/'+path).then(value=>{if(active)setLocal(value.author)}).catch(()=>{});
   return()=>{active=false;if(timer)clearTimeout(timer)};
- },[source,authorId,fetcher,revision]);
- const working=['queued','fetching'].includes(acquisition.state);
+ },[path,fetcher,revision,sending]);
+ const working=pending(acquisition.state);
+ const canPromote=working&&typeof acquisition.id==='string'&&acquisition.priority>0;
+ const buttonDisabled=busy||sending||(working&&!canPromote)||acquisition.state==='disabled';
+ const error=submitError||loadError;
  async function acquire(){
-  setSending(true);setError('');
-  try{const value=await fetcher('/api/author-profiles/'+path+'/ensure','POST',{refresh:!!author?.fetched_at});setAcquisition(value.acquisition)}
-  catch(e){setError(e instanceof Error?e.message:String(e))}
+  if(buttonDisabled)return;
+  setSending(true);setSubmitError('');
+  try{
+   const request=canPromote?{job_id:acquisition.id}:{refresh:!!author?.fetched_at};
+   const value=await fetcher('/api/author-profiles/'+path+'/ensure','POST',request);
+   follow.current=pending(value.acquisition?.state);
+   setAcquisition(value.acquisition);
+  }catch(e){setSubmitError(e instanceof Error?e.message:String(e))}
   finally{setSending(false);setRevision(value=>value+1)}
  }
  const p=author?.profile||{},hidden=p.is_hidden===true;
@@ -40,10 +78,10 @@ export function AuthorProfile({source,authorId,fetcher}:{source:string;authorId:
  return <main id="main" className="workspace author-profile"><a className="back-link" href={papers}><Icon name="back"/>{t('返回作者论文检索')}</a>
   <section className="panel author-profile-card">
    <header className="author-profile-header"><span className="author-avatar" aria-hidden="true">{String(name).slice(0,1).toUpperCase()}</span><div className="author-profile-name"><span className="eyebrow">{t('作者资料')}</span><h1>{name}</h1><p className="muted">IEEE ID: {authorId}</p></div>
-    <div className="actions">{source==='ieee'&&<button type="button" className="button" disabled={sending||working||acquisition.state==='disabled'} onClick={()=>void acquire()}>{sending?t('正在提交…'):working?t('获取中…'):author?.fetched_at?t('更新资料'):t('获取作者资料')}</button>}{working&&<button type="button" className="button" onClick={()=>setRevision(value=>value+1)}>{t('刷新状态')}</button>}<a className="button primary-link" href={papers}><Icon name="search"/>{t('查看本库论文')}</a>{ieee&&<a className="button" href={ieee} target="_blank" rel="noopener noreferrer">{t('查看 IEEE Xplore 作者原始链接')}<Icon name="external" className="icon-trailing"/></a>}</div></header>
+    <div className="actions">{source==='ieee'&&<button type="button" className="button" disabled={buttonDisabled} onClick={()=>void acquire()}>{sending?t('正在提交…'):canPromote?t('获取作者资料'):working?t('获取中…'):author?.fetched_at?t('更新资料'):t('获取作者资料')}</button>}{working&&<button type="button" className="button" onClick={()=>setRevision(value=>value+1)}>{t('刷新状态')}</button>}<a className="button primary-link" href={papers}><Icon name="search"/>{t('查看本库论文')}</a>{ieee&&<a className="button" href={ieee} target="_blank" rel="noopener noreferrer">{t('查看 IEEE Xplore 作者原始链接')}<Icon name="external" className="icon-trailing"/></a>}</div></header>
    {busy&&<p className="state-line" role="status"><span className="spinner" aria-hidden="true"/>{t('正在读取作者资料…')}</p>}{error&&<p className="error" role="alert">{t(error)}</p>}
    {!busy&&!error&&!author&&<p className="hint">{t('暂无作者资料。')}</p>}
-   {acquisition.state&&acquisition.state!=='missing'&&<p className="state-line" role="status">{t('采集状态：')}{t(({queued:'排队中',fetching:'获取中…',complete:'已完成',hidden:'来源已隐藏',blocked:'访问受限',failed:'提取失败',disabled:'获取服务未启用',unavailable:'获取服务暂不可用'} as Record<string,string>)[acquisition.state]||acquisition.state)}</p>}
+   {acquisition.state&&acquisition.state!=='missing'&&<p className="state-line" role="status" aria-atomic="true">{t('采集状态：')}{t(({queued:'排队中',fetching:'获取中…',complete:'已完成',hidden:'来源已隐藏',blocked:'访问受限',failed:'提取失败',disabled:'获取服务未启用',unavailable:'获取服务暂不可用'} as Record<string,string>)[acquisition.state]||acquisition.state)}</p>}
    {author&&<><p className="hint author-profile-status">{t('最近状态：')}{t(states[author.fetch_state]||author.fetch_state)}{t(' · 最近尝试：')}{time(author.last_attempt_at)}<span>{t('资料采集时间：')}{time(author.fetched_at)}</span></p>
     {['blocked','failed'].includes(author.fetch_state)&&<p className="error">{(author.fetched_at?t('最近一次提取未完成，以下为上次成功资料。'):t('尚无成功提取的资料。'))}{author.last_error_code&&<code> {author.last_error_code}</code>}</p>}
     {hidden?<p className="hint">{t('该作者资料已在 IEEE Xplore 隐藏。')}</p>:<>
